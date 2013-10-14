@@ -1,6 +1,6 @@
 v 20110115 2
 L 200 550 200 50 3 0 0 0 -1 -1
-P 0 300 200 300 1 0 0
+P 0 300 50 300 1 0 0
 {
 T 100 300 5 10 0 0 0 0 1
 pintype=unknown
@@ -9,7 +9,7 @@ pinlabel=BASE
 T 105 345 5 10 0 1 0 6 1
 pinnumber=1
 T 100 300 5 10 0 0 0 0 1
-pinseq=1
+pinseq=2
 }
 P 400 100 200 200 1 0 0
 {
@@ -20,7 +20,7 @@ pinlabel=EMITTER
 T 295 245 5 10 0 1 0 0 1
 pinnumber=2
 T 300 200 5 10 0 0 0 0 1
-pinseq=2
+pinseq=3
 }
 P 400 500 200 400 1 0 0
 {
@@ -31,7 +31,7 @@ pinlabel=COLLECTOR
 T 295 445 5 10 0 1 0 0 1
 pinnumber=3
 T 300 400 5 10 0 0 0 0 1
-pinseq=3
+pinseq=1
 }
 L 300 100 400 100 3 0 0 0 -1 -1
 L 350 200 400 100 3 0 0 0 -1 -1
@@ -40,6 +40,10 @@ refdes=Q?
 T 700 500 8 10 0 1 0 0 1
 footprint=SC70
 T 100 700 8 10 0 1 0 0 1
-value=PDTC114TC
+value=PDTC114TU
 T 1400 700 8 10 0 1 0 0 1
-file=subckt/PDTC114TU.subckt
+file=subckt/PDTC114TU.prm
+L 200 300 175 350 3 0 0 0 -1 -1
+L 175 350 125 250 3 0 0 0 -1 -1
+L 125 250 75 350 3 0 0 0 -1 -1
+L 75 350 50 300 3 0 0 0 -1 -1

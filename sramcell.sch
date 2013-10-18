@@ -10,7 +10,15 @@ value=10k
 }
 N 48100 47900 48100 48200 4
 N 46700 47900 48100 47900 4
+{
+T 47300 47700 5 10 1 1 0 0 1
+netname=GND
+}
 N 46700 49900 48100 49900 4
+{
+T 47200 50000 5 10 1 1 0 0 1
+netname=+3.3V
+}
 N 48100 48600 48100 49000 4
 C 47700 48100 1 0 0 2n7002.sym
 {
@@ -66,47 +74,34 @@ value=PDTC114TU
 N 45700 49400 45700 50200 4
 N 45700 50200 49200 50200 4
 N 49200 50200 49200 49400 4
-C 49000 49900 1 0 0 spice-subcircuit-IO-1.sym
+C 45500 48900 1 0 1 io-1.sym
 {
-T 49900 50300 5 10 0 1 0 0 1
-device=spice-IO
-T 49500 50100 5 10 1 1 0 0 1
-refdes=P1
+T 45300 49500 5 10 0 0 0 6 1
+device=none
+T 44600 49000 5 10 0 1 0 7 1
+value=IO
+T 44900 49000 5 10 1 1 0 0 1
+refdes=L
+T 45500 48900 5 10 0 0 0 0 1
+net=L:1
 }
-C 49200 48700 1 0 0 spice-subcircuit-IO-1.sym
+C 49400 48900 1 0 0 io-1.sym
 {
-T 50100 49100 5 10 0 1 0 0 1
-device=spice-IO
-T 50050 48950 5 10 1 1 0 0 1
-refdes=P3
+T 49600 49500 5 10 0 0 0 0 1
+device=none
+T 50300 49000 5 10 0 1 0 1 1
+value=IO
+T 49800 48900 5 10 1 1 0 0 1
+refdes=R
+T 49400 48900 5 10 0 0 0 0 1
+net=R:1
 }
-C 45700 48700 1 0 1 spice-subcircuit-IO-1.sym
+C 49200 49700 1 0 0 io-1.sym
 {
-T 44800 49100 5 10 0 1 0 6 1
-device=spice-IO
-T 44850 48950 5 10 1 1 0 6 1
-refdes=P2
-}
-C 47900 47600 1 0 0 spice-subcircuit-IO-1.sym
-{
-T 48800 48000 5 10 0 1 0 0 1
-device=spice-IO
-T 48750 47850 5 10 1 1 0 0 1
-refdes=P4
-}
-C 47900 49600 1 0 0 spice-subcircuit-IO-1.sym
-{
-T 48800 50000 5 10 0 1 0 0 1
-device=spice-IO
-T 48750 49850 5 10 1 1 0 0 1
-refdes=P5
-}
-C 48500 48000 1 0 0 spice-subcircuit-LL-1.sym
-{
-T 48600 48300 5 10 0 1 0 0 1
-device=spice-subcircuit-LL
-T 48600 48400 5 10 1 1 0 0 1
-refdes=A1
-T 48600 48100 5 10 1 1 0 0 1
-model-name=sramcell
+T 49400 50300 5 10 0 0 0 0 1
+device=none
+T 50100 49800 5 10 0 1 0 1 1
+value=IO
+T 49300 50000 5 10 1 1 0 0 1
+refdes=STROBE
 }

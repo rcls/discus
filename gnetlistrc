@@ -1,0 +1,6 @@
+;(hierarchy-netattrib-mangle "enabled")
+(hierarchy-netname-mangle "disabled")
+(hierarchy-uref-mangle "enabled")
+
+(hierarchy-uref-order "prepend")
+(hierarchy-uref-separator "_")

@@ -30,7 +30,7 @@ device=vpulse
 T 50150 59000 5 10 0 0 270 0 1
 footprint=none
 T 49000 59850 5 10 1 1 0 0 1
-value=pulse 0 3.3 0 10u 10u 10u 100u
+value=pulse 0 3.3 0 10u 10u .1u 40u
 }
 C 49100 57500 1 270 0 vpulse-1.sym
 {
@@ -41,7 +41,7 @@ device=vpulse
 T 50150 56800 5 10 0 0 270 0 1
 footprint=none
 T 48500 56450 5 10 1 1 0 0 1
-value=pulse 0 3.3 50u 10u 10u 10u 100u
+value=pulse 0 3.3 20u 10u 10u 0.1u 40u
 }
 C 54300 58400 1 0 0 gnd-1.sym
 C 54200 59900 1 0 0 3.3V-plus-1.sym

@@ -1,6 +1,6 @@
 
-%.spnetr: %.sch
+%.spr: %.sch
 	gnetlist -Lsubckt -g spice-sdb -o $@ $<
 
-%.spnet: %.spnetr
+%.sp: %.spr
 	perl substrate.pl $< > $@

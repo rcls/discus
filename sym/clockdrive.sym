@@ -40,7 +40,7 @@ P 800 1400 800 1200 1 0 0
 T 800 1400 5 10 0 0 0 0 1
 pintype=unknown
 T 945 1000 5 10 1 1 0 6 1
-pinlabel=Vss
+pinlabel=Vdd
 T 750 1295 5 10 1 1 90 0 1
 pinnumber=4
 T 800 1400 5 10 0 0 0 0 1

@@ -108,7 +108,7 @@ pintype=unknown
 T 1800 400 5 10 0 0 0 0 1
 pinseq=0
 T 1545 345 5 10 1 1 0 6 1
-pinlabel=R4
+pinlabel=R3
 T 1695 445 5 10 1 1 0 0 1
 pinnumber=10
 }

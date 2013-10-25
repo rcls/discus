@@ -50,14 +50,14 @@ C 51200 58500 1 0 0 clockdrive.sym
 {
 T 51500 59100 5 10 1 1 0 0 1
 source=clockdrive.sch
-T 52400 58900 5 10 1 1 0 0 1
+T 51900 59300 5 10 1 1 0 0 1
 refdes=S1
 }
 C 51200 56300 1 0 0 clockdrive.sym
 {
 T 51500 56900 5 10 1 1 0 0 1
 source=clockdrive.sch
-T 52400 56700 5 10 1 1 0 0 1
+T 51900 57100 5 10 1 1 0 0 1
 refdes=S2
 }
 C 51800 57700 1 0 0 3.3V-plus-1.sym

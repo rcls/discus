@@ -42,7 +42,7 @@ pintype=unknown
 T 945 1000 5 10 1 1 0 6 1
 pinlabel=Vdd
 T 750 1295 5 10 1 1 90 0 1
-pinnumber=4
+pinnumber=5
 T 800 1400 5 10 0 0 0 0 1
 pinseq=4
 }
@@ -53,9 +53,20 @@ pintype=unknown
 T 1045 400 5 10 1 1 180 0 1
 pinlabel=GND
 T 750 105 5 10 1 1 90 6 1
-pinnumber=5
+pinnumber=6
 T 800 0 5 10 0 0 0 0 1
 pinseq=5
 }
-T 1200 400 8 10 1 1 0 0 1
+T 700 800 8 10 1 1 0 0 1
 refdes=S?
+P 1700 400 1500 400 1 0 0
+{
+T 1700 400 5 10 0 0 0 0 1
+pintype=unknown
+T 1445 395 5 10 1 1 0 6 1
+pinlabel=RAW
+T 1595 445 5 10 1 1 0 0 1
+pinnumber=4
+T 1700 400 5 10 0 0 0 0 1
+pinseq=0
+}

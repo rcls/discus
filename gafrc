@@ -1,2 +1,2 @@
 (component-library "sym")
-(source-library ".")
+(source-library "gates")

@@ -58,7 +58,7 @@ P 600 1000 600 800 1 0 0
 T 600 1000 5 10 0 0 0 0 1
 pintype=unknown
 T 945 800 5 10 1 1 0 6 1
-pinlabel=Vss
+pinlabel=Vdd
 T 550 895 5 10 0 1 90 0 1
 pinnumber=6
 T 600 1000 5 10 0 0 0 0 1

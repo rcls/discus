@@ -88,7 +88,7 @@ C 21000 48700 1 0 1 in-1.sym
 T 21000 49000 5 10 0 0 0 6 1
 device=INPUT
 T 21350 48750 5 10 1 1 0 6 1
-refdes=Vss
+refdes=Vdd
 }
 C 20800 48100 1 0 0 out-1.sym
 {

@@ -238,7 +238,7 @@ P 800 3600 800 3400 1 0 0
 T 800 3600 5 10 0 0 0 0 1
 pintype=unknown
 T 605 3350 5 10 1 1 180 6 1
-pinlabel=Vss
+pinlabel=Vdd
 T 755 3550 5 10 1 1 180 0 1
 pinnumber=18
 T 800 3600 5 10 0 0 0 0 1

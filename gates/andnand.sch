@@ -76,7 +76,7 @@ C 38900 62600 1 270 0 in-1.sym
 T 39200 62600 5 10 0 0 270 0 1
 device=INPUT
 T 39100 62300 5 10 1 1 0 0 1
-refdes=Vss
+refdes=Vdd
 }
 C 39100 59100 1 90 0 in-1.sym
 {

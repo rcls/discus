@@ -86,7 +86,7 @@ pintype=unknown
 T 1600 600 5 10 0 0 0 0 1
 pinseq=0
 T 1345 545 5 10 1 1 0 6 1
-pinlabel=C
+pinlabel=STR
 T 1445 645 5 10 1 1 0 0 1
 pinnumber=14
 }

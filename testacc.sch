@@ -7,12 +7,12 @@ netname=ClkIn
 N 48400 45500 48900 45500 4
 {
 T 48950 45450 5 10 1 1 0 0 1
-netname=Wx
+netname=W
 }
 N 48400 44000 48900 44000 4
 {
 T 48950 43950 5 10 1 1 0 0 1
-netname=COUNTx
+netname=COUNT
 }
 C 46700 44500 1 0 0 spice-vc-switch-1.sym
 {
@@ -51,7 +51,7 @@ T 44500 44700 5 10 1 1 0 0 1
 model-name=dbridge3
 T 44700 44200 5 10 1 1 0 0 1
 refdes=A2
-T 44100 43600 5 10 1 1 0 0 1
+T 44000 43600 5 10 1 1 0 0 1
 model=out_low=0 out_high=1
 }
 C 41100 43800 1 0 0 dsource3.sym
@@ -83,7 +83,7 @@ device=vpulse
 T 44150 46300 5 10 0 0 270 0 1
 footprint=none
 T 41000 46750 5 10 1 1 0 0 1
-value=pulse 0 3.3 0u 1u 1u 1u 20u
+value=pulse 0 3.3 4u 1u 1u 1u 10u
 }
 C 43100 46200 1 270 0 vpulse-1.sym
 {
@@ -94,7 +94,7 @@ device=vpulse
 T 44150 45500 5 10 0 0 270 0 1
 footprint=none
 T 40900 45950 5 10 1 1 0 0 1
-value=pulse 0 3.3 10u 1u 1u 1u 20u
+value=pulse 0 3.3 9u 1u 1u 1u 10u
 }
 N 44300 45900 44800 45900 4
 {
@@ -138,3 +138,12 @@ T 48700 42700 5 10 0 1 90 0 1
 value=3k3
 }
 C 48500 43300 1 0 0 3.3V-plus-1.sym
+C 40900 41200 1 0 0 spice-directive-1.sym
+{
+T 41000 41500 5 10 0 1 0 0 1
+device=directive
+T 41000 41600 5 10 1 1 0 0 1
+refdes=A3
+T 40900 41300 5 10 1 1 0 0 1
+value=.save c c# w count ci we r0 r1 r2 r3 a0 a1 a2 a3 a0# a1# a2# a3# b0 b1 b2 b3 q0 q1 q2 q3
+}

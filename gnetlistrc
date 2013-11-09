@@ -4,3 +4,5 @@
 
 (hierarchy-uref-order "prepend")
 (hierarchy-uref-separator "_")
+(hierarchy-netname-order "prepend")
+(hierarchy-netname-separator "_")

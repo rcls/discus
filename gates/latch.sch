@@ -54,14 +54,14 @@ C 48300 59100 1 90 0 in-1.sym
 T 48000 59100 5 10 0 0 90 0 1
 device=INPUT
 T 48400 59200 5 10 1 1 90 0 1
-refdes=R#
+refdes=S#
 }
 C 46100 59100 1 90 0 in-1.sym
 {
 T 45800 59100 5 10 0 0 90 0 1
 device=INPUT
 T 46200 59300 5 10 1 1 90 0 1
-refdes=S#
+refdes=R#
 }
 C 45500 60700 1 0 0 in-1.sym
 {

@@ -68,7 +68,7 @@ pinnumber=6
 T 1200 1300 5 10 0 0 0 0 1
 pinseq=0
 }
-T 650 900 8 10 1 1 0 0 1
+T 650 700 8 10 1 1 0 0 1
 refdes=S?
 P 600 1700 600 1500 1 0 0
 {
@@ -77,7 +77,7 @@ pintype=unknown
 T 745 1300 5 10 1 1 0 6 1
 pinlabel=Vdd
 T 550 1595 5 10 1 1 90 0 1
-pinnumber=8
+pinnumber=9
 T 600 1700 5 10 0 0 0 0 1
 pinseq=0
 }
@@ -87,8 +87,19 @@ T 600 0 5 10 0 0 0 0 1
 pintype=unknown
 T 655 0 5 10 1 1 0 0 1
 pinlabel=GND
-T 550 105 5 10 1 1 90 6 1
-pinnumber=9
+T 550 205 5 10 1 1 90 6 1
+pinnumber=10
 T 600 0 5 10 0 0 0 0 1
+pinseq=0
+}
+P 1200 1100 1000 1100 1 0 0
+{
+T 1200 1100 5 10 0 0 0 0 1
+pintype=unknown
+T 945 1045 5 10 1 1 0 6 1
+pinlabel=Q#
+T 1045 1145 5 10 1 1 0 0 1
+pinnumber=7
+T 1200 1100 5 10 0 0 0 0 1
 pinseq=0
 }

@@ -141,3 +141,12 @@ N 16500 45700 16800 45700 4
 T 16800 45700 5 10 1 1 0 0 1
 netname=Co
 }
+C 9200 46000 1 0 0 spice-directive-1.sym
+{
+T 9300 46300 5 10 0 1 0 0 1
+device=directive
+T 9300 46400 5 10 1 1 0 0 1
+refdes=A1
+T 9300 46100 5 10 1 1 0 0 1
+value=.save a b c co co# q qi
+}

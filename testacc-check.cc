@@ -57,7 +57,7 @@ static const bool * extract_signal(const char * name)
         double remainder = timestamps[i] - q * QUANTUM;
         if (remainder < 0.5 || remainder > 0.9 || q < SKIP)
             continue;
-        q -= SKIP;
+
         if (sig[q] && raw[i] < 3)
             errx(1, "At quantum %i, high signal droop %e", q + 1, raw[i]);
         if (!sig[q] && raw[i] > 0.3)
@@ -159,9 +159,7 @@ int main(int argc, const char ** argv)
     // time we cross 0.7*QUANTUM.  We will ignore the first two samples.
     num_samples = last / QUANTUM;
     if (last - num_samples * QUANTUM >= 0.7 * QUANTUM)
-        num_samples -= SKIP - 1;
-    else
-        num_samples -= SKIP;
+        ++num_samples;
     //printf("last = %e, num_samples = %li\n", last, num_samples);
 
     double last_remainder = 0;
@@ -169,11 +167,10 @@ int main(int argc, const char ** argv)
     for (int i = 0; i != num_points; ++i) {
         int this_item = timestamps[i] / QUANTUM;
         double remainder = timestamps[i] - this_item * QUANTUM;
-        if (last_remainder < 0.7 * QUANTUM && remainder >= 0.7 * QUANTUM
-            && this_item >= SKIP) {
+        if (last_remainder < 0.7 * QUANTUM && remainder >= 0.7 * QUANTUM) {
             //printf("%e %i\n", timestamps[i], this_item);
-            assert(this_item - SKIP < num_samples);
-            idxs[this_item - SKIP] = i;
+            assert(this_item < num_samples);
+            idxs[this_item] = i;
         }
         last_remainder = remainder;
     }
@@ -190,16 +187,16 @@ int main(int argc, const char ** argv)
     const int * q = extract_number4("q0", "q1", "q2", "q3");
 
     // Check that clocks alternate.
-    for (int i = 0; i != num_samples; ++i)
+    for (int i = SKIP; i != num_samples; ++i)
         if (signals[w_c][i] == signals[w_c_hash][i])
             errx(1, "Clocks not complementary at %i", i + 1);
 
-    for (int i = 1; i != num_samples; ++i)
+    for (int i = SKIP; i != num_samples; ++i)
         if (signals[w_c][i] == signals[w_c][i-1])
             errx(1, "Clocks not flipping at %i", i);
 
     // Basic arithmetic.
-    for (int i = 0; i != num_samples; ++i) {
+    for (int i = SKIP; i != num_samples; ++i) {
         if (a[i] + a_hash[i] != 15)
             errx(1, "a# not complement at %i", i + 1);
         if (q[i] != (a[i] + b[i] + signals[w_ci][i]) % 16)
@@ -211,13 +208,13 @@ int main(int argc, const char ** argv)
     }
 
     // Count and w do not change on falling edge.
-    for (int i = 1; i != num_samples; ++i)
+    for (int i = SKIP; i != num_samples; ++i)
         if (signals[w_c_hash][i]
             && signals[w_count][i] != signals[w_count][i-1])
             errx(1, "count changes on rising edge %i", i);
 
     // Counter.
-    for (int i = 1; i != num_samples; ++i) {
+    for (int i = SKIP; i != num_samples; ++i) {
         bool count = signals[w_c][i] && signals[w_count][i-1];
         if (r[i] != (r[i-1] + count) % 16)
             errx(1, "r not correct at %i", i);
@@ -228,7 +225,7 @@ int main(int argc, const char ** argv)
     for (int i = 0; i != 4; ++i)
         memory[i] = -1;
 
-    for (int i = 1; i != num_samples; ++i) {
+    for (int i = SKIP; i != num_samples; ++i) {
         int index_a = r[i] & 3;
         int index_b = r[i] >> 2;
         if (signals[w_we][i]) {
@@ -236,7 +233,7 @@ int main(int argc, const char ** argv)
             //assert(r[i] == r[i-1]);
             memory[index_a] = q[i-1];
         }
-        printf("Index a %i b %i\n", index_a, index_b);
+        //printf("Index a %i b %i\n", index_a, index_b);
         if (memory[index_a] >= 0 && memory[index_a] != a[i])
             errx(1, "a is %i not expected %i at %i", a[i], memory[index_a], i);
         if (memory[index_b] >= 0 && memory[index_b] != b[i])

@@ -1,0 +1,116 @@
+v 20121123 2
+B 200 200 1600 900 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+P 0 900 200 900 1 0 0
+{
+T 0 900 5 10 0 0 0 0 1
+pintype=unknown
+T 205 845 5 10 1 1 0 0 1
+pinlabel=A0
+T 105 945 5 10 1 1 0 6 1
+pinnumber=1
+T 0 900 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 700 200 700 1 0 0
+{
+T 0 700 5 10 0 0 0 0 1
+pintype=unknown
+T 205 645 5 10 1 1 0 0 1
+pinlabel=A0#
+T 105 745 5 10 1 1 0 6 1
+pinnumber=2
+T 0 700 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 500 200 500 1 0 0
+{
+T 0 500 5 10 0 0 0 0 1
+pintype=unknown
+T 205 445 5 10 1 1 0 0 1
+pinlabel=A1
+T 105 545 5 10 1 1 0 6 1
+pinnumber=3
+T 0 500 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 300 200 300 1 0 0
+{
+T 0 300 5 10 0 0 0 0 1
+pintype=unknown
+T 205 245 5 10 1 1 0 0 1
+pinlabel=A1#
+T 105 345 5 10 1 1 0 6 1
+pinnumber=4
+T 0 300 5 10 0 0 0 0 1
+pinseq=0
+}
+P 2000 900 1800 900 1 0 0
+{
+T 2000 900 5 10 0 0 0 0 1
+pintype=unknown
+T 1795 845 5 10 1 1 0 6 1
+pinlabel=Q0
+T 1895 945 5 10 1 1 0 0 1
+pinnumber=5
+T 2000 900 5 10 0 0 0 0 1
+pinseq=0
+}
+P 2000 700 1800 700 1 0 0
+{
+T 2000 700 5 10 0 0 0 0 1
+pintype=unknown
+T 1795 645 5 10 1 1 0 6 1
+pinlabel=Q1
+T 1895 745 5 10 1 1 0 0 1
+pinnumber=6
+T 2000 700 5 10 0 0 0 0 1
+pinseq=0
+}
+P 2000 500 1800 500 1 0 0
+{
+T 2000 500 5 10 0 0 0 0 1
+pintype=unknown
+T 1795 445 5 10 1 1 0 6 1
+pinlabel=Q2
+T 1895 545 5 10 1 1 0 0 1
+pinnumber=7
+T 2000 500 5 10 0 0 0 0 1
+pinseq=0
+}
+P 2000 300 1800 300 1 0 0
+{
+T 2000 300 5 10 0 0 0 0 1
+pintype=unknown
+T 1795 245 5 10 1 1 0 6 1
+pinlabel=Q3
+T 1895 345 5 10 1 1 0 0 1
+pinnumber=8
+T 2000 300 5 10 0 0 0 0 1
+pinseq=0
+}
+P 1000 1300 1000 1100 1 0 0
+{
+T 1000 1300 5 10 0 0 0 0 1
+pintype=unknown
+T 855 1100 5 10 1 1 180 6 1
+pinlabel=Vdd
+T 950 1195 5 10 1 1 90 0 1
+pinnumber=9
+T 1000 1300 5 10 0 0 0 0 1
+pinseq=0
+}
+P 1000 0 1000 200 1 0 0
+{
+T 1000 0 5 10 0 0 0 0 1
+pintype=unknown
+T 1195 350 5 10 1 1 180 0 1
+pinlabel=GND
+T 950 205 5 10 1 1 90 6 1
+pinnumber=10
+T 1000 0 5 10 0 0 0 0 1
+pinseq=0
+}
+T 500 400 8 10 1 1 0 0 1
+source=decode2.sch
+T 900 700 8 10 1 1 0 0 1
+refdef=S?

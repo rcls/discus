@@ -23,18 +23,8 @@ static const double * raw_values;
 static const double QUANTUM = 5e-6;
 static const int SKIP = 2;
 
-enum wanted_t {
-    w_c, w_c_hash, w_w, w_count, w_ci, w_we, w_max
-};
-
-static const char * names[w_max] = {
-    "c", "c#", "w", "count", "ci", "we",
-};
-
 static double_vector timestamps;
 static std::vector<unsigned> indexes;
-
-static bool_vector signals[w_max];
 
 static double_vector extract_raw_column(const char * name)
 {
@@ -136,10 +126,6 @@ int main(int argc, const char ** argv)
         errx(1, "Failed to read data block");
     raw_values = vals;
 
-    for (int i = 0; i != w_max; ++i)
-        if (variables.find(names[i])== variables.end())
-            errx(1, "Did not find '%s'", names[i]);
-
     timestamps = extract_raw_column("time");
 
     // Validate the timestamps.  Firstly, they should start at < FINE_STEP
@@ -176,8 +162,12 @@ int main(int argc, const char ** argv)
     }
 
     // Now extract each individual digital variable.
-    for (int i = 0; i != w_max; ++i)
-        signals[i] = extract_signal(names[i]);
+    const bool_vector c      = extract_signal("c");
+    const bool_vector c_hash = extract_signal("c#");
+    const bool_vector count  = extract_signal("count");
+    const bool_vector ci     = extract_signal("ci");
+    const bool_vector w      = extract_signal("w");
+    const bool_vector we     = extract_signal("we");
 
     const u8_vector r = extract_number4("r0", "r1", "r2", "r3");
     const u8_vector a = extract_number4("a0", "a1", "a2", "a3");
@@ -187,36 +177,35 @@ int main(int argc, const char ** argv)
 
     // Check that clocks alternate.
     for (int i = SKIP; i != num_samples; ++i)
-        if (signals[w_c][i] == signals[w_c_hash][i])
+        if (c[i] == c_hash[i])
             errx(1, "Clocks not complementary at %i", i);
 
     for (int i = SKIP; i != num_samples; ++i)
-        if (signals[w_c][i] == signals[w_c][i-1])
+        if (c[i] == c[i-1])
             errx(1, "Clocks not flipping at %i", i);
 
     // Basic arithmetic.
     for (int i = SKIP; i != num_samples; ++i) {
         if (a[i] + a_hash[i] != 15)
             errx(1, "a# not complement at %i", i);
-        if (q[i] != (a[i] + b[i] + signals[w_ci][i]) % 16)
+        if (q[i] != (a[i] + b[i] + ci[i]) % 16)
             errx(1, "q not sum at %i", i);
-        //printf("%2i+%2i+%i = %i\n", a[i], b[i], signals[w_ci][i], q[i]);
-        if (signals[w_w][i] == signals[w_count][i])
+        //printf("%2i+%2i+%i = %i\n", a[i], b[i], ci[i], q[i]);
+        if (w[i] == count[i])
             errx(1, "w and count not complementary at %i", i);
-        if (signals[w_we][i] != (signals[w_c_hash][i] & signals[w_w][i]))
+        if (we[i] != (c_hash[i] & w[i]))
             errx(1, "we not expected at %i", i);
     }
 
     // Count and w do not change on falling edge.
     for (int i = SKIP; i != num_samples; ++i)
-        if (signals[w_c_hash][i]
-            && signals[w_count][i] != signals[w_count][i-1])
+        if (c_hash[i] && count[i] != count[i-1])
             errx(1, "count changes on rising edge %i", i);
 
     // Counter.
     for (int i = SKIP; i != num_samples; ++i) {
-        bool count = signals[w_c][i] && signals[w_count][i-1];
-        if (r[i] != (r[i-1] + count) % 16)
+        bool cnt = c[i] && count[i-1];
+        if (r[i] != (r[i-1] + cnt) % 16)
             errx(1, "r not correct at %i", i);
     }
 
@@ -228,7 +217,7 @@ int main(int argc, const char ** argv)
     for (int i = SKIP; i != num_samples; ++i) {
         int index_a = r[i] & 3;
         int index_b = r[i] >> 2;
-        if (signals[w_we][i]) {
+        if (we[i]) {
             printf("Write memory[%i] = %i at %i\n", index_a, q[i-1], i);
             //assert(r[i] == r[i-1]);
             memory[index_a] = q[i-1];

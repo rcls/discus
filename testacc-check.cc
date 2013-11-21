@@ -6,12 +6,17 @@
 #include <map>
 #include <stdlib.h>
 #include <string>
+#include <vector>
 
 static long num_vars = 0;
 static long num_points = 0;
 static long num_samples;
 
 typedef std::map<std::string, int> string_int_map;
+typedef std::vector<unsigned char> u8_vector;
+typedef std::vector<bool> bool_vector;
+typedef std::vector<double> double_vector;
+
 static string_int_map variables;
 static const double * raw_values;
 
@@ -26,28 +31,28 @@ static const char * names[w_max] = {
     "c", "c#", "w", "count", "ci", "we",
 };
 
-static const double * timestamps;
-static const int * indexes;
+static double_vector timestamps;
+static std::vector<unsigned> indexes;
 
-static const bool * signals[w_max];
+static bool_vector signals[w_max];
 
-static const double * extract_raw_column(const char * name)
+static double_vector extract_raw_column(const char * name)
 {
     string_int_map::const_iterator p = variables.find(name);
     if (p == variables.end())
         errx(1, "Did not find '%s'", name);
     int col = p->second;
-    double * r = new double[num_points];
+    double_vector r(num_points);
     for (int i = 0; i != num_points; ++i)
         r[i] = raw_values[i * num_vars + col];
     return r;
 }
 
 
-static const bool * extract_signal(const char * name)
+static bool_vector extract_signal(const char * name)
 {
-    const double * raw = extract_raw_column(name);
-    bool * sig = new bool[num_samples];
+    const double_vector raw = extract_raw_column(name);
+    bool_vector sig(num_samples);
     for (int i = 0; i != num_samples; ++i)
         sig[i] = raw[indexes[i]] > 1.65;
     // Now check that the signal levels are stable between 0.5 QUANTUM and 0.9
@@ -63,25 +68,20 @@ static const bool * extract_signal(const char * name)
         if (!sig[q] && raw[i] > 0.3)
             errx(1, "At quantum %i, low signal bounce %e", q + 1, raw[i]);
     }
-    delete[] raw;
     return sig;
 }
 
 
-static const int * extract_number4(const char * n0, const char * n1,
-                                   const char * n2, const char * n3)
+static u8_vector extract_number4(const char * n0, const char * n1,
+                                 const char * n2, const char * n3)
 {
-    const bool * v0 = extract_signal(n0);
-    const bool * v1 = extract_signal(n1);
-    const bool * v2 = extract_signal(n2);
-    const bool * v3 = extract_signal(n3);
-    int * r = new int[num_samples];
+    const bool_vector v0 = extract_signal(n0);
+    const bool_vector v1 = extract_signal(n1);
+    const bool_vector v2 = extract_signal(n2);
+    const bool_vector v3 = extract_signal(n3);
+    u8_vector r(num_samples);
     for (int i = 0; i != num_samples; ++i)
         r[i] = v0[i] + v1[i] * 2 + v2[i] * 4 + v3[i] * 8;
-    delete[] v0;
-    delete[] v1;
-    delete[] v2;
-    delete[] v3;
     return r;
 }
 
@@ -163,28 +163,27 @@ int main(int argc, const char ** argv)
     //printf("last = %e, num_samples = %li\n", last, num_samples);
 
     double last_remainder = 0;
-    int * idxs = new int[num_samples];
+    indexes.resize(num_samples);
     for (int i = 0; i != num_points; ++i) {
         int this_item = timestamps[i] / QUANTUM;
         double remainder = timestamps[i] - this_item * QUANTUM;
         if (last_remainder < 0.7 * QUANTUM && remainder >= 0.7 * QUANTUM) {
             //printf("%e %i\n", timestamps[i], this_item);
             assert(this_item < num_samples);
-            idxs[this_item] = i;
+            indexes[this_item] = i;
         }
         last_remainder = remainder;
     }
-    indexes = idxs;
 
     // Now extract each individual digital variable.
     for (int i = 0; i != w_max; ++i)
         signals[i] = extract_signal(names[i]);
 
-    const int * r = extract_number4("r0", "r1", "r2", "r3");
-    const int * a = extract_number4("a0", "a1", "a2", "a3");
-    const int * a_hash = extract_number4("a0#", "a1#", "a2#", "a3#");
-    const int * b = extract_number4("b0", "b1", "b2", "b3");
-    const int * q = extract_number4("q0", "q1", "q2", "q3");
+    const u8_vector r = extract_number4("r0", "r1", "r2", "r3");
+    const u8_vector a = extract_number4("a0", "a1", "a2", "a3");
+    const u8_vector a_hash = extract_number4("a0#", "a1#", "a2#", "a3#");
+    const u8_vector b = extract_number4("b0", "b1", "b2", "b3");
+    const u8_vector q = extract_number4("q0", "q1", "q2", "q3");
 
     // Check that clocks alternate.
     for (int i = SKIP; i != num_samples; ++i)
@@ -249,13 +248,7 @@ int main(int argc, const char ** argv)
         }
     }
 
-    delete[] q;
-    delete[] b;
-    delete[] a_hash;
-    delete[] a;
-    delete[] r;
     delete[] vals;
-    delete[] timestamps;
     free(line);
     return 0;
 }

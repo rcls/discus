@@ -33,28 +33,28 @@ N 52200 63000 52200 65200 4
 C 52200 62100 1 0 0 jkflipflop.sym
 {
 T 53300 62600 5 10 1 1 0 0 1
-refdes=S3
+refdes=0
 T 52500 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 54600 62100 1 0 0 jkflipflop.sym
 {
 T 55700 62600 5 10 1 1 0 0 1
-refdes=S5
+refdes=1
 T 54900 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 57100 62100 1 0 0 jkflipflop.sym
 {
 T 58200 62600 5 10 1 1 0 0 1
-refdes=S7
+refdes=2
 T 57400 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 59600 62100 1 0 0 jkflipflop.sym
 {
 T 60700 62600 5 10 1 1 0 0 1
-refdes=S8
+refdes=3
 T 59900 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
@@ -67,12 +67,12 @@ refdes=S1
 C 56300 64600 1 0 0 nor.sym
 {
 T 56600 65050 5 10 1 1 0 0 1
-refdes=S4
+refdes=S2
 }
 C 54300 64700 1 270 0 not.sym
 {
 T 54550 64450 5 10 1 1 270 0 1
-refdes=S2
+refdes=I
 }
 N 53800 63200 53800 65000 4
 N 54600 64700 54600 65200 4
@@ -88,7 +88,7 @@ N 58800 63000 58800 64900 4
 C 58800 64600 1 0 0 nor3.sym
 {
 T 59100 65050 5 10 1 1 0 0 1
-refdes=S6
+refdes=S3
 }
 N 56300 65200 56300 66000 4
 N 56300 66000 58800 66000 4

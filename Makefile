@@ -1,3 +1,4 @@
+all: testacc.sp testacc-check
 
 %.spr: %.sch
 	gnetlist -Lsubckt -g spice-sdb -o $@ $+
@@ -7,7 +8,7 @@
 
 testacc.spr: accumulate.sch
 
-CXXFLAGS=-O2 -Wall -Werror -ggdb
+CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11
 
 %.o: %.cc
 	g++ $(CXXFLAGS) -o $@ -c $<

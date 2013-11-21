@@ -12,37 +12,32 @@ static long num_vars = 0;
 static long num_points = 0;
 static long num_samples;
 
-typedef std::map<std::string, int> string_int_map;
-typedef std::vector<unsigned char> u8_vector;
-typedef std::vector<bool> bool_vector;
-typedef std::vector<double> double_vector;
-
-static string_int_map variables;
-static double_vector raw_values;
+static std::map<std::string, int> variables;
+static std::vector<double> raw_values;
 
 static const double QUANTUM = 5e-6;
 static const int SKIP = 2;
 
-static double_vector timestamps;
+static std::vector<double> timestamps;
 static std::vector<unsigned> indexes;
 
-static double_vector extract_raw_column(const char * name)
+static std::vector<double> extract_raw_column(const char * name)
 {
-    string_int_map::const_iterator p = variables.find(name);
+    auto p = variables.find(name);
     if (p == variables.end())
         errx(1, "Did not find '%s'", name);
     int col = p->second;
-    double_vector r(num_points);
+    std::vector<double> r(num_points);
     for (int i = 0; i != num_points; ++i)
         r[i] = raw_values[i * num_vars + col];
     return r;
 }
 
 
-static bool_vector extract_signal(const char * name)
+static std::vector<bool> extract_signal(const char * name)
 {
-    const double_vector raw = extract_raw_column(name);
-    bool_vector sig(num_samples);
+    const auto raw = extract_raw_column(name);
+    std::vector<bool> sig(num_samples);
     for (int i = 0; i != num_samples; ++i)
         sig[i] = raw[indexes[i]] > 1.65;
     // Now check that the signal levels are stable between 0.5 QUANTUM and 0.9
@@ -62,14 +57,14 @@ static bool_vector extract_signal(const char * name)
 }
 
 
-static u8_vector extract_number4(const char * n0, const char * n1,
-                                 const char * n2, const char * n3)
+static std::vector<unsigned char> extract_number4(
+    const char * n0, const char * n1, const char * n2, const char * n3)
 {
-    const bool_vector v0 = extract_signal(n0);
-    const bool_vector v1 = extract_signal(n1);
-    const bool_vector v2 = extract_signal(n2);
-    const bool_vector v3 = extract_signal(n3);
-    u8_vector r(num_samples);
+    const auto v0 = extract_signal(n0);
+    const auto v1 = extract_signal(n1);
+    const auto v2 = extract_signal(n2);
+    const auto v3 = extract_signal(n3);
+    std::vector<unsigned char> r(num_samples);
     for (int i = 0; i != num_samples; ++i)
         r[i] = v0[i] + v1[i] * 2 + v2[i] * 4 + v3[i] * 8;
     return r;
@@ -165,18 +160,18 @@ int main(int argc, const char ** argv)
     }
 
     // Now extract each individual digital variable.
-    const bool_vector c      = extract_signal("c");
-    const bool_vector c_hash = extract_signal("c#");
-    const bool_vector count  = extract_signal("count");
-    const bool_vector ci     = extract_signal("ci");
-    const bool_vector w      = extract_signal("w");
-    const bool_vector we     = extract_signal("we");
+    const auto c      = extract_signal("c");
+    const auto c_hash = extract_signal("c#");
+    const auto count  = extract_signal("count");
+    const auto ci     = extract_signal("ci");
+    const auto w      = extract_signal("w");
+    const auto we     = extract_signal("we");
 
-    const u8_vector r = extract_number4("r0", "r1", "r2", "r3");
-    const u8_vector a = extract_number4("a0", "a1", "a2", "a3");
-    const u8_vector a_hash = extract_number4("a0#", "a1#", "a2#", "a3#");
-    const u8_vector b = extract_number4("b0", "b1", "b2", "b3");
-    const u8_vector q = extract_number4("q0", "q1", "q2", "q3");
+    const auto r = extract_number4("r0", "r1", "r2", "r3");
+    const auto a = extract_number4("a0", "a1", "a2", "a3");
+    const auto a_hash = extract_number4("a0#", "a1#", "a2#", "a3#");
+    const auto b = extract_number4("b0", "b1", "b2", "b3");
+    const auto q = extract_number4("q0", "q1", "q2", "q3");
 
     // Check that clocks alternate.
     for (int i = SKIP; i != num_samples; ++i)

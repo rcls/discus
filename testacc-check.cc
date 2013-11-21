@@ -18,7 +18,7 @@ typedef std::vector<bool> bool_vector;
 typedef std::vector<double> double_vector;
 
 static string_int_map variables;
-static const double * raw_values;
+static double_vector raw_values;
 
 static const double QUANTUM = 5e-6;
 static const int SKIP = 2;
@@ -120,11 +120,12 @@ int main(int argc, const char ** argv)
         else if (strncmp(line, "Binary:", 7) == 0)
             break;
     }
+    free(line);
 
-    double * vals = new double[num_vars * num_points];
-    if (fread(vals, num_vars * num_points * sizeof(double), 1, stdin) != 1)
+    raw_values.resize(num_vars * num_points);
+    if (fread(&raw_values[0], num_vars * num_points * sizeof(double),
+              1, stdin) != 1)
         errx(1, "Failed to read data block");
-    raw_values = vals;
 
     timestamps = extract_raw_column("time");
 
@@ -190,7 +191,7 @@ int main(int argc, const char ** argv)
             errx(1, "a# not complement at %i", i);
         if (q[i] != (a[i] + b[i] + ci[i]) % 16)
             errx(1, "q not sum at %i", i);
-        //printf("%2i+%2i+%i = %i\n", a[i], b[i], ci[i], q[i]);
+        printf("%2i+%2i+%i = %i\n", a[i], b[i], ci[i], q[i]);
         if (w[i] == count[i])
             errx(1, "w and count not complementary at %i", i);
         if (we[i] != (c_hash[i] & w[i]))
@@ -237,7 +238,5 @@ int main(int argc, const char ** argv)
         }
     }
 
-    delete[] vals;
-    free(line);
     return 0;
 }

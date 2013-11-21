@@ -2,7 +2,7 @@ v 20121123 2
 C 43600 52500 1 0 0 reg4by4.sym
 {
 T 44300 54300 5 10 1 1 0 0 1
-refdes=S8
+refdes=R
 T 43850 53650 5 10 1 1 0 0 1
 source=reg4by4.sch
 }
@@ -11,42 +11,42 @@ C 40400 52300 1 0 0 counter4.sym
 T 40700 52550 5 10 1 1 0 0 1
 source=counter4.sch
 T 41000 53400 5 10 1 1 0 0 1
-refdes=S10
+refdes=C
 }
 C 45800 56300 1 0 0 full.sym
 {
 T 46100 56750 5 10 1 1 0 0 1
 source=full.sch
 T 46450 57000 5 10 1 1 0 0 1
-refdes=S0
+refdes=S6
 }
 C 49600 56300 1 0 0 full.sym
 {
 T 49900 56750 5 10 1 1 0 0 1
 source=full.sch
 T 50250 57000 5 10 1 1 0 0 1
-refdes=S2
+refdes=S8
 }
 C 47700 56300 1 0 0 fulli.sym
 {
 T 48000 56750 5 10 1 1 0 0 1
 source=fulli.sch
 T 48350 57000 5 10 1 1 0 0 1
-refdes=S1
+refdes=S7
 }
 C 38000 57500 1 0 0 clockdrive.sym
 {
 T 38300 58100 5 10 1 1 0 0 1
 source=clockdrive.sch
 T 38700 58300 5 10 1 1 0 0 1
-refdes=S12
+refdes=S1
 }
 C 38100 54900 1 0 0 clockdrive.sym
 {
 T 38400 55500 5 10 1 1 0 0 1
 source=clockdrive.sch
 T 38800 55700 5 10 1 1 0 0 1
-refdes=S13
+refdes=S3
 }
 N 45400 55700 45400 57600 4
 N 45400 57600 45800 57600 4
@@ -115,27 +115,27 @@ C 51500 56300 1 0 0 halfi.sym
 T 51800 56750 5 10 1 1 0 0 1
 source=halfi.sch
 T 52150 57000 5 10 1 1 0 0 1
-refdes=S3
+refdes=S9
 }
 C 45600 53400 1 0 0 not.sym
 {
 T 45850 53650 5 10 1 1 0 0 1
-refdes=S4
+refdes=I0
 }
 C 46800 53400 1 0 0 not.sym
 {
 T 47050 53650 5 10 1 1 0 0 1
-refdes=S5
+refdes=I1
 }
 C 48700 53400 1 0 0 not.sym
 {
 T 48950 53650 5 10 1 1 0 0 1
-refdes=S6
+refdes=I2
 }
 C 51300 53400 1 0 0 not.sym
 {
 T 51550 53650 5 10 1 1 0 0 1
-refdes=S7
+refdes=I3
 }
 N 46000 54000 51700 54000 4
 N 46000 53400 51700 53400 4
@@ -318,12 +318,12 @@ N 38000 55300 38100 55300 4
 C 40500 57500 1 0 0 nand.sym
 {
 T 40750 57950 5 10 1 1 0 0 1
-refdes=S15
+refdes=S2
 }
 C 41300 57300 1 0 0 2n7002.sym
 {
 T 41550 57600 5 10 1 1 0 0 1
-refdes=M4
+refdes=M2
 T 41400 58100 5 10 0 1 0 0 1
 value=2N7002P
 T 41800 57900 5 10 0 1 0 0 1
@@ -334,7 +334,7 @@ device=NMOS
 C 41300 58100 1 0 0 BSS84.sym
 {
 T 41550 58300 5 10 1 1 0 0 1
-refdes=M3
+refdes=M1
 T 41400 58900 5 10 0 1 0 0 1
 value=BSS84
 T 41800 58700 5 10 0 1 0 0 1
@@ -363,12 +363,12 @@ N 45200 55700 45400 55700 4
 C 39500 53600 1 0 1 not.sym
 {
 T 39250 53850 5 10 1 1 0 6 1
-refdes=S14
+refdes=S4
 }
 C 38700 52300 1 0 0 not.sym
 {
 T 38950 52550 5 10 1 1 0 0 1
-refdes=S11
+refdes=S5
 }
 C 39200 52000 1 0 1 gnd-1.sym
 C 39200 53300 1 0 1 gnd-1.sym

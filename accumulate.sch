@@ -18,21 +18,21 @@ C 45800 56300 1 0 0 full.sym
 T 46100 56750 5 10 1 1 0 0 1
 source=full.sch
 T 46450 57000 5 10 1 1 0 0 1
-refdes=S6
+refdes=F0
 }
 C 49600 56300 1 0 0 full.sym
 {
 T 49900 56750 5 10 1 1 0 0 1
 source=full.sch
 T 50250 57000 5 10 1 1 0 0 1
-refdes=S8
+refdes=F2
 }
 C 47700 56300 1 0 0 fulli.sym
 {
 T 48000 56750 5 10 1 1 0 0 1
 source=fulli.sch
 T 48350 57000 5 10 1 1 0 0 1
-refdes=S7
+refdes=F1
 }
 C 38000 57500 1 0 0 clockdrive.sym
 {
@@ -115,7 +115,7 @@ C 51500 56300 1 0 0 halfi.sym
 T 51800 56750 5 10 1 1 0 0 1
 source=halfi.sch
 T 52150 57000 5 10 1 1 0 0 1
-refdes=S9
+refdes=F3
 }
 C 45600 53400 1 0 0 not.sym
 {

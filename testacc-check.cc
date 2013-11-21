@@ -92,6 +92,8 @@ static void read_var_list(FILE * f)
         if (num != i)
             errx(1, "Out of sequence variable line: %s", line);
         variables.insert(std::make_pair(name, num));
+        free(name);
+        free(type);
     }
     free(line);
 }

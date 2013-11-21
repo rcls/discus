@@ -189,7 +189,7 @@ int main(int argc, const char ** argv)
     // Check that clocks alternate.
     for (int i = SKIP; i != num_samples; ++i)
         if (signals[w_c][i] == signals[w_c_hash][i])
-            errx(1, "Clocks not complementary at %i", i + 1);
+            errx(1, "Clocks not complementary at %i", i);
 
     for (int i = SKIP; i != num_samples; ++i)
         if (signals[w_c][i] == signals[w_c][i-1])
@@ -198,13 +198,13 @@ int main(int argc, const char ** argv)
     // Basic arithmetic.
     for (int i = SKIP; i != num_samples; ++i) {
         if (a[i] + a_hash[i] != 15)
-            errx(1, "a# not complement at %i", i + 1);
+            errx(1, "a# not complement at %i", i);
         if (q[i] != (a[i] + b[i] + signals[w_ci][i]) % 16)
-            errx(1, "q not sum at %i", i + 1);
+            errx(1, "q not sum at %i", i);
         if (signals[w_w][i] == signals[w_count][i])
-            errx(1, "w and count not complementary at %i", i + 1);
+            errx(1, "w and count not complementary at %i", i);
         if (signals[w_we][i] != (signals[w_c_hash][i] & signals[w_w][i]))
-            errx(1, "we not expected at %i", i + 1);
+            errx(1, "we not expected at %i", i);
     }
 
     // Count and w do not change on falling edge.

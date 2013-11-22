@@ -201,7 +201,7 @@ int main(int argc, const char ** argv)
             errx(1, "count changes on rising edge %i", i);
 
     // Counter.
-    for (int i = SKIP; i != num_samples; ++i) {
+    for (int i = SKIP + 1; i != num_samples; ++i) {
         bool cnt = c[i] && count[i-1];
         if (r[i] != (r[i-1] + cnt) % 16)
             errx(1, "r not correct at %i", i);

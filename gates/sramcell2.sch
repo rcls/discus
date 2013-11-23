@@ -23,7 +23,7 @@ refdes=M2
 T 47700 49100 5 10 0 1 0 0 1
 value=2N7002P
 T 48100 48900 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 }
 N 47600 48600 47200 49000 4
 C 46900 49000 1 90 0 resistor-load.sym
@@ -46,7 +46,7 @@ refdes=M1
 T 47100 49100 5 10 0 1 0 6 1
 value=2N7002P
 T 46700 48900 5 10 0 1 0 6 1
-footprint=SOT23
+footprint=sot23-nmos
 }
 N 46800 49000 46800 48800 4
 N 47200 48600 47600 49000 4
@@ -66,7 +66,7 @@ C 48700 49400 1 90 1 pdtc114.sym
 T 48200 49000 5 10 1 1 180 6 1
 refdes=Q2
 T 48200 48700 5 10 0 1 90 6 1
-footprint=SC70
+footprint=sot323-bjt
 T 48000 49300 5 10 0 1 90 6 1
 value=PDTC114TU
 }
@@ -75,7 +75,7 @@ C 46100 49400 1 270 0 pdtc114.sym
 T 46100 49300 5 10 1 1 0 0 1
 refdes=Q1
 T 46600 48700 5 10 0 1 270 0 1
-footprint=SC70
+footprint=sot323-bjt
 T 46800 49300 5 10 0 1 270 0 1
 value=PDTC114TU
 }
@@ -115,7 +115,7 @@ C 46700 48400 1 90 0 pdtc114.sym
 T 46700 48500 5 10 1 1 180 0 1
 refdes=Q3
 T 46200 49100 5 10 0 1 90 0 1
-footprint=SC70
+footprint=sot323-bjt
 T 46000 48500 5 10 0 1 90 0 1
 value=PDTC114TU
 }

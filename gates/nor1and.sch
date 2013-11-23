@@ -6,7 +6,7 @@ refdes=M1
 T 38500 61100 5 10 0 1 0 0 1
 value=2N7002P
 T 38900 60900 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 39900 60900 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -17,7 +17,7 @@ refdes=M3
 T 38500 60400 5 10 0 1 0 0 1
 value=2N7002P
 T 38900 60200 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 39900 60200 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -28,7 +28,7 @@ refdes=M2
 T 39300 60800 5 10 0 1 0 6 1
 value=2N7002P
 T 38900 60600 5 10 0 1 0 6 1
-footprint=SOT23
+footprint=sot23-nmos
 T 37900 60600 5 10 0 1 0 6 1
 device=NMOS
 }

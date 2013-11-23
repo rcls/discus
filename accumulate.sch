@@ -327,7 +327,7 @@ refdes=M2
 T 41400 58100 5 10 0 1 0 0 1
 value=2N7002P
 T 41800 57900 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 42800 57900 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -338,7 +338,7 @@ refdes=M1
 T 41400 58900 5 10 0 1 0 0 1
 value=BSS84
 T 41800 58700 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-pmos
 T 42800 58700 5 10 0 1 0 0 1
 device=PMOS
 }

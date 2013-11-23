@@ -6,7 +6,7 @@ refdes=M1
 T 59800 47000 5 10 0 1 0 0 1
 value=2N7002P
 T 60200 46800 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 61200 46800 5 10 0 1 0 0 1
 device=NMOS
 }

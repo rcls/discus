@@ -187,7 +187,7 @@ C 63000 61400 1 0 0 pdtc114.sym
 T 63400 61600 5 10 1 1 0 0 1
 refdes=Q1
 T 63700 61900 5 10 0 1 0 0 1
-footprint=SC70
+footprint=sot323-bjt
 T 63100 62100 5 10 0 1 0 0 1
 value=PDTC114TU
 }

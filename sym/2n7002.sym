@@ -40,7 +40,7 @@ refdes=M?
 T 100 800 8 10 0 1 0 0 1
 value=2N7002P
 T 500 600 8 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 1100 800 8 10 0 1 0 0 1
 file=subckt/2N7002P.prm
 T 1500 600 8 10 0 1 0 0 1

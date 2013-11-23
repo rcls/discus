@@ -49,7 +49,7 @@ refdes=M3
 T 45900 45500 5 10 0 1 0 0 1
 value=2N7002P
 T 46300 45300 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 47300 45300 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -60,7 +60,7 @@ refdes=M4
 T 47300 45500 5 10 0 1 0 6 1
 value=2N7002P
 T 46900 45300 5 10 0 1 0 6 1
-footprint=SOT23
+footprint=sot23-nmos
 T 45900 45300 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -71,7 +71,7 @@ C 47100 46400 1 0 0 pdtc114.sym
 T 47350 46650 5 10 1 1 0 0 1
 refdes=Qsr
 T 47800 46900 5 10 0 1 0 0 1
-footprint=SC70
+footprint=sot323-bjt
 T 47200 47100 5 10 0 1 0 0 1
 value=PDTC114TU
 }
@@ -91,7 +91,7 @@ C 46600 45600 1 0 1 pdtc114.sym
 T 46300 45850 5 10 1 1 0 6 1
 refdes=Q1
 T 45900 46100 5 10 0 1 0 6 1
-footprint=SC70
+footprint=sot323-bjt
 T 46500 46300 5 10 0 1 0 6 1
 value=PDTC114TU
 }
@@ -100,7 +100,7 @@ C 46600 45600 1 0 0 pdtc114.sym
 T 46900 45850 5 10 1 1 0 0 1
 refdes=Q2
 T 47300 46100 5 10 0 1 0 0 1
-footprint=SC70
+footprint=sot323-bjt
 T 46700 46300 5 10 0 1 0 0 1
 value=PDTC114TU
 }

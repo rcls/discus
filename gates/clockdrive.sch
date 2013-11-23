@@ -6,7 +6,7 @@ refdes=M1
 T 26300 30000 5 10 0 1 0 0 1
 value=2N7002P
 T 26700 29800 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 27700 29800 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -17,7 +17,7 @@ refdes=M2
 T 26300 31000 5 10 0 1 0 0 1
 value=BSS84
 T 26700 30800 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-pmos
 T 27700 30800 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -34,7 +34,7 @@ C 24900 29100 1 0 0 pdtc114.sym
 T 25200 29400 5 10 1 1 0 0 1
 refdes=Q1
 T 25600 29600 5 10 0 1 0 0 1
-footprint=SC70
+footprint=sot323-bjt
 T 25000 29800 5 10 0 1 0 0 1
 value=PDTC114TU
 }

@@ -6,7 +6,7 @@ refdes=M2
 T 43300 60000 5 10 0 1 0 6 1
 value=2N7002P
 T 42900 59800 5 10 0 1 0 6 1
-footprint=SOT23
+footprint=sot23-nmos
 T 41900 59800 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -17,7 +17,7 @@ refdes=M3
 T 43900 60000 5 10 0 1 0 0 1
 value=2N7002P
 T 44300 59800 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 45300 59800 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -28,7 +28,7 @@ refdes=M7
 T 46800 60000 5 10 0 1 0 6 1
 value=2N7002P
 T 46400 59800 5 10 0 1 0 6 1
-footprint=SOT23
+footprint=sot23-nmos
 T 45400 59800 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -39,7 +39,7 @@ refdes=M8
 T 47400 60000 5 10 0 1 0 0 1
 value=2N7002P
 T 47800 59800 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 48800 59800 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -184,7 +184,7 @@ refdes=M5
 T 45600 60000 5 10 0 1 0 0 1
 value=2N7002P
 T 46000 59800 5 10 0 1 0 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 47000 59800 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -195,7 +195,7 @@ refdes=M10
 T 48600 60000 5 10 0 1 0 6 1
 value=2N7002P
 T 48200 59800 5 10 0 1 0 6 1
-footprint=SOT23
+footprint=sot23-nmos
 T 47200 59800 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -210,7 +210,7 @@ refdes=M4
 T 44000 60000 5 10 0 1 270 2 1
 value=2N7002P
 T 44200 59600 5 10 0 1 270 2 1
-footprint=SOT23
+footprint=sot23-nmos
 T 44200 58600 5 10 0 1 270 2 1
 device=NMOS
 }
@@ -221,7 +221,7 @@ refdes=M1
 T 43200 60000 5 10 0 1 270 0 1
 value=2N7002P
 T 43000 59600 5 10 0 1 270 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 43000 58600 5 10 0 1 270 0 1
 device=NMOS
 }
@@ -232,7 +232,7 @@ refdes=M6
 T 46700 60000 5 10 0 1 270 0 1
 value=2N7002P
 T 46500 59600 5 10 0 1 270 0 1
-footprint=SOT23
+footprint=sot23-nmos
 T 46500 58600 5 10 0 1 270 0 1
 device=NMOS
 }
@@ -243,7 +243,7 @@ refdes=M9
 T 47500 60000 5 10 0 1 270 2 1
 value=2N7002P
 T 47700 59600 5 10 0 1 270 2 1
-footprint=SOT23
+footprint=sot23-nmos
 T 47700 58600 5 10 0 1 270 2 1
 device=NMOS
 }

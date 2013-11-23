@@ -1,15 +1,17 @@
-Element["" "Desc" "Name" "Val" 1000 1000 0nm -2000000nm 0 100 ""]
+
+Element["" "Desc" "Name" "Val" 55.00mil 205.00mil 0.0000 -2.0000mm 0 100 ""]
 (
-	Pin[ 0nm -3810000nm 1500000nm 300000nm 1575000nm 1000000nm "1" "1" 0x00000100]
-	Pin[ 0nm -1270000nm 1500000nm 300000nm 1575000nm 1000000nm "2" "2" 0x00000000]
-	Pin[ 0nm 1270000nm 1500000nm 300000nm 1575000nm 1000000nm "3" "3" 0x00000000]
-	Pin[ 0nm 3810000nm 1500000nm 300000nm 1575000nm 1000000nm "4" "4" 0x00000000]
-	ElementLine [1270000nm 5080000nm -1270000nm 5080000nm 254000nm]
-	ElementLine [-1270000nm 5080000nm -1270000nm -5080000nm 254000nm]
-	ElementLine [-1270000nm -5080000nm 1270000nm -5080000nm 254000nm]
-	ElementLine [1270000nm -5080000nm 1270000nm 5080000nm 254000nm]
-	ElementLine [-1270000nm -5080000nm 1270000nm -5080000nm 254000nm]
-	ElementLine [1270000nm -5080000nm 1270000nm -2540000nm 254000nm]
-	ElementLine [1270000nm -2540000nm -1270000nm -2540000nm 254000nm]
-	ElementLine [-1270000nm -2540000nm -1270000nm -5080000nm 254000nm]
-)
+	Pin[0.0000 -150.00mil 1.5000mm 0.3000mm 1.5750mm 1.0000mm "1" "1" "square"]
+	Pin[0.0000 -50.00mil 1.5000mm 0.3000mm 1.5750mm 1.0000mm "2" "2" ""]
+	Pin[0.0000 50.00mil 1.5000mm 0.3000mm 1.5750mm 1.0000mm "3" "3" ""]
+	Pin[0.0000 150.00mil 1.5000mm 0.3000mm 1.5750mm 1.0000mm "4" "4" ""]
+	ElementLine [50.00mil 200.00mil -50.00mil 200.00mil 10.00mil]
+	ElementLine [-50.00mil 200.00mil -50.00mil -200.00mil 10.00mil]
+	ElementLine [-50.00mil -200.00mil 50.00mil -200.00mil 10.00mil]
+	ElementLine [50.00mil -200.00mil 50.00mil 200.00mil 10.00mil]
+	ElementLine [-50.00mil -200.00mil 50.00mil -200.00mil 10.00mil]
+	ElementLine [50.00mil -200.00mil 50.00mil -100.00mil 10.00mil]
+	ElementLine [50.00mil -100.00mil -50.00mil -100.00mil 10.00mil]
+	ElementLine [-50.00mil -100.00mil -50.00mil -200.00mil 10.00mil]
+
+	)

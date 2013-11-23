@@ -11,5 +11,6 @@ Element["" "" "" "" 1.4250mm 1.5038mm 0.0000 0.0000 0 100 "selected"]
 	ElementLine [1.3500mm -0.8500mm 0.5000mm -0.8500mm 0.1500mm]
 	ElementLine [-1.3500mm -0.8500mm -0.5000mm -0.8500mm 0.1500mm]
 	ElementLine [0.1500mm 0.8500mm -0.1500mm 0.8500mm 0.1500mm]
+	ElementLine [0.0000 0.0000 0.0000 0.8500mm 0.1500mm]
 
 	)

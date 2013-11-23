@@ -92,8 +92,10 @@ device=OUTPUT
 T 39600 61000 5 10 1 1 0 0 1
 refdes=Q
 }
-C 39100 61100 1 90 0 resistor-1.sym
+C 39100 61100 1 90 0 resistor-load.sym
 {
+T 39000 61500 5 10 0 1 90 0 1
+footprint=0603-boxed
 T 38700 61400 5 10 0 0 90 0 1
 device=RESISTOR
 T 38850 61400 5 10 1 1 90 0 1

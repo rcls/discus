@@ -43,8 +43,10 @@ footprint=SOT23
 T 48800 59800 5 10 0 1 0 0 1
 device=NMOS
 }
-C 44300 59900 1 90 0 resistor-1.sym
+C 44300 59900 1 90 0 resistor-load.sym
 {
+T 44200 60300 5 10 0 1 90 0 1
+footprint=0603-boxed
 T 43900 60200 5 10 0 0 90 0 1
 device=RESISTOR
 T 44100 60200 5 10 1 1 90 0 1
@@ -52,8 +54,10 @@ refdes=R2
 T 44300 59900 5 10 0 1 0 0 1
 value=3k3
 }
-C 43100 59900 1 90 0 resistor-1.sym
+C 43100 59900 1 90 0 resistor-load.sym
 {
+T 43000 60300 5 10 0 1 90 0 1
+footprint=0603-boxed
 T 42700 60200 5 10 0 0 90 0 1
 device=RESISTOR
 T 42900 60300 5 10 1 1 90 0 1
@@ -61,8 +65,10 @@ refdes=R1
 T 43100 59900 5 10 0 1 0 0 1
 value=3k3
 }
-C 46600 59900 1 90 0 resistor-1.sym
+C 46600 59900 1 90 0 resistor-load.sym
 {
+T 46500 60300 5 10 0 1 90 0 1
+footprint=0603-boxed
 T 46200 60200 5 10 0 0 90 0 1
 device=RESISTOR
 T 46400 60200 5 10 1 1 90 0 1
@@ -70,8 +76,10 @@ refdes=R3
 T 46600 59900 5 10 0 1 0 0 1
 value=3k3
 }
-C 47800 59900 1 90 0 resistor-1.sym
+C 47800 59900 1 90 0 resistor-load.sym
 {
+T 47700 60300 5 10 0 1 90 0 1
+footprint=0603-boxed
 T 47400 60200 5 10 0 0 90 0 1
 device=RESISTOR
 T 47600 60100 5 10 1 1 90 0 1

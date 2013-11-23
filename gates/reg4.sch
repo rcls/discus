@@ -171,8 +171,10 @@ device=INPUT
 T 68300 64350 5 10 1 1 0 6 1
 refdes=WE
 }
-C 63500 61900 1 90 0 resistor-1.sym
+C 63500 61900 1 90 0 resistor-load.sym
 {
+T 63400 62300 5 10 0 1 90 0 1
+footprint=0603-boxed
 T 63100 62200 5 10 0 0 90 0 1
 device=RESISTOR
 T 63800 62400 5 10 1 1 180 0 1

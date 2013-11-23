@@ -10,14 +10,16 @@ footprint=SOT23
 T 61200 46800 5 10 0 1 0 0 1
 device=NMOS
 }
-C 60200 46700 1 90 0 resistor-1.sym
+C 60200 46700 1 90 0 resistor-load.sym
 {
+T 60100 47100 5 10 0 1 90 0 1
+footprint=0603-boxed
+T 60100 47100 5 10 0 1 90 0 1
+value=3k3
 T 59800 47000 5 10 0 0 90 0 1
 device=RESISTOR
 T 59900 47100 5 10 1 1 90 0 1
 refdes=R1
-T 60100 47100 5 10 0 1 0 0 1
-value=3k3
 }
 C 60200 45700 1 90 0 in-1.sym
 {

@@ -1,8 +1,9 @@
-Element["" "0805 SMT with sane pads" "" "0805" 7874 3937 0 0 0 100 "selected"]
+
+Element["" "0805 SMT with sane pads" "" "0805" 1.7563mm 1.0063mm 0.0000 0.0000 0 100 "selected"]
 (
-	Pad[-3937 -984 -3937 984 3937 2000 4537 "1" "1" "square"]
-	Pad[3937 -984 3937 984 3937 2000 4537 "2" "2" "square"]
-	ElementLine [394 2363 -394 2363 787]
-	ElementLine [394 -2362 -394 -2362 787]
+	Pad[-1.0000mm -0.2500mm -1.0000mm 0.2500mm 1.0000mm 20.00mil 45.37mil "1" "1" "square"]
+	Pad[1.0000mm -0.2500mm 1.0000mm 0.2500mm 1.0000mm 20.00mil 45.37mil "2" "2" "square"]
+	ElementLine [0.1000mm 0.6000mm -0.1000mm 0.6000mm 0.2000mm]
+	ElementLine [0.1000mm -0.6000mm -0.1000mm -0.6000mm 0.2000mm]
 
 	)

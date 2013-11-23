@@ -40,9 +40,9 @@ refdes=Q?
 T 700 500 8 10 0 1 0 0 1
 footprint=sot323-bjt
 T 100 700 8 10 0 1 0 0 1
-value=PDTC114TU
+value=PDTC124TU
 T 1400 700 8 10 0 1 0 0 1
-file=subckt/PDTC114TU.prm
+file=subckt/PDTC124TU.prm
 L 200 300 175 350 3 0 0 0 -1 -1
 L 175 350 125 250 3 0 0 0 -1 -1
 L 125 250 75 350 3 0 0 0 -1 -1

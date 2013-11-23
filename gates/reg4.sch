@@ -182,14 +182,14 @@ refdes=R1
 T 63500 61900 5 10 0 1 0 0 1
 value=3k3
 }
-C 63000 61400 1 0 0 pdtc114.sym
+C 63000 61400 1 0 0 pdtc124.sym
 {
 T 63400 61600 5 10 1 1 0 0 1
 refdes=Q1
 T 63700 61900 5 10 0 1 0 0 1
 footprint=sot323-bjt
 T 63100 62100 5 10 0 1 0 0 1
-value=PDTC114TU
+value=PDTC124TU
 }
 C 63400 61800 1 0 0 out-1.sym
 {

@@ -1,7 +1,7 @@
 *
 **********************************************************
 *
-* PDTC114TU
+* PDTC124TU
 *
 * NXP Semiconductors
 *
@@ -27,7 +27,7 @@
 * Please note: Base resistor was not part of the
 * model and has been added as RB.
 *
-.MODEL PDTC114TU NPN
+.MODEL PDTC124TU NPN
 + IS = 1.822E-14
 + NF = 0.9932
 + ISE = 2.894E-16
@@ -41,7 +41,7 @@
 + BR = 14.99
 + IKR = 0.05
 + VAR = 17.9
-+ RB = 10000
++ RB = 22000
 + RE = 0.649
 + RC = 1.101
 + XTB = 0

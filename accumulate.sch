@@ -432,7 +432,7 @@ value=3k3
 T 44900 56900 5 10 0 0 90 0 1
 device=RESISTOR
 T 45050 57000 5 10 1 1 90 0 1
-refdes=Rci
+refdes=RCI
 }
 C 45000 57500 1 0 0 3.3V-plus-1.sym
 C 38500 61100 1 90 0 resistor-1.sym

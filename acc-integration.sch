@@ -88,7 +88,7 @@ C 57600 69400 1 90 0 resistor-1.sym
 T 57200 69700 5 10 0 0 90 0 1
 device=RESISTOR
 T 57300 69600 5 10 1 1 90 0 1
-refdes=Rb
+refdes=RB
 T 57500 69700 5 10 0 1 0 0 1
 footprint=0603
 }
@@ -97,7 +97,7 @@ C 57600 70300 1 90 0 resistor-1.sym
 T 57200 70600 5 10 0 0 90 0 1
 device=RESISTOR
 T 57300 70500 5 10 1 1 90 0 1
-refdes=Rt
+refdes=RT
 T 57500 70700 5 10 0 1 0 0 1
 footprint=0603
 }

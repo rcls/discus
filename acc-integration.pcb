@@ -983,6 +983,23 @@ Via[64.0000mm 53.5000mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
 Via[72.0000mm 53.5000mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
 Via[80.0000mm 53.5000mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
 Via[84.2500mm 54.2500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[33.5000mm 21.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[32.8500mm 20.2500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[33.5000mm 24.2500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[32.7500mm 16.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[29.5000mm 16.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[29.5000mm 14.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[29.5000mm 19.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[29.5000mm 23.2500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[33.5000mm 23.2500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[34.5000mm 21.0000mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[37.5000mm 22.2500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[37.5000mm 15.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[37.5000mm 16.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[37.5000mm 19.2500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[38.5000mm 17.5000mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[37.5000mm 14.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
+Via[37.5000mm 23.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
 
 Element["" "0805-diode" "D18" "ledred" 2.0000mm 54.3000mm 0.0000 0.0000 0 100 ""]
 (
@@ -3437,15 +3454,15 @@ Element["" "0603-boxed" "R1_S2_C" "3k3" 9.6000mm 40.7500mm -0.8000mm -0.8000mm 0
 
 	)
 
-Element["onsolder" "0603-boxed" "R3_S1_0_C" "3k3" 33.5000mm 15.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["onsolder" "0603-boxed" "R4_S1_1_C" "3k3" 33.5000mm 26.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
 	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
@@ -3453,95 +3470,15 @@ Element["onsolder" "0603-boxed" "R3_S1_0_C" "3k3" 33.5000mm 15.7500mm -0.8000mm 
 
 	)
 
-Element["onsolder" "sot23-nmos" "M7_S1_0_C" "2N7002P" 38.7500mm 15.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M9_S1_0_C" "2N7002P" 38.7500mm 19.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M6_S1_0_C" "2N7002P" 38.7500mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M5_S1_0_C" "2N7002P" 38.7500mm 19.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "0603-boxed" "R4_S1_0_C" "3k3" 33.5000mm 15.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["" "0603-boxed" "R3_S1_1_C" "3k3" 33.5000mm 26.2500mm -0.8000mm -0.8000mm 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
 	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
@@ -3549,111 +3486,15 @@ Element["" "0603-boxed" "R4_S1_0_C" "3k3" 33.5000mm 15.7500mm -0.8000mm -0.8000m
 
 	)
 
-Element["" "sot23-nmos" "M8_S1_0_C" "2N7002P" 38.7500mm 15.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M10_S1_0_C" "2N7002P" 38.7500mm 22.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M10_S1_1_C" "2N7002P" 38.7500mm 33.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M5_S1_1_C" "2N7002P" 38.7500mm 33.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "0603-boxed" "R4_S1_1_C" "3k3" 33.5000mm 26.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["onsolder" "0603-boxed" "R4_S1_3_C" "3k3" 33.5000mm 47.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
-	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "0603-boxed" "R3_S1_1_C" "3k3" 33.5000mm 26.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
-(
-	Attribute("device" "RESISTOR")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
 	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
@@ -3661,235 +3502,15 @@ Element["onsolder" "0603-boxed" "R3_S1_1_C" "3k3" 33.5000mm 26.2500mm -0.8000mm 
 
 	)
 
-Element["" "sot23-nmos" "M8_S1_1_C" "2N7002P" 38.7500mm 29.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M7_S1_1_C" "2N7002P" 38.7500mm 26.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M9_S1_1_C" "2N7002P" 38.7500mm 26.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M3_3_C" "2N7002P" 27.5000mm 50.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M2_3_C" "2N7002P" 27.5000mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M4_3_C" "2N7002P" 27.5000mm 54.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M1_3_C" "2N7002P" 27.5000mm 50.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M10_S1_3_C" "2N7002P" 38.7500mm 54.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M9_S1_3_C" "2N7002P" 38.7500mm 50.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M6_S1_3_C" "2N7002P" 38.7500mm 50.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M5_S1_3_C" "2N7002P" 38.7500mm 47.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "0603-boxed" "R4_S1_3_C" "3k3" 33.5000mm 47.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["" "0603-boxed" "R3_S1_3_C" "3k3" 33.5000mm 47.2500mm -0.8000mm -0.8000mm 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
 	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
@@ -3897,15 +3518,15 @@ Element["" "0603-boxed" "R4_S1_3_C" "3k3" 33.5000mm 47.2500mm -0.8000mm -0.8000m
 
 	)
 
-Element["onsolder" "0603-boxed" "R3_S1_3_C" "3k3" 33.5000mm 47.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["onsolder" "0603-boxed" "R4_S1_2_C" "3k3" 33.5000mm 36.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
 	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
@@ -3913,155 +3534,15 @@ Element["onsolder" "0603-boxed" "R3_S1_3_C" "3k3" 33.5000mm 47.2500mm -0.8000mm 
 
 	)
 
-Element["" "sot23-nmos" "M8_S1_3_C" "2N7002P" 38.7500mm 47.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M7_S1_3_C" "2N7002P" 38.7500mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M4_S1_3_C" "2N7002P" 27.5000mm 47.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M9_S1_2_C" "2N7002P" 38.7500mm 40.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M6_S1_2_C" "2N7002P" 38.7000mm 40.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M10_S1_2_C" "2N7002P" 38.7500mm 43.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M5_S1_2_C" "2N7002P" 38.7500mm 36.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "0603-boxed" "R4_S1_2_C" "3k3" 33.5000mm 36.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["" "0603-boxed" "R3_S1_2_C" "3k3" 33.5000mm 36.7500mm -0.8000mm -0.8000mm 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
 	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
@@ -4069,491 +3550,35 @@ Element["" "0603-boxed" "R4_S1_2_C" "3k3" 33.5000mm 36.7500mm -0.8000mm -0.8000m
 
 	)
 
-Element["onsolder" "0603-boxed" "R3_S1_2_C" "3k3" 33.5000mm 36.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["onsolder" "0603-boxed" "R1_S1_3_C" "3k3" 33.5000mm 50.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
-	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M8_S1_2_C" "2N7002P" 38.7500mm 36.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M7_S1_2_C" "2N7002P" 38.7500mm 43.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M6_S1_1_C" "2N7002P" 38.7500mm 29.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M3_0_C" "2N7002P" 27.5000mm 19.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M1_0_C" "2N7002P" 27.5000mm 19.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M2_0_C" "2N7002P" 27.5000mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M1_S1_0_C" "2N7002P" 27.5000mm 15.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M4_S1_0_C" "2N7002P" 27.5000mm 15.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M4_0_C" "2N7002P" 27.5000mm 22.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M1_S1_1_C" "2N7002P" 27.5000mm 26.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M3_1_C" "2N7002P" 27.5000mm 29.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M2_1_C" "2N7002P" 27.5000mm 33.2500mm 0.0000 0.0000 3 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.7500mm -0.8500mm 1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.4500mm -0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -0.5000mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 1.7500mm 0.8500mm 0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm 0.4500mm -0.8500mm -0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M4_1_C" "2N7002P" 27.5000mm 33.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M4_S1_1_C" "2N7002P" 27.5000mm 26.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M1_1_C" "2N7002P" 27.5000mm 29.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M2_2_C" "2N7002P" 27.5000mm 43.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M4_2_C" "2N7002P" 27.5000mm 43.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M1_S1_2_C" "2N7002P" 27.5000mm 36.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M3_2_C" "2N7002P" 27.5000mm 40.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M1_2_C" "2N7002P" 27.5000mm 40.2500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M4_S1_2_C" "2N7002P" 27.5000mm 36.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M1_S1_3_C" "2N7002P" 27.5000mm 47.2500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "0603-boxed" "R1_S1_3_C" "3k3" 33.5000mm 50.7500mm -0.8000mm -0.8000mm 0 100 ""]
-(
-	Attribute("device" "RESISTOR")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
-	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 
 	)
 
-Element["onsolder" "0603-boxed" "R2_S1_3_C" "3k3" 33.5000mm 50.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["" "0603-boxed" "R2_S1_3_C" "3k3" 33.5000mm 50.7500mm -0.8000mm -0.8000mm 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
-	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 
 	)
 
@@ -4577,107 +3602,35 @@ Element["onsolder" "sot23-nmos" "M3_S1_3_C" "2N7002P" 33.5000mm 54.2500mm 0.0000
 
 	)
 
-Element["" "0603-boxed" "R1_S1_0_C" "3k3" 33.5000mm 19.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["onsolder" "0603-boxed" "R1_S1_1_C" "3k3" 33.5000mm 29.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
-	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 
 	)
 
-Element["onsolder" "0603-boxed" "R2_S1_0_C" "3k3" 33.5000mm 19.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["" "0603-boxed" "R2_S1_1_C" "3k3" 33.5000mm 29.7500mm -0.8000mm -0.8000mm 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
-	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "sot23-nmos" "M3_S1_0_C" "2N7002P" 33.5000mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
-	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
-	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "sot23-nmos" "M2_S1_0_C" "2N7002P" 33.5000mm 22.7500mm 0.0000 0.0000 3 100 ""]
-(
-	Attribute("device" "NMOS")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
-	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
-	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
-	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
-	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
-	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
-	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
-	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
-
-	)
-
-Element["" "0603-boxed" "R1_S1_1_C" "3k3" 33.5000mm 29.7500mm -0.8000mm -0.8000mm 0 100 ""]
-(
-	Attribute("device" "RESISTOR")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
 	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
-
-	)
-
-Element["onsolder" "0603-boxed" "R2_S1_1_C" "3k3" 33.5000mm 29.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
-(
-	Attribute("device" "RESISTOR")
-	Attribute("manufacturer" "unknown")
-	Attribute("manufacturer_part_number" "unknown")
-	Attribute("vendor" "unknown")
-	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
-	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
 
 	)
 
@@ -4721,35 +3674,35 @@ Element["" "sot23-nmos" "M2_S1_1_C" "2N7002P" 33.5000mm 33.2500mm 0.0000 0.0000 
 
 	)
 
-Element["" "0603-boxed" "R1_S1_2_C" "3k3" 33.5000mm 40.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["onsolder" "0603-boxed" "R1_S1_2_C" "3k3" 33.5000mm 40.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
-	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 
 	)
 
-Element["onsolder" "0603-boxed" "R2_S1_2_C" "3k3" 33.5000mm 40.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["" "0603-boxed" "R2_S1_2_C" "3k3" 33.5000mm 40.2500mm -0.8000mm -0.8000mm 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
-	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
-	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
 
 	)
 
@@ -5606,7 +4559,7 @@ Element["" "sip4" "J1" "unknown" 35.5000mm 91.1500mm 0.0000 -2.0000mm 0 100 ""]
 
 	)
 
-Element["" "0603" "Rt" "unknown" 40.6000mm 86.6500mm -31.50mil -31.50mil 0 100 ""]
+Element["" "0603" "Rt" "unknown" 41.0000mm 85.7500mm -31.50mil -31.50mil 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5618,7 +4571,7 @@ Element["" "0603" "Rt" "unknown" 40.6000mm 86.6500mm -31.50mil -31.50mil 0 100 "
 
 	)
 
-Element["" "0603" "Rb" "unknown" 45.7000mm 86.6500mm -31.50mil -31.50mil 0 100 ""]
+Element["" "0603" "Rb" "unknown" 45.5000mm 85.2500mm -31.50mil -31.50mil 0 100 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9491,6 +8444,1070 @@ Element["" "0603-boxed" "R1_S3_DB_R" "3k3" 78.2500mm 54.0000mm 0.8000mm -0.8000m
 	ElementLine [-0.7500mm -1.2500mm -0.7500mm 1.2500mm 0.1500mm]
 
 	)
+
+Element["onsolder" "sot23-nmos" "M3_S1_0_C" "2N7002P" 33.5000mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M2_S1_0_C" "2N7002P" 33.5000mm 22.7500mm 0.0000 0.0000 3 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "0603-boxed" "R3_S1_0_C" "3k3" 33.5000mm 15.7500mm -0.8000mm -0.8000mm 0 100 ""]
+(
+	Attribute("device" "RESISTOR")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "0603-boxed" "R4_S1_0_C" "3k3" 33.5000mm 15.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+(
+	Attribute("device" "RESISTOR")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
+	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [1.2500mm 0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm 0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "0603-boxed" "R1_S1_0_C" "3k3" 33.5000mm 19.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+(
+	Attribute("device" "RESISTOR")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
+	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
+	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
+
+	)
+
+Element["" "0603-boxed" "R2_S1_0_C" "3k3" 33.5000mm 19.2500mm -0.8000mm -0.8000mm 0 100 ""]
+(
+	Attribute("device" "RESISTOR")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-0.6500mm 0.1250mm -0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "square"]
+	Pad[0.6500mm 0.1250mm 0.6500mm -0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "square"]
+	ElementLine [1.2500mm 0.7500mm 1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [1.2500mm -0.7500mm -1.2500mm -0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
+	ElementLine [-1.2500mm 0.7500mm 1.2500mm 0.7500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M3_0_C" "2N7002P" 29.5000mm 19.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M1_0_C" "2N7002P" 29.5000mm 19.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M2_0_C" "2N7002P" 29.5000mm 15.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M1_S1_0_C" "2N7002P" 29.5000mm 22.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M4_S1_0_C" "2N7002P" 29.5000mm 22.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M4_0_C" "2N7002P" 29.5000mm 15.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M9_S1_0_C" "2N7002P" 37.5000mm 19.2500mm 0.0000 0.0000 3 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M6_S1_0_C" "2N7002P" 37.5000mm 19.2500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M5_S1_0_C" "2N7002P" 37.5000mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M8_S1_0_C" "2N7002P" 37.5000mm 15.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M10_S1_0_C" "2N7002P" 37.5000mm 22.7500mm 0.0000 0.0000 3 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M7_S1_0_C" "2N7002P" 37.5000mm 15.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M1_S1_1_C" "2N7002P" 29.5000mm 33.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M3_1_C" "2N7002P" 29.5000mm 29.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M2_1_C" "2N7002P" 29.5000mm 26.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm -0.8500mm 1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.4500mm -0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.5000mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.7500mm 0.8500mm 0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.4500mm -0.8500mm -0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M4_1_C" "2N7002P" 29.5000mm 26.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M4_S1_1_C" "2N7002P" 29.5000mm 33.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M1_1_C" "2N7002P" 29.5000mm 29.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M2_2_C" "2N7002P" 29.5000mm 36.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M4_2_C" "2N7002P" 29.5000mm 36.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M3_2_C" "2N7002P" 29.5000mm 40.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M1_2_C" "2N7002P" 29.5000mm 40.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M3_3_C" "2N7002P" 29.5000mm 50.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M2_3_C" "2N7002P" 29.5000mm 47.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M4_3_C" "2N7002P" 29.5000mm 47.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M1_3_C" "2N7002P" 29.5000mm 50.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M4_S1_3_C" "2N7002P" 29.5000mm 54.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M1_S1_2_C" "2N7002P" 29.5000mm 43.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M4_S1_2_C" "2N7002P" 29.5000mm 43.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M1_S1_3_C" "2N7002P" 29.5000mm 54.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M10_S1_1_C" "2N7002P" 37.5000mm 33.2500mm 0.0000 0.0000 3 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M5_S1_1_C" "2N7002P" 37.5000mm 33.2500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M8_S1_1_C" "2N7002P" 37.5000mm 26.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm -0.8500mm 1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.4500mm -0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.5000mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.7500mm 0.8500mm 0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.4500mm -0.8500mm -0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M7_S1_1_C" "2N7002P" 37.5000mm 26.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M9_S1_1_C" "2N7002P" 37.5000mm 29.7500mm 0.0000 0.0000 3 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M9_S1_2_C" "2N7002P" 37.5000mm 36.7500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm -0.8500mm 1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.4500mm -0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.5000mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.7500mm 0.8500mm 0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.4500mm -0.8500mm -0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M5_S1_2_C" "2N7002P" 37.5000mm 36.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M6_S1_1_C" "2N7002P" 37.5000mm 29.7500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M10_S1_3_C" "2N7002P" 37.5000mm 54.2500mm 0.0000 0.0000 3 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M9_S1_3_C" "2N7002P" 37.5000mm 47.2500mm 0.0000 0.0000 3 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square"]
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square,edge2"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm -0.8500mm 1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.4500mm -0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.5000mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.7500mm 0.8500mm 0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.4500mm -0.8500mm -0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M6_S1_3_C" "2N7002P" 37.5000mm 50.7500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M5_S1_3_C" "2N7002P" 37.5000mm 47.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M8_S1_3_C" "2N7002P" 37.5000mm 50.7500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M7_S1_3_C" "2N7002P" 37.5000mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M6_S1_2_C" "2N7002P" 37.5000mm 40.2500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M10_S1_2_C" "2N7002P" 37.5000mm 43.7500mm 0.0000 0.0000 3 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[-1.1500mm -0.9500mm -0.9500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square"]
+	Pad[-1.1500mm 0.9500mm -0.9500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square"]
+	Pad[0.9500mm 0.0000 1.1500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square,edge2"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.4500mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 0.5000mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm -0.4500mm -0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["" "sot23-nmos" "M8_S1_2_C" "2N7002P" 37.5000mm 40.2500mm 0.0000 0.0000 1 100 ""]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "square,edge2"]
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "square"]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
+
+Element["onsolder" "sot23-nmos" "M7_S1_2_C" "2N7002P" 37.5000mm 43.7500mm 0.0000 0.0000 1 100 "auto"]
+(
+	Attribute("device" "NMOS")
+	Attribute("manufacturer" "unknown")
+	Attribute("manufacturer_part_number" "unknown")
+	Attribute("vendor" "unknown")
+	Attribute("vendor_part_number" "unknown")
+	Pad[0.9500mm -0.9500mm 1.1500mm -0.9500mm 0.6000mm 0.3000mm 0.7500mm "G" "1" "onsolder,square,edge2"]
+	Pad[0.9500mm 0.9500mm 1.1500mm 0.9500mm 0.6000mm 0.3000mm 0.7500mm "S" "2" "onsolder,square,edge2"]
+	Pad[-1.1500mm 0.0000 -0.9500mm 0.0000 0.6000mm 0.3000mm 0.7500mm "D" "3" "onsolder,square"]
+	ElementLine [-0.8500mm 1.7500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm 0.8500mm -1.7500mm 0.1500mm]
+	ElementLine [0.8500mm -1.7500mm 0.8500mm -1.4500mm 0.1500mm]
+	ElementLine [0.8500mm 1.4500mm 0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm 0.5000mm -0.8500mm 1.7500mm 0.1500mm]
+	ElementLine [-0.8500mm -1.7500mm -0.8500mm -0.5000mm 0.1500mm]
+	ElementLine [0.8500mm -0.4500mm 0.8500mm 0.4500mm 0.1500mm]
+
+	)
 Rat[35.5000mm 92.4200mm 1 35.7500mm 77.6250mm 0  ""]
 Rat[35.7500mm 77.6250mm 0 42.2500mm 76.9250mm 0  ""]
 Rat[42.2500mm 76.9250mm 0 53.3000mm 77.6250mm 0  ""]
@@ -9498,22 +9515,21 @@ Rat[53.3000mm 77.6250mm 0 56.2500mm 55.2500mm 0  ""]
 Rat[50.7500mm 11.2500mm 0 41.9500mm 9.3500mm 1  ""]
 Rat[41.9500mm 9.3500mm 1 36.4000mm 5.6250mm 1  ""]
 Rat[36.4000mm 5.6250mm 1 33.8750mm 9.8500mm 0  ""]
-Rat[33.8750mm 9.8500mm 0 34.1500mm 15.6250mm 0  ""]
-Rat[34.1500mm 15.6250mm 0 34.1500mm 15.6250mm 1  "via"]
-Rat[34.1500mm 15.6250mm 1 34.1500mm 19.1250mm 0  ""]
-Rat[34.1500mm 19.1250mm 0 34.1500mm 19.1250mm 1  "via"]
-Rat[34.1500mm 19.1250mm 1 34.1500mm 26.1250mm 0  ""]
-Rat[34.1500mm 26.1250mm 0 34.1500mm 26.1250mm 1  "via"]
-Rat[34.1500mm 26.1250mm 1 34.1500mm 29.6250mm 1  ""]
-Rat[34.1500mm 29.6250mm 1 34.1500mm 29.6250mm 0  "via"]
-Rat[34.1500mm 29.6250mm 0 34.1500mm 36.6250mm 0  ""]
-Rat[34.1500mm 36.6250mm 0 34.1500mm 36.6250mm 1  "via"]
-Rat[34.1500mm 36.6250mm 1 34.1500mm 40.1250mm 0  ""]
-Rat[34.1500mm 40.1250mm 0 34.1500mm 40.1250mm 1  "via"]
-Rat[34.1500mm 40.1250mm 1 34.1500mm 47.1250mm 0  ""]
-Rat[34.1500mm 47.1250mm 0 34.1500mm 47.1250mm 1  "via"]
-Rat[34.1500mm 47.1250mm 1 34.1500mm 50.6250mm 0  ""]
-Rat[34.1500mm 50.6250mm 0 34.1500mm 50.6250mm 1  "via"]
+Rat[33.8750mm 9.8500mm 0 34.1500mm 625.00mil 1  ""]
+Rat[34.1500mm 625.00mil 1 34.1500mm 625.00mil 0  "via"]
+Rat[34.1500mm 625.00mil 0 34.0000mm 19.2500mm 0  ""]
+Rat[33.5000mm 20.2500mm 0 34.1500mm 26.3750mm 1  ""]
+Rat[34.1500mm 26.3750mm 1 34.1500mm 26.3750mm 0  "via"]
+Rat[34.1500mm 26.3750mm 0 34.1500mm 29.8750mm 0  ""]
+Rat[34.1500mm 29.8750mm 0 32.8500mm 29.6250mm 1  ""]
+Rat[34.1500mm 29.8750mm 0 34.1500mm 36.8750mm 1  ""]
+Rat[34.1500mm 36.8750mm 1 34.1500mm 36.8750mm 0  "via"]
+Rat[34.1500mm 36.8750mm 0 34.1500mm 40.3750mm 0  ""]
+Rat[34.1500mm 40.3750mm 0 32.8500mm 40.1250mm 1  ""]
+Rat[34.1500mm 40.3750mm 0 34.1500mm 47.3750mm 1  ""]
+Rat[34.1500mm 47.3750mm 1 34.1500mm 47.3750mm 0  "via"]
+Rat[34.1500mm 47.3750mm 0 34.1500mm 50.8750mm 0  ""]
+Rat[34.1500mm 50.8750mm 0 32.8500mm 50.6250mm 1  ""]
 Rat[33.8750mm 9.8500mm 0 1000.00mil 5.6250mm 1  ""]
 Rat[1000.00mil 5.6250mm 1 14.3000mm 9.1500mm 1  ""]
 Rat[14.3000mm 9.1500mm 1 14.3000mm 13.2500mm 1  ""]
@@ -9525,16 +9541,16 @@ Rat[9.6000mm 16.3750mm 0 14.6500mm 22.3750mm 0  ""]
 Rat[14.6500mm 22.3750mm 0 18.4000mm 25.8750mm 0  ""]
 Rat[87.0000mm 18.2500mm 0 102.1500mm 19.1250mm 1  ""]
 Rat[102.1500mm 19.1250mm 1 102.1500mm 19.1250mm 0  "via"]
-Rat[102.1500mm 19.1250mm 0 106.6500mm 12.3750mm 1  ""]
-Rat[106.6500mm 12.3750mm 1 106.6500mm 12.3750mm 0  "via"]
-Rat[106.6500mm 12.3750mm 0 112.6500mm 625.00mil 1  ""]
+Rat[102.1500mm 19.1250mm 0 106.6500mm 12.3750mm 0  ""]
+Rat[106.6500mm 12.3750mm 0 106.6500mm 12.3750mm 1  "via"]
+Rat[106.6500mm 12.3750mm 1 112.6500mm 625.00mil 1  ""]
 Rat[112.6500mm 625.00mil 1 112.6500mm 22.6250mm 0  ""]
 Rat[112.6500mm 22.6250mm 0 114.0000mm 25.9750mm 1  ""]
 Rat[112.6500mm 22.6250mm 0 107.6500mm 25.8750mm 1  ""]
 Rat[107.6500mm 25.8750mm 1 107.6500mm 25.8750mm 0  "via"]
-Rat[107.6500mm 25.8750mm 0 102.1500mm 32.6250mm 0  ""]
-Rat[102.1500mm 32.6250mm 0 102.1500mm 32.6250mm 1  "via"]
-Rat[102.1500mm 32.6250mm 1 107.6500mm 39.3750mm 1  ""]
+Rat[107.6500mm 25.8750mm 0 102.1500mm 32.6250mm 1  ""]
+Rat[102.1500mm 32.6250mm 1 102.1500mm 32.6250mm 0  "via"]
+Rat[102.1500mm 32.6250mm 0 107.6500mm 39.3750mm 1  ""]
 Rat[107.6500mm 39.3750mm 1 107.7000mm 39.3750mm 0  ""]
 Rat[107.7000mm 39.3750mm 0 112.6500mm 36.1250mm 0  ""]
 Rat[112.6500mm 36.1250mm 0 113.6000mm 41.1250mm 1  ""]
@@ -9542,8 +9558,8 @@ Rat[113.6000mm 41.1250mm 1 112.6500mm 49.6250mm 0  ""]
 Rat[112.6500mm 49.6250mm 0 112.5000mm 52.4250mm 1  ""]
 Rat[112.5000mm 52.4250mm 1 106.6500mm 52.8750mm 1  ""]
 Rat[106.6500mm 52.8750mm 1 106.6500mm 52.8750mm 0  "via"]
-Rat[106.6500mm 52.8750mm 0 102.1500mm 59.6250mm 0  ""]
-Rat[102.1500mm 59.6250mm 0 102.1500mm 59.6250mm 1  "via"]
+Rat[106.6500mm 52.8750mm 0 102.1500mm 59.6250mm 1  ""]
+Rat[102.1500mm 59.6250mm 1 102.1500mm 59.6250mm 0  "via"]
 Rat[106.6500mm 52.8750mm 0 102.1500mm 46.1250mm 1  ""]
 Rat[102.1500mm 46.1250mm 1 102.1500mm 46.1250mm 0  "via"]
 Rat[114.0000mm 25.9750mm 1 123.1500mm 23.1250mm 0  ""]
@@ -9569,8 +9585,8 @@ Rat[132.1500mm 49.8750mm 0 133.7500mm 55.2750mm 0  ""]
 Rat[133.7500mm 55.2750mm 0 133.6500mm 58.8750mm 1  ""]
 Rat[133.7500mm 55.2750mm 0 128.4000mm 55.3750mm 0  ""]
 Rat[128.4000mm 55.3750mm 0 123.1500mm 55.3750mm 0  ""]
-Rat[123.1500mm 55.3750mm 0 122.6500mm 49.6250mm 1  ""]
-Rat[122.6500mm 49.6250mm 1 122.6500mm 49.6250mm 0  "via"]
+Rat[123.1500mm 55.3750mm 0 122.6500mm 49.6250mm 0  ""]
+Rat[122.6500mm 49.6250mm 0 122.6500mm 49.6250mm 1  "via"]
 Rat[112.5000mm 52.4250mm 1 112.4500mm 63.1750mm 0  ""]
 Rat[133.6500mm 58.8750mm 1 127.1500mm 67.8750mm 0  ""]
 Rat[127.1500mm 67.8750mm 0 123.1500mm 67.8750mm 0  ""]
@@ -9636,18 +9652,17 @@ Rat[101.4500mm 79.5000mm 0 111.1500mm 63.1750mm 0  ""]
 Rat[111.1500mm 63.1750mm 0 111.6500mm 59.6000mm 0  ""]
 Rat[111.1500mm 63.1750mm 0 121.5500mm 64.4000mm 0  ""]
 Rat[121.5500mm 64.4000mm 0 125.0500mm 57.8500mm 1  ""]
-Rat[3.0000mm 54.0500mm 0 37.6000mm 49.8000mm 0  ""]
-Rat[37.6000mm 49.8000mm 0 39.9000mm 49.8000mm 1  ""]
-Rat[37.6000mm 49.8000mm 0 37.6000mm 39.3000mm 0  ""]
-Rat[37.6000mm 39.3000mm 0 39.8500mm 39.3000mm 1  ""]
-Rat[39.8500mm 39.3000mm 1 39.9000mm 28.8000mm 1  ""]
-Rat[39.9000mm 28.8000mm 1 37.6000mm 25.3000mm 0  ""]
-Rat[37.6000mm 25.3000mm 0 39.9000mm 21.8000mm 1  ""]
-Rat[39.9000mm 21.8000mm 1 37.6000mm 18.3000mm 0  ""]
-Rat[37.6000mm 18.3000mm 0 13.3500mm 15.5500mm 1  ""]
+Rat[3.0000mm 54.0500mm 0 36.3500mm 48.2000mm 1  ""]
+Rat[36.3500mm 48.2000mm 1 38.6500mm 49.8000mm 1  ""]
+Rat[36.3500mm 48.2000mm 1 38.6500mm 39.3000mm 1  ""]
+Rat[38.6500mm 39.3000mm 1 36.3500mm 37.7000mm 1  ""]
+Rat[36.3500mm 37.7000mm 1 36.3500mm 28.8000mm 0  ""]
+Rat[36.3500mm 28.8000mm 0 38.6500mm 28.8000mm 1  ""]
+Rat[38.6500mm 28.8000mm 1 38.6500mm 18.3000mm 1  ""]
+Rat[36.3500mm 18.3000mm 0 13.3500mm 15.5500mm 1  ""]
 Rat[13.3500mm 15.5500mm 1 13.2500mm 13.0500mm 0  ""]
 Rat[13.2500mm 13.0500mm 0 4.2000mm 9.3500mm 1  ""]
-Rat[39.9000mm 49.8000mm 1 104.8500mm 60.7000mm 1  ""]
+Rat[38.6500mm 49.8000mm 1 104.8500mm 60.7000mm 1  ""]
 Rat[104.8500mm 60.7000mm 1 107.1500mm 60.7000mm 0  ""]
 Rat[107.1500mm 60.7000mm 0 108.1500mm 47.2000mm 0  ""]
 Rat[108.1500mm 47.2000mm 0 105.8500mm 47.2000mm 1  ""]
@@ -9655,14 +9670,14 @@ Rat[108.1500mm 47.2000mm 0 108.1500mm 33.7000mm 0  ""]
 Rat[108.1500mm 33.7000mm 0 105.8500mm 33.7000mm 1  ""]
 Rat[108.1500mm 33.7000mm 0 108.1500mm 20.2000mm 0  ""]
 Rat[108.1500mm 20.2000mm 0 105.8500mm 20.2000mm 1  ""]
-Rat[26.3500mm 14.8000mm 0 28.6500mm 14.8000mm 1  ""]
-Rat[26.3500mm 14.8000mm 0 26.3500mm 25.3000mm 0  ""]
-Rat[26.3500mm 25.3000mm 0 28.6500mm 25.3000mm 1  ""]
-Rat[26.3500mm 25.3000mm 0 26.3500mm 35.8000mm 0  ""]
-Rat[26.3500mm 35.8000mm 0 28.6500mm 35.8000mm 1  ""]
-Rat[28.6500mm 35.8000mm 1 28.6500mm 46.3000mm 1  ""]
-Rat[28.6500mm 46.3000mm 1 26.3500mm 46.3000mm 0  ""]
-Rat[26.3500mm 14.8000mm 0 13.3500mm 11.4500mm 1  ""]
+Rat[30.6500mm 23.7000mm 0 28.3500mm 23.7000mm 1  ""]
+Rat[30.6500mm 23.7000mm 0 30.6500mm 34.2000mm 0  ""]
+Rat[30.6500mm 34.2000mm 0 28.3500mm 34.2000mm 1  ""]
+Rat[30.6500mm 34.2000mm 0 30.6500mm 44.7000mm 0  ""]
+Rat[30.6500mm 44.7000mm 0 28.3500mm 44.7000mm 1  ""]
+Rat[28.3500mm 44.7000mm 1 28.3500mm 55.2000mm 1  ""]
+Rat[28.3500mm 55.2000mm 1 30.6500mm 55.2000mm 0  ""]
+Rat[28.3500mm 23.7000mm 1 13.3500mm 11.4500mm 1  ""]
 Rat[13.3500mm 11.4500mm 1 13.6500mm 9.1500mm 0  ""]
 Rat[13.3500mm 11.4500mm 1 4.7000mm 13.3500mm 1  ""]
 Rat[128.5500mm 16.6500mm 0 132.0500mm 16.6500mm 0  ""]
@@ -9675,9 +9690,8 @@ Rat[4.8500mm 11.4500mm 1 4.5000mm 7.3750mm 0  ""]
 Rat[4.8500mm 11.4500mm 1 6.0500mm 24.5000mm 0  ""]
 Rat[4.8500mm 11.4500mm 1 36.5500mm 9.3500mm 1  ""]
 Rat[5.9000mm 67.0500mm 0 17.3000mm 22.6500mm 0  ""]
-Rat[17.3000mm 22.6500mm 0 26.3500mm 21.8000mm 0  ""]
-Rat[26.3500mm 21.8000mm 0 28.6500mm 21.8000mm 1  ""]
-Rat[26.3500mm 21.8000mm 0 24.1000mm 5.6250mm 1  ""]
+Rat[17.3000mm 22.6500mm 0 27.2500mm 20.2500mm 1  ""]
+Rat[27.2500mm 20.2500mm 1 24.1000mm 5.6250mm 1  ""]
 Rat[24.1000mm 5.6250mm 1 29.3000mm 4.6000mm 1  ""]
 Rat[29.3000mm 4.6000mm 1 30.2500mm 3.4000mm 1  ""]
 Rat[63.6001mm 86.8500mm 0 57.4001mm 3419.30mil 0  ""]
@@ -9685,51 +9699,13 @@ Rat[63.6001mm 86.8500mm 0 70.3625mm 86.5750mm 0  ""]
 Rat[70.3625mm 86.5750mm 0 70.3625mm 88.5250mm 0  ""]
 Rat[57.4001mm 3419.30mil 0 35.5000mm 87.3400mm 1  ""]
 Rat[35.5000mm 87.3400mm 1 27.5000mm 86.3000mm 0  ""]
-Rat[27.5000mm 86.3000mm 0 28.6500mm 55.2000mm 1  ""]
-Rat[28.6500mm 55.2000mm 1 26.3500mm 55.2000mm 0  ""]
-Rat[28.6500mm 55.2000mm 1 32.3500mm 55.2000mm 0  ""]
-Rat[32.3500mm 55.2000mm 0 34.6500mm 55.2000mm 1  ""]
-Rat[34.6500mm 55.2000mm 1 37.6000mm 55.2000mm 0  ""]
-Rat[37.6000mm 55.2000mm 0 39.9000mm 55.2000mm 1  ""]
-Rat[37.6000mm 55.2000mm 0 37.6000mm 48.2000mm 0  ""]
-Rat[37.6000mm 48.2000mm 0 39.9000mm 48.2000mm 1  ""]
-Rat[37.6000mm 48.2000mm 0 37.6000mm 44.7000mm 0  ""]
-Rat[37.6000mm 44.7000mm 0 39.9000mm 44.7000mm 1  ""]
-Rat[37.6000mm 44.7000mm 0 34.6500mm 44.7000mm 1  ""]
-Rat[34.6500mm 44.7000mm 1 34.6500mm 42.8000mm 0  ""]
-Rat[34.6500mm 42.8000mm 0 37.6000mm 37.7000mm 0  ""]
-Rat[37.6000mm 37.7000mm 0 39.9000mm 37.7000mm 1  ""]
-Rat[37.6000mm 37.7000mm 0 37.6000mm 34.2000mm 0  ""]
-Rat[37.6000mm 34.2000mm 0 39.9000mm 34.2000mm 1  ""]
-Rat[37.6000mm 34.2000mm 0 34.6500mm 34.2000mm 1  ""]
-Rat[34.6500mm 34.2000mm 1 32.3500mm 34.2000mm 0  ""]
-Rat[37.6000mm 34.2000mm 0 37.6000mm 30.7000mm 0  ""]
-Rat[37.6000mm 30.7000mm 0 39.9000mm 27.2000mm 1  ""]
-Rat[39.9000mm 27.2000mm 1 37.6000mm 23.7000mm 0  ""]
-Rat[37.6000mm 23.7000mm 0 34.6500mm 23.7000mm 1  ""]
-Rat[34.6500mm 23.7000mm 1 32.3500mm 23.7000mm 0  ""]
-Rat[32.3500mm 23.7000mm 0 28.6500mm 23.7000mm 1  ""]
-Rat[28.6500mm 23.7000mm 1 26.3500mm 23.7000mm 0  ""]
-Rat[37.6000mm 23.7000mm 0 39.9000mm 20.2000mm 1  ""]
-Rat[39.9000mm 20.2000mm 1 39.9000mm 16.7000mm 1  ""]
-Rat[39.9000mm 16.7000mm 1 37.6000mm 16.7000mm 0  ""]
-Rat[39.9000mm 16.7000mm 1 41.9500mm 11.6500mm 0  ""]
-Rat[41.9500mm 11.6500mm 0 38.4500mm 9.3500mm 1  ""]
-Rat[38.4500mm 9.3500mm 1 34.0000mm 5.8000mm 0  ""]
-Rat[34.0000mm 5.8000mm 0 31.2000mm 4.6000mm 1  ""]
-Rat[31.2000mm 4.6000mm 1 32.0500mm 2.2000mm 0  ""]
-Rat[32.0500mm 2.2000mm 0 31.2000mm 1.1000mm 1  ""]
-Rat[31.2000mm 1.1000mm 1 28.4500mm 2.2000mm 0  ""]
-Rat[28.4500mm 2.2000mm 0 26.5000mm 5.8000mm 0  ""]
-Rat[34.6500mm 44.7000mm 1 28.6500mm 44.7000mm 1  ""]
-Rat[28.6500mm 44.7000mm 1 26.3500mm 44.7000mm 0  ""]
-Rat[32.3500mm 34.2000mm 0 26.3500mm 34.2000mm 0  ""]
-Rat[26.3500mm 34.2000mm 0 26.3500mm 32.3000mm 1  ""]
-Rat[34.0000mm 5.8000mm 0 39.4500mm 2.2000mm 0  ""]
-Rat[26.5000mm 5.8000mm 0 21.0500mm 2.2000mm 0  ""]
-Rat[39.9000mm 44.7000mm 1 47.7500mm 44.7500mm 0  ""]
-Rat[26.3500mm 32.3000mm 1 18.7000mm 30.4000mm 0  ""]
-Rat[26.3500mm 23.7000mm 0 19.2000mm 20.3500mm 1  ""]
+Rat[27.5000mm 86.3000mm 0 17.8000mm 56.4000mm 0  ""]
+Rat[17.8000mm 56.4000mm 0 17.9000mm 52.6000mm 0  ""]
+Rat[17.9000mm 52.6000mm 0 17.2000mm 48.9000mm 0  ""]
+Rat[17.2000mm 48.9000mm 0 15.8500mm 42.2000mm 0  ""]
+Rat[15.8500mm 42.2000mm 0 16.2000mm 38.6000mm 0  ""]
+Rat[16.2000mm 38.6000mm 0 18.7000mm 30.4000mm 0  ""]
+Rat[18.7000mm 30.4000mm 0 19.2000mm 20.3500mm 1  ""]
 Rat[19.2000mm 20.3500mm 1 14.2000mm 15.3500mm 0  ""]
 Rat[14.2000mm 15.3500mm 0 14.6000mm 11.4500mm 0  ""]
 Rat[14.2000mm 15.3500mm 0 6.0000mm 13.3500mm 1  ""]
@@ -9742,11 +9718,43 @@ Rat[6.0500mm 28.0000mm 0 2.4500mm 29.9500mm 0  ""]
 Rat[2.4500mm 29.9500mm 0 2.4500mm 32.0500mm 0  ""]
 Rat[2.4500mm 32.0500mm 0 6.0500mm 34.0000mm 0  ""]
 Rat[6.0500mm 34.0000mm 0 2.4500mm 39.4500mm 0  ""]
-Rat[18.7000mm 30.4000mm 0 16.2000mm 38.6000mm 0  ""]
-Rat[16.2000mm 38.6000mm 0 15.8500mm 42.2000mm 0  ""]
-Rat[15.8500mm 42.2000mm 0 17.2000mm 48.9000mm 0  ""]
-Rat[17.2000mm 48.9000mm 0 17.9000mm 52.6000mm 0  ""]
-Rat[17.9000mm 52.6000mm 0 17.8000mm 56.4000mm 0  ""]
+Rat[19.2000mm 20.3500mm 1 27.5000mm 14.7500mm 0  ""]
+Rat[38.6500mm 14.8000mm 0 41.9500mm 11.6500mm 0  ""]
+Rat[41.9500mm 11.6500mm 0 38.4500mm 9.3500mm 1  ""]
+Rat[38.4500mm 9.3500mm 1 34.0000mm 5.8000mm 0  ""]
+Rat[34.0000mm 5.8000mm 0 31.2000mm 4.6000mm 1  ""]
+Rat[31.2000mm 4.6000mm 1 32.0500mm 2.2000mm 0  ""]
+Rat[32.0500mm 2.2000mm 0 31.2000mm 1.1000mm 1  ""]
+Rat[31.2000mm 1.1000mm 1 28.4500mm 2.2000mm 0  ""]
+Rat[28.4500mm 2.2000mm 0 26.5000mm 5.8000mm 0  ""]
+Rat[34.0000mm 5.8000mm 0 39.4500mm 2.2000mm 0  ""]
+Rat[26.5000mm 5.8000mm 0 21.0500mm 2.2000mm 0  ""]
+Rat[36.3500mm 14.8000mm 1 36.3500mm 23.7000mm 0  ""]
+Rat[35.2500mm 24.2500mm 0 36.3500mm 25.3000mm 1  ""]
+Rat[38.5000mm 23.7500mm 1 38.6500mm 25.3000mm 0  ""]
+Rat[32.4500mm 23.7000mm 0 30.6500mm 25.3000mm 0  ""]
+Rat[30.6500mm 25.3000mm 0 28.3500mm 25.3000mm 1  ""]
+Rat[38.6500mm 25.3000mm 0 38.6500mm 34.2000mm 1  ""]
+Rat[38.6500mm 34.2000mm 1 38.6500mm 35.8000mm 0  ""]
+Rat[38.6500mm 34.2000mm 1 36.3500mm 34.2000mm 0  ""]
+Rat[36.3500mm 34.2000mm 0 34.6500mm 34.2000mm 1  ""]
+Rat[34.6500mm 34.2000mm 1 32.3500mm 34.2000mm 0  ""]
+Rat[32.3500mm 34.2000mm 0 30.6500mm 35.8000mm 0  ""]
+Rat[30.6500mm 35.8000mm 0 28.3500mm 35.8000mm 1  ""]
+Rat[38.6500mm 35.8000mm 0 38.6500mm 39.3000mm 0  ""]
+Rat[38.6500mm 39.3000mm 0 34.6500mm 42.8000mm 0  ""]
+Rat[34.6500mm 42.8000mm 0 34.6500mm 44.7000mm 1  ""]
+Rat[34.6500mm 44.7000mm 1 36.3500mm 44.7000mm 0  ""]
+Rat[36.3500mm 44.7000mm 0 38.6500mm 44.7000mm 1  ""]
+Rat[38.6500mm 44.7000mm 1 38.6500mm 46.3000mm 0  ""]
+Rat[38.6500mm 46.3000mm 0 38.6500mm 49.8000mm 0  ""]
+Rat[34.6500mm 44.7000mm 1 30.6500mm 46.3000mm 0  ""]
+Rat[30.6500mm 46.3000mm 0 28.3500mm 46.3000mm 1  ""]
+Rat[38.6500mm 49.8000mm 0 38.6500mm 55.2000mm 1  ""]
+Rat[38.6500mm 55.2000mm 1 36.3500mm 55.2000mm 0  ""]
+Rat[36.3500mm 55.2000mm 0 34.6500mm 55.2000mm 1  ""]
+Rat[34.6500mm 55.2000mm 1 32.3500mm 55.2000mm 0  ""]
+Rat[38.6500mm 44.7000mm 1 47.7500mm 44.7500mm 0  ""]
 Rat[87.0000mm 20.5000mm 0 100.3500mm 21.8000mm 1  ""]
 Rat[100.3500mm 21.8000mm 1 102.6500mm 21.8000mm 0  ""]
 Rat[102.6500mm 21.8000mm 0 105.8500mm 21.8000mm 1  ""]
@@ -9760,8 +9768,8 @@ Rat[102.6500mm 35.3000mm 0 105.8500mm 35.3000mm 1  ""]
 Rat[105.8500mm 35.3000mm 1 108.1500mm 35.3000mm 0  ""]
 Rat[108.1500mm 35.3000mm 0 112.6500mm 33.8000mm 0  ""]
 Rat[112.6500mm 33.8000mm 0 114.2500mm 28.1000mm 1  ""]
-Rat[102.6500mm 35.3000mm 0 102.6500mm 41.8000mm 0  ""]
-Rat[102.6500mm 41.8000mm 0 100.3500mm 41.8000mm 1  ""]
+Rat[100.3500mm 35.3000mm 1 100.3500mm 41.8000mm 1  ""]
+Rat[100.3500mm 41.8000mm 1 102.6500mm 41.8000mm 0  ""]
 Rat[100.3500mm 41.8000mm 1 100.3500mm 48.8000mm 1  ""]
 Rat[100.3500mm 48.8000mm 1 102.6500mm 48.8000mm 0  ""]
 Rat[102.6500mm 48.8000mm 0 105.8500mm 48.8000mm 1  ""]
@@ -9770,14 +9778,14 @@ Rat[108.1500mm 48.8000mm 0 112.6500mm 47.3000mm 0  ""]
 Rat[112.6500mm 47.3000mm 0 112.8000mm 43.4000mm 1  ""]
 Rat[100.3500mm 48.8000mm 1 100.3500mm 55.3000mm 1  ""]
 Rat[100.3500mm 55.3000mm 1 102.6500mm 55.3000mm 0  ""]
-Rat[100.3500mm 55.3000mm 1 100.3500mm 62.3000mm 1  ""]
-Rat[100.3500mm 62.3000mm 1 102.6500mm 62.3000mm 0  ""]
+Rat[102.6500mm 55.3000mm 0 102.6500mm 62.3000mm 0  ""]
 Rat[102.6500mm 62.3000mm 0 104.8500mm 62.3000mm 1  ""]
 Rat[104.8500mm 62.3000mm 1 107.1500mm 62.3000mm 0  ""]
+Rat[102.6500mm 62.3000mm 0 100.3500mm 62.3000mm 1  ""]
 Rat[107.1500mm 62.3000mm 0 112.3000mm 61.7000mm 0  ""]
 Rat[112.3000mm 61.7000mm 0 112.4000mm 54.9500mm 1  ""]
-Rat[100.3500mm 21.8000mm 1 100.3500mm 14.8000mm 1  ""]
-Rat[100.3500mm 14.8000mm 1 102.6500mm 14.8000mm 0  ""]
+Rat[102.6500mm 21.8000mm 0 102.6500mm 14.8000mm 0  ""]
+Rat[102.6500mm 14.8000mm 0 100.3500mm 14.8000mm 1  ""]
 Rat[112.6500mm 20.3000mm 0 112.1500mm 11.4500mm 1  ""]
 Rat[112.1500mm 11.4500mm 1 117.2500mm 6.0500mm 0  ""]
 Rat[117.2500mm 6.0500mm 0 119.2000mm 2.4500mm 0  ""]
@@ -9785,8 +9793,8 @@ Rat[117.2500mm 6.0500mm 0 111.8000mm 2.4500mm 0  ""]
 Rat[117.2500mm 6.0500mm 0 123.4500mm 12.4000mm 0  ""]
 Rat[123.4500mm 12.4000mm 0 123.4500mm 14.3500mm 1  ""]
 Rat[123.4500mm 14.3500mm 1 123.4500mm 16.6500mm 0  ""]
-Rat[123.4500mm 14.3500mm 1 126.9500mm 14.3500mm 1  ""]
-Rat[126.9500mm 14.3500mm 1 126.9500mm 16.6500mm 0  ""]
+Rat[123.4500mm 16.6500mm 0 126.9500mm 16.6500mm 0  ""]
+Rat[126.9500mm 16.6500mm 0 126.9500mm 14.3500mm 1  ""]
 Rat[126.9500mm 16.6500mm 0 130.4500mm 16.6500mm 0  ""]
 Rat[130.4500mm 16.6500mm 0 133.9500mm 16.6500mm 0  ""]
 Rat[133.9500mm 16.6500mm 0 133.9500mm 14.3500mm 1  ""]
@@ -9794,8 +9802,8 @@ Rat[133.9500mm 14.3500mm 1 130.4500mm 12.4000mm 0  ""]
 Rat[114.2500mm 28.1000mm 1 123.4500mm 27.1500mm 0  ""]
 Rat[123.4500mm 27.1500mm 0 123.4500mm 29.1000mm 1  ""]
 Rat[123.4500mm 29.1000mm 1 123.4500mm 31.4000mm 0  ""]
-Rat[123.4500mm 29.1000mm 1 126.9500mm 29.1000mm 1  ""]
-Rat[126.9500mm 29.1000mm 1 126.9500mm 31.4000mm 0  ""]
+Rat[123.4500mm 31.4000mm 0 126.9500mm 31.4000mm 0  ""]
+Rat[126.9500mm 31.4000mm 0 126.9500mm 29.1000mm 1  ""]
 Rat[126.9500mm 31.4000mm 0 130.4500mm 31.4000mm 0  ""]
 Rat[130.4500mm 31.4000mm 0 133.9500mm 31.4000mm 0  ""]
 Rat[133.9500mm 31.4000mm 0 133.9500mm 29.1000mm 1  ""]
@@ -9846,54 +9854,46 @@ Rat[104.8500mm 64.2000mm 1 121.5500mm 60.1500mm 0  ""]
 Rat[121.5500mm 60.1500mm 0 132.3500mm 58.8750mm 1  ""]
 Rat[132.3500mm 58.8750mm 1 133.0000mm 57.8500mm 0  ""]
 Rat[132.3500mm 58.8750mm 1 133.0000mm 64.4000mm 1  ""]
-Rat[54.7500mm 79.2500mm 0 39.9000mm 19.2500mm 0  ""]
-Rat[39.9000mm 19.2500mm 0 39.9000mm 15.7500mm 0  ""]
-Rat[39.9000mm 15.7500mm 0 39.9000mm 14.8000mm 1  ""]
-Rat[39.9000mm 15.7500mm 0 32.8500mm 15.6250mm 0  ""]
-Rat[32.8500mm 15.6250mm 0 28.6500mm 18.3000mm 1  ""]
-Rat[39.9000mm 14.8000mm 1 53.8500mm 10.5500mm 0  ""]
-Rat[51.7500mm 11.7500mm 0 37.6000mm 14.8000mm 0  ""]
-Rat[37.6000mm 14.8000mm 0 37.6000mm 15.7500mm 1  ""]
-Rat[37.6000mm 15.7500mm 1 32.8500mm 15.6250mm 1  ""]
-Rat[37.6000mm 15.7500mm 1 37.6000mm 22.7500mm 1  ""]
-Rat[32.8500mm 15.6250mm 1 26.3500mm 18.3000mm 0  ""]
-Rat[26.3500mm 18.3000mm 0 17.3000mm 20.3500mm 1  ""]
+Rat[54.7500mm 79.2500mm 0 38.6500mm 19.2500mm 0  ""]
+Rat[38.6500mm 15.7500mm 1 52.0000mm 10.5000mm 0  ""]
+Rat[51.7500mm 11.7500mm 0 38.7500mm 15.7500mm 0  ""]
+Rat[30.5500mm 16.7000mm 0 17.3000mm 20.3500mm 1  ""]
 Rat[12.7500mm 78.5000mm 0 16.0000mm 52.6000mm 0  ""]
 Rat[16.0000mm 52.6000mm 0 14.3000mm 38.6000mm 0  ""]
-Rat[14.3000mm 38.6000mm 0 28.6500mm 28.8000mm 1  ""]
-Rat[28.6500mm 28.8000mm 1 32.8500mm 26.1250mm 0  ""]
-Rat[32.8500mm 26.1250mm 0 39.9000mm 26.2500mm 0  ""]
-Rat[39.9000mm 26.2500mm 0 39.9000mm 25.3000mm 1  ""]
-Rat[39.9000mm 26.2500mm 0 39.9000mm 29.7500mm 0  ""]
-Rat[39.9000mm 25.3000mm 1 52.0000mm 14.0000mm 0  ""]
-Rat[52.0000mm 15.0000mm 0 37.6000mm 26.2500mm 1  ""]
-Rat[37.6000mm 26.2500mm 1 37.6000mm 28.8000mm 0  ""]
-Rat[37.6000mm 28.8000mm 0 37.6000mm 29.7500mm 1  ""]
-Rat[37.6000mm 26.2500mm 1 32.8500mm 26.1250mm 1  ""]
-Rat[32.8500mm 26.1250mm 1 26.3500mm 28.8000mm 0  ""]
+Rat[14.3000mm 38.6000mm 0 28.3500mm 27.2000mm 1  ""]
+Rat[28.3500mm 27.2000mm 1 32.8500mm 26.3750mm 1  ""]
+Rat[32.8500mm 26.3750mm 1 38.6500mm 26.2500mm 1  ""]
+Rat[38.6500mm 26.2500mm 1 38.6500mm 27.2000mm 0  ""]
+Rat[38.6500mm 27.2000mm 0 38.6500mm 29.7500mm 0  ""]
+Rat[38.6500mm 26.2500mm 1 52.0000mm 14.0000mm 0  ""]
+Rat[52.0000mm 15.0000mm 0 36.3500mm 26.2500mm 0  ""]
+Rat[36.3500mm 26.2500mm 0 36.3500mm 27.2000mm 1  ""]
+Rat[36.3500mm 27.2000mm 1 36.3500mm 29.7500mm 1  ""]
+Rat[36.3500mm 26.2500mm 0 32.8500mm 26.3750mm 0  ""]
+Rat[32.8500mm 26.3750mm 0 30.6500mm 27.2000mm 0  ""]
 Rat[43.1500mm 79.2500mm 0 52.5000mm 56.2500mm 0  ""]
-Rat[52.5000mm 56.2500mm 0 39.9000mm 42.8000mm 1  ""]
-Rat[39.9000mm 42.8000mm 1 39.9000mm 40.2500mm 0  ""]
-Rat[39.9000mm 40.2500mm 0 39.9000mm 36.7500mm 0  ""]
-Rat[39.9000mm 36.7500mm 0 32.8500mm 36.6250mm 0  ""]
-Rat[32.8500mm 36.6250mm 0 28.6500mm 39.3000mm 1  ""]
-Rat[28.6500mm 39.3000mm 1 15.9000mm 56.4000mm 0  ""]
-Rat[52.2500mm 55.7500mm 0 37.6000mm 43.7500mm 1  ""]
-Rat[37.6000mm 43.7500mm 1 37.5500mm 40.2500mm 1  ""]
-Rat[37.5500mm 40.2500mm 1 37.6000mm 35.8000mm 0  ""]
-Rat[37.6000mm 35.8000mm 0 32.8500mm 36.6250mm 1  ""]
-Rat[32.8500mm 36.6250mm 1 26.3500mm 39.3000mm 0  ""]
-Rat[37.2500mm 79.2500mm 0 39.9000mm 53.3000mm 1  ""]
-Rat[39.9000mm 53.3000mm 1 39.9000mm 50.7500mm 0  ""]
-Rat[39.9000mm 50.7500mm 0 39.9000mm 47.2500mm 0  ""]
-Rat[39.9000mm 47.2500mm 0 32.8500mm 47.1250mm 0  ""]
-Rat[32.8500mm 47.1250mm 0 28.6500mm 49.8000mm 1  ""]
-Rat[39.9000mm 50.7500mm 0 51.2500mm 50.0000mm 0  ""]
-Rat[51.2500mm 50.7500mm 0 37.6000mm 50.7500mm 1  ""]
-Rat[37.6000mm 50.7500mm 1 37.6000mm 54.2500mm 1  ""]
-Rat[37.6000mm 50.7500mm 1 37.6000mm 46.3000mm 0  ""]
-Rat[37.6000mm 46.3000mm 0 32.8500mm 47.1250mm 1  ""]
-Rat[32.8500mm 47.1250mm 1 26.3500mm 49.8000mm 0  ""]
+Rat[52.5000mm 56.2500mm 0 38.6500mm 42.8000mm 1  ""]
+Rat[38.6500mm 42.8000mm 1 36.3500mm 40.2500mm 0  ""]
+Rat[36.3500mm 40.2500mm 0 38.6500mm 36.7500mm 1  ""]
+Rat[36.3500mm 40.2500mm 0 32.8500mm 36.8750mm 1  ""]
+Rat[32.8500mm 36.8750mm 1 28.3500mm 37.7000mm 1  ""]
+Rat[28.3500mm 37.7000mm 1 15.9000mm 56.4000mm 0  ""]
+Rat[52.2500mm 55.7500mm 0 38.6500mm 41.2000mm 0  ""]
+Rat[38.6500mm 41.2000mm 0 36.3500mm 40.2500mm 1  ""]
+Rat[38.6500mm 41.2000mm 0 36.3500mm 43.7500mm 1  ""]
+Rat[36.3500mm 40.2500mm 1 32.8500mm 36.8750mm 0  ""]
+Rat[32.8500mm 36.8750mm 0 30.6500mm 37.7000mm 0  ""]
+Rat[37.2500mm 79.2500mm 0 38.6500mm 53.3000mm 1  ""]
+Rat[38.6500mm 53.3000mm 1 36.3500mm 50.7500mm 0  ""]
+Rat[36.3500mm 50.7500mm 0 38.6500mm 47.2500mm 1  ""]
+Rat[36.3500mm 50.7500mm 0 32.8500mm 47.3750mm 1  ""]
+Rat[32.8500mm 47.3750mm 1 28.3500mm 48.2000mm 1  ""]
+Rat[38.6500mm 47.2500mm 1 51.2500mm 50.0000mm 0  ""]
+Rat[51.2500mm 50.7500mm 0 38.6500mm 51.7000mm 0  ""]
+Rat[38.6500mm 51.7000mm 0 36.3500mm 50.7500mm 1  ""]
+Rat[38.6500mm 51.7000mm 0 36.3500mm 54.2500mm 1  ""]
+Rat[36.3500mm 50.7500mm 1 32.8500mm 47.3750mm 0  ""]
+Rat[32.8500mm 47.3750mm 0 30.6500mm 48.2000mm 0  ""]
 Rat[95.5000mm 25.2500mm 0 102.5500mm 12.5000mm 1  ""]
 Rat[102.5500mm 12.5000mm 1 105.3500mm 12.3750mm 1  ""]
 Rat[105.3500mm 12.3750mm 1 110.8500mm 11.4500mm 1  ""]
@@ -9975,74 +9975,60 @@ Rat[102.6500mm 63.2500mm 1 107.1500mm 59.7500mm 1  ""]
 Rat[102.6500mm 56.2500mm 1 100.4500mm 52.3500mm 1  ""]
 Rat[107.1500mm 58.8000mm 0 104.8500mm 63.2500mm 0  ""]
 Rat[104.8500mm 58.8000mm 1 107.1500mm 63.2500mm 1  ""]
-Rat[26.3500mm 19.2500mm 1 28.6500mm 16.7000mm 1  ""]
-Rat[26.3500mm 16.7000mm 0 28.6500mm 19.2500mm 0  ""]
-Rat[32.3500mm 21.8000mm 0 32.3500mm 22.7500mm 1  ""]
-Rat[32.3500mm 21.8000mm 0 32.8500mm 19.1250mm 1  ""]
-Rat[32.8500mm 19.1250mm 1 39.9000mm 18.3000mm 1  ""]
-Rat[32.8500mm 19.1250mm 1 26.3500mm 15.7500mm 1  ""]
-Rat[28.6500mm 15.7500mm 0 32.8500mm 19.1250mm 0  ""]
-Rat[32.8500mm 19.1250mm 0 34.6500mm 21.8000mm 1  ""]
-Rat[34.6500mm 21.8000mm 1 34.6500mm 22.7500mm 0  ""]
-Rat[34.6500mm 21.8000mm 1 37.6000mm 21.8000mm 0  ""]
-Rat[37.6000mm 19.2500mm 1 39.9000mm 23.7000mm 1  ""]
-Rat[37.6000mm 20.2000mm 0 39.9000mm 22.7500mm 0  ""]
-Rat[26.3500mm 20.2000mm 0 28.6500mm 22.7500mm 0  ""]
-Rat[28.6500mm 20.2000mm 1 26.3500mm 22.7500mm 1  ""]
+Rat[28.3500mm 30.7000mm 1 30.6500mm 30.7000mm 0  ""]
+Rat[28.3500mm 30.7000mm 1 17.7500mm 28.1000mm 0  ""]
 Rat[17.7500mm 28.1000mm 0 17.1000mm 25.8750mm 0  ""]
-Rat[17.7500mm 28.1000mm 0 26.3500mm 32.3000mm 0  ""]
-Rat[26.3500mm 32.3000mm 0 26.3500mm 34.2000mm 1  ""]
-Rat[26.3500mm 29.7500mm 1 28.6500mm 27.2000mm 1  ""]
-Rat[26.3500mm 27.2000mm 0 28.6500mm 29.7500mm 0  ""]
+Rat[30.6500mm 29.7500mm 1 28.3500mm 32.3000mm 1  ""]
+Rat[30.6500mm 32.3000mm 0 28.3500mm 29.7500mm 0  ""]
 Rat[32.3500mm 32.3000mm 0 32.3500mm 33.2500mm 1  ""]
-Rat[32.3500mm 32.3000mm 0 32.8500mm 29.6250mm 1  ""]
-Rat[32.8500mm 29.6250mm 1 26.3500mm 26.2500mm 1  ""]
-Rat[32.8500mm 29.6250mm 1 39.9000mm 32.3000mm 1  ""]
-Rat[28.6500mm 26.2500mm 0 32.8500mm 29.6250mm 0  ""]
-Rat[32.8500mm 29.6250mm 0 34.6500mm 32.3000mm 1  ""]
-Rat[34.6500mm 32.3000mm 1 34.6500mm 33.2500mm 0  ""]
-Rat[34.6500mm 32.3000mm 1 37.6000mm 32.3000mm 0  ""]
-Rat[37.6000mm 33.2500mm 1 39.9000mm 30.7000mm 1  ""]
-Rat[37.6000mm 27.2000mm 0 39.9000mm 33.2500mm 0  ""]
-Rat[26.3500mm 30.7000mm 0 28.6500mm 33.2500mm 0  ""]
-Rat[28.6500mm 30.7000mm 1 28.6500mm 33.2500mm 1  ""]
+Rat[32.3500mm 33.2500mm 1 30.6500mm 33.2500mm 1  ""]
+Rat[32.3500mm 32.3000mm 0 32.8500mm 29.8750mm 0  ""]
+Rat[32.8500mm 29.8750mm 0 38.6500mm 32.3000mm 1  ""]
+Rat[28.3500mm 33.2500mm 0 34.6500mm 33.2500mm 0  ""]
+Rat[34.6500mm 33.2500mm 0 34.6500mm 32.3000mm 1  ""]
+Rat[34.6500mm 32.3000mm 1 36.3500mm 32.3000mm 0  ""]
+Rat[34.6500mm 32.3000mm 1 34.1500mm 29.6250mm 1  ""]
+Rat[36.3500mm 33.2500mm 1 38.6500mm 30.7000mm 1  ""]
+Rat[36.3500mm 30.7000mm 0 38.6500mm 33.2500mm 0  ""]
+Rat[30.6500mm 28.8000mm 0 28.3500mm 26.2500mm 0  ""]
+Rat[28.3500mm 28.8000mm 1 30.6500mm 26.2500mm 1  ""]
+Rat[28.3500mm 41.2000mm 1 30.6500mm 41.2000mm 0  ""]
+Rat[28.3500mm 41.2000mm 1 14.9000mm 39.9000mm 0  ""]
 Rat[14.9000mm 39.9000mm 0 15.2500mm 36.3000mm 0  ""]
 Rat[14.9000mm 39.9000mm 0 8.9500mm 40.6250mm 0  ""]
-Rat[14.9000mm 39.9000mm 0 26.3500mm 42.8000mm 0  ""]
-Rat[26.3500mm 42.8000mm 0 28.6500mm 42.8000mm 1  ""]
-Rat[26.3500mm 40.2500mm 1 28.6500mm 37.7000mm 1  ""]
-Rat[26.3500mm 37.7000mm 0 28.6500mm 40.2500mm 0  ""]
+Rat[30.6500mm 40.2500mm 1 28.3500mm 42.8000mm 1  ""]
+Rat[30.6500mm 42.8000mm 0 28.3500mm 40.2500mm 0  ""]
 Rat[34.6500mm 44.7000mm 0 32.3500mm 43.7500mm 1  ""]
-Rat[32.3500mm 43.7500mm 1 32.8500mm 40.1250mm 1  ""]
-Rat[32.8500mm 40.1250mm 1 26.3500mm 36.7500mm 1  ""]
-Rat[32.8500mm 40.1250mm 1 39.9000mm 35.8000mm 1  ""]
-Rat[28.6500mm 36.7500mm 0 32.8500mm 40.1250mm 0  ""]
-Rat[32.8500mm 40.1250mm 0 34.6500mm 42.8000mm 1  ""]
-Rat[34.6500mm 42.8000mm 1 32.3500mm 43.7500mm 0  ""]
-Rat[34.6500mm 42.8000mm 1 37.6000mm 42.8000mm 0  ""]
-Rat[37.6000mm 36.7500mm 1 39.8500mm 41.2000mm 1  ""]
-Rat[37.6000mm 41.2000mm 0 39.9000mm 43.7500mm 0  ""]
-Rat[26.3500mm 41.2000mm 0 28.6500mm 43.7500mm 0  ""]
-Rat[28.6500mm 41.2000mm 1 26.3500mm 43.7500mm 1  ""]
-Rat[16.2500mm 46.6000mm 0 16.9500mm 50.3000mm 0  ""]
+Rat[32.3500mm 43.7500mm 1 30.6500mm 43.7500mm 1  ""]
+Rat[32.3500mm 43.7500mm 1 32.8500mm 40.3750mm 0  ""]
+Rat[32.8500mm 40.3750mm 0 38.6500mm 37.7000mm 0  ""]
+Rat[28.3500mm 43.7500mm 0 32.3500mm 43.7500mm 0  ""]
+Rat[32.3500mm 43.7500mm 0 34.6500mm 42.8000mm 1  ""]
+Rat[34.6500mm 42.8000mm 1 36.3500mm 42.8000mm 0  ""]
+Rat[34.6500mm 42.8000mm 1 34.1500mm 40.1250mm 1  ""]
+Rat[36.3500mm 36.7500mm 0 38.6500mm 41.2000mm 1  ""]
+Rat[36.3500mm 35.8000mm 1 38.6500mm 43.7500mm 0  ""]
+Rat[30.6500mm 39.3000mm 0 28.3500mm 36.7500mm 0  ""]
+Rat[28.3500mm 39.3000mm 1 30.6500mm 36.7500mm 1  ""]
+Rat[28.3500mm 51.7000mm 1 30.6500mm 51.7000mm 0  ""]
+Rat[28.3500mm 51.7000mm 1 16.9500mm 50.3000mm 0  ""]
+Rat[16.9500mm 50.3000mm 0 16.2500mm 46.6000mm 0  ""]
 Rat[16.9500mm 50.3000mm 0 16.8500mm 54.1000mm 0  ""]
 Rat[16.8500mm 54.1000mm 0 11.7000mm 55.1250mm 0  ""]
-Rat[16.8500mm 54.1000mm 0 26.3500mm 53.3000mm 0  ""]
-Rat[26.3500mm 53.3000mm 0 28.6500mm 53.3000mm 1  ""]
-Rat[26.3500mm 50.7500mm 1 28.6500mm 48.2000mm 1  ""]
-Rat[26.3500mm 48.2000mm 0 28.6500mm 50.7500mm 0  ""]
+Rat[30.6500mm 50.7500mm 1 28.3500mm 53.3000mm 1  ""]
+Rat[30.6500mm 53.3000mm 0 28.3500mm 50.7500mm 0  ""]
 Rat[32.3500mm 53.3000mm 0 32.3500mm 54.2500mm 1  ""]
-Rat[32.3500mm 53.3000mm 0 32.8500mm 50.6250mm 1  ""]
-Rat[32.8500mm 50.6250mm 1 26.3500mm 47.2500mm 1  ""]
-Rat[32.8500mm 50.6250mm 1 39.9000mm 46.3000mm 1  ""]
-Rat[28.6500mm 47.2500mm 0 32.8500mm 50.6250mm 0  ""]
-Rat[32.8500mm 50.6250mm 0 34.6500mm 53.3000mm 1  ""]
-Rat[34.6500mm 53.3000mm 1 34.6500mm 54.2500mm 0  ""]
-Rat[34.6500mm 53.3000mm 1 37.6000mm 53.3000mm 0  ""]
-Rat[37.6000mm 47.2500mm 1 39.9000mm 51.7000mm 1  ""]
-Rat[37.6000mm 51.7000mm 0 39.9000mm 54.2500mm 0  ""]
-Rat[26.3500mm 51.7000mm 0 28.6500mm 54.2500mm 0  ""]
-Rat[28.6500mm 51.7000mm 1 26.3500mm 54.2500mm 1  ""]
+Rat[32.3500mm 54.2500mm 1 30.6500mm 54.2500mm 1  ""]
+Rat[32.3500mm 53.3000mm 0 32.8500mm 50.8750mm 0  ""]
+Rat[32.8500mm 50.8750mm 0 38.6500mm 48.2000mm 0  ""]
+Rat[28.3500mm 54.2500mm 0 34.6500mm 54.2500mm 0  ""]
+Rat[34.6500mm 54.2500mm 0 34.6500mm 53.3000mm 1  ""]
+Rat[34.6500mm 53.3000mm 1 36.3500mm 53.3000mm 0  ""]
+Rat[34.6500mm 53.3000mm 1 34.1500mm 50.6250mm 1  ""]
+Rat[36.3500mm 47.2500mm 0 38.6500mm 51.7000mm 1  ""]
+Rat[36.3500mm 46.3000mm 1 38.6500mm 54.2500mm 0  ""]
+Rat[30.6500mm 49.8000mm 0 28.3500mm 47.2500mm 0  ""]
+Rat[28.3500mm 49.8000mm 1 30.6500mm 47.2500mm 1  ""]
 Rat[16.8000mm 30.4000mm 0 13.3500mm 22.3750mm 0  ""]
 Rat[13.3500mm 22.3750mm 0 18.2500mm 20.3500mm 0  ""]
 Rat[16.8000mm 30.4000mm 0 13.9500mm 42.2000mm 0  ""]
@@ -10324,8 +10310,7 @@ Layer(1 "component")
 	Line[71.9500mm 14.2000mm 70.2500mm 12.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[79.9500mm 15.0000mm 79.9500mm 14.2000mm 0.1500mm 0.3000mm "clearline"]
 	Line[79.9500mm 14.2000mm 78.2500mm 12.5000mm 0.1500mm 0.3000mm "clearline"]
-	Line[53.8500mm 10.5500mm 53.9000mm 10.5000mm 0.1500mm 0.3000mm "clearline"]
-	Line[53.9000mm 10.5000mm 54.2500mm 10.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[52.0000mm 10.5000mm 54.2500mm 10.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[54.2500mm 10.5000mm 55.2500mm 9.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[55.2500mm 9.5000mm 68.7500mm 9.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[68.7500mm 9.5000mm 69.7500mm 10.5000mm 0.1500mm 0.3000mm "clearline"]
@@ -10394,6 +10379,52 @@ Layer(1 "component")
 	Line[54.1250mm 53.3500mm 54.2750mm 53.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[54.2750mm 53.5000mm 56.0000mm 53.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[56.0000mm 53.5000mm 57.0000mm 54.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.5000mm 22.7500mm 34.5000mm 21.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.5000mm 21.7500mm 36.5000mm 21.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.0000mm 22.7500mm 36.0000mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[36.0000mm 22.7500mm 35.2500mm 23.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[35.2500mm 23.5000mm 33.7500mm 23.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.0000mm 22.7500mm 33.7500mm 22.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.7500mm 22.5000mm 29.2500mm 22.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.7500mm 23.5000mm 33.2500mm 23.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.2500mm 21.7500mm 32.4000mm 21.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.4000mm 21.7500mm 33.5000mm 21.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.1500mm 19.3750mm 34.0000mm 19.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.7500mm 19.5000mm 32.2500mm 20.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.2500mm 20.0000mm 32.2500mm 21.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.7500mm 15.7500mm 36.0000mm 15.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[36.0000mm 15.7500mm 35.0000mm 14.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[35.0000mm 14.7500mm 33.2500mm 14.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.8500mm 20.2500mm 33.5000mm 20.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.5000mm 20.2500mm 34.2500mm 19.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[30.0000mm 17.2500mm 32.2500mm 17.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.2500mm 14.7500mm 31.3000mm 16.7000mm 0.1500mm 0.3000mm "clearline"]
+	Line[31.3000mm 16.7000mm 30.5500mm 16.7000mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.2500mm 17.2500mm 32.7500mm 16.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.5000mm 16.7500mm 32.7500mm 16.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.2500mm 23.0000mm 29.7500mm 23.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[28.3500mm 19.2500mm 28.3500mm 19.6000mm 0.1500mm 0.3000mm "clearline"]
+	Line[28.3500mm 19.6000mm 30.5000mm 21.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.2500mm 22.5000mm 29.0000mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.0000mm 22.7500mm 28.4500mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.5000mm 16.7500mm 30.0000mm 17.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[28.3500mm 15.7500mm 28.5000mm 15.9000mm 0.1500mm 0.3000mm "clearline"]
+	Line[28.5000mm 15.9000mm 28.5000mm 17.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[28.5000mm 17.0000mm 29.8000mm 18.3000mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.8000mm 18.3000mm 30.5500mm 18.3000mm 0.1500mm 0.3000mm "clearline"]
+	Line[30.5000mm 20.2500mm 30.0000mm 20.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[30.0000mm 20.2500mm 29.5000mm 19.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.7500mm 23.0000mm 29.5000mm 23.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.0000mm 22.7500mm 34.5000mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.4500mm 22.7500mm 38.4500mm 21.9500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.4500mm 21.9500mm 36.7500mm 20.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 22.2500mm 37.0000mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.4500mm 19.2500mm 37.5000mm 19.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[36.3500mm 18.3000mm 36.4000mm 18.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[36.4000mm 18.2500mm 38.5000mm 18.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.4500mm 18.3000mm 38.5000mm 18.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.5000mm 18.2500mm 38.5000mm 17.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 14.7500mm 38.5000mm 14.7500mm 0.1500mm 0.3000mm "clearline"]
 )
 Layer(2 "cGND")
 (
@@ -10431,6 +10462,14 @@ Layer(2 "cGND")
 	Line[70.6500mm 16.7500mm 76.2500mm 16.7500mm 0.1500mm 0.3000mm "clearline"]
 	Line[76.2500mm 16.7500mm 77.0000mm 16.0000mm 0.1500mm 0.3000mm "clearline"]
 	Line[49.7500mm 52.0000mm 85.7500mm 52.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.0000mm 14.2500mm 32.2500mm 14.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.2500mm 14.2500mm 1250.00mil 14.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[1250.00mil 14.7500mm 27.5000mm 14.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.4500mm 23.7000mm 33.0000mm 24.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.0000mm 24.2500mm 35.2500mm 24.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 14.7500mm 37.0000mm 14.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[35.2500mm 24.2500mm 35.7500mm 23.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[35.7500mm 23.7500mm 37.5000mm 23.7500mm 0.1500mm 0.3000mm "clearline"]
 )
 Layer(3 "cPWR")
 (
@@ -10691,6 +10730,31 @@ Layer(4 "solder")
 	Line[59.5000mm 54.7500mm 59.2500mm 55.0000mm 0.1500mm 0.3000mm "clearline"]
 	Line[67.5000mm 54.7500mm 67.2500mm 55.0000mm 0.1500mm 0.3000mm "clearline"]
 	Line[75.5000mm 54.7500mm 75.2500mm 55.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.5000mm 23.2500mm 33.5000mm 21.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.8500mm 20.2500mm 32.8500mm 19.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.1500mm 19.3750mm 34.5000mm 19.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.5000mm 19.7500mm 34.5000mm 21.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[32.7500mm 16.7500mm 32.7500mm 15.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.5000mm 22.7500mm 32.4500mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.5000mm 16.7500mm 28.2500mm 16.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.5000mm 23.2500mm 30.0000mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[30.0000mm 22.7500mm 30.5500mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[28.3500mm 21.8000mm 30.5500mm 19.6000mm 0.1500mm 0.3000mm "clearline"]
+	Line[30.5500mm 19.6000mm 30.5500mm 19.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[28.7500mm 18.2500mm 30.5000mm 16.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[30.5000mm 16.5000mm 30.5000mm 15.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.5000mm 19.7500mm 29.0000mm 20.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.0000mm 20.2500mm 27.2500mm 20.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.4500mm 20.2000mm 36.4500mm 22.2000mm 0.1500mm 0.3000mm "clearline"]
+	Line[36.4500mm 22.2000mm 36.4500mm 22.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.4500mm 21.8000mm 37.9500mm 21.8000mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.9500mm 21.8000mm 37.5000mm 22.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 16.7500mm 38.5000mm 15.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[36.3500mm 19.2500mm 36.3250mm 19.2250mm 0.1500mm 0.3000mm "clearline"]
+	Line[36.3250mm 19.2250mm 36.3250mm 16.6750mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 15.7500mm 36.5000mm 16.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 19.2500mm 37.5000mm 16.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[38.5000mm 17.5000mm 38.5000mm 18.2500mm 0.1500mm 0.3000mm "clearline"]
 )
 Layer(5 "sGND")
 (
@@ -10742,6 +10806,12 @@ Layer(5 "sGND")
 	Line[64.9000mm 50.2500mm 61.0000mm 50.2500mm 0.1500mm 0.3000mm "clearline"]
 	Line[57.1000mm 50.0500mm 57.0500mm 50.0000mm 0.1500mm 0.3000mm "clearline"]
 	Line[57.0500mm 50.0000mm 53.0000mm 50.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[33.5000mm 24.2500mm 34.0000mm 24.2500mm 0.1500mm 0.3000mm "clearline"]
+	Line[34.0000mm 24.2500mm 34.5500mm 23.7000mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.5000mm 14.7500mm 29.4500mm 14.8000mm 0.1500mm 0.3000mm "clearline"]
+	Line[29.4500mm 14.8000mm 28.4500mm 14.8000mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 14.7500mm 36.7500mm 14.7500mm 0.1500mm 0.3000mm "clearline"]
+	Line[37.5000mm 23.7500mm 38.5000mm 23.7500mm 0.1500mm 0.3000mm "clearline"]
 )
 Layer(6 "sPWR")
 (
@@ -11096,11 +11166,11 @@ NetList()
 	Net("COUNT" "(unknown)")
 	(
 		Connect("D17-2")
+		Connect("M1_0_C-1")
 		Connect("M1_S1_C-1")
 		Connect("M1_S4-1")
 		Connect("M1_S5-3")
-		Connect("M2_0_C-1")
-		Connect("M4_0_C-1")
+		Connect("M3_0_C-1")
 		Connect("R1_S5-1")
 	)
 	Net("Count" "(unknown)")
@@ -11528,9 +11598,9 @@ NetList()
 	Net("R0#" "(unknown)")
 	(
 		Connect("D13-2")
-		Connect("M1_0_C-1")
 		Connect("M1_S1_DA_R-1")
 		Connect("M1_S5_DA_R-1")
+		Connect("M2_0_C-1")
 		Connect("M7_S1_0_C-1")
 		Connect("M8_S1_0_C-3")
 		Connect("M9_S1_0_C-3")
@@ -11541,7 +11611,7 @@ NetList()
 		Connect("M1_S3_DA_R-1")
 		Connect("M1_S7_DA_R-1")
 		Connect("M2_S1_C-1")
-		Connect("M3_0_C-1")
+		Connect("M4_0_C-1")
 		Connect("M6_S1_0_C-3")
 		Connect("M7_S1_0_C-3")
 		Connect("M8_S1_0_C-1")
@@ -11550,7 +11620,7 @@ NetList()
 	Net("R1#" "(unknown)")
 	(
 		Connect("D14-2")
-		Connect("M1_1_C-1")
+		Connect("M2_1_C-1")
 		Connect("M2_S2_C-1")
 		Connect("M2_S3_C-1")
 		Connect("M2_S5_DA_R-1")
@@ -11564,7 +11634,7 @@ NetList()
 	(
 		Connect("M2_S1_DA_R-1")
 		Connect("M2_S3_DA_R-1")
-		Connect("M3_1_C-1")
+		Connect("M4_1_C-1")
 		Connect("M6_S1_1_C-3")
 		Connect("M7_S1_1_C-3")
 		Connect("M8_S1_1_C-1")
@@ -11573,9 +11643,9 @@ NetList()
 	Net("R2#" "(unknown)")
 	(
 		Connect("D15-2")
-		Connect("M1_2_C-1")
 		Connect("M1_S1_DB_R-1")
 		Connect("M1_S5_DB_R-1")
+		Connect("M2_2_C-1")
 		Connect("M3_S3_C-1")
 		Connect("M7_S1_2_C-1")
 		Connect("M8_S1_2_C-3")
@@ -11586,7 +11656,7 @@ NetList()
 	(
 		Connect("M1_S3_DB_R-1")
 		Connect("M1_S7_DB_R-1")
-		Connect("M3_2_C-1")
+		Connect("M4_2_C-1")
 		Connect("M6_S1_2_C-3")
 		Connect("M7_S1_2_C-3")
 		Connect("M8_S1_2_C-1")
@@ -11595,7 +11665,7 @@ NetList()
 	Net("R3#" "(unknown)")
 	(
 		Connect("D16-2")
-		Connect("M1_3_C-1")
+		Connect("M2_3_C-1")
 		Connect("M2_S5_DB_R-1")
 		Connect("M2_S7_DB_R-1")
 		Connect("M7_S1_3_C-1")
@@ -11607,7 +11677,7 @@ NetList()
 	(
 		Connect("M2_S1_DB_R-1")
 		Connect("M2_S3_DB_R-1")
-		Connect("M3_3_C-1")
+		Connect("M4_3_C-1")
 		Connect("M6_S1_3_C-3")
 		Connect("M7_S1_3_C-3")
 		Connect("M8_S1_3_C-1")
@@ -12181,21 +12251,21 @@ NetList()
 		Connect("M9_S1_0_C-2")
 		Connect("M10_S1_0_C-3")
 	)
-	Net("unnamed_net442_0_C" "(unknown)")
+	Net("unnamed_net441_0_C" "(unknown)")
 	(
 		Connect("M3_0_C-2")
 		Connect("M4_0_C-3")
 	)
-	Net("unnamed_net444_0_C" "(unknown)")
+	Net("unnamed_net443_0_C" "(unknown)")
 	(
 		Connect("M1_0_C-2")
 		Connect("M2_0_C-3")
 	)
 	Net("unnamed_net445_C" "(unknown)")
 	(
+		Connect("M1_1_C-1")
 		Connect("M1_I_C-3")
-		Connect("M2_1_C-1")
-		Connect("M4_1_C-1")
+		Connect("M3_1_C-1")
 		Connect("R1_I_C-1")
 	)
 	Net("unnamed_net448_1_C" "(unknown)")
@@ -12234,22 +12304,22 @@ NetList()
 		Connect("M9_S1_1_C-2")
 		Connect("M10_S1_1_C-3")
 	)
-	Net("unnamed_net469_1_C" "(unknown)")
+	Net("unnamed_net468_1_C" "(unknown)")
 	(
 		Connect("M3_1_C-2")
 		Connect("M4_1_C-3")
 	)
-	Net("unnamed_net471_1_C" "(unknown)")
+	Net("unnamed_net470_1_C" "(unknown)")
 	(
 		Connect("M1_1_C-2")
 		Connect("M2_1_C-3")
 	)
 	Net("unnamed_net472_C" "(unknown)")
 	(
+		Connect("M1_2_C-1")
 		Connect("M1_S2_C-3")
-		Connect("M2_2_C-1")
 		Connect("M2_S2_C-3")
-		Connect("M4_2_C-1")
+		Connect("M3_2_C-1")
 		Connect("R1_S2_C-1")
 	)
 	Net("unnamed_net475_2_C" "(unknown)")
@@ -12288,23 +12358,23 @@ NetList()
 		Connect("M9_S1_2_C-2")
 		Connect("M10_S1_2_C-3")
 	)
-	Net("unnamed_net496_2_C" "(unknown)")
+	Net("unnamed_net495_2_C" "(unknown)")
 	(
 		Connect("M3_2_C-2")
 		Connect("M4_2_C-3")
 	)
-	Net("unnamed_net498_2_C" "(unknown)")
+	Net("unnamed_net497_2_C" "(unknown)")
 	(
 		Connect("M1_2_C-2")
 		Connect("M2_2_C-3")
 	)
 	Net("unnamed_net499_C" "(unknown)")
 	(
+		Connect("M1_3_C-1")
 		Connect("M1_S3_C-3")
-		Connect("M2_3_C-1")
 		Connect("M2_S3_C-3")
+		Connect("M3_3_C-1")
 		Connect("M3_S3_C-3")
-		Connect("M4_3_C-1")
 		Connect("R1_S3_C-1")
 	)
 	Net("unnamed_net502_3_C" "(unknown)")
@@ -12343,12 +12413,12 @@ NetList()
 		Connect("M9_S1_3_C-2")
 		Connect("M10_S1_3_C-3")
 	)
-	Net("unnamed_net523_3_C" "(unknown)")
+	Net("unnamed_net522_3_C" "(unknown)")
 	(
 		Connect("M3_3_C-2")
 		Connect("M4_3_C-3")
 	)
-	Net("unnamed_net525_3_C" "(unknown)")
+	Net("unnamed_net524_3_C" "(unknown)")
 	(
 		Connect("M1_3_C-2")
 		Connect("M2_3_C-3")

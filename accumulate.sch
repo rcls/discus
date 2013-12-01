@@ -435,226 +435,6 @@ T 45050 57000 5 10 1 1 90 0 1
 refdes=RCI
 }
 C 45000 57500 1 0 0 3.3V-plus-1.sym
-C 38500 61100 1 90 0 resistor-1.sym
-{
-T 38100 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 38200 61300 5 10 1 1 90 0 1
-refdes=R1
-T 38500 61100 5 10 0 1 0 0 1
-value=3k3
-T 38500 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 39000 61100 1 90 0 resistor-1.sym
-{
-T 38600 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 38700 61300 5 10 1 1 90 0 1
-refdes=R2
-T 39000 61100 5 10 0 1 0 0 1
-value=3k3
-T 39000 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 39500 61100 1 90 0 resistor-1.sym
-{
-T 39100 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 39200 61300 5 10 1 1 90 0 1
-refdes=R3
-T 39500 61100 5 10 0 1 0 0 1
-value=3k3
-T 39500 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 40000 61100 1 90 0 resistor-1.sym
-{
-T 39600 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 39700 61300 5 10 1 1 90 0 1
-refdes=R4
-T 40000 61100 5 10 0 1 0 0 1
-value=3k3
-T 40000 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 38300 61100 1 270 0 led-green.sym
-{
-T 38100 61100 5 10 1 1 270 0 1
-refdes=D1
-T 38900 61100 5 10 0 0 270 0 1
-device=LED
-T 38600 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 38300 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 38800 61100 1 270 0 led-green.sym
-{
-T 38700 61100 5 10 1 1 270 0 1
-refdes=D2
-T 39400 61100 5 10 0 0 270 0 1
-device=LED
-T 39100 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 38800 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 39300 61100 1 270 0 led-green.sym
-{
-T 39200 61200 5 10 1 1 270 0 1
-refdes=D3
-T 39900 61100 5 10 0 0 270 0 1
-device=LED
-T 39600 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 39300 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 39800 61100 1 270 0 led-green.sym
-{
-T 39700 61100 5 10 1 1 270 0 1
-refdes=D4
-T 40400 61100 5 10 0 0 270 0 1
-device=LED
-T 40100 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 39800 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 41000 61100 1 90 0 resistor-1.sym
-{
-T 40600 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 40700 61300 5 10 1 1 90 0 1
-refdes=R5
-T 41000 61100 5 10 0 1 0 0 1
-value=3k3
-T 41000 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 41500 61100 1 90 0 resistor-1.sym
-{
-T 41100 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 41200 61300 5 10 1 1 90 0 1
-refdes=R6
-T 41500 61100 5 10 0 1 0 0 1
-value=3k3
-T 41500 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 42000 61100 1 90 0 resistor-1.sym
-{
-T 41600 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 41700 61300 5 10 1 1 90 0 1
-refdes=R7
-T 42000 61100 5 10 0 1 0 0 1
-value=3k3
-T 42000 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 42500 61100 1 90 0 resistor-1.sym
-{
-T 42100 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 42200 61300 5 10 1 1 90 0 1
-refdes=R8
-T 42500 61100 5 10 0 1 0 0 1
-value=3k3
-T 42500 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 40800 61100 1 270 0 led-green.sym
-{
-T 41400 61100 5 10 0 0 270 0 1
-device=LED
-T 41100 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 40600 61100 5 10 1 1 270 0 1
-refdes=D5
-T 40800 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 41300 61100 1 270 0 led-green.sym
-{
-T 41900 61100 5 10 0 0 270 0 1
-device=LED
-T 41600 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 41200 61100 5 10 1 1 270 0 1
-refdes=D6
-T 41300 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 41800 61100 1 270 0 led-green.sym
-{
-T 42400 61100 5 10 0 0 270 0 1
-device=LED
-T 42100 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 41700 61200 5 10 1 1 270 0 1
-refdes=D7
-T 41800 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 42300 61100 1 270 0 led-green.sym
-{
-T 42900 61100 5 10 0 0 270 0 1
-device=LED
-T 42600 60700 5 10 0 1 270 0 1
-value=ledgreen
-T 42200 61100 5 10 1 1 270 0 1
-refdes=D8
-T 42300 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 43500 61100 1 90 0 resistor-1.sym
-{
-T 43100 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 43200 61300 5 10 1 1 90 0 1
-refdes=R9
-T 43500 61100 5 10 0 1 0 0 1
-value=1k
-T 43500 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 44000 61100 1 90 0 resistor-1.sym
-{
-T 43600 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 43700 61300 5 10 1 1 90 0 1
-refdes=R10
-T 44000 61100 5 10 0 1 0 0 1
-value=1k
-T 44000 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 44500 61100 1 90 0 resistor-1.sym
-{
-T 44100 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 44200 61300 5 10 1 1 90 0 1
-refdes=R11
-T 44500 61100 5 10 0 1 0 0 1
-value=1k
-T 44500 61100 5 10 0 1 0 0 1
-footprint=0603
-}
-C 45000 61100 1 90 0 resistor-1.sym
-{
-T 44600 61400 5 10 0 0 90 0 1
-device=RESISTOR
-T 44700 61300 5 10 1 1 90 0 1
-refdes=R12
-T 45000 61100 5 10 0 1 0 0 1
-value=1k
-T 45000 61100 5 10 0 1 0 0 1
-footprint=0603
-}
 C 46000 61100 1 90 0 resistor-1.sym
 {
 T 45600 61400 5 10 0 0 90 0 1
@@ -741,50 +521,6 @@ value=ledgreen
 T 47200 61100 5 10 1 1 270 0 1
 refdes=D16
 T 47300 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 43300 61100 1 270 0 led-red.sym
-{
-T 43600 61100 5 10 1 1 270 0 1
-refdes=D9
-T 43900 61100 5 10 0 0 270 0 1
-device=LED
-T 43600 60700 5 10 0 1 270 0 1
-value=ledred
-T 43300 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 43800 61100 1 270 0 led-red.sym
-{
-T 44100 61100 5 10 1 1 270 0 1
-refdes=D10
-T 44400 61100 5 10 0 0 270 0 1
-device=LED
-T 44100 60700 5 10 0 1 270 0 1
-value=ledred
-T 43800 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 44300 61100 1 270 0 led-red.sym
-{
-T 44600 61100 5 10 1 1 270 0 1
-refdes=D11
-T 44900 61100 5 10 0 0 270 0 1
-device=LED
-T 44600 60700 5 10 0 1 270 0 1
-value=ledred
-T 44300 61100 5 10 0 1 0 0 1
-footprint=0805-diode
-}
-C 44800 61100 1 270 0 led-red.sym
-{
-T 45100 61100 5 10 1 1 270 0 1
-refdes=D12
-T 45400 61100 5 10 0 0 270 0 1
-device=LED
-T 45100 60700 5 10 0 1 270 0 1
-value=ledred
-T 44800 61100 5 10 0 1 0 0 1
 footprint=0805-diode
 }
 N 38400 62000 49800 62000 4
@@ -925,3 +661,267 @@ netname=C
 N 49800 62000 49800 61600 4
 N 49800 61600 50100 61600 4
 C 49900 61600 1 0 0 3.3V-plus-1.sym
+C 38300 62000 1 270 0 led-green.sym
+{
+T 38900 62000 5 10 0 0 270 0 1
+device=LED
+T 38600 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 38300 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 38100 62000 5 10 1 1 270 0 1
+refdes=D1
+}
+C 38800 62000 1 270 0 led-green.sym
+{
+T 39400 62000 5 10 0 0 270 0 1
+device=LED
+T 39100 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 38800 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 38700 62000 5 10 1 1 270 0 1
+refdes=D2
+}
+C 39300 62000 1 270 0 led-green.sym
+{
+T 39900 62000 5 10 0 0 270 0 1
+device=LED
+T 39600 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 39300 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 39200 62100 5 10 1 1 270 0 1
+refdes=D3
+}
+C 39800 62000 1 270 0 led-green.sym
+{
+T 40400 62000 5 10 0 0 270 0 1
+device=LED
+T 40100 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 39800 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 39700 62000 5 10 1 1 270 0 1
+refdes=D4
+}
+C 40800 62000 1 270 0 led-green.sym
+{
+T 41400 62000 5 10 0 0 270 0 1
+device=LED
+T 41100 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 40800 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 40600 62000 5 10 1 1 270 0 1
+refdes=D5
+}
+C 41300 62000 1 270 0 led-green.sym
+{
+T 41900 62000 5 10 0 0 270 0 1
+device=LED
+T 41600 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 41300 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 41200 62000 5 10 1 1 270 0 1
+refdes=D6
+}
+C 41800 62000 1 270 0 led-green.sym
+{
+T 42400 62000 5 10 0 0 270 0 1
+device=LED
+T 42100 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 41800 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 41700 62100 5 10 1 1 270 0 1
+refdes=D7
+}
+C 42300 62000 1 270 0 led-green.sym
+{
+T 42900 62000 5 10 0 0 270 0 1
+device=LED
+T 42600 61600 5 10 0 1 270 0 1
+value=ledgreen
+T 42300 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 42200 62000 5 10 1 1 270 0 1
+refdes=D8
+}
+C 43300 62000 1 270 0 led-red.sym
+{
+T 43900 62000 5 10 0 0 270 0 1
+device=LED
+T 43600 61600 5 10 0 1 270 0 1
+value=ledred
+T 43300 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 43600 62000 5 10 1 1 270 0 1
+refdes=D9
+}
+C 43800 62000 1 270 0 led-red.sym
+{
+T 44400 62000 5 10 0 0 270 0 1
+device=LED
+T 44100 61600 5 10 0 1 270 0 1
+value=ledred
+T 43800 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 44100 62000 5 10 1 1 270 0 1
+refdes=D10
+}
+C 44300 62000 1 270 0 led-red.sym
+{
+T 44900 62000 5 10 0 0 270 0 1
+device=LED
+T 44600 61600 5 10 0 1 270 0 1
+value=ledred
+T 44300 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 44600 62000 5 10 1 1 270 0 1
+refdes=D11
+}
+C 44800 62000 1 270 0 led-red.sym
+{
+T 45400 62000 5 10 0 0 270 0 1
+device=LED
+T 45100 61600 5 10 0 1 270 0 1
+value=ledred
+T 44800 62000 5 10 0 1 0 0 1
+footprint=0805-diode
+T 45100 62000 5 10 1 1 270 0 1
+refdes=D12
+}
+C 38500 60600 1 90 0 resistor-1.sym
+{
+T 38100 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 38500 60600 5 10 0 1 0 0 1
+value=3k3
+T 38500 60600 5 10 0 1 0 0 1
+footprint=0603
+T 38200 60800 5 10 1 1 90 0 1
+refdes=R1
+}
+C 39000 60600 1 90 0 resistor-1.sym
+{
+T 38600 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 39000 60600 5 10 0 1 0 0 1
+value=3k3
+T 39000 60600 5 10 0 1 0 0 1
+footprint=0603
+T 38700 60800 5 10 1 1 90 0 1
+refdes=R2
+}
+C 39500 60600 1 90 0 resistor-1.sym
+{
+T 39100 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 39500 60600 5 10 0 1 0 0 1
+value=3k3
+T 39500 60600 5 10 0 1 0 0 1
+footprint=0603
+T 39200 60800 5 10 1 1 90 0 1
+refdes=R3
+}
+C 40000 60600 1 90 0 resistor-1.sym
+{
+T 39600 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 40000 60600 5 10 0 1 0 0 1
+value=3k3
+T 40000 60600 5 10 0 1 0 0 1
+footprint=0603
+T 39700 60800 5 10 1 1 90 0 1
+refdes=R4
+}
+C 41000 60600 1 90 0 resistor-1.sym
+{
+T 40600 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 41000 60600 5 10 0 1 0 0 1
+value=3k3
+T 41000 60600 5 10 0 1 0 0 1
+footprint=0603
+T 40700 60800 5 10 1 1 90 0 1
+refdes=R5
+}
+C 41500 60600 1 90 0 resistor-1.sym
+{
+T 41100 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 41500 60600 5 10 0 1 0 0 1
+value=3k3
+T 41500 60600 5 10 0 1 0 0 1
+footprint=0603
+T 41200 60800 5 10 1 1 90 0 1
+refdes=R6
+}
+C 42000 60600 1 90 0 resistor-1.sym
+{
+T 41600 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 42000 60600 5 10 0 1 0 0 1
+value=3k3
+T 42000 60600 5 10 0 1 0 0 1
+footprint=0603
+T 41700 60800 5 10 1 1 90 0 1
+refdes=R7
+}
+C 42500 60600 1 90 0 resistor-1.sym
+{
+T 42100 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 42500 60600 5 10 0 1 0 0 1
+value=3k3
+T 42500 60600 5 10 0 1 0 0 1
+footprint=0603
+T 42200 60800 5 10 1 1 90 0 1
+refdes=R8
+}
+C 43500 60600 1 90 0 resistor-1.sym
+{
+T 43100 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 43500 60600 5 10 0 1 0 0 1
+value=1k
+T 43500 60600 5 10 0 1 0 0 1
+footprint=0603
+T 43200 60800 5 10 1 1 90 0 1
+refdes=R9
+}
+C 44000 60600 1 90 0 resistor-1.sym
+{
+T 43600 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 44000 60600 5 10 0 1 0 0 1
+value=1k
+T 44000 60600 5 10 0 1 0 0 1
+footprint=0603
+T 43700 60800 5 10 1 1 90 0 1
+refdes=R10
+}
+C 44500 60600 1 90 0 resistor-1.sym
+{
+T 44100 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 44500 60600 5 10 0 1 0 0 1
+value=1k
+T 44500 60600 5 10 0 1 0 0 1
+footprint=0603
+T 44200 60800 5 10 1 1 90 0 1
+refdes=R11
+}
+C 45000 60600 1 90 0 resistor-1.sym
+{
+T 44600 60900 5 10 0 0 90 0 1
+device=RESISTOR
+T 45000 60600 5 10 0 1 0 0 1
+value=1k
+T 45000 60600 5 10 0 1 0 0 1
+footprint=0603
+T 44700 60800 5 10 1 1 90 0 1
+refdes=R12
+}

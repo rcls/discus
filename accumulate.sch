@@ -391,7 +391,7 @@ netname=W
 N 39900 53200 39500 53200 4
 {
 T 39900 53200 5 10 1 1 0 0 1
-netname=COUNT
+netname=Count
 }
 N 40200 55300 39800 55300 4
 {
@@ -585,7 +585,7 @@ footprint=0805-diode
 N 48400 60600 48400 60200 4
 {
 T 48000 60000 5 10 1 1 0 0 1
-netname=COUNT
+netname=Count
 }
 C 49500 61100 1 90 0 resistor-1.sym
 {

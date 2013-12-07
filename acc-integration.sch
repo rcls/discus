@@ -1,4 +1,4 @@
-v 20121123 2
+v 20121203 2
 C 54600 70400 1 0 0 tps62160.sym
 {
 T 55500 71200 5 10 1 1 0 0 1
@@ -166,4 +166,258 @@ T 53700 69700 5 10 1 1 0 0 1
 refdes=SW3
 T 53600 69400 5 10 0 1 0 0 1
 footprint=mini-push-button
+}
+C 59100 73500 1 90 0 capacitor.sym
+{
+T 58400 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 59000 74200 5 10 1 1 180 0 1
+refdes=C3
+T 58200 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 59100 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+C 59600 73500 1 90 0 capacitor.sym
+{
+T 58900 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 58700 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 59500 74200 5 10 1 1 180 0 1
+refdes=C4
+T 59600 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+C 60100 73500 1 90 0 capacitor.sym
+{
+T 59400 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 59200 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 60000 74200 5 10 1 1 180 0 1
+refdes=C5
+T 60100 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+C 60600 73500 1 90 0 capacitor.sym
+{
+T 59900 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 59700 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 60500 74200 5 10 1 1 180 0 1
+refdes=C6
+T 60600 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+C 61100 73500 1 90 0 capacitor.sym
+{
+T 60400 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 60200 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 61000 74200 5 10 1 1 180 0 1
+refdes=C7
+T 61100 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+C 61600 73500 1 90 0 capacitor.sym
+{
+T 60900 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 60700 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 61500 74200 5 10 1 1 180 0 1
+refdes=C8
+T 61600 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+C 62100 73500 1 90 0 capacitor.sym
+{
+T 61400 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 61200 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 62000 74200 5 10 1 1 180 0 1
+refdes=C9
+T 62100 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+C 62600 73500 1 90 0 capacitor.sym
+{
+T 61900 73700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 61700 73700 5 10 0 0 90 0 1
+symversion=0.1
+T 62500 74200 5 10 1 1 180 0 1
+refdes=C10
+T 62600 73500 5 10 0 1 0 0 1
+footprint=0402w
+}
+N 58900 73500 62400 73500 4
+N 58900 74000 62400 74000 4
+C 60400 74000 1 0 0 3.3V-plus-1.sym
+C 60500 73200 1 0 0 gnd-1.sym
+C 59100 71800 1 90 0 capacitor.sym
+{
+T 58400 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 58200 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 59100 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 59000 72500 5 10 1 1 180 0 1
+refdes=C11
+}
+C 59600 71800 1 90 0 capacitor.sym
+{
+T 58900 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 58700 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 59600 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 59500 72500 5 10 1 1 180 0 1
+refdes=C12
+}
+C 60100 71800 1 90 0 capacitor.sym
+{
+T 59400 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 59200 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 60100 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 60000 72500 5 10 1 1 180 0 1
+refdes=C13
+}
+C 60600 71800 1 90 0 capacitor.sym
+{
+T 59900 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 59700 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 60600 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 60500 72500 5 10 1 1 180 0 1
+refdes=C14
+}
+C 61100 71800 1 90 0 capacitor.sym
+{
+T 60400 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 60200 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 61100 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 61000 72500 5 10 1 1 180 0 1
+refdes=C15
+}
+C 61600 71800 1 90 0 capacitor.sym
+{
+T 60900 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 60700 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 61600 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 61500 72500 5 10 1 1 180 0 1
+refdes=C16
+}
+C 62100 71800 1 90 0 capacitor.sym
+{
+T 61400 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 61200 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 62100 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 62000 72500 5 10 1 1 180 0 1
+refdes=C17
+}
+C 62600 71800 1 90 0 capacitor.sym
+{
+T 61900 72000 5 10 0 0 90 0 1
+device=CAPACITOR
+T 61700 72000 5 10 0 0 90 0 1
+symversion=0.1
+T 62600 71800 5 10 0 1 0 0 1
+footprint=0402w
+T 62500 72500 5 10 1 1 180 0 1
+refdes=C18
+}
+N 58900 71800 62400 71800 4
+N 58900 72300 62400 72300 4
+C 60400 72300 1 0 0 3.3V-plus-1.sym
+C 60500 71500 1 0 0 gnd-1.sym
+C 59200 70000 1 90 0 capacitor.sym
+{
+T 58500 70200 5 10 0 0 90 0 1
+device=CAPACITOR
+T 58300 70200 5 10 0 0 90 0 1
+symversion=0.1
+T 59200 70000 5 10 0 1 0 0 1
+footprint=0402w
+T 59100 70700 5 10 1 1 180 0 1
+refdes=C19
+}
+C 59700 70000 1 90 0 capacitor.sym
+{
+T 59000 70200 5 10 0 0 90 0 1
+device=CAPACITOR
+T 58800 70200 5 10 0 0 90 0 1
+symversion=0.1
+T 59700 70000 5 10 0 1 0 0 1
+footprint=0402w
+T 59600 70700 5 10 1 1 180 0 1
+refdes=C20
+}
+N 59000 70500 61500 70500 4
+N 61500 70000 59000 70000 4
+C 59000 70500 1 0 0 3.3V-plus-1.sym
+C 59100 69700 1 0 0 gnd-1.sym
+C 60200 70000 1 90 0 capacitor.sym
+{
+T 59500 70200 5 10 0 0 90 0 1
+device=CAPACITOR
+T 59300 70200 5 10 0 0 90 0 1
+symversion=0.1
+T 60200 70000 5 10 0 1 0 0 1
+footprint=0402w
+T 60100 70700 5 10 1 1 180 0 1
+refdes=C21
+}
+C 60700 70000 1 90 0 capacitor.sym
+{
+T 60000 70200 5 10 0 0 90 0 1
+device=CAPACITOR
+T 59800 70200 5 10 0 0 90 0 1
+symversion=0.1
+T 60700 70000 5 10 0 1 0 0 1
+footprint=0402w
+T 60600 70700 5 10 1 1 180 0 1
+refdes=C22
+}
+C 61200 70000 1 90 0 capacitor.sym
+{
+T 60500 70200 5 10 0 0 90 0 1
+device=CAPACITOR
+T 60300 70200 5 10 0 0 90 0 1
+symversion=0.1
+T 61200 70000 5 10 0 1 0 0 1
+footprint=0402w
+T 61100 70700 5 10 1 1 180 0 1
+refdes=C23
+}
+C 61700 70000 1 90 0 capacitor.sym
+{
+T 61000 70200 5 10 0 0 90 0 1
+device=CAPACITOR
+T 60800 70200 5 10 0 0 90 0 1
+symversion=0.1
+T 61700 70000 5 10 0 1 0 0 1
+footprint=0402w
+T 61600 70700 5 10 1 1 180 0 1
+refdes=C24
 }

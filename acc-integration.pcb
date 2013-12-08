@@ -1431,7 +1431,7 @@ Via[106.5000mm 17.7500mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
 Via[112.2500mm 13.0000mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
 Via[76.2500mm 15.0000mm 0.6000mm 0.3000mm 0.0000 0.3000mm "" ""]
 
-Element["hidename,onsolder" "0603" "R8" "3k3" 106.5000mm 52.0000mm -31.50mil -31.50mil 1 100 "auto"]
+Element["hidename,onsolder" "0603" "R8" "3k3" 106.5000mm 52.0000mm -31.50mil -31.50mil 1 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1443,7 +1443,7 @@ Element["hidename,onsolder" "0603" "R8" "3k3" 106.5000mm 52.0000mm -31.50mil -31
 
 	)
 
-Element["hidename,onsolder" "0603" "R7" "3k3" 104.5000mm 52.0000mm -31.50mil -31.50mil 1 100 "auto"]
+Element["hidename,onsolder" "0603" "R7" "3k3" 104.5000mm 52.0000mm -31.50mil -31.50mil 1 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1455,7 +1455,7 @@ Element["hidename,onsolder" "0603" "R7" "3k3" 104.5000mm 52.0000mm -31.50mil -31
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S2" "3k3" 33.5000mm 47.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S2" "3k3" 33.5000mm 47.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1471,7 +1471,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S2" "3k3" 33.5000mm 47.2500mm 0.800
 
 	)
 
-Element["hidename,onsolder" "0603" "R6" "3k3" 102.5000mm 52.0000mm -31.50mil -31.50mil 1 100 "auto"]
+Element["hidename,onsolder" "0603" "R6" "3k3" 102.5000mm 52.0000mm -31.50mil -31.50mil 1 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1483,7 +1483,7 @@ Element["hidename,onsolder" "0603" "R6" "3k3" 102.5000mm 52.0000mm -31.50mil -31
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S5" "2N7002P" 24.5000mm 38.7500mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S5" "2N7002P" 24.5000mm 38.7500mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1503,7 +1503,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S5" "2N7002P" 24.5000mm 38.7500mm 0
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_S3" "PDTC124TU" 24.2500mm 45.5000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_S3" "PDTC124TU" 24.2500mm 45.5000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -1524,7 +1524,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_S3" "PDTC124TU" 24.2500mm 45.5000mm
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_S1" "PDTC124TU" 24.2500mm 50.5000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_S1" "PDTC124TU" 24.2500mm 50.5000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -1545,7 +1545,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_S1" "PDTC124TU" 24.2500mm 50.5000mm
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S2" "2N7002P" 33.5000mm 50.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M2_S2" "2N7002P" 33.5000mm 50.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1565,7 +1565,7 @@ Element["hidename" "sot23-nmos" "M2_S2" "2N7002P" 33.5000mm 50.7500mm 0.0000 0.0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2" "2N7002P" 33.5000mm 50.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2" "2N7002P" 33.5000mm 50.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1585,7 +1585,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2" "2N7002P" 33.5000mm 50.7500mm 0
 
 	)
 
-Element["hidename" "sot23-pmos" "M1" "BSS84" 33.5000mm 54.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-pmos" "M1" "BSS84" 33.5000mm 54.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "PMOS")
 	Attribute("manufacturer" "unknown")
@@ -1606,7 +1606,7 @@ Element["hidename" "sot23-pmos" "M1" "BSS84" 33.5000mm 54.2500mm 0.0000 0.0000 3
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2" "2N7002P" 33.5000mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2" "2N7002P" 33.5000mm 54.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1626,7 +1626,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2" "2N7002P" 33.5000mm 54.2500mm 0.00
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S4" "3k3" 28.7500mm 33.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S4" "3k3" 28.7500mm 33.2500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1642,7 +1642,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S4" "3k3" 28.7500mm 33.2500mm -0.80
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S4" "2N7002P" 24.5000mm 33.7500mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S4" "2N7002P" 24.5000mm 33.7500mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1662,7 +1662,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S4" "2N7002P" 24.5000mm 33.7500mm 0
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_1_0_R" "PDTC124TU" 66.2500mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_1_0_R" "PDTC124TU" 66.2500mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -1683,7 +1683,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_1_0_R" "PDTC124TU" 66.2500mm 23.000
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_1_0_R" "PDTC124TU" 66.2500mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_1_0_R" "PDTC124TU" 66.2500mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -1704,7 +1704,7 @@ Element["hidename" "sot323-bjt" "Q3_1_0_R" "PDTC124TU" 66.2500mm 23.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_1_0_R" "2N7002P" 63.0000mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_1_0_R" "2N7002P" 63.0000mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1724,7 +1724,7 @@ Element["hidename" "sot23-nmos" "M2_1_0_R" "2N7002P" 63.0000mm 23.0000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S8_DB_R" "3k3" 67.7500mm 55.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S8_DB_R" "3k3" 67.7500mm 55.2500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1740,7 +1740,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S8_DB_R" "3k3" 67.7500mm 55.2500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S8_DB_R" "2N7002P" 66.2500mm 51.0000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S8_DB_R" "2N7002P" 66.2500mm 51.0000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1760,7 +1760,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S8_DB_R" "2N7002P" 66.2500mm 51.000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I0" "3k3" 106.6500mm 24.3500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I0" "3k3" 106.6500mm 24.3500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1776,7 +1776,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_I0" "3k3" 106.6500mm 24.3500mm 0.80
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I_C" "3k3" 33.5000mm 29.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I_C" "3k3" 33.5000mm 29.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1792,7 +1792,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_I_C" "3k3" 33.5000mm 29.7500mm 0.80
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_I_C" "2N7002P" 33.5000mm 29.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_I_C" "2N7002P" 33.5000mm 29.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1812,7 +1812,7 @@ Element["hidename" "sot23-nmos" "M1_I_C" "2N7002P" 33.5000mm 29.7500mm 0.0000 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S1_C" "2N7002P" 33.5000mm 22.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S1_C" "2N7002P" 33.5000mm 22.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1832,7 +1832,7 @@ Element["hidename" "sot23-nmos" "M2_S1_C" "2N7002P" 33.5000mm 22.7500mm 0.0000 0
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_C" "2N7002P" 33.5000mm 26.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_C" "2N7002P" 33.5000mm 26.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1852,7 +1852,7 @@ Element["hidename" "sot23-nmos" "M1_S1_C" "2N7002P" 33.5000mm 26.2500mm 0.0000 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_C" "3k3" 33.5000mm 26.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_C" "3k3" 33.5000mm 26.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1868,7 +1868,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_C" "3k3" 33.5000mm 26.2500mm 0.8
 
 	)
 
-Element["hidename" "0603-boxed" "R3_S1_3_C" "3k3" 43.5000mm 47.2500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R3_S1_3_C" "3k3" 43.5000mm 47.2500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1884,7 +1884,7 @@ Element["hidename" "0603-boxed" "R3_S1_3_C" "3k3" 43.5000mm 47.2500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_3_C" "3k3" 43.5000mm 50.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_3_C" "3k3" 43.5000mm 50.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1900,7 +1900,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_3_C" "3k3" 43.5000mm 50.7500mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_S1_3_C" "3k3" 43.5000mm 50.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R2_S1_3_C" "3k3" 43.5000mm 50.7500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1916,7 +1916,7 @@ Element["hidename" "0603-boxed" "R2_S1_3_C" "3k3" 43.5000mm 50.7500mm -0.8000mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M3_S1_3_C" "2N7002P" 43.5000mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M3_S1_3_C" "2N7002P" 43.5000mm 54.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1936,7 +1936,7 @@ Element["hidename,onsolder" "sot23-nmos" "M3_S1_3_C" "2N7002P" 43.5000mm 54.2500
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_1_C" "3k3" 43.5000mm 29.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_1_C" "3k3" 43.5000mm 29.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1952,7 +1952,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_1_C" "3k3" 43.5000mm 29.7500mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_S1_1_C" "3k3" 43.5000mm 29.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R2_S1_1_C" "3k3" 43.5000mm 29.7500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -1968,7 +1968,7 @@ Element["hidename" "0603-boxed" "R2_S1_1_C" "3k3" 43.5000mm 29.7500mm -0.8000mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M3_S1_1_C" "2N7002P" 43.5000mm 33.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M3_S1_1_C" "2N7002P" 43.5000mm 33.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -1988,7 +1988,7 @@ Element["hidename,onsolder" "sot23-nmos" "M3_S1_1_C" "2N7002P" 43.5000mm 33.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S1_1_C" "2N7002P" 43.5000mm 33.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S1_1_C" "2N7002P" 43.5000mm 33.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2008,7 +2008,7 @@ Element["hidename" "sot23-nmos" "M2_S1_1_C" "2N7002P" 43.5000mm 33.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_2_C" "3k3" 43.5000mm 40.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_2_C" "3k3" 43.5000mm 40.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2024,7 +2024,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_2_C" "3k3" 43.5000mm 40.2500mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_S1_2_C" "3k3" 43.5000mm 40.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R2_S1_2_C" "3k3" 43.5000mm 40.2500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2040,7 +2040,7 @@ Element["hidename" "0603-boxed" "R2_S1_2_C" "3k3" 43.5000mm 40.2500mm -0.8000mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M3_S1_2_C" "2N7002P" 43.5000mm 43.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M3_S1_2_C" "2N7002P" 43.5000mm 43.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2060,7 +2060,7 @@ Element["hidename,onsolder" "sot23-nmos" "M3_S1_2_C" "2N7002P" 43.5000mm 43.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S1_2_C" "2N7002P" 43.5000mm 43.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S1_2_C" "2N7002P" 43.5000mm 43.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2080,7 +2080,7 @@ Element["hidename" "sot23-nmos" "M2_S1_2_C" "2N7002P" 43.5000mm 43.7500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S1_3_C" "2N7002P" 43.5000mm 54.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S1_3_C" "2N7002P" 43.5000mm 54.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2100,7 +2100,7 @@ Element["hidename" "sot23-nmos" "M2_S1_3_C" "2N7002P" 43.5000mm 54.2500mm 0.0000
 
 	)
 
-Element["hidename" "0603" "R2_IO_1_R" "10k" 74.2500mm 35.0000mm 31.50mil -31.50mil 3 100 ""]
+Element["hidename" "0603" "R2_IO_1_R" "10k" 74.2500mm 35.0000mm 31.50mil -31.50mil 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2112,7 +2112,7 @@ Element["hidename" "0603" "R2_IO_1_R" "10k" 74.2500mm 35.0000mm 31.50mil -31.50m
 
 	)
 
-Element["hidename" "0603" "R1_IO_1_R" "10k" 82.2500mm 27.0000mm -31.50mil 31.50mil 1 100 ""]
+Element["hidename" "0603" "R1_IO_1_R" "10k" 82.2500mm 27.0000mm -31.50mil 31.50mil 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2124,7 +2124,7 @@ Element["hidename" "0603" "R1_IO_1_R" "10k" 82.2500mm 27.0000mm -31.50mil 31.50m
 
 	)
 
-Element["hidename" "0805-diode" "D16" "ledgreen" 51.0000mm 11.0000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D16" "ledgreen" 51.0000mm 11.0000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -2139,7 +2139,7 @@ Element["hidename" "0805-diode" "D16" "ledgreen" 51.0000mm 11.0000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D15" "ledgreen" 49.0000mm 11.0000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D15" "ledgreen" 49.0000mm 11.0000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -2154,7 +2154,7 @@ Element["hidename" "0805-diode" "D15" "ledgreen" 49.0000mm 11.0000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D14" "ledgreen" 47.0000mm 11.0000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D14" "ledgreen" 47.0000mm 11.0000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -2169,7 +2169,7 @@ Element["hidename" "0805-diode" "D14" "ledgreen" 47.0000mm 11.0000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D13" "ledgreen" 45.0000mm 11.0000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D13" "ledgreen" 45.0000mm 11.0000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -2184,7 +2184,7 @@ Element["hidename" "0805-diode" "D13" "ledgreen" 45.0000mm 11.0000mm 0.0000 0.00
 
 	)
 
-Element["hidename,onsolder" "0603" "R16" "560" 51.0000mm 12.5000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R16" "560" 51.0000mm 12.5000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2196,7 +2196,7 @@ Element["hidename,onsolder" "0603" "R16" "560" 51.0000mm 12.5000mm 31.50mil 31.5
 
 	)
 
-Element["hidename,onsolder" "0603" "R15" "560" 49.0000mm 12.5000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R15" "560" 49.0000mm 12.5000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2208,7 +2208,7 @@ Element["hidename,onsolder" "0603" "R15" "560" 49.0000mm 12.5000mm 31.50mil 31.5
 
 	)
 
-Element["hidename,onsolder" "0603" "R14" "560" 47.0000mm 12.5000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R14" "560" 47.0000mm 12.5000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2220,7 +2220,7 @@ Element["hidename,onsolder" "0603" "R14" "560" 47.0000mm 12.5000mm 31.50mil 31.5
 
 	)
 
-Element["hidename,onsolder" "0603" "R13" "560" 45.0000mm 12.5000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R13" "560" 45.0000mm 12.5000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2232,7 +2232,7 @@ Element["hidename,onsolder" "0603" "R13" "560" 45.0000mm 12.5000mm 31.50mil 31.5
 
 	)
 
-Element["hidename,onsolder" "0603" "R11" "1k" 105.3000mm 41.2500mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R11" "1k" 105.3000mm 41.2500mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2244,7 +2244,7 @@ Element["hidename,onsolder" "0603" "R11" "1k" 105.3000mm 41.2500mm 31.50mil 31.5
 
 	)
 
-Element["hidename,onsolder" "0603" "R10" "1k" 103.5000mm 40.2500mm -31.50mil -31.50mil 1 100 "auto"]
+Element["hidename,onsolder" "0603" "R10" "1k" 103.5000mm 40.2500mm -31.50mil -31.50mil 1 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2256,7 +2256,7 @@ Element["hidename,onsolder" "0603" "R10" "1k" 103.5000mm 40.2500mm -31.50mil -31
 
 	)
 
-Element["hidename,onsolder" "1206" "FB1" "unknown" 27.4999mm 16.2500mm 31.50mil -31.50mil 2 100 "auto"]
+Element["hidename,onsolder" "1206" "FB1" "unknown" 27.4999mm 16.2500mm 31.50mil -31.50mil 2 1 "auto"]
 (
 	Attribute("device" "FERRITE")
 	Attribute("manufacturer" "unknown")
@@ -2270,7 +2270,7 @@ Element["hidename,onsolder" "1206" "FB1" "unknown" 27.4999mm 16.2500mm 31.50mil 
 
 	)
 
-Element["hidename" "sip4" "J1" "unknown" 38.7500mm 11.5000mm 2.0000mm 0.0000 3 100 ""]
+Element["hidename" "sip4" "J1" "unknown" 38.7500mm 11.5000mm 2.0000mm 0.0000 3 1 ""]
 (
 	Attribute("device" "HEADER3")
 	Attribute("manufacturer" "unknown")
@@ -2292,7 +2292,7 @@ Element["hidename" "sip4" "J1" "unknown" 38.7500mm 11.5000mm 2.0000mm 0.0000 3 1
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_1_0_R" "2N7002P" 63.0000mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_1_0_R" "2N7002P" 63.0000mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2312,7 +2312,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_1_0_R" "2N7002P" 63.0000mm 23.0000m
 
 	)
 
-Element["hidename" "0603" "R2_IO_2_R" "10k" 74.2500mm 43.0000mm 31.50mil -31.50mil 3 100 ""]
+Element["hidename" "0603" "R2_IO_2_R" "10k" 74.2500mm 43.0000mm 31.50mil -31.50mil 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2324,7 +2324,7 @@ Element["hidename" "0603" "R2_IO_2_R" "10k" 74.2500mm 43.0000mm 31.50mil -31.50m
 
 	)
 
-Element["hidename" "0603" "R1_IO_2_R" "10k" 82.2500mm 35.0000mm -31.50mil 31.50mil 1 100 ""]
+Element["hidename" "0603" "R1_IO_2_R" "10k" 82.2500mm 35.0000mm -31.50mil 31.50mil 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2336,7 +2336,7 @@ Element["hidename" "0603" "R1_IO_2_R" "10k" 82.2500mm 35.0000mm -31.50mil 31.50m
 
 	)
 
-Element["hidename" "0603" "R2_IO_3_R" "10k" 78.2500mm 51.0000mm 31.50mil -31.50mil 3 100 ""]
+Element["hidename" "0603" "R2_IO_3_R" "10k" 78.2500mm 51.0000mm 31.50mil -31.50mil 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2348,7 +2348,7 @@ Element["hidename" "0603" "R2_IO_3_R" "10k" 78.2500mm 51.0000mm 31.50mil -31.50m
 
 	)
 
-Element["hidename" "0603" "R1_IO_3_R" "10k" 82.2500mm 43.0000mm -31.50mil 31.50mil 1 100 ""]
+Element["hidename" "0603" "R1_IO_3_R" "10k" 82.2500mm 43.0000mm -31.50mil 31.50mil 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2360,7 +2360,7 @@ Element["hidename" "0603" "R1_IO_3_R" "10k" 82.2500mm 43.0000mm -31.50mil 31.50m
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_0_0_R" "PDTC124TU" 58.2500mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_0_0_R" "PDTC124TU" 58.2500mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2381,7 +2381,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_0_0_R" "PDTC124TU" 58.2500mm 23.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_0_0_R" "2N7002P" 55.0000mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_0_0_R" "2N7002P" 55.0000mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2401,7 +2401,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_0_0_R" "2N7002P" 55.0000mm 23.0000m
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_0_0_R" "PDTC124TU" 58.2500mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_0_0_R" "PDTC124TU" 58.2500mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2422,7 +2422,7 @@ Element["hidename" "sot323-bjt" "Q3_0_0_R" "PDTC124TU" 58.2500mm 23.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_0_0_R" "2N7002P" 55.0000mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_0_0_R" "2N7002P" 55.0000mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2442,7 +2442,7 @@ Element["hidename" "sot23-nmos" "M2_0_0_R" "2N7002P" 55.0000mm 23.0000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S6_DB_R" "3k3" 59.7500mm 55.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S6_DB_R" "3k3" 59.7500mm 55.2500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2458,7 +2458,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S6_DB_R" "3k3" 59.7500mm 55.2500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S6_DB_R" "2N7002P" 58.2500mm 51.0000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S6_DB_R" "2N7002P" 58.2500mm 51.0000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2478,7 +2478,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S6_DB_R" "2N7002P" 58.2500mm 51.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_2_0_R" "PDTC124TU" 74.2500mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_2_0_R" "PDTC124TU" 74.2500mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2499,7 +2499,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_2_0_R" "PDTC124TU" 74.2500mm 23.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_2_0_R" "2N7002P" 71.0000mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_2_0_R" "2N7002P" 71.0000mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2519,7 +2519,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_2_0_R" "2N7002P" 71.0000mm 23.0000m
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_2_0_R" "PDTC124TU" 74.2500mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_2_0_R" "PDTC124TU" 74.2500mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2540,7 +2540,7 @@ Element["hidename" "sot323-bjt" "Q3_2_0_R" "PDTC124TU" 74.2500mm 23.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_2_0_R" "2N7002P" 71.0000mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_2_0_R" "2N7002P" 71.0000mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2560,7 +2560,7 @@ Element["hidename" "sot23-nmos" "M2_2_0_R" "2N7002P" 71.0000mm 23.0000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S2_DB_R" "3k3" 75.7500mm 55.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S2_DB_R" "3k3" 75.7500mm 55.2500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2576,7 +2576,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S2_DB_R" "3k3" 75.7500mm 55.2500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2_DB_R" "2N7002P" 74.2500mm 51.0000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2_DB_R" "2N7002P" 74.2500mm 51.0000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2596,7 +2596,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2_DB_R" "2N7002P" 74.2500mm 51.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_3_0_R" "2N7002P" 79.0000mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_3_0_R" "2N7002P" 79.0000mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2616,7 +2616,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_3_0_R" "2N7002P" 79.0000mm 23.0000m
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_3_0_R" "PDTC124TU" 82.2500mm 23.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_3_0_R" "PDTC124TU" 82.2500mm 23.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2637,7 +2637,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_3_0_R" "PDTC124TU" 82.2500mm 23.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_3_0_R" "2N7002P" 79.0000mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_3_0_R" "2N7002P" 79.0000mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2657,7 +2657,7 @@ Element["hidename" "sot23-nmos" "M2_3_0_R" "2N7002P" 79.0000mm 23.0000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_1_0_R" "PDTC124TU" 66.2500mm 19.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_1_0_R" "PDTC124TU" 66.2500mm 19.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2678,7 +2678,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_1_0_R" "PDTC124TU" 66.2500mm 19.000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_1_0_R" "3k3" 63.0000mm 19.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_1_0_R" "3k3" 63.0000mm 19.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2694,7 +2694,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_1_0_R" "3k3" 63.0000mm 19.0000mm 0.
 
 	)
 
-Element["hidename" "0603-boxed" "R2_1_0_R" "3k3" 63.0000mm 19.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_1_0_R" "3k3" 63.0000mm 19.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2710,7 +2710,7 @@ Element["hidename" "0603-boxed" "R2_1_0_R" "3k3" 63.0000mm 19.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_0_0_R" "PDTC124TU" 58.2500mm 19.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_0_0_R" "PDTC124TU" 58.2500mm 19.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2731,7 +2731,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_0_0_R" "PDTC124TU" 58.2500mm 19.000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_0_0_R" "3k3" 55.0000mm 19.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_0_0_R" "3k3" 55.0000mm 19.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2747,7 +2747,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_0_0_R" "3k3" 55.0000mm 19.0000mm 0.
 
 	)
 
-Element["hidename" "0603-boxed" "R2_0_0_R" "3k3" 55.0000mm 19.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_0_0_R" "3k3" 55.0000mm 19.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2763,7 +2763,7 @@ Element["hidename" "0603-boxed" "R2_0_0_R" "3k3" 55.0000mm 19.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_2_0_R" "3k3" 71.0000mm 19.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_2_0_R" "3k3" 71.0000mm 19.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2779,7 +2779,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_2_0_R" "3k3" 71.0000mm 19.0000mm 0.
 
 	)
 
-Element["hidename" "0603-boxed" "R2_2_0_R" "3k3" 71.0000mm 19.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_2_0_R" "3k3" 71.0000mm 19.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2795,7 +2795,7 @@ Element["hidename" "0603-boxed" "R2_2_0_R" "3k3" 71.0000mm 19.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_3_0_R" "PDTC124TU" 82.2500mm 19.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_3_0_R" "PDTC124TU" 82.2500mm 19.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2816,7 +2816,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_3_0_R" "PDTC124TU" 82.2500mm 19.000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_3_0_R" "3k3" 79.0000mm 19.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_3_0_R" "3k3" 79.0000mm 19.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2832,7 +2832,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_3_0_R" "3k3" 79.0000mm 19.0000mm 0.
 
 	)
 
-Element["hidename" "0603-boxed" "R2_3_0_R" "3k3" 79.0000mm 19.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_3_0_R" "3k3" 79.0000mm 19.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2848,7 +2848,7 @@ Element["hidename" "0603-boxed" "R2_3_0_R" "3k3" 79.0000mm 19.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_1_1_R" "PDTC124TU" 66.2500mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_1_1_R" "PDTC124TU" 66.2500mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2869,7 +2869,7 @@ Element["hidename" "sot323-bjt" "Q3_1_1_R" "PDTC124TU" 66.2500mm 31.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_1_1_R" "PDTC124TU" 66.2500mm 27.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_1_1_R" "PDTC124TU" 66.2500mm 27.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2890,7 +2890,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_1_1_R" "PDTC124TU" 66.2500mm 27.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_1_1_R" "PDTC124TU" 66.2500mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_1_1_R" "PDTC124TU" 66.2500mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -2911,7 +2911,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_1_1_R" "PDTC124TU" 66.2500mm 31.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_1_1_R" "2N7002P" 63.0000mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_1_1_R" "2N7002P" 63.0000mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2931,7 +2931,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_1_1_R" "2N7002P" 63.0000mm 31.0000m
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_1_1_R" "3k3" 63.0000mm 27.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_1_1_R" "3k3" 63.0000mm 27.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2947,7 +2947,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_1_1_R" "3k3" 63.0000mm 27.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_1_1_R" "2N7002P" 63.0000mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_1_1_R" "2N7002P" 63.0000mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -2967,7 +2967,7 @@ Element["hidename" "sot23-nmos" "M2_1_1_R" "2N7002P" 63.0000mm 31.0000mm 0.0000 
 
 	)
 
-Element["hidename" "0603-boxed" "R2_1_1_R" "3k3" 63.0000mm 27.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_1_1_R" "3k3" 63.0000mm 27.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2983,7 +2983,7 @@ Element["hidename" "0603-boxed" "R2_1_1_R" "3k3" 63.0000mm 27.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_0_1_R" "3k3" 55.0000mm 27.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_0_1_R" "3k3" 55.0000mm 27.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -2999,7 +2999,7 @@ Element["hidename" "0603-boxed" "R2_0_1_R" "3k3" 55.0000mm 27.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_0_1_R" "PDTC124TU" 58.2500mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_0_1_R" "PDTC124TU" 58.2500mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3020,7 +3020,7 @@ Element["hidename" "sot323-bjt" "Q3_0_1_R" "PDTC124TU" 58.2500mm 31.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_0_1_R" "PDTC124TU" 58.2500mm 27.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_0_1_R" "PDTC124TU" 58.2500mm 27.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3041,7 +3041,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_0_1_R" "PDTC124TU" 58.2500mm 27.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_0_1_R" "PDTC124TU" 58.2500mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_0_1_R" "PDTC124TU" 58.2500mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3062,7 +3062,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_0_1_R" "PDTC124TU" 58.2500mm 31.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_0_1_R" "2N7002P" 55.0000mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_0_1_R" "2N7002P" 55.0000mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3082,7 +3082,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_0_1_R" "2N7002P" 55.0000mm 31.0000m
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_0_1_R" "3k3" 55.0000mm 27.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_0_1_R" "3k3" 55.0000mm 27.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3098,7 +3098,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_0_1_R" "3k3" 55.0000mm 27.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_0_1_R" "2N7002P" 55.0000mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_0_1_R" "2N7002P" 55.0000mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3118,7 +3118,7 @@ Element["hidename" "sot23-nmos" "M2_0_1_R" "2N7002P" 55.0000mm 31.0000mm 0.0000 
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_2_1_R" "PDTC124TU" 74.2500mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_2_1_R" "PDTC124TU" 74.2500mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3139,7 +3139,7 @@ Element["hidename" "sot323-bjt" "Q3_2_1_R" "PDTC124TU" 74.2500mm 31.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_2_1_R" "PDTC124TU" 74.2500mm 27.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_2_1_R" "PDTC124TU" 74.2500mm 27.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3160,7 +3160,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_2_1_R" "PDTC124TU" 74.2500mm 27.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_2_1_R" "PDTC124TU" 74.2500mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_2_1_R" "PDTC124TU" 74.2500mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3181,7 +3181,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_2_1_R" "PDTC124TU" 74.2500mm 31.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_2_1_R" "2N7002P" 71.0000mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_2_1_R" "2N7002P" 71.0000mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3201,7 +3201,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_2_1_R" "2N7002P" 71.0000mm 31.0000m
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_2_1_R" "3k3" 71.0000mm 27.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_2_1_R" "3k3" 71.0000mm 27.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3217,7 +3217,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_2_1_R" "3k3" 71.0000mm 27.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_2_1_R" "2N7002P" 71.0000mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_2_1_R" "2N7002P" 71.0000mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3237,7 +3237,7 @@ Element["hidename" "sot23-nmos" "M2_2_1_R" "2N7002P" 71.0000mm 31.0000mm 0.0000 
 
 	)
 
-Element["hidename" "0603-boxed" "R2_2_1_R" "3k3" 71.0000mm 27.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_2_1_R" "3k3" 71.0000mm 27.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3253,7 +3253,7 @@ Element["hidename" "0603-boxed" "R2_2_1_R" "3k3" 71.0000mm 27.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_3_1_R" "2N7002P" 79.0000mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_3_1_R" "2N7002P" 79.0000mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3273,7 +3273,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_3_1_R" "2N7002P" 79.0000mm 31.0000m
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_3_1_R" "3k3" 79.0000mm 27.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_3_1_R" "3k3" 79.0000mm 27.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3289,7 +3289,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_3_1_R" "3k3" 79.0000mm 27.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_3_1_R" "2N7002P" 79.0000mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_3_1_R" "2N7002P" 79.0000mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3309,7 +3309,7 @@ Element["hidename" "sot23-nmos" "M2_3_1_R" "2N7002P" 79.0000mm 31.0000mm 0.0000 
 
 	)
 
-Element["hidename" "0603-boxed" "R2_3_1_R" "3k3" 79.0000mm 27.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_3_1_R" "3k3" 79.0000mm 27.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3325,7 +3325,7 @@ Element["hidename" "0603-boxed" "R2_3_1_R" "3k3" 79.0000mm 27.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_3_1_R" "PDTC124TU" 82.2500mm 31.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_3_1_R" "PDTC124TU" 82.2500mm 31.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3346,7 +3346,7 @@ Element["hidename" "sot323-bjt" "Q3_3_1_R" "PDTC124TU" 82.2500mm 31.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_3_1_R" "PDTC124TU" 82.2500mm 27.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_3_1_R" "PDTC124TU" 82.2500mm 27.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3367,7 +3367,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_3_1_R" "PDTC124TU" 82.2500mm 27.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_3_1_R" "PDTC124TU" 82.2500mm 31.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_3_1_R" "PDTC124TU" 82.2500mm 31.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3388,7 +3388,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_3_1_R" "PDTC124TU" 82.2500mm 31.000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_1_2_R" "3k3" 63.0000mm 35.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_1_2_R" "3k3" 63.0000mm 35.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3404,7 +3404,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_1_2_R" "3k3" 63.0000mm 35.0000mm 0.
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_0_2_R" "3k3" 55.0000mm 35.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_0_2_R" "3k3" 55.0000mm 35.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3420,7 +3420,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_0_2_R" "3k3" 55.0000mm 35.0000mm 0.
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_2_2_R" "3k3" 71.0000mm 35.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_2_2_R" "3k3" 71.0000mm 35.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3436,7 +3436,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_2_2_R" "3k3" 71.0000mm 35.0000mm 0.
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_3_2_R" "3k3" 79.0000mm 35.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_3_2_R" "3k3" 79.0000mm 35.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3452,7 +3452,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_3_2_R" "3k3" 79.0000mm 35.0000mm 0.
 
 	)
 
-Element["hidename" "0603-boxed" "R2_3_2_R" "3k3" 79.0000mm 35.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_3_2_R" "3k3" 79.0000mm 35.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3468,7 +3468,7 @@ Element["hidename" "0603-boxed" "R2_3_2_R" "3k3" 79.0000mm 35.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_2_2_R" "3k3" 71.0000mm 35.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_2_2_R" "3k3" 71.0000mm 35.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3484,7 +3484,7 @@ Element["hidename" "0603-boxed" "R2_2_2_R" "3k3" 71.0000mm 35.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_0_2_R" "3k3" 55.0000mm 35.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_0_2_R" "3k3" 55.0000mm 35.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3500,7 +3500,7 @@ Element["hidename" "0603-boxed" "R2_0_2_R" "3k3" 55.0000mm 35.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_1_2_R" "3k3" 63.0000mm 35.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_1_2_R" "3k3" 63.0000mm 35.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -3516,7 +3516,7 @@ Element["hidename" "0603-boxed" "R2_1_2_R" "3k3" 63.0000mm 35.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_1_2_R" "PDTC124TU" 66.2500mm 35.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_1_2_R" "PDTC124TU" 66.2500mm 35.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3537,7 +3537,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_1_2_R" "PDTC124TU" 66.2500mm 35.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_0_2_R" "PDTC124TU" 58.2500mm 35.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_0_2_R" "PDTC124TU" 58.2500mm 35.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3558,7 +3558,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_0_2_R" "PDTC124TU" 58.2500mm 35.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_2_2_R" "PDTC124TU" 74.2500mm 35.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_2_2_R" "PDTC124TU" 74.2500mm 35.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3579,7 +3579,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_2_2_R" "PDTC124TU" 74.2500mm 35.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_3_2_R" "PDTC124TU" 82.2500mm 35.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_3_2_R" "PDTC124TU" 82.2500mm 35.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3600,7 +3600,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_3_2_R" "PDTC124TU" 82.2500mm 35.000
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_1_2_R" "PDTC124TU" 66.2500mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_1_2_R" "PDTC124TU" 66.2500mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3621,7 +3621,7 @@ Element["hidename" "sot323-bjt" "Q3_1_2_R" "PDTC124TU" 66.2500mm 39.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_1_2_R" "PDTC124TU" 66.2500mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_1_2_R" "PDTC124TU" 66.2500mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3642,7 +3642,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_1_2_R" "PDTC124TU" 66.2500mm 39.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_1_2_R" "2N7002P" 63.0000mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_1_2_R" "2N7002P" 63.0000mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3662,7 +3662,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_1_2_R" "2N7002P" 63.0000mm 39.0000m
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_1_2_R" "2N7002P" 63.0000mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_1_2_R" "2N7002P" 63.0000mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3682,7 +3682,7 @@ Element["hidename" "sot23-nmos" "M2_1_2_R" "2N7002P" 63.0000mm 39.0000mm 0.0000 
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_0_2_R" "PDTC124TU" 58.2500mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_0_2_R" "PDTC124TU" 58.2500mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3703,7 +3703,7 @@ Element["hidename" "sot323-bjt" "Q3_0_2_R" "PDTC124TU" 58.2500mm 39.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_0_2_R" "PDTC124TU" 58.2500mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_0_2_R" "PDTC124TU" 58.2500mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3724,7 +3724,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_0_2_R" "PDTC124TU" 58.2500mm 39.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_0_2_R" "2N7002P" 55.0000mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_0_2_R" "2N7002P" 55.0000mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3744,7 +3744,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_0_2_R" "2N7002P" 55.0000mm 39.0000m
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_0_2_R" "2N7002P" 55.0000mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_0_2_R" "2N7002P" 55.0000mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3764,7 +3764,7 @@ Element["hidename" "sot23-nmos" "M2_0_2_R" "2N7002P" 55.0000mm 39.0000mm 0.0000 
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_2_2_R" "PDTC124TU" 74.2500mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_2_2_R" "PDTC124TU" 74.2500mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3785,7 +3785,7 @@ Element["hidename" "sot323-bjt" "Q3_2_2_R" "PDTC124TU" 74.2500mm 39.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_2_2_R" "PDTC124TU" 74.2500mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_2_2_R" "PDTC124TU" 74.2500mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3806,7 +3806,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_2_2_R" "PDTC124TU" 74.2500mm 39.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_2_2_R" "2N7002P" 71.0000mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_2_2_R" "2N7002P" 71.0000mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3826,7 +3826,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_2_2_R" "2N7002P" 71.0000mm 39.0000m
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_2_2_R" "2N7002P" 71.0000mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_2_2_R" "2N7002P" 71.0000mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3846,7 +3846,7 @@ Element["hidename" "sot23-nmos" "M2_2_2_R" "2N7002P" 71.0000mm 39.0000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_3_2_R" "2N7002P" 79.0000mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_3_2_R" "2N7002P" 79.0000mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3866,7 +3866,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_3_2_R" "2N7002P" 79.0000mm 39.0000m
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_3_2_R" "2N7002P" 79.0000mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_3_2_R" "2N7002P" 79.0000mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3886,7 +3886,7 @@ Element["hidename" "sot23-nmos" "M2_3_2_R" "2N7002P" 79.0000mm 39.0000mm 0.0000 
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_3_2_R" "PDTC124TU" 82.2500mm 39.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_3_2_R" "PDTC124TU" 82.2500mm 39.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3907,7 +3907,7 @@ Element["hidename" "sot323-bjt" "Q3_3_2_R" "PDTC124TU" 82.2500mm 39.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_3_2_R" "PDTC124TU" 82.2500mm 39.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_3_2_R" "PDTC124TU" 82.2500mm 39.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3928,7 +3928,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_3_2_R" "PDTC124TU" 82.2500mm 39.000
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_1_3_R" "PDTC124TU" 66.2500mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_1_3_R" "PDTC124TU" 66.2500mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3949,7 +3949,7 @@ Element["hidename" "sot323-bjt" "Q3_1_3_R" "PDTC124TU" 66.2500mm 47.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_1_3_R" "PDTC124TU" 66.2500mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_1_3_R" "PDTC124TU" 66.2500mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -3970,7 +3970,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_1_3_R" "PDTC124TU" 66.2500mm 47.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_1_3_R" "2N7002P" 63.0000mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_1_3_R" "2N7002P" 63.0000mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -3990,7 +3990,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_1_3_R" "2N7002P" 63.0000mm 47.0000m
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_1_3_R" "3k3" 63.0000mm 43.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_1_3_R" "3k3" 63.0000mm 43.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4006,7 +4006,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_1_3_R" "3k3" 63.0000mm 43.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_1_3_R" "2N7002P" 63.0000mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_1_3_R" "2N7002P" 63.0000mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4026,7 +4026,7 @@ Element["hidename" "sot23-nmos" "M2_1_3_R" "2N7002P" 63.0000mm 47.0000mm 0.0000 
 
 	)
 
-Element["hidename" "0603-boxed" "R2_1_3_R" "3k3" 63.0000mm 43.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_1_3_R" "3k3" 63.0000mm 43.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4042,7 +4042,7 @@ Element["hidename" "0603-boxed" "R2_1_3_R" "3k3" 63.0000mm 43.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_1_3_R" "PDTC124TU" 66.2500mm 43.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_1_3_R" "PDTC124TU" 66.2500mm 43.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4063,7 +4063,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_1_3_R" "PDTC124TU" 66.2500mm 43.000
 
 	)
 
-Element["hidename" "0603-boxed" "R2_0_3_R" "3k3" 55.0000mm 43.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_0_3_R" "3k3" 55.0000mm 43.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4079,7 +4079,7 @@ Element["hidename" "0603-boxed" "R2_0_3_R" "3k3" 55.0000mm 43.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_0_3_R" "PDTC124TU" 58.2500mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_0_3_R" "PDTC124TU" 58.2500mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4100,7 +4100,7 @@ Element["hidename" "sot323-bjt" "Q3_0_3_R" "PDTC124TU" 58.2500mm 47.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_0_3_R" "PDTC124TU" 58.3000mm 42.9500mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_0_3_R" "PDTC124TU" 58.3000mm 42.9500mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4121,7 +4121,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_0_3_R" "PDTC124TU" 58.3000mm 42.950
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_0_3_R" "PDTC124TU" 58.2500mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_0_3_R" "PDTC124TU" 58.2500mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4142,7 +4142,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_0_3_R" "PDTC124TU" 58.2500mm 47.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_0_3_R" "2N7002P" 55.0000mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_0_3_R" "2N7002P" 55.0000mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4162,7 +4162,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_0_3_R" "2N7002P" 55.0000mm 47.0000m
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_0_3_R" "3k3" 55.0000mm 43.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_0_3_R" "3k3" 55.0000mm 43.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4178,7 +4178,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_0_3_R" "3k3" 55.0000mm 43.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_0_3_R" "2N7002P" 55.0000mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_0_3_R" "2N7002P" 55.0000mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4198,7 +4198,7 @@ Element["hidename" "sot23-nmos" "M2_0_3_R" "2N7002P" 55.0000mm 47.0000mm 0.0000 
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_2_3_R" "PDTC124TU" 74.2500mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_2_3_R" "PDTC124TU" 74.2500mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4219,7 +4219,7 @@ Element["hidename" "sot323-bjt" "Q3_2_3_R" "PDTC124TU" 74.2500mm 47.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_2_3_R" "PDTC124TU" 74.2500mm 43.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_2_3_R" "PDTC124TU" 74.2500mm 43.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4240,7 +4240,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_2_3_R" "PDTC124TU" 74.2500mm 43.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_2_3_R" "PDTC124TU" 74.2500mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_2_3_R" "PDTC124TU" 74.2500mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4261,7 +4261,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_2_3_R" "PDTC124TU" 74.2500mm 47.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_2_3_R" "2N7002P" 71.0000mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_2_3_R" "2N7002P" 71.0000mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4281,7 +4281,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_2_3_R" "2N7002P" 71.0000mm 47.0000m
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_2_3_R" "3k3" 71.0000mm 43.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_2_3_R" "3k3" 71.0000mm 43.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4297,7 +4297,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_2_3_R" "3k3" 71.0000mm 43.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_2_3_R" "2N7002P" 71.0000mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_2_3_R" "2N7002P" 71.0000mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4317,7 +4317,7 @@ Element["hidename" "sot23-nmos" "M2_2_3_R" "2N7002P" 71.0000mm 47.0000mm 0.0000 
 
 	)
 
-Element["hidename" "0603-boxed" "R2_2_3_R" "3k3" 71.0000mm 43.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_2_3_R" "3k3" 71.0000mm 43.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4333,7 +4333,7 @@ Element["hidename" "0603-boxed" "R2_2_3_R" "3k3" 71.0000mm 43.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_3_3_R" "3k3" 79.0000mm 43.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_3_3_R" "3k3" 79.0000mm 43.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4349,7 +4349,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_3_3_R" "3k3" 79.0000mm 43.0000mm 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_3_3_R" "2N7002P" 79.0000mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot23-nmos" "M2_3_3_R" "2N7002P" 79.0000mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4369,7 +4369,7 @@ Element["hidename" "sot23-nmos" "M2_3_3_R" "2N7002P" 79.0000mm 47.0000mm 0.0000 
 
 	)
 
-Element["hidename" "0603-boxed" "R2_3_3_R" "3k3" 79.0000mm 43.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R2_3_3_R" "3k3" 79.0000mm 43.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4385,7 +4385,7 @@ Element["hidename" "0603-boxed" "R2_3_3_R" "3k3" 79.0000mm 43.0000mm -0.8000mm 0
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_3_3_R" "PDTC124TU" 82.2500mm 47.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_3_3_R" "PDTC124TU" 82.2500mm 47.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4406,7 +4406,7 @@ Element["hidename" "sot323-bjt" "Q3_3_3_R" "PDTC124TU" 82.2500mm 47.0000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_3_3_R" "PDTC124TU" 82.2500mm 43.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_3_3_R" "PDTC124TU" 82.2500mm 43.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4427,7 +4427,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_3_3_R" "PDTC124TU" 82.2500mm 43.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_3_3_R" "2N7002P" 79.0000mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_3_3_R" "2N7002P" 79.0000mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4447,7 +4447,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_3_3_R" "2N7002P" 79.0000mm 47.0000m
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_3_3_R" "PDTC124TU" 82.2500mm 47.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_3_3_R" "PDTC124TU" 82.2500mm 47.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -4468,7 +4468,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_3_3_R" "PDTC124TU" 82.2500mm 47.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S8_DA_R" "2N7002P" 63.0000mm 11.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S8_DA_R" "2N7002P" 63.0000mm 11.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4488,7 +4488,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S8_DA_R" "2N7002P" 63.0000mm 11.500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S7_DA_R" "2N7002P" 63.0000mm 15.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S7_DA_R" "2N7002P" 63.0000mm 15.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4508,7 +4508,7 @@ Element["hidename" "sot23-nmos" "M2_S7_DA_R" "2N7002P" 63.0000mm 15.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S7_DA_R" "2N7002P" 63.0000mm 11.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S7_DA_R" "2N7002P" 63.0000mm 11.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4528,7 +4528,7 @@ Element["hidename" "sot23-nmos" "M1_S7_DA_R" "2N7002P" 63.0000mm 11.5000mm 0.000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S7_DA_R" "3k3" 67.0000mm 11.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R1_S7_DA_R" "3k3" 67.0000mm 11.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4544,7 +4544,7 @@ Element["hidename" "0603-boxed" "R1_S7_DA_R" "3k3" 67.0000mm 11.0000mm -0.8000mm
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S6_DA_R" "2N7002P" 55.0000mm 11.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S6_DA_R" "2N7002P" 55.0000mm 11.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4564,7 +4564,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S6_DA_R" "2N7002P" 55.0000mm 11.500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S5_DA_R" "2N7002P" 55.0000mm 15.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S5_DA_R" "2N7002P" 55.0000mm 15.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4584,7 +4584,7 @@ Element["hidename" "sot23-nmos" "M2_S5_DA_R" "2N7002P" 55.0000mm 15.0000mm 0.000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S5_DA_R" "3k3" 59.0000mm 11.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R1_S5_DA_R" "3k3" 59.0000mm 11.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4600,7 +4600,7 @@ Element["hidename" "0603-boxed" "R1_S5_DA_R" "3k3" 59.0000mm 11.0000mm -0.8000mm
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_DA_R" "2N7002P" 71.0000mm 11.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_DA_R" "2N7002P" 71.0000mm 11.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4620,7 +4620,7 @@ Element["hidename" "sot23-nmos" "M1_S1_DA_R" "2N7002P" 71.0000mm 11.5000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2_DA_R" "2N7002P" 71.0000mm 11.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2_DA_R" "2N7002P" 71.0000mm 11.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4640,7 +4640,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2_DA_R" "2N7002P" 71.0000mm 11.500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S1_DA_R" "2N7002P" 71.0000mm 15.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S1_DA_R" "2N7002P" 71.0000mm 15.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4660,7 +4660,7 @@ Element["hidename" "sot23-nmos" "M2_S1_DA_R" "2N7002P" 71.0000mm 15.0000mm 0.000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S1_DA_R" "3k3" 75.0000mm 11.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R1_S1_DA_R" "3k3" 75.0000mm 11.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4676,7 +4676,7 @@ Element["hidename" "0603-boxed" "R1_S1_DA_R" "3k3" 75.0000mm 11.0000mm -0.8000mm
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S3_DA_R" "3k3" 83.0000mm 11.0000mm -0.8000mm 0.8000mm 1 100 ""]
+Element["hidename" "0603-boxed" "R1_S3_DA_R" "3k3" 83.0000mm 11.0000mm -0.8000mm 0.8000mm 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4692,7 +4692,7 @@ Element["hidename" "0603-boxed" "R1_S3_DA_R" "3k3" 83.0000mm 11.0000mm -0.8000mm
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S4_DA_R" "2N7002P" 79.0000mm 11.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S4_DA_R" "2N7002P" 79.0000mm 11.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4712,7 +4712,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S4_DA_R" "2N7002P" 79.0000mm 11.500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S3_DA_R" "2N7002P" 79.0000mm 15.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S3_DA_R" "2N7002P" 79.0000mm 15.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4732,7 +4732,7 @@ Element["hidename" "sot23-nmos" "M2_S3_DA_R" "2N7002P" 79.0000mm 15.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S3_DA_R" "2N7002P" 79.0000mm 11.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S3_DA_R" "2N7002P" 79.0000mm 11.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4752,7 +4752,7 @@ Element["hidename" "sot23-nmos" "M1_S3_DA_R" "2N7002P" 79.0000mm 11.5000mm 0.000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S8_DA_R" "3k3" 67.0000mm 11.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S8_DA_R" "3k3" 67.0000mm 11.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4768,7 +4768,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S8_DA_R" "3k3" 67.0000mm 11.0000mm 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S6_DA_R" "3k3" 59.0000mm 11.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S6_DA_R" "3k3" 59.0000mm 11.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4784,7 +4784,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S6_DA_R" "3k3" 59.0000mm 11.0000mm 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S2_DA_R" "3k3" 75.0000mm 11.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S2_DA_R" "3k3" 75.0000mm 11.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4800,7 +4800,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S2_DA_R" "3k3" 75.0000mm 11.0000mm 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S4_DA_R" "3k3" 83.0000mm 11.0000mm 0.8000mm 0.8000mm 3 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S4_DA_R" "3k3" 83.0000mm 11.0000mm 0.8000mm 0.8000mm 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4816,7 +4816,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S4_DA_R" "3k3" 83.0000mm 11.0000mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S7_DB_R" "2N7002P" 66.2500mm 51.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S7_DB_R" "2N7002P" 66.2500mm 51.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4836,7 +4836,7 @@ Element["hidename" "sot23-nmos" "M2_S7_DB_R" "2N7002P" 66.2500mm 51.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S5_DB_R" "2N7002P" 58.2500mm 51.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S5_DB_R" "2N7002P" 58.2500mm 51.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4856,7 +4856,7 @@ Element["hidename" "sot23-nmos" "M2_S5_DB_R" "2N7002P" 58.2500mm 51.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S5_DB_R" "2N7002P" 58.2500mm 54.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S5_DB_R" "2N7002P" 58.2500mm 54.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4876,7 +4876,7 @@ Element["hidename" "sot23-nmos" "M1_S5_DB_R" "2N7002P" 58.2500mm 54.5000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S1_DB_R" "2N7002P" 74.2500mm 51.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S1_DB_R" "2N7002P" 74.2500mm 51.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4896,7 +4896,7 @@ Element["hidename" "sot23-nmos" "M2_S1_DB_R" "2N7002P" 74.2500mm 51.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_DB_R" "2N7002P" 74.2500mm 54.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_DB_R" "2N7002P" 74.2500mm 54.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4916,7 +4916,7 @@ Element["hidename" "sot23-nmos" "M1_S1_DB_R" "2N7002P" 74.2500mm 54.5000mm 0.000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S7_DB_R" "3k3" 62.2500mm 54.0000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R1_S7_DB_R" "3k3" 62.2500mm 54.0000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4932,7 +4932,7 @@ Element["hidename" "0603-boxed" "R1_S7_DB_R" "3k3" 62.2500mm 54.0000mm 0.8000mm 
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S5_DB_R" "3k3" 54.2500mm 54.0000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R1_S5_DB_R" "3k3" 54.2500mm 54.0000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4948,7 +4948,7 @@ Element["hidename" "0603-boxed" "R1_S5_DB_R" "3k3" 54.2500mm 54.0000mm 0.8000mm 
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S1_DB_R" "3k3" 70.2500mm 54.0000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R1_S1_DB_R" "3k3" 70.2500mm 54.0000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -4964,7 +4964,7 @@ Element["hidename" "0603-boxed" "R1_S1_DB_R" "3k3" 70.2500mm 54.0000mm 0.8000mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M3_S1_0_C" "2N7002P" 43.5000mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M3_S1_0_C" "2N7002P" 43.5000mm 22.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -4984,7 +4984,7 @@ Element["hidename,onsolder" "sot23-nmos" "M3_S1_0_C" "2N7002P" 43.5000mm 22.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S1_0_C" "2N7002P" 43.5000mm 22.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S1_0_C" "2N7002P" 43.5000mm 22.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5004,7 +5004,7 @@ Element["hidename" "sot23-nmos" "M2_S1_0_C" "2N7002P" 43.5000mm 22.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_0_C" "3k3" 43.5000mm 19.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_0_C" "3k3" 43.5000mm 19.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5020,7 +5020,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_0_C" "3k3" 43.5000mm 19.2500mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R2_S1_0_C" "3k3" 43.5000mm 19.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R2_S1_0_C" "3k3" 43.5000mm 19.2500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5036,7 +5036,7 @@ Element["hidename" "0603-boxed" "R2_S1_0_C" "3k3" 43.5000mm 19.2500mm -0.8000mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_0_C" "2N7002P" 39.5000mm 19.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_0_C" "2N7002P" 39.5000mm 19.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5056,7 +5056,7 @@ Element["hidename" "sot23-nmos" "M3_0_C" "2N7002P" 39.5000mm 19.2500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_0_C" "2N7002P" 39.5000mm 19.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_0_C" "2N7002P" 39.5000mm 19.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5076,7 +5076,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_0_C" "2N7002P" 39.5000mm 19.2500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_0_C" "2N7002P" 39.5000mm 22.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_0_C" "2N7002P" 39.5000mm 22.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5096,7 +5096,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_0_C" "2N7002P" 39.5000mm 22.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M9_S1_0_C" "2N7002P" 47.5000mm 19.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M9_S1_0_C" "2N7002P" 47.5000mm 19.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5116,7 +5116,7 @@ Element["hidename" "sot23-nmos" "M9_S1_0_C" "2N7002P" 47.5000mm 19.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_S1_0_C" "2N7002P" 47.5000mm 19.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_S1_0_C" "2N7002P" 47.5000mm 19.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5136,7 +5136,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_S1_0_C" "2N7002P" 47.5000mm 19.2500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_S1_0_C" "2N7002P" 47.5000mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_S1_0_C" "2N7002P" 47.5000mm 22.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5156,7 +5156,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_S1_0_C" "2N7002P" 47.5000mm 22.7500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M8_S1_0_C" "2N7002P" 47.5000mm 15.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M8_S1_0_C" "2N7002P" 47.5000mm 15.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5176,7 +5176,7 @@ Element["hidename,onsolder" "sot23-nmos" "M8_S1_0_C" "2N7002P" 47.5000mm 15.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M10_S1_0_C" "2N7002P" 47.5000mm 22.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M10_S1_0_C" "2N7002P" 47.5000mm 22.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5196,7 +5196,7 @@ Element["hidename" "sot23-nmos" "M10_S1_0_C" "2N7002P" 47.5000mm 22.7500mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M7_S1_0_C" "2N7002P" 47.5000mm 15.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M7_S1_0_C" "2N7002P" 47.5000mm 15.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5216,7 +5216,7 @@ Element["hidename" "sot23-nmos" "M7_S1_0_C" "2N7002P" 47.5000mm 15.7500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_1_C" "2N7002P" 39.5000mm 33.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_1_C" "2N7002P" 39.5000mm 33.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5236,7 +5236,7 @@ Element["hidename" "sot23-nmos" "M1_S1_1_C" "2N7002P" 39.5000mm 33.2500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_1_C" "2N7002P" 39.5000mm 29.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_1_C" "2N7002P" 39.5000mm 29.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5256,7 +5256,7 @@ Element["hidename" "sot23-nmos" "M3_1_C" "2N7002P" 39.5000mm 29.7500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_1_C" "2N7002P" 39.5000mm 26.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_1_C" "2N7002P" 39.5000mm 26.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5276,7 +5276,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_1_C" "2N7002P" 39.5000mm 26.2500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_1_C" "2N7002P" 39.5000mm 33.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_1_C" "2N7002P" 39.5000mm 33.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5296,7 +5296,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_1_C" "2N7002P" 39.5000mm 33.2500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_1_C" "2N7002P" 39.5000mm 29.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_1_C" "2N7002P" 39.5000mm 29.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5316,7 +5316,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_1_C" "2N7002P" 39.5000mm 29.7500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_2_C" "2N7002P" 39.5000mm 36.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_2_C" "2N7002P" 39.5000mm 36.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5336,7 +5336,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_2_C" "2N7002P" 39.5000mm 36.7500mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M4_2_C" "2N7002P" 39.5000mm 36.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M4_2_C" "2N7002P" 39.5000mm 36.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5356,7 +5356,7 @@ Element["hidename" "sot23-nmos" "M4_2_C" "2N7002P" 39.5000mm 36.7500mm 0.0000 0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_2_C" "2N7002P" 39.5000mm 40.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_2_C" "2N7002P" 39.5000mm 40.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5376,7 +5376,7 @@ Element["hidename" "sot23-nmos" "M3_2_C" "2N7002P" 39.5000mm 40.2500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_2_C" "2N7002P" 39.5000mm 40.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_2_C" "2N7002P" 39.5000mm 40.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5396,7 +5396,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_2_C" "2N7002P" 39.5000mm 40.2500mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_3_C" "2N7002P" 39.5000mm 50.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_3_C" "2N7002P" 39.5000mm 50.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5416,7 +5416,7 @@ Element["hidename" "sot23-nmos" "M3_3_C" "2N7002P" 39.5000mm 50.7500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_3_C" "2N7002P" 39.5000mm 47.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_3_C" "2N7002P" 39.5000mm 47.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5436,7 +5436,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_3_C" "2N7002P" 39.5000mm 47.2500mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M4_3_C" "2N7002P" 39.5000mm 47.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M4_3_C" "2N7002P" 39.5000mm 47.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5456,7 +5456,7 @@ Element["hidename" "sot23-nmos" "M4_3_C" "2N7002P" 39.5000mm 47.2500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_3_C" "2N7002P" 39.5000mm 50.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_3_C" "2N7002P" 39.5000mm 50.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5476,7 +5476,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_3_C" "2N7002P" 39.5000mm 50.7500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_3_C" "2N7002P" 39.5000mm 54.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_3_C" "2N7002P" 39.5000mm 54.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5496,7 +5496,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_3_C" "2N7002P" 39.5000mm 54.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_2_C" "2N7002P" 39.5000mm 43.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_2_C" "2N7002P" 39.5000mm 43.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5516,7 +5516,7 @@ Element["hidename" "sot23-nmos" "M1_S1_2_C" "2N7002P" 39.5000mm 43.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_2_C" "2N7002P" 39.5000mm 43.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_2_C" "2N7002P" 39.5000mm 43.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5536,7 +5536,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_2_C" "2N7002P" 39.5000mm 43.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_3_C" "2N7002P" 39.5000mm 54.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_3_C" "2N7002P" 39.5000mm 54.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5556,7 +5556,7 @@ Element["hidename" "sot23-nmos" "M1_S1_3_C" "2N7002P" 39.5000mm 54.2500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M10_S1_1_C" "2N7002P" 47.5000mm 33.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M10_S1_1_C" "2N7002P" 47.5000mm 33.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5576,7 +5576,7 @@ Element["hidename" "sot23-nmos" "M10_S1_1_C" "2N7002P" 47.5000mm 33.2500mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_S1_1_C" "2N7002P" 47.5000mm 33.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_S1_1_C" "2N7002P" 47.5000mm 33.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5596,7 +5596,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_S1_1_C" "2N7002P" 47.5000mm 33.2500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M8_S1_1_C" "2N7002P" 47.5000mm 26.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M8_S1_1_C" "2N7002P" 47.5000mm 26.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5616,7 +5616,7 @@ Element["hidename,onsolder" "sot23-nmos" "M8_S1_1_C" "2N7002P" 47.5000mm 26.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M7_S1_1_C" "2N7002P" 47.5000mm 26.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M7_S1_1_C" "2N7002P" 47.5000mm 26.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5636,7 +5636,7 @@ Element["hidename" "sot23-nmos" "M7_S1_1_C" "2N7002P" 47.5000mm 26.2500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M9_S1_1_C" "2N7002P" 47.5000mm 29.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M9_S1_1_C" "2N7002P" 47.5000mm 29.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5656,7 +5656,7 @@ Element["hidename" "sot23-nmos" "M9_S1_1_C" "2N7002P" 47.5000mm 29.7500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M9_S1_2_C" "2N7002P" 47.5000mm 40.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M9_S1_2_C" "2N7002P" 47.5000mm 40.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5676,7 +5676,7 @@ Element["hidename" "sot23-nmos" "M9_S1_2_C" "2N7002P" 47.5000mm 40.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_S1_2_C" "2N7002P" 47.5000mm 43.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_S1_2_C" "2N7002P" 47.5000mm 43.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5696,7 +5696,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_S1_2_C" "2N7002P" 47.5000mm 43.7500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_S1_1_C" "2N7002P" 47.5000mm 29.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_S1_1_C" "2N7002P" 47.5000mm 29.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5716,7 +5716,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_S1_1_C" "2N7002P" 47.5000mm 29.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M10_S1_3_C" "2N7002P" 47.5000mm 54.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M10_S1_3_C" "2N7002P" 47.5000mm 54.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5736,7 +5736,7 @@ Element["hidename" "sot23-nmos" "M10_S1_3_C" "2N7002P" 47.5000mm 54.2500mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M9_S1_3_C" "2N7002P" 47.5000mm 50.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M9_S1_3_C" "2N7002P" 47.5000mm 50.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5756,7 +5756,7 @@ Element["hidename" "sot23-nmos" "M9_S1_3_C" "2N7002P" 47.5000mm 50.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_S1_3_C" "2N7002P" 47.5000mm 50.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_S1_3_C" "2N7002P" 47.5000mm 50.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5776,7 +5776,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_S1_3_C" "2N7002P" 47.5000mm 50.7500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_S1_3_C" "2N7002P" 47.5000mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_S1_3_C" "2N7002P" 47.5000mm 54.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5796,7 +5796,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_S1_3_C" "2N7002P" 47.5000mm 54.2500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M8_S1_3_C" "2N7002P" 47.5000mm 47.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M8_S1_3_C" "2N7002P" 47.5000mm 47.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5816,7 +5816,7 @@ Element["hidename,onsolder" "sot23-nmos" "M8_S1_3_C" "2N7002P" 47.5000mm 47.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M7_S1_3_C" "2N7002P" 47.5000mm 47.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M7_S1_3_C" "2N7002P" 47.5000mm 47.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5836,7 +5836,7 @@ Element["hidename" "sot23-nmos" "M7_S1_3_C" "2N7002P" 47.5000mm 47.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_S1_2_C" "2N7002P" 47.5000mm 40.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_S1_2_C" "2N7002P" 47.5000mm 40.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5856,7 +5856,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_S1_2_C" "2N7002P" 47.5000mm 40.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M10_S1_2_C" "2N7002P" 47.5000mm 43.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M10_S1_2_C" "2N7002P" 47.5000mm 43.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5876,7 +5876,7 @@ Element["hidename" "sot23-nmos" "M10_S1_2_C" "2N7002P" 47.5000mm 43.7500mm 0.000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M8_S1_2_C" "2N7002P" 47.5000mm 36.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M8_S1_2_C" "2N7002P" 47.5000mm 36.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5896,7 +5896,7 @@ Element["hidename,onsolder" "sot23-nmos" "M8_S1_2_C" "2N7002P" 47.5000mm 36.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M7_S1_2_C" "2N7002P" 47.5000mm 36.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M7_S1_2_C" "2N7002P" 47.5000mm 36.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -5916,7 +5916,7 @@ Element["hidename" "sot23-nmos" "M7_S1_2_C" "2N7002P" 47.5000mm 36.7500mm 0.0000
 
 	)
 
-Element["hidename" "0603-boxed" "R3_S1_0_C" "3k3" 43.5000mm 15.7500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R3_S1_0_C" "3k3" 43.5000mm 15.7500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5932,7 +5932,7 @@ Element["hidename" "0603-boxed" "R3_S1_0_C" "3k3" 43.5000mm 15.7500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R4_S1_0_C" "3k3" 43.5000mm 15.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R4_S1_0_C" "3k3" 43.5000mm 15.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5948,7 +5948,7 @@ Element["hidename,onsolder" "0603-boxed" "R4_S1_0_C" "3k3" 43.5000mm 15.7500mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R3_S1_1_C" "3k3" 43.5000mm 26.2500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R3_S1_1_C" "3k3" 43.5000mm 26.2500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5964,7 +5964,7 @@ Element["hidename" "0603-boxed" "R3_S1_1_C" "3k3" 43.5000mm 26.2500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R4_S1_1_C" "3k3" 43.5000mm 26.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R4_S1_1_C" "3k3" 43.5000mm 26.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5980,7 +5980,7 @@ Element["hidename,onsolder" "0603-boxed" "R4_S1_1_C" "3k3" 43.5000mm 26.2500mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R3_S1_2_C" "3k3" 43.5000mm 36.7500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R3_S1_2_C" "3k3" 43.5000mm 36.7500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -5996,7 +5996,7 @@ Element["hidename" "0603-boxed" "R3_S1_2_C" "3k3" 43.5000mm 36.7500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R4_S1_2_C" "3k3" 43.5000mm 36.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R4_S1_2_C" "3k3" 43.5000mm 36.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6012,7 +6012,7 @@ Element["hidename,onsolder" "0603-boxed" "R4_S1_2_C" "3k3" 43.5000mm 36.7500mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R4_S1_3_C" "3k3" 43.5000mm 47.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R4_S1_3_C" "3k3" 43.5000mm 47.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6028,7 +6028,7 @@ Element["hidename,onsolder" "0603-boxed" "R4_S1_3_C" "3k3" 43.5000mm 47.2500mm 0
 
 	)
 
-Element["hidename" "0603" "R2_IO_0_R" "10k" 74.2500mm 27.0000mm 31.50mil -31.50mil 3 100 ""]
+Element["hidename" "0603" "R2_IO_0_R" "10k" 74.2500mm 27.0000mm 31.50mil -31.50mil 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6040,7 +6040,7 @@ Element["hidename" "0603" "R2_IO_0_R" "10k" 74.2500mm 27.0000mm 31.50mil -31.50m
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S3_DB_R" "3k3" 78.2500mm 54.0000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R1_S3_DB_R" "3k3" 78.2500mm 54.0000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6056,7 +6056,7 @@ Element["hidename" "0603-boxed" "R1_S3_DB_R" "3k3" 78.2500mm 54.0000mm 0.8000mm 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S4_DB_R" "3k3" 82.7500mm 55.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S4_DB_R" "3k3" 82.7500mm 55.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6072,7 +6072,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S4_DB_R" "3k3" 82.7500mm 55.2500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S4_DB_R" "2N7002P" 82.2500mm 51.0000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S4_DB_R" "2N7002P" 82.2500mm 51.0000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6092,7 +6092,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S4_DB_R" "2N7002P" 82.2500mm 51.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S7_DB_R" "2N7002P" 66.2500mm 54.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S7_DB_R" "2N7002P" 66.2500mm 54.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6112,7 +6112,7 @@ Element["hidename" "sot23-nmos" "M1_S7_DB_R" "2N7002P" 66.2500mm 54.5000mm 0.000
 
 	)
 
-Element["hidename" "sot323-bjt" "Q3_3_0_R" "PDTC124TU" 82.2500mm 23.0000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "sot323-bjt" "Q3_3_0_R" "PDTC124TU" 82.2500mm 23.0000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -6133,7 +6133,7 @@ Element["hidename" "sot323-bjt" "Q3_3_0_R" "PDTC124TU" 82.2500mm 23.0000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S3_DB_R" "2N7002P" 82.2500mm 54.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S3_DB_R" "2N7002P" 82.2500mm 54.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6153,7 +6153,7 @@ Element["hidename" "sot23-nmos" "M1_S3_DB_R" "2N7002P" 82.2500mm 54.5000mm 0.000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S3_DB_R" "2N7002P" 82.2500mm 51.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S3_DB_R" "2N7002P" 82.2500mm 51.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6173,7 +6173,7 @@ Element["hidename" "sot23-nmos" "M2_S3_DB_R" "2N7002P" 82.2500mm 51.0000mm 0.000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_I3" "3k3" 115.2500mm 50.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_I3" "3k3" 115.2500mm 50.7500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6189,7 +6189,7 @@ Element["hidename" "0603-boxed" "R1_I3" "3k3" 115.2500mm 50.7500mm -0.8000mm -0.
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_F3" "3k3" 119.2500mm 54.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_F3" "3k3" 119.2500mm 54.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6205,7 +6205,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_F3" "3k3" 119.2500mm 54.2500mm 0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S1_F3" "2N7002P" 111.2500mm 50.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S1_F3" "2N7002P" 111.2500mm 50.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6225,7 +6225,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S1_F3" "2N7002P" 111.2500mm 50.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S1_F3" "2N7002P" 111.2500mm 47.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_S1_F3" "2N7002P" 111.2500mm 47.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6245,7 +6245,7 @@ Element["hidename" "sot23-nmos" "M3_S1_F3" "2N7002P" 111.2500mm 47.2500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_F3" "2N7002P" 111.2500mm 50.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_F3" "2N7002P" 111.2500mm 50.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6265,7 +6265,7 @@ Element["hidename" "sot23-nmos" "M1_S1_F3" "2N7002P" 111.2500mm 50.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_F3" "2N7002P" 111.2500mm 47.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_F3" "2N7002P" 111.2500mm 47.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6285,7 +6285,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_F3" "2N7002P" 111.2500mm 47.2500
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S2_F3" "3k3" 119.2500mm 50.7500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S2_F3" "3k3" 119.2500mm 50.7500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6301,7 +6301,7 @@ Element["hidename" "0603-boxed" "R1_S2_F3" "3k3" 119.2500mm 50.7500mm 0.8000mm 0
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S2_F3" "2N7002P" 115.2500mm 47.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S2_F3" "2N7002P" 115.2500mm 47.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6321,7 +6321,7 @@ Element["hidename" "sot23-nmos" "M2_S2_F3" "2N7002P" 115.2500mm 47.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2_F3" "2N7002P" 115.2500mm 47.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2_F3" "2N7002P" 115.2500mm 47.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6341,7 +6341,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2_F3" "2N7002P" 115.2500mm 47.2500
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S3_F3" "3k3" 119.2500mm 54.2500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S3_F3" "3k3" 119.2500mm 54.2500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6357,7 +6357,7 @@ Element["hidename" "0603-boxed" "R1_S3_F3" "3k3" 119.2500mm 54.2500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S3_F3" "2N7002P" 119.2500mm 47.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S3_F3" "2N7002P" 119.2500mm 47.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6377,7 +6377,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S3_F3" "2N7002P" 119.2500mm 47.2500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S3_F3" "2N7002P" 119.2500mm 50.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S3_F3" "2N7002P" 119.2500mm 50.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6397,7 +6397,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S3_F3" "2N7002P" 119.2500mm 50.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S3_F3" "2N7002P" 119.2500mm 47.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_S3_F3" "2N7002P" 119.2500mm 47.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6417,7 +6417,7 @@ Element["hidename" "sot23-nmos" "M3_S3_F3" "2N7002P" 119.2500mm 47.2500mm 0.0000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S4_F3" "3k3" 115.2500mm 54.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_S4_F3" "3k3" 115.2500mm 54.2500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6433,7 +6433,7 @@ Element["hidename" "0603-boxed" "R1_S4_F3" "3k3" 115.2500mm 54.2500mm -0.8000mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S4_F3" "2N7002P" 111.2500mm 54.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S4_F3" "2N7002P" 111.2500mm 54.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6453,7 +6453,7 @@ Element["hidename" "sot23-nmos" "M1_S4_F3" "2N7002P" 111.2500mm 54.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_F1" "3.3k" 115.2500mm 33.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_F1" "3.3k" 115.2500mm 33.2500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6469,7 +6469,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_F1" "3.3k" 115.2500mm 33.2500mm -0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_F1" "2N7002P" 115.2500mm 29.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_F1" "2N7002P" 115.2500mm 29.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6489,7 +6489,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_F1" "2N7002P" 115.2500mm 29.7500mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_F1" "2N7002P" 115.2500mm 29.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M2_F1" "2N7002P" 115.2500mm 29.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6509,7 +6509,7 @@ Element["hidename" "sot23-nmos" "M2_F1" "2N7002P" 115.2500mm 29.7500mm 0.0000 0.
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S4_F1" "3k3" 115.2500mm 33.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_S4_F1" "3k3" 115.2500mm 33.2500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6525,7 +6525,7 @@ Element["hidename" "0603-boxed" "R1_S4_F1" "3k3" 115.2500mm 33.2500mm -0.8000mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S4_F1" "2N7002P" 111.2500mm 33.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S4_F1" "2N7002P" 111.2500mm 33.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6545,7 +6545,7 @@ Element["hidename" "sot23-nmos" "M1_S4_F1" "2N7002P" 111.2500mm 33.2500mm 0.0000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S2_F1" "3k3" 119.2500mm 29.7500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S2_F1" "3k3" 119.2500mm 29.7500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6561,7 +6561,7 @@ Element["hidename" "0603-boxed" "R1_S2_F1" "3k3" 119.2500mm 29.7500mm 0.8000mm 0
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S2_F1" "2N7002P" 115.2500mm 26.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S2_F1" "2N7002P" 115.2500mm 26.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6581,7 +6581,7 @@ Element["hidename" "sot23-nmos" "M2_S2_F1" "2N7002P" 115.2500mm 26.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2_F1" "2N7002P" 115.2500mm 26.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2_F1" "2N7002P" 115.2500mm 26.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6601,7 +6601,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2_F1" "2N7002P" 115.2500mm 26.2500
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S3_F1" "3k3" 119.2500mm 33.2500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S3_F1" "3k3" 119.2500mm 33.2500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6617,7 +6617,7 @@ Element["hidename" "0603-boxed" "R1_S3_F1" "3k3" 119.2500mm 33.2500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S3_F1" "2N7002P" 119.2500mm 29.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S3_F1" "2N7002P" 119.2500mm 29.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6637,7 +6637,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S3_F1" "2N7002P" 119.2500mm 29.7500
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_F1" "3k3" 119.3000mm 33.2500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_F1" "3k3" 119.3000mm 33.2500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6653,7 +6653,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_F1" "3k3" 119.3000mm 33.2500mm 0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_F1" "2N7002P" 111.2500mm 26.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_F1" "2N7002P" 111.2500mm 26.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6673,7 +6673,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_F1" "2N7002P" 111.2500mm 26.2500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S1_F1" "2N7002P" 111.2500mm 29.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S1_F1" "2N7002P" 111.2500mm 29.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6693,7 +6693,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S1_F1" "2N7002P" 111.2500mm 29.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S1_F1" "2N7002P" 111.2500mm 26.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_S1_F1" "2N7002P" 111.2500mm 26.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6713,7 +6713,7 @@ Element["hidename" "sot23-nmos" "M3_S1_F1" "2N7002P" 111.2500mm 26.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S3_F1" "2N7002P" 119.2500mm 26.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S3_F1" "2N7002P" 119.2500mm 26.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6733,7 +6733,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S3_F1" "2N7002P" 119.2500mm 26.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S3_F1" "2N7002P" 119.2500mm 26.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_S3_F1" "2N7002P" 119.2500mm 26.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6753,7 +6753,7 @@ Element["hidename" "sot23-nmos" "M3_S3_F1" "2N7002P" 119.2500mm 26.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_F0" "3.3k" 115.2500mm 22.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_F0" "3.3k" 115.2500mm 22.7500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -6769,7 +6769,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_F0" "3.3k" 115.2500mm 22.7500mm -0.
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S4_F0" "2N7002P" 111.2500mm 22.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S4_F0" "2N7002P" 111.2500mm 22.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6789,7 +6789,7 @@ Element["hidename" "sot23-nmos" "M1_S4_F0" "2N7002P" 111.2500mm 22.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_I0" "2N7002P" 111.2500mm 22.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_I0" "2N7002P" 111.2500mm 22.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6809,7 +6809,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_I0" "2N7002P" 111.2500mm 22.7500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2_F0" "2N7002P" 115.2500mm 15.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2_F0" "2N7002P" 115.2500mm 15.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6829,7 +6829,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2_F0" "2N7002P" 115.2500mm 15.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S2_F0" "2N7002P" 115.2500mm 15.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S2_F0" "2N7002P" 115.2500mm 15.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6849,7 +6849,7 @@ Element["hidename" "sot23-nmos" "M2_S2_F0" "2N7002P" 115.2500mm 15.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_F0" "2N7002P" 111.2500mm 15.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_F0" "2N7002P" 111.2500mm 15.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6869,7 +6869,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_F0" "2N7002P" 111.2500mm 15.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S1_F0" "2N7002P" 111.2500mm 15.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_S1_F0" "2N7002P" 111.2500mm 15.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6889,7 +6889,7 @@ Element["hidename" "sot23-nmos" "M3_S1_F0" "2N7002P" 111.2500mm 15.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_F0" "2N7002P" 115.2500mm 19.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_F0" "2N7002P" 115.2500mm 19.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6909,7 +6909,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_F0" "2N7002P" 115.2500mm 19.2500mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_F0" "2N7002P" 115.2500mm 19.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M2_F0" "2N7002P" 115.2500mm 19.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6929,7 +6929,7 @@ Element["hidename" "sot23-nmos" "M2_F0" "2N7002P" 115.2500mm 19.2500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S1_F0" "2N7002P" 111.2500mm 19.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S1_F0" "2N7002P" 111.2500mm 19.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6949,7 +6949,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S1_F0" "2N7002P" 111.2500mm 19.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_F0" "2N7002P" 111.2500mm 19.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_F0" "2N7002P" 111.2500mm 19.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6969,7 +6969,7 @@ Element["hidename" "sot23-nmos" "M1_S1_F0" "2N7002P" 111.2500mm 19.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S3_F0" "2N7002P" 119.2500mm 15.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S3_F0" "2N7002P" 119.2500mm 15.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -6989,7 +6989,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S3_F0" "2N7002P" 119.2500mm 15.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S3_F0" "2N7002P" 119.2500mm 15.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_S3_F0" "2N7002P" 119.2500mm 15.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7009,7 +7009,7 @@ Element["hidename" "sot23-nmos" "M3_S3_F0" "2N7002P" 119.2500mm 15.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S3_F0" "2N7002P" 119.2500mm 19.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S3_F0" "2N7002P" 119.2500mm 19.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7029,7 +7029,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S3_F0" "2N7002P" 119.2500mm 19.2500
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S4_F0" "3k3" 115.2500mm 22.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_S4_F0" "3k3" 115.2500mm 22.7500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7045,7 +7045,7 @@ Element["hidename" "0603-boxed" "R1_S4_F0" "3k3" 115.2500mm 22.7500mm -0.8000mm 
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S3_F0" "3k3" 119.2500mm 22.7500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S3_F0" "3k3" 119.2500mm 22.7500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7061,7 +7061,7 @@ Element["hidename" "0603-boxed" "R1_S3_F0" "3k3" 119.2500mm 22.7500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_F0" "3k3" 119.2500mm 22.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_F0" "3k3" 119.2500mm 22.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7077,7 +7077,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_F0" "3k3" 119.2500mm 22.7500mm 0
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S2_F0" "3k3" 119.2500mm 19.2500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S2_F0" "3k3" 119.2500mm 19.2500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7093,7 +7093,7 @@ Element["hidename" "0603-boxed" "R1_S2_F0" "3k3" 119.2500mm 19.2500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "0603" "R5" "3k3" 100.5000mm 52.0000mm -31.50mil -31.50mil 1 100 "auto"]
+Element["hidename,onsolder" "0603" "R5" "3k3" 100.5000mm 52.0000mm -31.50mil -31.50mil 1 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7105,7 +7105,7 @@ Element["hidename,onsolder" "0603" "R5" "3k3" 100.5000mm 52.0000mm -31.50mil -31
 
 	)
 
-Element["hidename,onsolder" "0603" "R9" "1k" 101.5000mm 40.2500mm -31.50mil -31.50mil 1 100 "auto"]
+Element["hidename,onsolder" "0603" "R9" "1k" 101.5000mm 40.2500mm -31.50mil -31.50mil 1 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7117,7 +7117,7 @@ Element["hidename,onsolder" "0603" "R9" "1k" 101.5000mm 40.2500mm -31.50mil -31.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_I1" "2N7002P" 111.2500mm 33.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_I1" "2N7002P" 111.2500mm 33.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7137,7 +7137,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_I1" "2N7002P" 111.2500mm 33.2500mm 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I1" "3k3" 106.6500mm 29.5500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I1" "3k3" 106.6500mm 29.5500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7153,7 +7153,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_I1" "3k3" 106.6500mm 29.5500mm 0.80
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_F1" "2N7002P" 111.2500mm 29.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_F1" "2N7002P" 111.2500mm 29.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7173,7 +7173,7 @@ Element["hidename" "sot23-nmos" "M1_S1_F1" "2N7002P" 111.2500mm 29.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_F2" "3k3" 119.2500mm 43.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_F2" "3k3" 119.2500mm 43.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7189,7 +7189,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_F2" "3k3" 119.2500mm 43.7500mm 0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_F2" "2N7002P" 115.2500mm 40.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_F2" "2N7002P" 115.2500mm 40.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7209,7 +7209,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_F2" "2N7002P" 115.2500mm 40.2500mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_F2" "2N7002P" 115.2500mm 40.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M2_F2" "2N7002P" 115.2500mm 40.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7229,7 +7229,7 @@ Element["hidename" "sot23-nmos" "M2_F2" "2N7002P" 115.2500mm 40.2500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_S1_F2" "2N7002P" 111.2500mm 36.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_S1_F2" "2N7002P" 111.2500mm 36.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7249,7 +7249,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_S1_F2" "2N7002P" 111.2500mm 36.7500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S1_F2" "2N7002P" 111.2500mm 40.2500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S1_F2" "2N7002P" 111.2500mm 40.2500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7269,7 +7269,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S1_F2" "2N7002P" 111.2500mm 40.2500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S1_F2" "2N7002P" 111.2500mm 36.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M3_S1_F2" "2N7002P" 111.2500mm 36.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7289,7 +7289,7 @@ Element["hidename" "sot23-nmos" "M3_S1_F2" "2N7002P" 111.2500mm 36.7500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_F2" "2N7002P" 111.2500mm 40.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_F2" "2N7002P" 111.2500mm 40.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7309,7 +7309,7 @@ Element["hidename" "sot23-nmos" "M1_S1_F2" "2N7002P" 111.2500mm 40.2500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_F2" "3.3k" 115.2500mm 43.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_F2" "3.3k" 115.2500mm 43.7500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7325,7 +7325,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_F2" "3.3k" 115.2500mm 43.7500mm -0.
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S2_F2" "3k3" 119.2500mm 40.2500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S2_F2" "3k3" 119.2500mm 40.2500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7341,7 +7341,7 @@ Element["hidename" "0603-boxed" "R1_S2_F2" "3k3" 119.2500mm 40.2500mm 0.8000mm 0
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S2_F2" "2N7002P" 115.2500mm 36.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S2_F2" "2N7002P" 115.2500mm 36.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7361,7 +7361,7 @@ Element["hidename" "sot23-nmos" "M2_S2_F2" "2N7002P" 115.2500mm 36.7500mm 0.0000
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S3_F2" "3k3" 119.2500mm 43.7500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S3_F2" "3k3" 119.2500mm 43.7500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7377,7 +7377,7 @@ Element["hidename" "0603-boxed" "R1_S3_F2" "3k3" 119.2500mm 43.7500mm 0.8000mm 0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S3_F2" "2N7002P" 119.2500mm 36.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S3_F2" "2N7002P" 119.2500mm 36.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7397,7 +7397,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S3_F2" "2N7002P" 119.2500mm 36.7500
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S3_F2" "2N7002P" 119.2500mm 36.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_S3_F2" "2N7002P" 119.2500mm 36.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7417,7 +7417,7 @@ Element["hidename" "sot23-nmos" "M3_S3_F2" "2N7002P" 119.2500mm 36.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S3_F2" "2N7002P" 119.2500mm 40.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S3_F2" "2N7002P" 119.2500mm 40.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7437,7 +7437,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S3_F2" "2N7002P" 119.2500mm 40.2500
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2_F2" "2N7002P" 115.2500mm 36.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2_F2" "2N7002P" 115.2500mm 36.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7457,7 +7457,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2_F2" "2N7002P" 115.2500mm 36.7500
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S4_F2" "3k3" 115.2500mm 43.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_S4_F2" "3k3" 115.2500mm 43.7500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7473,7 +7473,7 @@ Element["hidename" "0603-boxed" "R1_S4_F2" "3k3" 115.2500mm 43.7500mm -0.8000mm 
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S4_F2" "2N7002P" 111.2500mm 43.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S4_F2" "2N7002P" 111.2500mm 43.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7493,7 +7493,7 @@ Element["hidename" "sot23-nmos" "M1_S4_F2" "2N7002P" 111.2500mm 43.7500mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I2" "3k3" 106.6500mm 35.3500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I2" "3k3" 106.6500mm 35.3500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7529,7 +7529,7 @@ Element["onsolder" "sot23-nmos" "M1_I2" "2N7002P" 111.2500mm 43.7500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_I3" "2N7002P" 111.2500mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_I3" "2N7002P" 111.2500mm 54.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7549,7 +7549,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_I3" "2N7002P" 111.2500mm 54.2500mm 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I_IO_0_R" "3k3" 97.2500mm 16.0000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I_IO_0_R" "3k3" 97.2500mm 16.0000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7565,7 +7565,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_I_IO_0_R" "3k3" 97.2500mm 16.0000mm
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I_IO_2_R" "3k3" 97.2500mm 37.0000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I_IO_2_R" "3k3" 97.2500mm 37.0000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7581,7 +7581,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_I_IO_2_R" "3k3" 97.2500mm 37.0000mm
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_I_IO_2_R" "2N7002P" 97.2500mm 37.0000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_I_IO_2_R" "2N7002P" 97.2500mm 37.0000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7601,7 +7601,7 @@ Element["hidename" "sot23-nmos" "M1_I_IO_2_R" "2N7002P" 97.2500mm 37.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I_IO_3_R" "3k3" 97.2500mm 47.5000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I_IO_3_R" "3k3" 97.2500mm 47.5000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7617,7 +7617,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_I_IO_3_R" "3k3" 97.2500mm 47.5000mm
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_I_IO_3_R" "2N7002P" 97.2500mm 47.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_I_IO_3_R" "2N7002P" 97.2500mm 47.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7637,7 +7637,7 @@ Element["hidename" "sot23-nmos" "M1_I_IO_3_R" "2N7002P" 97.2500mm 47.5000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R2_L_IO_0_R" "3k3" 93.2500mm 19.5000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R2_L_IO_0_R" "3k3" 93.2500mm 19.5000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7653,7 +7653,7 @@ Element["hidename,onsolder" "0603-boxed" "R2_L_IO_0_R" "3k3" 93.2500mm 19.5000mm
 
 	)
 
-Element["hidename" "0603-boxed" "R1_L_IO_0_R" "3k3" 93.2500mm 19.5000mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_L_IO_0_R" "3k3" 93.2500mm 19.5000mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7669,7 +7669,7 @@ Element["hidename" "0603-boxed" "R1_L_IO_0_R" "3k3" 93.2500mm 19.5000mm -0.8000m
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_0_R" "2N7002P" 93.2500mm 23.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_0_R" "2N7002P" 93.2500mm 23.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7689,7 +7689,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_0_R" "2N7002P" 93.2500mm 23.00
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_L_IO_0_R" "2N7002P" 93.2500mm 23.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_L_IO_0_R" "2N7002P" 93.2500mm 23.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7709,7 +7709,7 @@ Element["hidename" "sot23-nmos" "M3_L_IO_0_R" "2N7002P" 93.2500mm 23.0000mm 0.00
 
 	)
 
-Element["hidename" "0603-boxed" "R3_IO_2_R" "3k3" 89.2500mm 37.0000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R3_IO_2_R" "3k3" 89.2500mm 37.0000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7725,7 +7725,7 @@ Element["hidename" "0603-boxed" "R3_IO_2_R" "3k3" 89.2500mm 37.0000mm 0.8000mm -
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_2_R" "3k3" 93.2500mm 37.0000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_2_R" "3k3" 93.2500mm 37.0000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7741,7 +7741,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_2_R" "3k3" 93.2500mm 37.0000mm -0.8
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_2_R" "2N7002P" 97.2500mm 44.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_2_R" "2N7002P" 97.2500mm 44.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7761,7 +7761,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_2_R" "2N7002P" 97.2500mm 44.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_2_R" "2N7002P" 97.2500mm 40.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_2_R" "2N7002P" 97.2500mm 40.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7781,7 +7781,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_2_R" "2N7002P" 97.2500mm 40.50
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_L_IO_2_R" "2N7002P" 97.2500mm 40.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_L_IO_2_R" "2N7002P" 97.2500mm 40.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7801,7 +7801,7 @@ Element["hidename" "sot23-nmos" "M1_L_IO_2_R" "2N7002P" 97.2500mm 40.5000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R2_L_IO_2_R" "3k3" 93.2500mm 40.5000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R2_L_IO_2_R" "3k3" 93.2500mm 40.5000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7817,7 +7817,7 @@ Element["hidename,onsolder" "0603-boxed" "R2_L_IO_2_R" "3k3" 93.2500mm 40.5000mm
 
 	)
 
-Element["hidename" "0603-boxed" "R1_L_IO_2_R" "3k3" 93.2500mm 40.5000mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_L_IO_2_R" "3k3" 93.2500mm 40.5000mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7833,7 +7833,7 @@ Element["hidename" "0603-boxed" "R1_L_IO_2_R" "3k3" 93.2500mm 40.5000mm -0.8000m
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_L_IO_2_R" "2N7002P" 93.2500mm 44.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_L_IO_2_R" "2N7002P" 93.2500mm 44.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7853,7 +7853,7 @@ Element["hidename" "sot23-nmos" "M3_L_IO_2_R" "2N7002P" 93.2500mm 44.0000mm 0.00
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_IO_2_R" "2N7002P" 89.2500mm 44.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_IO_2_R" "2N7002P" 89.2500mm 44.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -7873,7 +7873,7 @@ Element["hidename" "sot23-nmos" "M3_IO_2_R" "2N7002P" 89.2500mm 44.0000mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_IO_2_R" "PDTC124TU" 89.2500mm 40.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_IO_2_R" "PDTC124TU" 89.2500mm 40.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -7894,7 +7894,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_IO_2_R" "PDTC124TU" 89.2500mm 40.50
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_IO_2_R" "PDTC124TU" 89.2500mm 40.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_IO_2_R" "PDTC124TU" 89.2500mm 40.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -7915,7 +7915,7 @@ Element["hidename" "sot323-bjt" "Q1_IO_2_R" "PDTC124TU" 89.2500mm 40.5000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_2_R" "PDTC124TU" 89.2500mm 37.0000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_2_R" "PDTC124TU" 89.2500mm 37.0000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -7936,7 +7936,7 @@ Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_2_R" "PDTC124TU" 89.2500mm 37.0
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_2_R" "PDTC124TU" 93.2500mm 37.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_2_R" "PDTC124TU" 93.2500mm 37.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -7957,7 +7957,7 @@ Element["hidename" "sot323-bjt" "Q1_2_R" "PDTC124TU" 93.2500mm 37.0000mm 0.0000 
 
 	)
 
-Element["hidename" "0603-boxed" "R3_IO_3_R" "3k3" 89.2500mm 47.5000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R3_IO_3_R" "3k3" 89.2500mm 47.5000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -7973,7 +7973,7 @@ Element["hidename" "0603-boxed" "R3_IO_3_R" "3k3" 89.2500mm 47.5000mm 0.8000mm -
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_IO_3_R" "PDTC124TU" 89.2500mm 51.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_IO_3_R" "PDTC124TU" 89.2500mm 51.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -7994,7 +7994,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_IO_3_R" "PDTC124TU" 89.2500mm 51.00
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_IO_3_R" "PDTC124TU" 89.2500mm 51.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_IO_3_R" "PDTC124TU" 89.2500mm 51.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8015,7 +8015,7 @@ Element["hidename" "sot323-bjt" "Q1_IO_3_R" "PDTC124TU" 89.2500mm 51.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_3_R" "PDTC124TU" 89.2500mm 47.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_3_R" "PDTC124TU" 89.2500mm 47.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8036,7 +8036,7 @@ Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_3_R" "PDTC124TU" 89.2500mm 47.5
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_IO_3_R" "2N7002P" 89.2500mm 54.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_IO_3_R" "2N7002P" 89.2500mm 54.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8056,7 +8056,7 @@ Element["hidename" "sot23-nmos" "M3_IO_3_R" "2N7002P" 89.2500mm 54.5000mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_L_IO_3_R" "2N7002P" 97.2500mm 54.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_L_IO_3_R" "2N7002P" 97.2500mm 54.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8076,7 +8076,7 @@ Element["hidename" "sot23-nmos" "M2_L_IO_3_R" "2N7002P" 97.2500mm 54.5000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_3_R" "2N7002P" 97.2500mm 51.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_3_R" "2N7002P" 97.2500mm 51.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8096,7 +8096,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_3_R" "2N7002P" 97.2500mm 51.00
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_L_IO_3_R" "2N7002P" 97.2500mm 51.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_L_IO_3_R" "2N7002P" 97.2500mm 51.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8116,7 +8116,7 @@ Element["hidename" "sot23-nmos" "M1_L_IO_3_R" "2N7002P" 97.2500mm 51.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R2_L_IO_3_R" "3k3" 93.2500mm 51.0000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R2_L_IO_3_R" "3k3" 93.2500mm 51.0000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8132,7 +8132,7 @@ Element["hidename,onsolder" "0603-boxed" "R2_L_IO_3_R" "3k3" 93.2500mm 51.0000mm
 
 	)
 
-Element["hidename" "0603-boxed" "R1_L_IO_3_R" "3k3" 93.2500mm 51.0000mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_L_IO_3_R" "3k3" 93.2500mm 51.0000mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8148,7 +8148,7 @@ Element["hidename" "0603-boxed" "R1_L_IO_3_R" "3k3" 93.2500mm 51.0000mm -0.8000m
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_3_R" "2N7002P" 93.2500mm 54.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_3_R" "2N7002P" 93.2500mm 54.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8168,7 +8168,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_3_R" "2N7002P" 93.2500mm 54.50
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_L_IO_3_R" "2N7002P" 93.2500mm 54.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_L_IO_3_R" "2N7002P" 93.2500mm 54.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8188,7 +8188,7 @@ Element["hidename" "sot23-nmos" "M3_L_IO_3_R" "2N7002P" 93.2500mm 54.5000mm 0.00
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_3_R" "PDTC124TU" 93.2500mm 47.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_3_R" "PDTC124TU" 93.2500mm 47.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8209,7 +8209,7 @@ Element["hidename" "sot323-bjt" "Q1_3_R" "PDTC124TU" 93.2500mm 47.5000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_3_R" "3k3" 93.3000mm 47.4500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_3_R" "3k3" 93.3000mm 47.4500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8225,7 +8225,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_3_R" "3k3" 93.3000mm 47.4500mm -0.8
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_IO_0_R" "2N7002P" 89.2500mm 23.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_IO_0_R" "2N7002P" 89.2500mm 23.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8245,7 +8245,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_IO_0_R" "2N7002P" 89.2500mm 23.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_IO_0_R" "2N7002P" 89.2500mm 23.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_IO_0_R" "2N7002P" 89.2500mm 23.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8265,7 +8265,7 @@ Element["hidename" "sot23-nmos" "M3_IO_0_R" "2N7002P" 89.2500mm 23.0000mm 0.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_0_R" "2N7002P" 97.2500mm 23.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_0_R" "2N7002P" 97.2500mm 23.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8285,7 +8285,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_0_R" "2N7002P" 97.2500mm 23.00
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_L_IO_0_R" "2N7002P" 97.2500mm 23.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_L_IO_0_R" "2N7002P" 97.2500mm 23.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8305,7 +8305,7 @@ Element["hidename" "sot23-nmos" "M2_L_IO_0_R" "2N7002P" 97.2500mm 23.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_0_R" "2N7002P" 97.2500mm 19.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_0_R" "2N7002P" 97.2500mm 19.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8325,7 +8325,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_0_R" "2N7002P" 97.2500mm 19.50
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_L_IO_0_R" "2N7002P" 97.2500mm 19.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_L_IO_0_R" "2N7002P" 97.2500mm 19.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8345,7 +8345,7 @@ Element["hidename" "sot23-nmos" "M1_L_IO_0_R" "2N7002P" 97.2500mm 19.5000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_IO_0_R" "PDTC124TU" 89.2500mm 19.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_IO_0_R" "PDTC124TU" 89.2500mm 19.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8366,7 +8366,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_IO_0_R" "PDTC124TU" 89.2500mm 19.50
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_IO_0_R" "PDTC124TU" 89.2500mm 19.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_IO_0_R" "PDTC124TU" 89.2500mm 19.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8387,7 +8387,7 @@ Element["hidename" "sot323-bjt" "Q1_IO_0_R" "PDTC124TU" 89.2500mm 19.5000mm 0.00
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_0_R" "PDTC124TU" 93.2500mm 16.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_0_R" "PDTC124TU" 93.2500mm 16.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8408,7 +8408,7 @@ Element["hidename" "sot323-bjt" "Q1_0_R" "PDTC124TU" 93.2500mm 16.0000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_0_R" "PDTC124TU" 89.2500mm 16.0000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_0_R" "PDTC124TU" 89.2500mm 16.0000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8429,7 +8429,7 @@ Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_0_R" "PDTC124TU" 89.2500mm 16.0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_0_R" "3k3" 93.2500mm 16.0000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_0_R" "3k3" 93.2500mm 16.0000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8445,7 +8445,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_0_R" "3k3" 93.2500mm 16.0000mm -0.8
 
 	)
 
-Element["hidename" "0603-boxed" "R3_IO_0_R" "3k3" 89.2500mm 16.0000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R3_IO_0_R" "3k3" 89.2500mm 16.0000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8461,7 +8461,7 @@ Element["hidename" "0603-boxed" "R3_IO_0_R" "3k3" 89.2500mm 16.0000mm 0.8000mm -
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_I_IO_0_R" "2N7002P" 97.2500mm 16.0000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_I_IO_0_R" "2N7002P" 97.2500mm 16.0000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8481,7 +8481,7 @@ Element["hidename" "sot23-nmos" "M1_I_IO_0_R" "2N7002P" 97.2500mm 16.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_I_IO_1_R" "3k3" 97.2500mm 26.5000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_I_IO_1_R" "3k3" 97.2500mm 26.5000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8497,7 +8497,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_I_IO_1_R" "3k3" 97.2500mm 26.5000mm
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_I_IO_1_R" "2N7002P" 97.2500mm 26.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_I_IO_1_R" "2N7002P" 97.2500mm 26.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8517,7 +8517,7 @@ Element["hidename" "sot23-nmos" "M1_I_IO_1_R" "2N7002P" 97.2500mm 26.5000mm 0.00
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_1_R" "PDTC124TU" 93.2500mm 26.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_1_R" "PDTC124TU" 93.2500mm 26.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8538,7 +8538,7 @@ Element["hidename" "sot323-bjt" "Q1_1_R" "PDTC124TU" 93.2500mm 26.5000mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_1_R" "3k3" 93.2500mm 26.5000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_1_R" "3k3" 93.2500mm 26.5000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8554,7 +8554,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_1_R" "3k3" 93.2500mm 26.5000mm -0.8
 
 	)
 
-Element["hidename" "0603-boxed" "R3_IO_1_R" "3k3" 89.2500mm 26.5000mm 0.8000mm -0.8000mm 3 100 ""]
+Element["hidename" "0603-boxed" "R3_IO_1_R" "3k3" 89.2500mm 26.5000mm 0.8000mm -0.8000mm 3 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8570,7 +8570,7 @@ Element["hidename" "0603-boxed" "R3_IO_1_R" "3k3" 89.2500mm 26.5000mm 0.8000mm -
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_1_R" "PDTC124TU" 89.2500mm 26.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_1_R" "PDTC124TU" 89.2500mm 26.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8591,7 +8591,7 @@ Element["hidename,onsolder" "sot323-bjt" "Qsr_IO_1_R" "PDTC124TU" 89.2500mm 26.5
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_1_R" "2N7002P" 97.2500mm 30.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_1_R" "2N7002P" 97.2500mm 30.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8611,7 +8611,7 @@ Element["hidename,onsolder" "sot23-nmos" "M5_L_IO_1_R" "2N7002P" 97.2500mm 30.00
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_L_IO_1_R" "2N7002P" 97.2500mm 30.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_L_IO_1_R" "2N7002P" 97.2500mm 30.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8631,7 +8631,7 @@ Element["hidename" "sot23-nmos" "M1_L_IO_1_R" "2N7002P" 97.2500mm 30.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R2_L_IO_1_R" "3k3" 93.2500mm 30.0000mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R2_L_IO_1_R" "3k3" 93.2500mm 30.0000mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8647,7 +8647,7 @@ Element["hidename,onsolder" "0603-boxed" "R2_L_IO_1_R" "3k3" 93.2500mm 30.0000mm
 
 	)
 
-Element["hidename" "0603-boxed" "R1_L_IO_1_R" "3k3" 93.2500mm 30.0000mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_L_IO_1_R" "3k3" 93.2500mm 30.0000mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8663,7 +8663,7 @@ Element["hidename" "0603-boxed" "R1_L_IO_1_R" "3k3" 93.2500mm 30.0000mm -0.8000m
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q2_IO_1_R" "PDTC124TU" 89.2500mm 30.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q2_IO_1_R" "PDTC124TU" 89.2500mm 30.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8684,7 +8684,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q2_IO_1_R" "PDTC124TU" 89.2500mm 30.00
 
 	)
 
-Element["hidename" "sot323-bjt" "Q1_IO_1_R" "PDTC124TU" 89.2500mm 30.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot323-bjt" "Q1_IO_1_R" "PDTC124TU" 89.2500mm 30.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -8705,7 +8705,7 @@ Element["hidename" "sot323-bjt" "Q1_IO_1_R" "PDTC124TU" 89.2500mm 30.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_1_R" "2N7002P" 97.2500mm 33.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_1_R" "2N7002P" 97.2500mm 33.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8725,7 +8725,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_1_R" "2N7002P" 97.2500mm 33.50
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_L_IO_1_R" "2N7002P" 97.2500mm 33.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_L_IO_1_R" "2N7002P" 97.2500mm 33.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8745,7 +8745,7 @@ Element["hidename" "sot23-nmos" "M2_L_IO_1_R" "2N7002P" 97.2500mm 33.5000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_1_R" "2N7002P" 93.2500mm 33.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_1_R" "2N7002P" 93.2500mm 33.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8765,7 +8765,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_1_R" "2N7002P" 93.2500mm 33.50
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_L_IO_1_R" "2N7002P" 93.2500mm 33.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_L_IO_1_R" "2N7002P" 93.2500mm 33.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8785,7 +8785,7 @@ Element["hidename" "sot23-nmos" "M3_L_IO_1_R" "2N7002P" 93.2500mm 33.5000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_IO_1_R" "2N7002P" 89.2500mm 33.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_IO_1_R" "2N7002P" 89.2500mm 33.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8805,7 +8805,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_IO_1_R" "2N7002P" 89.2500mm 33.5000
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_IO_1_R" "2N7002P" 89.2500mm 33.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_IO_1_R" "2N7002P" 89.2500mm 33.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8825,7 +8825,7 @@ Element["hidename" "sot23-nmos" "M3_IO_1_R" "2N7002P" 89.2500mm 33.5000mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_L_IO_2_R" "2N7002P" 97.2500mm 44.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_L_IO_2_R" "2N7002P" 97.2500mm 44.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8845,7 +8845,7 @@ Element["hidename" "sot23-nmos" "M2_L_IO_2_R" "2N7002P" 97.2500mm 44.0000mm 0.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_IO_2_R" "2N7002P" 89.2500mm 44.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_IO_2_R" "2N7002P" 89.2500mm 44.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8865,7 +8865,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_IO_2_R" "2N7002P" 89.2500mm 44.0000
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_2_R" "2N7002P" 93.2500mm 44.0000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_2_R" "2N7002P" 93.2500mm 44.0000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8885,7 +8885,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_L_IO_2_R" "2N7002P" 93.2500mm 44.00
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_3_R" "2N7002P" 97.2500mm 54.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_3_R" "2N7002P" 97.2500mm 54.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8905,7 +8905,7 @@ Element["hidename,onsolder" "sot23-nmos" "M6_L_IO_3_R" "2N7002P" 97.2500mm 54.50
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M4_IO_3_R" "2N7002P" 89.2500mm 54.5000mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M4_IO_3_R" "2N7002P" 89.2500mm 54.5000mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -8925,7 +8925,7 @@ Element["hidename,onsolder" "sot23-nmos" "M4_IO_3_R" "2N7002P" 89.2500mm 54.5000
 
 	)
 
-Element["hidename" "0603-boxed" "RCI" "3k3" 116.5000mm 11.5000mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "RCI" "3k3" 116.5000mm 11.5000mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8941,7 +8941,7 @@ Element["hidename" "0603-boxed" "RCI" "3k3" 116.5000mm 11.5000mm -0.8000mm -0.80
 
 	)
 
-Element["hidename,onsolder" "0603" "R3" "3k3" 105.5000mm 20.0000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R3" "3k3" 105.5000mm 20.0000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8953,7 +8953,7 @@ Element["hidename,onsolder" "0603" "R3" "3k3" 105.5000mm 20.0000mm 31.50mil 31.5
 
 	)
 
-Element["hidename,onsolder" "0603" "R4" "3k3" 107.5000mm 20.0000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R4" "3k3" 107.5000mm 20.0000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -8965,7 +8965,7 @@ Element["hidename,onsolder" "0603" "R4" "3k3" 107.5000mm 20.0000mm 31.50mil 31.5
 
 	)
 
-Element["hidename" "0805-diode" "D8" "ledgreen" 107.5000mm 51.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D8" "ledgreen" 107.5000mm 51.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -8980,7 +8980,7 @@ Element["hidename" "0805-diode" "D8" "ledgreen" 107.5000mm 51.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D7" "ledgreen" 105.5000mm 51.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D7" "ledgreen" 105.5000mm 51.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -8995,7 +8995,7 @@ Element["hidename" "0805-diode" "D7" "ledgreen" 105.5000mm 51.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D6" "ledgreen" 103.5000mm 51.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D6" "ledgreen" 103.5000mm 51.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9010,7 +9010,7 @@ Element["hidename" "0805-diode" "D6" "ledgreen" 103.5000mm 51.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D5" "ledgreen" 101.5000mm 51.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D5" "ledgreen" 101.5000mm 51.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9025,7 +9025,7 @@ Element["hidename" "0805-diode" "D5" "ledgreen" 101.5000mm 51.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D12" "ledred" 107.5000mm 39.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D12" "ledred" 107.5000mm 39.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9040,7 +9040,7 @@ Element["hidename" "0805-diode" "D12" "ledred" 107.5000mm 39.7500mm 0.0000 0.000
 
 	)
 
-Element["hidename,onsolder" "0603" "R12" "1k" 107.5000mm 41.2500mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R12" "1k" 107.5000mm 41.2500mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9052,7 +9052,7 @@ Element["hidename,onsolder" "0603" "R12" "1k" 107.5000mm 41.2500mm 31.50mil 31.5
 
 	)
 
-Element["hidename" "0805-diode" "D11" "ledred" 105.5000mm 39.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D11" "ledred" 105.5000mm 39.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9067,7 +9067,7 @@ Element["hidename" "0805-diode" "D11" "ledred" 105.5000mm 39.7500mm 0.0000 0.000
 
 	)
 
-Element["hidename" "0805-diode" "D10" "ledred" 103.5000mm 39.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D10" "ledred" 103.5000mm 39.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9082,7 +9082,7 @@ Element["hidename" "0805-diode" "D10" "ledred" 103.5000mm 39.7500mm 0.0000 0.000
 
 	)
 
-Element["hidename" "0805-diode" "D9" "ledred" 101.5000mm 39.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D9" "ledred" 101.5000mm 39.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9097,7 +9097,7 @@ Element["hidename" "0805-diode" "D9" "ledred" 101.5000mm 39.7500mm 0.0000 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603" "R2" "3k3" 103.5000mm 20.0000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R2" "3k3" 103.5000mm 20.0000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9109,7 +9109,7 @@ Element["hidename,onsolder" "0603" "R2" "3k3" 103.5000mm 20.0000mm 31.50mil 31.5
 
 	)
 
-Element["hidename" "0805-diode" "D2" "ledgreen" 103.5000mm 20.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D2" "ledgreen" 103.5000mm 20.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9124,7 +9124,7 @@ Element["hidename" "0805-diode" "D2" "ledgreen" 103.5000mm 20.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D3" "ledgreen" 105.5000mm 20.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D3" "ledgreen" 105.5000mm 20.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9139,7 +9139,7 @@ Element["hidename" "0805-diode" "D3" "ledgreen" 105.5000mm 20.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D4" "ledgreen" 107.5000mm 20.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D4" "ledgreen" 107.5000mm 20.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9154,7 +9154,7 @@ Element["hidename" "0805-diode" "D4" "ledgreen" 107.5000mm 20.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename" "0805-diode" "D1" "ledgreen" 101.5000mm 20.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "0805-diode" "D1" "ledgreen" 101.5000mm 20.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9169,7 +9169,7 @@ Element["hidename" "0805-diode" "D1" "ledgreen" 101.5000mm 20.5000mm 0.0000 0.00
 
 	)
 
-Element["hidename,onsolder" "0603" "R1" "3k3" 101.5000mm 17.0000mm -31.50mil -31.50mil 1 100 "auto"]
+Element["hidename,onsolder" "0603" "R1" "3k3" 101.5000mm 17.0000mm -31.50mil -31.50mil 1 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9181,7 +9181,7 @@ Element["hidename,onsolder" "0603" "R1" "3k3" 101.5000mm 17.0000mm -31.50mil -31
 
 	)
 
-Element["hidename" "ESE23" "SW2" "unknown" 22.2500mm 48.0000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "ESE23" "SW2" "unknown" 22.2500mm 48.0000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -9202,7 +9202,7 @@ Element["hidename" "ESE23" "SW2" "unknown" 22.2500mm 48.0000mm 0.0000 0.0000 1 1
 
 	)
 
-Element["hidename" "ESE23" "SW1" "unknown" 22.2500mm 36.5000mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "ESE23" "SW1" "unknown" 22.2500mm 36.5000mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -9247,7 +9247,7 @@ Element["" "0603" "RB" "unknown" 22.5000mm 22.9000mm 31.50mil -3.0501mm 3 100 ""
 
 	)
 
-Element["hidename" "inductor-3mm" "L1" "2u2" 26.6500mm 29.7500mm 0.0000 0.0000 0 100 ""]
+Element["hidename" "inductor-3mm" "L1" "2u2" 26.6500mm 29.7500mm 0.0000 0.0000 0 1 ""]
 (
 	Attribute("device" "INDUCTOR")
 	Attribute("manufacturer" "unknown")
@@ -9267,7 +9267,7 @@ Element["hidename" "inductor-3mm" "L1" "2u2" 26.6500mm 29.7500mm 0.0000 0.0000 0
 
 	)
 
-Element["hidename" "0805" "C2" "22u" 28.2500mm 24.5000mm 31.50mil -31.50mil 3 100 ""]
+Element["hidename" "0805" "C2" "22u" 28.2500mm 24.5000mm 31.50mil -31.50mil 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9301,7 +9301,7 @@ Element["" "msop8" "U1" "tps62160" 25.2500mm 24.5000mm 1.0000mm 0.0000 3 100 ""]
 
 	)
 
-Element["hidename" "0805-diode" "D17" "ledred" 23.7500mm 42.5000mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "0805-diode" "D17" "ledred" 23.7500mm 42.5000mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9316,7 +9316,7 @@ Element["hidename" "0805-diode" "D17" "ledred" 23.7500mm 42.5000mm 0.0000 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603" "R17" "1k" 23.7500mm 42.5000mm 31.50mil -31.50mil 2 100 "auto"]
+Element["hidename,onsolder" "0603" "R17" "1k" 23.7500mm 42.5000mm 31.50mil -31.50mil 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9328,7 +9328,7 @@ Element["hidename,onsolder" "0603" "R17" "1k" 23.7500mm 42.5000mm 31.50mil -31.5
 
 	)
 
-Element["hidename" "0805-diode" "D18" "ledred" 86.0000mm 57.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0805-diode" "D18" "ledred" 86.0000mm 57.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "LED")
 	Attribute("manufacturer" "unknown")
@@ -9343,7 +9343,7 @@ Element["hidename" "0805-diode" "D18" "ledred" 86.0000mm 57.0000mm 0.0000 0.0000
 
 	)
 
-Element["hidename,onsolder" "0603" "R18" "1k" 86.0000mm 55.5000mm 31.50mil 31.50mil 3 100 "auto"]
+Element["hidename,onsolder" "0603" "R18" "1k" 86.0000mm 55.5000mm 31.50mil 31.50mil 3 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9355,7 +9355,7 @@ Element["hidename,onsolder" "0603" "R18" "1k" 86.0000mm 55.5000mm 31.50mil 31.50
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S2_C" "2N7002P" 33.5000mm 33.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S2_C" "2N7002P" 33.5000mm 33.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9375,7 +9375,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S2_C" "2N7002P" 33.5000mm 33.2500mm
 
 	)
 
-Element["hidename" "sot23-nmos" "M2_S2_C" "2N7002P" 33.5000mm 33.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M2_S2_C" "2N7002P" 33.5000mm 33.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9395,7 +9395,7 @@ Element["hidename" "sot23-nmos" "M2_S2_C" "2N7002P" 33.5000mm 33.2500mm 0.0000 0
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S2_C" "3k3" 33.5000mm 40.2500mm 0.8000mm 0.8000mm 2 100 ""]
+Element["hidename" "0603-boxed" "R1_S2_C" "3k3" 33.5000mm 40.2500mm 0.8000mm 0.8000mm 2 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9411,7 +9411,7 @@ Element["hidename" "0603-boxed" "R1_S2_C" "3k3" 33.5000mm 40.2500mm 0.8000mm 0.8
 
 	)
 
-Element["hidename" "sot23-nmos" "M4_0_C" "2N7002P" 39.5000mm 15.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M4_0_C" "2N7002P" 39.5000mm 15.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9431,7 +9431,7 @@ Element["hidename" "sot23-nmos" "M4_0_C" "2N7002P" 39.5000mm 15.7500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_0_C" "2N7002P" 39.5000mm 15.7500mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_0_C" "2N7002P" 39.5000mm 15.7500mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9451,7 +9451,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_0_C" "2N7002P" 39.5000mm 15.7500mm 
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M2_S3_C" "2N7002P" 33.5000mm 40.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M2_S3_C" "2N7002P" 33.5000mm 40.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9471,7 +9471,7 @@ Element["hidename,onsolder" "sot23-nmos" "M2_S3_C" "2N7002P" 33.5000mm 40.2500mm
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S3_C" "3k3" 33.5000mm 43.7500mm 0.8000mm -0.8000mm 2 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S3_C" "3k3" 33.5000mm 43.7500mm 0.8000mm -0.8000mm 2 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9487,7 +9487,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S3_C" "3k3" 33.5000mm 43.7500mm 0.8
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S3_C" "2N7002P" 33.5000mm 36.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S3_C" "2N7002P" 33.5000mm 36.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9507,7 +9507,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S3_C" "2N7002P" 33.5000mm 36.7500mm
 
 	)
 
-Element["hidename" "sot23-nmos" "M3_S3_C" "2N7002P" 33.5000mm 36.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M3_S3_C" "2N7002P" 33.5000mm 36.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9527,7 +9527,7 @@ Element["hidename" "sot23-nmos" "M3_S3_C" "2N7002P" 33.5000mm 36.7500mm 0.0000 0
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S3" "3k3" 29.5000mm 43.7500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_S3" "3k3" 29.5000mm 43.7500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9543,7 +9543,7 @@ Element["hidename" "0603-boxed" "R1_S3" "3k3" 29.5000mm 43.7500mm -0.8000mm -0.8
 
 	)
 
-Element["hidename,onsolder" "sot23-pmos" "M2_S3" "BSS84" 29.5000mm 47.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-pmos" "M2_S3" "BSS84" 29.5000mm 47.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "PMOS")
 	Attribute("manufacturer" "unknown")
@@ -9564,7 +9564,7 @@ Element["hidename,onsolder" "sot23-pmos" "M2_S3" "BSS84" 29.5000mm 47.2500mm 0.0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S3" "2N7002P" 29.5000mm 43.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S3" "2N7002P" 29.5000mm 43.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9584,7 +9584,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S3" "2N7002P" 29.5000mm 43.7500mm 0
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_S3" "2N7002P" 29.5000mm 47.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_S3" "2N7002P" 29.5000mm 47.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9604,7 +9604,7 @@ Element["hidename" "sot23-nmos" "M1_S1_S3" "2N7002P" 29.5000mm 47.2500mm 0.0000 
 
 	)
 
-Element["hidename,onsolder" "sot23-pmos" "M2_S1" "BSS84" 29.5000mm 54.2500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-pmos" "M2_S1" "BSS84" 29.5000mm 54.2500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "PMOS")
 	Attribute("manufacturer" "unknown")
@@ -9625,7 +9625,7 @@ Element["hidename,onsolder" "sot23-pmos" "M2_S1" "BSS84" 29.5000mm 54.2500mm 0.0
 
 	)
 
-Element["hidename,onsolder" "sot23-nmos" "M1_S1" "2N7002P" 29.5000mm 50.7500mm 0.0000 0.0000 1 100 "auto"]
+Element["hidename,onsolder" "sot23-nmos" "M1_S1" "2N7002P" 29.5000mm 50.7500mm 0.0000 0.0000 1 1 "auto"]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9645,7 +9645,7 @@ Element["hidename,onsolder" "sot23-nmos" "M1_S1" "2N7002P" 29.5000mm 50.7500mm 0
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_S1" "3k3" 30.5000mm 57.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_S1" "3k3" 30.5000mm 57.7500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9661,7 +9661,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_S1" "3k3" 30.5000mm 57.7500mm -0
 
 	)
 
-Element["hidename" "0603-boxed" "R1_S1" "3k3" 25.0000mm 54.2500mm -0.8000mm -0.8000mm 0 100 ""]
+Element["hidename" "0603-boxed" "R1_S1" "3k3" 25.0000mm 54.2500mm -0.8000mm -0.8000mm 0 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9677,7 +9677,7 @@ Element["hidename" "0603-boxed" "R1_S1" "3k3" 25.0000mm 54.2500mm -0.8000mm -0.8
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_S1" "2N7002P" 29.5000mm 50.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_S1" "2N7002P" 29.5000mm 50.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9697,7 +9697,7 @@ Element["hidename" "sot23-nmos" "M1_S1_S1" "2N7002P" 29.5000mm 50.7500mm 0.0000 
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S5_DA_R" "2N7002P" 55.0000mm 11.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "sot23-nmos" "M1_S5_DA_R" "2N7002P" 55.0000mm 11.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9717,7 +9717,7 @@ Element["hidename" "sot23-nmos" "M1_S5_DA_R" "2N7002P" 55.0000mm 11.5000mm 0.000
 
 	)
 
-Element["hidename" "mini-push-button" "SW3" "unknown" 104.5000mm 12.0000mm 0.0000 0.0000 0 100 ""]
+Element["hidename" "mini-push-button" "SW3" "unknown" 104.5000mm 12.0000mm 0.0000 0.0000 0 1 ""]
 (
 	Attribute("device" "SPST")
 	Attribute("manufacturer" "unknown")
@@ -9735,7 +9735,7 @@ Element["hidename" "mini-push-button" "SW3" "unknown" 104.5000mm 12.0000mm 0.000
 
 	)
 
-Element["hidename" "miniusbb" "CONN1" "unknown" 27.5000mm 17.2500mm 43.31mil -222.42mil 2 100 ""]
+Element["hidename" "miniusbb" "CONN1" "unknown" 27.5000mm 17.2500mm 43.31mil -222.42mil 2 1 ""]
 (
 	Attribute("device" "CONNECTOR_4")
 	Attribute("manufacturer" "unknown")
@@ -9760,7 +9760,7 @@ Element["hidename" "miniusbb" "CONN1" "unknown" 27.5000mm 17.2500mm 43.31mil -22
 
 	)
 
-Element["hidename" "sot23-nmos" "M1_S1_0_C" "2N7002P" 39.5000mm 22.7500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M1_S1_0_C" "2N7002P" 39.5000mm 22.7500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9780,7 +9780,7 @@ Element["hidename" "sot23-nmos" "M1_S1_0_C" "2N7002P" 39.5000mm 22.7500mm 0.0000
 
 	)
 
-Element["hidename" "sot23-nmos" "M4_1_C" "2N7002P" 39.5000mm 26.2500mm 0.0000 0.0000 1 100 ""]
+Element["hidename" "sot23-nmos" "M4_1_C" "2N7002P" 39.5000mm 26.2500mm 0.0000 0.0000 1 1 ""]
 (
 	Attribute("device" "NMOS")
 	Attribute("manufacturer" "unknown")
@@ -9800,7 +9800,7 @@ Element["hidename" "sot23-nmos" "M4_1_C" "2N7002P" 39.5000mm 26.2500mm 0.0000 0.
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S5" "3k3" 29.0000mm 36.7500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S5" "3k3" 29.0000mm 36.7500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9816,7 +9816,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S5" "3k3" 29.0000mm 36.7500mm -0.80
 
 	)
 
-Element["hidename,onsolder" "0603-boxed" "R1_S1_S3" "3k3" 29.0000mm 40.2500mm -0.8000mm 0.8000mm 0 100 "auto"]
+Element["hidename,onsolder" "0603-boxed" "R1_S1_S3" "3k3" 29.0000mm 40.2500mm -0.8000mm 0.8000mm 0 1 "auto"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -9832,7 +9832,7 @@ Element["hidename,onsolder" "0603-boxed" "R1_S1_S3" "3k3" 29.0000mm 40.2500mm -0
 
 	)
 
-Element["hidename" "1206" "C1" "10u" 26.7500mm 20.2500mm 31.50mil 31.50mil 2 100 ""]
+Element["hidename" "1206" "C1" "10u" 26.7500mm 20.2500mm 31.50mil 31.50mil 2 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9846,7 +9846,7 @@ Element["hidename" "1206" "C1" "10u" 26.7500mm 20.2500mm 31.50mil 31.50mil 2 100
 
 	)
 
-Element["hidename" "0402w" "C10" "unknown" 58.2500mm 35.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C10" "unknown" 58.2500mm 35.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9861,7 +9861,7 @@ Element["hidename" "0402w" "C10" "unknown" 58.2500mm 35.0000mm 0.0000 0.0000 3 1
 
 	)
 
-Element["hidename" "0402w" "C9" "unknown" 66.2500mm 27.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C9" "unknown" 66.2500mm 27.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9876,7 +9876,7 @@ Element["hidename" "0402w" "C9" "unknown" 66.2500mm 27.0000mm 0.0000 0.0000 3 10
 
 	)
 
-Element["hidename" "0402w" "C8" "unknown" 66.2500mm 43.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C8" "unknown" 66.2500mm 43.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9891,7 +9891,7 @@ Element["hidename" "0402w" "C8" "unknown" 66.2500mm 43.0000mm 0.0000 0.0000 3 10
 
 	)
 
-Element["hidename" "0402w" "C7" "unknown" 58.2500mm 43.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C7" "unknown" 58.2500mm 43.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9906,7 +9906,7 @@ Element["hidename" "0402w" "C7" "unknown" 58.2500mm 43.0000mm 0.0000 0.0000 3 10
 
 	)
 
-Element["hidename" "0402w" "C6" "unknown" 58.2500mm 27.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C6" "unknown" 58.2500mm 27.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9921,7 +9921,7 @@ Element["hidename" "0402w" "C6" "unknown" 58.2500mm 27.0000mm 0.0000 0.0000 3 10
 
 	)
 
-Element["hidename" "0402w" "C5" "unknown" 58.2500mm 19.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C5" "unknown" 58.2500mm 19.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9936,7 +9936,7 @@ Element["hidename" "0402w" "C5" "unknown" 58.2500mm 19.0000mm 0.0000 0.0000 3 10
 
 	)
 
-Element["hidename" "0402w" "C4" "unknown" 66.2500mm 19.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C4" "unknown" 66.2500mm 19.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9951,7 +9951,7 @@ Element["hidename" "0402w" "C4" "unknown" 66.2500mm 19.0000mm 0.0000 0.0000 3 10
 
 	)
 
-Element["hidename" "0402w" "C3" "unknown" 66.2500mm 35.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C3" "unknown" 66.2500mm 35.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9966,7 +9966,7 @@ Element["hidename" "0402w" "C3" "unknown" 66.2500mm 35.0000mm 0.0000 0.0000 3 10
 
 	)
 
-Element["hidename" "0402w" "C18" "unknown" 51.2500mm 1250.00mil 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C18" "unknown" 51.2500mm 1250.00mil 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9981,7 +9981,7 @@ Element["hidename" "0402w" "C18" "unknown" 51.2500mm 1250.00mil 0.0000 0.0000 3 
 
 	)
 
-Element["hidename" "0402w" "C17" "unknown" 75.0000mm 15.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C17" "unknown" 75.0000mm 15.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -9996,7 +9996,7 @@ Element["hidename" "0402w" "C17" "unknown" 75.0000mm 15.5000mm 0.0000 0.0000 3 1
 
 	)
 
-Element["hidename" "0402w" "C15" "unknown" 51.2500mm 52.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C15" "unknown" 51.2500mm 52.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10011,7 +10011,7 @@ Element["hidename" "0402w" "C15" "unknown" 51.2500mm 52.5000mm 0.0000 0.0000 3 1
 
 	)
 
-Element["hidename,onsolder" "0402w" "C14" "unknown" 62.0000mm 52.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "0402w" "C14" "unknown" 62.0000mm 52.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10026,7 +10026,7 @@ Element["hidename,onsolder" "0402w" "C14" "unknown" 62.0000mm 52.5000mm 0.0000 0
 
 	)
 
-Element["hidename" "0402w" "C13" "unknown" 51.2500mm 43.5000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C13" "unknown" 51.2500mm 43.5000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10041,7 +10041,7 @@ Element["hidename" "0402w" "C13" "unknown" 51.2500mm 43.5000mm 0.0000 0.0000 3 1
 
 	)
 
-Element["hidename,onsolder" "0402w" "C12" "unknown" 54.0000mm 52.5000mm 0.0000 0.0000 3 100 "auto"]
+Element["hidename,onsolder" "0402w" "C12" "unknown" 54.0000mm 52.5000mm 0.0000 0.0000 3 1 "auto"]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10056,7 +10056,7 @@ Element["hidename,onsolder" "0402w" "C12" "unknown" 54.0000mm 52.5000mm 0.0000 0
 
 	)
 
-Element["hidename" "0402w" "C11" "unknown" 51.2500mm 22.7500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C11" "unknown" 51.2500mm 22.7500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10071,7 +10071,7 @@ Element["hidename" "0402w" "C11" "unknown" 51.2500mm 22.7500mm 0.0000 0.0000 3 1
 
 	)
 
-Element["hidename" "0603" "R1_IO_0_R" "10k" 74.2500mm 19.0000mm -31.50mil 31.50mil 1 100 ""]
+Element["hidename" "0603" "R1_IO_0_R" "10k" 74.2500mm 19.0000mm -31.50mil 31.50mil 1 1 ""]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
@@ -10083,7 +10083,7 @@ Element["hidename" "0603" "R1_IO_0_R" "10k" 74.2500mm 19.0000mm -31.50mil 31.50m
 
 	)
 
-Element["hidename,onsolder" "sot323-bjt" "Q1_2_0_R" "PDTC124TU" 74.2500mm 19.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "sot323-bjt" "Q1_2_0_R" "PDTC124TU" 74.2500mm 19.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "unknown")
 	Attribute("manufacturer" "unknown")
@@ -10104,7 +10104,7 @@ Element["hidename,onsolder" "sot323-bjt" "Q1_2_0_R" "PDTC124TU" 74.2500mm 19.000
 
 	)
 
-Element["hidename" "0402w" "C16" "unknown" 82.2500mm 19.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C16" "unknown" 82.2500mm 19.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10119,7 +10119,7 @@ Element["hidename" "0402w" "C16" "unknown" 82.2500mm 19.0000mm 0.0000 0.0000 3 1
 
 	)
 
-Element["hidename" "0402w" "C19" "unknown" 29.5000mm 54.2500mm 0.0000 0.0000 0 100 ""]
+Element["hidename" "0402w" "C19" "unknown" 29.5000mm 54.2500mm 0.0000 0.0000 0 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10134,7 +10134,7 @@ Element["hidename" "0402w" "C19" "unknown" 29.5000mm 54.2500mm 0.0000 0.0000 0 1
 
 	)
 
-Element["hidename" "0402w" "C20" "unknown" 33.5000mm 47.2500mm 0.0000 0.0000 2 100 ""]
+Element["hidename" "0402w" "C20" "unknown" 33.5000mm 47.2500mm 0.0000 0.0000 2 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10149,7 +10149,7 @@ Element["hidename" "0402w" "C20" "unknown" 33.5000mm 47.2500mm 0.0000 0.0000 2 1
 
 	)
 
-Element["hidename,onsolder" "0402w" "C24" "unknown" 86.2500mm 49.2500mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "0402w" "C24" "unknown" 86.2500mm 49.2500mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10164,7 +10164,7 @@ Element["hidename,onsolder" "0402w" "C24" "unknown" 86.2500mm 49.2500mm 0.0000 0
 
 	)
 
-Element["hidename" "0402w" "C23" "unknown" 85.7500mm 43.2500mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C23" "unknown" 85.7500mm 43.2500mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10179,7 +10179,7 @@ Element["hidename" "0402w" "C23" "unknown" 85.7500mm 43.2500mm 0.0000 0.0000 3 1
 
 	)
 
-Element["hidename,onsolder" "0402w" "C21" "unknown" 93.2500mm 13.0000mm 0.0000 0.0000 2 100 "auto"]
+Element["hidename,onsolder" "0402w" "C21" "unknown" 93.2500mm 13.0000mm 0.0000 0.0000 2 1 "auto"]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")
@@ -10194,7 +10194,7 @@ Element["hidename,onsolder" "0402w" "C21" "unknown" 93.2500mm 13.0000mm 0.0000 0
 
 	)
 
-Element["hidename" "0402w" "C22" "unknown" 86.0000mm 34.0000mm 0.0000 0.0000 3 100 ""]
+Element["hidename" "0402w" "C22" "unknown" 86.0000mm 34.0000mm 0.0000 0.0000 3 1 ""]
 (
 	Attribute("device" "CAPACITOR")
 	Attribute("manufacturer" "unknown")

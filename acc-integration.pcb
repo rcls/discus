@@ -10360,7 +10360,7 @@ Layer(1 "component")
 	Line[49.2500mm 6.0000mm 46.7500mm 6.0000mm 0.1500mm 0.3000mm "clearline"]
 	Line[37.5000mm 8.2500mm 35.0000mm 8.2500mm 0.1500mm 0.3000mm "clearline"]
 	Line[50.5000mm 3.5000mm 54.2500mm 3.5000mm 0.1500mm 0.3000mm "clearline"]
-	Line[58.5000mm 3.5000mm 62.2500mm 3.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[58.5000mm 3.5000mm 62.2500mm 3.5000mm 0.1500mm 0.3508mm "clearline"]
 	Line[42.5000mm 3.5000mm 46.5000mm 3.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[34.6500mm 3.5000mm 38.5000mm 3.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[43.4500mm 7.0000mm 43.4500mm 6.2000mm 0.1500mm 0.3000mm "clearline"]
@@ -11526,7 +11526,7 @@ Layer(3 "cPWR")
 	Line[5.2500mm 19.5000mm 5.2500mm 20.7500mm 0.3000mm 0.3000mm "clearline"]
 	Line[5.0000mm 19.5000mm 5.0000mm 20.5000mm 0.3000mm 0.3000mm "clearline"]
 	Line[3.7500mm 17.5000mm 7.2500mm 17.5000mm 0.1500mm 0.3000mm "clearline"]
-	Line[4.4300mm 18.3576mm 4.4300mm 17.5000mm 0.1500mm 0.3000mm "clearline"]
+	Line[4.4300mm 722.74mil 4.4300mm 17.5000mm 0.1500mm 0.3000mm "clearline"]
 	Line[4.4250mm 14.3000mm 5.0750mm 14.3000mm 0.1500mm 0.3000mm "clearline"]
 	Line[4.2500mm 10.2500mm 4.7500mm 10.7500mm 0.5000mm 0.3000mm "clearline"]
 	Line[4.7500mm 10.7500mm 4.7500mm 12.0000mm 0.5000mm 0.3000mm "clearline"]
@@ -12650,15 +12650,15 @@ Layer(6 "sPWR")
 	Line[39.7500mm 45.0000mm 41.5000mm 45.0000mm 0.1500mm 0.3000mm "clearline"]
 	Line[1250.00mil 45.0000mm 33.5000mm 45.0000mm 0.1500mm 0.3000mm "clearline"]
 	Line[74.5000mm 8.0000mm 73.7500mm 8.0000mm 0.1500mm 0.3000mm "clearline"]
-	Line[74.5000mm 5.7500mm 73.7500mm 5.0000mm 0.2500mm 0.3000mm ""]
-	Line[73.7500mm 5.0000mm 73.2500mm 5.0000mm 0.2000mm 0.3000mm ""]
+	Line[74.5000mm 5.7500mm 73.7500mm 5.0000mm 0.2500mm 0.3000mm "clearline"]
+	Line[73.7500mm 5.0000mm 73.2500mm 5.0000mm 0.2000mm 0.3000mm "clearline"]
 )
 Layer(7 "outline")
 (
-	Line[1.0000mm 1.0000mm 1.0000mm 51.0000mm 0.1500mm 0.3000mm ""]
-	Line[1.0000mm 51.0000mm 101.0000mm 51.0000mm 0.1500mm 0.3000mm ""]
-	Line[101.0000mm 51.0000mm 101.0000mm 1.0000mm 0.1500mm 0.3000mm ""]
-	Line[101.0000mm 1.0000mm 1.0000mm 1.0000mm 0.1500mm 0.3000mm ""]
+	Line[1.0000mm 1.0000mm 1.0000mm 51.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[1.0000mm 51.0000mm 101.0000mm 51.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[101.0000mm 51.0000mm 101.0000mm 1.0000mm 0.1500mm 0.3000mm "clearline"]
+	Line[101.0000mm 1.0000mm 1.0000mm 1.0000mm 0.1500mm 0.3000mm "clearline"]
 )
 Layer(8 "silk")
 (

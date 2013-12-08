@@ -2263,10 +2263,10 @@ Element["hidename,onsolder" "1206" "FB1" "unknown" 27.4999mm 16.2500mm 31.50mil 
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[59.05mil -11.81mil 59.05mil 11.81mil 51.18mil 20.00mil 57.18mil "1" "1" "onsolder,square"]
-	Pad[-59.05mil -11.81mil -59.05mil 11.81mil 51.18mil 20.00mil 57.18mil "2" "2" "onsolder,square"]
-	ElementLine [-23.62mil -37.40mil 23.62mil -37.40mil 8.00mil]
-	ElementLine [-23.62mil 37.40mil 23.62mil 37.40mil 8.00mil]
+	Pad[1.5000mm -0.3000mm 1.5000mm 0.3000mm 1.3000mm 0.3000mm 1.4500mm "1" "1" "onsolder,square"]
+	Pad[-1.5000mm -0.3000mm -1.5000mm 0.3000mm 1.3000mm 0.3000mm 1.4500mm "2" "2" "onsolder,square"]
+	ElementLine [-0.6000mm -0.9500mm 0.6000mm -0.9500mm 0.1500mm]
+	ElementLine [-0.6000mm 0.9500mm 0.6000mm 0.9500mm 0.1500mm]
 
 	)
 
@@ -9274,10 +9274,10 @@ Element["hidename" "0805" "C2" "22u" 28.2500mm 24.5000mm 31.50mil -31.50mil 3 10
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
-	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
-	ElementLine [27.55mil -3.93mil 27.55mil 3.93mil 8.00mil]
-	ElementLine [-27.55mil -3.93mil -27.55mil 3.93mil 8.00mil]
+	Pad[-0.2500mm -1.0000mm 0.2500mm -1.0000mm 1.0000mm 0.3000mm 1.1500mm "1" "1" "square"]
+	Pad[-0.2500mm 1.0000mm 0.2500mm 1.0000mm 1.0000mm 0.3000mm 1.1500mm "2" "2" "square"]
+	ElementLine [0.7000mm -0.1000mm 0.7000mm 0.1000mm 0.1500mm]
+	ElementLine [-0.7000mm -0.1000mm -0.7000mm 0.1000mm 0.1500mm]
 
 	)
 
@@ -9839,10 +9839,10 @@ Element["hidename" "1206" "C1" "10u" 26.7500mm 20.2500mm 31.50mil 31.50mil 2 100
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[59.05mil -11.81mil 59.05mil 11.81mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
-	Pad[-59.05mil -11.81mil -59.05mil 11.81mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
-	ElementLine [-23.62mil 37.40mil 23.62mil 37.40mil 8.00mil]
-	ElementLine [-23.62mil -37.40mil 23.62mil -37.40mil 8.00mil]
+	Pad[1.5000mm -0.3000mm 1.5000mm 0.3000mm 1.3000mm 0.3000mm 1.4500mm "1" "1" "square"]
+	Pad[-1.5000mm -0.3000mm -1.5000mm 0.3000mm 1.3000mm 0.3000mm 1.4500mm "2" "2" "square"]
+	ElementLine [-0.6000mm 0.9500mm 0.6000mm 0.9500mm 0.1500mm]
+	ElementLine [-0.6000mm -0.9500mm 0.6000mm -0.9500mm 0.1500mm]
 
 	)
 

@@ -258,7 +258,7 @@ void * pop()
 
 // Big endian, we can use the result pointer as a counter.
 #define result 8
-#define overflow 16
+#define temp 16                         // Any function can clobber.
 #define product 24
 #define factor 32
 #define base 40
@@ -276,22 +276,22 @@ void * pop()
 #define mult_loop_count 63
 #define base_index 62
 #define reduce_output 61
+#define exp_twos 60
+#define square_count 59
 
 
 // Either INCM/DECM or store arb. register - either way we need to open up
 // the write path.  Nope - use A for outer loop counters?
-// 2 entry stack is definitely not enough.
+
 // Call/ret save/restore A? - probably not worth it.
 // Arithmetic always operates on memory? - probably get regs for free.
-// Non carry add/sub not used...
+// Non carry add/sub not used much...
 
-// U reads as zero except for INC/DEC? - no the subtraction loop needs it.
 // Dirty trick: Flag low 3 bits zero?
 
 void go(void)
 {
-    CALL(start);
-    CALL(power);
+    //CALL(start);
     CALL(main_loop);
 start:
     // The input consists of 64bits BE...
@@ -310,28 +310,82 @@ read2:
     JP(NZ,read2);
     DEC(Y);
     JP(NZ,read1);
-    // Now generate the overflow constant.
-    LOAD(Y,minusone);
-    LOAD(X,product);
+    // Now generate the exponent...
+    LOAD(Y,modulus);
+    LOAD(X,exponent);
     CALL(copy);
-    LOAD(X,overflow);
-    CALL(reduce);
-    // Loop over the bases.
-    LOAD(Y,base_start);
-main_loop:
-    LOAD(X,product);
-    CALL(copy);
+    LOAD(Y,63);
+expgen1:                // Find the position of the lowest 1 bit in (modulus-1).
+    CALL(leftrot_exponent);
+    JP(NC,expgen2);
     LOAD(A,Y);
+    STA(exp_twos);
+expgen2:
+    DEC(Y);
+    JP(NZ,expgen1);
+
+    // Loop over the bases.
+    LOAD(A,base_start);
     STA(base_index);
-    LOAD(X,exponent);                   // FIXME
-    CALL(reduce);
+main_loop:
+    LOAD(Y,one);
+    CALL(copy_to_product);
+    LOAD(X,base_index);
+    CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
     OR(A);
-    //JP(NC,main_loop_go);                // Uninteresting.
-    //JP(Z,main_loop_skip);               // base = 0 (mod modulus).
+    JP(Z,main_loop_next);               // base==0, next.
 
-classify:                               // Test reduce_output for 0,1,2...
-    LOADM(X,reduce_output);
+    // Now do the exponentiation...
+    LOAD(Y,modulus);
+    LOAD(X,exponent);
+    CALL(copy);
+    LOAD(Y,product);
+    LOAD(X,base);
+    CALL(copy);
+
+    LOAD(Y,one);
+    CALL(copy_to_product);
+    LOAD(A,64);
+    SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
+power1:
+    STA(power_loop_count);
+    CALL(square);
+    CALL(leftrot_exponent);
+    LOAD(Y,base);
+    CL(C,mult);
+    LOAD(A,power_loop_count);
+    DEC(A);
+    JP(NZ,power1);
+
+    CALL(classifyp1);                    // Add 1 and test...
+    // 0, 2 -> useless.
+    AND(0xfd);
+    JP(Z,main_loop_next);
+
+    LOADM(A,exp_twos);
+square_loop:
+    STA(square_count);
+    CALL(square);
+    CALL(classifyp1);                   // 0->useless, 2->composite.
+    OR(A);
+    JP(Z,main_loop_next);
+    SUB(2);
+    JP(Z,composite);
+    LOADM(A,square_count);
+    DEC(A);
+    JP(Z,square_loop);
+    // If we get here, base**(modulus-1) is -1 not +1.... composite.
+composite:
+    JMP(start);                         // FIXME - output...
+main_loop_next:
+
+
+classifyp1:
+    LOAD(X,one);
+    CALL(add64m);
+classify:
+    LOAD(X,result);
     LOAD(U,8);
 classify1:
     LOADM(A,X);
@@ -343,61 +397,11 @@ classify1:
     OR(0xff);
     RET();
 
-reduce:                        // product mod modulus -> mem(X), clobber factor.
-    LOAD(A,X);
-    STA(reduce_output);
-    LOAD(Y,zero);
-    CALL(copy);
-    LOAD(A,64);
-reduce1:
-    STA(reduce_loop_count);
-    LOAD(X,product);
-    CALL(leftrot);
-    LOADM(X,reduce_output);
-    CALL(leftrot);
-    // Do the trial subtract. base - modulus -> factor.
-    LOADM(X,reduce_output);
-    LOAD(Y,modulus);
-    LOAD(U,factor);
-    SETC();
-reduce2:
-    LOADM(A,X);
-    SBCM(Y);
-    STA(U);
-    DEC(U);
-    DEC(Y);
-    DEC(X);
-    JP(NZ,reduce2);
-    JP(NC,reduce3);
-    LOAD(Y,factor);                     // Commit.
-    LOADM(X,reduce_output);
-    CALL(copy);
-reduce3:
-    LOAD(A,reduce_loop_count);
-    DEC(A);
-    JP(NZ,reduce1);
-    RET();
-
-power:                                  // base ** exponent -> product
-    LOAD(Y,one);
-    LOAD(X,product);
-    CALL(copy);
-    LOAD(A,64);
-power1:
-    STA(power_loop_count);
-    CALL(square);
-    LOAD(X,exponent);
-    CALL(leftrot);
-    LOAD(Y,base);
-    CL(C,mult);
-    LOAD(A,power_loop_count);
-    DEC(A);
-    JP(NZ,power1);
-    RET();
-
 square:                                 // product * product -> product
     LOAD(Y, product);
-mult:                                   // product * mem(Y) -> product
+mult:             // Leaves product in result also.
+    // product * mem(Y) -> product (mod modulus).
+    // product should be reduced, mem(Y) does not need to be.
     LOAD(X,factor);
     CALL(copy);
 //mult_f:                                 // product * factor -> product
@@ -409,35 +413,18 @@ mult1:
     STA(mult_loop_count);
     LOAD(X,result);
     CALL(add64m);                       // result * 2 -> result
-    LOAD(X,product);
+    LOAD(X,factor);
     CALL(leftrot);
-    LOAD(X,factor);                     // Hack - put factor2 after factor1?
+    LOAD(X,product);
     CL(C,add64m);
     LOADM(A,mult_loop_count);
     DEC(A);
     JP(NZ,mult1);
     LOAD(Y,result);
-    LOAD(X,product);
-    JMP(copy);
+    JMP(copy_to_product);
 
-#if 0
-get:
-    LOAD(X,result);
-    JMP(copy);
-put:
-    LOAD(Y,result);
-#endif
-copy:
-    LOAD(U,8);
-copy1:
-    LOADM(A,Y);
-    STA(X);
-    DEC(X);
-    DEC(Y);
-    DEC(U);
-    JP(NZ,copy1);
-    RET();
-
+leftrot_exponent:
+    LOAD(X,exponent);
 leftrot:
     LOAD(U,8);
 leftrot1:
@@ -449,20 +436,46 @@ leftrot1:
     JP(NZ,leftrot1);
     RET();
 
-add64m:                                 // result + mem(X) -> result
+add64m:                               // result + mem(X) -> result (mod modulus)
     CLRC();
-add64m1:
     LOAD(Y,result);                     // Is 8, is loop counter.
-add64m2:
+add64m1:
     LOADM(A,Y);
     ADCM(X);
     STA(Y);
     DEC(X);
     DEC(Y);
+    JP(NZ,add64m1);
+    // Do a trial subtract result - modulus -> temp
+    LOAD(Y,result);
+    LOAD(X,modulus);
+    LOAD(U,temp);
+    SETC();
+add64m2:
+    LOADM(A,Y);
+    SBCM(X);
+    STA(U);
+    DEC(U);
+    DEC(X);
+    DEC(Y);
     JP(NZ,add64m2);
     RT(NC);
-    LOAD(X,overflow);
-    JMP(add64m1);                        // Or add64m+1?
+    LOAD(Y,temp);                     // Commit.
+    LOADM(X,result);
+    JMP(copy);
+
+copy_to_product:
+    LOAD(X,product);
+copy:
+    LOAD(U,8);
+copy1:
+    LOADM(A,Y);
+    STA(X);
+    DEC(X);
+    DEC(Y);
+    DEC(U);
+    JP(NZ,copy1);
+    RET();
 }
 
 int main(void)

@@ -222,7 +222,7 @@ void IN()
     // FIXME;
 }
 
-void OUT()
+void OUT(const operand_t & val)
 {
     ++S.executed;
     // FIXME;
@@ -265,11 +265,10 @@ void * pop()
 #define exponent 48
 #define modulus 56
 
-#define zero 0xc8
-#define one 0xd0
-#define minusone 0xd8
-
-#define base_start 0 // FIXME.
+#define zero 0xff
+#define one 0xf7
+#define base_start 0xef
+#define base_last 0xc0
 
 #define reduce_loop_count 0
 #define power_loop_count 0
@@ -280,20 +279,18 @@ void * pop()
 #define square_count 59
 
 
-// Either INCM/DECM or store arb. register - either way we need to open up
-// the write path.  Nope - use A for outer loop counters?
-
 // Call/ret save/restore A? - probably not worth it.
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
+// OUT takes operand.  (Can probably avoid).
 
 // Dirty trick: Flag low 3 bits zero?
 
 void go(void)
 {
-    //CALL(start);
-    CALL(main_loop);
-start:
+composite:
+    OUT(1);
+prime:
     // The input consists of 64bits BE...
     LOAD(Y,64);                         // leftrot does not use Y...
 read1:
@@ -310,6 +307,7 @@ read2:
     JP(NZ,read2);
     DEC(Y);
     JP(NZ,read1);
+    OUT(Y);
     // Now generate the exponent...
     LOAD(Y,modulus);
     LOAD(X,exponent);
@@ -328,9 +326,8 @@ expgen2:
     LOAD(A,base_start);
     STA(base_index);
 main_loop:
-    LOAD(Y,one);
-    CALL(copy_to_product);
-    LOAD(X,base_index);
+    CALL(set_product_one);
+    LOADM(X,base_index);
     CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
     OR(A);
@@ -344,8 +341,7 @@ main_loop:
     LOAD(X,base);
     CALL(copy);
 
-    LOAD(Y,one);
-    CALL(copy_to_product);
+    CALL(set_product_one);
     LOAD(A,64);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
 power1:
@@ -376,15 +372,20 @@ square_loop:
     DEC(A);
     JP(Z,square_loop);
     // If we get here, base**(modulus-1) is -1 not +1.... composite.
-composite:
-    JMP(start);                         // FIXME - output...
 main_loop_next:
+    LOADM(A,base_index);
+    SUB(8);
+    STA(base_index);
+    SUB(base_last);
+    JP(NC,main_loop);
+    // Passed all checks.
+    OUT(2);
+    JMP(prime);
 
-
-classifyp1:
+classifyp1:                             // Classify result+1.
     LOAD(X,one);
     CALL(add64m);
-classify:
+classify:                               // min(result,255) -> A
     LOAD(X,result);
     LOAD(U,8);
 classify1:
@@ -464,6 +465,8 @@ add64m2:
     LOADM(X,result);
     JMP(copy);
 
+set_product_one:
+    LOAD(Y,one);
 copy_to_product:
     LOAD(X,product);
 copy:

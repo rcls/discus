@@ -117,7 +117,7 @@ void do_AND(unsigned char val)
 void AND(const operand_t & val)  { do_AND(val); }
 void ANDM(const operand_t & val) { do_AND(S.mem[val]); }
 
-void do_OR(const operand_t & val)
+void do_OR(unsigned char val)
 {
     ++S.executed;
     A = A.get() | val;
@@ -269,7 +269,6 @@ static const int square_count = 60;
 // Non carry add/sub not used much...
 // OUT takes operand.  (Can probably avoid).
 // Could have LDA instead of LOADM...
-// LOAD needs to preserve flags.
 
 // Dirty trick: Flag low 3 bits zero?
 
@@ -342,7 +341,6 @@ main_loop:
     LOADM(X,base_index);
     CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
-    OR(A);
     JP(Z,main_loop_next);               // base==0, next.
 
     // Now do the exponentiation...
@@ -383,7 +381,6 @@ square_loop:
     CALL(square);
     // FIXME - on the last iteration, 0 is composite not useless.
     CALL(classifyp1);                   // 0->useless, 2->composite.
-    OR(A);
     JP(Z,main_loop_next);
     SUB(2);
     JP(Z,composite);
@@ -407,14 +404,14 @@ classifyp1:                             // Classify result+1.
     CALL(add64m);
 classify:                               // min(result,255) -> A
     LOAD(X,result - 1);
+    SUB(A);
 classify1:
-    LOADM(A,X);
-    OR(A);
-    LOAD(A,0xff);
+    SUBM(X);
+    SBC(A);
     RT(NZ);
     DEC(X);
     JP(NZ,classify1);
-    LOADM(A,result);
+    ORM(result);
     RET();
 
 square:                                 // product * product -> product

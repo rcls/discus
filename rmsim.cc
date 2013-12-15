@@ -262,14 +262,14 @@ static const int base_last = 0xc0;
 static const int power_loop_count = 0;
 static const int mult_loop_count = 63;
 static const int base_index = 62;
-static const int reduce_output = 61;
-static const int exp_twos = 60;
-static const int square_count = 59;
+static const int exp_twos = 61;
+static const int square_count = 60;
 
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
 // OUT takes operand.  (Can probably avoid).
 // Could have LDA instead of LOADM...
+// LOAD needs to preserve flags.
 
 // Dirty trick: Flag low 3 bits zero?
 
@@ -381,6 +381,7 @@ power1:
 square_loop:
     STA(square_count);
     CALL(square);
+    // FIXME - on the last iteration, 0 is composite not useless.
     CALL(classifyp1);                   // 0->useless, 2->composite.
     OR(A);
     JP(Z,main_loop_next);
@@ -389,13 +390,14 @@ square_loop:
     LOADM(A,square_count);
     DEC(A);
     JP(Z,square_loop);
-    // If we get here, base**(modulus-1) is -1 not +1.... composite.
+    // If we get here, base**(modulus-1) is not -1 or +1... composite.
+    JMP(composite);
 main_loop_next:
     LOADM(A,base_index);
     SUB(8);
     STA(base_index);
     SUB(base_last);
-    JP(NC,main_loop);
+    JP(C,main_loop);
     // Passed all checks.
     OUT(2);
     JMP(prime);
@@ -404,14 +406,15 @@ classifyp1:                             // Classify result+1.
     LOAD(X,one);
     CALL(add64m);
 classify:                               // min(result,255) -> A
-    LOAD(X,result);
+    LOAD(X,result - 1);
 classify1:
     LOADM(A,X);
-    DEC(X);
-    RT(Z);
     OR(A);
-    JP(Z,classify1);
-    OR(0xff);
+    LOAD(A,0xff);
+    RT(NZ);
+    DEC(X);
+    JP(NZ,classify1);
+    LOADM(A,result);
     RET();
 
 square:                                 // product * product -> product
@@ -602,6 +605,14 @@ static void test_power_steps(unsigned long mod, unsigned long n, unsigned long e
 }
 
 
+static void test_single(unsigned long mod)
+{
+    S.set64(modulus, mod);
+    go(te_single);
+    printf("mr %lu -> %u in %u\n", mod, S.out_latch, S.executed);
+}
+
+
 int main(void)
 {
     S.straight_through = true;
@@ -637,6 +648,13 @@ int main(void)
     test_power((1ul << 63) - 1, 1234, (1ul << 63) - 2);
     if (0)
         test_power_steps((1ul << 63) - 1, 1234, (1ul << 63) - 2);
+
+    test_power(0x100000001, 325, 0x100000000);
+
+    test_single(5);
+    test_single(15);
+    test_single(9223372036854775783);
+    test_single(0x100000001);
 
     return 0;
 }

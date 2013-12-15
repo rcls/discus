@@ -355,10 +355,18 @@ main_loop:
     // LOAD(X,exponent);
     CALL(copy);
 
+    // We should now have result==product==base
 power:                                  // Entry-point for test only...
-    CALL(set_product_one);
     LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
+    // First left shift until we find a set bit...
+power_y:
+    LOAD(Y,A);
+    CALL(leftrot_exponent);
+    LOAD(A,Y);
+    JP(C,power_x);
+    DEC(A);
+    JMP(power_y);                       // Note that exponent==0 never happens.
 power1:
     STA(power_loop_count);
     CALL(square);
@@ -366,6 +374,7 @@ power1:
     LOAD(Y,base);
     CL(C,mult);
     LOADM(A,power_loop_count);
+power_x:
     DEC(A);
     JP(NZ,power1);
 
@@ -578,6 +587,7 @@ static void test_power(unsigned long mod, unsigned long n, unsigned long exp)
     n %= mod;
     S.mem[exp_twos] = 0;
     S.set64(base, n);
+    S.set64(product, n);
     S.set64(exponent, exp);
     go(te_power);
     unsigned long got = S.get64(product);

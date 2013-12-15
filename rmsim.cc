@@ -248,10 +248,11 @@ static const int len = 8;
 static const int result = len;
 static const int temp = 16;             // Any function can clobber.
 static const int modulus = 24;
-static const int factor = 32;
-static const int base = 40;
+static const int product = 32;
+static const int factor = 40;
+
 static const int exponent = 48;
-static const int product = 56;
+static const int base = 56;
 
 static const int zero = 0xff;
 static const int one = 0xf7;
@@ -265,10 +266,10 @@ static const int reduce_output = 61;
 static const int exp_twos = 60;
 static const int square_count = 59;
 
-// Call/ret save/restore A? - probably not worth it.
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
 // OUT takes operand.  (Can probably avoid).
+// Could have LDA instead of LOADM...
 
 // Dirty trick: Flag low 3 bits zero?
 
@@ -345,11 +346,13 @@ main_loop:
     JP(Z,main_loop_next);               // base==0, next.
 
     // Now do the exponentiation...
-    LOAD(Y,modulus);
-    LOAD(X,exponent);
-    CALL(copy);
+    assert(product == modulus + len);   // Leaves Y==modulus below.
+    assert(base == exponent + len);     // Leaves X==exponent below.
     LOAD(Y,product);
     LOAD(X,base);
+    CALL(copy);
+    // LOAD(Y,modulus);
+    // LOAD(X,exponent);
     CALL(copy);
 
 power:                                  // Entry-point for test only...
@@ -426,9 +429,10 @@ mult1:
     STA(mult_loop_count);
     LOAD(X,result);
     CALL(add64m);                       // result * 2 -> result
+    assert(factor == product + len);    // Leaves X==product below.
     LOAD(X,factor);
     CALL(leftrot);
-    LOAD(X,product);
+    //LOAD(X,product);
     CL(C,add64m);
     LOADM(A,mult_loop_count);
     DEC(A);

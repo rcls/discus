@@ -257,7 +257,7 @@ static const int base = 56;
 static const int zero = 0xff;
 static const int one = 0xf7;
 static const int base_start = 0xef;
-static const int base_last = 0xc0;
+static const int base_last = 0xb8;
 
 static const int power_loop_count = 0;
 static const int mult_loop_count = 63;
@@ -629,8 +629,9 @@ int main(void)
     S.set64(base_start - 8, 325);
     S.set64(base_start - 16, 9375);
     S.set64(base_start - 24, 28178);
-    S.set64(base_start - 32, 9780504);
-    S.set64(base_start - 40, 1795265022);
+    S.set64(base_start - 32, 450775);
+    S.set64(base_start - 40, 9780504);
+    S.set64(base_start - 48, 1795265022);
 
     test_add(6700417, 6000000, 5000000, factor);
     test_add(100000000, 6000000, 5000000, product);

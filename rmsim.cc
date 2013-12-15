@@ -370,8 +370,7 @@ power1:
     if (start == te_power)
         RET();
 
-    CALL(classifyp1);                    // Add 1 and test...
-    // 0, 2 -> useless.
+    CALL(classifyp1);                    // -1, 1 -> useless.
     AND(0xfd);
     JP(Z,main_loop_next);
 
@@ -379,9 +378,8 @@ power1:
 square_loop:
     STA(square_count);
     CALL(square);
-    // FIXME - on the last iteration, 0 is composite not useless.
-    CALL(classifyp1);                   // 0->useless, 2->composite.
-    JP(Z,main_loop_next);
+    CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
+    JP(Z,square_loop2);
     SUB(2);
     JP(Z,composite);
     LOADM(A,square_count);
@@ -389,6 +387,10 @@ square_loop:
     JP(Z,square_loop);
     // If we get here, base**(modulus-1) is not -1 or +1... composite.
     JMP(composite);
+square_loop2:                    // We get a -1 ... composite if last iteration.
+    LOADM(A,square_count);
+    DEC(A);
+    JP(Z,composite);
 main_loop_next:
     LOADM(A,base_index);
     SUB(8);

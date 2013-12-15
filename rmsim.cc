@@ -1,20 +1,33 @@
 
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 
 #define JOIN2(x,y) x##y
 #define JOIN(x,y) JOIN2(x,y)
-#define RET_LABEL JOIN(return_label_,__LINE__)
 
 struct state_t {
     unsigned char regs[4];
     bool flag_C;
     bool flag_Z;
     bool flag_O;
+    unsigned char out_latch;
     void * stack[4];
     unsigned char mem[256];
     bool straight_through;              // Ignore branches.
     int executed;                       // Instruction count.
+    int write_limit;
+
+    void set64(int address, unsigned long v) {
+        for (int i = 0; i != 8; ++i)
+            mem[address - i] = v >> (i * 8);
+    }
+    unsigned long get64(int address) const {
+        unsigned long result = 0;
+        for (int i = 0; i != 8; ++i)
+            result += (unsigned long) mem[address - i] << (i * 8);
+        return result;
+    }
 };
 
 static state_t S;
@@ -74,54 +87,26 @@ static const condition_t NO = 6;
 static const condition_t ALWAYS = 3;
 static const condition_t NEVER = 7;
 
-void ADD(const operand_t & val)
+void do_ADD(unsigned char val, bool cin = false)
 {
     ++S.executed;
-    unsigned r = A.get() + val;
+    unsigned r = A.get() + val + cin;
     S.flag_C = !!(r & 256);
     A = r;
+    S.flag_Z = !(r & 255);
 }
 
-void ADDM(const operand_t & val)
-{
-    ADD(S.mem[val]);
-}
+void ADD(const operand_t & val)  { do_ADD(val); }
+void ADDM(const operand_t & val) { do_ADD(S.mem[val]); }
+void ADC(const operand_t & val)  { do_ADD(val,         S.flag_C); }
+void ADCM(const operand_t & val) { do_ADD(S.mem[val],  S.flag_C); }
 
-void ADC(const operand_t & val)
-{
-    ++S.executed;
-    unsigned r = A.get() + val + S.flag_C;
-    S.flag_C = !!(r & 256);
-    A = r;
-    S.flag_Z = (A.get() == 0);
-}
+void SUB(const operand_t & val)  { do_ADD(~val,        true); }
+void SBC(const operand_t & val)  { do_ADD(~val,        S.flag_C); }
+void SUBM(const operand_t & val) { do_ADD(~S.mem[val], true); }
+void SBCM(const operand_t & val) { do_ADD(~S.mem[val], S.flag_C); }
 
-void ADCM(const operand_t & val)
-{
-    ADC(S.mem[val]);
-}
-
-void SUB(const operand_t & val)
-{
-    ADD(256 - val);
-}
-
-void SBC(const operand_t & val)
-{
-    ADC(~val);
-}
-
-void SUBM(const operand_t & val)
-{
-    SUB(S.mem[val]);
-}
-
-void SBCM(const operand_t & val)
-{
-    SBC(S.mem[val]);
-}
-
-void AND(const operand_t & val)
+void do_AND(unsigned char val)
 {
     ++S.executed;
     A = A.get() & val;
@@ -129,12 +114,10 @@ void AND(const operand_t & val)
     S.flag_C = false;
 }
 
-void ANDM(const operand_t & val)
-{
-    AND(S.mem[val]);
-}
+void AND(const operand_t & val)  { do_AND(val); }
+void ANDM(const operand_t & val) { do_AND(S.mem[val]); }
 
-void OR(const operand_t & val)
+void do_OR(const operand_t & val)
 {
     ++S.executed;
     A = A.get() | val;
@@ -142,12 +125,10 @@ void OR(const operand_t & val)
     S.flag_C = false;
 }
 
-void ORM(const operand_t & val)
-{
-    OR(S.mem[val]);
-}
+void OR(const operand_t & val) { do_OR(val); }
+void ORM(const operand_t & val) { do_OR(S.mem[val]); }
 
-void XOR(const operand_t & val)
+void do_XOR(const operand_t & val)
 {
     ++S.executed;
     A = A.get() ^ val;
@@ -155,11 +136,10 @@ void XOR(const operand_t & val)
     S.flag_C = false;
 }
 
-void XORM(const operand_t & val)
-{
-    AND(S.mem[val]);
-}
+void XOR(const operand_t & val) { do_XOR(val); }
+void XORM(const operand_t & val) { do_XOR(S.mem[val]); }
 
+/*
 void CMP(const operand_t & val)
 {
     ++S.executed;
@@ -167,6 +147,7 @@ void CMP(const operand_t & val)
     S.flag_C = (r & 256) != 0;
     S.flag_Z = (r & 255) == 0;
 }
+*/
 
 void INC(const register_name_t & reg)
 {
@@ -194,7 +175,7 @@ void CLRC()
 void SETC()
 {
     ++S.executed;
-    S.flag_C = false;
+    S.flag_C = true;
 }
 
 
@@ -213,7 +194,8 @@ void LOADM(const register_name_t & ww, const operand_t & val)
 void STA(const operand_t & val)
 {
     ++S.executed;
-    S.mem[A.get()] = val;
+    assert(val < S.write_limit);
+    S.mem[val] = A.get();
 }
 
 void IN()
@@ -225,26 +207,28 @@ void IN()
 void OUT(const operand_t & val)
 {
     ++S.executed;
-    // FIXME;
+    S.out_latch = val;
 }
 
 
 void push(void * x)
 {
-    memmove(S.stack, S.stack + 1, sizeof S.stack - sizeof S.stack[0]);
+    memmove(S.stack + 1, S.stack, 3 * sizeof S.stack[0]);
+    S.stack[0] = x;
 }
 
 
 void * pop()
 {
     void * r = S.stack[0];
-    memmove(S.stack, S.stack + 1, sizeof S.stack - sizeof S.stack[0]);
+    memmove(S.stack, S.stack + 1, 3 * sizeof S.stack[0]);
     return r;
 }
 
 #define JP(cond,label) do { S.executed += 2; if (cond) goto label; } while (0)
 #define JMP(label) JP(ALWAYS,label)
 
+#define RET_LABEL JOIN(return_label_,__LINE__)
 #define call(label) do { push(&&RET_LABEL); goto label; RET_LABEL: ; } while (0)
 
 #define CL(cond,label) do { S.executed += 2; if (cond) call(label); } while (0)
@@ -256,28 +240,30 @@ void * pop()
 
 #define RET() RT(ALWAYS)
 
-// Big endian, we can use the result pointer as a counter.
-#define result 8
-#define temp 16                         // Any function can clobber.
-#define product 24
-#define factor 32
-#define base 40
-#define exponent 48
-#define modulus 56
+// Word length for this run...
+static const int len = 8;
 
-#define zero 0xff
-#define one 0xf7
-#define base_start 0xef
-#define base_last 0xc0
+// Big endian, points point at last, so we can use the result pointer as a
+// counter.
+static const int result = len;
+static const int temp = 16;             // Any function can clobber.
+static const int modulus = 24;
+static const int factor = 32;
+static const int base = 40;
+static const int exponent = 48;
+static const int product = 56;
 
-#define reduce_loop_count 0
-#define power_loop_count 0
-#define mult_loop_count 63
-#define base_index 62
-#define reduce_output 61
-#define exp_twos 60
-#define square_count 59
+static const int zero = 0xff;
+static const int one = 0xf7;
+static const int base_start = 0xef;
+static const int base_last = 0xc0;
 
+static const int power_loop_count = 0;
+static const int mult_loop_count = 63;
+static const int base_index = 62;
+static const int reduce_output = 61;
+static const int exp_twos = 60;
+static const int square_count = 59;
 
 // Call/ret save/restore A? - probably not worth it.
 // Arithmetic always operates on memory? - probably get regs for free.
@@ -286,13 +272,37 @@ void * pop()
 
 // Dirty trick: Flag low 3 bits zero?
 
-void go(void)
+enum test_entry_t {
+    te_full,
+    te_single,
+    te_add,
+    te_mult,
+    te_power
+};
+
+void go(test_entry_t start)
 {
+    S.stack[0] = NULL;
+    S.executed = 0;
+
+    switch (start) {
+    case te_add:
+        goto add64m;
+    case te_mult:
+        goto mult;
+    case te_power:
+        goto power;
+    case te_single:
+        goto single;
+    case te_full: ;
+    }
 composite:
     OUT(1);
 prime:
+    if (start == te_single)
+        RET();
     // The input consists of 64bits BE...
-    LOAD(Y,64);                         // leftrot does not use Y...
+    LOAD(Y,len*8);                      // leftrot does not use Y...
 read1:
     IN();                               // FIXME - or test a bit?
     AND(1);                             // FIXME - or ROR... or non.dest.test.
@@ -308,11 +318,12 @@ read2:
     DEC(Y);
     JP(NZ,read1);
     OUT(Y);
+single:                                 // Test entry point
     // Now generate the exponent...
     LOAD(Y,modulus);
     LOAD(X,exponent);
     CALL(copy);
-    LOAD(Y,63);
+    LOAD(Y,len * 8 - 1);
 expgen1:                // Find the position of the lowest 1 bit in (modulus-1).
     CALL(leftrot_exponent);
     JP(NC,expgen2);
@@ -341,8 +352,9 @@ main_loop:
     LOAD(X,base);
     CALL(copy);
 
+power:                                  // Entry-point for test only...
     CALL(set_product_one);
-    LOAD(A,64);
+    LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
 power1:
     STA(power_loop_count);
@@ -350,9 +362,12 @@ power1:
     CALL(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
-    LOAD(A,power_loop_count);
+    LOADM(A,power_loop_count);
     DEC(A);
     JP(NZ,power1);
+
+    if (start == te_power)
+        RET();
 
     CALL(classifyp1);                    // Add 1 and test...
     // 0, 2 -> useless.
@@ -387,11 +402,9 @@ classifyp1:                             // Classify result+1.
     CALL(add64m);
 classify:                               // min(result,255) -> A
     LOAD(X,result);
-    LOAD(U,8);
 classify1:
     LOADM(A,X);
     DEC(X);
-    DEC(U);
     RT(Z);
     OR(A);
     JP(Z,classify1);
@@ -405,7 +418,6 @@ mult:             // Leaves product in result also.
     // product should be reduced, mem(Y) does not need to be.
     LOAD(X,factor);
     CALL(copy);
-//mult_f:                                 // product * factor -> product
     LOAD(Y,zero);
     LOAD(X,result);
     CALL(copy);
@@ -427,7 +439,7 @@ mult1:
 leftrot_exponent:
     LOAD(X,exponent);
 leftrot:
-    LOAD(U,8);
+    LOAD(U,len);
 leftrot1:
     LOADM(A,X);
     ADC(A);
@@ -448,21 +460,23 @@ add64m1:
     DEC(Y);
     JP(NZ,add64m1);
     // Do a trial subtract result - modulus -> temp
-    LOAD(Y,result);
-    LOAD(X,modulus);
-    LOAD(U,temp);
+    assert(temp == 2 * result);         // Necessary to leave X==result below.
+    assert(modulus == temp + result);   // And for Y==temp.
+    LOAD(U,result);
+    LOAD(Y,modulus);
+    LOAD(X,temp);
     SETC();
 add64m2:
-    LOADM(A,Y);
-    SBCM(X);
-    STA(U);
-    DEC(U);
-    DEC(X);
+    LOADM(A,U);
+    SBCM(Y);
+    STA(X);
     DEC(Y);
+    DEC(X);
+    DEC(U);
     JP(NZ,add64m2);
     RT(NC);
-    LOAD(Y,temp);                     // Commit.
-    LOADM(X,result);
+    //LOAD(Y,temp);                     // Commit.
+    //LOAD(X,result);
     JMP(copy);
 
 set_product_one:
@@ -470,7 +484,7 @@ set_product_one:
 copy_to_product:
     LOAD(X,product);
 copy:
-    LOAD(U,8);
+    LOAD(U,len);
 copy1:
     LOADM(A,Y);
     STA(X);
@@ -481,11 +495,144 @@ copy1:
     RET();
 }
 
+/* Modular multiplication.  */
+static unsigned long mult (unsigned long x, unsigned long y, unsigned long mod)
+{
+    return x * (__uint128_t) y % mod;
+}
+
+
+/* Modular exponentiation.  */
+static unsigned long power (unsigned long base, unsigned long exp,
+                            unsigned long mod)
+{
+    unsigned long result = 1;
+    for (; exp; exp >>= 1) {
+        if (exp & 1)
+            result = mult(result, base, mod);
+        base = mult(base, base, mod);
+    }
+    return result;
+}
+
+
+void test_add(unsigned long mod, unsigned long acc,
+              unsigned long addend, int address)
+{
+    S.set64(modulus, mod);
+    S.set64(result, acc);
+    S.set64(address, addend);
+    X = address;
+
+    go(te_add);
+
+    unsigned long res = S.get64(result);
+    printf("%lu + %lu (mod %lu) -> %lu expected %lu in %u\n",
+           acc, addend, mod, res, (acc + addend) % mod, S.executed);
+    assert(res == (acc + addend) % mod);
+}
+
+
+static void test_mult(unsigned long mod, unsigned long prod,
+                      unsigned long fact, int address)
+{
+    S.set64(modulus, mod);
+    prod %= mod;
+    S.set64(product, prod);
+    S.set64(address, fact);
+    Y = address;
+    go(te_mult);
+    unsigned long exp = mult(prod, fact, mod);
+    unsigned long got = S.get64(product);
+    unsigned long res = S.get64(result);
+    printf("%lu * %lu (mod %lu) -> %lu,%lu expected %lu in %u\n",
+           prod, fact, mod, res, got, exp, S.executed);
+    assert(got == res);
+    assert(got == exp);
+}
+
+
+static void test_mult_steps(unsigned long mod,
+                            unsigned long prod, unsigned long fact)
+{
+    unsigned long res = 0;
+    prod %= mod;
+    for (int i = 0; i != 64; ++i) {
+        test_add(mod, res, res, result);
+        res = res * 2 % mod;
+        if (fact & ((1ull << 63) >> i)) {
+            test_add(mod, res, prod, product);
+            res = (res + prod) % mod;
+        }
+    }
+}
+
+
+static void test_power(unsigned long mod, unsigned long n, unsigned long exp)
+{
+    S.set64(modulus, mod);
+    n %= mod;
+    S.mem[exp_twos] = 0;
+    S.set64(base, n);
+    S.set64(exponent, exp);
+    go(te_power);
+    unsigned long got = S.get64(product);
+    unsigned long expect = power(n, exp, mod);
+    printf("%lu ** %lu (mod %lu) -> %lu expected %lu in %u\n",
+           n, exp, mod, got, expect, S.executed);
+}
+
+
+static void test_power_steps(unsigned long mod, unsigned long n, unsigned long exp)
+{
+    unsigned long prod = 1;
+    for (int i = 0; i != 64; ++i) {
+        test_mult(mod, prod, prod, factor);
+        prod = mult(prod, prod, mod);
+        //printf("%016lx %016lx\n", exp, ((1ul << 63) >> i));
+        if (exp & ((1ul << 63) >> i)) {
+            test_mult(mod, prod, n, factor);
+            prod = mult(prod, n, mod);
+        }
+    }
+}
+
+
 int main(void)
 {
-    S.executed = 0;
     S.straight_through = true;
-    go();
-    printf("Did %i\n", S.executed);
+    S.write_limit = 256;
+    go(te_full);
+    printf("Program length = %i\n", S.executed);
+
+    S.straight_through = false;
+    S.write_limit = 64;
+
+    S.set64(one, 1);
+    S.set64(zero, 0);
+
+    S.set64(base_start, 2);
+    S.set64(base_start - 8, 325);
+    S.set64(base_start - 16, 9375);
+    S.set64(base_start - 24, 28178);
+    S.set64(base_start - 32, 9780504);
+    S.set64(base_start - 40, 1795265022);
+
+    test_add(6700417, 6000000, 5000000, factor);
+    test_add(100000000, 6000000, 5000000, product);
+    test_add((1ul << 63) - 1, 1879080904, 1879080904, factor);
+
+    test_mult(6700417, 6000000, 5000000, factor);
+    test_mult(33, 1, 1000, temp);
+    if (0)
+        test_mult_steps((1ul << 63) - 1, 1879080904, 1879080904);
+    test_mult((1ul << 63) - 1, 1879080904, 1879080904, factor);
+    test_power(100000, 2, 10);
+    test_power(6700417, 2, 6700416);
+    test_power(9223372036854775783, 5555, 9223372036854775782);
+    test_power((1ul << 63) - 1, 1234, (1ul << 63) - 2);
+    if (0)
+        test_power_steps((1ul << 63) - 1, 1234, (1ul << 63) - 2);
+
     return 0;
 }

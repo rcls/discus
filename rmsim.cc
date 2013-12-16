@@ -401,7 +401,7 @@ main_loop_next:
     ADD(8);
     JP(NC,main_loop);
     // Passed all checks.
-    LOAD(A,2);
+    INC(A);
     JMP(restart);
 
 classifyp1:                             // Classify result+1.

@@ -266,7 +266,6 @@ static const int square_count = 60;
 
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
-// OUT takes operand.  (Can probably avoid).
 // Could have LDA instead of LOADM... (Only have 1 LOADM(X,)..., but need
 // LOAD(X,constant|A))
 // RT() only has one byte essential use.
@@ -301,9 +300,8 @@ void go(test_entry_t start)
         goto single;
     case te_full: ;
     }
-composite:
-    OUT(1);
-prime:
+restart:
+    OUT(A);
     if (start == te_single)
         RET();
     // The input consists of 64bits BE...
@@ -389,8 +387,11 @@ square_loop:
     LOADM(A,square_count);
     DEC(A);
     JP(NZ,square_loop);
+composite:
     // If we get here, base**(modulus-1) is not -1 or +1... composite.
-    JMP(composite);
+    // Expect A=0
+    INC(A);
+    JMP(restart);
 square_loop2:                    // We get a -1 ... composite if last iteration.
     LOADM(A,square_count);
     DEC(A);
@@ -400,8 +401,8 @@ main_loop_next:
     ADD(8);
     JP(NC,main_loop);
     // Passed all checks.
-    OUT(2);
-    JMP(prime);
+    LOAD(A,2);
+    JMP(restart);
 
 classifyp1:                             // Classify result+1.
     LOAD(X,one);

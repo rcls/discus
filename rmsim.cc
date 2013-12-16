@@ -343,7 +343,7 @@ expgen2:
     STA(base_index);
 main_loop:
     CALL(set_product_one);
-    LOADM(X,base_index);
+    LOADM(Y,base_index);
     CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
     JP(Z,main_loop_next);               // base==0, next.

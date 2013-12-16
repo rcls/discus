@@ -476,15 +476,18 @@ add64m1:
     LOAD(U,result);
     LOAD(Y,modulus);
     LOAD(X,temp);
-    SETC();
+    JP(NC,add64m2);
+    LOAD(X,U);           // Write subtract into result; will leave NC & no copy.
 add64m2:
+    SETC();
+add64m3:
     LOADM(A,U);
     SBCM(Y);
     STA(X);
     DEC(Y);
     DEC(X);
     DEC(U);
-    JP(NZ,add64m2);
+    JP(NZ,add64m3);
     RT(NC);
     //LOAD(Y,temp);                     // Commit.
     //LOAD(X,result);
@@ -538,9 +541,12 @@ void test_add(unsigned long mod, unsigned long acc,
     go(te_add);
 
     unsigned long res = S.get64(result);
+    unsigned long expect = acc + addend;
+    if (expect < acc || expect >= mod)
+        expect -= mod;
     printf("%lu + %lu (mod %lu) -> %lu expected %lu in %u\n",
            acc, addend, mod, res, (acc + addend) % mod, S.executed);
-    assert(res == (acc + addend) % mod);
+    assert(res == expect);
 }
 
 
@@ -655,6 +661,7 @@ int main(void)
         test_power_steps((1ul << 63) - 1, 1234, (1ul << 63) - 2);
 
     test_power(0x100000001, 325, 0x100000000);
+    test_power(18446744073709551557u, 2, 18446744073709551556u);
 
     test_single(5);
     test_single(15);

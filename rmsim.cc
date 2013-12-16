@@ -254,10 +254,9 @@ static const int factor = 40;
 static const int exponent = 48;
 static const int base = 56;
 
-static const int zero = 0xff;
-static const int one = 0xf7;
-static const int base_start = 0xef;
-static const int base_last = 0xb8;
+static const int zero = 0xbf;
+static const int one = 0xc7;
+static const int base_start = 0xcf;
 
 static const int power_loop_count = 0;
 static const int mult_loop_count = 63;
@@ -340,8 +339,8 @@ expgen2:
 
     // Loop over the bases.
     LOAD(A,base_start);
-    STA(base_index);
 main_loop:
+    STA(base_index);
     CALL(set_product_one);
     LOADM(Y,base_index);
     CALL(mult);                         // product is now the base (reduced).
@@ -398,10 +397,8 @@ square_loop2:                    // We get a -1 ... composite if last iteration.
     JP(Z,composite);
 main_loop_next:
     LOADM(A,base_index);
-    SUB(8);
-    STA(base_index);
-    SUB(base_last);
-    JP(C,main_loop);
+    ADD(8);
+    JP(NC,main_loop);
     // Passed all checks.
     OUT(2);
     JMP(prime);
@@ -631,12 +628,12 @@ int main(void)
     S.set64(zero, 0);
 
     S.set64(base_start, 2);
-    S.set64(base_start - 8, 325);
-    S.set64(base_start - 16, 9375);
-    S.set64(base_start - 24, 28178);
-    S.set64(base_start - 32, 450775);
-    S.set64(base_start - 40, 9780504);
-    S.set64(base_start - 48, 1795265022);
+    S.set64(base_start + 8, 325);
+    S.set64(base_start + 16, 9375);
+    S.set64(base_start + 24, 28178);
+    S.set64(base_start + 32, 450775);
+    S.set64(base_start + 40, 9780504);
+    S.set64(base_start + 48, 1795265022);
 
     test_add(6700417, 6000000, 5000000, factor);
     test_add(100000000, 6000000, 5000000, product);

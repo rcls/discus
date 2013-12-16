@@ -388,7 +388,7 @@ square_loop:
     JP(Z,composite);
     LOADM(A,square_count);
     DEC(A);
-    JP(Z,square_loop);
+    JP(NZ,square_loop);
     // If we get here, base**(modulus-1) is not -1 or +1... composite.
     JMP(composite);
 square_loop2:                    // We get a -1 ... composite if last iteration.
@@ -657,6 +657,7 @@ int main(void)
     test_single(15);
     test_single(9223372036854775783);
     test_single(0x100000001);
+    test_single(65537);
 
     return 0;
 }

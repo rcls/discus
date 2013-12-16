@@ -270,6 +270,9 @@ static const int square_count = 60;
 // OUT takes operand.  (Can probably avoid).
 // Could have LDA instead of LOADM...
 
+// Unmapped memory read-as-zero would be nice...
+// Or make 32bit x 16rom board...
+
 // Dirty trick: Flag low 3 bits zero?
 
 enum test_entry_t {
@@ -304,20 +307,19 @@ prime:
     // The input consists of 64bits BE...
     LOAD(Y,len*8);                      // leftrot does not use Y...
 read1:
-    IN();                               // FIXME - or test a bit?
-    AND(1);                             // FIXME - or ROR... or non.dest.test.
-    JP(Z,read1);
+    // Pulse bit 7 for 1, pulse bit 6 for 0.
     IN();
+    AND(0xc0);
+    JP(Z,read1);
     ADC(A);
     LOAD(X,modulus);
     CALL(leftrot);
-read2:
-    IN();                              // Or just use short pulses...
-    AND(1);
-    JP(NZ,read2);
-    DEC(Y);
-    JP(NZ,read1);
-    OUT(Y);
+    // Long pulse on bit 7 is start...
+    IN();
+    ADC(A);
+    JP(NC,read1);
+    SUB(A);
+    OUT(A);
 single:                                 // Test entry point
     // Now generate the exponent...
     LOAD(Y,modulus);

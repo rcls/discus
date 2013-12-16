@@ -268,7 +268,10 @@ static const int square_count = 60;
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
 // OUT takes operand.  (Can probably avoid).
-// Could have LDA instead of LOADM...
+// Could have LDA instead of LOADM... (Only have 1 LOADM(X,)..., but need
+// LOAD(X,constant|A))
+// RT() only has one byte essential use.
+// XOR is not used.  OR is not used.
 
 // Unmapped memory read-as-zero would be nice...
 // Or make 32bit x 16rom board...
@@ -415,7 +418,7 @@ classify1:
     RT(NZ);
     DEC(X);
     JP(NZ,classify1);
-    ORM(result);
+    ADDM(result);
     RET();
 
 square:                                 // product * product -> product

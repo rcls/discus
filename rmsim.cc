@@ -254,10 +254,9 @@ static const int factor = 40;
 static const int exponent = 48;
 static const int base = 56;
 
-static const int zero = 0xff;
-static const int one = 0xf7;
-static const int base_start = 0xef;
-static const int base_last = 0xb8;
+static const int zero = 0xbf;
+static const int one = 0xc7;
+static const int base_start = 0xcf;
 
 static const int power_loop_count = 0;
 static const int mult_loop_count = 63;
@@ -267,7 +266,6 @@ static const int square_count = 60;
 
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
-// OUT takes operand.  (Can probably avoid).
 // Could have LDA instead of LOADM... (Only have 1 LOADM(X,)..., but need
 // LOAD(X,constant|A))
 // RT() only has one byte essential use.
@@ -302,9 +300,8 @@ void go(test_entry_t start)
         goto single;
     case te_full: ;
     }
-composite:
-    OUT(1);
-prime:
+restart:
+    OUT(A);
     if (start == te_single)
         RET();
     // The input consists of 64bits BE...
@@ -340,10 +337,11 @@ expgen2:
 
     // Loop over the bases.
     LOAD(A,base_start);
-    STA(base_index);
 main_loop:
-    CALL(set_product_one);
-    LOADM(X,base_index);
+    STA(base_index);
+    LOAD(Y,one);
+    CALL(copy_to_product);
+    LOADM(Y,base_index);
     CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
     JP(Z,main_loop_next);               // base==0, next.
@@ -359,7 +357,8 @@ main_loop:
     CALL(copy);
 
 power:                                  // Entry-point for test only...
-    CALL(set_product_one);
+    LOAD(Y,one);
+    CALL(copy_to_product);
     LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
 power1:
@@ -389,22 +388,23 @@ square_loop:
     JP(Z,composite);
     LOADM(A,square_count);
     DEC(A);
-    JP(Z,square_loop);
+    JP(NZ,square_loop);
+composite:
     // If we get here, base**(modulus-1) is not -1 or +1... composite.
-    JMP(composite);
+    // Expect A=0
+    INC(A);
+    JMP(restart);
 square_loop2:                    // We get a -1 ... composite if last iteration.
     LOADM(A,square_count);
     DEC(A);
     JP(Z,composite);
 main_loop_next:
     LOADM(A,base_index);
-    SUB(8);
-    STA(base_index);
-    SUB(base_last);
-    JP(C,main_loop);
+    ADD(8);
+    JP(NC,main_loop);
     // Passed all checks.
-    OUT(2);
-    JMP(prime);
+    INC(A);
+    JMP(restart);
 
 classifyp1:                             // Classify result+1.
     LOAD(X,one);
@@ -445,7 +445,10 @@ mult1:
     DEC(A);
     JP(NZ,mult1);
     LOAD(Y,result);
-    JMP(copy_to_product);
+
+copy_to_product:
+    LOAD(X,product);
+    JMP(copy);
 
 leftrot_exponent:
     LOAD(X,exponent);
@@ -491,12 +494,7 @@ add64m3:
     RT(NC);
     //LOAD(Y,temp);                     // Commit.
     //LOAD(X,result);
-    JMP(copy);
 
-set_product_one:
-    LOAD(Y,one);
-copy_to_product:
-    LOAD(X,product);
 copy:
     LOAD(U,len);
 copy1:
@@ -637,12 +635,12 @@ int main(void)
     S.set64(zero, 0);
 
     S.set64(base_start, 2);
-    S.set64(base_start - 8, 325);
-    S.set64(base_start - 16, 9375);
-    S.set64(base_start - 24, 28178);
-    S.set64(base_start - 32, 450775);
-    S.set64(base_start - 40, 9780504);
-    S.set64(base_start - 48, 1795265022);
+    S.set64(base_start + 8, 325);
+    S.set64(base_start + 16, 9375);
+    S.set64(base_start + 24, 28178);
+    S.set64(base_start + 32, 450775);
+    S.set64(base_start + 40, 9780504);
+    S.set64(base_start + 48, 1795265022);
 
     test_add(6700417, 6000000, 5000000, factor);
     test_add(100000000, 6000000, 5000000, product);
@@ -667,6 +665,7 @@ int main(void)
     test_single(15);
     test_single(9223372036854775783);
     test_single(0x100000001);
+    test_single(65537);
 
     return 0;
 }

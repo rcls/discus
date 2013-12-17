@@ -2,19 +2,14 @@ registers
 
 SS/RR registers:
 A
+W
 X
 Y
-Z - constant generator, reads as op specific value, zero unless other stated.
-
-S (sacc) register is loaded by explicit sacc op, or any write to A.  Implicit
-first operand to all ALU ops.
-
-DD is two bits, specifies which register next op sets.  Reset to zero
-on all ops except the ones that explicitly load it.
 
 Buses
  - operand / address
- - mem read / transfer
+ - mem read
+ - alu out
  - mem write
 
 Operand bus is also address bus.
@@ -31,85 +26,44 @@ memory connector (32 bytes):
 
 source bus is register or constant.  Memory address is always source bus.
 operand bus is source bus direct or memory lookup
-result bus is ALU output, or operand bus or link register
-
-* sacculator normally latches same value as accumulator, except for explicitly
-  setting sacculator.
-
-* ALU uses sacculator and operand bus.
+result bus is ALU output, or operand bus direct (add 0...)
 
 00XXXXXX - data prefix (load immediate register).
   * any other instruction clears data prefix.
 
-01UUUMSS - alu op (ALU output indirect to register DD).
-  * clear DD bits.
-  * leave sacc==A
+00CCCLXX - with prefix, jump, opt link.
+  [prob have space to use 01 & get RR...]
 
-10CCCLSS - jump/call (source bus to PC).
-  Z means return, what does return with link mean?
-  10000xxx are jump-never - can do special things (set/reset clr?)
-CCC - one bit is jump-on-set/not-set, two bits source, 00 is always/never.
-Traditional C/Z/N flags.
+[All we get from this 01 instead of 00 is indirects & ret...  and make others
+ more packed.  Instead Separate uncond jumps that may be indirect?]
+01CCCLRR - jump/call except:
+01CCC111 - return (only with no prefix, with prefix is call).
 
-110RR0SS - store RR to memory (extra register to memory write).
+10AAAMRR - ins that r/w A. (flags Z C O?)
+  * 7 basic operations:
+     add(c) sub(c) or and xor
+  * also possibly cmp or sta?
 
-110DD1SS - load sacc., set destination.
-    (result bus to sacculator, load DD bits).
+110WWMRR - operand to reg WW.
 
-111RRMSS - load RR with operand (result bus to register RR).
-    [Does RR=11 have same meaning as an ALU op with DD=11?]
+111 : misc crap:
+  on all regs: inc, dec
+  111000RR : inc. (flags Z)
+  111010RR : dec.
 
+  111100RR : in  (or could make reg 3 an I/O port... or mmap i/o)
+  111110RR : out
 
-register file is single write (off result bus).
-Write register is RR bits, or DD bits or accumulator.
+  111001RR : sta
 
-register file is dual read (sacculator has drive to ALU only):
-  source bus.
-  memory write value (or PC for PC to link).
-
-registers are A X Y Z.  Z is a magic constant;
-Writes to Z do something magic?  LEDs? / I/O?
-
-phase1 - register outputs are transparent.
-phase2 - register inputs & misc latches are transparent.
-
-Instruction lookup address is pc 'input latch'.  Instruction latch is
-transparent on phase1.
-
-
-add Z means increment.
-sub Z means decrement.  i.e., Z reads as 1 for add/sub
-
-add/inc
-sub/dec/neg
-adc
-sbc
-or - do something funky on 'or Z' - read IOs? (orA just tests?)
-and - (andZ right shifts?, andA right shifts with carry?)
-xor - Z reads as 0xff.
-cmp
-
-inc/dec preserve C?
-
-call Z gives 8 specials...
-maybe jump-never is special?
-
-CCC
-
-* always/never
-* IO0, notIO0
-* C, notC
-* Z, notC
-
-* Could have stack instead of link register. For jumps Z reads as stack top.
+  111011xx :
+  111101xx :
+  111111xx :
+     clrc
+     setc
+     shr
+     ror
+     not
+     neg
 
 
-Reset sequence?...
-
-ld A,Z
-ld X,Z
-ld L,Z
-st A,(X)
-inc X
-jnz $-2
-jmp 1

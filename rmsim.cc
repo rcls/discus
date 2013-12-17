@@ -339,7 +339,8 @@ expgen2:
     LOAD(A,base_start);
 main_loop:
     STA(base_index);
-    CALL(set_product_one);
+    LOAD(Y,one);
+    CALL(copy_to_product);
     LOADM(Y,base_index);
     CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
@@ -356,7 +357,8 @@ main_loop:
     CALL(copy);
 
 power:                                  // Entry-point for test only...
-    CALL(set_product_one);
+    LOAD(Y,one);
+    CALL(copy_to_product);
     LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
 power1:
@@ -443,7 +445,10 @@ mult1:
     DEC(A);
     JP(NZ,mult1);
     LOAD(Y,result);
-    JMP(copy_to_product);
+
+copy_to_product:
+    LOAD(X,product);
+    JMP(copy);
 
 leftrot_exponent:
     LOAD(X,exponent);
@@ -486,12 +491,7 @@ add64m2:
     RT(NC);
     //LOAD(Y,temp);                     // Commit.
     //LOAD(X,result);
-    JMP(copy);
 
-set_product_one:
-    LOAD(Y,one);
-copy_to_product:
-    LOAD(X,product);
 copy:
     LOAD(U,len);
 copy1:

@@ -656,9 +656,9 @@ int main(void)
 
     test_single(5);
     test_single(15);
-    test_single(9223372036854775783);
+    test_single(9223372036854775783);   // Largest prime < 2**63
+    test_single(9219669366496075201);   // Carmichael, < 2**63
     test_single(0x100000001);
     test_single(65537);
-
     return 0;
 }

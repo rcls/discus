@@ -117,7 +117,7 @@ void do_AND(unsigned char val)
 void AND(const operand_t & val)  { do_AND(val); }
 void ANDM(const operand_t & val) { do_AND(S.mem[val]); }
 
-void do_OR(const operand_t & val)
+void do_OR(unsigned char val)
 {
     ++S.executed;
     A = A.get() | val;
@@ -254,22 +254,25 @@ static const int factor = 40;
 static const int exponent = 48;
 static const int base = 56;
 
-static const int zero = 0xff;
-static const int one = 0xf7;
-static const int base_start = 0xef;
-static const int base_last = 0xc0;
+static const int zero = 0xbf;
+static const int one = 0xc7;
+static const int base_start = 0xcf;
 
 static const int power_loop_count = 0;
 static const int mult_loop_count = 63;
 static const int base_index = 62;
-static const int reduce_output = 61;
-static const int exp_twos = 60;
-static const int square_count = 59;
+static const int exp_twos = 61;
+static const int square_count = 60;
 
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
-// OUT takes operand.  (Can probably avoid).
-// Could have LDA instead of LOADM...
+// Could have LDA instead of LOADM... (Only have 1 LOADM(X,)..., but need
+// LOAD(X,constant|A))
+// RT() only has one byte essential use.
+// XOR is not used.  OR is not used.
+
+// Unmapped memory read-as-zero would be nice...
+// Or make 32bit x 16rom board...
 
 // Dirty trick: Flag low 3 bits zero?
 
@@ -297,28 +300,26 @@ void go(test_entry_t start)
         goto single;
     case te_full: ;
     }
-composite:
-    OUT(1);
-prime:
+restart:
+    OUT(A);
     if (start == te_single)
         RET();
     // The input consists of 64bits BE...
     LOAD(Y,len*8);                      // leftrot does not use Y...
 read1:
-    IN();                               // FIXME - or test a bit?
-    AND(1);                             // FIXME - or ROR... or non.dest.test.
-    JP(Z,read1);
+    // Pulse bit 7 for 1, pulse bit 6 for 0.
     IN();
+    AND(0xc0);
+    JP(Z,read1);
     ADC(A);
     LOAD(X,modulus);
     CALL(leftrot);
-read2:
-    IN();                              // Or just use short pulses...
-    AND(1);
-    JP(NZ,read2);
-    DEC(Y);
-    JP(NZ,read1);
-    OUT(Y);
+    // Long pulse on bit 7 is start...
+    IN();
+    ADC(A);
+    JP(NC,read1);
+    SUB(A);
+    OUT(A);
 single:                                 // Test entry point
     // Now generate the exponent...
     LOAD(Y,modulus);
@@ -336,13 +337,13 @@ expgen2:
 
     // Loop over the bases.
     LOAD(A,base_start);
-    STA(base_index);
 main_loop:
-    CALL(set_product_one);
-    LOADM(X,base_index);
+    STA(base_index);
+    LOAD(Y,one);
+    CALL(copy_to_product);
+    LOADM(Y,base_index);
     CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
-    OR(A);
     JP(Z,main_loop_next);               // base==0, next.
 
     // Now do the exponentiation...
@@ -381,8 +382,7 @@ power_x:
     if (start == te_power)
         RET();
 
-    CALL(classifyp1);                    // Add 1 and test...
-    // 0, 2 -> useless.
+    CALL(classifyp1);                    // -1, 1 -> useless.
     AND(0xfd);
     JP(Z,main_loop_next);
 
@@ -390,37 +390,43 @@ power_x:
 square_loop:
     STA(square_count);
     CALL(square);
-    CALL(classifyp1);                   // 0->useless, 2->composite.
-    OR(A);
-    JP(Z,main_loop_next);
+    CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
+    JP(Z,square_loop2);
     SUB(2);
     JP(Z,composite);
     LOADM(A,square_count);
     DEC(A);
-    JP(Z,square_loop);
-    // If we get here, base**(modulus-1) is -1 not +1.... composite.
+    JP(NZ,square_loop);
+composite:
+    // If we get here, base**(modulus-1) is not -1 or +1... composite.
+    // Expect A=0
+    INC(A);
+    JMP(restart);
+square_loop2:                    // We get a -1 ... composite if last iteration.
+    LOADM(A,square_count);
+    DEC(A);
+    JP(Z,composite);
 main_loop_next:
     LOADM(A,base_index);
-    SUB(8);
-    STA(base_index);
-    SUB(base_last);
+    ADD(8);
     JP(NC,main_loop);
     // Passed all checks.
-    OUT(2);
-    JMP(prime);
+    INC(A);
+    JMP(restart);
 
 classifyp1:                             // Classify result+1.
     LOAD(X,one);
     CALL(add64m);
 classify:                               // min(result,255) -> A
-    LOAD(X,result);
+    LOAD(X,result - 1);
+    SUB(A);
 classify1:
-    LOADM(A,X);
+    SUBM(X);
+    SBC(A);
+    RT(NZ);
     DEC(X);
-    RT(Z);
-    OR(A);
-    JP(Z,classify1);
-    OR(0xff);
+    JP(NZ,classify1);
+    ADDM(result);
     RET();
 
 square:                                 // product * product -> product
@@ -447,7 +453,10 @@ mult1:
     DEC(A);
     JP(NZ,mult1);
     LOAD(Y,result);
-    JMP(copy_to_product);
+
+copy_to_product:
+    LOAD(X,product);
+    JMP(copy);
 
 leftrot_exponent:
     LOAD(X,exponent);
@@ -490,12 +499,7 @@ add64m2:
     RT(NC);
     //LOAD(Y,temp);                     // Commit.
     //LOAD(X,result);
-    JMP(copy);
 
-set_product_one:
-    LOAD(Y,one);
-copy_to_product:
-    LOAD(X,product);
 copy:
     LOAD(U,len);
 copy1:
@@ -612,6 +616,14 @@ static void test_power_steps(unsigned long mod, unsigned long n, unsigned long e
 }
 
 
+static void test_single(unsigned long mod)
+{
+    S.set64(modulus, mod);
+    go(te_single);
+    printf("mr %lu -> %u in %u\n", mod, S.out_latch, S.executed);
+}
+
+
 int main(void)
 {
     S.straight_through = true;
@@ -626,11 +638,12 @@ int main(void)
     S.set64(zero, 0);
 
     S.set64(base_start, 2);
-    S.set64(base_start - 8, 325);
-    S.set64(base_start - 16, 9375);
-    S.set64(base_start - 24, 28178);
-    S.set64(base_start - 32, 9780504);
-    S.set64(base_start - 40, 1795265022);
+    S.set64(base_start + 8, 325);
+    S.set64(base_start + 16, 9375);
+    S.set64(base_start + 24, 28178);
+    S.set64(base_start + 32, 450775);
+    S.set64(base_start + 40, 9780504);
+    S.set64(base_start + 48, 1795265022);
 
     test_add(6700417, 6000000, 5000000, factor);
     test_add(100000000, 6000000, 5000000, product);
@@ -647,6 +660,14 @@ int main(void)
     test_power((1ul << 63) - 1, 1234, (1ul << 63) - 2);
     if (0)
         test_power_steps((1ul << 63) - 1, 1234, (1ul << 63) - 2);
+
+    test_power(0x100000001, 325, 0x100000000);
+
+    test_single(5);
+    test_single(15);
+    test_single(9223372036854775783);
+    test_single(0x100000001);
+    test_single(65537);
 
     return 0;
 }

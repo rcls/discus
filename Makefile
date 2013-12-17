@@ -29,8 +29,6 @@ accumulate-gerbers: bottomsilk.gbr_ext=BotSilkscreen.gbr
 accumulate-gerbers: outline.gbr_ext=BoardOutline.gbr
 accumulate-gerbers: plated-drill.cnc_ext=Drill.cnc
 accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
-accumulate-gerbers: group1.gbr_ext=Innerlayer1.gbr
-accumulate-gerbers: group2.gbr_ext=Innerlayer2.gbr
 
 .PHONY: %-gerbers
 %-gerbers:

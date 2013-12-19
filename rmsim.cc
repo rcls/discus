@@ -6,7 +6,25 @@
 #define JOIN2(x,y) x##y
 #define JOIN(x,y) JOIN2(x,y)
 
-struct operand_t;
+
+enum register_name_t { A, X, Y, U };
+
+struct operand_t {
+    operand_t(unsigned char n) :
+        is_val(true), is_mem(false), value(n) { }
+    operand_t(const register_name_t & r) :
+        is_val(false), is_mem(false), value(r) { }
+    operand_t(const operand_t & other, bool m) :
+        is_val(other.is_val), is_mem(m), value(other.value) { }
+    bool is_val;
+    bool is_mem;
+    unsigned char value;
+    operand_t mem() const { return operand_t(*this, true); }
+};
+
+enum condition_t {
+    C, Z, O, ALWAYS, NC, NZ, NO, NEVER,
+};
 
 struct state_t {
     unsigned char regs[4];
@@ -33,6 +51,16 @@ struct state_t {
     void account(const operand_t & v);
     void account(int n) { executed += n; }
 
+    bool wanted(condition_t) const;
+
+    unsigned char get(const operand_t & val) const {
+        unsigned char v = val.is_val ? val.value : regs[val.value];
+        return val.is_mem ? mem[v] : v;
+    }
+    unsigned char & get(register_name_t r) {
+        return regs[r];
+    }
+
     int jump_take_number;
     int jump_source;
     const char * jump_target_name;
@@ -40,64 +68,20 @@ struct state_t {
 
 static state_t S;
 
-struct register_name_t {
-    int r;
-    explicit register_name_t(int rr) : r(rr) { }
-
-    unsigned char operator= (unsigned char v) const { return S.regs[r] = v; }
-    unsigned char get() const { return S.regs[r]; }
-};
-
-static const register_name_t A(0);
-static const register_name_t X(1);
-static const register_name_t Y(2);
-static const register_name_t U(3);
-
-struct condition_t {
-    int c;
-    condition_t(int cc) : c(cc) { }
-
-    operator bool() const {
-        bool want = (c & 4) == 0;
-        switch (c & 3) {
-        case 0:
-            return want == S.flag_C;
-        case 1:
-            return want == S.flag_Z;
-        case 2:
-            return want == S.flag_O;
-        default:
-            return want;
-        };
+bool state_t::wanted(condition_t c) const
+{
+    bool want = (c & 4) == 0;
+    switch (c & 3) {
+    case 0:
+        return want == S.flag_C;
+    case 1:
+        return want == S.flag_Z;
+    case 2:
+        return want == S.flag_O;
+    default:
+        return want;
     }
 };
-
-
-struct operand_t {
-    operand_t(unsigned char n) :
-        is_val(true), is_mem(false), value(n) { }
-    operand_t(const register_name_t & r) :
-        is_val(false), is_mem(false), value(r.r) { }
-    operand_t(const operand_t & other, bool m) :
-        is_val(other.is_val), is_mem(m), value(other.value) { }
-    bool is_val;
-    bool is_mem;
-    unsigned char value;
-    operand_t mem() const { return operand_t(*this, true); }
-    operator unsigned char() const {
-        unsigned char v = is_val ? value : S.regs[value];
-        return is_mem ? S.mem[v] : v;
-    }
-};
-
-static const condition_t C = 0;
-static const condition_t NC = 4;
-static const condition_t Z = 1;
-static const condition_t NZ = 5;
-static const condition_t O = 2;
-static const condition_t NO = 6;
-static const condition_t ALWAYS = 3;
-static const condition_t NEVER = 7;
 
 void state_t::account(const operand_t & v)
 {
@@ -107,9 +91,9 @@ void state_t::account(const operand_t & v)
 void ADD(const operand_t & val, bool cin = false, unsigned char flip = 0)
 {
     S.account(val);
-    unsigned r = A.get() + (val ^ flip) + cin;
+    unsigned r = S.get(A) + (S.get(val) ^ flip) + cin;
     S.flag_C = !!(r & 256);
-    A = r;
+    S.get(A) = r;
     S.flag_Z = !(r & 255);
 }
 
@@ -125,8 +109,8 @@ void SBCM(const operand_t & val) { ADD(val.mem(), S.flag_C, 255); }
 void AND(const operand_t & val)
 {
     S.account(val);
-    A = A.get() & val;
-    S.flag_Z = (A.get() == 0);
+    S.get(A) &= S.get(val);
+    S.flag_Z = (S.get(A) == 0);
     S.flag_C = false;
 }
 
@@ -135,8 +119,8 @@ void ANDM(const operand_t & val) { AND(val.mem()); }
 void OR(const operand_t & val)
 {
     S.account(val);
-    A = A.get() | val;
-    S.flag_Z = (A.get() == 0);
+    S.get(A) |= S.get(val);
+    S.flag_Z = (S.get(A) == 0);
     S.flag_C = false;
 }
 
@@ -145,8 +129,8 @@ void ORM(const operand_t & val) { OR(val.mem()); }
 void XOR(const operand_t & val)
 {
     S.account(val);
-    A = A.get() ^ val;
-    S.flag_Z = (A.get() == 0);
+    S.get(A) ^= S.get(val);
+    S.flag_Z = (S.get(A) == 0);
     S.flag_C = false;
 }
 
@@ -162,20 +146,20 @@ void CMP(const operand_t & val)
 }
 */
 
-void INC(const register_name_t & reg)
+void INC(register_name_t reg)
 {
     S.account(1);
-    reg = reg.get() + 1;
-    S.flag_Z = (reg.get() == 0);
-    S.flag_O = (reg.get() == 0);
+    S.get(reg)++;
+    S.flag_Z = (S.get(reg) == 0);
+    S.flag_O = (S.get(reg) == 0);
 }
 
 void DEC(const register_name_t & reg)
 {
     S.account(1);
-    reg = reg.get() - 1;
-    S.flag_Z = (reg.get() == 0);
-    S.flag_O = (reg.get() != 255);
+    S.get(reg)--;
+    S.flag_Z = (S.get(reg) == 0);
+    S.flag_O = (S.get(reg) != 255);
 }
 
 void CLRC()
@@ -192,23 +176,23 @@ void SETC()
 }
 
 
-void LOAD(const register_name_t & ww, const operand_t & val)
+void LOAD(register_name_t ww, const operand_t & val)
 {
     S.account(val);
-    ww = val;
+    S.get(ww) = S.get(val);
 }
 
-void LOADM(const register_name_t & ww, const operand_t & val)
+void LOADM(register_name_t ww, const operand_t & val)
 {
     S.account(val);
-    ww = S.mem[val];
+    S.get(ww) = S.mem[S.get(val)];
 }
 
 void STA(const operand_t & val)
 {
     S.account(val);
-    assert(val < S.write_limit);
-    S.mem[val] = A.get();
+    assert(S.get(val) < S.write_limit);
+    S.mem[S.get(val)] = S.get(A);
 }
 
 void IN()
@@ -220,7 +204,7 @@ void IN()
 void OUT(const operand_t & val)
 {
     S.account(val);
-    S.out_latch = val;
+    S.out_latch = S.get(val);
 }
 
 
@@ -239,11 +223,11 @@ void * pop()
 }
 
 
-bool jump(const condition_t & cond, const char * name)
+bool jump(condition_t cond, const char * name)
 {
     S.account(2);
     if (!S.straight_through)
-        return cond;
+        return S.wanted(cond);
     if (S.jump_take_number-- != 0)
         return false;
     S.jump_source = S.executed;
@@ -252,13 +236,10 @@ bool jump(const condition_t & cond, const char * name)
 }
 
 
-bool retrn(const condition_t & cond)
+bool retrn(condition_t cond)
 {
     S.account(1);
-    if (S.straight_through)
-        return false;
-    else
-        return cond;
+    return !S.straight_through && S.wanted(cond);
 }
 
 
@@ -553,7 +534,7 @@ void test_add(unsigned long mod, unsigned long acc,
     S.set64(modulus, mod);
     S.set64(result, acc);
     S.set64(address, addend);
-    X = address;
+    S.regs[X] = address;
 
     go(te_add);
 
@@ -571,7 +552,7 @@ static void test_mult(unsigned long mod, unsigned long prod,
     prod %= mod;
     S.set64(product, prod);
     S.set64(address, fact);
-    Y = address;
+    S.regs[Y] = address;
     go(te_mult);
     unsigned long exp = mult(prod, fact, mod);
     unsigned long got = S.get64(product);

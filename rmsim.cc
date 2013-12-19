@@ -32,6 +32,10 @@ struct state_t {
     }
     void account(const operand_t & v);
     void account(int n) { executed += n; }
+
+    int jump_take_number;
+    int jump_source;
+    const char * jump_target_name;
 };
 
 static state_t S;
@@ -235,13 +239,16 @@ void * pop()
 }
 
 
-bool jump(const condition_t & cond)
+bool jump(const condition_t & cond, const char * name)
 {
     S.account(2);
-    if (S.straight_through)
-        return false;
-    else
+    if (!S.straight_through)
         return cond;
+    if (S.jump_take_number-- != 0)
+        return false;
+    S.jump_source = S.executed;
+    S.jump_target_name = name;
+    return true;
 }
 
 
@@ -255,13 +262,13 @@ bool retrn(const condition_t & cond)
 }
 
 
-#define JP(cond,label) do { if (jump(cond)) goto label; } while (0)
+#define JP(cond,label) do { if (jump(cond, #label)) goto label; } while (0)
 #define JMP(label) JP(ALWAYS,label)
 
 #define RET_LABEL JOIN(return_label_,__LINE__)
 #define call(label) do { push(&&RET_LABEL); goto label; RET_LABEL: ; } while (0)
 
-#define CL(cond,label) do { if (jump(cond)) call(label); } while (0)
+#define CL(cond,label) do { if (jump(cond, #label)) call(label); } while (0)
 #define CALL(label) CL(ALWAYS,label)
 
 #define do_ret() do if (S.stack[0] == NULL) return; else goto *pop(); while (0)
@@ -659,9 +666,20 @@ static void test_single(unsigned long mod)
 int main(void)
 {
     S.straight_through = true;
+    S.jump_take_number = -1;
     S.write_limit = 256;
     go(te_full);
-    printf("Program length = %i\n", S.executed);
+    int program_length = S.executed;
+    printf("Program length = %i\n", program_length);
+
+    for (int i = 0;; ++i) {
+        S.jump_take_number = i;
+        go(te_full);
+        if (S.jump_take_number >= 0)
+            break;
+        printf("Jump %i : %i -> %s %i\n", i, S.jump_source,
+               S.jump_target_name, S.jump_source + program_length - S.executed);
+    }
 
     S.straight_through = false;
     S.write_limit = 64;

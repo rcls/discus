@@ -594,11 +594,37 @@ static void test_power_steps(unsigned long mod, unsigned long n, unsigned long e
 }
 
 
+static bool is_prime(unsigned long n)
+{
+    int tz = __builtin_ctzl(n - 1);
+    unsigned long exp = (n - 1) >> tz;
+
+    unsigned bases[7] = { 2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
+    for (int i = 0; i != 7; ++i) {
+        if (bases[i] % n == 0)
+            continue;
+        unsigned long pw = power(bases[i], exp, n);
+        if (pw == 1)
+            continue;
+        for (int i = 0; i < tz; ++i) {
+            if (pw + 1 == n)
+                goto next;
+            pw = mult(pw, pw, n);
+        }
+        return false;
+    next: ;
+    }
+    return true;
+}
+
+
 static void test_single(unsigned long mod)
 {
     S.set64(modulus, mod);
     go(te_single);
-    printf("mr %lu -> %u in %u\n", mod, S.out_latch, S.executed);
+    unsigned exp = is_prime(mod) ? 8 : 1;
+    printf("mr %lu -> %u exp %u in %u\n", mod, S.out_latch, exp, S.executed);
+    assert(exp == S.out_latch);
 }
 
 

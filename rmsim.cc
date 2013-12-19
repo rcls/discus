@@ -301,6 +301,7 @@ void go(test_entry_t start)
     case te_full: ;
     }
 restart:
+    INC(A);
     OUT(A);
     if (start == te_single)
         RET();
@@ -384,25 +385,21 @@ square_loop:
     CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
     JP(Z,square_loop2);
     SUB(2);
-    JP(Z,composite);
+    JP(Z,restart);
     LOADM(A,square_count);
     DEC(A);
     JP(NZ,square_loop);
-composite:
     // If we get here, base**(modulus-1) is not -1 or +1... composite.
-    // Expect A=0
-    INC(A);
     JMP(restart);
 square_loop2:                    // We get a -1 ... composite if last iteration.
     LOADM(A,square_count);
     DEC(A);
-    JP(Z,composite);
+    JP(Z,restart);
 main_loop_next:
     LOADM(A,base_index);
     ADD(8);
     JP(NC,main_loop);
     // Passed all checks.
-    INC(A);
     JMP(restart);
 
 classifyp1:                             // Classify result+1.

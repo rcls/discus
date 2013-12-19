@@ -6,6 +6,8 @@
 #define JOIN2(x,y) x##y
 #define JOIN(x,y) JOIN2(x,y)
 
+struct operand_t;
+
 struct state_t {
     unsigned char regs[4];
     bool flag_C;
@@ -28,6 +30,7 @@ struct state_t {
             result += (unsigned long) mem[address - i] << (i * 8);
         return result;
     }
+    void account(const operand_t & v);
 };
 
 static state_t S;
@@ -70,12 +73,19 @@ struct condition_t {
 
 struct operand_t {
     operand_t(unsigned char n) :
-        is_val(true), value(n) { ++S.executed; }
+        is_val(true), is_mem(false), value(n) { }
     operand_t(const register_name_t & r) :
-        is_val(false), value(r.r) { }
+        is_val(false), is_mem(false), value(r.r) { }
+    operand_t(const operand_t & other, bool m) :
+        is_val(other.is_val), is_mem(m), value(other.value) { }
     bool is_val;
+    bool is_mem;
     unsigned char value;
-    operator unsigned char() const { return is_val ? value : S.regs[value]; }
+    operand_t mem() const { return operand_t(*this, true); }
+    operator unsigned char() const {
+        unsigned char v = is_val ? value : S.regs[value];
+        return is_mem ? S.mem[v] : v;
+    }
 };
 
 static const condition_t C = 0;
@@ -87,57 +97,58 @@ static const condition_t NO = 6;
 static const condition_t ALWAYS = 3;
 static const condition_t NEVER = 7;
 
-void do_ADD(unsigned char val, bool cin = false)
+void state_t::account(const operand_t & v)
 {
-    ++S.executed;
-    unsigned r = A.get() + val + cin;
+    executed += 1 + v.is_val;
+}
+
+void ADD(const operand_t & val, bool cin = false, unsigned char flip = 0)
+{
+    S.account(val);
+    unsigned r = A.get() + (val ^ flip) + cin;
     S.flag_C = !!(r & 256);
     A = r;
     S.flag_Z = !(r & 255);
 }
 
-void ADD(const operand_t & val)  { do_ADD(val); }
-void ADDM(const operand_t & val) { do_ADD(S.mem[val]); }
-void ADC(const operand_t & val)  { do_ADD(val,         S.flag_C); }
-void ADCM(const operand_t & val) { do_ADD(S.mem[val],  S.flag_C); }
+void ADDM(const operand_t & val) { ADD(val.mem()); }
+void ADC(const operand_t & val)  { ADD(val, S.flag_C); }
+void ADCM(const operand_t & val) { ADD(val.mem(), S.flag_C); }
 
-void SUB(const operand_t & val)  { do_ADD(~val,        true); }
-void SBC(const operand_t & val)  { do_ADD(~val,        S.flag_C); }
-void SUBM(const operand_t & val) { do_ADD(~S.mem[val], true); }
-void SBCM(const operand_t & val) { do_ADD(~S.mem[val], S.flag_C); }
+void SUB(const operand_t & val)  { ADD(val,       true,     255); }
+void SBC(const operand_t & val)  { ADD(val,       S.flag_C, 255); }
+void SUBM(const operand_t & val) { ADD(val.mem(), true,     255); }
+void SBCM(const operand_t & val) { ADD(val.mem(), S.flag_C, 255); }
 
-void do_AND(unsigned char val)
+void AND(const operand_t & val)
 {
-    ++S.executed;
+    S.account(val);
     A = A.get() & val;
     S.flag_Z = (A.get() == 0);
     S.flag_C = false;
 }
 
-void AND(const operand_t & val)  { do_AND(val); }
-void ANDM(const operand_t & val) { do_AND(S.mem[val]); }
+void ANDM(const operand_t & val) { AND(val.mem()); }
 
-void do_OR(unsigned char val)
+void OR(const operand_t & val)
 {
-    ++S.executed;
+    S.account(val);
     A = A.get() | val;
     S.flag_Z = (A.get() == 0);
     S.flag_C = false;
 }
 
-void OR(const operand_t & val) { do_OR(val); }
-void ORM(const operand_t & val) { do_OR(S.mem[val]); }
+void ORM(const operand_t & val) { OR(val.mem()); }
 
-void do_XOR(const operand_t & val)
+void XOR(const operand_t & val)
 {
-    ++S.executed;
+    S.account(val);
     A = A.get() ^ val;
     S.flag_Z = (A.get() == 0);
     S.flag_C = false;
 }
 
-void XOR(const operand_t & val) { do_XOR(val); }
-void XORM(const operand_t & val) { do_XOR(S.mem[val]); }
+void XORM(const operand_t & val) { XOR(val.mem()); }
 
 /*
 void CMP(const operand_t & val)
@@ -181,19 +192,19 @@ void SETC()
 
 void LOAD(const register_name_t & ww, const operand_t & val)
 {
-    ++S.executed;
+    S.account(val);
     ww = val;
 }
 
 void LOADM(const register_name_t & ww, const operand_t & val)
 {
-    ++S.executed;
+    S.account(val);
     ww = S.mem[val];
 }
 
 void STA(const operand_t & val)
 {
-    ++S.executed;
+    S.account(val);
     assert(val < S.write_limit);
     S.mem[val] = A.get();
 }
@@ -206,7 +217,7 @@ void IN()
 
 void OUT(const operand_t & val)
 {
-    ++S.executed;
+    S.account(val);
     S.out_latch = val;
 }
 
@@ -265,9 +276,7 @@ static const int exp_twos = 61;
 
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
-// Could have LDA instead of LOADM... (Only have 1 LOADM(X,)..., but need
-// LOAD(X,constant|A))
-// RT() only has one byte essential use.
+// RT() only has two bytes essential use.
 // XOR is not used.  OR is not used.
 
 // Unmapped memory read-as-zero would be nice...

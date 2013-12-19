@@ -305,7 +305,6 @@ restart:
     if (start == te_single)
         RET();
     // The input consists of 64bits BE...
-    LOAD(Y,len*8);                      // leftrot does not use Y...
 read1:
     // Pulse bit 7 for 1, pulse bit 6 for 0.
     IN();

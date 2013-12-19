@@ -380,21 +380,16 @@ power1:
 
     LOADM(A,exp_twos);
 square_loop:
+    DEC(A);
+    JP(Z,restart);                      // n**((n-1)/2) is not +/- 1: composite
     STA(square_count);
     CALL(square);
     CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
-    JP(Z,square_loop2);
+    JP(Z,main_loop_next);
     SUB(2);
     JP(Z,restart);
     LOADM(A,square_count);
-    DEC(A);
-    JP(NZ,square_loop);
-    // If we get here, base**(modulus-1) is not -1 or +1... composite.
-    JMP(restart);
-square_loop2:                    // We get a -1 ... composite if last iteration.
-    LOADM(A,square_count);
-    DEC(A);
-    JP(Z,restart);
+    JMP(square_loop);
 main_loop_next:
     LOADM(A,base_index);
     ADD(8);

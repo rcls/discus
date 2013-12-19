@@ -258,11 +258,10 @@ static const int zero = 0xbf;
 static const int one = 0xc7;
 static const int base_start = 0xcf;
 
-static const int power_loop_count = 0;
+static const int outer_loop_count = 0;
 static const int mult_loop_count = 63;
 static const int base_index = 62;
 static const int exp_twos = 61;
-static const int square_count = 60;
 
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
@@ -362,12 +361,11 @@ power:                                  // Entry-point for test only...
     LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
 power1:
-    STA(power_loop_count);
     CALL(square);
     CALL(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
-    LOADM(A,power_loop_count);
+    LOADM(A,outer_loop_count);
     DEC(A);
     JP(NZ,power1);
 
@@ -382,13 +380,12 @@ power1:
 square_loop:
     DEC(A);
     JP(Z,restart);                      // n**((n-1)/2) is not +/- 1: composite
-    STA(square_count);
     CALL(square);
     CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
     JP(Z,main_loop_next);
 //    SUB(2); //- We don't need to test for 1; just let the loop finish.
 //    JP(Z,restart);
-    LOADM(A,square_count);
+    LOADM(A,outer_loop_count);
     JMP(square_loop);
 main_loop_next:
     LOADM(A,base_index);
@@ -413,6 +410,7 @@ classify1:
     RET();
 
 square:                                 // product * product -> product
+    STA(outer_loop_count);
     LOAD(Y, product);
 mult:             // Leaves product in result also.
     // product * mem(Y) -> product (mod modulus).

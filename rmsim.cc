@@ -31,6 +31,7 @@ struct state_t {
         return result;
     }
     void account(const operand_t & v);
+    void account(int n) { executed += n; }
 };
 
 static state_t S;
@@ -53,9 +54,6 @@ struct condition_t {
     condition_t(int cc) : c(cc) { }
 
     operator bool() const {
-        if (S.straight_through)
-            return false;
-
         bool want = (c & 4) == 0;
         switch (c & 3) {
         case 0:
@@ -162,7 +160,7 @@ void CMP(const operand_t & val)
 
 void INC(const register_name_t & reg)
 {
-    ++S.executed;
+    S.account(1);
     reg = reg.get() + 1;
     S.flag_Z = (reg.get() == 0);
     S.flag_O = (reg.get() == 0);
@@ -170,7 +168,7 @@ void INC(const register_name_t & reg)
 
 void DEC(const register_name_t & reg)
 {
-    ++S.executed;
+    S.account(1);
     reg = reg.get() - 1;
     S.flag_Z = (reg.get() == 0);
     S.flag_O = (reg.get() != 255);
@@ -178,14 +176,14 @@ void DEC(const register_name_t & reg)
 
 void CLRC()
 {
-    ++S.executed;
+    S.account(1);
     S.flag_C = false;
 }
 
 
 void SETC()
 {
-    ++S.executed;
+    S.account(1);
     S.flag_C = true;
 }
 
@@ -211,7 +209,7 @@ void STA(const operand_t & val)
 
 void IN()
 {
-    ++S.executed;
+    S.account(1);
     // FIXME;
 }
 
@@ -236,18 +234,39 @@ void * pop()
     return r;
 }
 
-#define JP(cond,label) do { S.executed += 2; if (cond) goto label; } while (0)
+
+bool jump(const condition_t & cond)
+{
+    S.account(2);
+    if (S.straight_through)
+        return false;
+    else
+        return cond;
+}
+
+
+bool retrn(const condition_t & cond)
+{
+    S.account(1);
+    if (S.straight_through)
+        return false;
+    else
+        return cond;
+}
+
+
+#define JP(cond,label) do { if (jump(cond)) goto label; } while (0)
 #define JMP(label) JP(ALWAYS,label)
 
 #define RET_LABEL JOIN(return_label_,__LINE__)
 #define call(label) do { push(&&RET_LABEL); goto label; RET_LABEL: ; } while (0)
 
-#define CL(cond,label) do { S.executed += 2; if (cond) call(label); } while (0)
+#define CL(cond,label) do { if (jump(cond)) call(label); } while (0)
 #define CALL(label) CL(ALWAYS,label)
 
 #define do_ret() do if (S.stack[0] == NULL) return; else goto *pop(); while (0)
 
-#define RT(cond) do { S.executed++; if (cond) do_ret(); } while (0)
+#define RT(cond) do { if (retrn(cond)) do_ret(); } while (0)
 
 #define RET() RT(ALWAYS)
 

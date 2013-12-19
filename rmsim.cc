@@ -379,14 +379,12 @@ power1:
     LOADM(A,exp_twos);
 square_loop:
     DEC(A);
-    JP(Z,restart);                      // n**((n-1)/2) is not +/- 1: composite
+    JP(Z,restart);                      // Didn't get -1 : composite
     CALL(square);
-    CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
-    JP(Z,main_loop_next);
-//    SUB(2); //- We don't need to test for 1; just let the loop finish.
-//    JP(Z,restart);
+    CALL(classifyp1);                   // -1 -> useless
     LOADM(A,outer_loop_count);
-    JMP(square_loop);
+    JP(NZ,square_loop);
+
 main_loop_next:
     LOADM(A,base_index);
     ADD(8);

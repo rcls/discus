@@ -361,21 +361,21 @@ power:                                  // Entry-point for test only...
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
     // First left shift until we find a set bit...
 power_y:
-    STA(outer_loop_count);
+    LOAD(Y,A);
     CALL(leftrot_exponent);
-    JP(C,power_x);
-    LOADM(A,outer_loop_count);
+    LOAD(A,Y);
     DEC(A);
-    JMP(power_y);                       // Note that exponent==0 never happens.
+    JP(NC,power_y);                     // Note that exponent==0 never happens.
+    JP(Z,power_x);
 power1:
     CALL(square);
     CALL(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
-power_x:
     LOADM(A,outer_loop_count);
     DEC(A);
     JP(NZ,power1);
+power_x:
 
     if (start == te_power)
         RET();

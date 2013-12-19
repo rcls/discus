@@ -258,11 +258,10 @@ static const int zero = 0xbf;
 static const int one = 0xc7;
 static const int base_start = 0xcf;
 
-static const int power_loop_count = 0;
+static const int outer_loop_count = 0;
 static const int mult_loop_count = 63;
 static const int base_index = 62;
 static const int exp_twos = 61;
-static const int square_count = 60;
 
 // Arithmetic always operates on memory? - probably get regs for free.
 // Non carry add/sub not used much...
@@ -301,11 +300,11 @@ void go(test_entry_t start)
     case te_full: ;
     }
 restart:
+    INC(A);
     OUT(A);
     if (start == te_single)
         RET();
     // The input consists of 64bits BE...
-    LOAD(Y,len*8);                      // leftrot does not use Y...
 read1:
     // Pulse bit 7 for 1, pulse bit 6 for 0.
     IN();
@@ -362,20 +361,19 @@ power:                                  // Entry-point for test only...
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
     // First left shift until we find a set bit...
 power_y:
-    LOAD(Y,A);
+    STA(outer_loop_count);
     CALL(leftrot_exponent);
-    LOAD(A,Y);
     JP(C,power_x);
+    LOADM(A,outer_loop_count);
     DEC(A);
     JMP(power_y);                       // Note that exponent==0 never happens.
 power1:
-    STA(power_loop_count);
     CALL(square);
     CALL(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
-    LOADM(A,power_loop_count);
 power_x:
+    LOADM(A,outer_loop_count);
     DEC(A);
     JP(NZ,power1);
 
@@ -388,30 +386,18 @@ power_x:
 
     LOADM(A,exp_twos);
 square_loop:
-    STA(square_count);
+    DEC(A);
+    JP(Z,restart);                      // Didn't get -1 : composite
     CALL(square);
-    CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
-    JP(Z,square_loop2);
-    SUB(2);
-    JP(Z,composite);
-    LOADM(A,square_count);
-    DEC(A);
+    CALL(classifyp1);                   // -1 -> useless
+    LOADM(A,outer_loop_count);
     JP(NZ,square_loop);
-composite:
-    // If we get here, base**(modulus-1) is not -1 or +1... composite.
-    // Expect A=0
-    INC(A);
-    JMP(restart);
-square_loop2:                    // We get a -1 ... composite if last iteration.
-    LOADM(A,square_count);
-    DEC(A);
-    JP(Z,composite);
+
 main_loop_next:
     LOADM(A,base_index);
     ADD(8);
     JP(NC,main_loop);
     // Passed all checks.
-    INC(A);
     JMP(restart);
 
 classifyp1:                             // Classify result+1.
@@ -430,6 +416,7 @@ classify1:
     RET();
 
 square:                                 // product * product -> product
+    STA(outer_loop_count);
     LOAD(Y, product);
 mult:             // Leaves product in result also.
     // product * mem(Y) -> product (mod modulus).
@@ -616,11 +603,37 @@ static void test_power_steps(unsigned long mod, unsigned long n, unsigned long e
 }
 
 
+static bool is_prime(unsigned long n)
+{
+    int tz = __builtin_ctzl(n - 1);
+    unsigned long exp = (n - 1) >> tz;
+
+    unsigned bases[7] = { 2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
+    for (int i = 0; i != 7; ++i) {
+        if (bases[i] % n == 0)
+            continue;
+        unsigned long pw = power(bases[i], exp, n);
+        if (pw == 1)
+            continue;
+        for (int i = 0; i < tz; ++i) {
+            if (pw + 1 == n)
+                goto next;
+            pw = mult(pw, pw, n);
+        }
+        return false;
+    next: ;
+    }
+    return true;
+}
+
+
 static void test_single(unsigned long mod)
 {
     S.set64(modulus, mod);
     go(te_single);
-    printf("mr %lu -> %u in %u\n", mod, S.out_latch, S.executed);
+    unsigned exp = is_prime(mod) ? 8 : 1;
+    printf("mr %lu -> %u exp %u in %u\n", mod, S.out_latch, exp, S.executed);
+    assert(exp == S.out_latch);
 }
 
 
@@ -665,9 +678,9 @@ int main(void)
 
     test_single(5);
     test_single(15);
-    test_single(9223372036854775783);
+    test_single(9223372036854775783);   // Largest prime < 2**63
+    test_single(9219669366496075201);   // Carmichael, < 2**63
     test_single(0x100000001);
     test_single(65537);
-
     return 0;
 }

@@ -386,8 +386,8 @@ square_loop:
     CALL(square);
     CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
     JP(Z,main_loop_next);
-    SUB(2);
-    JP(Z,restart);
+//    SUB(2); //- We don't need to test for 1; just let the loop finish.
+//    JP(Z,restart);
     LOADM(A,square_count);
     JMP(square_loop);
 main_loop_next:

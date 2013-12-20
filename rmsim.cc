@@ -11,12 +11,12 @@ enum register_name_t { A, X, Y, U };
 
 struct operand_t {
     operand_t(unsigned char n) :
-        is_val(true), is_mem(false), value(n) { }
-    operand_t(const register_name_t & r) :
-        is_val(false), is_mem(false), value(r) { }
+        reg(-1), is_mem(false), value(n) { }
+    operand_t(register_name_t r) :
+        reg(r), is_mem(false), value(r) { }
     operand_t(const operand_t & other, bool m) :
-        is_val(other.is_val), is_mem(m), value(other.value) { }
-    bool is_val;
+        reg(other.reg), is_mem(m), value(other.value) { }
+    int reg;
     bool is_mem;
     unsigned char value;
     operand_t mem() const { return operand_t(*this, true); }
@@ -27,7 +27,7 @@ enum condition_t {
 };
 
 struct state_t {
-    unsigned char regs[4];
+    unsigned char reg[4];
     bool flag_C;
     bool flag_Z;
     bool flag_O;
@@ -48,199 +48,162 @@ struct state_t {
             result += (unsigned long) mem[address - i] << (i * 8);
         return result;
     }
-    void account(const operand_t & v);
+    void account(const operand_t & v) { executed += 1 + (v.reg < 0); }
+
     void account(int n) { executed += n; }
 
     bool wanted(condition_t) const;
 
     unsigned char get(const operand_t & val) const {
-        unsigned char v = val.is_val ? val.value : regs[val.value];
+        unsigned char v = val.reg < 0 ? val.value : reg[val.reg];
         return val.is_mem ? mem[v] : v;
     }
     unsigned char & get(register_name_t r) {
-        return regs[r];
+        return reg[r];
     }
+
+    void go(int start);
 
     int jump_take_number;
     int jump_source;
     const char * jump_target_name;
-};
 
-static state_t S;
+    void ADD(const operand_t & val, bool cin = false, unsigned char flip = 0) {
+        account(val);
+        unsigned r = reg[A] + (get(val) ^ flip) + cin;
+        flag_C = !!(r & 256);
+        reg[A] = r;
+        flag_Z = !(r & 255);
+    }
+
+    void ADDM(const operand_t & val) { ADD(val.mem()); }
+    void ADC(const operand_t & val)  { ADD(val, flag_C); }
+    void ADCM(const operand_t & val) { ADD(val.mem(), flag_C); }
+
+    void SUB(const operand_t & val)  { ADD(val,       true,     255); }
+    void SBC(const operand_t & val)  { ADD(val,       flag_C, 255); }
+    void SUBM(const operand_t & val) { ADD(val.mem(), true,     255); }
+    void SBCM(const operand_t & val) { ADD(val.mem(), flag_C, 255); }
+
+    void AND(const operand_t & val) {
+        account(val);
+        reg[A] &= get(val);
+        flag_Z = (reg[A] == 0);
+        flag_C = false;
+    }
+
+    void ANDM(const operand_t & val) { AND(val.mem()); }
+
+    void OR(const operand_t & val) {
+        account(val);
+        reg[A] |= get(val);
+        flag_Z = (reg[A] == 0);
+        flag_C = false;
+    }
+
+    void ORM(const operand_t & val) { OR(val.mem()); }
+
+    void XOR(const operand_t & val) {
+        account(val);
+        reg[A] ^= get(val);
+        flag_Z = (reg[A] == 0);
+        flag_C = false;
+    }
+
+    void XORM(const operand_t & val) { XOR(val.mem()); }
+
+    void INC(register_name_t r) {
+        account(1);
+        reg[r]++;
+        flag_Z = (reg[r] == 0);
+        flag_O = (reg[r] == 0);
+    }
+
+    void DEC(register_name_t r) {
+        account(1);
+        reg[r]--;
+        flag_Z = (reg[r] == 0);
+        flag_O = (reg[r] != 255);
+    }
+
+    void CLRC() {
+        account(1);
+        flag_C = false;
+    }
+
+    void SETC() {
+        account(1);
+        flag_C = true;
+    }
+
+    void LOAD(register_name_t ww, const operand_t & val) {
+        account(val);
+        reg[ww] = get(val);
+    }
+
+    void LOADM(register_name_t ww, const operand_t & val) {
+        account(val);
+        reg[ww] = mem[get(val)];
+    }
+
+    void STA(const operand_t & val) {
+        account(val);
+        assert(get(val) < write_limit);
+        mem[get(val)] = reg[A];
+    }
+
+    void IN() {
+        account(1);
+        // FIXME;
+    }
+
+    void OUT(const operand_t & val) {
+        account(val);
+        out_latch = get(val);
+    }
+
+    void push(void * x) {
+        memmove(stack + 1, stack, 3 * sizeof stack[0]);
+        stack[0] = x;
+    }
+
+    void * pop() {
+        void * r = stack[0];
+        memmove(stack, stack + 1, 3 * sizeof stack[0]);
+        return r;
+    }
+
+    bool jump(condition_t cond, const char * name) {
+        account(2);
+        if (!straight_through)
+            return wanted(cond);
+        if (jump_take_number-- != 0)
+            return false;
+        jump_source = executed;
+        jump_target_name = name;
+        return true;
+    }
+
+    bool retrn(condition_t cond) {
+        account(1);
+        return !straight_through && wanted(cond);
+    }
+};
 
 bool state_t::wanted(condition_t c) const
 {
     bool want = (c & 4) == 0;
     switch (c & 3) {
     case 0:
-        return want == S.flag_C;
+        return want == flag_C;
     case 1:
-        return want == S.flag_Z;
+        return want == flag_Z;
     case 2:
-        return want == S.flag_O;
+        return want == flag_O;
     default:
         return want;
     }
 };
-
-void state_t::account(const operand_t & v)
-{
-    executed += 1 + v.is_val;
-}
-
-void ADD(const operand_t & val, bool cin = false, unsigned char flip = 0)
-{
-    S.account(val);
-    unsigned r = S.get(A) + (S.get(val) ^ flip) + cin;
-    S.flag_C = !!(r & 256);
-    S.get(A) = r;
-    S.flag_Z = !(r & 255);
-}
-
-void ADDM(const operand_t & val) { ADD(val.mem()); }
-void ADC(const operand_t & val)  { ADD(val, S.flag_C); }
-void ADCM(const operand_t & val) { ADD(val.mem(), S.flag_C); }
-
-void SUB(const operand_t & val)  { ADD(val,       true,     255); }
-void SBC(const operand_t & val)  { ADD(val,       S.flag_C, 255); }
-void SUBM(const operand_t & val) { ADD(val.mem(), true,     255); }
-void SBCM(const operand_t & val) { ADD(val.mem(), S.flag_C, 255); }
-
-void AND(const operand_t & val)
-{
-    S.account(val);
-    S.get(A) &= S.get(val);
-    S.flag_Z = (S.get(A) == 0);
-    S.flag_C = false;
-}
-
-void ANDM(const operand_t & val) { AND(val.mem()); }
-
-void OR(const operand_t & val)
-{
-    S.account(val);
-    S.get(A) |= S.get(val);
-    S.flag_Z = (S.get(A) == 0);
-    S.flag_C = false;
-}
-
-void ORM(const operand_t & val) { OR(val.mem()); }
-
-void XOR(const operand_t & val)
-{
-    S.account(val);
-    S.get(A) ^= S.get(val);
-    S.flag_Z = (S.get(A) == 0);
-    S.flag_C = false;
-}
-
-void XORM(const operand_t & val) { XOR(val.mem()); }
-
-/*
-void CMP(const operand_t & val)
-{
-    ++S.executed;
-    int r = A.get() + 256 - val;
-    S.flag_C = (r & 256) != 0;
-    S.flag_Z = (r & 255) == 0;
-}
-*/
-
-void INC(register_name_t reg)
-{
-    S.account(1);
-    S.get(reg)++;
-    S.flag_Z = (S.get(reg) == 0);
-    S.flag_O = (S.get(reg) == 0);
-}
-
-void DEC(const register_name_t & reg)
-{
-    S.account(1);
-    S.get(reg)--;
-    S.flag_Z = (S.get(reg) == 0);
-    S.flag_O = (S.get(reg) != 255);
-}
-
-void CLRC()
-{
-    S.account(1);
-    S.flag_C = false;
-}
-
-
-void SETC()
-{
-    S.account(1);
-    S.flag_C = true;
-}
-
-
-void LOAD(register_name_t ww, const operand_t & val)
-{
-    S.account(val);
-    S.get(ww) = S.get(val);
-}
-
-void LOADM(register_name_t ww, const operand_t & val)
-{
-    S.account(val);
-    S.get(ww) = S.mem[S.get(val)];
-}
-
-void STA(const operand_t & val)
-{
-    S.account(val);
-    assert(S.get(val) < S.write_limit);
-    S.mem[S.get(val)] = S.get(A);
-}
-
-void IN()
-{
-    S.account(1);
-    // FIXME;
-}
-
-void OUT(const operand_t & val)
-{
-    S.account(val);
-    S.out_latch = S.get(val);
-}
-
-
-void push(void * x)
-{
-    memmove(S.stack + 1, S.stack, 3 * sizeof S.stack[0]);
-    S.stack[0] = x;
-}
-
-
-void * pop()
-{
-    void * r = S.stack[0];
-    memmove(S.stack, S.stack + 1, 3 * sizeof S.stack[0]);
-    return r;
-}
-
-
-bool jump(condition_t cond, const char * name)
-{
-    S.account(2);
-    if (!S.straight_through)
-        return S.wanted(cond);
-    if (S.jump_take_number-- != 0)
-        return false;
-    S.jump_source = S.executed;
-    S.jump_target_name = name;
-    return true;
-}
-
-
-bool retrn(condition_t cond)
-{
-    S.account(1);
-    return !S.straight_through && S.wanted(cond);
-}
 
 
 #define JP(cond,label) do { if (jump(cond, #label)) goto label; } while (0)
@@ -252,7 +215,7 @@ bool retrn(condition_t cond)
 #define CL(cond,label) do { if (jump(cond, #label)) call(label); } while (0)
 #define CALL(label) CL(ALWAYS,label)
 
-#define do_ret() do if (S.stack[0] == NULL) return; else goto *pop(); while (0)
+#define do_ret() do if (stack[0] == NULL) return; else goto *pop(); while (0)
 
 #define RT(cond) do { if (retrn(cond)) do_ret(); } while (0)
 
@@ -281,7 +244,7 @@ static const int mult_loop_count = 63;
 static const int base_index = 62;
 static const int exp_twos = 61;
 
-// Arithmetic always operates on memory? - probably get regs for free.
+// Arithmetic always operates on memory? - probably get reg for free.
 // Non carry add/sub not used much...
 // RT() only has two bytes essential use.
 // XOR is not used.  OR is not used.
@@ -299,10 +262,10 @@ enum test_entry_t {
     te_power
 };
 
-void go(test_entry_t start)
+void state_t::go(int start)
 {
-    S.stack[0] = NULL;
-    S.executed = 0;
+    stack[0] = NULL;
+    executed = 0;
 
     switch (start) {
     case te_add:
@@ -507,6 +470,8 @@ copy1:
     RET();
 }
 
+static state_t S;
+
 /* Modular multiplication.  */
 static unsigned long mult (unsigned long x, unsigned long y, unsigned long mod)
 {
@@ -534,9 +499,9 @@ void test_add(unsigned long mod, unsigned long acc,
     S.set64(modulus, mod);
     S.set64(result, acc);
     S.set64(address, addend);
-    S.regs[X] = address;
+    S.reg[X] = address;
 
-    go(te_add);
+    S.go(te_add);
 
     unsigned long res = S.get64(result);
     printf("%lu + %lu (mod %lu) -> %lu expected %lu in %u\n",
@@ -552,8 +517,8 @@ static void test_mult(unsigned long mod, unsigned long prod,
     prod %= mod;
     S.set64(product, prod);
     S.set64(address, fact);
-    S.regs[Y] = address;
-    go(te_mult);
+    S.reg[Y] = address;
+    S.go(te_mult);
     unsigned long exp = mult(prod, fact, mod);
     unsigned long got = S.get64(product);
     unsigned long res = S.get64(result);
@@ -587,7 +552,7 @@ static void test_power(unsigned long mod, unsigned long n, unsigned long exp)
     S.mem[exp_twos] = 0;
     S.set64(base, n);
     S.set64(exponent, exp);
-    go(te_power);
+    S.go(te_power);
     unsigned long got = S.get64(product);
     unsigned long expect = power(n, exp, mod);
     printf("%lu ** %lu (mod %lu) -> %lu expected %lu in %u\n",
@@ -637,7 +602,7 @@ static bool is_prime(unsigned long n)
 static void test_single(unsigned long mod)
 {
     S.set64(modulus, mod);
-    go(te_single);
+    S.go(te_single);
     unsigned exp = is_prime(mod) ? 8 : 1;
     printf("mr %lu -> %u exp %u in %u\n", mod, S.out_latch, exp, S.executed);
     assert(exp == S.out_latch);
@@ -649,13 +614,13 @@ int main(void)
     S.straight_through = true;
     S.jump_take_number = -1;
     S.write_limit = 256;
-    go(te_full);
+    S.go(te_full);
     int program_length = S.executed;
     printf("Program length = %i\n", program_length);
 
     for (int i = 0;; ++i) {
         S.jump_take_number = i;
-        go(te_full);
+        S.go(te_full);
         if (S.jump_take_number >= 0)
             break;
         printf("Jump %i : %i -> %s %i\n", i, S.jump_source,

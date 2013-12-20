@@ -31,39 +31,57 @@ result bus is ALU output, or operand bus direct (add 0...)
 00XXXXXX - data prefix (load immediate register).
   * any other instruction clears data prefix.
 
-00CCCLXX - with prefix, jump, opt link.
+00LCCCXX - with prefix, jump, opt link.
   [prob have space to use 01 & get RR...]
 
 [All we get from this 01 instead of 00 is indirects & ret...  and make others
  more packed.  Instead Separate uncond jumps that may be indirect?]
-01CCCLRR - jump/call except:
-01CCC111 - return (only with no prefix, with prefix is call).
+01LCCCRR - jump/call except:
+011CCC11 - return (only with no prefix, with prefix is call).
 
 10AAAMRR - ins that r/w A. (flags Z C O?)
   * 7 basic operations:
      add(c) sub(c) or and xor
   * also possibly cmp or sta?
+  * probably don't need sub...
 
 110WWMRR - operand to reg WW.
+
++ could save space on inc/dec decode if we did ww=op +/- 1.
++ have space for it with compressed jumps...
 
 111 : misc crap:
   on all regs: inc, dec
   111000RR : inc. (flags Z)
   111010RR : dec.
 
-  111100RR : in  (or could make reg 3 an I/O port... or mmap i/o)
-  111110RR : out
+  111100RR : in - only need in(a).
+  111110RR : out - only need out(a), but can use full bus....
 
   111001RR : sta
 
   111011xx :
   111101xx :
   111111xx :
-     clrc
+
+Not necessary:
      setc
+     clrc (if or/and/xor have both clear and set c).
      shr
      ror
      not
      neg
 
 
+
+00 - prefix or jmp/call constant. (Inc. uncond.)
+00LCCCxx - jmp or call.
+01AAAMRR - ops that r/w A.
+100WWMRR - Load WW.
+101WWMRR - WW = src+1
+110WWMRR - WW = src-1
+111xxxxx - special
+111CCC00 - ret.
+111UUURR - sta, UUU is never cond. (but might as well be in normal ops...)
+
+in/out

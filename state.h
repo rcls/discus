@@ -4,10 +4,6 @@
 #include <assert.h>
 #include <string.h>
 
-#define JOIN2(x,y) x##y
-#define JOIN(x,y) JOIN2(x,y)
-
-
 enum register_name_t { A, X, Y, U };
 
 struct operand_t {
@@ -197,6 +193,8 @@ struct state_t {
 #define JP(cond,label) do { if (jump(cond, #label)) goto label; } while (0)
 #define JMP(label) JP(ALWAYS,label)
 
+#define JOIN2(x,y) x##y
+#define JOIN(x,y) JOIN2(x,y)
 #define RET_LABEL JOIN(return_label_,__LINE__)
 #define call(label) do { push(&&RET_LABEL); goto label; RET_LABEL: ; } while (0)
 

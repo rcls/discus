@@ -188,6 +188,8 @@ struct state_t {
         account(1);
         return !straight_through && wanted(cond);
     }
+
+    void extract_branches(int start);
 };
 
 bool state_t::wanted(condition_t c) const
@@ -204,6 +206,26 @@ bool state_t::wanted(condition_t c) const
         return want;
     }
 };
+
+
+void state_t::extract_branches(int start)
+{
+    straight_through = true;
+    jump_take_number = -1;
+    write_limit = 256;
+    go(start);
+    int program_length = executed;
+    printf("Program length = %i\n", program_length);
+
+    for (int i = 0;; ++i) {
+        jump_take_number = i;
+        go(start);
+        if (jump_take_number >= 0)
+            break;
+        printf("Jump %i : %i -> %s %i\n", i, jump_source,
+               jump_target_name, jump_source + program_length - executed);
+    }
+}
 
 
 #define JP(cond,label) do { if (jump(cond, #label)) goto label; } while (0)
@@ -244,14 +266,10 @@ static const int mult_loop_count = 63;
 static const int base_index = 62;
 static const int exp_twos = 61;
 
-// Arithmetic always operates on memory? - probably get reg for free.
 // Non carry add/sub not used much...
 // RT() only has two bytes essential use.
 // XOR is not used.  OR is not used.
-
 // Unmapped memory read-as-zero would be nice...
-// Or make 32bit x 16rom board...
-
 // Dirty trick: Flag low 3 bits zero?
 
 enum test_entry_t {
@@ -611,21 +629,7 @@ static void test_single(unsigned long mod)
 
 int main(void)
 {
-    S.straight_through = true;
-    S.jump_take_number = -1;
-    S.write_limit = 256;
-    S.go(te_full);
-    int program_length = S.executed;
-    printf("Program length = %i\n", program_length);
-
-    for (int i = 0;; ++i) {
-        S.jump_take_number = i;
-        S.go(te_full);
-        if (S.jump_take_number >= 0)
-            break;
-        printf("Jump %i : %i -> %s %i\n", i, S.jump_source,
-               S.jump_target_name, S.jump_source + program_length - S.executed);
-    }
+    S.extract_branches(0);
 
     S.straight_through = false;
     S.write_limit = 64;

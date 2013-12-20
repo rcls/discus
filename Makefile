@@ -1,4 +1,6 @@
-all: testacc.sp testacc-check
+
+all: rmsim
+#all: testacc.sp testacc-check
 
 %.spr: %.sch
 	gnetlist -Lsubckt -g spice-sdb -o $@ $+
@@ -53,3 +55,7 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 %.zip: %-gerbers
 	-rm $*.zip
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
+
+rmsim: state.o
+
+state.o rmsim.o: state.h

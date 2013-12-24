@@ -137,12 +137,12 @@ power:                                  // Entry-point for test only...
     LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
     // First left shift until we find a set bit...
-power_y:
     LOAD(Y,A);
+power_y:
     CALL(leftrot_exponent);
-    LOAD(A,Y);
-    DEC(A);
+    DEC(Y);
     JP(NC,power_y);                     // Note that exponent==0 never happens.
+    LOAD(A,Y);
     JP(Z,power_x);
 power1:
     CALL(square);

@@ -1,5 +1,5 @@
 
-all: rmsim testacc-check
+all: rmsim test/testacc-check test/testalu
 #all: testacc.sp testacc-check
 
 %.spr: %.sch
@@ -57,7 +57,7 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
 
 rmsim: state.o
-testacc-check: spice_load.o
+test/testacc-check test/testalu: test/spice_load.o
 
 state.o rmsim.o: state.h
-testacc-check.o spice_load.o: spice_load.h
+test/testacc-check.o test/testalu.o spice_load.o: test/spice_load.h

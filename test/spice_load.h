@@ -5,11 +5,11 @@
 #include <string>
 #include <vector>
 
-static const double QUANTUM = 5e-6;
 static const int SKIP = 2;
 
 struct spice_load {
 
+    const double QUANTUM;
     long num_vars = 0;
     long num_points = 0;
     long num_samples;
@@ -20,8 +20,8 @@ struct spice_load {
     std::vector<double> timestamps;
     std::vector<unsigned> indexes;
 
-    spice_load();
-    spice_load(FILE * f);
+    spice_load(double q);
+    spice_load(FILE * f, double q);
 
     std::vector<double> extract_raw_column(const char * name);
     std::vector<bool> extract_signal(const char * name);

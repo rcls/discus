@@ -4,7 +4,8 @@
 #include <err.h>
 #include <string.h>
 
-spice_load::spice_load() :
+spice_load::spice_load(double q) :
+    QUANTUM(q),
     num_vars(0),
     num_points(0)
 {
@@ -83,8 +84,8 @@ void spice_load::read_var_list(FILE * f)
 }
 
 
-spice_load::spice_load(FILE * f) :
-    spice_load()
+spice_load::spice_load(FILE * f, double q) :
+    spice_load(q)
 {
     char * line = NULL;
     size_t linesize = 0;

@@ -5,7 +5,7 @@
 
 int main(int argc, const char ** argv)
 {
-    spice_load S(stdin);
+    spice_load S(stdin, 5e-6);
 
     // Now extract each individual digital variable.
     const auto c      = S.extract_signal("c");

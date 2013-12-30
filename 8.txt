@@ -77,11 +77,39 @@ Not necessary:
 00 - prefix or jmp/call constant. (Inc. uncond.)
 00LCCCxx - jmp or call.
 01AAAMRR - ops that r/w A.
-100WWMRR - Load WW.
-101WWMRR - WW = src+1
-110WWMRR - WW = src-1
-111xxxxx - special
+100WWMRR - Load WW = src, no flags.
+101WWMRR - WW = src+1, flag Z.
+110WWMRR - WW = src-1, flag Z.
+111xxxxx - special, no flags.
 111CCC00 - ret.
 111UUURR - sta, UUU is never cond. (but might as well be in normal ops...)
+[Make 111 dec and 110 special?]
 
-in/out
+in/out : 111VVVRR, VVV is also never cond, make WW/RR magically match A...
+No real constraints on reg numbers...
+
+CCC = 000 : always
+CCC = 001 : never
+CCC = 010 : z
+CCC = 011 : nz
+CCC = 100 : c
+CCC = 101 : nc
+CCC = 110 : always
+CCC = 111 : never
+
+111001xx - sta.
+
+11111111 - out
+11111100 - in
+
+Could do single in/out:
+11111mrr
+
+
+A : 11
+X : 00
+Y : 01
+U : 10
+
+01xxxxxx : write A
+(100/101/110)WWxxx : write WW.

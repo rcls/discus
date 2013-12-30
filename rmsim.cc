@@ -87,12 +87,12 @@ read1:
     IN();
     AND(0xc0);
     JP(Z,read1);
-    ADC(A);
+    ADD(A);
     LOAD(X,modulus);
     CALL(leftrot);
     // Long pulse on bit 7 is start...
     IN();
-    ADC(A);
+    ADD(A);
     JP(NC,read1);
     SUB(A);
     OUT(A);

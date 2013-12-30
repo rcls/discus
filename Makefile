@@ -8,7 +8,7 @@ all: rmsim test/testacc-check test/testalu
 %.sp: %.spr
 	perl substrate.pl $< > $@
 
-testacc.spr: accumulate.sch
+test/testacc.spr: accumulate.sch
 
 CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11
 
@@ -61,3 +61,7 @@ test/testacc-check test/testalu: test/spice_load.o
 
 state.o rmsim.o: state.h
 test/testacc-check.o test/testalu.o spice_load.o: test/spice_load.h
+
+.PHONY: clean
+clean:
+	rm -f *- */*- *~ */*~ *.o */*.o *.sp */*.sp *.spr */*.spr

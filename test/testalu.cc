@@ -27,13 +27,7 @@ int main()
             errx(1, "Q, Q# not complementary at %i", i);
 
         if (AND[i] && OR[i])
-            continue;                   // All bets are off.
-
-        if (CS[i] && !C[i])            // We only support C in matching C force.
-            continue;
-
-        if (CR[i] && C[i])
-            continue;
+            continue;                   // Don't test...
 
         bool b = B[i] ^ N[i];
 
@@ -51,7 +45,7 @@ int main()
         if (Q[i] != qe)
             errx(1, "Q not expected value at %i", i);
 
-        if (CS[i] && !Co[i])
+        if (!CR[i] && CS[i] && !Co[i])
             errx(1, "CS not applied at %i", i);
 
         if (CR[i] && Co[i])

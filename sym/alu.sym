@@ -73,7 +73,7 @@ P 1100 2400 1100 2200 1 0 0
 T 1100 2400 5 10 0 0 0 0 1
 pintype=unknown
 T 1150 2195 5 10 1 1 90 6 1
-pinlabel=Co#
+pinlabel=Co
 T 1050 2195 5 10 0 1 90 0 1
 pinnumber=14
 T 1100 2400 5 10 0 0 0 0 1
@@ -95,7 +95,7 @@ P 1500 600 1300 600 1 0 0
 T 1500 600 5 10 0 0 0 0 1
 pintype=unknown
 T 1295 545 5 10 1 1 0 6 1
-pinlabel=CR#
+pinlabel=CR
 T 1295 645 5 10 0 1 0 0 1
 pinnumber=10
 T 1500 600 5 10 0 0 0 0 1
@@ -106,7 +106,7 @@ P 1500 800 1300 800 1 0 0
 T 1500 800 5 10 0 0 0 0 1
 pintype=unknown
 T 1295 745 5 10 1 1 0 6 1
-pinlabel=CS
+pinlabel=CS#
 T 1295 845 5 10 0 1 0 0 1
 pinnumber=11
 T 1500 800 5 10 0 0 0 0 1

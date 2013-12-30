@@ -18,16 +18,13 @@ int main()
     const auto Q = S.extract_signal("q#");
     const auto Q_hash = S.extract_signal("q");
     const auto Co = S.extract_signal("co");
-    const auto Q2 = S.extract_signal("q2#");
-    const auto Q2_hash = S.extract_signal("q2");
-    const auto Co2 = S.extract_signal("co2");
+
+    int tested_q = 0;
+    int tested_c = 0;
 
     for (int i = 0; i != S.num_samples; ++i) {
         if (Q[i] == Q_hash[i])
             errx(1, "Q, Q# not complementary at %i", i);
-
-        if (Q2[i] == Q2_hash[i])
-            errx(1, "Q2, Q2# not complementary at %i", i);
 
         if (AND[i] && OR[i])
             continue;                   // All bets are off.
@@ -50,32 +47,24 @@ int main()
 
         bool qe = iv ^ C[i];
 
+        ++tested_q;
         if (Q[i] != qe)
             errx(1, "Q not expected value at %i", i);
-
-        if (Q2[i] != qe)
-            errx(1, "Q2 not expected value at %i", i);
 
         if (CS[i] && !Co[i])
             errx(1, "CS not applied at %i", i);
 
-        if (CS[i] && !Co2[i])
-            errx(1, "CS not applied to 2 at %i", i);
-
         if (CR[i] && Co[i])
             errx(1, "CR not applied at %i", i);
-
-        if (CR[i] && Co2[i])
-            errx(1, "CR not applied to 2 at %i", i);
 
         if (AND[i] || OR[i] || CS[i] || CR[i])
             continue;                   // Carry out not interesting.
 
         bool ce = A[i] + b + C[i] >= 2;
+        ++tested_c;
         if (ce != Co[i])
             errx(1, "Carry out not expected at %i", i);
-
-        if (ce != Co2[i])
-            errx(1, "Carry out 2 not expected at %i", i);
     }
+    fprintf(stderr, "Tested: Q %i, C %i\n", tested_q, tested_c);
+    return 0;
 }

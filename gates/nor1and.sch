@@ -81,7 +81,7 @@ footprint=0603-boxed
 T 38700 61400 5 10 0 0 90 0 1
 device=RESISTOR
 T 38850 61400 5 10 1 1 90 0 1
-refdes=R1
+refdes=R
 T 36800 63300 5 10 0 1 0 0 1
 value=3k3
 }

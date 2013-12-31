@@ -1,10 +1,10 @@
-v 20121123 2
+v 20130925 2
 C 49300 67500 1 0 0 flipflop.sym
 {
 T 49700 68200 5 10 1 1 0 0 1
 source=flipflop.sch
 T 50400 68000 5 10 1 1 0 0 1
-refdes=S1
+refdes=S
 }
 C 48100 67600 1 0 0 2n7002.sym
 {

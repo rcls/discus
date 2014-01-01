@@ -33,28 +33,28 @@ N 52200 63000 52200 65200 4
 C 52200 62100 1 0 0 jkflipflop.sym
 {
 T 53300 62600 5 10 1 1 0 0 1
-refdes=0
+refdes=F0
 T 52500 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 54600 62100 1 0 0 jkflipflop.sym
 {
 T 55700 62600 5 10 1 1 0 0 1
-refdes=1
+refdes=F1
 T 54900 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 57100 62100 1 0 0 jkflipflop.sym
 {
 T 58200 62600 5 10 1 1 0 0 1
-refdes=2
+refdes=F2
 T 57400 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 59600 62100 1 0 0 jkflipflop.sym
 {
 T 60700 62600 5 10 1 1 0 0 1
-refdes=3
+refdes=F3
 T 59900 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }

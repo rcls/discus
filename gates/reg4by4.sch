@@ -2,28 +2,28 @@ v 20130925 2
 C 42500 43400 1 0 0 reg4.sym
 {
 T 43300 44500 5 10 1 1 0 0 1
-refdes=0
+refdes=U0
 T 43000 44750 5 10 1 1 0 0 1
 source=reg4.sch
 }
 C 45100 43400 1 0 0 reg4.sym
 {
 T 45900 44500 5 10 1 1 0 0 1
-refdes=1
+refdes=U1
 T 45600 44750 5 10 1 1 0 0 1
 source=reg4.sch
 }
 C 47700 43400 1 0 0 reg4.sym
 {
 T 48500 44500 5 10 1 1 0 0 1
-refdes=2
+refdes=U2
 T 48200 44750 5 10 1 1 0 0 1
 source=reg4.sch
 }
 C 50300 43400 1 0 0 reg4.sym
 {
 T 51100 44500 5 10 1 1 0 0 1
-refdes=3
+refdes=U3
 T 50800 44750 5 10 1 1 0 0 1
 source=reg4.sch
 }
@@ -316,14 +316,14 @@ refdes=R3
 C 39300 45600 1 0 0 decode2.sym
 {
 T 40200 46300 5 10 1 1 0 0 1
-refdes=DA
+refdes=A
 T 39800 46000 5 10 1 1 0 0 1
 source=decode2.sch
 }
 C 39300 42600 1 0 0 decode2.sym
 {
 T 40200 43300 5 10 1 1 0 0 1
-refdes=DB
+refdes=B
 T 39800 43000 5 10 1 1 0 0 1
 source=decode2.sch
 }

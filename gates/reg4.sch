@@ -2,28 +2,28 @@ v 20130925 2
 C 57400 63400 1 0 0 sramcell2.sym
 {
 T 58600 64450 5 10 1 1 0 0 1
-refdes=0
+refdes=F0
 T 57650 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }
 C 59700 63400 1 0 0 sramcell2.sym
 {
 T 60900 64450 5 10 1 1 0 0 1
-refdes=1
+refdes=F1
 T 59950 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }
 C 62000 63400 1 0 0 sramcell2.sym
 {
 T 63200 64450 5 10 1 1 0 0 1
-refdes=2
+refdes=F2
 T 62250 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }
 C 64300 63400 1 0 0 sramcell2.sym
 {
 T 65500 64450 5 10 1 1 0 0 1
-refdes=3
+refdes=F3
 T 64550 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }

@@ -117,3 +117,5 @@ constant latch 0,1 also can serve for reg write address latch.
 Put the VR strobe into the read-select strobes (push-pull)?
 
 Fixme - Z flag...
+
+In the SP, the dflipflop input gates can be VC# power - saves a trannie.

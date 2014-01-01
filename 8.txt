@@ -7,22 +7,15 @@ X
 Y
 
 Buses
- - operand / address
- - mem read
- - alu out
+ - V operand / address
+ - B mem read
  - mem write
 
-Operand bus is also address bus.
+V bus - complementary signalling, flip-flop driven, active LOW.
+ (address decodes will have CMOS inverters to drive the fan-out...)
+B bus - open drain
+mem write - needs write strobe (clock phase 2).
 
-
-
-memory connector (32 bytes):
-8 w1
-8 w0
-8 r
-8 row sel
-4 col sel
-= 36 .... so a 40 pin connector (1mm one sided? or even 2.54mm?)
 
 source bus is register or constant.  Memory address is always source bus.
 operand bus is source bus direct or memory lookup
@@ -83,7 +76,6 @@ Not necessary:
 111xxxxx - special, no flags.
 111CCC00 - ret.
 111UUURR - sta, UUU is never cond. (but might as well be in normal ops...)
-[Make 111 dec and 110 special?]
 
 in/out : 111VVVRR, VVV is also never cond, make WW/RR magically match A...
 No real constraints on reg numbers...
@@ -102,8 +94,8 @@ CCC = 111 : never
 11111111 - out
 11111100 - in
 
-Could do single in/out:
-11111mrr
+cmp : 11111mrr
+in/out is an ALU ins?
 
 
 A : 11
@@ -113,3 +105,15 @@ U : 10
 
 01xxxxxx : write A
 (100/101/110)WWxxx : write WW.
+
+
+slice to do:
+v constant is always from latch, interface for that?
+
+Out can just use V or B bus. (V->Out, In->B?)
+
+constant latch 0,1 also can serve for reg write address latch.
+
+Put the VR strobe into the read-select strobes (push-pull)?
+
+Fixme - Z flag...

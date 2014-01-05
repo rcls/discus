@@ -118,4 +118,17 @@ Put the VR strobe into the read-select strobes (push-pull)?
 
 Fixme - Z flag...
 
-In the SP, the dflipflop input gates can be VC# power - saves a trannie.
+
+Decode signals...
+
+AR#
+AS
+CS#
+CR
+[also CinS#, CinR...]XF
+N
+C-latch
+VK
+BV
+AND
+OR

@@ -1,12 +1,12 @@
 v 20130925 2
-C 48200 21200 1 0 1 dflipflop.sym
+C 48200 21200 1 0 1 vdflipflop.sym
 {
 T 47900 21850 5 10 1 1 0 6 1
 source=vdflipflop.sch
 T 47100 21600 5 10 1 1 0 6 1
 refdes=B0
 }
-C 51000 21200 1 0 1 dflipflop.sym
+C 51000 21200 1 0 1 vdflipflop.sym
 {
 T 50700 21850 5 10 1 1 0 6 1
 source=vdflipflop.sch
@@ -96,7 +96,7 @@ C 46600 23500 1 0 0 xor.sym
 T 46800 24100 5 10 1 1 0 0 1
 refdes=S1
 }
-C 47400 24800 1 0 0 xorod.sym
+C 47400 24800 1 0 0 xor.sym
 {
 T 47600 25400 5 10 1 1 0 0 1
 refdes=S2
@@ -106,7 +106,7 @@ C 49400 23400 1 0 0 xor.sym
 T 49600 24000 5 10 1 1 0 0 1
 refdes=S3
 }
-C 50300 24700 1 0 0 xorod.sym
+C 50300 24700 1 0 0 xor.sym
 {
 T 50500 25300 5 10 1 1 0 0 1
 refdes=S4

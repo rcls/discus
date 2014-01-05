@@ -9,7 +9,7 @@ device=vpulse
 T 49050 61700 5 10 0 0 270 0 1
 footprint=none
 T 47200 61550 5 10 1 1 0 0 1
-value=pulse 0 3.3 8u 10n 10n 8u 16u
+value=pulse 0 3.3 15u 10n 10n 15u 30u
 }
 C 48900 64000 1 270 0 vpulse-1.sym
 {
@@ -20,7 +20,7 @@ device=vpulse
 T 49950 63300 5 10 0 0 270 0 1
 footprint=none
 T 47800 64150 5 10 1 1 0 0 1
-value=pulse 0 3.3 2u 10n 10n 12u 24u
+value=pulse 0 3.3 2.5u 10n 10n 40u 80u
 }
 C 47700 62100 1 0 0 vdc-1.sym
 {

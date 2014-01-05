@@ -2,13 +2,13 @@
 all: rmsim test/testacc-check test/testalu
 #all: testacc.sp testacc-check
 
-%.spr: %.sch
+%.rcr: %.sch
 	gnetlist -Lsubckt -g spice-sdb -o $@ $+
 
-%.sp: %.spr
+%.cir: %.rcr
 	perl substrate.pl $< > $@
 
-test/testacc.spr: accumulate.sch
+test/testacc.rcr: accumulate.sch
 
 CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11
 
@@ -64,4 +64,4 @@ test/testacc-check.o test/testalu.o spice_load.o: test/spice_load.h
 
 .PHONY: clean
 clean:
-	rm -f *- */*- *~ */*~ *.o */*.o *.sp */*.sp *.spr */*.spr
+	rm -f *- */*- *~ */*~ *.o */*.o *.cir */*.cir *.rcr */*.rcr

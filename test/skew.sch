@@ -1,0 +1,152 @@
+v 20130925 2
+C 40300 56200 1 0 0 vdilatch.sym
+{
+T 41450 56650 5 10 1 1 0 0 1
+refdes=F1
+T 40600 56850 5 10 1 1 0 0 1
+source=vdilatch.sch
+}
+C 44300 56200 1 0 0 rslatch.sym
+{
+T 45450 56650 5 10 1 1 0 0 1
+refdes=F2
+T 44600 56850 5 10 1 1 0 0 1
+source=rslatch.sch
+}
+N 41900 57300 44300 57300 4
+N 41900 57100 44300 57100 4
+C 39500 57000 1 0 0 not.sym
+{
+T 39725 57300 5 10 1 1 0 1 1
+refdes=S2
+}
+C 37900 55400 1 0 0 not.sym
+{
+T 38125 55700 5 10 1 1 0 1 1
+refdes=S3
+}
+C 38700 55400 1 0 0 not.sym
+{
+T 38925 55700 5 10 1 1 0 1 1
+refdes=S4
+}
+C 41900 55400 1 0 0 not.sym
+{
+T 42125 55700 5 10 1 1 0 1 1
+refdes=S6
+}
+C 42700 55400 1 0 0 not.sym
+{
+T 42925 55700 5 10 1 1 0 1 1
+refdes=S7
+}
+C 38700 57000 1 0 0 not.sym
+{
+T 38925 57300 5 10 1 1 0 1 1
+refdes=S1
+}
+C 39500 55400 1 0 0 cnot.sym
+{
+T 39725 55700 5 10 1 1 0 1 1
+refdes=S5
+}
+C 43500 55400 1 0 0 cnot.sym
+{
+T 43725 55700 5 10 1 1 0 1 1
+refdes=S8
+}
+N 44300 56700 44300 55700 4
+{
+T 44300 55900 5 10 1 1 0 0 1
+netname=C2
+}
+N 40300 56700 40300 55700 4
+{
+T 40300 56100 5 10 1 1 0 0 1
+netname=C1
+}
+C 41600 54500 1 0 0 vpulse-1.sym
+{
+T 42300 55150 5 10 1 1 0 0 1
+refdes=VC2
+T 42300 55350 5 10 0 0 0 0 1
+device=vpulse
+T 42300 55550 5 10 0 0 0 0 1
+footprint=none
+T 42300 54950 5 10 1 1 0 0 1
+value=pulse 0 3.3 5.235u 10n 10n 5u 10u
+}
+C 37600 54500 1 0 0 vpulse-1.sym
+{
+T 38300 55150 5 10 1 1 0 0 1
+refdes=VC1
+T 38300 55350 5 10 0 0 0 0 1
+device=vpulse
+T 38300 55550 5 10 0 0 0 0 1
+footprint=none
+T 38300 54950 5 10 1 1 0 0 1
+value=pulse 0 3.3 5u 10n 10n 5u 10u
+}
+C 37300 57600 1 270 0 vpulse-1.sym
+{
+T 37400 57550 5 10 1 1 0 0 1
+refdes=Vd
+T 38150 56900 5 10 0 0 270 0 1
+device=vpulse
+T 38350 56900 5 10 0 0 270 0 1
+footprint=none
+T 36200 57750 5 10 1 1 0 0 1
+value=pulse 0 3.3 2.5u 10n 10n 10u 20u
+}
+C 36500 55500 1 0 0 vdc-1.sym
+{
+T 37200 56150 5 10 1 1 0 0 1
+refdes=V3.3
+T 37200 56350 5 10 0 0 0 0 1
+device=VOLTAGE_SOURCE
+T 37200 56550 5 10 0 0 0 0 1
+footprint=none
+T 37200 55950 5 10 1 1 0 0 1
+value=DC 3.3V
+}
+N 39900 55400 38300 55400 4
+N 38300 56000 39900 56000 4
+N 42300 56000 43900 56000 4
+N 43900 55400 42300 55400 4
+C 45000 55900 1 0 0 gnd-1.sym
+C 41000 55900 1 0 0 gnd-1.sym
+C 37800 54200 1 0 0 gnd-1.sym
+C 41800 54200 1 0 0 gnd-1.sym
+C 43000 55100 1 0 0 gnd-1.sym
+C 39000 55100 1 0 0 gnd-1.sym
+C 37200 57000 1 0 0 gnd-1.sym
+C 39300 56700 1 0 0 gnd-1.sym
+N 39100 57000 39900 57000 4
+N 39100 57600 39900 57600 4
+C 44900 57700 1 0 0 3.3V-plus-1.sym
+C 40900 57700 1 0 0 3.3V-plus-1.sym
+C 39300 57600 1 0 0 3.3V-plus-1.sym
+C 38900 56000 1 0 0 3.3V-plus-1.sym
+C 42900 56000 1 0 0 3.3V-plus-1.sym
+C 36600 56700 1 0 0 3.3V-plus-1.sym
+C 36700 55200 1 0 0 gnd-1.sym
+N 45900 57300 46700 57300 4
+{
+T 46200 57300 5 10 1 1 0 0 1
+netname=Q
+}
+N 46700 57100 45900 57100 4
+{
+T 46200 56900 5 10 1 1 0 0 1
+netname=Q#
+}
+N 38500 57300 38700 57300 4
+{
+T 38600 57300 5 10 1 1 0 0 1
+netname=D
+}
+T 42700 53800 9 10 1 0 0 0 4
+With a 235ns skew we recover (transient
+analysis 1ns resolution).  That's several times
+the 80ns fall time, so differing transistor
+characteristics should not be a problem.

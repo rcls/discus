@@ -4,16 +4,19 @@
 
 bool state_t::wanted(condition_t c) const
 {
-    bool want = (c & 4) == 0;
-    switch (c & 3) {
-    case 0:
-        return want == flag_C;
-    case 1:
-        return want == flag_Z;
-    case 2:
-        return want == flag_O;
+    switch (c) {
+    case C:
+        return flag_C;
+    case Z:
+        return flag_Z;
+    case NC:
+        return !flag_C;
+    case NZ:
+        return !flag_Z;
+    case ALWAYS:
+        return true;
     default:
-        return want;
+        return false;
     }
 };
 

@@ -1,4 +1,4 @@
-#ifndef STATE_H_
+#ifndef STATE_H_                        // -*- C++ -*-
 #define STATE_H_
 
 #include <assert.h>
@@ -20,14 +20,13 @@ struct operand_t {
 };
 
 enum condition_t {
-    C, Z, O, ALWAYS, NC, NZ, NO, NEVER,
+    C, Z, ALWAYS, NC, NZ, NEVER,
 };
 
 struct state_t {
     unsigned char reg[4];
     bool flag_C;
     bool flag_Z;
-    bool flag_O;
     unsigned char out_latch;
     void * stack[4];
     unsigned char mem[256];
@@ -113,14 +112,12 @@ struct state_t {
         account(1);
         reg[r]++;
         flag_Z = (reg[r] == 0);
-        flag_O = (reg[r] == 0);
     }
 
     void DEC(register_name_t r) {
         account(1);
         reg[r]--;
         flag_Z = (reg[r] == 0);
-        flag_O = (reg[r] != 255);
     }
 
     void CLRC() {

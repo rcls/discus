@@ -39,3 +39,23 @@ void state_t::extract_branches(int start)
                jump_target_name, jump_source + program_length - executed);
     }
 }
+
+
+void state_t::emit(unsigned char opcode, const operand_t & v)
+{
+    if (true) {
+        executed += 1 + (v.reg < 0);
+        return;
+    }
+
+    if (v.is_mem)
+        opcode += 4;
+
+    if (v.reg >= 0) {
+        printf("%02x: %02x\n", executed++, opcode + v.reg);
+        return;
+    }
+
+    printf("%02x: %02x %02x\n", executed, v.value >> 2, opcode + (v.value & 3));
+    executed += 2;
+}

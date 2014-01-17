@@ -13,13 +13,13 @@ struct miller_rabin_state : state_t {
     // Big endian, points point at last, so we can use the result pointer as a
     // counter.
     static const int result = len;
-    static const int temp = 16;         // Any function can clobber.
-    static const int modulus = 24;
-    static const int product = 32;
-    static const int factor = 40;
+    static const int temp = len * 2;    // Any function can clobber.
+    static const int modulus = len * 3;
+    static const int product = len * 4;
+    static const int factor = len * 5;
 
-    static const int exponent = 48;
-    static const int base = 56;
+    static const int exponent = len * 6;
+    static const int base = len * 7;
 
     static const int zero = 0xbf;
     static const int one = 0xc7;
@@ -372,17 +372,21 @@ void miller_rabin_state::test_power_steps(unsigned long mod,
     }
 }
 
+// 1411807385341 needs 325, 443538368977861 needs 9375, 4341937413061 needs
+// 28178, 5517315475561 needs 450775 3933464309633 needs 9780504,
+// 107528788110061 needs 1795265022.
+static unsigned mr_bases[7] = {
+    2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
 
 static bool is_prime(unsigned long n)
 {
     int tz = __builtin_ctzl(n - 1);
     unsigned long exp = (n - 1) >> tz;
 
-    unsigned bases[7] = { 2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
-    for (int i = 0; i != 7; ++i) {
-        if (bases[i] % n == 0)
+    for (int i = 0; i != sizeof mr_bases / sizeof mr_bases[0]; ++i) {
+        if (mr_bases[i] % n == 0)
             continue;
-        unsigned long pw = power(bases[i], exp, n);
+        unsigned long pw = power(mr_bases[i], exp, n);
         if (pw == 1)
             continue;
         for (int i = 0; i < tz; ++i) {
@@ -401,7 +405,7 @@ void miller_rabin_state::test_single(unsigned long mod)
 {
     set64(modulus, mod);
     go(te_single);
-    unsigned exp = is_prime(mod) ? 8 : 1;
+    unsigned exp = is_prime(mod) ? len : 1;
     printf("mr %lu -> %u exp %u in %u\n", mod, out_latch, exp, executed);
     assert(exp == out_latch);
 }
@@ -417,13 +421,8 @@ void miller_rabin_state::run_tests()
     set64(one, 1);
     set64(zero, 0);
 
-    set64(base_start, 2);
-    set64(base_start + 8, 325);
-    set64(base_start + 16, 9375);
-    set64(base_start + 24, 28178);
-    set64(base_start + 32, 450775);
-    set64(base_start + 40, 9780504);
-    set64(base_start + 48, 1795265022);
+    for (int i = 0; i != 7; ++i)
+        set64(base_start + 8 * i, mr_bases[i]);
 
     test_add(6700417, 6000000, 5000000, factor);
     test_add(100000000, 6000000, 5000000, product);
@@ -443,12 +442,18 @@ void miller_rabin_state::run_tests()
 
     test_power(0x100000001, 325, 0x100000000);
 
-    test_single(5);
-    test_single(15);
-    test_single(9223372036854775783);   // Largest prime < 2**63
-    test_single(9219669366496075201);   // Carmichael, < 2**63
-    test_single(0x100000001);
-    test_single(65537);
+    static unsigned long singles[] = {
+        5, 15,
+        9223372036854775783, // Largest prime < 2**63
+        9219669366496075201, // Carmichael, < 2**63
+        0x100000001, 65537,
+
+        // Fail all but one:
+        1411807385341, 443538368977861, 4341937413061, 5517315475561,
+        3933464309633, 107528788110061 };
+
+    for (int i = 0; i != sizeof singles / sizeof singles[0]; ++i)
+        test_single(singles[i]);
 }
 
 

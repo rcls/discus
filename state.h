@@ -44,6 +44,9 @@ struct state_t {
             result += (unsigned long) mem[address - i] << (i * 8);
         return result;
     }
+
+    void emit(unsigned char opcode, const operand_t & v);
+
     void account(const operand_t & v) { executed += 1 + (v.reg < 0); }
 
     void account(int n) { executed += n; }
@@ -76,9 +79,9 @@ struct state_t {
     void ADC(const operand_t & val)  { ADD(val, flag_C); }
     void ADCM(const operand_t & val) { ADD(val.mem(), flag_C); }
 
-    void SUB(const operand_t & val)  { ADD(val,       true,     255); }
+    void SUB(const operand_t & val)  { ADD(val,       true,   255); }
     void SBC(const operand_t & val)  { ADD(val,       flag_C, 255); }
-    void SUBM(const operand_t & val) { ADD(val.mem(), true,     255); }
+    void SUBM(const operand_t & val) { ADD(val.mem(), true,   255); }
     void SBCM(const operand_t & val) { ADD(val.mem(), flag_C, 255); }
 
     void AND(const operand_t & val) {

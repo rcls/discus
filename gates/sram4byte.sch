@@ -4,28 +4,28 @@ C 6000 5000 1 0 0 srambyte.sym
 T 6800 5825 5 10 1 1 0 4 1
 source=srambyte.sch
 T 6800 6500 5 10 1 1 0 3 1
-refdes=S0
+refdes=A
 }
 C 8700 5000 1 0 0 srambyte.sym
 {
 T 9500 5825 5 10 1 1 0 4 1
 source=srambyte.sch
 T 9500 6500 5 10 1 1 0 3 1
-refdes=S1
+refdes=B
 }
 C 11400 5000 1 0 0 srambyte.sym
 {
 T 12200 5825 5 10 1 1 0 4 1
 source=srambyte.sch
 T 12200 6500 5 10 1 1 0 3 1
-refdes=S2
+refdes=C
 }
 C 14100 5000 1 0 0 srambyte.sym
 {
 T 14900 5825 5 10 1 1 0 4 1
 source=srambyte.sch
 T 14900 6500 5 10 1 1 0 3 1
-refdes=S3
+refdes=D
 }
 N 7600 6000 7600 3800 4
 N 7600 6200 7700 6200 4

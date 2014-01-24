@@ -4,28 +4,28 @@ C 5400 5000 1 0 0 sram4byte.sym
 T 6200 5975 5 10 1 1 0 4 1
 source=sram4byte.sch
 T 6200 6700 5 10 1 1 0 3 1
-refdes=S0
+refdes=A
 }
 C 8400 5000 1 0 0 sram4byte.sym
 {
 T 9200 5975 5 10 1 1 0 4 1
 source=sram4byte.sch
 T 9200 6700 5 10 1 1 0 3 1
-refdes=S1
+refdes=B
 }
 C 11500 5000 1 0 0 sram4byte.sym
 {
 T 12300 5975 5 10 1 1 0 4 1
 source=sram4byte.sch
 T 12300 6700 5 10 1 1 0 3 1
-refdes=S2
+refdes=C
 }
 C 14500 5000 1 0 0 sram4byte.sym
 {
 T 15300 5975 5 10 1 1 0 4 1
 source=sram4byte.sch
 T 15300 6700 5 10 1 1 0 3 1
-refdes=S3
+refdes=D
 }
 N 7300 6200 7300 2600 4
 N 7000 6400 7400 6400 4

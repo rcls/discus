@@ -6,7 +6,7 @@ T 0 1100 5 10 0 0 0 0 1
 pintype=unknown
 T 205 1045 5 10 1 1 0 0 1
 pinlabel=STROBE
-T 205 1120 5 10 1 1 0 6 1
+T 205 1120 5 10 0 1 0 6 1
 pinnumber=1
 T 0 1100 5 10 0 0 0 0 1
 pinseq=1
@@ -17,7 +17,7 @@ T 0 1300 5 10 0 0 0 0 1
 pintype=unknown
 T 205 1245 5 10 1 1 0 0 1
 pinlabel=L
-T 205 1320 5 10 1 1 0 6 1
+T 205 1320 5 10 0 1 0 6 1
 pinnumber=2
 T 0 1300 5 10 0 0 0 0 1
 pinseq=2
@@ -28,7 +28,7 @@ T 1600 1300 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 1245 5 10 1 1 0 6 1
 pinlabel=R
-T 1395 1320 5 10 1 1 0 0 1
+T 1395 1320 5 10 0 1 0 0 1
 pinnumber=3
 T 1600 1300 5 10 0 0 0 0 1
 pinseq=3
@@ -41,7 +41,7 @@ T 800 1700 5 10 0 0 0 0 1
 pintype=unknown
 T 630 1475 5 10 1 1 180 6 1
 pinlabel=Vdd
-T 755 1650 5 10 1 1 180 0 1
+T 755 1650 5 10 0 1 180 0 1
 pinnumber=7
 T 800 1700 5 10 0 0 0 0 1
 pinseq=4
@@ -52,7 +52,7 @@ T 800 0 5 10 0 0 0 0 1
 pintype=unknown
 T 605 225 5 10 1 1 0 0 1
 pinlabel=GND
-T 755 50 5 10 1 1 0 6 1
+T 755 50 5 10 0 1 0 6 1
 pinnumber=6
 T 800 0 5 10 0 0 0 0 1
 pinseq=5
@@ -65,7 +65,7 @@ T 0 400 5 10 0 0 0 0 1
 pintype=unknown
 T 205 345 5 10 1 1 0 0 1
 pinlabel=LB
-T 205 420 5 10 1 1 0 6 1
+T 205 420 5 10 0 1 0 6 1
 pinnumber=5
 T 0 400 5 10 0 0 0 0 1
 pinseq=5
@@ -76,7 +76,7 @@ T 0 600 5 10 0 0 0 0 1
 pintype=unknown
 T 205 545 5 10 1 1 0 0 1
 pinlabel=STROBEB
-T 205 620 5 10 1 1 0 6 1
+T 205 620 5 10 0 1 0 6 1
 pinnumber=4
 T 0 600 5 10 0 0 0 0 1
 pinseq=4
@@ -87,7 +87,7 @@ T 1600 600 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 545 5 10 1 1 0 6 1
 pinlabel=QL
-T 1395 620 5 10 1 1 0 0 1
+T 1395 620 5 10 0 1 0 0 1
 pinnumber=8
 T 1600 600 5 10 0 0 0 0 1
 pinseq=0
@@ -98,7 +98,7 @@ T 1600 400 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 345 5 10 1 1 0 6 1
 pinlabel=QR
-T 1395 420 5 10 1 1 0 0 1
+T 1395 420 5 10 0 1 0 0 1
 pinnumber=9
 T 1600 400 5 10 0 0 0 0 1
 pinseq=0

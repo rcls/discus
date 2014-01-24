@@ -50,4 +50,4 @@ T 400 0 5 10 0 0 0 0 1
 pinseq=5
 }
 T 350 300 8 10 1 1 0 4 1
-refdes=S?
+refdes=I?

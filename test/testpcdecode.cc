@@ -39,35 +39,28 @@ int main()
         bool jump_or_call_ins = po && (opcode & 0xc0) == 0;
         bool ret_ins = (opcode & 0xe0) == 0xe0;
 
-        bool flag;
         bool taken;
         switch (opcode & 0x1c) {
         case 0x00:
-            flag = true;
             taken = true;
             break;
         case 0x10:
-            flag = !fc;
             taken = !fc;
             break;
         case 0x14:
-            flag = !fc;
             taken = fc;
             break;
         case 0x18:
-            flag = !fz;
             taken = !fz;
             break;
         case 0x1c:
-            flag = !fz;
             taken = fz;
             break;
         default:
-            flag = !!(opcode & 4);
             taken = false;
         }
 
-        assert(taken == (flag ^ !!(opcode & 4)));
+        bool flag = taken ^ !!(opcode & 4);
 
         if (flag != FLAG[i])
             errx(1, "Flag %i/flag %i mismatch at %i (%02x C%i Z%i)",

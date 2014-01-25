@@ -27,26 +27,18 @@ result bus is ALU output, or operand bus direct (add 0...)
 00LCCCXX - with prefix, jump, opt link.
   [prob have space to use 01 & get RR...]
 
-[All we get from this 01 instead of 00 is indirects & ret...  and make others
- more packed.  Instead Separate uncond jumps that may be indirect?]
-01LCCCRR - jump/call except:
-011CCC11 - return (only with no prefix, with prefix is call).
-
-10AAAMRR - ins that r/w A. (flags Z C O?)
+01AAAMRR - ins that r/w A. (flags Z C O?)
   * 7 basic operations:
      add(c) sub(c) or and xor
   * also possibly cmp or sta?
   * probably don't need sub...
 
-110WWMRR - operand to reg WW.
+100WWMRR - operand to reg WW.
 
 + could save space on inc/dec decode if we did ww=op +/- 1.
 + have space for it with compressed jumps...
 
-111 : misc crap:
-  on all regs: inc, dec
-  111000RR : inc. (flags Z)
-  111010RR : dec.
+101 : misc crap:
 
   111100RR : in - only need in(a).
   111110RR : out - only need out(a), but can use full bus....
@@ -71,13 +63,14 @@ Not necessary:
 00LCCCxx - call(L=0) or jmp(L=1).
 01AAAMRR - ops that r/w A.
 100WWMRR - Load WW = src, no flags.
-101WWMRR - WW = src+1, flag Z.
-110WWMRR - WW = src-1, flag Z.
-111xxxxx - special, no flags.
-111CCC00 - ret.
-111UUURR - sta, UUU is never cond. (but might as well be in normal ops...)
+110WWMRR - WW = src+1, flag Z.
+111WWMRR - WW = src-1, flag Z.
 
-in/out : 111VVVRR, VVV is also never cond, make WW/RR magically match A...
+101xxxxx - special, no flags.
+101CCC00 - ret.
+101UUURR - sta, UUU is never cond. (but might as well be in normal ops...)
+
+in/out : 101VVVRR, VVV is also never cond, make WW/RR magically match A...
 No real constraints on reg numbers...
 
 AAA = 000 : add
@@ -99,22 +92,22 @@ CCC = 101 : nc
 CCC = 110 : z
 CCC = 111 : nz
 
-111010xx - sta.
+101010xx - sta.
 
-11101011 - out
-11101000 - in
+10101111 - out
+10101100 - in
 
 
 in/out is an ALU ins?
 
 
-A : 11
-X : 00
-Y : 01
-U : 10
+A : 00
+X : 01
+Y : 10
+U : 11
 
 01xxxxxx : write A
-(100/101/110)WWxxx : write WW.
+(100/11x)WWxxx : write WW.
 
 
 slice to do:
@@ -171,11 +164,15 @@ BV - if B not coming from memory or I/O port.
 Write reg:
 
  01xxxxxx except 01110xxx (cmp)
- 1xxxxxxx except 111xxxxx
- also IN (some 111xxxxx).
+ 1xxxxxxx except 101xxxxx
+ also IN (some 101xxxxx).
+
+[~7 & 6 & (~5 | ~4 | 3)]  |  [7 & (~6 | 5 | IN)]
 
 C is written by 01xxxxxx
-Z is written by everything that writes a reg except move (110xxxxxx)
+Z is written by everything that writes a reg, plus cmp
+   except: move (100xxxxxx), in (some 101xxxxx).
+   i.e. x1xxxxxx
 
 Load mem (many don't care):
 
@@ -183,3 +180,6 @@ Load mem (many don't care):
 1xxxx1xx except some 111xx1xx
 
 IN is a do care (we want the bus...)
+
+
+FIXME - absorb Cw into its users?

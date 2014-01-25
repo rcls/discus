@@ -66,7 +66,7 @@ pinnumber=8
 T 800 0 5 10 0 0 0 0 1
 pinseq=8
 }
-T 1050 400 8 10 1 1 0 0 1
+T 1350 400 8 10 1 1 0 7 1
 refdes=S?
-T 275 625 8 10 1 1 0 0 1
+T 800 650 8 10 1 1 0 4 1
 source=vdflipflop.sch

@@ -68,7 +68,7 @@ Not necessary:
 
 
 00 - prefix or jmp/call constant. (Inc. uncond.)
-00LCCCxx - jmp or call.
+00LCCCxx - call(L=0) or jmp(L=1).
 01AAAMRR - ops that r/w A.
 100WWMRR - Load WW = src, no flags.
 101WWMRR - WW = src+1, flag Z.
@@ -80,21 +80,31 @@ Not necessary:
 in/out : 111VVVRR, VVV is also never cond, make WW/RR magically match A...
 No real constraints on reg numbers...
 
+AAA = 000 : add
+AAA = 001 : adc
+AAA = 010 : sub
+AAA = 011 : sbc
+AAA = 100 : xor
+AAA = 101 : or
+AAA = 110 : cmp
+AAA = 111 : and
+
+
 CCC = 000 : always
 CCC = 001 : never
-CCC = 010 : z
-CCC = 011 : nz
+CCC = 010 : never
+CCC = 011 : never
 CCC = 100 : c
 CCC = 101 : nc
-CCC = 110 : always
-CCC = 111 : never
+CCC = 110 : z
+CCC = 111 : nz
 
-111001xx - sta.
+111010xx - sta.
 
-11111111 - out
-11111100 - in
+11101011 - out
+11101000 - in
 
-cmp : 11111mrr
+
 in/out is an ALU ins?
 
 
@@ -132,3 +142,44 @@ VK
 BV
 AND
 OR
+
+O4# - Flag = 0
+O3#, O4 - Flag = FZ#
+O3, O4 - Flag = FC#
+
+N - high only for SUB, SBC and CMP
+OR - high only for OR
+AND - high only for AND
+
+C - high for AND, low for OR, XOR...
+
+CS# - low for AND, INC (anything else?)
+CR - high for OR, XOR, CS# becomes don't care.
+
+Cin - force high for AND, SUB, CMP, INC
+ - force low for ADD, DEC, OR, XOR
+
+INC - AR# low
+DEC - AS high,
+
+straight though:
+Either ADD, OR, XOR with A=0, [CR don't care for ADD].
+Or AND with A=255.
+
+BV - if B not coming from memory or I/O port.
+
+Write reg:
+
+ 01xxxxxx except 01110xxx (cmp)
+ 1xxxxxxx except 111xxxxx
+ also IN (some 111xxxxx).
+
+C is written by 01xxxxxx
+Z is written by everything that writes a reg except move (110xxxxxx)
+
+Load mem (many don't care):
+
+01xxx1xx
+1xxxx1xx except some 111xx1xx
+
+IN is a do care (we want the bus...)

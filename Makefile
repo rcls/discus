@@ -58,6 +58,7 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 
 rmsim: state.o
 test/testacc-check test/testalu: test/spice_load.o
+test/testpcdecode: test/spice_load.o
 
 state.o rmsim.o: state.h
 test/testacc-check.o test/testalu.o spice_load.o: test/spice_load.h

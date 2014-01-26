@@ -73,10 +73,10 @@ Not necessary:
 in/out : 101VVVRR, VVV is also never cond, make WW/RR magically match A...
 No real constraints on reg numbers...
 
-AAA = 000 : add
-AAA = 001 : adc
-AAA = 010 : sub
-AAA = 011 : sbc
+AAA = 000 : sbc
+AAA = 001 : sub
+AAA = 010 : adc
+AAA = 011 : add
 AAA = 100 : xor
 AAA = 101 : or
 AAA = 110 : cmp
@@ -146,14 +146,8 @@ AND - high only for AND
 
 C - high for AND, low for OR, XOR...
 
-CS# - low for AND, INC (anything else?)
-CR - high for OR, XOR, CS# becomes don't care.
-
 Cin - force high for AND, SUB, CMP, INC
  - force low for ADD, DEC, OR, XOR
-
-INC - AR# low
-DEC - AS high,
 
 straight though:
 Either ADD, OR, XOR with A=0, [CR don't care for ADD].
@@ -182,4 +176,39 @@ Load mem (many don't care):
 IN is a do care (we want the bus...)
 
 
-FIXME - absorb Cw into its users?
+FIXME - for IN we probably want no to disable carry chain...
+
+AND is high for 01111xxx
+is low for 1xxxxxxx
+don't care 00xxxxxx
+So take 0x111xxx
+
+OR is high for 01101xxx
+don't care 00xxxxxx
+Take 0x101xxx
+
+AS is high for dec, 111xxxxx
+AR# is low for inc,mv, 1x0xxxxx : FIXME - on IN also.
+AR# dominates, so AS high on 11xxxxxx is OK.
+
+
+
+CS# - low for AND (anything else?), 0x111xxx
+CR - high for OR, XOR, 0110xxxx don't care 00xxxxxx, take 0x10xxxx
+[CR dominates, take CS# 0x1x1xxx.]
+
+CinS# - low for AND, ADD, DEC, don't care for jumps...
+ 01011xxx, 01111xxx, 111xxxxx gives
+ 0xx11xxx, 111xxxxx
+[Make CinS dominant...]
+
+CinR - high for OR, XOR, SUB, CMP, INC : FIXME IN.
+ 01001xxx, 01101xxx, 01100xxx, 01001xxx, 01110xxx, 110xxxxx gives
+ 0xx01xxx, 0x1x0xxx, 110xxxxx
+with dominance...
+ 0xxx1xxx, 0x1xxxxx, 11xxxxxx
+
+N - assert for SUB, SBC, CMP
+
+0x00xxxx
+0x110xxx

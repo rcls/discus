@@ -30,6 +30,8 @@ C 17100 49300 1 0 0 vdd-1.sym
 C 17200 48000 1 0 0 gnd-1.sym
 C 15200 48900 1 0 0 in-1.sym
 {
+T 15200 49400 5 10 0 0 0 0 1
+footprint=anchor
 T 15200 49200 5 10 0 0 0 0 1
 device=INPUT
 T 15000 48950 5 10 1 1 0 0 1
@@ -37,6 +39,8 @@ refdes=A
 }
 C 15200 48700 1 0 0 in-1.sym
 {
+T 15200 49200 5 10 0 0 0 0 1
+footprint=anchor
 T 15200 49000 5 10 0 0 0 0 1
 device=INPUT
 T 15000 48750 5 10 1 1 0 0 1
@@ -44,6 +48,8 @@ refdes=A#
 }
 C 15200 48500 1 0 0 in-1.sym
 {
+T 15200 49000 5 10 0 0 0 0 1
+footprint=anchor
 T 15200 48800 5 10 0 0 0 0 1
 device=INPUT
 T 15000 48550 5 10 1 1 0 0 1
@@ -51,6 +57,8 @@ refdes=B
 }
 C 15200 49100 1 0 0 in-1.sym
 {
+T 15200 49600 5 10 0 0 0 0 1
+footprint=anchor
 T 15200 49400 5 10 0 0 0 0 1
 device=INPUT
 T 15000 49150 5 10 1 1 0 0 1
@@ -58,6 +66,8 @@ refdes=B#
 }
 C 16400 47800 1 0 0 in-1.sym
 {
+T 16400 48300 5 10 0 0 0 0 1
+footprint=anchor
 T 16400 48100 5 10 0 0 0 0 1
 device=INPUT
 T 16200 47800 5 10 1 1 0 0 1
@@ -65,6 +75,8 @@ refdes=C#
 }
 C 15200 48300 1 0 0 in-1.sym
 {
+T 15200 48800 5 10 0 0 0 0 1
+footprint=anchor
 T 15200 48600 5 10 0 0 0 0 1
 device=INPUT
 T 15400 48200 5 10 1 1 0 0 1
@@ -72,6 +84,8 @@ refdes=GND
 }
 C 15200 49300 1 0 0 in-1.sym
 {
+T 15200 49800 5 10 0 0 0 0 1
+footprint=anchor
 T 15200 49600 5 10 0 0 0 0 1
 device=INPUT
 T 15400 49450 5 10 1 1 0 0 1
@@ -79,6 +93,8 @@ refdes=Vdd
 }
 C 19100 49000 1 90 0 out-1.sym
 {
+T 18600 49000 5 10 0 0 90 0 1
+footprint=anchor
 T 18800 49000 5 10 0 0 90 0 1
 device=OUTPUT
 T 19050 49600 5 10 1 1 90 0 1
@@ -95,6 +111,8 @@ C 19300 48400 1 0 0 gnd-1.sym
 C 19200 49300 1 0 0 vdd-1.sym
 C 19900 49000 1 90 0 out-1.sym
 {
+T 19400 49000 5 10 0 0 90 0 1
+footprint=anchor
 T 19600 49000 5 10 0 0 90 0 1
 device=OUTPUT
 T 19850 49600 5 10 1 1 90 0 1

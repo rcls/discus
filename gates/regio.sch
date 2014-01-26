@@ -1,6 +1,8 @@
 v 20130925 2
 C 45600 46600 1 0 0 in-1.sym
 {
+T 45600 47100 5 10 0 0 0 0 1
+footprint=anchor
 T 45600 46900 5 10 0 0 0 0 1
 device=INPUT
 T 45800 46750 5 10 1 1 0 0 1
@@ -8,6 +10,8 @@ refdes=LL
 }
 C 46400 46600 1 0 0 in-1.sym
 {
+T 46400 47100 5 10 0 0 0 0 1
+footprint=anchor
 T 46400 46900 5 10 0 0 0 0 1
 device=INPUT
 T 46800 46850 5 10 1 1 180 0 1
@@ -15,6 +19,8 @@ refdes=RR
 }
 C 43600 44900 1 0 0 in-1.sym
 {
+T 43600 45400 5 10 0 0 0 0 1
+footprint=anchor
 T 43600 45200 5 10 0 0 0 0 1
 device=INPUT
 T 43700 45050 5 10 1 1 0 0 1
@@ -22,6 +28,8 @@ refdes=S
 }
 C 45600 47500 1 0 0 in-1.sym
 {
+T 45600 48000 5 10 0 0 0 0 1
+footprint=anchor
 T 45600 47800 5 10 0 0 0 0 1
 device=INPUT
 T 46050 47600 5 10 1 1 180 0 1
@@ -29,6 +37,8 @@ refdes=Vdd
 }
 C 48700 46900 1 90 0 out-1.sym
 {
+T 48200 46900 5 10 0 0 90 0 1
+footprint=anchor
 T 48400 46900 5 10 0 0 90 0 1
 device=OUTPUT
 T 48600 47500 5 10 1 1 90 0 1
@@ -36,6 +46,8 @@ refdes=Q
 }
 C 47900 46900 1 90 0 out-1.sym
 {
+T 47400 46900 5 10 0 0 90 0 1
+footprint=anchor
 T 47600 46900 5 10 0 0 90 0 1
 device=OUTPUT
 T 47800 47500 5 10 1 1 90 0 1
@@ -78,6 +90,8 @@ value=PDTC124TU
 N 47500 46400 48200 46400 4
 C 48800 46300 1 0 1 in-1.sym
 {
+T 48800 46800 5 10 0 0 0 6 1
+footprint=anchor
 T 48800 46600 5 10 0 0 0 6 1
 device=INPUT
 T 48700 46200 5 10 1 1 0 6 1
@@ -106,6 +120,8 @@ value=PDTC124TU
 }
 C 46700 45300 1 90 0 in-1.sym
 {
+T 46200 45300 5 10 0 0 90 0 1
+footprint=anchor
 T 46400 45300 5 10 0 0 90 0 1
 device=INPUT
 T 46750 45250 5 10 1 1 180 0 1
@@ -139,6 +155,8 @@ C 44900 43600 1 0 0 gnd-1.sym
 C 44800 45400 1 0 0 vdd-1.sym
 C 43600 44300 1 0 0 in-1.sym
 {
+T 43600 44800 5 10 0 0 0 0 1
+footprint=anchor
 T 43600 44600 5 10 0 0 0 0 1
 device=INPUT
 T 43700 44200 5 10 1 1 0 0 1
@@ -146,6 +164,8 @@ refdes=STR
 }
 C 43600 44700 1 0 0 in-1.sym
 {
+T 43600 45200 5 10 0 0 0 0 1
+footprint=anchor
 T 43600 45000 5 10 0 0 0 0 1
 device=INPUT
 T 43700 44850 5 10 1 1 0 0 1

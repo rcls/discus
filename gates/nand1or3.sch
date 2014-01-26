@@ -56,6 +56,8 @@ device=NMOS
 }
 C 40400 52900 1 0 0 in-1.sym
 {
+T 40400 53400 5 10 0 0 0 0 1
+footprint=anchor
 T 40400 53200 5 10 0 0 0 0 1
 device=INPUT
 T 40600 53100 5 10 1 1 0 0 1
@@ -63,6 +65,8 @@ refdes=C
 }
 C 40400 53700 1 0 0 in-1.sym
 {
+T 40400 54200 5 10 0 0 0 0 1
+footprint=anchor
 T 40400 54000 5 10 0 0 0 0 1
 device=INPUT
 T 40600 53900 5 10 1 1 0 0 1
@@ -70,6 +74,8 @@ refdes=A
 }
 C 41700 52900 1 0 0 in-1.sym
 {
+T 41700 53400 5 10 0 0 0 0 1
+footprint=anchor
 T 41700 53200 5 10 0 0 0 0 1
 device=INPUT
 T 41900 53100 5 10 1 1 0 0 1
@@ -77,6 +83,8 @@ refdes=D
 }
 C 39100 52900 1 0 0 in-1.sym
 {
+T 39100 53400 5 10 0 0 0 0 1
+footprint=anchor
 T 39100 53200 5 10 0 0 0 0 1
 device=INPUT
 T 39300 53100 5 10 1 1 0 0 1
@@ -84,6 +92,8 @@ refdes=B
 }
 C 40800 54800 1 0 0 in-1.sym
 {
+T 40800 55300 5 10 0 0 0 0 1
+footprint=anchor
 T 40800 55100 5 10 0 0 0 0 1
 device=INPUT
 T 40900 54700 5 10 1 1 0 0 1
@@ -91,6 +101,8 @@ refdes=Vdd
 }
 C 39100 52400 1 0 0 in-1.sym
 {
+T 39100 52900 5 10 0 0 0 0 1
+footprint=anchor
 T 39100 52700 5 10 0 0 0 0 1
 device=INPUT
 T 39200 52600 5 10 1 1 0 0 1
@@ -98,6 +110,8 @@ refdes=GND
 }
 C 41400 53900 1 0 0 out-1.sym
 {
+T 41400 54400 5 10 0 0 0 0 1
+footprint=anchor
 T 41400 54200 5 10 0 0 0 0 1
 device=OUTPUT
 T 41600 54100 5 10 1 1 0 0 1

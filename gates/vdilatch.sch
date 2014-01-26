@@ -1,6 +1,8 @@
 v 20130925 2
 C 46700 56700 1 0 1 in-1.sym
 {
+T 46700 57200 5 10 0 0 0 6 1
+footprint=anchor
 T 46700 57000 5 10 0 0 0 6 1
 device=INPUT
 T 46500 56850 5 10 1 1 0 6 1
@@ -8,6 +10,8 @@ refdes=E#
 }
 C 43400 56500 1 0 0 in-1.sym
 {
+T 43400 57000 5 10 0 0 0 0 1
+footprint=anchor
 T 43400 56800 5 10 0 0 0 0 1
 device=INPUT
 T 43925 56575 5 10 1 1 180 0 1
@@ -15,6 +19,8 @@ refdes=GND
 }
 C 44500 57900 1 90 0 out-1.sym
 {
+T 44000 57900 5 10 0 0 90 0 1
+footprint=anchor
 T 44200 57900 5 10 0 0 90 0 1
 device=OUTPUT
 T 44500 58500 5 10 1 1 90 0 1
@@ -22,6 +28,8 @@ refdes=Q
 }
 C 45100 57900 1 90 0 out-1.sym
 {
+T 44600 57900 5 10 0 0 90 0 1
+footprint=anchor
 T 44800 57900 5 10 0 0 90 0 1
 device=OUTPUT
 T 45100 58500 5 10 1 1 90 0 1
@@ -29,6 +37,8 @@ refdes=Q#
 }
 C 43400 57100 1 0 0 in-1.sym
 {
+T 43400 57600 5 10 0 0 0 0 1
+footprint=anchor
 T 43400 57400 5 10 0 0 0 0 1
 device=INPUT
 T 43625 57175 5 10 1 1 0 5 1
@@ -36,6 +46,8 @@ refdes=D
 }
 C 46700 58500 1 180 0 in-1.sym
 {
+T 46700 58000 5 10 0 0 180 0 1
+footprint=anchor
 T 46700 58200 5 10 0 0 180 0 1
 device=INPUT
 T 46700 58350 5 10 1 1 0 0 1

@@ -8,6 +8,8 @@ C 18100 47500 1 0 0 vdd-1.sym
 N 15200 49000 15900 49000 4
 C 14200 48700 1 0 0 in-1.sym
 {
+T 14200 49200 5 10 0 0 0 0 1
+footprint=anchor
 T 14200 49000 5 10 0 0 0 0 1
 device=INPUT
 T 14000 48750 5 10 1 1 0 0 1
@@ -15,6 +17,8 @@ refdes=A#
 }
 C 16900 49400 1 270 0 in-1.sym
 {
+T 17400 49400 5 10 0 0 270 0 1
+footprint=anchor
 T 17200 49400 5 10 0 0 270 0 1
 device=INPUT
 T 17000 49350 5 10 1 1 0 3 1
@@ -22,6 +26,8 @@ refdes=C
 }
 C 14100 46100 1 0 0 in-1.sym
 {
+T 14100 46600 5 10 0 0 0 0 1
+footprint=anchor
 T 14100 46400 5 10 0 0 0 0 1
 device=INPUT
 T 14375 46175 5 10 1 1 0 5 1
@@ -29,6 +35,8 @@ refdes=GND
 }
 C 18900 47400 1 0 1 in-1.sym
 {
+T 18900 47900 5 10 0 0 0 6 1
+footprint=anchor
 T 18900 47700 5 10 0 0 0 6 1
 device=INPUT
 T 18900 47500 5 10 1 1 0 1 1
@@ -36,6 +44,8 @@ refdes=Vdd
 }
 C 17800 48600 1 0 0 out-1.sym
 {
+T 17800 49100 5 10 0 0 0 0 1
+footprint=anchor
 T 17800 48900 5 10 0 0 0 0 1
 device=OUTPUT
 T 18400 48700 5 10 1 1 0 1 1
@@ -43,6 +53,8 @@ refdes=Q#
 }
 C 18700 46900 1 0 0 out-1.sym
 {
+T 18700 47400 5 10 0 0 0 0 1
+footprint=anchor
 T 18700 47200 5 10 0 0 0 0 1
 device=OUTPUT
 T 19100 47200 5 10 1 1 180 0 1
@@ -53,6 +65,8 @@ N 17600 48500 17600 46800 4
 N 17600 46800 17900 46800 4
 C 13800 46700 1 0 0 in-1.sym
 {
+T 13800 47200 5 10 0 0 0 0 1
+footprint=anchor
 T 13800 47000 5 10 0 0 0 0 1
 device=INPUT
 T 13600 46750 5 10 1 1 0 0 1
@@ -60,6 +74,8 @@ refdes=B#
 }
 C 13800 46500 1 0 0 in-1.sym
 {
+T 13800 47000 5 10 0 0 0 0 1
+footprint=anchor
 T 13800 46800 5 10 0 0 0 0 1
 device=INPUT
 T 13600 46550 5 10 1 1 0 0 1
@@ -71,6 +87,8 @@ C 14600 45900 1 0 0 gnd-1.sym
 C 15500 47100 1 0 0 gnd-1.sym
 C 14200 48500 1 0 0 in-1.sym
 {
+T 14200 49000 5 10 0 0 0 0 1
+footprint=anchor
 T 14200 48800 5 10 0 0 0 0 1
 device=INPUT
 T 13900 48550 5 10 1 1 0 0 1
@@ -78,6 +96,8 @@ refdes=OR
 }
 C 14200 47600 1 0 0 in-1.sym
 {
+T 14200 48100 5 10 0 0 0 0 1
+footprint=anchor
 T 14200 47900 5 10 0 0 0 0 1
 device=INPUT
 T 14200 47700 5 10 1 1 0 7 1
@@ -99,6 +119,8 @@ device=NMOS
 C 18400 45800 1 0 0 gnd-1.sym
 C 19700 46200 1 0 1 in-1.sym
 {
+T 19700 46700 5 10 0 0 0 6 1
+footprint=anchor
 T 19700 46500 5 10 0 0 0 6 1
 device=INPUT
 T 19600 46150 5 10 1 1 0 6 1
@@ -106,6 +128,8 @@ refdes=CR
 }
 C 17300 46200 1 0 0 in-1.sym
 {
+T 17300 46700 5 10 0 0 0 0 1
+footprint=anchor
 T 17300 46500 5 10 0 0 0 0 1
 device=INPUT
 T 17400 46150 5 10 1 1 0 0 1

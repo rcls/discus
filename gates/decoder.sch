@@ -1,6 +1,8 @@
 v 20130925 2
 C 42400 63100 1 0 0 in-1.sym
 {
+T 42400 63600 5 10 0 0 0 0 1
+footprint=anchor
 T 42400 63400 5 10 0 0 0 0 1
 device=INPUT
 T 42400 63200 5 10 1 1 0 7 1
@@ -8,6 +10,8 @@ refdes=A0
 }
 C 42400 63300 1 0 0 in-1.sym
 {
+T 42400 63800 5 10 0 0 0 0 1
+footprint=anchor
 T 42400 63600 5 10 0 0 0 0 1
 device=INPUT
 T 42400 63400 5 10 1 1 0 7 1
@@ -15,6 +19,8 @@ refdes=A0#
 }
 C 45600 62500 1 0 0 in-1.sym
 {
+T 45600 63000 5 10 0 0 0 0 1
+footprint=anchor
 T 45600 62800 5 10 0 0 0 0 1
 device=INPUT
 T 45400 62600 5 10 1 1 0 1 1
@@ -22,6 +28,8 @@ refdes=A1
 }
 C 42400 62500 1 0 0 in-1.sym
 {
+T 42400 63000 5 10 0 0 0 0 1
+footprint=anchor
 T 42400 62800 5 10 0 0 0 0 1
 device=INPUT
 T 42400 62600 5 10 1 1 0 7 1
@@ -30,6 +38,8 @@ refdes=A1#
 N 43000 63200 47900 63200 4
 C 42800 64900 1 0 0 in-1.sym
 {
+T 42800 65400 5 10 0 0 0 0 1
+footprint=anchor
 T 42800 65200 5 10 0 0 0 0 1
 device=INPUT
 T 42450 64950 5 10 1 1 0 0 1
@@ -37,6 +47,8 @@ refdes=Vdd
 }
 C 49300 63700 1 0 1 in-1.sym
 {
+T 49300 64200 5 10 0 0 0 6 1
+footprint=anchor
 T 49300 64000 5 10 0 0 0 6 1
 device=INPUT
 T 49200 63650 5 10 1 1 0 6 1
@@ -200,6 +212,8 @@ refdes=R3
 C 48100 65000 1 0 0 vdd-1.sym
 C 44300 64100 1 90 0 out-1.sym
 {
+T 43800 64100 5 10 0 0 90 0 1
+footprint=anchor
 T 44000 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 44200 64700 5 10 1 1 0 3 1
@@ -207,6 +221,8 @@ refdes=QA
 }
 C 45900 64100 1 90 0 out-1.sym
 {
+T 45400 64100 5 10 0 0 90 0 1
+footprint=anchor
 T 45600 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 45800 64700 5 10 1 1 0 3 1
@@ -214,6 +230,8 @@ refdes=QX
 }
 C 47500 64100 1 90 0 out-1.sym
 {
+T 47000 64100 5 10 0 0 90 0 1
+footprint=anchor
 T 47200 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 47400 64700 5 10 1 1 0 3 1
@@ -221,6 +239,8 @@ refdes=QY
 }
 C 49200 64100 1 90 0 out-1.sym
 {
+T 48700 64100 5 10 0 0 90 0 1
+footprint=anchor
 T 48900 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 49100 64700 5 10 1 1 0 3 1
@@ -228,6 +248,8 @@ refdes=QU
 }
 C 42400 62200 1 0 0 in-1.sym
 {
+T 42400 62700 5 10 0 0 0 0 1
+footprint=anchor
 T 42400 62500 5 10 0 0 0 0 1
 device=INPUT
 T 42400 62300 5 10 1 1 0 7 1

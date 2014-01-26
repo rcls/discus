@@ -173,6 +173,8 @@ N 6000 7400 5700 7400 4
 N 5700 7400 5700 8900 4
 C 4600 8800 1 0 0 in-1.sym
 {
+T 4600 9300 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 9100 5 10 0 0 0 0 1
 device=INPUT
 T 4600 8900 5 10 1 1 0 7 1
@@ -180,6 +182,8 @@ refdes=L0
 }
 C 4600 8600 1 0 0 in-1.sym
 {
+T 4600 9100 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 8900 5 10 0 0 0 0 1
 device=INPUT
 T 4600 8700 5 10 1 1 0 7 1
@@ -187,6 +191,8 @@ refdes=L1
 }
 C 4600 8400 1 0 0 in-1.sym
 {
+T 4600 8900 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 8700 5 10 0 0 0 0 1
 device=INPUT
 T 4600 8500 5 10 1 1 0 7 1
@@ -194,6 +200,8 @@ refdes=L2
 }
 C 4600 8200 1 0 0 in-1.sym
 {
+T 4600 8700 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 8500 5 10 0 0 0 0 1
 device=INPUT
 T 4600 8300 5 10 1 1 0 7 1
@@ -201,6 +209,8 @@ refdes=L3
 }
 C 4600 4400 1 0 0 in-1.sym
 {
+T 4600 4900 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 4700 5 10 0 0 0 0 1
 device=INPUT
 T 4600 4500 5 10 1 1 0 7 1
@@ -208,6 +218,8 @@ refdes=L4
 }
 C 4600 4200 1 0 0 in-1.sym
 {
+T 4600 4700 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 4500 5 10 0 0 0 0 1
 device=INPUT
 T 4600 4300 5 10 1 1 0 7 1
@@ -215,6 +227,8 @@ refdes=L5
 }
 C 4600 4000 1 0 0 in-1.sym
 {
+T 4600 4500 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 4300 5 10 0 0 0 0 1
 device=INPUT
 T 4600 4100 5 10 1 1 0 7 1
@@ -222,6 +236,8 @@ refdes=L6
 }
 C 4600 3800 1 0 0 in-1.sym
 {
+T 4600 4300 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 4100 5 10 0 0 0 0 1
 device=INPUT
 T 4600 3900 5 10 1 1 0 7 1
@@ -229,6 +245,8 @@ refdes=L7
 }
 C 16800 8700 1 0 1 in-1.sym
 {
+T 16800 9200 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 9000 5 10 0 0 0 6 1
 device=INPUT
 T 16800 8800 5 10 1 1 0 1 1
@@ -236,6 +254,8 @@ refdes=R0
 }
 C 16800 8500 1 0 1 in-1.sym
 {
+T 16800 9000 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 8800 5 10 0 0 0 6 1
 device=INPUT
 T 16800 8600 5 10 1 1 0 1 1
@@ -243,6 +263,8 @@ refdes=R1
 }
 C 16800 8300 1 0 1 in-1.sym
 {
+T 16800 8800 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 8600 5 10 0 0 0 6 1
 device=INPUT
 T 16800 8400 5 10 1 1 0 1 1
@@ -250,6 +272,8 @@ refdes=R2
 }
 C 16800 8100 1 0 1 in-1.sym
 {
+T 16800 8600 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 8400 5 10 0 0 0 6 1
 device=INPUT
 T 16800 8200 5 10 1 1 0 1 1
@@ -257,6 +281,8 @@ refdes=R3
 }
 C 16800 4300 1 0 1 in-1.sym
 {
+T 16800 4800 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 4600 5 10 0 0 0 6 1
 device=INPUT
 T 16800 4400 5 10 1 1 0 1 1
@@ -264,6 +290,8 @@ refdes=R4
 }
 C 16800 4100 1 0 1 in-1.sym
 {
+T 16800 4600 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 4400 5 10 0 0 0 6 1
 device=INPUT
 T 16800 4200 5 10 1 1 0 1 1
@@ -271,6 +299,8 @@ refdes=R5
 }
 C 16800 3900 1 0 1 in-1.sym
 {
+T 16800 4400 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 4200 5 10 0 0 0 6 1
 device=INPUT
 T 16800 4000 5 10 1 1 0 1 1
@@ -278,6 +308,8 @@ refdes=R6
 }
 C 16800 3700 1 0 1 in-1.sym
 {
+T 16800 4200 5 10 0 0 0 6 1
+footprint=anchor
 T 16800 4000 5 10 0 0 0 6 1
 device=INPUT
 T 16800 3800 5 10 1 1 0 1 1
@@ -313,6 +345,8 @@ N 14000 3400 14000 5600 4
 N 14000 5600 14100 5600 4
 C 4600 3500 1 0 0 in-1.sym
 {
+T 4600 4000 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 3800 5 10 0 0 0 0 1
 device=INPUT
 T 4600 3600 5 10 1 1 0 7 1
@@ -320,6 +354,8 @@ refdes=A0#
 }
 C 4600 3300 1 0 0 in-1.sym
 {
+T 4600 3800 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 3600 5 10 0 0 0 0 1
 device=INPUT
 T 4600 3400 5 10 1 1 0 7 1
@@ -327,6 +363,8 @@ refdes=A0
 }
 C 4600 2500 1 0 0 in-1.sym
 {
+T 4600 3000 5 10 0 0 0 0 1
+footprint=anchor
 T 4600 2800 5 10 0 0 0 0 1
 device=INPUT
 T 4600 2600 5 10 1 1 0 7 1
@@ -334,6 +372,8 @@ refdes=A1#
 }
 C 10000 2500 1 0 0 in-1.sym
 {
+T 10000 3000 5 10 0 0 0 0 1
+footprint=anchor
 T 10000 2800 5 10 0 0 0 0 1
 device=INPUT
 T 10000 2600 5 10 1 1 0 7 1
@@ -341,6 +381,8 @@ refdes=A1
 }
 C 9100 1700 1 0 1 in-1.sym
 {
+T 9100 2200 5 10 0 0 0 6 1
+footprint=anchor
 T 9100 2000 5 10 0 0 0 6 1
 device=INPUT
 T 9100 1800 5 10 1 1 0 1 1
@@ -361,6 +403,8 @@ N 5600 2300 11000 2300 4
 N 8500 2200 8500 2300 4
 C 7500 1900 1 0 0 in-1.sym
 {
+T 7500 2400 5 10 0 0 0 0 1
+footprint=anchor
 T 7500 2200 5 10 0 0 0 0 1
 device=INPUT
 T 7500 2000 5 10 1 1 0 7 1

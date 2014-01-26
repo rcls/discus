@@ -84,6 +84,8 @@ N 46400 50000 48400 50000 4
 N 48400 50000 48400 49400 4
 C 48600 48900 1 0 0 out-1.sym
 {
+T 48600 49400 5 10 0 0 0 0 1
+footprint=anchor
 T 48600 49200 5 10 0 0 0 0 1
 device=OUTPUT
 T 48800 48800 5 10 1 1 0 0 1
@@ -91,6 +93,8 @@ refdes=R
 }
 C 46200 48900 1 0 1 out-1.sym
 {
+T 46200 49400 5 10 0 0 0 6 1
+footprint=anchor
 T 46200 49200 5 10 0 0 0 6 1
 device=OUTPUT
 T 45950 49050 5 10 1 1 0 6 1
@@ -98,6 +102,8 @@ refdes=L
 }
 C 49000 49700 1 0 1 in-1.sym
 {
+T 49000 50200 5 10 0 0 0 6 1
+footprint=anchor
 T 49000 50000 5 10 0 0 0 6 1
 device=INPUT
 T 49300 49500 5 10 1 1 0 6 1
@@ -105,6 +111,8 @@ refdes=STROBE
 }
 C 46200 49800 1 0 0 in-1.sym
 {
+T 46200 50300 5 10 0 0 0 0 1
+footprint=anchor
 T 46200 50100 5 10 0 0 0 0 1
 device=INPUT
 T 46200 49800 5 10 1 1 0 6 1
@@ -112,6 +120,8 @@ refdes=Vdd
 }
 C 48600 48100 1 0 1 in-1.sym
 {
+T 48600 48600 5 10 0 0 0 6 1
+footprint=anchor
 T 48600 48400 5 10 0 0 0 6 1
 device=INPUT
 T 48500 48000 5 10 1 1 0 6 1

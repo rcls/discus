@@ -35,9 +35,6 @@ result bus is ALU output, or operand bus direct (add 0...)
 
 100WWMRR - operand to reg WW.
 
-+ could save space on inc/dec decode if we did ww=op +/- 1.
-+ have space for it with compressed jumps...
-
 101 : misc crap:
 
   111100RR : in - only need in(a).
@@ -76,14 +73,14 @@ Not necessary:
 in/out : 101VVVRR, VVV is also never cond, make WW/RR magically match A...
 No real constraints on reg numbers...
 
-AAA = 000 : SBC
-AAA = 001 : SUB
-AAA = 010 : ADC
-AAA = 011 : ADD
-AAA = 100 : CMP
-AAA = 101 : OR
-AAA = 110 : XOR
-AAA = 111 : AND
+AAA = 000 : ADD
+AAA = 001 : ADC
+AAA = 010 : SUB
+AAA = 011 : SBC
+AAA = 100 : AND
+AAA = 101 : XOR
+AAA = 110 : OR
+AAA = 111 : CMP
 
 
 CCC = 000 : always

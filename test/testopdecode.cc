@@ -56,23 +56,23 @@ int main()
         bool ex_n = false;
 
         switch (opcode & 0xf8) {
-        case 0x60:                      // CMP
-        case 0x48:                      // SUB
+        case 0x40:                      // ADD
+            ex_cinr = true;
+        case 0x48:                      // ADC
+            break;
+        case 0x78:                      // CMP
+        case 0x50:                      // SUB
             ex_cins = true;
-        case 0x40:                      // SBC
+        case 0x58:                      // SBC
             ex_n = true;
             break;
-        case 0x58:                      // ADD
-            ex_cinr = true;
-        case 0x50:                      // ADC
-            break;
-        case 0x78:                      // AND
+        case 0x60:                      // AND
             ex_and = true;
-        case 0x70:                      // XOR
+        case 0x68:                      // XOR
             ex_cinr = true;
             ex_cr = true;
             break;
-        case 0x68:                      // OR
+        case 0x70:                      // OR
             ex_cins = true;
             ex_cs = true;
             ex_or = true;

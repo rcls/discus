@@ -63,11 +63,14 @@ Not necessary:
 00LCCCxx - call(L=0) or jmp(L=1).
 01AAAMRR - ops that r/w A.
 100WWMRR - Load WW = src, no flags.
-110WWMRR - WW = src+1, flag Z.
-111WWMRR - WW = src-1, flag Z.
+110WWMRR - WW = src-1, flag Z.
+111WWMRR - WW = src+1, flag Z.
 
-101xxxxx - special, no flags.
 101CCC00 - ret.
+
+1010x1xx - special, no flags.
+10101xxx
+
 101UUURR - sta, UUU is never cond. (but might as well be in normal ops...)
 
 in/out : 101VVVRR, VVV is also never cond, make WW/RR magically match A...
@@ -184,32 +187,33 @@ OR is high for 01101xxx
 don't care 00xxxxxx
 Take 0x101xxx
 
-AS is high for dec, 111xxxxx
-AR# is low for inc,mv, 1x0xxxxx, For IN: all 101xxxxx, simplifies to
-1x0xxxxx and 10xxxxxx
-AR# dominates, so AS high on 11xxxxxx is OK.
+AS is high for DEC: 110xxxxx
+AS dominates
+AR# is low for INC,MV, 100xxxxx, 111xxxxx, For IN: all 101xxxxx, simplifies to:
+  1xxxxxxx
 
 
 
-CS# - low for AND (anything else?), 0x111xxx
-CR - high for OR, XOR, 0110xxxx don't care 00xxxxxx, take 0x10xxxx
-[CR dominates, take CS# 0x1x1xxx.]
+CS# - low for OR (anything else?), 0x101xxx
+CR - high for AND, XOR, 0x100xxx, 0x111xxx
+Make CS# dominant: 0x10xxxx, 0x1x1xxx
+//Also special 1010xxxx, gives:
+0x10xxxx, x010xxxx, 0x1x1xxx
 
-CinS# - low for AND, ADD, DEC, don't care for jumps...
- 01011xxx, 01111xxx, 111xxxxx gives
- 0xx11xxx, 111xxxxx
+
+CinS# - low for SUB, OR, CMP, INC, don't care for jumps...
+ 01001xxx, 01101xxx, 01110xxx, 111xxxxx gives
+ 0xx01xxx, 0x110xxx, 111xxxxx
 [Make CinS dominant...]
 
-CinR - high for OR, XOR, SUB, CMP, INC : FIXME IN.
- 01001xxx, 01101xxx, 01100xxx, 01001xxx, 01110xxx, 110xxxxx gives
- 0xx01xxx, 0x1x0xxx, 110xxxxx
+CinR - high for ADD, XOR, AND, MV(+spec), DEC
+ 01011xxx, 01100xxx, 01111xxx, 10xxxxxx, 110xxxxx gives
+ 0xx11xxx, 0x100xxx, 10xxxxxx, 110xxxxx
 with dominance...
- 0xxx1xxx, 0x1xxxxx, 11xxxxxx
+ 0xxx1xxx, 0x1x0xxx, 1xxxxxxx
+ xxxx1xxx, xx1xxxxx, 1xxxxxxx
 
-N - assert for SUB, SBC, CMP
-
-0x00xxxx
-0x110xxx
+N - assert for SUB, SBC, CMP: 0x00xxxx, 0x110xxx
 
 WZ - assert for 01xxxxxx, 11xxxxxx, i.e, i6.
 

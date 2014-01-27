@@ -1,5 +1,7 @@
 
-all: rmsim test/testacc-check test/testalu
+TESTCC = acc-check alu pcdecode opdecode
+
+all: rmsim $(TESTCC:%=test/test%)
 #all: testacc.sp testacc-check
 
 %.rcr: %.sch
@@ -57,11 +59,10 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
 
 rmsim: state.o
-test/testacc-check test/testalu: test/spice_load.o
-test/testpcdecode: test/spice_load.o
+$(TESTCC:%=test/test%): test/spice_load.o
 
 state.o rmsim.o: state.h
-test/testacc-check.o test/testalu.o spice_load.o: test/spice_load.h
+$(TESTCC:%=test/test%.o): test/spice_load.h
 
 .PHONY: clean
 clean:

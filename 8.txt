@@ -76,14 +76,14 @@ Not necessary:
 in/out : 101VVVRR, VVV is also never cond, make WW/RR magically match A...
 No real constraints on reg numbers...
 
-AAA = 000 : sbc
-AAA = 001 : sub
-AAA = 010 : adc
-AAA = 011 : add
-AAA = 100 : xor
-AAA = 101 : or
-AAA = 110 : cmp
-AAA = 111 : and
+AAA = 000 : SBC
+AAA = 001 : SUB
+AAA = 010 : ADC
+AAA = 011 : ADD
+AAA = 100 : CMP
+AAA = 101 : OR
+AAA = 110 : XOR
+AAA = 111 : AND
 
 
 CCC = 000 : always
@@ -195,25 +195,26 @@ AR# is low for INC,MV, 100xxxxx, 111xxxxx, For IN: all 101xxxxx, simplifies to:
 
 
 CS# - low for OR (anything else?), 0x101xxx
-CR - high for AND, XOR, 0x100xxx, 0x111xxx
-Make CS# dominant: 0x10xxxx, 0x1x1xxx
-//Also special 1010xxxx, gives:
-0x10xxxx, x010xxxx, 0x1x1xxx
+CR - high for AND, XOR, 0x110xxx, 0x111xxx, i.e.
+   0x11xxxx,
+Also special 101xxxxx.
 
 
-CinS# - low for SUB, OR, CMP, INC, don't care for jumps...
- 01001xxx, 01101xxx, 01110xxx, 111xxxxx gives
- 0xx01xxx, 0x110xxx, 111xxxxx
-[Make CinS dominant...]
+[Swap XOR and CMP, CR high for AND, XOR, 0x100xxx 0x110xxx win]
 
-CinR - high for ADD, XOR, AND, MV(+spec), DEC
- 01011xxx, 01100xxx, 01111xxx, 10xxxxxx, 110xxxxx gives
- 0xx11xxx, 0x100xxx, 10xxxxxx, 110xxxxx
-with dominance...
- 0xxx1xxx, 0x1x0xxx, 1xxxxxxx
- xxxx1xxx, xx1xxxxx, 1xxxxxxx
 
-N - assert for SUB, SBC, CMP: 0x00xxxx, 0x110xxx
+CinR - ADD, SUB, OR, AND, XOR, CMP, all INC,DEC,MV,spec...
+ 1xxxxxxx, xx1xxxxxx, xxxx1xxx
+
+CinS: CinR &
+ 0[1] x 01xxx (SUB, OR)
+ 0[1](1)00xxx (CMP)
+ 1 1  1 xxxxx (DEC)
+simplify:
+ 0xx0xxxx
+ 111xxxxx
+
+N - assert for SUB, SBC, CMP: 0x00xxxx, 0x[1]00xxx
 
 WZ - assert for 01xxxxxx, 11xxxxxx, i.e, i6.
 

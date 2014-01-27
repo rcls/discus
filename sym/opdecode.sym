@@ -242,7 +242,7 @@ pinnumber=0
 T 1600 700 5 10 0 0 0 0 1
 pinseq=0
 T 1395 695 5 10 1 1 0 7 1
-pinlabel=E4#
+pinlabel=E3#
 }
 P 1600 500 1400 500 1 0 0
 {
@@ -253,5 +253,5 @@ pinnumber=0
 T 1600 500 5 10 0 0 0 0 1
 pinseq=0
 T 1395 495 5 10 1 1 0 7 1
-pinlabel=E5#
+pinlabel=E4#
 }

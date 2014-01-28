@@ -9,7 +9,6 @@ int main()
 
     const auto A = S.extract_signal("a");
     const auto B = S.extract_signal("b");
-    const auto N = S.extract_signal("n");
     const auto C = S.extract_signal("c");
     const auto CS = S.extract_signal("cs");
     const auto CR = S.extract_signal("cr");
@@ -25,15 +24,13 @@ int main()
         if (AND[i] && OR[i])
             continue;                   // Don't test...
 
-        bool b = B[i] ^ N[i];
-
         bool iv;
         if (AND[i])
-            iv = A[i] && b;
+            iv = A[i] && B[i];
         else if (OR[i])
-            iv = !(A[i] || b);
+            iv = !(A[i] || B[i]);
         else
-            iv = !(A[i] ^ b);
+            iv = !(A[i] ^ B[i]);
 
         bool qe = !(iv ^ C[i]);
 
@@ -41,10 +38,10 @@ int main()
         if (Q[i] != qe)
             errx(1, "Q not expected value at %i", i);
 
-        if (AND[i] && C[i] && qe != (A[i] && b))
+        if (AND[i] && C[i] && qe != (A[i] && B[i]))
             errx(1, "Whoops, not 'and'ing at %i", i);
 
-        if (OR[i] && !C[i] && qe != (A[i] || b))
+        if (OR[i] && !C[i] && qe != (A[i] || B[i]))
             errx(1, "Whoops, not 'or'ing at %i", i);
 
         bool cr = CR[i];
@@ -60,7 +57,7 @@ int main()
         if (AND[i] || OR[i] || cs || cr)
             continue;                   // Carry out not interesting.
 
-        bool ce = A[i] + b + C[i] >= 2;
+        bool ce = A[i] + B[i] + C[i] >= 2;
         ++tested_c;
         if (ce != Co[i])
             errx(1, "Carry out not expected at %i", i);

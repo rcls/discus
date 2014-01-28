@@ -15,17 +15,13 @@ int main()
     const auto CR = S.extract_signal("cr");
     const auto AND = S.extract_signal("andl");
     const auto OR = S.extract_signal("orl");
-    const auto Q = S.extract_signal("q#");
-    const auto Q_hash = S.extract_signal("q");
+    const auto Q = S.extract_signal("q");
     const auto Co = S.extract_signal("co");
 
     int tested_q = 0;
     int tested_c = 0;
 
     for (int i = 0; i != S.num_samples; ++i) {
-        if (Q[i] == Q_hash[i])
-            errx(1, "Q, Q# not complementary at %i", i);
-
         if (AND[i] && OR[i])
             continue;                   // Don't test...
 
@@ -37,21 +33,31 @@ int main()
         else if (OR[i])
             iv = !(A[i] || b);
         else
-            iv = !A[i] ^ b;
+            iv = !(A[i] ^ b);
 
-        bool qe = iv ^ C[i];
+        bool qe = !(iv ^ C[i]);
 
         ++tested_q;
         if (Q[i] != qe)
             errx(1, "Q not expected value at %i", i);
 
-        if (!CR[i] && CS[i] && !Co[i])
+        if (AND[i] && C[i] && qe != (A[i] && b))
+            errx(1, "Whoops, not 'and'ing at %i", i);
+
+        if (OR[i] && !C[i] && qe != (A[i] || b))
+            errx(1, "Whoops, not 'or'ing at %i", i);
+
+        bool cr = CR[i];
+        bool cs = CS[i];
+        cr &= ~cs;                      // CS is dominant.
+
+        if (cs && !Co[i])
             errx(1, "CS not applied at %i", i);
 
-        if (CR[i] && Co[i])
+        if (cr && Co[i])
             errx(1, "CR not applied at %i", i);
 
-        if (AND[i] || OR[i] || CS[i] || CR[i])
+        if (AND[i] || OR[i] || cs || cr)
             continue;                   // Carry out not interesting.
 
         bool ce = A[i] + b + C[i] >= 2;

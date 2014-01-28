@@ -77,9 +77,9 @@ AAA = 000 : ADD
 AAA = 001 : ADC
 AAA = 010 : SUB
 AAA = 011 : SBC
-AAA = 100 : AND
+AAA = 100 : OR
 AAA = 101 : XOR
-AAA = 110 : OR
+AAA = 110 : AND
 AAA = 111 : CMP
 
 
@@ -175,14 +175,14 @@ IN is a do care (we want the bus...)
 
 FIXME - for IN we probably want to disable carry chain...
 
-AND is high for 01111xxx
+AND is high for 01110xxx
 is low for 1xxxxxxx
 don't care 00xxxxxx
-So take 0x111xxx
+So take 0x110xxx
 
-OR is high for 01101xxx
+OR# is low for 01100xxx
 don't care 00xxxxxx
-Take 0x101xxx
+Take 0x100xxx
 
 AS is high for DEC: 110xxxxx
 AS dominates

@@ -13,30 +13,30 @@ int main()
     const auto I5 = S.extract_signal("i5");
     const auto I6 = S.extract_signal("i6");
     const auto I7 = S.extract_signal("i7");
-    const auto CR = S.extract_signal("cr");
+    const auto CRi = S.extract_signal("cr#");
     const auto CSi = S.extract_signal("cs#");
     const auto CINR = S.extract_signal("cinr");
     const auto CINSi = S.extract_signal("cins#");
-    //const auto ARi = S.extract_signal("ar#");
+    const auto ARi = S.extract_signal("ar#");
     const auto AS = S.extract_signal("as");
     const auto AND = S.extract_signal("and");
-    const auto OR = S.extract_signal("or");
+    const auto ORi = S.extract_signal("or#");
     const auto N = S.extract_signal("n");
 
     for (int i = 0; i != S.num_samples; ++i) {
         int opcode = I7[i] * 128 + I6[i] * 64 + I5[i] * 32
             +        I4[i] * 16  + I3[i] * 8;
-        bool cr = CR[i];
+        bool cr = !CRi[i];
         bool cs = !CSi[i];
 
         bool cinr = CINR[i];
         bool cins = !CINSi[i];
 
-        bool ar = I7[i]; // !ARi[i];
+        bool ar = !ARi[i];
         bool as = AS[i];
 
         bool And = AND[i];
-        bool Or = OR[i];
+        bool Or = !ORi[i];
         bool n = N[i];
 
         // Dominances...
@@ -66,16 +66,16 @@ int main()
         case 0x58:                      // SBC
             ex_n = true;
             break;
-        case 0x60:                      // AND
-            ex_and = true;
+        case 0x60:                      // OR
+            ex_or = true;
         case 0x68:                      // XOR
             ex_cinr = true;
             ex_cr = true;
             break;
-        case 0x70:                      // OR
+        case 0x70:                      // AND
             ex_cins = true;
             ex_cs = true;
-            ex_or = true;
+            ex_and = true;
             break;
         }
 

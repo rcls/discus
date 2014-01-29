@@ -15,8 +15,8 @@ int main()
     const auto I7 = S.extract_signal("i7");
     const auto CRi = S.extract_signal("cr#");
     const auto CSi = S.extract_signal("cs#");
-    const auto CINR = S.extract_signal("cinr");
-    const auto CINSi = S.extract_signal("cins#");
+    const auto CINRi = S.extract_signal("cinr#");
+    const auto CINS = S.extract_signal("cins");
     const auto ARi = S.extract_signal("ar#");
     const auto AS = S.extract_signal("as");
     const auto AND = S.extract_signal("and");
@@ -29,8 +29,8 @@ int main()
         bool cr = !CRi[i];
         bool cs = !CSi[i];
 
-        bool cinr = CINR[i];
-        bool cins = !CINSi[i];
+        bool cinr = !CINRi[i];
+        bool cins = CINS[i];
 
         bool ar = !ARi[i];
         bool as = AS[i];
@@ -107,7 +107,7 @@ int main()
 
         if (opcode >= 0x40 && opcode <= 0x7f) {
             static const char tags[8*4] =
-                "SBC\0SUB\0ADC\0ADD\0XOR\0OR\0\0CMP\0AND";
+                "ADD\0ADC\0SUB\0SBC\0OR\0\0XOR\0AND\0CMP";
             tag = tags + 4 * ((opcode & 0x38) >> 3);
         }
 
@@ -131,13 +131,13 @@ int main()
             errx(1, "CR %i exp %i on %s %02x at %i\n",
                  cr, ex_cr, tag, opcode, i);
 
-        if (cins != ex_cins)
-            errx(1, "CinS %i exp %i on %s %02x at %i\n",
-                 cins, ex_cins, tag, opcode, i);
-
         if (cinr != ex_cinr)
             errx(1, "CinR %i exp %i on %s %02x at %i\n",
                  cinr, ex_cinr, tag, opcode, i);
+
+        if (cins != ex_cins)
+            errx(1, "CinS %i exp %i on %s %02x at %i\n",
+                 cins, ex_cins, tag, opcode, i);
 
         if (And != ex_and)
             errx(1, "AND %i exp %i on %s %02x at %i\n",

@@ -191,25 +191,20 @@ AR# is low for INC,MV, 100xxxxx, 111xxxxx, For IN: all 101xxxxx, simplifies to:
 
 
 
-CS# - low for OR (anything else?), 0x101xxx
-CR - high for AND, XOR, 0x110xxx, 0x111xxx, i.e.
-   0x11xxxx,
-Also special 101xxxxx.
+CS - high for AND (anything else?), 0x101xxx
+CR# - low for OR, XOR, 0x100xxx, 0x101xxx, i.e.
+   0x10xxxx,
+Also special 1010xxxx... simplifies x010xxxx
 
 
-[Swap XOR and CMP, CR high for AND, XOR, 0x100xxx 0x110xxx win]
+CinForce - ADD, SUB, OR, AND, XOR, CMP, all INC,DEC,MV,spec...
+ 1xxxxxxx, xx1xxxxxx, xxxx0xxx
 
-
-CinR - ADD, SUB, OR, AND, XOR, CMP, all INC,DEC,MV,spec...
- 1xxxxxxx, xx1xxxxxx, xxxx1xxx
-
-CinS: CinR &
- 0[1] x 01xxx (SUB, OR)
- 0[1](1)00xxx (CMP)
- 1 1  1 xxxxx (DEC)
-simplify:
- 0xx0xxxx
- 111xxxxx
+CinS: CinForce &
+ 0[1]x10xxx (SUB, AND)
+ 0[1]11xxxx (CMP, AND)
+ 1 1 1xxxxx (DEC)
+[CinS dominant.]
 
 N - assert for SUB, SBC, CMP: 0x00xxxx, 0x[1]00xxx
 

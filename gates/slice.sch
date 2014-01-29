@@ -91,8 +91,8 @@ T 54600 49800 5 10 0 0 0 6 1
 footprint=anchor
 T 54600 49600 5 10 0 0 0 6 1
 device=INPUT
-T 54400 49450 5 10 1 1 0 6 1
-refdes=CS
+T 54300 49450 5 10 1 1 0 3 1
+refdes=CS#
 }
 C 54600 49100 1 0 1 in-1.sym
 {
@@ -100,8 +100,8 @@ T 54600 49600 5 10 0 0 0 6 1
 footprint=anchor
 T 54600 49400 5 10 0 0 0 6 1
 device=INPUT
-T 54400 49000 5 10 1 1 0 6 1
-refdes=CR#
+T 54300 49150 5 10 1 1 0 5 1
+refdes=CR
 }
 C 53700 48000 1 90 0 in-1.sym
 {

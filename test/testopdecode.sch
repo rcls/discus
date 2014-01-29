@@ -177,12 +177,12 @@ netname=CS#
 N 12700 12400 13300 12400 4
 {
 T 12750 12425 5 10 1 1 0 0 1
-netname=CinR
+netname=CinR#
 }
 N 12700 12200 13300 12200 4
 {
 T 12750 12225 5 10 1 1 0 0 1
-netname=CinS#
+netname=CinS
 }
 N 12700 12000 13300 12000 4
 {

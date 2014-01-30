@@ -1,0 +1,291 @@
+v 20130925 2
+C 16600 12000 1 0 0 rslatch.sym
+{
+T 17750 12450 5 10 1 1 0 0 1
+refdes=F0
+T 17400 12725 5 10 1 1 0 4 1
+source=rslatch.sch
+}
+C 16000 13000 1 0 0 in-1.sym
+{
+T 16000 13500 5 10 0 0 0 0 1
+footprint=anchor
+T 16000 13300 5 10 0 0 0 0 1
+device=INPUT
+T 16000 13100 5 10 1 1 0 7 1
+refdes=S0
+}
+C 18200 13000 1 0 0 out-1.sym
+{
+T 18200 13500 5 10 0 0 0 0 1
+footprint=anchor
+T 18200 13300 5 10 0 0 0 0 1
+device=OUTPUT
+T 18800 13100 5 10 1 1 0 1 1
+refdes=Q0
+}
+C 18200 12800 1 0 0 out-1.sym
+{
+T 18200 13300 5 10 0 0 0 0 1
+footprint=anchor
+T 18200 13100 5 10 0 0 0 0 1
+device=OUTPUT
+T 18800 12900 5 10 1 1 0 1 1
+refdes=Q0#
+}
+C 17200 13500 1 0 0 vdd-1.sym
+C 17300 11700 1 0 0 gnd-1.sym
+C 20100 12000 1 0 0 rslatch.sym
+{
+T 21250 12450 5 10 1 1 0 0 1
+refdes=F1
+T 20900 12725 5 10 1 1 0 4 1
+source=rslatch.sch
+}
+C 19500 13000 1 0 0 in-1.sym
+{
+T 19500 13500 5 10 0 0 0 0 1
+footprint=anchor
+T 19500 13300 5 10 0 0 0 0 1
+device=INPUT
+T 19500 13100 5 10 1 1 0 7 1
+refdes=S1
+}
+C 21700 13000 1 0 0 out-1.sym
+{
+T 21700 13500 5 10 0 0 0 0 1
+footprint=anchor
+T 21700 13300 5 10 0 0 0 0 1
+device=OUTPUT
+T 22300 13100 5 10 1 1 0 1 1
+refdes=Q1
+}
+C 21700 12800 1 0 0 out-1.sym
+{
+T 21700 13300 5 10 0 0 0 0 1
+footprint=anchor
+T 21700 13100 5 10 0 0 0 0 1
+device=OUTPUT
+T 22300 12900 5 10 1 1 0 1 1
+refdes=Q1#
+}
+C 20700 13500 1 0 0 vdd-1.sym
+C 20800 11700 1 0 0 gnd-1.sym
+C 23600 12000 1 0 0 rslatch.sym
+{
+T 24750 12450 5 10 1 1 0 0 1
+refdes=F2
+T 24400 12725 5 10 1 1 0 4 1
+source=rslatch.sch
+}
+C 23000 13000 1 0 0 in-1.sym
+{
+T 23000 13500 5 10 0 0 0 0 1
+footprint=anchor
+T 23000 13300 5 10 0 0 0 0 1
+device=INPUT
+T 23000 13100 5 10 1 1 0 7 1
+refdes=S2
+}
+C 25200 13000 1 0 0 out-1.sym
+{
+T 25200 13500 5 10 0 0 0 0 1
+footprint=anchor
+T 25200 13300 5 10 0 0 0 0 1
+device=OUTPUT
+T 25800 13100 5 10 1 1 0 1 1
+refdes=Q2
+}
+C 25200 12800 1 0 0 out-1.sym
+{
+T 25200 13300 5 10 0 0 0 0 1
+footprint=anchor
+T 25200 13100 5 10 0 0 0 0 1
+device=OUTPUT
+T 25800 12900 5 10 1 1 0 1 1
+refdes=Q2#
+}
+C 24200 13500 1 0 0 vdd-1.sym
+C 24300 11700 1 0 0 gnd-1.sym
+C 16600 9600 1 0 0 vdlatch.sym
+{
+T 17750 10050 5 10 1 1 0 0 1
+refdes=F3
+T 17400 10325 5 10 1 1 0 4 1
+source=vdlatch.sch
+}
+C 16000 10600 1 0 0 in-1.sym
+{
+T 16000 11100 5 10 0 0 0 0 1
+footprint=anchor
+T 16000 10900 5 10 0 0 0 0 1
+device=INPUT
+T 16000 10700 5 10 1 1 0 7 1
+refdes=D3
+}
+C 18200 10600 1 0 0 out-1.sym
+{
+T 18200 11100 5 10 0 0 0 0 1
+footprint=anchor
+T 18200 10900 5 10 0 0 0 0 1
+device=OUTPUT
+T 18800 10700 5 10 1 1 0 1 1
+refdes=Q3
+}
+C 18200 10400 1 0 0 out-1.sym
+{
+T 18200 10900 5 10 0 0 0 0 1
+footprint=anchor
+T 18200 10700 5 10 0 0 0 0 1
+device=OUTPUT
+T 18800 10500 5 10 1 1 0 1 1
+refdes=Q3#
+}
+C 17200 11100 1 0 0 vdd-1.sym
+C 17300 9300 1 0 0 gnd-1.sym
+C 20100 9600 1 0 0 vdlatch.sym
+{
+T 21250 10050 5 10 1 1 0 0 1
+refdes=F4
+T 20900 10325 5 10 1 1 0 4 1
+source=vdlatch.sch
+}
+C 19500 10600 1 0 0 in-1.sym
+{
+T 19500 11100 5 10 0 0 0 0 1
+footprint=anchor
+T 19500 10900 5 10 0 0 0 0 1
+device=INPUT
+T 19500 10700 5 10 1 1 0 7 1
+refdes=D4
+}
+C 21700 10600 1 0 0 out-1.sym
+{
+T 21700 11100 5 10 0 0 0 0 1
+footprint=anchor
+T 21700 10900 5 10 0 0 0 0 1
+device=OUTPUT
+T 22300 10700 5 10 1 1 0 1 1
+refdes=Q4
+}
+C 21700 10400 1 0 0 out-1.sym
+{
+T 21700 10900 5 10 0 0 0 0 1
+footprint=anchor
+T 21700 10700 5 10 0 0 0 0 1
+device=OUTPUT
+T 22300 10500 5 10 1 1 0 1 1
+refdes=Q4#
+}
+C 20700 11100 1 0 0 vdd-1.sym
+C 20800 9300 1 0 0 gnd-1.sym
+C 23600 9600 1 0 0 rslatch.sym
+{
+T 24750 10050 5 10 1 1 0 0 1
+refdes=F5
+T 24400 10325 5 10 1 1 0 4 1
+source=rslatch.sch
+}
+C 23000 10600 1 0 0 in-1.sym
+{
+T 23000 11100 5 10 0 0 0 0 1
+footprint=anchor
+T 23000 10900 5 10 0 0 0 0 1
+device=INPUT
+T 23000 10700 5 10 1 1 0 7 1
+refdes=S5
+}
+C 25200 10600 1 0 0 out-1.sym
+{
+T 25200 11100 5 10 0 0 0 0 1
+footprint=anchor
+T 25200 10900 5 10 0 0 0 0 1
+device=OUTPUT
+T 25800 10700 5 10 1 1 0 1 1
+refdes=Q5
+}
+C 25200 10400 1 0 0 out-1.sym
+{
+T 25200 10900 5 10 0 0 0 0 1
+footprint=anchor
+T 25200 10700 5 10 0 0 0 0 1
+device=OUTPUT
+T 25800 10500 5 10 1 1 0 1 1
+refdes=Q5#
+}
+C 24200 11100 1 0 0 vdd-1.sym
+C 24300 9300 1 0 0 gnd-1.sym
+C 16800 13400 1 0 0 in-1.sym
+{
+T 16800 13900 5 10 0 0 0 0 1
+footprint=anchor
+T 16800 13700 5 10 0 0 0 0 1
+device=INPUT
+T 16800 13500 5 10 1 1 0 7 1
+refdes=Vdd
+}
+C 16800 9500 1 0 0 in-1.sym
+{
+T 16800 10000 5 10 0 0 0 0 1
+footprint=anchor
+T 16800 9800 5 10 0 0 0 0 1
+device=INPUT
+T 16800 9600 5 10 1 1 0 7 1
+refdes=GND
+}
+N 16600 10100 16500 10100 4
+N 16500 10100 16500 12500 4
+N 16500 12500 16600 12500 4
+N 20100 10100 20000 10100 4
+N 20000 10100 20000 12500 4
+N 20000 12500 20100 12500 4
+N 23600 10100 23500 10100 4
+N 23500 10100 23500 12500 4
+N 23500 12500 23600 12500 4
+N 16500 11600 20000 11600 4
+N 20000 11600 23500 11600 4
+C 19400 11900 1 0 0 in-1.sym
+{
+T 19400 12400 5 10 0 0 0 0 1
+footprint=anchor
+T 19400 12200 5 10 0 0 0 0 1
+device=INPUT
+T 19400 12000 5 10 1 1 0 7 1
+refdes=C
+}
+C 16000 12800 1 0 0 in-1.sym
+{
+T 16000 13300 5 10 0 0 0 0 1
+footprint=anchor
+T 16000 13100 5 10 0 0 0 0 1
+device=INPUT
+T 16000 12900 5 10 1 1 0 7 1
+refdes=R0
+}
+C 19500 12800 1 0 0 in-1.sym
+{
+T 19500 13300 5 10 0 0 0 0 1
+footprint=anchor
+T 19500 13100 5 10 0 0 0 0 1
+device=INPUT
+T 19500 12900 5 10 1 1 0 7 1
+refdes=R1
+}
+C 23000 12800 1 0 0 in-1.sym
+{
+T 23000 13300 5 10 0 0 0 0 1
+footprint=anchor
+T 23000 13100 5 10 0 0 0 0 1
+device=INPUT
+T 23000 12900 5 10 1 1 0 7 1
+refdes=R2
+}
+C 23000 10400 1 0 0 in-1.sym
+{
+T 23000 10900 5 10 0 0 0 0 1
+footprint=anchor
+T 23000 10700 5 10 0 0 0 0 1
+device=INPUT
+T 23000 10500 5 10 1 1 0 7 1
+refdes=R5
+}

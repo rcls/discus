@@ -64,22 +64,22 @@ int main()
             taken = (opcode == 0xa8);
             break;
         case 0x10:
-            taken = !fz;
-            break;
-        case 0x14:
             taken = fz;
             break;
+        case 0x14:
+            taken = !fz;
+            break;
         case 0x18:
-            taken = !fc;
+            taken = fc;
             break;
         case 0x1c:
-            taken = fc;
+            taken = !fc;
             break;
         default:
             taken = false;
         }
 
-        bool flag = taken ^ !!(opcode & 4);
+        bool flag = taken ^ !(opcode & 4);
 
         if (flag != FLAG[i])
             errx(1, "Flag %i/flag %i mismatch at %i (%02x C%i Z%i)",

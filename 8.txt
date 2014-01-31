@@ -64,11 +64,12 @@ Not necessary:
 111WWMRR - WW = src+1, flag Z.
 
 101CCC00 - ret.
+10101000 - uncond ret.
 
-1010x1xx - special, no flags.
-10101xxx
+101000xx - IN, to make the reg = A (saves decode...), keep ram off bus.
 
-101UUURR - sta, UUU is never cond. (but might as well be in normal ops...)
+101001xx - STA
+101011xx - OUT
 
 in/out : 101VVVRR, VVV is also never cond, make WW/RR magically match A...
 No real constraints on reg numbers...
@@ -83,18 +84,14 @@ AAA = 110 : AND
 AAA = 111 : CMP
 
 
-CCC = 000 : always
+CCC = 000 : always [but not ret]
 CCC = 001 : never
-CCC = 010 : never
+CCC = 010 : always
 CCC = 011 : never
-CCC = 100 : c
-CCC = 101 : nc
-CCC = 110 : z
-CCC = 111 : nz
-
-
-10101111 - out
-101000xx - IN, to make the reg = A (saves decode...), keep ram off bus.
+CCC = 100 : z
+CCC = 101 : nz
+CCC = 110 : c
+CCC = 111 : nc
 
 
 in/out is an ALU ins?
@@ -172,8 +169,6 @@ Use i2, don't care about exceptions, specials get it right.
 
 IN is a do care (we want the bus...)
 
-
-FIXME - for IN we probably want to disable carry chain...
 
 AND is high for 01110xxx
 is low for 1xxxxxxx

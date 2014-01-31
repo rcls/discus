@@ -45,16 +45,16 @@ int main()
             taken = true;
             break;
         case 0x10:
-            taken = !fc;
-            break;
-        case 0x14:
-            taken = fc;
-            break;
-        case 0x18:
             taken = !fz;
             break;
-        case 0x1c:
+        case 0x14:
             taken = fz;
+            break;
+        case 0x18:
+            taken = !fc;
+            break;
+        case 0x1c:
+            taken = fc;
             break;
         default:
             taken = false;

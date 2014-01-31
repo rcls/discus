@@ -37,7 +37,7 @@ int main()
         bool inc = INC[i];
 
         bool jump_or_call_ins = po && (opcode & 0xc0) == 0;
-        bool ret_ins = (opcode & 0xe0) == 0xe0;
+        bool ret_ins = (opcode & 0xe0) == 0xa0;
 
         bool taken;
         switch (opcode & 0x1c) {

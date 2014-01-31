@@ -39,10 +39,29 @@ int main()
         bool jump_or_call_ins = po && (opcode & 0xc0) == 0;
         bool ret_ins = (opcode & 0xe0) == 0xa0;
 
+        if (jump + ret + inc != 1)
+            errx(1, "Multiple: jump %i ret %i inc %i", jump, ret, inc);
+
+        if (!jump_or_call_ins && (jump || push))
+            errx(1, "Not jump but: jump %i push %i", jump, push);
+
+        if (!ret_ins && ret)
+            errx(1, "Not ret but: ret %i", ret);
+
+        if (!jump_or_call_ins && !ret_ins)
+            continue;                   // Don't care.
+
         bool taken;
         switch (opcode & 0x1c) {
         case 0x00:
-            taken = true;
+            taken = jump_or_call_ins;
+            break;
+        case 0x04:
+        case 0x08:
+        case 0x0c:
+            if (jump_or_call_ins)
+                continue;               // Don't care.
+            taken = (opcode == 0xa4);
             break;
         case 0x10:
             taken = !fz;

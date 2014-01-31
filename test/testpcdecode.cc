@@ -37,7 +37,7 @@ int main()
         bool inc = INC[i];
 
         bool jump_or_call_ins = po && (opcode & 0xc0) == 0;
-        bool ret_ins = (opcode & 0xe0) == 0xa0;
+        bool ret_ins = (opcode & 0xf0) == 0xb0 || opcode == 0xa8;
 
         if (jump + ret + inc != 1)
             errx(1, "Multiple: jump %i ret %i inc %i", jump, ret, inc);
@@ -61,7 +61,7 @@ int main()
         case 0x0c:
             if (jump_or_call_ins)
                 continue;               // Don't care.
-            taken = (opcode == 0xa4);
+            taken = (opcode == 0xa8);
             break;
         case 0x10:
             taken = !fz;

@@ -103,13 +103,13 @@ N 20400 20200 20600 20200 4
 C 20600 19900 1 0 0 nor3.sym
 {
 T 21000 20400 5 10 1 1 0 4 1
-refdes=S?
+refdes=N
 }
 N 20500 20400 20600 20400 4
 C 21600 19300 1 0 0 vdlatch.sym
 {
 T 22950 19800 5 10 1 1 0 7 1
-refdes=S?
+refdes=M
 T 22400 20025 5 10 1 1 0 4 1
 source=vdlatch.sch
 }
@@ -133,7 +133,7 @@ N 20400 22300 20400 20200 4
 C 23800 19300 1 0 0 rslatch.sym
 {
 T 25150 19750 5 10 1 1 0 7 1
-refdes=S?
+refdes=L
 T 24100 19950 5 10 1 1 0 0 1
 source=rslatch.sch
 }
@@ -553,7 +553,7 @@ C 22800 22400 1 0 0 rslatch4v2.sym
 T 24300 22900 5 10 1 1 0 7 1
 source=rslatch4v2.sch
 T 23600 24850 5 10 1 1 0 4 1
-refdes=S?
+refdes=P
 }
 C 22300 26100 1 270 0 in-1.sym
 {

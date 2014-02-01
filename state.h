@@ -88,7 +88,7 @@ struct state_t {
         account(val);
         reg[A] &= get(val);
         flag_Z = (reg[A] == 0);
-        flag_C = false;
+        flag_C = true;
     }
 
     void ANDM(const operand_t & val) { AND(val.mem()); }
@@ -111,26 +111,30 @@ struct state_t {
 
     void XORM(const operand_t & val) { XOR(val.mem()); }
 
-    void INC(register_name_t r) {
-        account(1);
-        reg[r]++;
-        flag_Z = (reg[r] == 0);
+    void INC(register_name_t w, const operand_t & val) {
+        account(val);
+        reg[w] = get(val) + 1;
+        flag_Z = (reg[w] == 0);
     }
 
-    void DEC(register_name_t r) {
-        account(1);
-        reg[r]--;
-        flag_Z = (reg[r] == 0);
+    void DEC(register_name_t w, const operand_t & val) {
+        account(val);
+        reg[w] = get(val) - 1;
+        flag_Z = (reg[w] == 0);
     }
+
+    void INC(register_name_t r) { INC(r, r); }
+    void DEC(register_name_t r) { DEC(r, r); }
+
+    void INCM(register_name_t r, const operand_t & val) { INC(r, val.mem()); }
+    void DECM(register_name_t r, const operand_t & val) { DEC(r, val.mem()); }
 
     void CLRC() {
-        account(1);
-        flag_C = false;
+        OR(A);
     }
 
     void SETC() {
-        account(1);
-        flag_C = true;
+        AND(A);
     }
 
     void LOAD(register_name_t ww, const operand_t & val) {
@@ -139,8 +143,7 @@ struct state_t {
     }
 
     void LOADM(register_name_t ww, const operand_t & val) {
-        account(val);
-        reg[ww] = mem[get(val)];
+        LOAD(ww, val.mem());
     }
 
     void STA(const operand_t & val) {

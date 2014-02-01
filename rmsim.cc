@@ -142,8 +142,7 @@ power1:
     CALL(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
-    LOADM(A,outer_loop_count);
-    DEC(A);
+    DECM(A,outer_loop_count);
     JP(NZ,power1);
 
     if (start == te_power)
@@ -205,8 +204,7 @@ mult1:
     CALL(leftrot);
     //LOAD(X,product);
     CL(C,add64m);
-    LOADM(A,mult_loop_count);
-    DEC(A);
+    DECM(A,mult_loop_count);
     JP(NZ,mult1);
     LOAD(Y,result);
 

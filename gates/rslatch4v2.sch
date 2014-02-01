@@ -107,12 +107,12 @@ refdes=Q2#
 }
 C 24200 13500 1 0 0 vdd-1.sym
 C 24300 11700 1 0 0 gnd-1.sym
-C 16600 9600 1 0 0 vdlatch.sym
+C 16600 9600 1 0 0 dlatch.sym
 {
 T 17750 10050 5 10 1 1 0 0 1
 refdes=F3
 T 17400 10325 5 10 1 1 0 4 1
-source=vdlatch.sch
+source=dlatch.sch
 }
 C 16000 10600 1 0 0 in-1.sym
 {
@@ -143,12 +143,12 @@ refdes=Q3#
 }
 C 17200 11100 1 0 0 vdd-1.sym
 C 17300 9300 1 0 0 gnd-1.sym
-C 20100 9600 1 0 0 vdlatch.sym
+C 20100 9600 1 0 0 dlatch.sym
 {
 T 21250 10050 5 10 1 1 0 0 1
 refdes=F4
 T 20900 10325 5 10 1 1 0 4 1
-source=vdlatch.sch
+source=dlatch.sch
 }
 C 19500 10600 1 0 0 in-1.sym
 {

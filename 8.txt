@@ -205,4 +205,5 @@ N - assert for SUB, SBC, CMP: 0x00xxxx, 0x[1]00xxx
 
 WZ - assert for 01xxxxxx, 11xxxxxx, i.e, i6.
 
-write acc : 01xxxxxx plus IN.
+Write : not jump except ret/write/STA/OUT.
+x1xxxxxx,1x0xxxxx,IN

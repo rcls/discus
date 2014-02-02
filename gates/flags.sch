@@ -2,7 +2,7 @@ v 20130925 2
 C 7700 9200 1 0 0 vdflipflop.sym
 {
 T 9050 9600 5 10 1 1 0 7 1
-refdes=S4
+refdes=C
 T 8500 9850 5 10 1 1 0 4 1
 source=vdflipflop.sch
 }
@@ -40,7 +40,7 @@ device=INPUT
 C 9500 10200 1 0 0 out-1.sym
 {
 T 10100 10300 5 10 1 1 0 1 1
-refdes=C#
+refdes=Co#
 T 9500 10700 5 10 0 0 0 0 1
 footprint=anchor
 T 9500 10500 5 10 0 0 0 0 1
@@ -49,7 +49,7 @@ device=OUTPUT
 C 9500 10000 1 0 0 out-1.sym
 {
 T 10100 10100 5 10 1 1 0 1 1
-refdes=C
+refdes=Co
 T 9500 10500 5 10 0 0 0 0 1
 footprint=anchor
 T 9500 10300 5 10 0 0 0 0 1
@@ -59,7 +59,7 @@ N 9500 10100 9300 10100 4
 C 6700 7300 1 0 0 nor1and.sym
 {
 T 7350 7800 5 10 1 1 0 4 1
-refdes=S5
+refdes=S4
 }
 C 8300 8200 1 0 0 vdd-1.sym
 C 8400 6400 1 0 0 gnd-1.sym
@@ -77,7 +77,7 @@ device=INPUT
 C 6100 6700 1 0 0 nor.sym
 {
 T 6375 7200 5 10 1 1 0 1 1
-refdes=S3
+refdes=S5
 }
 C 6200 7700 1 0 0 vdd-1.sym
 N 6900 7600 6900 7200 4
@@ -101,7 +101,7 @@ device=INPUT
 C 9500 7700 1 0 0 out-1.sym
 {
 T 10100 7800 5 10 1 1 0 1 1
-refdes=Z#
+refdes=Zo#
 T 9500 8200 5 10 0 0 0 0 1
 footprint=anchor
 T 9500 8000 5 10 0 0 0 0 1
@@ -110,7 +110,7 @@ device=OUTPUT
 C 9500 7500 1 0 0 out-1.sym
 {
 T 10100 7600 5 10 1 1 0 1 1
-refdes=Z
+refdes=Zo
 T 9500 8000 5 10 0 0 0 0 1
 footprint=anchor
 T 9500 7800 5 10 0 0 0 0 1
@@ -162,16 +162,16 @@ refdes=S2
 C 7700 6700 1 0 0 vdilatch.sym
 {
 T 9050 7100 5 10 1 1 0 6 1
-refdes=S6
+refdes=Z
 T 8500 7400 5 10 1 1 0 4 1
 source=vdilatch.sch
 }
-C 7100 8300 1 0 0 vdd-1.sym
+C 7100 8400 1 0 0 vdd-1.sym
 C 7000 10800 1 0 0 vdd-1.sym
 C 9900 8100 1 0 0 nand1or.sym
 {
-T 10450 8550 5 10 1 1 0 0 1
-refdes=S?
+T 10550 8600 5 10 1 1 0 4 1
+refdes=S3
 }
 C 9300 8300 1 0 0 in-1.sym
 {
@@ -203,13 +203,26 @@ device=OUTPUT
 }
 C 10300 9100 1 0 0 vdd-1.sym
 C 10400 7800 1 0 0 gnd-1.sym
-C 5500 8400 1 0 0 in-1.sym
+C 5200 8400 1 0 0 in-1.sym
 {
-T 5500 8500 5 10 1 1 0 7 1
+T 5200 8500 5 10 1 1 0 7 1
 refdes=ϕ0
-T 5500 8900 5 10 0 0 0 0 1
+T 5200 8900 5 10 0 0 0 0 1
 footprint=anchor
-T 5500 8700 5 10 0 0 0 0 1
+T 5200 8700 5 10 0 0 0 0 1
 device=INPUT
 }
-C 6400 8400 1 0 1 phi0.sym
+C 6100 8400 1 0 1 phi0.sym
+C 6400 8300 1 0 0 resistor-load.sym
+{
+T 6700 8700 5 10 0 0 0 0 1
+device=RESISTOR
+T 6550 8450 5 10 1 1 0 6 1
+refdes=R
+T 6800 8400 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 6800 8400 5 10 0 1 0 0 1
+value=3.3k
+}
+N 7300 8400 7300 8300 4
+N 6400 8400 6400 8100 4

@@ -1635,15 +1635,29 @@ refdes=P7
 N 2900 7100 3100 7100 4
 {
 T 3125 7100 5 10 1 1 0 1 1
-netname=P2
+netname=P6
 }
 N 2900 6900 3100 6900 4
 {
 T 3125 6900 5 10 1 1 0 1 1
-netname=P2#
+netname=P6#
 }
 N 2900 6700 3100 6700 4
 {
 T 3125 6700 5 10 1 1 0 1 1
-netname=P3
+netname=P7
+}
+C 2300 6300 1 0 0 in-1.sym
+{
+T 2300 6600 5 10 0 0 0 0 1
+device=INPUT
+T 2300 6800 5 10 0 0 0 0 1
+footprint=anchor
+T 2300 6400 5 10 1 1 0 7 1
+refdes=PE
+}
+N 2900 6400 3100 6400 4
+{
+T 3125 6400 5 10 1 1 0 1 1
+netname=PE
 }

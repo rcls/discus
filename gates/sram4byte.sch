@@ -410,3 +410,17 @@ device=INPUT
 T 7500 2000 5 10 1 1 0 7 1
 refdes=SEL
 }
+C 6200 4900 1 0 0 in-1.sym
+{
+T 6200 5200 5 10 0 0 0 0 1
+device=INPUT
+T 6500 5000 5 10 1 1 0 5 1
+refdes=GND
+}
+C 6200 7600 1 0 0 in-1.sym
+{
+T 6200 7900 5 10 0 0 0 0 1
+device=INPUT
+T 6500 7700 5 10 1 1 0 3 1
+refdes=Vdd
+}

@@ -1,10 +1,8 @@
-registers
-
-SS/RR registers:
+Registers:
 A
-W
 X
 Y
+U
 
 Buses
  - V operand / address
@@ -24,8 +22,7 @@ result bus is ALU output, or operand bus direct (add 0...)
 00XXXXXX - data prefix (load immediate register).
   * any other instruction clears data prefix.
 
-00LCCCXX - with prefix, jump, opt link.
-  [prob have space to use 01 & get RR...]
+00LCCCxx - with prefix, jump, opt link.
 
 01AAAMRR - ins that r/w A. (flags Z C O?)
   * 7 basic operations:
@@ -63,8 +60,8 @@ Not necessary:
 110WWMRR - WW = src-1, flag Z.
 111WWMRR - WW = src+1, flag Z.
 
-101CCC00 - ret.
-10101000 - uncond ret.
+101CCCxx - ret.
+101010xx - uncond ret.
 
 101000xx - IN, to make the reg = A (saves decode...), keep ram off bus.
 

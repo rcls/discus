@@ -54,11 +54,6 @@ struct miller_rabin_state : state_t {
     void run_tests();
 };
 
-// Non carry add/sub not used much...
-// RT() only has two bytes essential use.
-// XOR is not used.  OR is not used.
-// Unmapped memory read-as-zero would be nice...
-// Dirty trick: Flag low 3 bits zero?
 
 void miller_rabin_state::go(int start)
 {

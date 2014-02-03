@@ -49,7 +49,7 @@ P 1400 1300 1200 1300 1 0 0
 T 1400 1300 5 10 0 0 0 0 1
 pintype=unknown
 T 1195 1295 5 10 1 1 0 7 1
-pinlabel=QA
+pinlabel=Q0
 T 1295 1345 5 10 0 1 0 0 1
 pinnumber=5
 T 1400 1300 5 10 0 0 0 0 1
@@ -60,7 +60,7 @@ P 1400 1100 1200 1100 1 0 0
 T 1400 1100 5 10 0 0 0 0 1
 pintype=unknown
 T 1195 1095 5 10 1 1 0 7 1
-pinlabel=QX
+pinlabel=Q1
 T 1295 1145 5 10 0 1 0 0 1
 pinnumber=6
 T 1400 1100 5 10 0 0 0 0 1
@@ -71,7 +71,7 @@ P 1400 900 1200 900 1 0 0
 T 1400 900 5 10 0 0 0 0 1
 pintype=unknown
 T 1195 895 5 10 1 1 0 7 1
-pinlabel=QY
+pinlabel=Q2
 T 1295 945 5 10 0 1 0 0 1
 pinnumber=7
 T 1400 900 5 10 0 0 0 0 1
@@ -82,7 +82,7 @@ P 1400 700 1200 700 1 0 0
 T 1400 700 5 10 0 0 0 0 1
 pintype=unknown
 T 1195 695 5 10 1 1 0 7 1
-pinlabel=QU
+pinlabel=Q3
 T 1295 745 5 10 0 1 0 0 1
 pinnumber=8
 T 1400 700 5 10 0 0 0 0 1

@@ -217,7 +217,7 @@ footprint=anchor
 T 44000 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 44200 64700 5 10 1 1 0 3 1
-refdes=QA
+refdes=Q0
 }
 C 45900 64100 1 90 0 out-1.sym
 {
@@ -226,7 +226,7 @@ footprint=anchor
 T 45600 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 45800 64700 5 10 1 1 0 3 1
-refdes=QX
+refdes=Q1
 }
 C 47500 64100 1 90 0 out-1.sym
 {
@@ -235,7 +235,7 @@ footprint=anchor
 T 47200 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 47400 64700 5 10 1 1 0 3 1
-refdes=QY
+refdes=Q2
 }
 C 49200 64100 1 90 0 out-1.sym
 {
@@ -244,7 +244,7 @@ footprint=anchor
 T 48900 64100 5 10 0 0 90 0 1
 device=OUTPUT
 T 49100 64700 5 10 1 1 0 3 1
-refdes=QU
+refdes=Q3
 }
 C 42400 62200 1 0 0 in-1.sym
 {

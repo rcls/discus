@@ -30,28 +30,6 @@ result bus is ALU output, or operand bus direct (add 0...)
   * also possibly cmp or sta?
   * probably don't need sub...
 
-100WWMRR - operand to reg WW.
-
-101 : misc crap:
-
-  111100RR : in - only need in(a).
-  111110RR : out - only need out(a), but can use full bus....
-
-  111001RR : sta
-
-  111011xx :
-  111101xx :
-  111111xx :
-
-Not necessary:
-     setc
-     clrc (if or/and/xor have both clear and set c).
-     shr
-     ror
-     not
-     neg
-
-
 
 00 - prefix or jmp/call constant. (Inc. uncond.)
 00LCCCxx - call(L=0) or jmp(L=1).
@@ -67,9 +45,6 @@ Not necessary:
 
 101001xx - STA
 101011xx - OUT
-
-in/out : 101VVVRR, VVV is also never cond, make WW/RR magically match A...
-No real constraints on reg numbers...
 
 AAA = 000 : ADD
 AAA = 001 : ADC
@@ -89,9 +64,6 @@ CCC = 100 : z
 CCC = 101 : nz
 CCC = 110 : c
 CCC = 111 : nc
-
-
-in/out is an ALU ins?
 
 
 A : 00

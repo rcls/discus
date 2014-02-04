@@ -80,7 +80,7 @@ device=vpulse
 T 60550 49700 5 10 0 0 270 0 1
 footprint=none
 T 59100 49550 5 10 1 1 0 0 1
-value=pulse 0 3.3 1u 1n 1n 0.269u 0.54u
+value=pulse 0 3.3 1u 1n 1n 0.269u 0.425u
 }
 C 62300 49800 1 0 0 cnot.sym
 {

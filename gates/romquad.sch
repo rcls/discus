@@ -1,5 +1,5 @@
 v 20130925 2
-C 12800 13900 1 0 0 romlink.sym
+C 12800 13900 1 0 0 linko.sym
 {
 T 13100 14300 5 10 0 0 0 0 1
 device=RESISTOR
@@ -10,7 +10,7 @@ footprint=jumper2
 T 13200 14000 5 10 0 1 0 0 1
 value=1e9
 }
-C 12800 13700 1 0 0 romlink.sym
+C 12800 13700 1 0 0 linko.sym
 {
 T 13100 14100 5 10 0 0 0 0 1
 device=RESISTOR
@@ -26,7 +26,7 @@ C 13400 13500 1 0 0 baw56d.sym
 T 13950 14100 5 10 1 1 0 3 1
 refdes=X0
 }
-C 15100 13700 1 0 1 romlink.sym
+C 15100 13700 1 0 1 linko.sym
 {
 T 14800 14100 5 10 0 0 0 6 1
 device=RESISTOR
@@ -37,7 +37,7 @@ value=1e9
 T 14800 13850 5 10 1 1 0 3 1
 refdes=RA2
 }
-C 15100 13500 1 0 1 romlink.sym
+C 15100 13500 1 0 1 linko.sym
 {
 T 14800 13900 5 10 0 0 0 6 1
 device=RESISTOR
@@ -58,7 +58,7 @@ N 14500 14000 15100 14000 4
 T 14800 14025 5 10 1 1 0 3 1
 netname=S
 }
-C 12800 12600 1 0 0 romlink.sym
+C 12800 12600 1 0 0 linko.sym
 {
 T 13100 13000 5 10 0 0 0 0 1
 device=RESISTOR
@@ -69,7 +69,7 @@ value=1e9
 T 13100 12750 5 10 1 1 0 3 1
 refdes=RA4
 }
-C 12800 12400 1 0 0 romlink.sym
+C 12800 12400 1 0 0 linko.sym
 {
 T 13100 12800 5 10 0 0 0 0 1
 device=RESISTOR
@@ -85,7 +85,7 @@ C 13400 12200 1 0 0 baw56d.sym
 T 13950 12800 5 10 1 1 0 3 1
 refdes=X1
 }
-C 15100 12400 1 0 1 romlink.sym
+C 15100 12400 1 0 1 linko.sym
 {
 T 14800 12800 5 10 0 0 0 6 1
 device=RESISTOR
@@ -96,7 +96,7 @@ value=1e9
 T 14800 12550 5 10 1 1 0 3 1
 refdes=RA6
 }
-C 15100 12200 1 0 1 romlink.sym
+C 15100 12200 1 0 1 linko.sym
 {
 T 14800 12600 5 10 0 0 0 6 1
 device=RESISTOR
@@ -180,7 +180,7 @@ device=INPUT
 T 16300 13900 5 10 1 1 0 3 1
 refdes=SEL
 }
-C 12800 11300 1 0 0 romlink.sym
+C 12800 11300 1 0 0 linko.sym
 {
 T 13100 11700 5 10 0 0 0 0 1
 device=RESISTOR
@@ -191,7 +191,7 @@ value=1e9
 T 13100 11450 5 10 1 1 0 3 1
 refdes=RB0
 }
-C 12800 11100 1 0 0 romlink.sym
+C 12800 11100 1 0 0 linko.sym
 {
 T 13100 11500 5 10 0 0 0 0 1
 device=RESISTOR
@@ -207,7 +207,7 @@ C 13400 10900 1 0 0 baw56d.sym
 T 13950 11500 5 10 1 1 0 3 1
 refdes=X2
 }
-C 15100 11100 1 0 1 romlink.sym
+C 15100 11100 1 0 1 linko.sym
 {
 T 14800 11500 5 10 0 0 0 6 1
 device=RESISTOR
@@ -218,7 +218,7 @@ value=1e9
 T 14800 11250 5 10 1 1 0 3 1
 refdes=RB2
 }
-C 15100 10900 1 0 1 romlink.sym
+C 15100 10900 1 0 1 linko.sym
 {
 T 14800 11300 5 10 0 0 0 6 1
 device=RESISTOR
@@ -239,7 +239,7 @@ N 14500 11400 15100 11400 4
 T 14800 11425 5 10 1 1 0 3 1
 netname=S
 }
-C 12800 10000 1 0 0 romlink.sym
+C 12800 10000 1 0 0 linko.sym
 {
 T 13100 10400 5 10 0 0 0 0 1
 device=RESISTOR
@@ -250,7 +250,7 @@ value=1e9
 T 13100 10150 5 10 1 1 0 3 1
 refdes=RB4
 }
-C 12800 9800 1 0 0 romlink.sym
+C 12800 9800 1 0 0 linko.sym
 {
 T 13100 10200 5 10 0 0 0 0 1
 device=RESISTOR
@@ -266,7 +266,7 @@ C 13400 9600 1 0 0 baw56d.sym
 T 13950 10200 5 10 1 1 0 3 1
 refdes=X3
 }
-C 15100 9800 1 0 1 romlink.sym
+C 15100 9800 1 0 1 linko.sym
 {
 T 14800 10200 5 10 0 0 0 6 1
 device=RESISTOR
@@ -277,7 +277,7 @@ value=1e9
 T 14800 9950 5 10 1 1 0 3 1
 refdes=RB6
 }
-C 15100 9600 1 0 1 romlink.sym
+C 15100 9600 1 0 1 linko.sym
 {
 T 14800 10000 5 10 0 0 0 6 1
 device=RESISTOR
@@ -354,7 +354,7 @@ device=OUTPUT
 T 15700 9700 5 10 1 1 0 1 1
 refdes=B7
 }
-C 17500 13900 1 0 0 romlink.sym
+C 17500 13900 1 0 0 linko.sym
 {
 T 17800 14300 5 10 0 0 0 0 1
 device=RESISTOR
@@ -365,7 +365,7 @@ value=1e9
 T 17800 14050 5 10 1 1 0 3 1
 refdes=RC0
 }
-C 17500 13700 1 0 0 romlink.sym
+C 17500 13700 1 0 0 linko.sym
 {
 T 17800 14100 5 10 0 0 0 0 1
 device=RESISTOR
@@ -381,7 +381,7 @@ C 18100 13500 1 0 0 baw56d.sym
 T 18650 14100 5 10 1 1 0 3 1
 refdes=X4
 }
-C 19800 13700 1 0 1 romlink.sym
+C 19800 13700 1 0 1 linko.sym
 {
 T 19500 14100 5 10 0 0 0 6 1
 device=RESISTOR
@@ -392,7 +392,7 @@ value=1e9
 T 19500 13850 5 10 1 1 0 3 1
 refdes=RC2
 }
-C 19800 13500 1 0 1 romlink.sym
+C 19800 13500 1 0 1 linko.sym
 {
 T 19500 13900 5 10 0 0 0 6 1
 device=RESISTOR
@@ -413,7 +413,7 @@ N 19200 14000 19800 14000 4
 T 19500 14025 5 10 1 1 0 3 1
 netname=S
 }
-C 17500 12600 1 0 0 romlink.sym
+C 17500 12600 1 0 0 linko.sym
 {
 T 17800 13000 5 10 0 0 0 0 1
 device=RESISTOR
@@ -424,7 +424,7 @@ value=1e9
 T 17800 12750 5 10 1 1 0 3 1
 refdes=RC4
 }
-C 17500 12400 1 0 0 romlink.sym
+C 17500 12400 1 0 0 linko.sym
 {
 T 17800 12800 5 10 0 0 0 0 1
 device=RESISTOR
@@ -440,7 +440,7 @@ C 18100 12200 1 0 0 baw56d.sym
 T 18650 12800 5 10 1 1 0 3 1
 refdes=X5
 }
-C 19800 12400 1 0 1 romlink.sym
+C 19800 12400 1 0 1 linko.sym
 {
 T 19500 12800 5 10 0 0 0 6 1
 device=RESISTOR
@@ -451,7 +451,7 @@ value=1e9
 T 19500 12550 5 10 1 1 0 3 1
 refdes=RC6
 }
-C 19800 12200 1 0 1 romlink.sym
+C 19800 12200 1 0 1 linko.sym
 {
 T 19500 12600 5 10 0 0 0 6 1
 device=RESISTOR
@@ -528,7 +528,7 @@ device=OUTPUT
 T 20400 12300 5 10 1 1 0 1 1
 refdes=C7
 }
-C 17500 11300 1 0 0 romlink.sym
+C 17500 11300 1 0 0 linko.sym
 {
 T 17800 11700 5 10 0 0 0 0 1
 device=RESISTOR
@@ -539,7 +539,7 @@ value=1e9
 T 17800 11450 5 10 1 1 0 3 1
 refdes=RD0
 }
-C 17500 11100 1 0 0 romlink.sym
+C 17500 11100 1 0 0 linko.sym
 {
 T 17800 11500 5 10 0 0 0 0 1
 device=RESISTOR
@@ -555,7 +555,7 @@ C 18100 10900 1 0 0 baw56d.sym
 T 18650 11500 5 10 1 1 0 3 1
 refdes=X6
 }
-C 19800 11100 1 0 1 romlink.sym
+C 19800 11100 1 0 1 linko.sym
 {
 T 19500 11500 5 10 0 0 0 6 1
 device=RESISTOR
@@ -566,7 +566,7 @@ value=1e9
 T 19500 11250 5 10 1 1 0 3 1
 refdes=RD2
 }
-C 19800 10900 1 0 1 romlink.sym
+C 19800 10900 1 0 1 linko.sym
 {
 T 19500 11300 5 10 0 0 0 6 1
 device=RESISTOR
@@ -587,7 +587,7 @@ N 19200 11400 19800 11400 4
 T 19500 11425 5 10 1 1 0 3 1
 netname=S
 }
-C 17500 10000 1 0 0 romlink.sym
+C 17500 10000 1 0 0 linko.sym
 {
 T 17800 10400 5 10 0 0 0 0 1
 device=RESISTOR
@@ -598,7 +598,7 @@ value=1e9
 T 17800 10150 5 10 1 1 0 3 1
 refdes=RD4
 }
-C 17500 9800 1 0 0 romlink.sym
+C 17500 9800 1 0 0 linko.sym
 {
 T 17800 10200 5 10 0 0 0 0 1
 device=RESISTOR
@@ -614,7 +614,7 @@ C 18100 9600 1 0 0 baw56d.sym
 T 18650 10200 5 10 1 1 0 3 1
 refdes=X7
 }
-C 19800 9800 1 0 1 romlink.sym
+C 19800 9800 1 0 1 linko.sym
 {
 T 19500 10200 5 10 0 0 0 6 1
 device=RESISTOR
@@ -625,7 +625,7 @@ value=1e9
 T 19500 9950 5 10 1 1 0 3 1
 refdes=RD6
 }
-C 19800 9600 1 0 1 romlink.sym
+C 19800 9600 1 0 1 linko.sym
 {
 T 19500 10000 5 10 0 0 0 6 1
 device=RESISTOR

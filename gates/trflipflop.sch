@@ -15,7 +15,7 @@ C 7800 8300 1 0 0 in-1.sym
 T 7800 8600 5 10 0 0 0 0 1
 device=INPUT
 T 7800 8400 5 10 1 1 0 7 1
-refdes=R#
+refdes=R
 T 7800 8800 5 10 0 0 0 0 1
 footprint=anchor
 }

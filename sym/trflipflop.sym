@@ -27,7 +27,7 @@ P 0 500 200 500 1 0 0
 T 0 500 5 10 0 0 0 0 1
 pintype=unknown
 T 205 495 5 10 1 1 0 1 1
-pinlabel=R
+pinlabel=R0
 T 105 545 5 10 0 1 0 6 1
 pinnumber=3
 T 0 500 5 10 0 0 0 0 1
@@ -77,7 +77,18 @@ pinnumber=7
 T 800 0 5 10 0 0 0 0 1
 pinseq=7
 }
-T 1350 450 8 10 1 1 0 7 1
+T 800 950 8 10 1 1 0 4 1
 refdes=S?
-T 800 675 8 10 1 1 0 4 1
+T 750 675 8 10 1 1 0 4 1
 source=trflipflop.sch
+P 0 300 200 300 1 0 0
+{
+T 0 300 5 10 0 0 0 0 1
+pintype=unknown
+T 205 295 5 10 1 1 0 1 1
+pinlabel=R1
+T 105 345 5 10 0 1 0 6 1
+pinnumber=3
+T 0 300 5 10 0 0 0 0 1
+pinseq=3
+}

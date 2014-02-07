@@ -3,6 +3,7 @@
 
 #include <assert.h>
 #include <string.h>
+#include <map>
 
 enum register_name_t { A, X, Y, U };
 
@@ -49,7 +50,7 @@ struct state_t {
 
     void account(const operand_t & v) { executed += 1 + (v.reg < 0); }
 
-    void account(int n) { executed += n; }
+    void account() { ++executed; }
 
     bool wanted(condition_t) const;
 
@@ -66,6 +67,7 @@ struct state_t {
     int jump_take_number;
     int jump_source;
     const char * jump_target_name;
+    std::map<std::string, int> jump_targets;
 
     void ADD(const operand_t & val, bool cin = false, unsigned char flip = 0) {
         account(val);
@@ -153,7 +155,7 @@ struct state_t {
     }
 
     void IN() {
-        account(1);
+        account();
         // FIXME;
     }
 
@@ -174,7 +176,7 @@ struct state_t {
     }
 
     bool jump(condition_t cond, const char * name) {
-        account(2);
+        account(operand_t(jump_targets[name]));
         if (!straight_through)
             return wanted(cond);
         if (jump_take_number-- != 0)
@@ -185,7 +187,7 @@ struct state_t {
     }
 
     bool retrn(condition_t cond) {
-        account(1);
+        account();
         return !straight_through && wanted(cond);
     }
 

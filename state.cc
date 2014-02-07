@@ -35,8 +35,10 @@ void state_t::extract_branches(int start)
         go(start);
         if (jump_take_number >= 0)
             break;
+        int target = jump_source + program_length - executed;
+        jump_targets[jump_target_name] = target;
         printf("Jump %i : %i -> %s %i\n", i, jump_source,
-               jump_target_name, jump_source + program_length - executed);
+               jump_target_name, target);
     }
 }
 

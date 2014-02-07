@@ -407,7 +407,11 @@ void miller_rabin_state::test_single(unsigned long mod)
 void miller_rabin_state::run_tests()
 {
     extract_branches(0);
+    emit_instructions = true;
+    straight_through = true;
+    go(0);                              // Assemble
 
+    emit_instructions = false;
     straight_through = false;
     write_limit = 64;
 

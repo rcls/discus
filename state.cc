@@ -14,6 +14,7 @@ bool state_t::wanted(condition_t c) const
     case NZ:
         return !flag_Z;
     case ALWAYS:
+    case ALWAYS_R:
         return true;
     default:
         return false;
@@ -23,6 +24,7 @@ bool state_t::wanted(condition_t c) const
 
 void state_t::extract_branches(int start)
 {
+    emit_instructions = false;
     straight_through = true;
     jump_take_number = -1;
     write_limit = 256;
@@ -43,21 +45,22 @@ void state_t::extract_branches(int start)
 }
 
 
-void state_t::emit(unsigned char opcode, const operand_t & v)
-{
-    if (true) {
-        executed += 1 + (v.reg < 0);
-        return;
-    }
-
+void state_t::account(int opcode, const operand_t & v) {
     if (v.is_mem)
         opcode += 4;
-
-    if (v.reg >= 0) {
-        printf("%02x: %02x\n", executed++, opcode + v.reg);
-        return;
+    if (v.reg < 0) {
+        if (emit_instructions)
+            printf("%02x: %02x %02x\n",
+                   executed, v.value >> 2, opcode + (v.value & 3));
+        ++executed;
     }
+    else if (emit_instructions)
+        printf("%02x: %02x\n", executed++, opcode + v.reg);
+    ++executed;
+}
 
-    printf("%02x: %02x %02x\n", executed, v.value >> 2, opcode + (v.value & 3));
-    executed += 2;
+void state_t::account(int opcode) {
+    if (emit_instructions)
+        printf("%02x: %02x\n", executed, opcode);
+    ++executed;
 }

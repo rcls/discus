@@ -21,7 +21,7 @@ struct operand_t {
 };
 
 enum condition_t {
-    C, Z, ALWAYS, NC, NZ, NEVER,
+    ALWAYS, NEVER, ALWAYS_R, NEVER_R, NZ, Z, NC, C
 };
 
 struct state_t {
@@ -34,6 +34,7 @@ struct state_t {
     bool straight_through;              // Ignore branches.
     int executed;                       // Instruction count.
     int write_limit;
+    bool emit_instructions;
 
     void set64(int address, unsigned long v) {
         for (int i = 0; i != 8; ++i)
@@ -46,11 +47,9 @@ struct state_t {
         return result;
     }
 
-    void emit(unsigned char opcode, const operand_t & v);
+    void account(int opcode, const operand_t & v);
 
-    void account(const operand_t & v) { executed += 1 + (v.reg < 0); }
-
-    void account() { ++executed; }
+    void account(int opcode);
 
     bool wanted(condition_t) const;
 
@@ -69,25 +68,27 @@ struct state_t {
     const char * jump_target_name;
     std::map<std::string, int> jump_targets;
 
-    void ADD(const operand_t & val, bool cin = false, unsigned char flip = 0) {
-        account(val);
+    void ADD(int opcode, const operand_t & val,
+             bool cin = false, unsigned char flip = 0) {
+        account(opcode, val);
         unsigned r = reg[A] + (get(val) ^ flip) + cin;
         flag_C = !!(r & 256);
         reg[A] = r;
         flag_Z = !(r & 255);
     }
 
+    void ADD(const operand_t & val)  { ADD(0x40, val); }
     void ADDM(const operand_t & val) { ADD(val.mem()); }
-    void ADC(const operand_t & val)  { ADD(val, flag_C); }
-    void ADCM(const operand_t & val) { ADD(val.mem(), flag_C); }
+    void ADC(const operand_t & val)  { ADD(0x48, val, flag_C); }
+    void ADCM(const operand_t & val) { ADC(val.mem()); }
 
-    void SUB(const operand_t & val)  { ADD(val,       true,   255); }
-    void SBC(const operand_t & val)  { ADD(val,       flag_C, 255); }
-    void SUBM(const operand_t & val) { ADD(val.mem(), true,   255); }
-    void SBCM(const operand_t & val) { ADD(val.mem(), flag_C, 255); }
+    void SUB(const operand_t & val)  { ADD(0x50, val, true,   255); }
+    void SBC(const operand_t & val)  { ADD(0x58, val, flag_C, 255); }
+    void SUBM(const operand_t & val) { SUB(val.mem()); }
+    void SBCM(const operand_t & val) { SBC(val.mem()); }
 
     void AND(const operand_t & val) {
-        account(val);
+        account(0x70, val);
         reg[A] &= get(val);
         flag_Z = (reg[A] == 0);
         flag_C = true;
@@ -96,7 +97,7 @@ struct state_t {
     void ANDM(const operand_t & val) { AND(val.mem()); }
 
     void OR(const operand_t & val) {
-        account(val);
+        account(0x60, val);
         reg[A] |= get(val);
         flag_Z = (reg[A] == 0);
         flag_C = false;
@@ -105,7 +106,7 @@ struct state_t {
     void ORM(const operand_t & val) { OR(val.mem()); }
 
     void XOR(const operand_t & val) {
-        account(val);
+        account(0x68, val);
         reg[A] ^= get(val);
         flag_Z = (reg[A] == 0);
         flag_C = false;
@@ -113,14 +114,16 @@ struct state_t {
 
     void XORM(const operand_t & val) { XOR(val.mem()); }
 
+    // FIXME: CMP
+
     void INC(register_name_t w, const operand_t & val) {
-        account(val);
+        account(0xe0 + w * 8, val);
         reg[w] = get(val) + 1;
         flag_Z = (reg[w] == 0);
     }
 
     void DEC(register_name_t w, const operand_t & val) {
-        account(val);
+        account(0xc0 + w * 8, val);
         reg[w] = get(val) - 1;
         flag_Z = (reg[w] == 0);
     }
@@ -140,7 +143,7 @@ struct state_t {
     }
 
     void LOAD(register_name_t ww, const operand_t & val) {
-        account(val);
+        account(0x80, val);
         reg[ww] = get(val);
     }
 
@@ -149,18 +152,18 @@ struct state_t {
     }
 
     void STA(const operand_t & val) {
-        account(val);
+        account(0xa4, val);
         assert(get(val) < write_limit);
         mem[get(val)] = reg[A];
     }
 
     void IN() {
-        account();
+        account(0xa0);
         // FIXME;
     }
 
     void OUT(const operand_t & val) {
-        account(val);
+        account(0xac, val);
         out_latch = get(val);
     }
 
@@ -175,8 +178,8 @@ struct state_t {
         return r;
     }
 
-    bool jump(condition_t cond, const char * name) {
-        account(operand_t(jump_targets[name]));
+    bool jump(condition_t cond, const char * name, int opcode = 0) {
+        account(opcode + cond * 4, operand_t(jump_targets[name]));
         if (!straight_through)
             return wanted(cond);
         if (jump_take_number-- != 0)
@@ -187,7 +190,7 @@ struct state_t {
     }
 
     bool retrn(condition_t cond) {
-        account();
+        account(0xa0 + cond * 4);
         return !straight_through && wanted(cond);
     }
 
@@ -195,7 +198,7 @@ struct state_t {
 };
 
 
-#define JP(cond,label) do { if (jump(cond, #label)) goto label; } while (0)
+#define JP(cond,label) do { if (jump(cond, #label, 32)) goto label; } while (0)
 #define JMP(label) JP(ALWAYS,label)
 
 #define JOIN2(x,y) x##y
@@ -210,6 +213,6 @@ struct state_t {
 
 #define RT(cond) do { if (retrn(cond)) do_ret(); } while (0)
 
-#define RET() RT(ALWAYS)
+#define RET() RT(ALWAYS_R)
 
 #endif

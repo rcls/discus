@@ -64,3 +64,18 @@ void state_t::account(int opcode) {
         printf("%02x: %02x\n", executed, opcode);
     ++executed;
 }
+
+
+bool state_t::jump(condition_t cond, const char * name, int opcode) {
+    if (emit_instructions)
+        account(opcode + cond * 4, operand_t(jump_targets[name]));
+    else
+        account(opcode + cond * 4, operand_t(0));
+    if (!straight_through)
+        return wanted(cond);
+    if (jump_take_number-- != 0)
+        return false;
+    jump_source = executed;
+    jump_target_name = name;
+    return true;
+}

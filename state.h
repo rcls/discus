@@ -178,16 +178,7 @@ struct state_t {
         return r;
     }
 
-    bool jump(condition_t cond, const char * name, int opcode = 0) {
-        account(opcode + cond * 4, operand_t(jump_targets[name]));
-        if (!straight_through)
-            return wanted(cond);
-        if (jump_take_number-- != 0)
-            return false;
-        jump_source = executed;
-        jump_target_name = name;
-        return true;
-    }
+    bool jump(condition_t cond, const char * name, int opcode = 0);
 
     bool retrn(condition_t cond) {
         account(0xa0 + cond * 4);

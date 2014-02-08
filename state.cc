@@ -55,7 +55,7 @@ void state_t::account(int opcode, const operand_t & v) {
         ++executed;
     }
     else if (emit_instructions)
-        printf("%02x: %02x\n", executed++, opcode + v.reg);
+        printf("%02x: %02x\n", executed, opcode + v.reg);
     ++executed;
 }
 

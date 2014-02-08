@@ -143,7 +143,7 @@ struct state_t {
     }
 
     void LOAD(register_name_t ww, const operand_t & val) {
-        account(0x80, val);
+        account(0x80 + ww * 8, val);
         reg[ww] = get(val);
     }
 

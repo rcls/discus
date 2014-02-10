@@ -1,12 +1,12 @@
-v 20121123 2
+v 20130925 2
 C 60500 61800 1 0 1 gnd-1.sym
 C 58000 61800 1 0 1 gnd-1.sym
 C 55500 61800 1 0 1 gnd-1.sym
 C 53100 61800 1 0 1 gnd-1.sym
-C 53200 63600 1 0 1 3.3V-plus-1.sym
-C 55600 63600 1 0 1 3.3V-plus-1.sym
-C 58100 63600 1 0 1 3.3V-plus-1.sym
-C 60600 63600 1 0 1 3.3V-plus-1.sym
+C 53200 63600 1 0 1 vdd-1.sym
+C 55600 63600 1 0 1 vdd-1.sym
+C 58100 63600 1 0 1 vdd-1.sym
+C 60600 63600 1 0 1 vdd-1.sym
 N 52200 62400 52200 61500 4
 N 52100 61500 59600 61500 4
 N 59600 61500 59600 62400 4
@@ -24,37 +24,37 @@ N 57000 62600 57000 61700 4
 C 54000 64000 1 0 0 gnd-1.sym
 C 56500 64300 1 0 0 gnd-1.sym
 C 59000 64300 1 0 0 gnd-1.sym
-C 54900 64300 1 0 0 3.3V-plus-1.sym
-C 53900 65600 1 0 0 3.3V-plus-1.sym
-C 56400 65600 1 0 0 3.3V-plus-1.sym
-C 58900 65600 1 0 0 3.3V-plus-1.sym
+C 54900 64300 1 0 0 vdd-1.sym
+C 53900 65600 1 0 0 vdd-1.sym
+C 56400 65600 1 0 0 vdd-1.sym
+C 58900 65600 1 0 0 vdd-1.sym
 N 52200 65200 53800 65200 4
 N 52200 63000 52200 65200 4
 C 52200 62100 1 0 0 jkflipflop.sym
 {
 T 53300 62600 5 10 1 1 0 0 1
-refdes=0
+refdes=F0
 T 52500 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 54600 62100 1 0 0 jkflipflop.sym
 {
 T 55700 62600 5 10 1 1 0 0 1
-refdes=1
+refdes=F1
 T 54900 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 57100 62100 1 0 0 jkflipflop.sym
 {
 T 58200 62600 5 10 1 1 0 0 1
-refdes=2
+refdes=F2
 T 57400 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
 C 59600 62100 1 0 0 jkflipflop.sym
 {
 T 60700 62600 5 10 1 1 0 0 1
-refdes=3
+refdes=F3
 T 59900 62800 5 10 1 1 0 0 1
 source=jkflipflop.sch
 }
@@ -99,6 +99,8 @@ N 58700 64100 58700 65100 4
 N 58800 63000 58700 63000 4
 C 51500 61600 1 0 0 in-1.sym
 {
+T 51500 62100 5 10 0 0 0 0 1
+footprint=anchor
 T 51500 61900 5 10 0 0 0 0 1
 device=INPUT
 T 51300 61600 5 10 1 1 0 0 1
@@ -106,6 +108,8 @@ refdes=C
 }
 C 51500 61400 1 0 0 in-1.sym
 {
+T 51500 61900 5 10 0 0 0 0 1
+footprint=anchor
 T 51500 61700 5 10 0 0 0 0 1
 device=INPUT
 T 51200 61400 5 10 1 1 0 0 1
@@ -113,6 +117,8 @@ refdes=C#
 }
 C 51600 65100 1 0 0 in-1.sym
 {
+T 51600 65600 5 10 0 0 0 0 1
+footprint=anchor
 T 51600 65400 5 10 0 0 0 0 1
 device=INPUT
 T 51800 65300 5 10 1 1 0 0 1
@@ -120,6 +126,8 @@ refdes=CE
 }
 C 53500 65500 1 0 0 in-1.sym
 {
+T 53500 66000 5 10 0 0 0 0 1
+footprint=anchor
 T 53500 65800 5 10 0 0 0 0 1
 device=INPUT
 T 53600 65400 5 10 1 1 0 0 1
@@ -127,6 +135,8 @@ refdes=Vdd
 }
 C 52400 62000 1 0 0 in-1.sym
 {
+T 52400 62500 5 10 0 0 0 0 1
+footprint=anchor
 T 52400 62300 5 10 0 0 0 0 1
 device=INPUT
 T 52500 61900 5 10 1 1 0 0 1
@@ -134,6 +144,8 @@ refdes=GND
 }
 C 53800 63100 1 0 0 out-1.sym
 {
+T 53800 63600 5 10 0 0 0 0 1
+footprint=anchor
 T 53800 63400 5 10 0 0 0 0 1
 device=OUTPUT
 T 53900 63300 5 10 1 1 0 0 1
@@ -141,6 +153,8 @@ refdes=Q0
 }
 C 53800 62900 1 0 0 out-1.sym
 {
+T 53800 63400 5 10 0 0 0 0 1
+footprint=anchor
 T 53800 63200 5 10 0 0 0 0 1
 device=OUTPUT
 T 53900 62800 5 10 1 1 0 0 1
@@ -148,6 +162,8 @@ refdes=Q0#
 }
 C 56200 63100 1 0 0 out-1.sym
 {
+T 56200 63600 5 10 0 0 0 0 1
+footprint=anchor
 T 56200 63400 5 10 0 0 0 0 1
 device=OUTPUT
 T 56400 63300 5 10 1 1 0 0 1
@@ -155,6 +171,8 @@ refdes=Q1
 }
 C 56200 62900 1 0 0 out-1.sym
 {
+T 56200 63400 5 10 0 0 0 0 1
+footprint=anchor
 T 56200 63200 5 10 0 0 0 0 1
 device=OUTPUT
 T 56300 62800 5 10 1 1 0 0 1
@@ -162,6 +180,8 @@ refdes=Q1#
 }
 C 58700 63100 1 0 0 out-1.sym
 {
+T 58700 63600 5 10 0 0 0 0 1
+footprint=anchor
 T 58700 63400 5 10 0 0 0 0 1
 device=OUTPUT
 T 58900 63300 5 10 1 1 0 0 1
@@ -169,6 +189,8 @@ refdes=Q2
 }
 C 58700 62900 1 0 0 out-1.sym
 {
+T 58700 63400 5 10 0 0 0 0 1
+footprint=anchor
 T 58700 63200 5 10 0 0 0 0 1
 device=OUTPUT
 T 58800 62800 5 10 1 1 0 0 1
@@ -176,6 +198,8 @@ refdes=Q2#
 }
 C 61200 63100 1 0 0 out-1.sym
 {
+T 61200 63600 5 10 0 0 0 0 1
+footprint=anchor
 T 61200 63400 5 10 0 0 0 0 1
 device=OUTPUT
 T 61300 63300 5 10 1 1 0 0 1
@@ -183,6 +207,8 @@ refdes=Q3
 }
 C 61200 62900 1 0 0 out-1.sym
 {
+T 61200 63400 5 10 0 0 0 0 1
+footprint=anchor
 T 61200 63200 5 10 0 0 0 0 1
 device=OUTPUT
 T 61300 62800 5 10 1 1 0 0 1

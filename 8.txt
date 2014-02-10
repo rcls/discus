@@ -1,28 +1,19 @@
-registers
-
-SS/RR registers:
+Registers:
 A
-W
 X
 Y
+U
 
 Buses
- - operand / address
- - mem read
- - alu out
+ - V operand / address
+ - B mem read
  - mem write
 
-Operand bus is also address bus.
+V bus - complementary signalling, flip-flop driven, active LOW.
+ (address decodes will have CMOS inverters to drive the fan-out...)
+B bus - open drain
+mem write - needs write strobe (clock phase 2).
 
-
-
-memory connector (32 bytes):
-8 w1
-8 w0
-8 r
-8 row sel
-4 col sel
-= 36 .... so a 40 pin connector (1mm one sided? or even 2.54mm?)
 
 source bus is register or constant.  Memory address is always source bus.
 operand bus is source bus direct or memory lookup
@@ -31,39 +22,160 @@ result bus is ALU output, or operand bus direct (add 0...)
 00XXXXXX - data prefix (load immediate register).
   * any other instruction clears data prefix.
 
-00CCCLXX - with prefix, jump, opt link.
-  [prob have space to use 01 & get RR...]
+00LCCCxx - with prefix, jump, opt link.
 
-[All we get from this 01 instead of 00 is indirects & ret...  and make others
- more packed.  Instead Separate uncond jumps that may be indirect?]
-01CCCLRR - jump/call except:
-01CCC111 - return (only with no prefix, with prefix is call).
-
-10AAAMRR - ins that r/w A. (flags Z C O?)
+01AAAMRR - ins that r/w A. (flags Z C O?)
   * 7 basic operations:
      add(c) sub(c) or and xor
   * also possibly cmp or sta?
-
-110WWMRR - operand to reg WW.
-
-111 : misc crap:
-  on all regs: inc, dec
-  111000RR : inc. (flags Z)
-  111010RR : dec.
-
-  111100RR : in  (or could make reg 3 an I/O port... or mmap i/o)
-  111110RR : out
-
-  111001RR : sta
-
-  111011xx :
-  111101xx :
-  111111xx :
-     clrc
-     setc
-     shr
-     ror
-     not
-     neg
+  * probably don't need sub...
 
 
+00 - prefix or jmp/call constant. (Inc. uncond.)
+00LCCCxx - call(L=0) or jmp(L=1).
+01AAAMRR - ops that r/w A.
+100WWMRR - Load WW = src, no flags.
+110WWMRR - WW = src-1, flag Z.
+111WWMRR - WW = src+1, flag Z.
+
+101CCCxx - ret.
+101010xx - uncond ret.
+
+101000xx - IN, to make the reg = A (saves decode...), keep ram off bus.
+
+101001xx - STA
+101011xx - OUT
+
+AAA = 000 : ADD
+AAA = 001 : ADC
+AAA = 010 : SUB
+AAA = 011 : SBC
+AAA = 100 : OR
+AAA = 101 : XOR
+AAA = 110 : AND
+AAA = 111 : CMP
+
+
+CCC = 000 : always [but not ret]
+CCC = 001 : never
+CCC = 010 : always
+CCC = 011 : never
+CCC = 100 : z
+CCC = 101 : nz
+CCC = 110 : c
+CCC = 111 : nc
+
+
+A : 00
+X : 01
+Y : 10
+U : 11
+
+01xxxxxx : write A
+(100/11x)WWxxx : write WW.
+
+
+slice to do:
+v constant is always from latch, interface for that?
+
+Out can just use V or B bus. (V->Out, In->B?)
+
+constant latch 0,1 also can serve for reg write address latch.
+
+Put the VR strobe into the read-select strobes (push-pull)?
+
+Fixme - Z flag...
+
+
+Decode signals...
+
+AR#
+AS
+CS#
+CR
+[also CinS#, CinR...]XF
+N
+C-latch
+VK
+BV
+AND
+OR
+
+O4# - Flag = 0
+O3#, O4 - Flag = FZ#
+O3, O4 - Flag = FC#
+
+N - high only for SUB, SBC and CMP
+OR - high only for OR
+AND - high only for AND
+
+C - high for AND, low for OR, XOR...
+
+Cin - force high for AND, SUB, CMP, INC
+ - force low for ADD, DEC, OR, XOR
+
+straight though:
+Either ADD, OR, XOR with A=0, [CR don't care for ADD].
+Or AND with A=255.
+
+BV - if B not coming from memory or I/O port.
+
+Write reg:
+
+ 01xxxxxx except 01110xxx (cmp)
+ 1xxxxxxx except 101xxxxx
+ also IN (some 101xxxxx).
+
+[~7 & 6 & (~5 | ~4 | 3)]  |  [7 & (~6 | 5 | IN)]
+
+C is written by 01xxxxxx
+Z is written by everything that writes a reg, plus cmp
+   except: move (100xxxxxx), in (some 101xxxxx).
+   i.e. x1xxxxxx
+
+Load mem (many don't care): 01xxx1xx, 1xxxx1xx except some 101xx1xx
+Use i2, don't care about exceptions, specials get it right.
+
+IN is a do care (we want the bus...)
+
+
+AND is high for 01110xxx
+is low for 1xxxxxxx
+don't care 00xxxxxx
+So take 0x110xxx
+
+OR# is low for 01100xxx
+don't care 00xxxxxx
+Take 0x100xxx
+
+AS is high for DEC: 110xxxxx
+AS dominates
+AR# is low for INC,MV, 100xxxxx, 111xxxxx, For IN: all 101xxxxx, simplifies to:
+  1xxxxxxx
+
+
+
+CS - high for AND (anything else?), 0x101xxx
+CR# - low for OR, XOR, 0x100xxx, 0x101xxx, i.e.
+   0x10xxxx,
+Also special 1010xxxx... simplifies x010xxxx
+
+
+CinForce - ADD, SUB, OR, AND, XOR, CMP, all INC,DEC,MV,spec...
+ 1xxxxxxx, xx1xxxxxx, xxxx0xxx
+
+CinS: CinForce &
+ 0[1]x10xxx (SUB, AND)
+ 0[1]11xxxx (CMP, AND)
+ 1 1 1xxxxx (DEC)
+[CinS dominant.]
+
+N - assert for SUB, SBC, CMP: 0x00xxxx, 0x[1]00xxx
+
+WZ - assert for 01xxxxxx, 11xxxxxx, i.e, i6.
+
+Write : not jump except ret/write/STA/OUT.
+x1xxxxxx,1x0xxxxx,IN
+
+FIXME : Various flags (comp-) open drain.
+FIXME : Invert WR.

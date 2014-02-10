@@ -3,291 +3,62 @@
 #include <stdio.h>
 #include <string.h>
 
-#define JOIN2(x,y) x##y
-#define JOIN(x,y) JOIN2(x,y)
+#include "state.h"
 
-struct state_t {
-    unsigned char regs[4];
-    bool flag_C;
-    bool flag_Z;
-    bool flag_O;
-    unsigned char out_latch;
-    void * stack[4];
-    unsigned char mem[256];
-    bool straight_through;              // Ignore branches.
-    int executed;                       // Instruction count.
-    int write_limit;
+struct miller_rabin_state : state_t {
 
-    void set64(int address, unsigned long v) {
-        for (int i = 0; i != 8; ++i)
-            mem[address - i] = v >> (i * 8);
-    }
-    unsigned long get64(int address) const {
-        unsigned long result = 0;
-        for (int i = 0; i != 8; ++i)
-            result += (unsigned long) mem[address - i] << (i * 8);
-        return result;
-    }
-};
+    // Word length for this run...
+    static const int len = 8;
 
-static state_t S;
+    // Big endian, points point at last, so we can use the result pointer as a
+    // counter.
+    static const int result = len;
+    static const int temp = len * 2;    // Any function can clobber.
+    static const int modulus = len * 3;
+    static const int product = len * 4;
+    static const int factor = len * 5;
 
-struct register_name_t {
-    int r;
-    explicit register_name_t(int rr) : r(rr) { }
+    static const int exponent = len * 6;
+    static const int base = len * 7;
 
-    unsigned char operator= (unsigned char v) const { return S.regs[r] = v; }
-    unsigned char get() const { return S.regs[r]; }
-};
+    static const int zero = 0xbf;
+    static const int one = 0xc7;
+    static const int base_start = 0xcf;
 
-static const register_name_t A(0);
-static const register_name_t X(1);
-static const register_name_t Y(2);
-static const register_name_t U(3);
+    static const int outer_loop_count = 0;
+    static const int mult_loop_count = 63;
+    static const int base_index = 62;
+    static const int exp_twos = 61;
 
-struct condition_t {
-    int c;
-    condition_t(int cc) : c(cc) { }
+    enum test_entry_t {
+        te_full,
+        te_single,
+        te_add,
+        te_mult,
+        te_power
+    };
 
-    operator bool() const {
-        if (S.straight_through)
-            return false;
+    void go(int start);
 
-        bool want = (c & 4) == 0;
-        switch (c & 3) {
-        case 0:
-            return want == S.flag_C;
-        case 1:
-            return want == S.flag_Z;
-        case 2:
-            return want == S.flag_O;
-        default:
-            return want;
-        };
-    }
+    void test_add(unsigned long mod, unsigned long acc,
+                  unsigned long addend, int address);
+    void test_mult(unsigned long mod, unsigned long prod,
+                   unsigned long fact, int address);
+    void test_mult_steps(unsigned long mod,
+                         unsigned long prod, unsigned long fact);
+    void test_power(unsigned long mod, unsigned long n, unsigned long exp);
+    void test_power_steps(unsigned long mod, unsigned long n,
+                          unsigned long exp);
+    void test_single(unsigned long mod);
+
+    void run_tests();
 };
 
 
-struct operand_t {
-    operand_t(unsigned char n) :
-        is_val(true), value(n) { ++S.executed; }
-    operand_t(const register_name_t & r) :
-        is_val(false), value(r.r) { }
-    bool is_val;
-    unsigned char value;
-    operator unsigned char() const { return is_val ? value : S.regs[value]; }
-};
-
-static const condition_t C = 0;
-static const condition_t NC = 4;
-static const condition_t Z = 1;
-static const condition_t NZ = 5;
-static const condition_t O = 2;
-static const condition_t NO = 6;
-static const condition_t ALWAYS = 3;
-static const condition_t NEVER = 7;
-
-void do_ADD(unsigned char val, bool cin = false)
+void miller_rabin_state::go(int start)
 {
-    ++S.executed;
-    unsigned r = A.get() + val + cin;
-    S.flag_C = !!(r & 256);
-    A = r;
-    S.flag_Z = !(r & 255);
-}
-
-void ADD(const operand_t & val)  { do_ADD(val); }
-void ADDM(const operand_t & val) { do_ADD(S.mem[val]); }
-void ADC(const operand_t & val)  { do_ADD(val,         S.flag_C); }
-void ADCM(const operand_t & val) { do_ADD(S.mem[val],  S.flag_C); }
-
-void SUB(const operand_t & val)  { do_ADD(~val,        true); }
-void SBC(const operand_t & val)  { do_ADD(~val,        S.flag_C); }
-void SUBM(const operand_t & val) { do_ADD(~S.mem[val], true); }
-void SBCM(const operand_t & val) { do_ADD(~S.mem[val], S.flag_C); }
-
-void do_AND(unsigned char val)
-{
-    ++S.executed;
-    A = A.get() & val;
-    S.flag_Z = (A.get() == 0);
-    S.flag_C = false;
-}
-
-void AND(const operand_t & val)  { do_AND(val); }
-void ANDM(const operand_t & val) { do_AND(S.mem[val]); }
-
-void do_OR(unsigned char val)
-{
-    ++S.executed;
-    A = A.get() | val;
-    S.flag_Z = (A.get() == 0);
-    S.flag_C = false;
-}
-
-void OR(const operand_t & val) { do_OR(val); }
-void ORM(const operand_t & val) { do_OR(S.mem[val]); }
-
-void do_XOR(const operand_t & val)
-{
-    ++S.executed;
-    A = A.get() ^ val;
-    S.flag_Z = (A.get() == 0);
-    S.flag_C = false;
-}
-
-void XOR(const operand_t & val) { do_XOR(val); }
-void XORM(const operand_t & val) { do_XOR(S.mem[val]); }
-
-/*
-void CMP(const operand_t & val)
-{
-    ++S.executed;
-    int r = A.get() + 256 - val;
-    S.flag_C = (r & 256) != 0;
-    S.flag_Z = (r & 255) == 0;
-}
-*/
-
-void INC(const register_name_t & reg)
-{
-    ++S.executed;
-    reg = reg.get() + 1;
-    S.flag_Z = (reg.get() == 0);
-    S.flag_O = (reg.get() == 0);
-}
-
-void DEC(const register_name_t & reg)
-{
-    ++S.executed;
-    reg = reg.get() - 1;
-    S.flag_Z = (reg.get() == 0);
-    S.flag_O = (reg.get() != 255);
-}
-
-void CLRC()
-{
-    ++S.executed;
-    S.flag_C = false;
-}
-
-
-void SETC()
-{
-    ++S.executed;
-    S.flag_C = true;
-}
-
-
-void LOAD(const register_name_t & ww, const operand_t & val)
-{
-    ++S.executed;
-    ww = val;
-}
-
-void LOADM(const register_name_t & ww, const operand_t & val)
-{
-    ++S.executed;
-    ww = S.mem[val];
-}
-
-void STA(const operand_t & val)
-{
-    ++S.executed;
-    assert(val < S.write_limit);
-    S.mem[val] = A.get();
-}
-
-void IN()
-{
-    ++S.executed;
-    // FIXME;
-}
-
-void OUT(const operand_t & val)
-{
-    ++S.executed;
-    S.out_latch = val;
-}
-
-
-void push(void * x)
-{
-    memmove(S.stack + 1, S.stack, 3 * sizeof S.stack[0]);
-    S.stack[0] = x;
-}
-
-
-void * pop()
-{
-    void * r = S.stack[0];
-    memmove(S.stack, S.stack + 1, 3 * sizeof S.stack[0]);
-    return r;
-}
-
-#define JP(cond,label) do { S.executed += 2; if (cond) goto label; } while (0)
-#define JMP(label) JP(ALWAYS,label)
-
-#define RET_LABEL JOIN(return_label_,__LINE__)
-#define call(label) do { push(&&RET_LABEL); goto label; RET_LABEL: ; } while (0)
-
-#define CL(cond,label) do { S.executed += 2; if (cond) call(label); } while (0)
-#define CALL(label) CL(ALWAYS,label)
-
-#define do_ret() do if (S.stack[0] == NULL) return; else goto *pop(); while (0)
-
-#define RT(cond) do { S.executed++; if (cond) do_ret(); } while (0)
-
-#define RET() RT(ALWAYS)
-
-// Word length for this run...
-static const int len = 8;
-
-// Big endian, points point at last, so we can use the result pointer as a
-// counter.
-static const int result = len;
-static const int temp = 16;             // Any function can clobber.
-static const int modulus = 24;
-static const int product = 32;
-static const int factor = 40;
-
-static const int exponent = 48;
-static const int base = 56;
-
-static const int zero = 0xbf;
-static const int one = 0xc7;
-static const int base_start = 0xcf;
-
-static const int power_loop_count = 0;
-static const int mult_loop_count = 63;
-static const int base_index = 62;
-static const int exp_twos = 61;
-static const int square_count = 60;
-
-// Arithmetic always operates on memory? - probably get regs for free.
-// Non carry add/sub not used much...
-// Could have LDA instead of LOADM... (Only have 1 LOADM(X,)..., but need
-// LOAD(X,constant|A))
-// RT() only has one byte essential use.
-// XOR is not used.  OR is not used.
-
-// Unmapped memory read-as-zero would be nice...
-// Or make 32bit x 16rom board...
-
-// Dirty trick: Flag low 3 bits zero?
-
-enum test_entry_t {
-    te_full,
-    te_single,
-    te_add,
-    te_mult,
-    te_power
-};
-
-void go(test_entry_t start)
-{
-    S.stack[0] = NULL;
-    S.executed = 0;
+    stack[0] = NULL;
+    executed = 0;
 
     switch (start) {
     case te_add:
@@ -301,22 +72,22 @@ void go(test_entry_t start)
     case te_full: ;
     }
 restart:
+    INC(A);
     OUT(A);
     if (start == te_single)
         RET();
     // The input consists of 64bits BE...
-    LOAD(Y,len*8);                      // leftrot does not use Y...
 read1:
     // Pulse bit 7 for 1, pulse bit 6 for 0.
     IN();
     AND(0xc0);
     JP(Z,read1);
-    ADC(A);
+    ADD(A);
     LOAD(X,modulus);
     CALL(leftrot);
     // Long pulse on bit 7 is start...
     IN();
-    ADC(A);
+    ADD(A);
     JP(NC,read1);
     SUB(A);
     OUT(A);
@@ -362,13 +133,11 @@ power:                                  // Entry-point for test only...
     LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
 power1:
-    STA(power_loop_count);
     CALL(square);
     CALL(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
-    LOADM(A,power_loop_count);
-    DEC(A);
+    DECM(A,outer_loop_count);
     JP(NZ,power1);
 
     if (start == te_power)
@@ -380,30 +149,18 @@ power1:
 
     LOADM(A,exp_twos);
 square_loop:
-    STA(square_count);
+    DEC(A);
+    JP(Z,restart);                      // Didn't get -1 : composite
     CALL(square);
-    CALL(classifyp1);                   // -1 -> useless, 1 -> composite.
-    JP(Z,square_loop2);
-    SUB(2);
-    JP(Z,composite);
-    LOADM(A,square_count);
-    DEC(A);
+    CALL(classifyp1);                   // -1 -> useless
+    LOADM(A,outer_loop_count);
     JP(NZ,square_loop);
-composite:
-    // If we get here, base**(modulus-1) is not -1 or +1... composite.
-    // Expect A=0
-    INC(A);
-    JMP(restart);
-square_loop2:                    // We get a -1 ... composite if last iteration.
-    LOADM(A,square_count);
-    DEC(A);
-    JP(Z,composite);
+
 main_loop_next:
     LOADM(A,base_index);
     ADD(8);
     JP(NC,main_loop);
     // Passed all checks.
-    INC(A);
     JMP(restart);
 
 classifyp1:                             // Classify result+1.
@@ -422,6 +179,7 @@ classify1:
     RET();
 
 square:                                 // product * product -> product
+    STA(outer_loop_count);              // All callers want this.
     LOAD(Y, product);
 mult:             // Leaves product in result also.
     // product * mem(Y) -> product (mod modulus).
@@ -441,8 +199,7 @@ mult1:
     CALL(leftrot);
     //LOAD(X,product);
     CL(C,add64m);
-    LOADM(A,mult_loop_count);
-    DEC(A);
+    DECM(A,mult_loop_count);
     JP(NZ,mult1);
     LOAD(Y,result);
 
@@ -528,47 +285,47 @@ static unsigned long power (unsigned long base, unsigned long exp,
 }
 
 
-void test_add(unsigned long mod, unsigned long acc,
-              unsigned long addend, int address)
+void miller_rabin_state::test_add(unsigned long mod, unsigned long acc,
+                                  unsigned long addend, int address)
 {
-    S.set64(modulus, mod);
-    S.set64(result, acc);
-    S.set64(address, addend);
-    X = address;
+    set64(modulus, mod);
+    set64(result, acc);
+    set64(address, addend);
+    reg[X] = address;
 
     go(te_add);
 
-    unsigned long res = S.get64(result);
+    unsigned long res = get64(result);
     unsigned long expect = acc + addend;
     if (expect < acc || expect >= mod)
         expect -= mod;
     printf("%lu + %lu (mod %lu) -> %lu expected %lu in %u\n",
-           acc, addend, mod, res, (acc + addend) % mod, S.executed);
+           acc, addend, mod, res, expect, executed);
     assert(res == expect);
 }
 
 
-static void test_mult(unsigned long mod, unsigned long prod,
-                      unsigned long fact, int address)
+void miller_rabin_state::test_mult(unsigned long mod, unsigned long prod,
+                                   unsigned long fact, int address)
 {
-    S.set64(modulus, mod);
+    set64(modulus, mod);
     prod %= mod;
-    S.set64(product, prod);
-    S.set64(address, fact);
-    Y = address;
+    set64(product, prod);
+    set64(address, fact);
+    reg[Y] = address;
     go(te_mult);
     unsigned long exp = mult(prod, fact, mod);
-    unsigned long got = S.get64(product);
-    unsigned long res = S.get64(result);
+    unsigned long got = get64(product);
+    unsigned long res = get64(result);
     printf("%lu * %lu (mod %lu) -> %lu,%lu expected %lu in %u\n",
-           prod, fact, mod, res, got, exp, S.executed);
+           prod, fact, mod, res, got, exp, executed);
     assert(got == res);
     assert(got == exp);
 }
 
 
-static void test_mult_steps(unsigned long mod,
-                            unsigned long prod, unsigned long fact)
+void miller_rabin_state::test_mult_steps(unsigned long mod,
+                                         unsigned long prod, unsigned long fact)
 {
     unsigned long res = 0;
     prod %= mod;
@@ -583,22 +340,24 @@ static void test_mult_steps(unsigned long mod,
 }
 
 
-static void test_power(unsigned long mod, unsigned long n, unsigned long exp)
+void miller_rabin_state::test_power(unsigned long mod,
+                                    unsigned long n, unsigned long exp)
 {
-    S.set64(modulus, mod);
+    set64(modulus, mod);
     n %= mod;
-    S.mem[exp_twos] = 0;
-    S.set64(base, n);
-    S.set64(exponent, exp);
+    mem[exp_twos] = 0;
+    set64(base, n);
+    set64(exponent, exp);
     go(te_power);
-    unsigned long got = S.get64(product);
+    unsigned long got = get64(product);
     unsigned long expect = power(n, exp, mod);
     printf("%lu ** %lu (mod %lu) -> %lu expected %lu in %u\n",
-           n, exp, mod, got, expect, S.executed);
+           n, exp, mod, got, expect, executed);
 }
 
 
-static void test_power_steps(unsigned long mod, unsigned long n, unsigned long exp)
+void miller_rabin_state::test_power_steps(unsigned long mod,
+                                          unsigned long n, unsigned long exp)
 {
     unsigned long prod = 1;
     for (int i = 0; i != 64; ++i) {
@@ -612,35 +371,63 @@ static void test_power_steps(unsigned long mod, unsigned long n, unsigned long e
     }
 }
 
+// 1411807385341 needs 325, 443538368977861 needs 9375, 4341937413061 needs
+// 28178, 5517315475561 needs 450775 3933464309633 needs 9780504,
+// 107528788110061 needs 1795265022.
+static unsigned mr_bases[7] = {
+    2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
 
-static void test_single(unsigned long mod)
+static bool is_prime(unsigned long n)
 {
-    S.set64(modulus, mod);
-    go(te_single);
-    printf("mr %lu -> %u in %u\n", mod, S.out_latch, S.executed);
+    int tz = __builtin_ctzl(n - 1);
+    unsigned long exp = (n - 1) >> tz;
+
+    for (int i = 0; i != sizeof mr_bases / sizeof mr_bases[0]; ++i) {
+        if (mr_bases[i] % n == 0)
+            continue;
+        unsigned long pw = power(mr_bases[i], exp, n);
+        if (pw == 1)
+            continue;
+        for (int i = 0; i < tz; ++i) {
+            if (pw + 1 == n)
+                goto next;
+            pw = mult(pw, pw, n);
+        }
+        return false;
+    next: ;
+    }
+    return true;
 }
 
 
-int main(void)
+void miller_rabin_state::test_single(unsigned long mod)
 {
-    S.straight_through = true;
-    S.write_limit = 256;
-    go(te_full);
-    printf("Program length = %i\n", S.executed);
+    set64(modulus, mod);
+    go(te_single);
+    unsigned exp = is_prime(mod) ? len : 1;
+    printf("mr %lu -> %u exp %u in %u\n", mod, out_latch, exp, executed);
+    assert(exp == out_latch);
+}
 
-    S.straight_through = false;
-    S.write_limit = 64;
 
-    S.set64(one, 1);
-    S.set64(zero, 0);
+void miller_rabin_state::run_tests()
+{
+    extract_branches(0);
 
-    S.set64(base_start, 2);
-    S.set64(base_start + 8, 325);
-    S.set64(base_start + 16, 9375);
-    S.set64(base_start + 24, 28178);
-    S.set64(base_start + 32, 450775);
-    S.set64(base_start + 40, 9780504);
-    S.set64(base_start + 48, 1795265022);
+    emit_instructions = true;
+    straight_through = true;
+    jump_take_number = -1;
+    go(0);                              // Assemble
+
+    emit_instructions = false;
+    straight_through = false;
+    write_limit = 64;
+
+    set64(one, 1);
+    set64(zero, 0);
+
+    for (int i = 0; i != 7; ++i)
+        set64(base_start + 8 * i, mr_bases[i]);
 
     test_add(6700417, 6000000, 5000000, factor);
     test_add(100000000, 6000000, 5000000, product);
@@ -661,11 +448,24 @@ int main(void)
     test_power(0x100000001, 325, 0x100000000);
     test_power(18446744073709551557u, 2, 18446744073709551556u);
 
-    test_single(5);
-    test_single(15);
-    test_single(9223372036854775783);
-    test_single(0x100000001);
-    test_single(65537);
+    static unsigned long singles[] = {
+        5, 15,
+        9223372036854775783, // Largest prime < 2**63
+        9219669366496075201, // Carmichael, < 2**63
+        0x100000001, 65537,
 
+        // Fail all but one:
+        1411807385341, 443538368977861, 4341937413061, 5517315475561,
+        3933464309633, 107528788110061 };
+
+    for (int i = 0; i != sizeof singles / sizeof singles[0]; ++i)
+        test_single(singles[i]);
+}
+
+
+int main()
+{
+    miller_rabin_state S;
+    S.run_tests();
     return 0;
 }

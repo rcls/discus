@@ -1,12 +1,16 @@
-all: testacc.sp testacc-check
 
-%.spr: %.sch
+TESTCC = acc-check alu pcdecode opdecode
+
+all: rmsim $(TESTCC:%=test/test%)
+#all: testacc.sp testacc-check
+
+%.rcr: %.sch
 	gnetlist -Lsubckt -g spice-sdb -o $@ $+
 
-%.sp: %.spr
+%.cir: %.rcr
 	perl substrate.pl $< > $@
 
-testacc.spr: accumulate.sch
+test/testacc.rcr: accumulate.sch
 
 CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11
 
@@ -53,3 +57,13 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 %.zip: %-gerbers
 	-rm $*.zip
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
+
+rmsim: state.o
+$(TESTCC:%=test/test%): test/spice_load.o
+
+state.o rmsim.o: state.h
+$(TESTCC:%=test/test%.o): test/spice_load.h
+
+.PHONY: clean
+clean:
+	rm -f *- */*- *~ */*~ *.o */*.o *.cir */*.cir *.rcr */*.rcr

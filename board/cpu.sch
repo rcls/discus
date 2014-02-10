@@ -1400,14 +1400,14 @@ C 10400 12800 1 0 0 decoder.sym
 T 11100 13300 5 10 1 1 0 4 1
 source=decoder.sch
 T 11100 13800 5 10 1 1 0 4 1
-refdef=R
+refdes=R
 }
 C 14000 12800 1 0 0 decoder.sym
 {
 T 14700 13300 5 10 1 1 0 4 1
 source=decoder.sch
 T 14700 13800 5 10 1 1 0 4 1
-refdef=W
+refdes=W
 }
 N 12100 20200 11900 20200 4
 {

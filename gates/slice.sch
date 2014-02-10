@@ -417,7 +417,7 @@ footprint=anchor
 T 48700 49800 5 10 0 0 90 0 1
 device=INPUT
 T 48900 49800 5 10 1 1 0 5 1
-refdes=A#
+refdes=Ao#
 }
 N 48400 50600 48900 50600 4
 C 48800 51200 1 270 0 in-1.sym
@@ -427,5 +427,5 @@ footprint=anchor
 T 49100 51200 5 10 0 0 270 0 1
 device=INPUT
 T 48900 51200 5 10 1 1 0 3 1
-refdes=A
+refdes=Ao
 }

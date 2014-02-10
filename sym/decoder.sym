@@ -113,7 +113,7 @@ pinseq=0
 T 700 500 8 10 1 1 0 4 1
 source=decoder.sch
 T 700 1000 8 10 1 1 0 4 1
-refdef=S?
+refdes=S?
 P 0 300 200 300 1 0 0
 {
 T 0 300 5 10 0 0 0 0 1

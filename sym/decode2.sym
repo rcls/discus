@@ -113,4 +113,4 @@ pinseq=0
 T 1000 550 8 10 1 1 0 4 1
 source=decode2.sch
 T 1000 800 8 10 1 1 0 4 1
-refdef=S?
+refdes=S?

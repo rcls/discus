@@ -121,7 +121,7 @@ pinnumber=0
 T 0 400 5 10 0 0 0 0 1
 pinseq=0
 T 205 395 5 10 1 1 0 1 1
-pinlabel=Zw#
+pinlabel=Zw
 }
 P 1600 600 1400 600 1 0 0
 {

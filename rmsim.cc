@@ -179,7 +179,7 @@ classify1:
     RET();
 
 square:                                 // product * product -> product
-    STA(outer_loop_count);
+    STA(outer_loop_count);              // All callers want this.
     LOAD(Y, product);
 mult:             // Leaves product in result also.
     // product * mem(Y) -> product (mod modulus).

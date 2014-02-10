@@ -13,7 +13,7 @@ C 7400 9600 1 0 0 phi0.sym
 C 5200 10600 1 0 0 in-1.sym
 {
 T 5200 10700 5 10 1 1 0 7 1
-refdes=Ci
+refdes=Ci#
 T 5200 11100 5 10 0 0 0 0 1
 footprint=anchor
 T 5200 10900 5 10 0 0 0 0 1
@@ -176,7 +176,7 @@ refdes=S3
 C 9300 8300 1 0 0 in-1.sym
 {
 T 9300 8400 5 10 1 1 0 7 1
-refdes=CinS#
+refdes=CinR#
 T 9300 8800 5 10 0 0 0 0 1
 footprint=anchor
 T 9300 8600 5 10 0 0 0 0 1
@@ -186,7 +186,7 @@ N 9900 8400 10200 8400 4
 C 9300 8600 1 0 0 in-1.sym
 {
 T 9300 8700 5 10 1 1 0 7 1
-refdes=CinR
+refdes=CinS
 T 9300 9100 5 10 0 0 0 0 1
 footprint=anchor
 T 9300 8900 5 10 0 0 0 0 1
@@ -195,7 +195,7 @@ device=INPUT
 C 10900 8500 1 0 0 out-1.sym
 {
 T 11500 8600 5 10 1 1 0 1 1
-refdes=Ce
+refdes=Ce#
 T 10900 9000 5 10 0 0 0 0 1
 footprint=anchor
 T 10900 8800 5 10 0 0 0 0 1

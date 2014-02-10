@@ -1,0 +1,171 @@
+v 20130925 2
+T 800 600 8 10 1 1 0 4 1
+source=flags.sch
+B 200 200 1200 1500 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+P 0 1600 200 1600 1 0 0
+{
+T 0 1600 5 10 0 0 0 0 1
+pintype=unknown
+T 205 1595 5 10 1 1 0 1 1
+pinlabel=Ci#
+T 105 1645 5 10 0 1 0 6 1
+pinnumber=0
+T 0 1600 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 1400 200 1400 1 0 0
+{
+T 0 1400 5 10 0 0 0 0 1
+pintype=unknown
+T 205 1395 5 10 1 1 0 1 1
+pinlabel=Cw1#
+T 105 1445 5 10 0 1 0 6 1
+pinnumber=0
+T 0 1400 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 1200 200 1200 1 0 0
+{
+T 0 1200 5 10 0 0 0 0 1
+pintype=unknown
+T 205 1195 5 10 1 1 0 1 1
+pinlabel=Cw2#
+T 105 1245 5 10 0 1 0 6 1
+pinnumber=0
+T 0 1200 5 10 0 0 0 0 1
+pinseq=0
+}
+P 1600 1600 1400 1600 1 0 0
+{
+T 1600 1600 5 10 0 0 0 0 1
+pintype=unknown
+T 1395 1595 5 10 1 1 0 7 1
+pinlabel=Co
+T 1495 1645 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 1600 5 10 0 0 0 0 1
+pinseq=0
+}
+P 1600 1400 1400 1400 1 0 0
+{
+T 1600 1400 5 10 0 0 0 0 1
+pintype=unknown
+T 1395 1395 5 10 1 1 0 7 1
+pinlabel=Co#
+T 1495 1445 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 1400 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 900 200 900 1 0 0
+{
+T 0 900 5 10 0 0 0 0 1
+pintype=unknown
+T 205 895 5 10 1 1 0 1 1
+pinlabel=ϕ0
+T 105 945 5 10 0 1 0 6 1
+pinnumber=0
+T 0 900 5 10 0 0 0 0 1
+pinseq=0
+}
+P 1600 1200 1400 1200 1 0 0
+{
+T 1600 1200 5 10 0 0 0 0 1
+pintype=unknown
+T 1495 1245 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 1200 5 10 0 0 0 0 1
+pinseq=0
+T 1395 1195 5 10 1 1 0 7 1
+pinlabel=Ce#
+}
+P 1600 1000 1400 1000 1 0 0
+{
+T 1600 1000 5 10 0 0 0 0 1
+pintype=unknown
+T 1495 1045 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 1000 5 10 0 0 0 0 1
+pinseq=0
+T 1395 995 5 10 1 1 0 7 1
+pinlabel=CinS
+}
+P 1600 800 1400 800 1 0 0
+{
+T 1600 800 5 10 0 0 0 0 1
+pintype=unknown
+T 1495 845 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 800 5 10 0 0 0 0 1
+pinseq=0
+T 1395 795 5 10 1 1 0 7 1
+pinlabel=CinR#
+}
+P 0 600 200 600 1 0 0
+{
+T 0 600 5 10 0 0 0 0 1
+pintype=unknown
+T 105 645 5 10 0 1 0 6 1
+pinnumber=0
+T 0 600 5 10 0 0 0 0 1
+pinseq=0
+T 205 595 5 10 1 1 0 1 1
+pinlabel=Zi
+}
+P 0 400 200 400 1 0 0
+{
+T 0 400 5 10 0 0 0 0 1
+pintype=unknown
+T 105 445 5 10 0 1 0 6 1
+pinnumber=0
+T 0 400 5 10 0 0 0 0 1
+pinseq=0
+T 205 395 5 10 1 1 0 1 1
+pinlabel=Zw#
+}
+P 1600 600 1400 600 1 0 0
+{
+T 1600 600 5 10 0 0 0 0 1
+pintype=unknown
+T 1495 645 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 600 5 10 0 0 0 0 1
+pinseq=0
+T 1395 595 5 10 1 1 0 7 1
+pinlabel=Zo
+}
+P 1600 400 1400 400 1 0 0
+{
+T 1600 400 5 10 0 0 0 0 1
+pintype=unknown
+T 1495 445 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 400 5 10 0 0 0 0 1
+pinseq=0
+T 1395 395 5 10 1 1 0 7 1
+pinlabel=Zo#
+}
+P 800 1900 800 1700 1 0 0
+{
+T 800 1900 5 10 0 0 0 0 1
+pintype=unknown
+T 795 1700 5 10 1 1 0 5 1
+pinlabel=Vdd
+T 750 1795 5 10 0 1 90 0 1
+pinnumber=GND
+T 800 1900 5 10 0 0 0 0 1
+pinseq=0
+}
+P 800 0 800 200 1 0 0
+{
+T 800 0 5 10 0 0 0 0 1
+pintype=unknown
+T 805 200 5 10 1 1 0 3 1
+pinlabel=GND
+T 750 105 5 10 0 1 90 6 1
+pinnumber=0
+T 800 0 5 10 0 0 0 0 1
+pinseq=0
+}
+T 700 900 8 10 1 1 0 4 1
+refdes=S?

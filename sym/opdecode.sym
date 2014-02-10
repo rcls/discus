@@ -117,7 +117,7 @@ P 1600 3300 1400 3300 1 0 0
 T 1600 3300 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 3295 5 10 1 1 0 7 1
-pinlabel=CR#
+pinlabel=CR
 T 1495 3345 5 10 0 1 0 0 1
 pinnumber=0
 T 1600 3300 5 10 0 0 0 0 1
@@ -139,7 +139,7 @@ P 1600 2900 1400 2900 1 0 0
 T 1600 2900 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 2895 5 10 1 1 0 7 1
-pinlabel=CinR#
+pinlabel=CinS
 T 1495 2945 5 10 0 1 0 0 1
 pinnumber=0
 T 1600 2900 5 10 0 0 0 0 1
@@ -154,7 +154,7 @@ pinnumber=0
 T 1600 2700 5 10 0 0 0 0 1
 pinseq=0
 T 1395 2695 5 10 1 1 0 7 1
-pinlabel=CinS
+pinlabel=CinR#
 }
 P 1600 2500 1400 2500 1 0 0
 {
@@ -321,3 +321,5 @@ pinseq=0
 T 1395 895 5 10 1 1 0 7 1
 pinlabel=STA#
 }
+T 800 1700 8 10 1 1 0 4 1
+refdes=S?

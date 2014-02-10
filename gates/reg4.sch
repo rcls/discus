@@ -1,34 +1,36 @@
-v 20121123 2
+v 20130925 2
 C 57400 63400 1 0 0 sramcell2.sym
 {
-T 58550 63750 5 10 1 1 0 0 1
-refdes=0
+T 58600 64450 5 10 1 1 0 0 1
+refdes=F0
 T 57650 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }
 C 59700 63400 1 0 0 sramcell2.sym
 {
-T 60850 63750 5 10 1 1 0 0 1
-refdes=1
+T 60900 64450 5 10 1 1 0 0 1
+refdes=F1
 T 59950 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }
 C 62000 63400 1 0 0 sramcell2.sym
 {
-T 63150 63750 5 10 1 1 0 0 1
-refdes=2
+T 63200 64450 5 10 1 1 0 0 1
+refdes=F2
 T 62250 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }
 C 64300 63400 1 0 0 sramcell2.sym
 {
-T 65450 63750 5 10 1 1 0 0 1
-refdes=3
+T 65500 64450 5 10 1 1 0 0 1
+refdes=F3
 T 64550 64200 5 10 1 1 0 0 1
 source=sramcell2.sch
 }
 C 58200 65700 1 0 1 out-1.sym
 {
+T 58200 66200 5 10 0 0 0 6 1
+footprint=anchor
 T 58200 66000 5 10 0 0 0 6 1
 device=OUTPUT
 T 58150 65850 5 10 1 1 0 6 1
@@ -36,6 +38,8 @@ refdes=Vdd
 }
 C 66800 63300 1 0 0 out-1.sym
 {
+T 66800 63800 5 10 0 0 0 0 1
+footprint=anchor
 T 66800 63600 5 10 0 0 0 0 1
 device=OUTPUT
 T 66900 63500 5 10 1 1 0 0 1
@@ -43,6 +47,8 @@ refdes=GND
 }
 C 56800 64400 1 0 0 in-1.sym
 {
+T 56800 64900 5 10 0 0 0 0 1
+footprint=anchor
 T 56800 64700 5 10 0 0 0 0 1
 device=INPUT
 T 56950 64550 5 10 1 1 0 0 1
@@ -50,6 +56,8 @@ refdes=SA0
 }
 C 59100 64400 1 0 0 in-1.sym
 {
+T 59100 64900 5 10 0 0 0 0 1
+footprint=anchor
 T 59100 64700 5 10 0 0 0 0 1
 device=INPUT
 T 59250 64550 5 10 1 1 0 0 1
@@ -57,6 +65,8 @@ refdes=SA1
 }
 C 63700 64400 1 0 0 in-1.sym
 {
+T 63700 64900 5 10 0 0 0 0 1
+footprint=anchor
 T 63700 64700 5 10 0 0 0 0 1
 device=INPUT
 T 63850 64550 5 10 1 1 0 0 1
@@ -64,6 +74,8 @@ refdes=SA3
 }
 C 61400 64400 1 0 0 in-1.sym
 {
+T 61400 64900 5 10 0 0 0 0 1
+footprint=anchor
 T 61400 64700 5 10 0 0 0 0 1
 device=INPUT
 T 61550 64550 5 10 1 1 0 0 1
@@ -71,6 +83,8 @@ refdes=SA2
 }
 C 56800 63900 1 0 0 in-1.sym
 {
+T 56800 64400 5 10 0 0 0 0 1
+footprint=anchor
 T 56800 64200 5 10 0 0 0 0 1
 device=INPUT
 T 56950 64050 5 10 1 1 0 0 1
@@ -78,6 +92,8 @@ refdes=SB0
 }
 C 63700 63900 1 0 0 in-1.sym
 {
+T 63700 64400 5 10 0 0 0 0 1
+footprint=anchor
 T 63700 64200 5 10 0 0 0 0 1
 device=INPUT
 T 63850 64050 5 10 1 1 0 0 1
@@ -85,6 +101,8 @@ refdes=SB3
 }
 C 59100 63900 1 0 0 in-1.sym
 {
+T 59100 64400 5 10 0 0 0 0 1
+footprint=anchor
 T 59100 64200 5 10 0 0 0 0 1
 device=INPUT
 T 59250 64050 5 10 1 1 0 0 1
@@ -92,6 +110,8 @@ refdes=SB1
 }
 C 61400 63900 1 0 0 in-1.sym
 {
+T 61400 64400 5 10 0 0 0 0 1
+footprint=anchor
 T 61400 64200 5 10 0 0 0 0 1
 device=INPUT
 T 61550 64050 5 10 1 1 0 0 1
@@ -142,6 +162,8 @@ N 62000 63200 62000 63800 4
 N 66100 64800 66200 64800 4
 C 66200 64200 1 90 0 in-1.sym
 {
+T 65700 64200 5 10 0 0 90 0 1
+footprint=anchor
 T 65900 64200 5 10 0 0 90 0 1
 device=INPUT
 T 66000 64000 5 10 1 1 0 0 1
@@ -149,6 +171,8 @@ refdes=STR
 }
 C 67400 65300 1 0 0 out-1.sym
 {
+T 67400 65800 5 10 0 0 0 0 1
+footprint=anchor
 T 67400 65600 5 10 0 0 0 0 1
 device=OUTPUT
 T 68050 65350 5 10 1 1 0 0 1
@@ -156,6 +180,8 @@ refdes=Q
 }
 C 67400 65100 1 0 0 out-1.sym
 {
+T 67400 65600 5 10 0 0 0 0 1
+footprint=anchor
 T 67400 65400 5 10 0 0 0 0 1
 device=OUTPUT
 T 68050 65150 5 10 1 1 0 0 1
@@ -163,6 +189,8 @@ refdes=Q#
 }
 C 68000 64500 1 0 1 in-1.sym
 {
+T 68000 65000 5 10 0 0 0 6 1
+footprint=anchor
 T 68000 64800 5 10 0 0 0 6 1
 device=INPUT
 T 68200 64550 5 10 1 1 0 6 1
@@ -170,6 +198,8 @@ refdes=R
 }
 C 68000 64300 1 0 1 in-1.sym
 {
+T 68000 64800 5 10 0 0 0 6 1
+footprint=anchor
 T 68000 64600 5 10 0 0 0 6 1
 device=INPUT
 T 68300 64350 5 10 1 1 0 6 1
@@ -197,6 +227,8 @@ value=PDTC124TU
 }
 C 63400 61800 1 0 0 out-1.sym
 {
+T 63400 62300 5 10 0 0 0 0 1
+footprint=anchor
 T 63400 62100 5 10 0 0 0 0 1
 device=OUTPUT
 T 64050 61850 5 10 1 1 0 0 1
@@ -205,10 +237,12 @@ refdes=QB
 N 63000 61700 63000 63200 4
 C 63300 61200 1 0 0 gnd-1.sym
 C 66700 63100 1 0 0 gnd-1.sym
-C 62600 65800 1 0 0 3.3V-plus-1.sym
-C 63200 62800 1 0 0 3.3V-plus-1.sym
+C 62600 65800 1 0 0 vdd-1.sym
+C 63200 62800 1 0 0 vdd-1.sym
 C 68000 64700 1 0 1 in-1.sym
 {
+T 68000 65200 5 10 0 0 0 6 1
+footprint=anchor
 T 68000 65000 5 10 0 0 0 6 1
 device=INPUT
 T 68200 64750 5 10 1 1 0 6 1

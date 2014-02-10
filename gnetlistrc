@@ -3,6 +3,6 @@
 (hierarchy-uref-mangle "enabled")
 
 (hierarchy-uref-order "prepend")
-(hierarchy-uref-separator "_")
+(hierarchy-uref-separator "")
 (hierarchy-netname-order "prepend")
 (hierarchy-netname-separator "_")

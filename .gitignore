@@ -1,3 +1,6 @@
-*.sp
-*.spr
+*.bin
+*.cir
+*.rcr
 \#*#
+test/testacc-check
+test/testalu

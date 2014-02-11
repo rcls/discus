@@ -127,11 +127,18 @@ main_loop:
     // LOAD(X,exponent);
     CALL(copy);
 
+    // We should now have result==product==base
 power:                                  // Entry-point for test only...
-    LOAD(Y,one);
-    CALL(copy_to_product);
     LOAD(A,len * 8);
     SUBM(exp_twos);                 // The exponent is MSB aligned in the field.
+    // First left shift until we find a set bit...
+    LOAD(Y,A);
+power_y:
+    CALL(leftrot_exponent);
+    DEC(Y);
+    JP(NC,power_y);                     // Note that exponent==0 never happens.
+    LOAD(A,Y);
+    JP(Z,power_x);
 power1:
     CALL(square);
     CALL(leftrot_exponent);
@@ -139,6 +146,7 @@ power1:
     CL(C,mult);
     DECM(A,outer_loop_count);
     JP(NZ,power1);
+power_x:
 
     if (start == te_power)
         RET();
@@ -236,15 +244,18 @@ add64m1:
     LOAD(U,result);
     LOAD(Y,modulus);
     LOAD(X,temp);
-    SETC();
+    JP(NC,add64m2);
+    LOAD(X,U);           // Write subtract into result; will leave NC & no copy.
 add64m2:
+    SETC();
+add64m3:
     LOADM(A,U);
     SBCM(Y);
     STA(X);
     DEC(Y);
     DEC(X);
     DEC(U);
-    JP(NZ,add64m2);
+    JP(NZ,add64m3);
     RT(NC);
     //LOAD(Y,temp);                     // Commit.
     //LOAD(X,result);
@@ -293,9 +304,12 @@ void miller_rabin_state::test_add(unsigned long mod, unsigned long acc,
     go(te_add);
 
     unsigned long res = get64(result);
+    unsigned long expect = acc + addend;
+    if (expect < acc || expect >= mod)
+        expect -= mod;
     printf("%lu + %lu (mod %lu) -> %lu expected %lu in %u\n",
-           acc, addend, mod, res, (acc + addend) % mod, executed);
-    assert(res == (acc + addend) % mod);
+           acc, addend, mod, res, expect, executed);
+    assert(res == expect);
 }
 
 
@@ -341,6 +355,7 @@ void miller_rabin_state::test_power(unsigned long mod,
     n %= mod;
     mem[exp_twos] = 0;
     set64(base, n);
+    set64(product, n);
     set64(exponent, exp);
     go(te_power);
     unsigned long got = get64(product);
@@ -439,6 +454,7 @@ void miller_rabin_state::run_tests()
         test_power_steps((1ul << 63) - 1, 1234, (1ul << 63) - 2);
 
     test_power(0x100000001, 325, 0x100000000);
+    test_power(18446744073709551557u, 2, 18446744073709551556u);
 
     static unsigned long singles[] = {
         5, 15,

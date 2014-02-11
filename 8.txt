@@ -178,4 +178,6 @@ Write : not jump except ret/write/STA/OUT.
 x1xxxxxx,1x0xxxxx,IN
 
 FIXME : Various flags (comp-) open drain.
+FIXME : AS/AR CS/CR dominances broken.
+FIXME : Check perf. of pull strobes.
 FIXME : Invert WR.

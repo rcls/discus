@@ -357,7 +357,6 @@ void miller_rabin_state::test_power_steps(unsigned long mod,
     for (int i = 0; i != 64; ++i) {
         test_mult(mod, prod, prod, factor);
         prod = mult(prod, prod, mod);
-        //printf("%016lx %016lx\n", exp, ((1ul << 63) >> i));
         if (exp & ((1ul << 63) >> i)) {
             test_mult(mod, prod, n, factor);
             prod = mult(prod, n, mod);

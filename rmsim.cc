@@ -460,6 +460,9 @@ void miller_rabin_state::run_tests()
         5, 15,
         9223372036854775783, // Largest prime < 2**63
         9219669366496075201, // Carmichael, < 2**63
+        18446312605943409265u, // Largest 64 bit SPP carmichael.
+        18446744066047760377u, // Largest 64 bit SPP.
+        18446744073709551557u, // Largest 64 bit prime.
         0x100000001, 65537,
 
         // Fail all but one:

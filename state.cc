@@ -51,7 +51,7 @@ void state_t::account(int opcode, const operand_t & v) {
     if (v.reg < 0) {
         if (emit_instructions)
             printf("%02x: %02x %02x\n",
-                   executed, v.value >> 2, opcode + (v.value & 3));
+                   executed, v.value & 63, opcode + (v.value >> 6));
         ++executed;
     }
     else if (emit_instructions)

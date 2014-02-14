@@ -40,15 +40,7 @@ struct miller_rabin_state : state_t {
 
     void go(int start);
 
-    void test_add(unsigned long mod, unsigned long acc,
-                  unsigned long addend, int address);
-    void test_mult(unsigned long mod, unsigned long prod,
-                   unsigned long fact, int address);
-    void test_mult_steps(unsigned long mod,
-                         unsigned long prod, unsigned long fact);
     void test_power(unsigned long mod, unsigned long n, unsigned long exp);
-    void test_power_steps(unsigned long mod, unsigned long n,
-                          unsigned long exp);
     void test_single(unsigned long mod);
 
     void run_tests();
@@ -293,61 +285,6 @@ static unsigned long power (unsigned long base, unsigned long exp,
 }
 
 
-void miller_rabin_state::test_add(unsigned long mod, unsigned long acc,
-                                  unsigned long addend, int address)
-{
-    set64(modulus, mod);
-    set64(result, acc);
-    set64(address, addend);
-    reg[X] = address;
-
-    go(te_add);
-
-    unsigned long res = get64(result);
-    unsigned long expect = acc + addend;
-    if (expect < acc || expect >= mod)
-        expect -= mod;
-    printf("%lu + %lu (mod %lu) -> %lu expected %lu in %u\n",
-           acc, addend, mod, res, expect, executed);
-    assert(res == expect);
-}
-
-
-void miller_rabin_state::test_mult(unsigned long mod, unsigned long prod,
-                                   unsigned long fact, int address)
-{
-    set64(modulus, mod);
-    prod %= mod;
-    set64(product, prod);
-    set64(address, fact);
-    reg[Y] = address;
-    go(te_mult);
-    unsigned long exp = mult(prod, fact, mod);
-    unsigned long got = get64(product);
-    unsigned long res = get64(result);
-    printf("%lu * %lu (mod %lu) -> %lu,%lu expected %lu in %u\n",
-           prod, fact, mod, res, got, exp, executed);
-    assert(got == res);
-    assert(got == exp);
-}
-
-
-void miller_rabin_state::test_mult_steps(unsigned long mod,
-                                         unsigned long prod, unsigned long fact)
-{
-    unsigned long res = 0;
-    prod %= mod;
-    for (int i = 0; i != 64; ++i) {
-        test_add(mod, res, res, result);
-        res = res * 2 % mod;
-        if (fact & ((1ull << 63) >> i)) {
-            test_add(mod, res, prod, product);
-            res = (res + prod) % mod;
-        }
-    }
-}
-
-
 void miller_rabin_state::test_power(unsigned long mod,
                                     unsigned long n, unsigned long exp)
 {
@@ -364,20 +301,6 @@ void miller_rabin_state::test_power(unsigned long mod,
            n, exp, mod, got, expect, executed);
 }
 
-
-void miller_rabin_state::test_power_steps(unsigned long mod,
-                                          unsigned long n, unsigned long exp)
-{
-    unsigned long prod = 1;
-    for (int i = 0; i != 64; ++i) {
-        test_mult(mod, prod, prod, factor);
-        prod = mult(prod, prod, mod);
-        if (exp & ((1ul << 63) >> i)) {
-            test_mult(mod, prod, n, factor);
-            prod = mult(prod, n, mod);
-        }
-    }
-}
 
 // 1411807385341 needs 325, 443538368977861 needs 9375, 4341937413061 needs
 // 28178, 5517315475561 needs 450775 3933464309633 needs 9780504,
@@ -437,21 +360,10 @@ void miller_rabin_state::run_tests()
     for (int i = 0; i != 7; ++i)
         set64(base_start + 8 * i, mr_bases[i]);
 
-    test_add(6700417, 6000000, 5000000, factor);
-    test_add(100000000, 6000000, 5000000, product);
-    test_add((1ul << 63) - 1, 1879080904, 1879080904, factor);
-
-    test_mult(6700417, 6000000, 5000000, factor);
-    test_mult(33, 1, 1000, temp);
-    if (0)
-        test_mult_steps((1ul << 63) - 1, 1879080904, 1879080904);
-    test_mult((1ul << 63) - 1, 1879080904, 1879080904, factor);
     test_power(100000, 2, 10);
     test_power(6700417, 2, 6700416);
     test_power(9223372036854775783, 5555, 9223372036854775782);
     test_power((1ul << 63) - 1, 1234, (1ul << 63) - 2);
-    if (0)
-        test_power_steps((1ul << 63) - 1, 1234, (1ul << 63) - 2);
 
     test_power(0x100000001, 325, 0x100000000);
     test_power(18446744073709551557u, 2, 18446744073709551556u);

@@ -1,16 +1,13 @@
 
-TESTCC = acc-check alu pcdecode opdecode
+TESTCC = alu pcdecode opdecode
 
 all: rmsim $(TESTCC:%=test/test%)
-#all: testacc.sp testacc-check
 
 %.rcr: %.sch
 	gnetlist -Lsubckt -g spice-sdb -o $@ $+
 
 %.cir: %.rcr
 	perl substrate.pl $< > $@
-
-test/testacc.rcr: accumulate.sch
 
 CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11
 

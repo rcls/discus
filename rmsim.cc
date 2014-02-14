@@ -388,7 +388,6 @@ void miller_rabin_state::run_tests()
 
 int main()
 {
-    miller_rabin_state S;
-    S.run_tests();
+    miller_rabin_state().run_tests();
     return 0;
 }

@@ -154,7 +154,7 @@ footprint=sot323-bjt
 T 17200 9800 5 10 0 1 0 0 1
 value=PDTC124TU
 T 17300 9400 5 10 1 1 0 1 1
-refdes=Q?
+refdes=Q
 }
 N 17100 9400 17100 8900 4
 C 17400 8900 1 0 0 gnd-1.sym

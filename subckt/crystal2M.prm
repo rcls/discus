@@ -3,7 +3,7 @@
 * Shunt capacitance.
 Co 1 5 4p
 * Series resistance.
-R 1 3 75
+R 1 3 500
 * Motional capacitance
 C1 3 4 20f
 * Motional inductance

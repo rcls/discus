@@ -29,7 +29,7 @@ P 0 700 200 700 1 0 0
 T 0 700 5 10 0 0 0 0 1
 pintype=unknown
 T 205 695 5 10 1 1 0 1 1
-pinlabel=C
+pinlabel=ϕ1
 T 105 745 5 10 0 1 0 6 1
 pinnumber=3
 T 0 700 5 10 0 0 0 0 1

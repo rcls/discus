@@ -1,14 +1,14 @@
 v 20130925 2
 C 9400 9100 1 0 0 sram16byte.sym
 {
-T 10200 10475 5 10 1 1 0 4 1
+T 10200 10475 5 8 1 1 0 4 1
 source=sram16byte.sch
 T 10200 11200 5 10 1 1 0 3 1
 refdes=A
 }
 C 13900 9100 1 0 0 sram16byte.sym
 {
-T 14700 10475 5 10 1 1 0 4 1
+T 14700 10475 5 8 1 1 0 4 1
 source=sram16byte.sch
 T 14700 11200 5 10 1 1 0 3 1
 refdes=B

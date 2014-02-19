@@ -1,7 +1,7 @@
 v 20130925 2
 C 11300 14700 1 0 0 pcbit.sym
 {
-T 12500 15400 5 10 1 1 0 7 1
+T 12500 15400 5 9 1 1 0 7 1
 source=pcbit.sch
 T 12000 15800 5 10 1 1 0 4 1
 refdes=S0
@@ -65,7 +65,7 @@ netname=P0
 }
 C 13400 14700 1 0 0 pcbit.sym
 {
-T 14600 15400 5 10 1 1 0 7 1
+T 14600 15400 5 9 1 1 0 7 1
 source=pcbit.sch
 T 14100 15800 5 10 1 1 0 4 1
 refdes=S1
@@ -134,7 +134,7 @@ netname=P1#
 }
 C 15500 14700 1 0 0 pcbit.sym
 {
-T 16700 15400 5 10 1 1 0 7 1
+T 16700 15400 5 9 1 1 0 7 1
 source=pcbit.sch
 T 16200 15800 5 10 1 1 0 4 1
 refdes=S2
@@ -203,7 +203,7 @@ netname=P2
 }
 C 17600 14700 1 0 0 pcbit.sym
 {
-T 18800 15400 5 10 1 1 0 7 1
+T 18800 15400 5 9 1 1 0 7 1
 source=pcbit.sch
 T 18300 15800 5 10 1 1 0 4 1
 refdes=S3
@@ -272,7 +272,7 @@ netname=P3#
 }
 C 11300 11600 1 0 0 pcbit.sym
 {
-T 12500 12300 5 10 1 1 0 7 1
+T 12500 12300 5 9 1 1 0 7 1
 source=pcbit.sch
 T 12000 12700 5 10 1 1 0 4 1
 refdes=S4
@@ -341,7 +341,7 @@ netname=P4
 }
 C 13400 11600 1 0 0 pcbit.sym
 {
-T 14600 12300 5 10 1 1 0 7 1
+T 14600 12300 5 9 1 1 0 7 1
 source=pcbit.sch
 T 14100 12700 5 10 1 1 0 4 1
 refdes=S5
@@ -410,7 +410,7 @@ netname=P5#
 }
 C 15500 11600 1 0 0 pcbit.sym
 {
-T 16700 12300 5 10 1 1 0 7 1
+T 16700 12300 5 9 1 1 0 7 1
 source=pcbit.sch
 T 16200 12700 5 10 1 1 0 4 1
 refdes=S6
@@ -479,7 +479,7 @@ netname=P6
 }
 C 17600 11600 1 0 0 pcbit.sym
 {
-T 18800 12300 5 10 1 1 0 7 1
+T 18800 12300 5 9 1 1 0 7 1
 source=pcbit.sch
 T 18300 12700 5 10 1 1 0 4 1
 refdes=S7
@@ -640,7 +640,7 @@ C 9000 17400 1 0 0 vdd-1.sym
 C 9100 14900 1 0 0 gnd-1.sym
 C 8400 12300 1 0 0 pcdecode.sym
 {
-T 9200 13000 5 10 1 1 0 4 1
+T 9200 13000 5 8 1 1 0 4 1
 source=pcdecode.sch
 T 9200 13300 5 10 1 1 0 4 1
 refdes=D
@@ -667,14 +667,14 @@ netname=Push
 }
 C 7700 10300 1 0 0 sp.sym
 {
-T 8300 10750 5 10 1 1 0 4 1
+T 8400 10750 5 10 1 1 0 4 1
 source=sp.sch
 T 8400 11100 5 10 1 1 0 4 1
 refdes=P
 }
 C 9300 10300 1 0 0 decoder.sym
 {
-T 10000 10800 5 10 1 1 0 4 1
+T 10000 10800 5 8 1 1 0 4 1
 source=decoder.sch
 T 10000 11300 5 10 1 1 0 4 1
 refdes=S
@@ -1119,7 +1119,7 @@ footprint=anchor
 }
 C 17800 10100 1 0 0 clocking.sym
 {
-T 18500 10400 5 10 1 1 0 4 1
+T 18500 10400 5 9 1 1 0 4 1
 source=clocking.sch
 T 18500 10800 5 10 1 1 0 4 1
 refdes=C

@@ -1,7 +1,7 @@
 v 20130925 2
 C 5900 11100 1 0 0 romquad8.sym
 {
-T 6700 12300 5 10 1 1 0 4 1
+T 6700 12300 5 8 1 1 0 4 1
 source=romquad8.sch
 T 6700 13400 5 10 1 1 0 4 1
 refdes=A
@@ -199,7 +199,7 @@ netname=P3#
 C 6600 10800 1 0 0 gnd-1.sym
 C 8900 11100 1 0 0 romquad8.sym
 {
-T 9700 12300 5 10 1 1 0 4 1
+T 9700 12300 5 8 1 1 0 4 1
 source=romquad8.sch
 T 9700 13400 5 10 1 1 0 4 1
 refdes=B
@@ -397,7 +397,7 @@ netname=P3#
 C 9600 10800 1 0 0 gnd-1.sym
 C 11900 11100 1 0 0 romquad8.sym
 {
-T 12700 12300 5 10 1 1 0 4 1
+T 12700 12300 5 8 1 1 0 4 1
 source=romquad8.sch
 T 12700 13400 5 10 1 1 0 4 1
 refdes=C
@@ -595,7 +595,7 @@ netname=P3#
 C 12600 10800 1 0 0 gnd-1.sym
 C 14900 11100 1 0 0 romquad8.sym
 {
-T 15700 12300 5 10 1 1 0 4 1
+T 15700 12300 5 8 1 1 0 4 1
 source=romquad8.sch
 T 15700 13400 5 10 1 1 0 4 1
 refdes=D
@@ -915,59 +915,59 @@ C 7300 9300 1 0 0 gnd-1.sym
 C 13300 9300 1 0 0 gnd-1.sym
 C 5300 7600 1 0 0 romio.sym
 {
+T 5900 8050 5 8 1 1 0 4 1
+source=romio.sch
 T 5900 8400 5 10 1 1 0 4 1
 refdes=Q0
-T 5900 8050 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 5300 5700 1 0 0 romio.sym
 {
+T 5900 6150 5 8 1 1 0 4 1
+source=romio.sch
 T 5900 6500 5 10 1 1 0 4 1
 refdes=Q4
-T 5900 6150 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 8300 7600 1 0 0 romio.sym
 {
+T 8900 8050 5 8 1 1 0 4 1
+source=romio.sch
 T 8900 8400 5 10 1 1 0 4 1
 refdes=Q1
-T 8900 8050 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 8300 5700 1 0 0 romio.sym
 {
+T 8900 6150 5 8 1 1 0 4 1
+source=romio.sch
 T 8900 6500 5 10 1 1 0 4 1
 refdes=Q5
-T 8900 6150 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 11300 7600 1 0 0 romio.sym
 {
+T 11900 8050 5 8 1 1 0 4 1
+source=romio.sch
 T 11900 8400 5 10 1 1 0 4 1
 refdes=Q2
-T 11900 8050 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 11300 5700 1 0 0 romio.sym
 {
+T 11900 6150 5 8 1 1 0 4 1
+source=romio.sch
 T 11900 6500 5 10 1 1 0 4 1
 refdes=Q6
-T 11900 6150 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 14300 7600 1 0 0 romio.sym
 {
+T 14900 8050 5 8 1 1 0 4 1
+source=romio.sch
 T 14900 8400 5 10 1 1 0 4 1
 refdes=Q3
-T 14900 8050 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 14300 5700 1 0 0 romio.sym
 {
+T 14900 6150 5 8 1 1 0 4 1
+source=romio.sch
 T 14900 6500 5 10 1 1 0 4 1
 refdes=Q7
-T 14900 6150 5 10 1 1 0 4 1
-source=romio.sch
 }
 C 5800 7300 1 0 0 gnd-1.sym
 C 5800 5400 1 0 0 gnd-1.sym

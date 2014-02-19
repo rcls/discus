@@ -8,28 +8,28 @@ refdes=E
 }
 C 46800 44000 1 0 0 sramcell2.sym
 {
-T 47050 44800 5 10 1 1 0 0 1
+T 47600 44850 5 8 1 1 0 4 1
 source=sramcell2.sch
 T 47950 45050 5 10 1 1 0 0 1
 refdes=U
 }
 C 46800 46000 1 0 0 sramcell2.sym
 {
-T 47050 46800 5 10 1 1 0 0 1
+T 47600 46850 5 8 1 1 0 4 1
 source=sramcell2.sch
 T 47950 47050 5 10 1 1 0 0 1
 refdes=Y
 }
 C 46800 48000 1 0 0 sramcell2.sym
 {
-T 47050 48800 5 10 1 1 0 0 1
+T 47600 48850 5 8 1 1 0 4 1
 source=sramcell2.sch
 T 47950 49050 5 10 1 1 0 0 1
 refdes=X
 }
 C 46800 50000 1 0 0 sramcell2.sym
 {
-T 47050 50800 5 10 1 1 0 0 1
+T 47600 50850 5 8 1 1 0 4 1
 source=sramcell2.sch
 T 47950 51050 5 10 1 1 0 0 1
 refdes=A

@@ -7,7 +7,7 @@ R 1 3 500
 * Motional capacitance
 C1 3 4 20f
 * Motional inductance
-L 4 5 0.3166
+L 4 5 0.316853
 * Stimulate for simulation.
 * sin offset amplitude freq time-delay decay
 * (decay is inverse-time).

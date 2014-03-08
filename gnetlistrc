@@ -1,4 +1,4 @@
-;(hierarchy-netattrib-mangle "enabled")
+(hierarchy-netattrib-mangle "enabled")
 (hierarchy-netname-mangle "enabled")
 (hierarchy-uref-mangle "enabled")
 

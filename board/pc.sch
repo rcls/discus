@@ -1148,8 +1148,8 @@ T 17200 10800 5 10 0 0 0 0 1
 device=INPUT
 T 17200 11000 5 10 0 0 0 0 1
 footprint=anchor
-T 17200 10600 5 10 1 1 0 7 1
-refdes=ϕ1
+T 17500 10575 5 10 1 1 0 5 1
+refdes=STA#
 }
 C 18300 11300 1 0 0 vdd-1.sym
 C 18400 9800 1 0 0 gnd-1.sym

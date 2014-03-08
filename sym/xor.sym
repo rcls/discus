@@ -43,8 +43,8 @@ P 300 1000 300 800 1 0 0
 {
 T 300 1000 5 10 0 0 0 0 1
 pintype=unknown
-T 320 825 5 8 1 1 0 0 1
-pinlabel=Vc
+T 320 800 5 8 1 1 0 0 1
+pinlabel=Vdd
 T 250 895 5 10 0 1 90 0 1
 pinnumber=4
 T 300 1000 5 10 0 0 0 0 1

@@ -2343,3 +2343,12 @@ refdes=STA#
 T 14900 18400 5 10 0 0 0 0 1
 footprint=anchor
 }
+C 13300 20300 1 0 1 out-1.sym
+{
+T 13300 20600 5 10 0 0 0 6 1
+device=OUTPUT
+T 12700 20400 5 10 1 1 0 7 1
+refdes=MR
+T 13300 20800 5 10 0 0 0 6 1
+footprint=anchor
+}

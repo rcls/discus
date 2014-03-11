@@ -329,59 +329,59 @@ device=OUTPUT
 T 26000 20400 5 10 1 1 0 1 1
 refdes=VK
 }
-C 27600 25000 1 0 0 out-1.sym
+C 27600 25200 1 0 0 out-1.sym
 {
+T 27600 25700 5 10 0 0 0 0 1
+footprint=anchor
 T 27600 25500 5 10 0 0 0 0 1
-footprint=anchor
+device=OUTPUT
+T 28200 25300 5 10 1 1 0 1 1
+refdes=K0#
+}
+C 27600 24800 1 0 0 out-1.sym
+{
 T 27600 25300 5 10 0 0 0 0 1
-device=OUTPUT
-T 28200 25100 5 10 1 1 0 1 1
-refdes=K0
-}
-C 27600 24600 1 0 0 out-1.sym
-{
+footprint=anchor
 T 27600 25100 5 10 0 0 0 0 1
-footprint=anchor
+device=OUTPUT
+T 28200 24900 5 10 1 1 0 1 1
+refdes=K1#
+}
+C 27600 24400 1 0 0 out-1.sym
+{
 T 27600 24900 5 10 0 0 0 0 1
-device=OUTPUT
-T 28200 24700 5 10 1 1 0 1 1
-refdes=K1
-}
-C 27600 24200 1 0 0 out-1.sym
-{
+footprint=anchor
 T 27600 24700 5 10 0 0 0 0 1
-footprint=anchor
+device=OUTPUT
+T 28200 24500 5 10 1 1 0 1 1
+refdes=K2#
+}
+C 27600 24000 1 0 0 out-1.sym
+{
 T 27600 24500 5 10 0 0 0 0 1
-device=OUTPUT
-T 28200 24300 5 10 1 1 0 1 1
-refdes=K2
-}
-C 27600 23800 1 0 0 out-1.sym
-{
+footprint=anchor
 T 27600 24300 5 10 0 0 0 0 1
-footprint=anchor
+device=OUTPUT
+T 28200 24100 5 10 1 1 0 1 1
+refdes=K3#
+}
+C 27600 23600 1 0 0 out-1.sym
+{
 T 27600 24100 5 10 0 0 0 0 1
-device=OUTPUT
-T 28200 23900 5 10 1 1 0 1 1
-refdes=K3
-}
-C 27600 23400 1 0 0 out-1.sym
-{
+footprint=anchor
 T 27600 23900 5 10 0 0 0 0 1
-footprint=anchor
-T 27600 23700 5 10 0 0 0 0 1
 device=OUTPUT
-T 28200 23500 5 10 1 1 0 1 1
-refdes=K4
+T 28200 23700 5 10 1 1 0 1 1
+refdes=K4#
 }
-C 27600 23000 1 0 0 out-1.sym
+C 27600 23200 1 0 0 out-1.sym
 {
-T 27600 23500 5 10 0 0 0 0 1
+T 27600 23700 5 10 0 0 0 0 1
 footprint=anchor
-T 27600 23300 5 10 0 0 0 0 1
+T 27600 23500 5 10 0 0 0 0 1
 device=OUTPUT
-T 28200 23100 5 10 1 1 0 1 1
-refdes=K5
+T 28200 23300 5 10 1 1 0 1 1
+refdes=K5#
 }
 C 25700 22800 1 0 0 phi0.sym
 N 23200 20400 23800 20400 4

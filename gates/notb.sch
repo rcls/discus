@@ -1,0 +1,57 @@
+v 20130925 2
+C 60200 46700 1 90 0 resistor-load.sym
+{
+T 60100 47100 5 10 0 1 90 0 1
+footprint=0603-boxed
+T 60100 47100 5 10 0 1 90 0 1
+value=3k3
+T 59800 47000 5 10 0 0 90 0 1
+device=RESISTOR
+T 59900 47100 5 10 1 1 90 0 1
+refdes=R
+}
+C 60200 45700 1 90 0 in-1.sym
+{
+T 59700 45700 5 10 0 0 90 0 1
+footprint=anchor
+T 59900 45700 5 10 0 0 90 0 1
+device=INPUT
+T 60400 45700 5 10 1 1 90 0 1
+refdes=GND
+}
+C 59100 46400 1 0 0 in-1.sym
+{
+T 59100 46900 5 10 0 0 0 0 1
+footprint=anchor
+T 59100 46700 5 10 0 0 0 0 1
+device=INPUT
+T 59400 46600 5 10 1 1 0 0 1
+refdes=A
+}
+C 60000 48200 1 270 0 in-1.sym
+{
+T 60500 48200 5 10 0 0 270 0 1
+footprint=anchor
+T 60300 48200 5 10 0 0 270 0 1
+device=INPUT
+T 60300 48200 5 10 1 1 270 0 1
+refdes=Vdd
+}
+C 60100 46600 1 0 0 out-1.sym
+{
+T 60100 47100 5 10 0 0 0 0 1
+footprint=anchor
+T 60100 46900 5 10 0 0 0 0 1
+device=OUTPUT
+T 60400 46700 5 10 1 1 0 0 1
+refdes=O
+}
+C 59700 46200 1 0 0 pdtc124.sym
+{
+T 59900 46500 5 10 1 1 0 1 1
+refdes=Q
+T 60400 46700 5 10 0 1 0 0 1
+footprint=sot323-bjt
+T 59800 46900 5 10 0 1 0 0 1
+value=PDTC124TU
+}

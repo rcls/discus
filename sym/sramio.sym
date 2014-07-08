@@ -2,34 +2,12 @@ v 20130925 2
 T 700 1200 8 10 1 1 0 4 1
 source=sramio.sch
 B 200 200 1000 1500 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
-P 0 1600 200 1600 1 0 0
-{
-T 0 1600 5 10 0 0 0 0 1
-pintype=unknown
-T 205 1595 5 10 1 1 0 1 1
-pinlabel=L
-T 105 1645 5 10 0 1 0 6 1
-pinnumber=0
-T 0 1600 5 10 0 0 0 0 1
-pinseq=0
-}
-P 0 1400 200 1400 1 0 0
-{
-T 0 1400 5 10 0 0 0 0 1
-pintype=unknown
-T 205 1395 5 10 1 1 0 1 1
-pinlabel=R
-T 105 1445 5 10 0 1 0 6 1
-pinnumber=0
-T 0 1400 5 10 0 0 0 0 1
-pinseq=0
-}
 P 0 1000 200 1000 1 0 0
 {
 T 0 1000 5 10 0 0 0 0 1
 pintype=unknown
 T 205 995 5 10 1 1 0 1 1
-pinlabel=D
+pinlabel=L
 T 105 1045 5 10 0 1 0 6 1
 pinnumber=0
 T 0 1000 5 10 0 0 0 0 1
@@ -40,10 +18,32 @@ P 0 800 200 800 1 0 0
 T 0 800 5 10 0 0 0 0 1
 pintype=unknown
 T 205 795 5 10 1 1 0 1 1
-pinlabel=D#
+pinlabel=R
 T 105 845 5 10 0 1 0 6 1
 pinnumber=0
 T 0 800 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 1600 200 1600 1 0 0
+{
+T 0 1600 5 10 0 0 0 0 1
+pintype=unknown
+T 205 1595 5 10 1 1 0 1 1
+pinlabel=D
+T 105 1645 5 10 0 1 0 6 1
+pinnumber=0
+T 0 1600 5 10 0 0 0 0 1
+pinseq=0
+}
+P 0 1400 200 1400 1 0 0
+{
+T 0 1400 5 10 0 0 0 0 1
+pintype=unknown
+T 205 1395 5 10 1 1 0 1 1
+pinlabel=D#
+T 105 1445 5 10 0 1 0 6 1
+pinnumber=0
+T 0 1400 5 10 0 0 0 0 1
 pinseq=0
 }
 P 0 400 200 400 1 0 0

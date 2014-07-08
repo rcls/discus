@@ -80,7 +80,7 @@ N 39500 43900 39500 44100 4
 C 42600 46000 1 0 1 pdtc124.sym
 {
 T 42425 46100 5 10 1 1 0 0 1
-refdes=Q
+refdes=Q3
 T 41900 46500 5 10 0 1 0 6 1
 footprint=sot323-bjt
 T 42500 46700 5 10 0 1 0 6 1
@@ -339,7 +339,7 @@ footprint=anchor
 T 45100 47200 5 10 0 0 90 0 1
 device=OUTPUT
 T 45300 47800 5 10 1 1 0 3 1
-refdes=Q#
+refdes=Q
 }
 C 45200 46200 1 270 0 out-1.sym
 {

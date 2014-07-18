@@ -77,7 +77,7 @@ pinnumber=0
 T 0 900 5 10 0 0 0 0 1
 pinseq=0
 T 205 895 5 10 1 1 0 1 1
-pinlabel=PO
+pinlabel=PK
 }
 P 0 500 200 500 1 0 0
 {

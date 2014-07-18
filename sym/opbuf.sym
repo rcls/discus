@@ -517,7 +517,7 @@ pinnumber=0
 T 1600 600 5 10 0 0 0 0 1
 pinseq=0
 T 1395 595 5 10 1 1 0 7 1
-pinlabel=PO
+pinlabel=PK
 }
 P 1600 400 1400 400 1 0 0
 {

@@ -783,7 +783,7 @@ device=INPUT
 T 7800 13600 5 10 0 0 0 0 1
 footprint=anchor
 T 7800 13200 5 10 1 1 0 7 1
-refdes=PO
+refdes=PK
 }
 C 7800 12700 1 0 0 in-1.sym
 {

@@ -60,7 +60,7 @@ footprint=anchor
 T 54400 59100 5 10 0 0 0 0 1
 device=INPUT
 T 54400 58900 5 10 1 1 0 7 1
-refdes=PO
+refdes=PK
 }
 N 51300 58100 51800 58100 4
 {

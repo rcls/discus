@@ -46,17 +46,17 @@ refdes=C
 }
 C 44000 62600 1 0 0 vdilatch.sym
 {
+T 44800 63300 5 10 1 1 0 4 1
+source=vdilatch.sch
 T 45150 63050 5 10 1 1 0 0 1
 refdes=A
-T 44300 63250 5 10 1 1 0 0 1
-source=vdilatch.sch
 }
 C 45600 62600 1 0 0 rslatch.sym
 {
+T 46350 63300 5 10 1 1 0 4 1
+source=rslatch.sch
 T 46750 63050 5 10 1 1 0 0 1
 refdes=B
-T 45900 63250 5 10 1 1 0 0 1
-source=rslatch.sch
 }
 N 44800 64100 46400 64100 4
 N 44800 62600 46400 62600 4

@@ -7,7 +7,7 @@ U
 Buses
  - V operand / address
  - B mem read
- - mem write
+ - mem write (A,A# off CPU).
 
 V bus - complementary signalling, flip-flop driven, active LOW.
  (address decodes will have CMOS inverters to drive the fan-out...)
@@ -181,6 +181,16 @@ FIXME : Various flags could be (comp-) open drain.
 FIXME : AS/AR CS/CR dominances broken?
 FIXME : Check perf. of pull strobes.
 FIXME : Invert WR?
+FIXME : PE in rom128byte.sch - push-pull or a trannie?
+FIXME : Polarity of PE v. MR#.
+FIXME : Put reset on the pc board.
+FIXME : MW on sram v. STA# on CPU.
+FIXME : Q v. B# on sram.
+FIXME : MR on sram v. O2#
+FIXME : Does SRAM really need the double-buffer on output?
+FIXME : Pullup resistors.
 
 TODO : Caps, osc, clocking on integration.
 TODO : OUT buffer.
+TODO : Buffers on A/A# data lines, bringing those off board is not good.
+

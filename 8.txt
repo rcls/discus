@@ -186,11 +186,13 @@ FIXME : Polarity of PE v. MR#.
 FIXME : Put reset on the pc board.
 FIXME : MW on sram v. STA# on CPU.
 FIXME : Q v. B# on sram.
-FIXME : MR on sram v. O2#
+FIXME : MR on sram v. O2# - MR logic looks wrong too.
 FIXME : Does SRAM really need the double-buffer on output?
 FIXME : Pullup resistors.
 
 TODO : Caps, osc, clocking on integration.
 TODO : OUT buffer.
 TODO : Buffers on A/A# data lines, bringing those off board is not good.
+
+ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 

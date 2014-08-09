@@ -1,56 +1,56 @@
 v 20130925 2
 C 7800 8800 1 0 0 sramcell.sym
 {
-T 8100 9450 5 10 1 1 0 0 1
+T 8600 9525 5 10 1 1 0 4 1
 source=sramcell.sch
 T 8950 9250 5 10 1 1 0 0 1
 refdes=S0
 }
 C 9800 8800 1 0 0 sramcell.sym
 {
-T 10100 9450 5 10 1 1 0 0 1
+T 10600 9525 5 10 1 1 0 4 1
 source=sramcell.sch
 T 10950 9250 5 10 1 1 0 0 1
 refdes=S1
 }
 C 11800 8800 1 0 0 sramcell.sym
 {
-T 12100 9450 5 10 1 1 0 0 1
+T 12600 9525 5 10 1 1 0 4 1
 source=sramcell.sch
 T 12950 9250 5 10 1 1 0 0 1
 refdes=S2
 }
 C 13800 8800 1 0 0 sramcell.sym
 {
-T 14100 9450 5 10 1 1 0 0 1
+T 14600 9525 5 10 1 1 0 4 1
 source=sramcell.sch
 T 14950 9250 5 10 1 1 0 0 1
 refdes=S3
 }
 C 7800 6300 1 0 0 sramcell.sym
 {
-T 8100 6950 5 10 1 1 0 0 1
+T 8600 7025 5 10 1 1 0 4 1
 source=sramcell.sch
 T 8950 6750 5 10 1 1 0 0 1
 refdes=S4
 }
 C 9800 6300 1 0 0 sramcell.sym
 {
-T 10100 6950 5 10 1 1 0 0 1
+T 10600 7025 5 10 1 1 0 4 1
 source=sramcell.sch
 T 10950 6750 5 10 1 1 0 0 1
 refdes=S5
 }
 C 11800 6300 1 0 0 sramcell.sym
 {
-T 12100 6950 5 10 1 1 0 0 1
+T 12600 7025 5 10 1 1 0 4 1
 source=sramcell.sch
 T 12950 6750 5 10 1 1 0 0 1
 refdes=S6
 }
 C 13800 6300 1 0 0 sramcell.sym
 {
-T 14100 6950 5 10 1 1 0 0 1
+T 14600 7025 5 10 1 1 0 4 1
 source=sramcell.sch
 T 14950 6750 5 10 1 1 0 0 1
 refdes=S7
@@ -67,47 +67,36 @@ C 8500 8500 1 0 0 gnd-1.sym
 C 10500 8500 1 0 0 gnd-1.sym
 C 12500 8500 1 0 0 gnd-1.sym
 C 14500 8500 1 0 0 gnd-1.sym
-C 7000 7900 1 0 0 2n7002.sym
+C 7500 7500 1 90 0 resistor-load.sym
 {
-T 7225 8200 5 10 1 1 0 1 1
-refdes=M
-T 7100 8700 5 10 0 1 0 0 1
-value=2N7002P
-T 7500 8500 5 10 0 1 0 0 1
-footprint=sot23-nmos
-T 8500 8500 5 10 0 1 0 0 1
-device=NMOS
-}
-C 7500 8400 1 90 0 resistor-load.sym
-{
-T 7100 8700 5 10 0 0 90 0 1
+T 7100 7800 5 10 0 0 90 0 1
 device=RESISTOR
-T 7200 8800 5 10 1 1 90 0 1
+T 7200 7900 5 10 1 1 90 0 1
 refdes=R
-T 7400 8800 5 10 0 1 90 0 1
+T 7400 7900 5 10 0 1 90 0 1
 footprint=0603-boxed
-T 7400 8800 5 10 0 1 90 0 1
+T 7400 7900 5 10 0 1 90 0 1
 value=3.3k
 }
-C 7300 9900 1 270 0 in-1.sym
+C 7300 9600 1 270 0 in-1.sym
 {
-T 7800 9900 5 10 0 0 270 0 1
+T 7800 9600 5 10 0 0 270 0 1
 footprint=anchor
-T 7600 9900 5 10 0 0 270 0 1
+T 7600 9600 5 10 0 0 270 0 1
 device=INPUT
-T 7300 9900 5 10 1 1 0 3 1
+T 7400 9600 5 10 1 1 0 3 1
 refdes=SEL
 }
-C 6400 8100 1 0 0 in-1.sym
+C 6400 8600 1 0 0 in-1.sym
 {
-T 6400 8600 5 10 0 0 0 0 1
+T 6400 9100 5 10 0 0 0 0 1
 footprint=anchor
-T 6400 8400 5 10 0 0 0 0 1
+T 6400 8900 5 10 0 0 0 0 1
 device=INPUT
-T 6500 8000 5 10 1 1 0 0 1
+T 6725 8675 5 10 1 1 0 5 1
 refdes=SEL#
 }
-C 7300 7700 1 0 0 gnd-1.sym
+C 7300 7200 1 0 0 gnd-1.sym
 C 7700 10300 1 270 0 in-1.sym
 {
 T 8200 10300 5 10 0 0 270 0 1
@@ -285,4 +274,15 @@ T 8000 6500 5 10 0 0 0 0 1
 device=INPUT
 T 8300 6300 5 10 1 1 0 5 1
 refdes=GND
+}
+N 7400 8500 7400 8400 4
+N 7400 9000 7400 8900 4
+C 7000 8400 1 0 0 dta124.sym
+{
+T 7200 8700 5 10 1 1 0 1 1
+refdes=Q
+T 7700 8900 5 10 0 1 0 0 1
+footprint=sot323-bjt
+T 7100 9100 5 10 0 1 0 0 1
+value=DTA124T
 }

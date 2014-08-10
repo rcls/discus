@@ -32,7 +32,7 @@ P 800 500 600 500 1 0 0
 T 800 500 5 10 0 0 0 0 1
 pintype=unknown
 T 745 595 5 10 0 1 0 6 1
-pinlabel=Q
+pinlabel=O
 T 805 455 5 10 0 1 180 0 1
 pinnumber=3
 T 800 500 5 10 0 0 0 0 1

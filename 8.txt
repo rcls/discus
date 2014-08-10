@@ -14,6 +14,26 @@ V bus - complementary signalling, flip-flop driven, active LOW.
 B bus - open drain
 mem write - needs write strobe (clock phase 2).
 
+A0..7 & # : Accumulator value.
+V0..7 & # : Operand / address.
+B0#..B7# : Operand (B-input to ALU).
+
+P0..P7 & # : Program counter.
+O0#..O7# : Opcode (from ROM).
+J0..J6 & # : Opcode (1 cycle delay from ROM).
+
+ϕ0, ϕ1 : Clocks : Rising edge ϕ0 drives CPU logic, rising edge ϕ1 drives PC
+logic.
+C0, C1 : Clock source input.
+
+PK : Tell CPU board that constant is valid (& hence jmp/call is possible).
+FC : Carry flag out.
+FZ : Zero flag out.
+STA# : Store to memory (internal link).
+MR : Memory read strobe.
+MW : Memory write strobe to RAM (synchronous to clock).
+
+
 
 source bus is register or constant.  Memory address is always source bus.
 operand bus is source bus direct or memory lookup
@@ -182,17 +202,15 @@ FIXME : AS/AR CS/CR dominances broken?
 FIXME : Check perf. of pull strobes.
 FIXME : Invert WR?
 FIXME : PE in rom128byte.sch - push-pull or a trannie?
-FIXME : Polarity of PE v. MR#.
 FIXME : Put reset on the pc board.
-FIXME : MW on sram v. STA# on CPU.
 FIXME : Q v. B# on sram.
-FIXME : MR on sram v. O2# - MR logic looks wrong too.
 FIXME : Does SRAM really need the double-buffer on output?
 FIXME : Pullup resistors.
 
+FIXME : Is the gating on SRAM MR -> RD# required?
+
 TODO : Caps, osc, clocking on integration.
-TODO : OUT buffer.
-TODO : Buffers on A/A# data lines, bringing those off board is not good.
+TODO : OUT buffer?
 
 ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 

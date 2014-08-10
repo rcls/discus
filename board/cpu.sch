@@ -2364,12 +2364,12 @@ device=OUTPUT
 T 15200 12200 5 10 0 0 0 0 1
 footprint=anchor
 T 15800 11800 5 10 1 1 0 1 1
-refdes=MR#
+refdes=MR
 }
 N 14200 11800 14400 11800 4
 {
 T 14200 11800 5 10 1 1 0 7 1
-netname=I2
+netname=I2#
 }
 C 14600 12100 1 0 0 vdd-1.sym
 C 14700 11200 1 0 0 gnd-1.sym

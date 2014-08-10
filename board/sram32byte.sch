@@ -216,7 +216,7 @@ footprint=anchor
 T 17600 14500 5 10 0 0 0 0 1
 device=INPUT
 T 17600 14300 5 10 1 1 0 7 1
-refdes=MR#
+refdes=MR
 }
 C 14400 19300 1 90 0 out-1.sym
 {
@@ -225,7 +225,7 @@ footprint=anchor
 T 14100 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 14300 19900 5 10 1 1 0 3 1
-refdes=Q0
+refdes=Q0#
 }
 C 16600 19300 1 90 0 out-1.sym
 {
@@ -234,7 +234,7 @@ footprint=anchor
 T 16300 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 16500 19900 5 10 1 1 0 3 1
-refdes=Q1
+refdes=Q1#
 }
 C 18800 19300 1 90 0 out-1.sym
 {
@@ -243,7 +243,7 @@ footprint=anchor
 T 18500 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 18700 19900 5 10 1 1 0 3 1
-refdes=Q2
+refdes=Q2#
 }
 C 21000 19300 1 90 0 out-1.sym
 {
@@ -252,7 +252,7 @@ footprint=anchor
 T 20700 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 20900 19900 5 10 1 1 0 3 1
-refdes=Q3
+refdes=Q3#
 }
 C 16600 16100 1 90 0 out-1.sym
 {
@@ -261,7 +261,7 @@ footprint=anchor
 T 16300 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 16500 16700 5 10 1 1 0 3 1
-refdes=Q5
+refdes=Q5#
 }
 C 14400 16100 1 90 0 out-1.sym
 {
@@ -270,7 +270,7 @@ footprint=anchor
 T 14100 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 14300 16700 5 10 1 1 0 3 1
-refdes=Q4
+refdes=Q4#
 }
 C 18800 16100 1 90 0 out-1.sym
 {
@@ -279,7 +279,7 @@ footprint=anchor
 T 18500 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 18700 16700 5 10 1 1 0 3 1
-refdes=Q6
+refdes=Q6#
 }
 C 21000 16100 1 90 0 out-1.sym
 {
@@ -288,7 +288,7 @@ footprint=anchor
 T 20700 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 20900 16700 5 10 1 1 0 3 1
-refdes=Q7
+refdes=Q7#
 }
 C 10100 20800 1 0 0 vdd-1.sym
 C 10100 16500 1 0 0 vdd-1.sym
@@ -791,7 +791,7 @@ netname=MW
 N 19200 14300 19000 14300 4
 {
 T 19200 14300 5 10 1 1 0 1 1
-netname=RD
+netname=RD#
 }
 N 10200 17000 10000 17000 4
 {
@@ -801,42 +801,42 @@ netname=MW
 N 14300 18500 14300 18700 4
 {
 T 14300 18450 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 16500 18500 16500 18700 4
 {
 T 16500 18450 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 18700 18500 18700 18700 4
 {
 T 18700 18450 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 20900 18500 20900 18700 4
 {
 T 20900 18450 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 14300 15300 14300 15500 4
 {
 T 14300 15250 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 16500 15300 16500 15500 4
 {
 T 16500 15250 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 18700 15300 18700 15500 4
 {
 T 18700 15250 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 20900 15300 20900 15500 4
 {
 T 20900 15250 5 10 1 1 0 5 1
-netname=RD
+netname=RD#
 }
 N 9300 18700 9500 18700 4
 {

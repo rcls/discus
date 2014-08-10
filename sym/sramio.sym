@@ -62,7 +62,7 @@ P 1400 1000 1200 1000 1 0 0
 T 1400 1000 5 10 0 0 0 6 1
 pintype=unknown
 T 1195 995 5 10 1 1 0 7 1
-pinlabel=Q
+pinlabel=Q#
 T 1295 1045 5 10 0 1 0 0 1
 pinnumber=0
 T 1400 1000 5 10 0 0 0 6 1
@@ -73,7 +73,7 @@ P 1400 400 1200 400 1 0 0
 T 1400 400 5 10 0 0 0 6 1
 pintype=unknown
 T 1195 395 5 10 1 1 0 7 1
-pinlabel=RD
+pinlabel=RD#
 T 1295 445 5 10 0 1 0 0 1
 pinnumber=0
 T 1400 400 5 10 0 0 0 6 1

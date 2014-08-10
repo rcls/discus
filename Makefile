@@ -1,5 +1,5 @@
 
-TESTCC = alu pcdecode opdecode
+TESTCC = alu pcdecode opdecode sp
 
 all: rmsim $(TESTCC:%=test/test%)
 

@@ -339,7 +339,7 @@ footprint=anchor
 T 45100 47200 5 10 0 0 90 0 1
 device=OUTPUT
 T 45300 47800 5 10 1 1 0 3 1
-refdes=Q
+refdes=Q#
 }
 C 45200 46200 1 270 0 out-1.sym
 {
@@ -348,5 +348,5 @@ footprint=anchor
 T 45500 46200 5 10 0 0 270 0 1
 device=OUTPUT
 T 45300 45600 5 10 1 1 0 5 1
-refdes=Q#
+refdes=Q
 }

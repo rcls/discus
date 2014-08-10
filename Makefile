@@ -9,6 +9,9 @@ all: rmsim $(TESTCC:%=test/test%)
 %.cir: %.rcr
 	perl substrate.pl $< > $@
 
+%.fake-cir: %.cir
+	perl test/fake.pl $< > $@
+
 CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11
 
 %.o: %.cc

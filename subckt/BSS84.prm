@@ -6,3 +6,8 @@
 + CBS=55.9p  CGSO=50.7n CGDO=42.2n CGBO=69.5n  )
 *   -- Assumes default L=100U W=100U --
 
+* Fakery...
+.MODEL sw_pmos_10 SW (VT=-1.5 RON=10 ROFF=1e7)
+.SUBCKT fake_BSS84 drain gate source gnd
+S_fake_pmos source drain gnd gate sw_pmos_10
+.ENDS

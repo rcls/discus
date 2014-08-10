@@ -1094,24 +1094,6 @@ footprint=anchor
 T 16500 10500 5 10 1 1 0 3 1
 refdes=P7#
 }
-C 17700 17300 1 0 0 in-1.sym
-{
-T 17700 17600 5 10 0 0 0 0 1
-device=INPUT
-T 17700 17400 5 10 1 1 0 7 1
-refdes=Vdd
-T 17700 17800 5 10 0 0 0 0 1
-footprint=anchor
-}
-C 17700 14600 1 0 0 in-1.sym
-{
-T 17700 14900 5 10 0 0 0 0 1
-device=INPUT
-T 17700 14700 5 10 1 1 0 7 1
-refdes=GND
-T 17700 15100 5 10 0 0 0 0 1
-footprint=anchor
-}
 C 17800 10100 1 0 0 clocking.sym
 {
 T 18500 10400 5 9 1 1 0 4 1

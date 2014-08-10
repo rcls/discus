@@ -1,7 +1,8 @@
 
 TESTCC = alu pcdecode opdecode sp
+TESTPROGS=$(TESTCC:%=test/test%)
 
-all: rmsim $(TESTCC:%=test/test%)
+all: rmsim $(TESTPROGS)
 
 %.rcr: %.sch
 	gnetlist -Lsubckt -g spice-sdb -o $@ $+
@@ -67,3 +68,5 @@ $(TESTCC:%=test/test%.o): test/spice_load.h
 .PHONY: clean
 clean:
 	rm -f *- */*- *~ */*~ *.o */*.o *.cir */*.cir *.rcr */*.rcr
+	rm -f */*.fake-cir PCB.*.backup PCB.*.save
+	rm -f rmsim $(TESTPROGS)

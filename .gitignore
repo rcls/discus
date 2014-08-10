@@ -2,6 +2,12 @@ PCB.*
 *.bin
 *.cir
 *.rcr
+*.fake-cir
 \#*#
-test/testacc-check
+/rmsim
 test/testalu
+test/testopdecode
+test/testpcdecode
+test/testsp
+/doc
+/footgen

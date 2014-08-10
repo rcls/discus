@@ -2352,24 +2352,3 @@ refdes=MR
 T 13300 20800 5 10 0 0 0 6 1
 footprint=anchor
 }
-C 14400 11500 1 0 0 cnot.sym
-{
-T 14725 11800 5 10 1 1 0 4 1
-refdes=I
-}
-C 15200 11700 1 0 0 out-1.sym
-{
-T 15200 12000 5 10 0 0 0 0 1
-device=OUTPUT
-T 15200 12200 5 10 0 0 0 0 1
-footprint=anchor
-T 15800 11800 5 10 1 1 0 1 1
-refdes=MR
-}
-N 14200 11800 14400 11800 4
-{
-T 14200 11800 5 10 1 1 0 7 1
-netname=I2#
-}
-C 14600 12100 1 0 0 vdd-1.sym
-C 14700 11200 1 0 0 gnd-1.sym

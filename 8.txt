@@ -209,6 +209,8 @@ FIXME : Pullup resistors.
 
 FIXME : Is the gating on SRAM MR -> RD# required?
 
+FIXME : Do we have races on the PUSH strobe for the stack?
+
 TODO : Caps, osc, clocking on integration.
 TODO : OUT buffer?
 

@@ -2,10 +2,12 @@
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test/test%)
 
+GNETLIST=/home/archive/bin/gnetlist
+
 all: rmsim $(TESTPROGS)
 
 %.rcr: %.sch
-	gnetlist -Lsubckt -g spice-sdb -o $@ $+
+	$(GNETLIST) -Lsubckt -g spice-sdb -o $@ $+
 
 %.cir: %.rcr
 	perl substrate.pl $< > $@

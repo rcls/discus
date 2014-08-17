@@ -173,3 +173,13 @@ C 6800 6800 1 0 0 gnd-1.sym
 C 8100 6800 1 0 0 gnd-1.sym
 C 9400 6800 1 0 0 gnd-1.sym
 C 10700 6800 1 0 0 gnd-1.sym
+C 8000 8400 1 0 0 in-1.sym
+{
+T 8000 8700 5 10 0 0 0 0 1
+device=INPUT
+T 8000 8900 5 10 0 0 0 0 1
+footprint=anchor
+T 8300 8525 5 10 1 1 0 3 1
+refdes=GND
+}
+C 8500 8200 1 0 0 gnd-1.sym

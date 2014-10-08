@@ -63,8 +63,8 @@ result bus is ALU output, or operand bus direct (add 0...)
 
 101000xx - IN, to make the reg = A (saves decode...), keep ram off bus.
 
-101001xx - STA
-101011xx - OUT
+101001xx - STA - note M bit is set, memory read will be ignored.
+101011xx - OUT - note M bit is set, ignore memory read.
 
 AAA = 000 : ADD
 AAA = 001 : ADC
@@ -77,9 +77,9 @@ AAA = 111 : CMP
 
 
 CCC = 000 : always [but not ret]
-CCC = 001 : never
-CCC = 010 : always
-CCC = 011 : never
+CCC = 001 : never (unittest as don't care for jump/call).
+CCC = 010 : always (unittest for ret, don't care for jump/call).
+CCC = 011 : never (unittest for ret, don't care for jump/call).
 CCC = 100 : z
 CCC = 101 : nz
 CCC = 110 : c
@@ -94,9 +94,6 @@ U : 11
 01xxxxxx : write A
 (100/11x)WWxxx : write WW.
 
-
-slice to do:
-v constant is always from latch, interface for that?
 
 Out can just use V or B bus. (V->Out, In->B?)
 
@@ -206,13 +203,14 @@ FIXME : Put reset on the pc board.
 FIXME : Q v. B# on sram.
 FIXME : Does SRAM really need the double-buffer on output?
 FIXME : Pullup resistors.
+FIXME : Buffers on FC/FZ?
 
 FIXME : Is the gating on SRAM MR -> RD# required?
 
 FIXME : Do we have races on the PUSH strobe for the stack?
 
 TODO : Caps, osc, clocking on integration.
-TODO : OUT buffer?
+TODO : OUT buffer/latch?
 
 ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 

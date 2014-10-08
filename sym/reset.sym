@@ -1,0 +1,94 @@
+v 20130925 2
+B 200 200 1200 1100 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+P 0 800 200 800 1 0 0
+{
+T 0 800 5 10 0 0 0 0 1
+pintype=unknown
+T 205 795 5 10 1 1 0 1 1
+pinlabel=RST#
+T 105 845 5 10 0 1 0 6 1
+pinnumber=1
+T 0 800 5 10 0 0 0 0 1
+pinseq=1
+}
+P 0 1200 200 1200 1 0 0
+{
+T 0 1200 5 10 0 0 0 0 1
+pintype=unknown
+T 205 1195 5 10 1 1 0 1 1
+pinlabel=RS#
+T 105 1245 5 10 0 1 0 6 1
+pinnumber=2
+T 0 1200 5 10 0 0 0 0 1
+pinseq=2
+}
+P 0 1000 200 1000 1 0 0
+{
+T 0 1000 5 10 0 0 0 0 1
+pintype=unknown
+T 205 995 5 10 1 1 0 1 1
+pinlabel=RR#
+T 105 1045 5 10 0 1 0 6 1
+pinnumber=3
+T 0 1000 5 10 0 0 0 0 1
+pinseq=3
+}
+P 1600 1100 1400 1100 1 0 0
+{
+T 1600 1100 5 10 0 0 0 0 1
+pintype=unknown
+T 1395 1095 5 10 1 1 0 7 1
+pinlabel=PE
+T 1495 1145 5 10 0 1 0 0 1
+pinnumber=4
+T 1600 1100 5 10 0 0 0 0 1
+pinseq=4
+}
+P 800 1500 800 1300 1 0 0
+{
+T 800 1500 5 10 0 0 0 0 1
+pintype=unknown
+T 795 1300 5 8 1 1 0 5 1
+pinlabel=Vdd
+T 750 1395 5 10 0 1 90 0 1
+pinnumber=6
+T 800 1500 5 10 0 0 0 0 1
+pinseq=6
+}
+P 800 0 800 200 1 0 0
+{
+T 800 0 5 10 0 0 0 0 1
+pintype=unknown
+T 805 225 5 8 1 1 0 3 1
+pinlabel=GND
+T 750 105 5 10 0 1 90 6 1
+pinnumber=7
+T 800 0 5 10 0 0 0 0 1
+pinseq=7
+}
+T 1350 350 8 10 1 1 0 7 1
+refdes=S?
+T 1350 600 8 10 1 1 0 7 1
+source=reset.sch
+P 0 600 200 600 1 0 0
+{
+T 0 600 5 10 0 0 0 0 1
+pintype=unknown
+T 205 595 5 10 1 1 0 1 1
+pinlabel=PK
+T 105 645 5 10 0 1 0 6 1
+pinnumber=3
+T 0 600 5 10 0 0 0 0 1
+pinseq=3
+}
+P 0 400 200 400 1 0 0
+{
+T 0 400 5 10 0 0 0 0 1
+pintype=unknown
+T 205 395 5 10 1 1 0 1 1
+pinlabel=ϕ1
+T 105 445 5 10 0 1 0 6 1
+pinnumber=3
+T 0 400 5 10 0 0 0 0 1
+pinseq=3
+}

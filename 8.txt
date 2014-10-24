@@ -197,15 +197,14 @@ x1xxxxxx,1x0xxxxx,IN
 FIXME : Various flags could be (comp-) open drain.
 FIXME : AS/AR CS/CR dominances broken?
 FIXME : Check perf. of pull strobes.
-FIXME : Invert WR?
 FIXME : PE in rom128byte.sch - push-pull or a trannie?
 FIXME : Put reset on the pc board.
-FIXME : Q v. B# on sram.
 FIXME : Does SRAM really need the double-buffer on output?
 FIXME : Pullup resistors.
 FIXME : Buffers on FC/FZ?
 
-FIXME : Is the gating on SRAM MR -> RD# required?
+FIXME : Is the gating on SRAM MR -> RD# required?  We already have the select
+strobes, so we could rely on that and just set RD# = !MR?
 
 FIXME : Do we have races on the PUSH strobe for the stack?
 

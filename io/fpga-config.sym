@@ -7,7 +7,7 @@ pintype=unknown
 T 230 2995 5 10 1 1 0 1 1
 pinlabel=TCK
 T 180 3020 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=L8
 T 0 3000 5 10 0 0 0 0 1
 pinseq=0
 }
@@ -18,7 +18,7 @@ pintype=unknown
 T 230 2795 5 10 1 1 0 1 1
 pinlabel=TDI
 T 180 2820 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=R6
 T 0 2800 5 10 0 0 0 0 1
 pinseq=0
 }
@@ -31,7 +31,7 @@ pinseq=0
 T 230 2595 5 10 1 1 0 1 1
 pinlabel=TDO
 T 180 2620 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=R7
 }
 P 0 2400 200 2400 1 0 0
 {
@@ -42,7 +42,7 @@ pinseq=0
 T 230 2395 5 10 1 1 0 1 1
 pinlabel=TMS
 T 180 2420 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=N8
 }
 P 0 1600 200 1600 1 0 0
 {
@@ -53,7 +53,7 @@ pinseq=0
 T 230 1595 5 10 1 1 0 1 1
 pinlabel=INIT_B
 T 180 1620 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=G7
 }
 P 0 1400 200 1400 1 0 0
 {
@@ -64,7 +64,7 @@ pinseq=0
 T 230 1395 5 10 1 1 0 1 1
 pinlabel=PROGRAM_B
 T 180 1420 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=P6
 }
 P 0 2000 200 2000 1 0 0
 {
@@ -75,7 +75,7 @@ pinseq=0
 T 230 1995 5 10 1 1 0 1 1
 pinlabel=CFGBVS
 T 180 2020 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=P7
 }
 P 0 1800 200 1800 1 0 0
 {
@@ -86,7 +86,7 @@ pinseq=0
 T 230 1795 5 10 1 1 0 1 1
 pinlabel=DONE
 T 180 1820 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=J7
 }
 P 2200 2800 2000 2800 1 0 0
 {
@@ -95,7 +95,7 @@ pintype=unknown
 T 1970 2795 5 10 1 1 0 7 1
 pinlabel=VCCADC
 T 2020 2820 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=M12
 T 2200 2800 5 7 0 0 0 0 1
 pinseq=0
 }
@@ -106,7 +106,7 @@ pintype=unknown
 T 1970 2595 5 10 1 1 0 7 1
 pinlabel=GNDADC
 T 2020 2620 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=M11
 T 2200 2600 5 7 0 0 0 0 1
 pinseq=0
 }
@@ -119,7 +119,7 @@ pinseq=0
 T 1970 2195 5 10 1 1 0 7 1
 pinlabel=VREFP
 T 2020 2220 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=P12
 }
 P 2200 2000 2000 2000 1 0 0
 {
@@ -130,7 +130,7 @@ pinseq=0
 T 1970 1995 5 10 1 1 0 7 1
 pinlabel=VREFN
 T 2020 2020 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=N11
 }
 P 2200 1600 2000 1600 1 0 0
 {
@@ -141,7 +141,7 @@ pinseq=0
 T 1970 1595 5 10 1 1 0 7 1
 pinlabel=VP
 T 2020 1620 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=N12
 }
 P 2200 1400 2000 1400 1 0 0
 {
@@ -152,7 +152,7 @@ pinseq=0
 T 1970 1395 5 10 1 1 0 7 1
 pinlabel=VN
 T 2020 1420 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=P11
 }
 P 0 1000 200 1000 1 0 0
 {
@@ -163,7 +163,7 @@ pinseq=0
 T 230 995 5 10 1 1 0 1 1
 pinlabel=CCLK
 T 180 1020 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=C8
 }
 P 0 600 200 600 1 0 0
 {
@@ -174,7 +174,7 @@ pinseq=0
 T 230 595 5 10 1 1 0 1 1
 pinlabel=M0
 T 180 620 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=T5
 }
 P 0 400 200 400 1 0 0
 {
@@ -185,7 +185,7 @@ pinseq=0
 T 230 395 5 10 1 1 0 1 1
 pinlabel=M1
 T 180 420 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=T2
 }
 P 0 200 200 200 1 0 0
 {
@@ -196,7 +196,7 @@ pinseq=0
 T 230 195 5 10 1 1 0 1 1
 pinlabel=M2
 T 180 220 5 7 1 1 0 6 1
-pinnumber=0
+pinnumber=P5
 }
 P 2200 1000 2000 1000 1 0 0
 {
@@ -207,7 +207,7 @@ pinseq=0
 T 1970 995 5 10 1 1 0 7 1
 pinlabel=DXP
 T 2020 1020 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=R12
 }
 P 2200 800 2000 800 1 0 0
 {
@@ -218,7 +218,7 @@ pinseq=0
 T 1970 795 5 10 1 1 0 7 1
 pinlabel=DXN
 T 2020 820 5 7 1 1 0 0 1
-pinnumber=0
+pinnumber=R11
 }
 T 1100 2300 8 10 1 1 0 4 1
 refdes=U?
@@ -233,7 +233,7 @@ pintype=unknown
 T 895 3175 5 7 1 1 0 5 1
 pinlabel=VCCO
 T 900 3195 5 7 1 1 90 0 1
-pinnumber=0
+pinnumber=L7
 T 900 3400 5 10 0 0 0 0 1
 pinseq=0
 }
@@ -244,7 +244,7 @@ pintype=unknown
 T 1295 3175 5 7 1 1 0 5 1
 pinlabel=VCCO
 T 1300 3195 5 7 1 1 90 0 1
-pinnumber=0
+pinnumber=T6
 T 1300 3400 5 10 0 0 0 0 1
 pinseq=0
 }

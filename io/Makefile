@@ -5,6 +5,9 @@ IOBANK.sym=$(IOBANK:%=fpga-%.sym)
 MGT=115 116
 MGT.sym=$(MGT:%=fpga-%.sym)
 
+SIMPLE=config gnd vcc mgt
+SIMPLE.sym=$(SIMPLE:%=fpga-%.sym)
+
 FPGA=../doc/xc7k160tffg676pkg.txt
 
 all: $(IOBANK.sym) $(MGT.sym)
@@ -17,5 +20,12 @@ $(MGT.sym): fpga-%.sym: munge-pins.py  $(FPGA) mgt-template.sym
 	./munge-pins.py --bank=$* $(ARGS) $(FPGA) mgt-template.sym > $@.tmp
 	mv $@.tmp $@
 
+simple: $(SIMPLE.sym)
+.PHONY: $(SIMPLE.sym)
+$(SIMPLE.sym): fpga-%.sym: munge-pins.py  $(FPGA) mgt-template.sym
+	./munge-pins.py $(ARGS) $(FPGA) $@ > $@.tmp
+	mv $@.tmp $@
+
 fpga-14.sym: ARGS=--useless DQS DOUT EMCCLK '[AD]\d\d' --
 fpga-15.sym: ARGS=--useless 'AD\d+[PN]' 'A\d\d' FOE FWE --
+fpga-config.sym: ARGS=--bank 0

@@ -7,7 +7,7 @@ pintype=unknown
 T 230 3195 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 3220 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=J9
 T 0 3200 5 10 0 0 0 0 1
 pinseq=0
 }
@@ -18,7 +18,7 @@ pintype=unknown
 T 230 2995 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 3020 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=K8
 T 0 3000 5 10 0 0 0 0 1
 pinseq=0
 }
@@ -31,7 +31,7 @@ pinseq=0
 T 230 2795 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 2820 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=K10
 }
 P 0 2600 200 2600 1 0 0
 {
@@ -42,7 +42,7 @@ pinseq=0
 T 230 2595 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 2620 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=K12
 }
 P 0 2400 200 2400 1 0 0
 {
@@ -53,7 +53,7 @@ pinseq=0
 T 230 2395 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 2420 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=K14
 }
 P 0 2200 200 2200 1 0 0
 {
@@ -64,7 +64,7 @@ pinseq=0
 T 230 2195 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 2220 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=L9
 }
 P 0 2000 200 2000 1 0 0
 {
@@ -75,7 +75,7 @@ pinseq=0
 T 230 1995 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 2020 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=L13
 }
 P 0 1800 200 1800 1 0 0
 {
@@ -86,7 +86,7 @@ pinseq=0
 T 230 1795 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 1820 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=L15
 }
 P 0 1600 200 1600 1 0 0
 {
@@ -97,7 +97,7 @@ pinseq=0
 T 230 1595 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 1620 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=M8
 }
 P 0 1400 200 1400 1 0 0
 {
@@ -108,7 +108,7 @@ pinseq=0
 T 230 1395 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 1420 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=M14
 }
 P 0 1200 200 1200 1 0 0
 {
@@ -119,7 +119,7 @@ pinseq=0
 T 230 1195 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 1220 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=N9
 }
 P 0 1000 200 1000 1 0 0
 {
@@ -130,7 +130,7 @@ pinseq=0
 T 230 995 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 1020 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=N15
 }
 P 0 800 200 800 1 0 0
 {
@@ -141,7 +141,7 @@ pinseq=0
 T 230 795 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 820 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=P14
 }
 P 0 600 200 600 1 0 0
 {
@@ -152,7 +152,7 @@ pinseq=0
 T 230 595 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 620 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=R15
 }
 P 0 400 200 400 1 0 0
 {
@@ -163,7 +163,7 @@ pinseq=0
 T 230 395 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 420 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=T14
 }
 P 0 200 200 200 1 0 0
 {
@@ -174,7 +174,7 @@ pinseq=0
 T 230 195 5 10 1 1 0 1 1
 pinlabel=VCCINT
 T 180 220 5 10 1 1 0 6 1
-pinnumber=0
+pinnumber=U15
 }
 P 2800 3200 2600 3200 1 0 0
 {
@@ -185,7 +185,7 @@ pinseq=0
 T 2570 3195 5 10 1 1 0 7 1
 pinlabel=VCCBRAM
 T 2620 3220 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=N13
 }
 P 2800 3000 2600 3000 1 0 0
 {
@@ -196,7 +196,7 @@ pinseq=0
 T 2570 2995 5 10 1 1 0 7 1
 pinlabel=VCCBRAM
 T 2620 3020 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=R13
 }
 P 2800 2800 2600 2800 1 0 0
 {
@@ -207,7 +207,7 @@ pinseq=0
 T 2570 2795 5 10 1 1 0 7 1
 pinlabel=VCCBRAM
 T 2620 2820 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=T12
 }
 P 2800 2600 2600 2600 1 0 0
 {
@@ -218,7 +218,7 @@ pinseq=0
 T 2570 2595 5 10 1 1 0 7 1
 pinlabel=VCCBRAM
 T 2620 2620 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=U13
 }
 P 2800 2200 2600 2200 1 0 0
 {
@@ -229,7 +229,7 @@ pinseq=0
 T 2570 2195 5 10 1 1 0 7 1
 pinlabel=VCCAUX
 T 2620 2220 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=T10
 }
 P 2800 2000 2600 2000 1 0 0
 {
@@ -240,7 +240,7 @@ pinseq=0
 T 2570 1995 5 10 1 1 0 7 1
 pinlabel=VCCAUX
 T 2620 2020 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=U11
 }
 P 2800 1800 2600 1800 1 0 0
 {
@@ -251,7 +251,7 @@ pinseq=0
 T 2570 1795 5 10 1 1 0 7 1
 pinlabel=VCCAUX
 T 2620 1820 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=L11
 }
 P 2800 1600 2600 1600 1 0 0
 {
@@ -262,7 +262,7 @@ pinseq=0
 T 2570 1595 5 10 1 1 0 7 1
 pinlabel=VCCAUX
 T 2620 1620 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=M10
 }
 P 2800 1400 2600 1400 1 0 0
 {
@@ -273,7 +273,7 @@ pinseq=0
 T 2570 1395 5 10 1 1 0 7 1
 pinlabel=VCCAUX
 T 2620 1420 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=P10
 }
 P 2800 1000 2600 1000 1 0 0
 {
@@ -284,7 +284,7 @@ pinseq=0
 T 2570 995 5 10 1 1 0 7 1
 pinlabel=VCCAUX_IO_G0
 T 2620 1020 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=T8
 }
 P 2800 800 2600 800 1 0 0
 {
@@ -295,7 +295,7 @@ pinseq=0
 T 2570 795 5 10 1 1 0 7 1
 pinlabel=VCCAUX_IO_G0
 T 2620 820 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=R9
 }
 P 2800 600 2600 600 1 0 0
 {
@@ -306,7 +306,7 @@ pinseq=0
 T 2570 595 5 10 1 1 0 7 1
 pinlabel=VCCAUX_IO_G0
 T 2620 620 5 10 1 1 0 0 1
-pinnumber=0
+pinnumber=P8
 }
 T 1400 2400 8 10 1 1 0 4 1
 refdes=U?

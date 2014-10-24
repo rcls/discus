@@ -61,7 +61,9 @@ def update_pin(pin,name):
     # If we have a pin number, just look it up.
     if pin != '0':
         if PIN_NAMES[pin].startswith(name) or name == 'unknown':
-            return pin,PIN_NAMES[pin]
+            name = PIN_NAMES[pin]
+            NAME_PINS[name].remove(pin)
+            return pin,name
         else:
             return None, None
     # The pin should have a prefix in NAMES...
@@ -104,7 +106,7 @@ def update_file(F):
     for L in F:
         if L.startswith('P '):
             yield from update_one_pin(F,L)
-        elif L.startswith('comment='):
+        elif L.startswith('comment=') and bank:
             yield L.replace('BANK',bank)
         else:
             yield L

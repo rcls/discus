@@ -43,17 +43,17 @@ for L in open(args.pinlist):
     LL = L.strip().split()
     if len(LL) < 2:
         continue
-    if not re.match('[A-Z]*\d+$', LL[0]):
-        continue
-    if bank and (len(LL) <= 3 or LL[3] != bank):
-        continue
-    pin = LL[0]
-    name = LL[1]
-    if bank:
-        name = '_'.join(bank_munge(name.split('_')))
-    PIN_NAMES[pin] = name
-    NAME_PINS.setdefault(name,[]).append(pin)
-    NAMES.append(name)
+    for pin in LL[0].split(','):
+        if not re.match('[A-Z]*\d+$', pin):
+            continue
+        if bank and (len(LL) <= 3 or LL[3] != bank):
+            continue
+        name = LL[1]
+        if bank:
+            name = '_'.join(bank_munge(name.split('_')))
+        PIN_NAMES[pin] = name
+        NAME_PINS.setdefault(name,[]).append(pin)
+        NAMES.append(name)
 
 NAMES.sort()
 

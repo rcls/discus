@@ -67,7 +67,7 @@
 
 * Fakery...
 .MODEL sw_npn_100 SW (VT=0.9 RON=100 ROFF=1e7)
-.SUBCKT fake_PDTC124TU collector base emitter
-S_fake_npn npn_collector npn_emitter npn_base 0 sw_npn_100
+.SUBCKT fake_PDTC124TU collector base emitter ground
+S_fake_npn collector emitter base ground sw_npn_100
 R_npn emitter base 22k
 .ENDS

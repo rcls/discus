@@ -24,7 +24,7 @@ bool state_t::wanted(condition_t c) const
 
 void state_t::extract_branches(int start)
 {
-    emit_instructions = false;
+    emitter = NULL;
     straight_through = true;
     jump_take_number = -1;
     write_limit = 256;
@@ -49,25 +49,24 @@ void state_t::account(int opcode, const operand_t & v) {
     if (v.is_mem)
         opcode += 4;
     if (v.reg < 0) {
-        if (emit_instructions)
-            printf("%02x: %02x %02x\n",
-                   executed, v.value & 63, opcode + (v.value >> 6));
+        if (emitter)
+            emitter->emit_two(executed, v.value & 63, opcode + (v.value >> 6));
         ++executed;
     }
-    else if (emit_instructions)
-        printf("%02x: %02x\n", executed, opcode + v.reg);
+    else if (emitter)
+        emitter->emit_byte(executed, opcode + v.reg);
     ++executed;
 }
 
 void state_t::account(int opcode) {
-    if (emit_instructions)
-        printf("%02x: %02x\n", executed, opcode);
+    if (emitter)
+        emitter->emit_byte(executed, opcode);
     ++executed;
 }
 
 
 bool state_t::jump(condition_t cond, const char * name, int opcode) {
-    if (emit_instructions)
+    if (emitter)
         account(opcode + cond * 4, operand_t(jump_targets[name]));
     else
         account(opcode + cond * 4, operand_t(0));
@@ -78,4 +77,48 @@ bool state_t::jump(condition_t cond, const char * name, int opcode) {
     jump_source = executed;
     jump_target_name = name;
     return true;
+}
+
+
+void emitter_t::emit_two(int address, int b1, int b2)
+{
+    emit_byte(address, b1);
+    emit_byte(address + 1, b2);
+}
+
+
+void print_emitter_t::emit_byte(int address, int byte)
+{
+    fprintf(file, "%02x: %02x\n", address, byte);
+}
+
+void print_emitter_t::emit_two(int address, int b1, int b2)
+{
+    fprintf(file, "%02x: %02x %02x\n", address, b1, b2);
+}
+
+static int select_bits(int n, int mask)
+{
+    int out = 0;
+    for (int maskbit = 31; maskbit >= 0; --maskbit)
+        if (mask & (1 << maskbit)) {
+            out *= 2;
+            if (n & (1 << maskbit))
+                ++out;
+        }
+    return out;
+}
+
+
+void munge_emitter_t::emit_byte(int address, int byte)
+{
+    char board = select_bits(address, 0x80) + 'S';
+    char quad8 = select_bits(address, 0x30) + 'A';
+    char quad = select_bits(address, 0xd) + 'A';
+    char column = select_bits(address, 0x42) + 'A';
+    for (int i = 0; i != 7; ++i) {
+        if ((byte & (1<<i)) == 0)
+            continue;
+        printf("R%c%u%c%c%c 1", column, i, quad, quad8, board);
+    }
 }

@@ -345,12 +345,13 @@ void miller_rabin_state::run_tests()
 {
     extract_branches(0);
 
-    emit_instructions = true;
+    print_emitter_t emit(stdout);
+    emitter = &emit;
     straight_through = true;
     jump_take_number = -1;
     go(0);                              // Assemble
 
-    emit_instructions = false;
+    emitter = NULL;
     straight_through = false;
     write_limit = 64;
 

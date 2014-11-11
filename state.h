@@ -7,6 +7,12 @@
 
 enum register_name_t { A, X, Y, U };
 
+struct emitter_t {
+    virtual void emit_byte(int address, int byte) = 0;
+    virtual void emit_two(int address, int b1, int b2);
+};
+
+
 struct operand_t {
     operand_t(unsigned char n) :
         reg(-1), is_mem(false), value(n) { }
@@ -34,7 +40,7 @@ struct state_t {
     bool straight_through;              // Ignore branches.
     int executed;                       // Instruction count.
     int write_limit;
-    bool emit_instructions;
+    emitter_t * emitter;
 
     void set64(int address, unsigned long v) {
         for (int i = 0; i != 8; ++i)
@@ -205,5 +211,22 @@ struct state_t {
 #define RT(cond) do { if (retrn(cond)) do_ret(); } while (0)
 
 #define RET() RT(ALWAYS_R)
+
+struct print_emitter_t : emitter_t {
+    print_emitter_t(FILE * f) : file(f) { }
+    void emit_byte(int address, int byte);
+    void emit_two(int address, int b1, int b2);
+
+    FILE * file;
+};
+
+struct munge_emitter_t : emitter_t {
+    munge_emitter_t(FILE * f, const char * p) :
+        file(f), suffix(p) { }
+    void emit_byte(int address, int byte);
+    FILE * file;
+    const char * suffix;
+};
+
 
 #endif

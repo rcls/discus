@@ -1,0 +1,27 @@
+EN1, EN2                        1, 2              32, 33
+PGND2                           3, 4          34, 35, 36
+PVIN2                           5, 6               1, 2
+ADDR                             7                  3
+MODE                             8                  4
+V7V                              9                  5
+VIN                             10                  6
+PVIN1                          11, 12              7, 8
+PGND1                          13, 14         9, 10, 11
+SDA                             15                 12
+SCL                             16                 13
+FB1                             17                 14
+VOUT1                           18                 15
+BST1                            19                 16
+LX1                            20, 21         17, 18, 19
+SS1                            22, 27             20, 25
+COMP1                           23                 21
+ROSC                            24                 22
+AGND                            25                 23
+COMP2                           26                 24
+SS2                             27                 25
+LX2                            28, 29         26, 27, 28
+BST2                                    30                   29
+VOUT2                                   31                   30
+FB2                                     32                   31
+Exposed Thermal Pad                     33                   37
+

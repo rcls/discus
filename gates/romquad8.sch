@@ -1957,7 +1957,7 @@ device=NMOS
 }
 N 4500 15200 4500 15600 4
 {
-T 4500 15600 5 10 1 1 0 3 1
+T 4200 15600 5 10 1 1 0 3 1
 netname=SEL0#
 }
 N 5300 15200 5300 15600 4
@@ -1986,7 +1986,7 @@ C 4700 16000 1 270 0 in-1.sym
 T 5000 16000 5 10 0 0 270 0 1
 device=INPUT
 T 4800 16000 5 10 1 1 0 3 1
-refdes=P1
+refdes=P1#
 T 5200 16000 5 10 0 0 270 0 1
 footprint=anchor
 }
@@ -1995,7 +1995,7 @@ C 6400 16000 1 270 0 in-1.sym
 T 6700 16000 5 10 0 0 270 0 1
 device=INPUT
 T 6500 16000 5 10 1 1 0 3 1
-refdes=P1#
+refdes=P1
 T 6900 16000 5 10 0 0 270 0 1
 footprint=anchor
 }
@@ -2011,7 +2011,7 @@ C 5000 13800 1 90 0 in-1.sym
 T 4700 13800 5 10 0 0 90 0 1
 device=INPUT
 T 4900 13800 5 10 1 1 0 5 1
-refdes=P2
+refdes=P2#
 T 4500 13800 5 10 0 0 90 0 1
 footprint=anchor
 }
@@ -2020,7 +2020,7 @@ C 6400 13800 1 270 1 in-1.sym
 T 6700 13800 5 10 0 0 270 6 1
 device=INPUT
 T 6500 13800 5 10 1 1 0 5 1
-refdes=P2#
+refdes=P2
 T 6900 13800 5 10 0 0 270 6 1
 footprint=anchor
 }
@@ -2043,3 +2043,78 @@ refdes=P0
 T 8500 10500 5 10 0 0 0 0 1
 footprint=anchor
 }
+C 5600 12400 1 0 0 resistor-load.sym
+{
+T 5900 12800 5 10 0 0 0 0 1
+device=RESISTOR
+T 6250 12550 5 10 1 1 0 0 1
+refdes=R0
+T 6000 12500 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 6000 12500 5 10 0 1 0 0 1
+value=3.3k
+}
+C 5600 12000 1 0 0 resistor-load.sym
+{
+T 5900 12400 5 10 0 0 0 0 1
+device=RESISTOR
+T 6250 12150 5 10 1 1 0 0 1
+refdes=R1
+T 6000 12100 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 6000 12100 5 10 0 1 0 0 1
+value=3.3k
+}
+C 5600 11600 1 0 0 resistor-load.sym
+{
+T 5900 12000 5 10 0 0 0 0 1
+device=RESISTOR
+T 6250 11750 5 10 1 1 0 0 1
+refdes=R2
+T 6000 11700 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 6000 11700 5 10 0 1 0 0 1
+value=3.3k
+}
+C 5600 11200 1 0 0 resistor-load.sym
+{
+T 5900 11600 5 10 0 0 0 0 1
+device=RESISTOR
+T 6250 11350 5 10 1 1 0 0 1
+refdes=R3
+T 6000 11300 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 6000 11300 5 10 0 1 0 0 1
+value=3.3k
+}
+N 6500 11300 6500 12800 4
+N 5600 12500 5400 12500 4
+{
+T 5400 12500 5 10 1 1 0 7 1
+netname=SEL0#
+}
+N 5600 12100 5400 12100 4
+{
+T 5400 12100 5 10 1 1 0 7 1
+netname=SEL1#
+}
+N 5600 11700 5400 11700 4
+{
+T 5400 11700 5 10 1 1 0 7 1
+netname=SEL2#
+}
+N 5600 11300 5400 11300 4
+{
+T 5400 11300 5 10 1 1 0 7 1
+netname=SEL3#
+}
+C 5200 12700 1 0 0 in-1.sym
+{
+T 5200 13000 5 10 0 0 0 0 1
+device=INPUT
+T 5200 12800 5 10 1 1 0 7 1
+refdes=Vdd
+T 5200 13200 5 10 0 0 0 0 1
+footprint=anchor
+}
+N 5800 12800 6500 12800 4

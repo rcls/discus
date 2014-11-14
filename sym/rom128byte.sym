@@ -279,3 +279,14 @@ pinseq=0
 T 205 395 5 10 1 1 0 1 1
 pinlabel=PE
 }
+P 700 7300 700 7100 1 0 0
+{
+T 700 7300 5 10 0 0 0 0 1
+pintype=unknown
+T 695 7100 5 8 1 1 0 0 1
+pinlabel=Vdd
+T 650 7195 5 10 0 1 90 2 1
+pinnumber=0
+T 700 7300 5 10 0 0 0 0 1
+pinseq=0
+}

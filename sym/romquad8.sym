@@ -444,3 +444,14 @@ pinseq=0
 T 1395 395 5 10 1 1 0 7 1
 pinlabel=P2#
 }
+P 800 4700 800 4500 1 0 0
+{
+T 800 4700 5 10 0 0 0 0 1
+pintype=unknown
+T 795 4500 5 8 1 1 0 0 1
+pinlabel=Vdd
+T 750 4595 5 10 0 1 90 2 1
+pinnumber=0
+T 800 4700 5 10 0 0 0 0 1
+pinseq=0
+}

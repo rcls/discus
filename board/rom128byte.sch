@@ -1670,3 +1670,16 @@ refdes=GND
 T 8300 6100 5 10 0 0 0 0 1
 footprint=anchor
 }
+C 6500 15800 1 0 0 vdd-1.sym
+C 9500 15800 1 0 0 vdd-1.sym
+C 12500 15800 1 0 0 vdd-1.sym
+C 15500 15800 1 0 0 vdd-1.sym
+C 6100 15700 1 0 0 in-1.sym
+{
+T 6100 16000 5 10 0 0 0 0 1
+device=INPUT
+T 6100 15800 5 10 1 1 0 7 1
+refdes=Vdd
+T 6100 16200 5 10 0 0 0 0 1
+footprint=anchor
+}

@@ -15,7 +15,7 @@ all: rmsim $(TESTPROGS)
 %.fake-cir: %.cir
 	perl test/fake.pl $< > $@
 
-CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11
+CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11 -I.
 
 %.o: %.cc
 	g++ $(CXXFLAGS) -o $@ -c $<
@@ -62,6 +62,8 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
 
 rmsim: state.o
+test/script: state.o
+
 $(TESTCC:%=test/test%): test/spice_load.o
 
 state.o rmsim.o: state.h

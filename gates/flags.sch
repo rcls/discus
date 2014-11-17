@@ -168,7 +168,7 @@ source=vdilatch.sch
 }
 C 7100 8400 1 0 0 vdd-1.sym
 C 7000 10800 1 0 0 vdd-1.sym
-C 9900 8100 1 0 0 nand1or.sym
+C 9900 8100 1 0 0 nor1and.sym
 {
 T 10550 8600 5 10 1 1 0 4 1
 refdes=S3
@@ -176,17 +176,17 @@ refdes=S3
 C 9300 8300 1 0 0 in-1.sym
 {
 T 9300 8400 5 10 1 1 0 7 1
-refdes=CinR#
+refdes=CinS
 T 9300 8800 5 10 0 0 0 0 1
 footprint=anchor
 T 9300 8600 5 10 0 0 0 0 1
 device=INPUT
 }
-N 9900 8400 10200 8400 4
+N 9900 8400 10100 8400 4
 C 9300 8600 1 0 0 in-1.sym
 {
 T 9300 8700 5 10 1 1 0 7 1
-refdes=CinS
+refdes=CinR#
 T 9300 9100 5 10 0 0 0 0 1
 footprint=anchor
 T 9300 8900 5 10 0 0 0 0 1

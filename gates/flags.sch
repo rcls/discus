@@ -40,7 +40,7 @@ device=INPUT
 C 9500 10200 1 0 0 out-1.sym
 {
 T 10100 10300 5 10 1 1 0 1 1
-refdes=Co#
+refdes=Co
 T 9500 10700 5 10 0 0 0 0 1
 footprint=anchor
 T 9500 10500 5 10 0 0 0 0 1
@@ -49,7 +49,7 @@ device=OUTPUT
 C 9500 10000 1 0 0 out-1.sym
 {
 T 10100 10100 5 10 1 1 0 1 1
-refdes=Co
+refdes=Co#
 T 9500 10500 5 10 0 0 0 0 1
 footprint=anchor
 T 9500 10300 5 10 0 0 0 0 1
@@ -137,7 +137,7 @@ device=INPUT
 }
 C 6600 9800 1 0 0 nand1or3.sym
 {
-T 7250 10250 5 10 1 1 0 0 1
+T 7350 10300 5 10 1 1 0 4 1
 refdes=S1
 }
 N 5800 10300 6600 10300 4

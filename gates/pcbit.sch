@@ -3,7 +3,7 @@ C 38700 42500 1 0 0 sramcell.sym
 {
 T 40050 42950 5 10 1 1 0 6 1
 refdes=L0
-T 39000 43150 5 10 1 1 0 0 1
+T 39500 43225 5 10 1 1 0 4 1
 source=sramcell.sch
 }
 C 40800 42500 1 0 0 sramcell.sym

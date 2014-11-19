@@ -1,10 +1,7 @@
 
-TESTCC = alu pcdecode opdecode sp
-TESTPROGS=$(TESTCC:%=test/test%)
-
 GNETLIST=/home/archive/bin/gnetlist
 
-all: test/rmsim $(TESTPROGS)
+all:
 
 %.rcr: %.sch
 	$(GNETLIST) -Lsubckt -g spice-sdb -o $@ $+
@@ -14,15 +11,6 @@ all: test/rmsim $(TESTPROGS)
 
 %.fake-cir: %.cir
 	perl test/fake.pl $< > $@
-
-CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11 -I.
-
-%.o: %.cc
-	g++ $(CXXFLAGS) -o $@ -c $<
-
-%: %.o
-	g++ $(CXXFLAGS) -o $@ $+
-
 
 RENAME=mv $*-gerber/$*.$1 $*-gerber/$($1_ext)
 DELETE=rm $*-gerber/$*.$1
@@ -60,14 +48,6 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 %.zip: %-gerbers
 	-rm $*.zip
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
-
-test/rmsim: test/state.o test/spice_load.o
-test/script: test/state.o test/spice_load.o
-
-$(TESTCC:%=test/test%): test/spice_load.o
-
-state.o rmsim.o: state.h
-$(TESTCC:%=test/test%.o): test/spice_load.h
 
 .PHONY: clean
 clean:

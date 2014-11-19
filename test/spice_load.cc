@@ -4,8 +4,10 @@
 #include <err.h>
 #include <string.h>
 
-spice_load::spice_load(double q) :
+spice_load::spice_load(double q, double sp, bool st) :
     QUANTUM(q),
+    SAMPLE_POINT(sp),
+    STABILITY_CHECK(st),
     num_vars(0),
     num_points(0)
 {
@@ -32,6 +34,9 @@ std::vector<bool> spice_load::extract_signal(const char * name)
         sig[i] = raw[indexes[i]] > 1.65;
     // Now check that the signal levels are stable between 0.5 QUANTUM and 0.9
     // QUANTUM...
+    if (!STABILITY_CHECK)
+        return sig;
+
     for (int i = 0; i != num_points; ++i) {
         int q = timestamps[i] / QUANTUM;
         double remainder = timestamps[i] - q * QUANTUM;
@@ -84,8 +89,8 @@ void spice_load::read_var_list(FILE * f)
 }
 
 
-spice_load::spice_load(FILE * f, double q) :
-    spice_load(q)
+spice_load::spice_load(FILE * f, double q, double sp, bool st) :
+    spice_load(q, sp, st)
 {
     char * line = NULL;
     size_t linesize = 0;
@@ -133,7 +138,7 @@ spice_load::spice_load(FILE * f, double q) :
     // Now select the indexes to use for sampling; the sample is taken every
     // time we cross 0.7*QUANTUM.  We will ignore the first two samples.
     num_samples = last / QUANTUM;
-    if (last - num_samples * QUANTUM >= 0.7 * QUANTUM)
+    if (last - num_samples * QUANTUM >= SAMPLE_POINT)
         ++num_samples;
     //printf("last = %e, num_samples = %li\n", last, num_samples);
 
@@ -142,7 +147,7 @@ spice_load::spice_load(FILE * f, double q) :
     for (int i = 0; i != num_points; ++i) {
         int this_item = timestamps[i] / QUANTUM;
         double remainder = timestamps[i] - this_item * QUANTUM;
-        if (last_remainder < 0.7 * QUANTUM && remainder >= 0.7 * QUANTUM) {
+        if (last_remainder < SAMPLE_POINT && remainder >= SAMPLE_POINT) {
             //printf("%e %i\n", timestamps[i], this_item);
             assert(this_item < num_samples);
             indexes[this_item] = i;

@@ -115,7 +115,7 @@ netname=WY
 N 18200 17800 18000 17800 4
 {
 T 18200 17800 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 16300 18500 1 0 0 phi0.sym
 C 17200 17200 1 0 0 gnd-1.sym
@@ -231,7 +231,7 @@ netname=WY
 N 20800 17800 20600 17800 4
 {
 T 20800 17800 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 18900 18500 1 0 0 phi0.sym
 C 19800 17200 1 0 0 gnd-1.sym
@@ -347,7 +347,7 @@ netname=WY
 N 23400 17800 23200 17800 4
 {
 T 23400 17800 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 21500 18500 1 0 0 phi0.sym
 C 22400 17200 1 0 0 gnd-1.sym
@@ -467,7 +467,7 @@ netname=WY
 N 26000 17800 25800 17800 4
 {
 T 26000 17800 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 24100 18500 1 0 0 phi0.sym
 C 25000 17200 1 0 0 gnd-1.sym
@@ -583,7 +583,7 @@ netname=WY
 N 18200 14200 18000 14200 4
 {
 T 18200 14200 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 16300 14900 1 0 0 phi0.sym
 C 17200 13600 1 0 0 gnd-1.sym
@@ -699,7 +699,7 @@ netname=WY
 N 20800 14200 20600 14200 4
 {
 T 20800 14200 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 18900 14900 1 0 0 phi0.sym
 C 19800 13600 1 0 0 gnd-1.sym
@@ -815,7 +815,7 @@ netname=WY
 N 23400 14200 23200 14200 4
 {
 T 23400 14200 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 21500 14900 1 0 0 phi0.sym
 C 22400 13600 1 0 0 gnd-1.sym
@@ -935,7 +935,7 @@ netname=WY
 N 26000 14200 25800 14200 4
 {
 T 26000 14200 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 C 24100 14900 1 0 0 phi0.sym
 C 25000 13600 1 0 0 gnd-1.sym
@@ -1478,7 +1478,7 @@ netname=WY
 N 15600 13300 15400 13300 4
 {
 T 15600 13300 5 10 1 1 0 1 1
-netname=WZ
+netname=WU
 }
 N 13800 13900 14000 13900 4
 {

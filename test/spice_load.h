@@ -32,6 +32,8 @@ struct spice_load {
     std::vector<bool> extract_signal(const char * name);
     std::vector<unsigned char> extract_number4(
         const char * n0, const char * n1, const char * n2, const char * n3);
+    std::vector<unsigned char> extract_byte(const char * n,
+                                            const char * s = "");
 
 private:
     void read_var_list(FILE * f);

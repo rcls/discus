@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include <err.h>
+#include <sstream>
 #include <string.h>
 
 spice_load::spice_load(double q, double sp, bool st) :
@@ -66,6 +67,23 @@ std::vector<unsigned char> spice_load::extract_number4(
 }
 
 
+std::vector<unsigned char> spice_load::extract_byte(const char * p,
+                                                    const char * s)
+{
+    std::vector<unsigned char> r(num_samples);
+    for (int i = 0; i != 8; ++i) {
+        int bit = 1 << i;
+        std::ostringstream name;
+        name << p << i << s;
+        const auto v = extract_signal(name.str().c_str());
+        for (int j = 0; j < num_samples; ++j)
+            if (v[j])
+                r[j] |= bit;
+    }
+    return r;
+}
+
+
 void spice_load::read_var_list(FILE * f)
 {
     char * line = NULL;
@@ -110,7 +128,7 @@ spice_load::spice_load(FILE * f, double q, double sp, bool st) :
         else if (strncmp(line, "No. Points: ", 12) == 0)
             num_points = strtoul(line + 12, NULL, 0);
         else if (strncmp(line, "Variables:", 10) == 0)
-            read_var_list(stdin);
+            read_var_list(f);
         else if (strncmp(line, "Binary:", 7) == 0)
             break;
     }

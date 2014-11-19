@@ -62,7 +62,7 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
 
 test/rmsim: test/state.o
-test/script: test/state.o
+test/script: test/state.o test/spice_load.o
 
 $(TESTCC:%=test/test%): test/spice_load.o
 

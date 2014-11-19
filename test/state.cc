@@ -2,6 +2,17 @@
 
 #include "state.h"
 
+
+void state_t::assemble(int n, emitter_t && emit)
+{
+    emitter = &emit;
+    executed = 0;
+    straight_through = true;
+    jump_take_number = -1;
+    go(n);
+}
+
+
 bool state_t::wanted(condition_t c) const
 {
     switch (c) {
@@ -19,7 +30,7 @@ bool state_t::wanted(condition_t c) const
     default:
         return false;
     }
-};
+}
 
 
 void state_t::extract_branches(int start)
@@ -30,7 +41,7 @@ void state_t::extract_branches(int start)
     write_limit = 256;
     go(start);
     int program_length = executed;
-    printf("Program length = %i\n", program_length);
+    fprintf(stderr, "Program length = %i\n", program_length);
 
     for (int i = 0;; ++i) {
         jump_take_number = i;
@@ -39,8 +50,8 @@ void state_t::extract_branches(int start)
             break;
         int target = jump_source + program_length - executed;
         jump_targets[jump_target_name] = target;
-        printf("Jump %i : %i -> %s %i\n", i, jump_source,
-               jump_target_name, target);
+        fprintf(stderr, "Jump %i : %i -> %s %i\n", i, jump_source,
+                jump_target_name, target);
     }
 }
 
@@ -94,6 +105,13 @@ void state_t::step(int opcode)
 
     ++pc;
 
+    if (kreg < 0 && opcode < 0x40) {
+        //fprintf(stderr, "opcode %02x is prefix\n", opcode);
+        kreg = opcode;
+        return;
+    }
+    kreg = -1;
+
     bool cond_flag;
     if (opcode & 0x10) {
         cond_flag = (opcode & 8) ? flag_C : flag_Z;
@@ -101,32 +119,34 @@ void state_t::step(int opcode)
             cond_flag = !cond_flag;
     }
     else {
-        cond_flag = (opcode & 0xf4) == 0 || (opcode & 0xfc) == 0xa8;
+        cond_flag = (opcode & 0xd4) == 0 || (opcode & 0xfc) == 0xa8;
     }
 
     switch (opcode & 0xe0) {
     case 0x00:                          // Const or jump.
-    case 0x20:
-        if (kreg < 0) {
-            kreg = opcode;
-            break;
-        }
-        if (!cond_flag)
-            break;
-        if (!(opcode & 0x20))
+        //fprintf(stderr, "opcode %02x is call\n", opcode);
+        if (cond_flag) {
             push((void *) (intptr_t) pc);
-        pc = v;
+            pc = v;
+        }
+        break;
+    case 0x20:
+        //fprintf(stderr, "opcode %02x is jump to %02x\n", opcode, v);
+        if (cond_flag)
+            pc = v;
         break;
     case 0x40: {                         // ALU arithmetic.
+        //fprintf(stderr, "opcode %02x is arith\n", opcode);
         int cin = (opcode & 8) ? flag_C : !!(opcode & 0x10);
         int bn = (opcode & 0x10) ? b ^ 255 : b;
         int q = reg[A] + bn + cin;
         flag_C = !!(q & 256);
         reg[A] = q & 255;
         flag_Z = reg[A] == 0;
-        return;
+        break;
     }
     case 0x60:                          // ALU logic.
+        //fprintf(stderr, "opcode %02x is logic\n", opcode);
         switch (opcode & 0x18) {
         case 0x00:                         // Or.
             reg[A] = reg[A] | b;
@@ -144,14 +164,16 @@ void state_t::step(int opcode)
             int q = reg[A] + b + 1;
             flag_C = !!(q & 256);
             flag_Z = (q & 255) == 0;
-            return;
+            break;
         }
         flag_Z = reg[A] == 0;
-        return;
+        break;
     case 0x80:                          // Load.
+        //fprintf(stderr, "opcode %02x is load\n", opcode);
         reg[(opcode >> 3) & 3] = b;
         break;
     case 0xa0:                          // Misc.
+        //fprintf(stderr, "opcode %02x is misc\n", opcode);
         opcode &= ~3;
         if (opcode == 0xa4)
             mem[v] = reg[0];
@@ -161,6 +183,7 @@ void state_t::step(int opcode)
             abort();
         break;
     default: {                          // inc/dec
+        //fprintf(stderr, "opcode %02x is inc or dec\n", opcode);
         int q = (opcode & 0x20) ? b + 1 : b - 1;
         reg[(opcode >> 3) & 3] = q;
         flag_Z = (q & 255) == 0;
@@ -174,6 +197,17 @@ void state_t::run(const unsigned char program[256])
 {
     while (pc > 0)
         step(program[pc]);
+}
+
+
+void state_t::zero_init()
+{
+    memset(reg, 0, sizeof reg);
+    memset(mem, 0, write_limit);
+    flag_Z = false;
+    flag_C = false;
+    pc = 0;
+    kreg = -1;
 }
 
 

@@ -27,7 +27,7 @@ struct operand_t {
 };
 
 enum condition_t {
-    ALWAYS, NEVER, ALWAYS_R, NEVER_R, NZ, Z, NC, C
+    ALWAYS, NEVER, ALWAYS_R, NEVER_R, Z, NZ, C, NC
 };
 
 struct state_t {
@@ -41,6 +41,8 @@ struct state_t {
     int executed;                       // Instruction count.
     int write_limit;
     emitter_t * emitter;
+
+    state_t() : write_limit(256) { }
 
     // Only used for binary interpreter...
     signed char kreg;                   // 0...63 or -1 for none.
@@ -60,6 +62,8 @@ struct state_t {
     void step(int opcode);              // Binary interpreter.
     void run(const unsigned char program[256]);
 
+    void zero_init();
+
     void account(int opcode, const operand_t & v);
 
     void account(int opcode);
@@ -75,6 +79,8 @@ struct state_t {
     }
 
     virtual void go(int start) = 0;
+
+    void assemble(int start, emitter_t && emit);
 
     int jump_take_number;
     int jump_source;

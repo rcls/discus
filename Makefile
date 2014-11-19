@@ -4,7 +4,7 @@ TESTPROGS=$(TESTCC:%=test/test%)
 
 GNETLIST=/home/archive/bin/gnetlist
 
-all: rmsim $(TESTPROGS)
+all: test/rmsim $(TESTPROGS)
 
 %.rcr: %.sch
 	$(GNETLIST) -Lsubckt -g spice-sdb -o $@ $+
@@ -61,8 +61,8 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 	-rm $*.zip
 	cd $*-gerber && zip ../$*.zip *.{txt,gbr,cnc}
 
-rmsim: state.o
-test/script: state.o
+test/rmsim: test/state.o
+test/script: test/state.o
 
 $(TESTCC:%=test/test%): test/spice_load.o
 

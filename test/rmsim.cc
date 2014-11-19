@@ -68,8 +68,10 @@ void miller_rabin_state::go()
 restart:
     INC(A);
     OUT(A);
-    if (start_point == te_single)
+    if (start_point == te_single) {
         RET();
+        return;
+    }
     // The input consists of 64bits BE...
 read1:
     // Pulse bit 7 for 1, pulse bit 6 for 0.
@@ -264,6 +266,8 @@ copy1:
     DEC(U);
     JP(NZ,copy1);
     RET();
+    if (start_point == te_single)
+        goto restart;
 }
 
 /* Modular multiplication.  */
@@ -336,7 +340,15 @@ static bool is_prime(unsigned long n)
 void miller_rabin_state::test_single(unsigned long mod)
 {
     set64(modulus, mod);
-    go(te_single);
+    start_point = te_single;
+#if 1
+    go();
+#else
+    jump_targets.clear();
+    extract_branches();
+    straight_through = false;
+    step_check_t(this).run_check();
+#endif
     unsigned exp = is_prime(mod) ? len : 1;
     printf("mr %lu -> %u exp %u in %u\n", mod, out_latch, exp, executed);
     assert(exp == out_latch);

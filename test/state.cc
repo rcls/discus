@@ -51,7 +51,7 @@ void state_t::extract_branches()
     emitter = NULL;
     straight_through = true;
     jump_take_number = -1;
-    write_limit = 256;
+    //write_limit = 256;
     go();
     int program_length = executed;
     fprintf(stderr, "Program length = %i\n", program_length);
@@ -192,7 +192,9 @@ void state_t::step(int opcode)
             mem[v] = reg[0];
         if (cond_flag)
             pc = (intptr_t) pop();
-        if (opcode == 0xa0 || opcode == 0xac) // in / out.
+        if (opcode == 0xac)
+            out_latch = v;
+        if (opcode == 0xa0)             // in.
             abort();
         break;
     default: {                          // inc/dec
@@ -216,7 +218,6 @@ void state_t::run(const unsigned char program[256])
 void state_t::zero_init()
 {
     memset(reg, 0, sizeof reg);
-    memset(mem, 0, write_limit);
     flag_Z = false;
     flag_C = false;
     pc = 0;
@@ -361,10 +362,12 @@ void step_check_t::run_check()
     orig->assemble(byte_emitter_t(code));
     zero_init();
     orig->zero_init();
+    memcpy(mem, orig->mem, 256);
     orig->emitter = this;
     orig->straight_through = false;
     orig->go();
     verify();
+    orig->emitter = NULL;
 }
 
 

@@ -177,8 +177,10 @@ struct state_t {
 
     void STA(const operand_t & val) {
         account(0xa4, val);
-        assert(get(val) < write_limit);
-        mem[get(val)] = reg[A];
+        if (!straight_through) {
+            assert(get(val) < write_limit);
+            mem[get(val)] = reg[A];
+        }
     }
 
     void IN() {

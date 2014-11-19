@@ -42,6 +42,10 @@ struct state_t {
     int write_limit;
     emitter_t * emitter;
 
+    // Only used for binary interpreter...
+    signed char kreg;                   // 0...63 or -1 for none.
+    int pc;                             // -1 for stop.
+
     void set64(int address, unsigned long v) {
         for (int i = 0; i != 8; ++i)
             mem[address - i] = v >> (i * 8);
@@ -52,6 +56,9 @@ struct state_t {
             result += (unsigned long) mem[address - i] << (i * 8);
         return result;
     }
+
+    void step(int opcode);              // Binary interpreter.
+    void run(const unsigned char program[256]);
 
     void account(int opcode, const operand_t & v);
 

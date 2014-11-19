@@ -80,6 +80,103 @@ bool state_t::jump(condition_t cond, const char * name, int opcode) {
 }
 
 
+void state_t::step(int opcode)
+{
+    int v;
+    if (kreg >= 0)
+        v = kreg + (opcode & 3) * 64;
+    else
+        v = reg[opcode & 3];
+
+    int b = v;
+    if (opcode & 4)
+        b = mem[v];
+
+    ++pc;
+
+    bool cond_flag;
+    if (opcode & 0x10) {
+        cond_flag = (opcode & 8) ? flag_C : flag_Z;
+        if (opcode & 4)
+            cond_flag = !cond_flag;
+    }
+    else {
+        cond_flag = (opcode & 0xf4) == 0 || (opcode & 0xfc) == 0xa8;
+    }
+
+    switch (opcode & 0xe0) {
+    case 0x00:                          // Const or jump.
+    case 0x20:
+        if (kreg < 0) {
+            kreg = opcode;
+            break;
+        }
+        if (!cond_flag)
+            break;
+        if (!(opcode & 0x20))
+            push((void *) (intptr_t) pc);
+        pc = v;
+        break;
+    case 0x40: {                         // ALU arithmetic.
+        int cin = (opcode & 8) ? flag_C : !!(opcode & 0x10);
+        int bn = (opcode & 0x10) ? b ^ 255 : b;
+        int q = reg[A] + bn + cin;
+        flag_C = !!(q & 256);
+        reg[A] = q & 255;
+        flag_Z = reg[A] == 0;
+        return;
+    }
+    case 0x60:                          // ALU logic.
+        switch (opcode & 0x18) {
+        case 0x00:                         // Or.
+            reg[A] = reg[A] | b;
+            flag_C = false;
+            break;
+        case 0x08:                         // Xor.
+            reg[A] = reg[A] ^ b;
+            flag_C = false;
+            break;
+        case 0x10:                         // And.
+            reg[A] = reg[A] & b;
+            flag_C = true;
+            break;
+        default: ;                      // Cmp.
+            int q = reg[A] + b + 1;
+            flag_C = !!(q & 256);
+            flag_Z = (q & 255) == 0;
+            return;
+        }
+        flag_Z = reg[A] == 0;
+        return;
+    case 0x80:                          // Load.
+        reg[(opcode >> 3) & 3] = b;
+        break;
+    case 0xa0:                          // Misc.
+        opcode &= ~3;
+        if (opcode == 0xa4)
+            mem[v] = reg[0];
+        if (cond_flag)
+            pc = (intptr_t) pop();
+        if (opcode == 0xa0 || opcode == 0xac) // in / out.
+            abort();
+        break;
+    default: {                          // inc/dec
+        int q = (opcode & 0x20) ? b + 1 : b - 1;
+        reg[(opcode >> 3) & 3] = q;
+        flag_Z = (q & 255) == 0;
+        break;
+    }
+    }
+}
+
+
+void state_t::run(const unsigned char program[256])
+{
+    while (pc > 0)
+        step(program[pc]);
+}
+
+
 void emitter_t::emit_two(int address, int b1, int b2)
 {
     emit_byte(address, b1);

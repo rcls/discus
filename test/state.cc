@@ -3,13 +3,13 @@
 #include "state.h"
 
 
-void state_t::assemble(int n, emitter_t && emit)
+void state_t::assemble(emitter_t && emit)
 {
     emitter = &emit;
     executed = 0;
     straight_through = true;
     jump_take_number = -1;
-    go(n);
+    go();
 }
 
 
@@ -33,19 +33,19 @@ bool state_t::wanted(condition_t c) const
 }
 
 
-void state_t::extract_branches(int start)
+void state_t::extract_branches()
 {
     emitter = NULL;
     straight_through = true;
     jump_take_number = -1;
     write_limit = 256;
-    go(start);
+    go();
     int program_length = executed;
     fprintf(stderr, "Program length = %i\n", program_length);
 
     for (int i = 0;; ++i) {
         jump_take_number = i;
-        go(start);
+        go();
         if (jump_take_number >= 0)
             break;
         int target = jump_source + program_length - executed;

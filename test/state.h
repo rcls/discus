@@ -78,9 +78,9 @@ struct state_t {
         return reg[r];
     }
 
-    virtual void go(int start) = 0;
+    virtual void go() = 0;
 
-    void assemble(int start, emitter_t && emit);
+    void assemble(emitter_t && emit);
 
     int jump_take_number;
     int jump_source;
@@ -204,7 +204,7 @@ struct state_t {
         return !straight_through && wanted(cond);
     }
 
-    void extract_branches(int start);
+    void extract_branches();
 };
 
 

@@ -11,7 +11,7 @@ static int comp_num;
 static const char * verify_path;
 
 struct Script1 : public state_t {
-    void go(int start);
+    void go();
 
     void verify_spice(const char * path);
 
@@ -20,7 +20,7 @@ struct Script1 : public state_t {
 };
 
 
-void Script1::go(int start)
+void Script1::go()
 {
     stack[0] = NULL;
     executed = 0;
@@ -48,7 +48,7 @@ struct byte_emitter_t : emitter_t
 struct step_check_t : state_t, emitter_t {
     step_check_t(state_t * o) : orig(o) {
         byte_emitter_t emit(code);
-        assemble(comp_num, byte_emitter_t(code));
+        assemble(byte_emitter_t(code));
     }
     void verify(int o, int f, const char * name);
     void verify();
@@ -181,7 +181,7 @@ void Script1::verify_spice(const char * path)
     auto II = spice.extract_byte("i", "_c");
 
     unsigned char code[256];
-    assemble(comp_num, byte_emitter_t(code));
+    assemble(byte_emitter_t(code));
 
     // Load the main state.  The first instruction to check is at sample 2,
     // pc=0.
@@ -212,13 +212,13 @@ int main(int argc, char * argv[])
     process_opts(argc, argv);
 
     Script1 script;
-    script.extract_branches(0);
+    script.extract_branches();
 
     if (output_hex)
-        script.assemble(comp_num, print_emitter_t(stdout));
+        script.assemble(print_emitter_t(stdout));
 
     if (output_rom)
-        script.assemble(comp_num, munge_emitter_t(stdout, ""));
+        script.assemble(munge_emitter_t(stdout, ""));
 
     if (check_flag)
         step_check_t(&script).run_check();

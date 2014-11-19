@@ -38,7 +38,9 @@ struct miller_rabin_state : state_t {
         te_power
     };
 
-    void go(int start);
+    test_entry_t start_point;
+    void go(test_entry_t start) { start_point = start; go(); }
+    void go();
 
     void test_power(unsigned long mod, unsigned long n, unsigned long exp);
     void test_single(unsigned long mod);
@@ -47,12 +49,12 @@ struct miller_rabin_state : state_t {
 };
 
 
-void miller_rabin_state::go(int start)
+void miller_rabin_state::go()
 {
     stack[0] = NULL;
     executed = 0;
 
-    switch (start) {
+    switch (start_point) {
     case te_add:
         goto add64m;
     case te_mult:
@@ -66,7 +68,7 @@ void miller_rabin_state::go(int start)
 restart:
     INC(A);
     OUT(A);
-    if (start == te_single)
+    if (start_point == te_single)
         RET();
     // The input consists of 64bits BE...
 read1:
@@ -140,7 +142,7 @@ power1:
     JP(NZ,power1);
 power_x:
 
-    if (start == te_power)
+    if (start_point == te_power)
         RET();
 
     CALL(classifyp1);                    // -1, 1 -> useless.
@@ -343,13 +345,14 @@ void miller_rabin_state::test_single(unsigned long mod)
 
 void miller_rabin_state::run_tests()
 {
-    extract_branches(0);
+    start_point = te_full;
+    extract_branches();
 
     print_emitter_t emit(stdout);
     emitter = &emit;
     straight_through = true;
     jump_take_number = -1;
-    go(0);                              // Assemble
+    go();                               // Assemble
 
     emitter = NULL;
     straight_through = false;

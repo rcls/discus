@@ -82,6 +82,11 @@ struct state_t {
 
     void assemble(emitter_t && emit);
 
+    void verify_spice(const char * path);
+
+    template<typename T>
+    bool verify(T & expected, T actual, const char * name);
+
     int jump_take_number;
     int jump_source;
     const char * jump_target_name;
@@ -239,6 +244,21 @@ struct munge_emitter_t : emitter_t {
     void emit_byte(int address, int byte);
     FILE * file;
     const char * suffix;
+};
+
+
+struct step_check_t : state_t, emitter_t {
+    step_check_t(state_t * o);
+    void verify(int o, int f, const char * name);
+    void verify();
+    void emit_byte(int address, int byte);
+    void emit_two(int address, int b1, int b2);
+    state_t * const orig;
+    unsigned char code[256];
+
+    void run_check();
+
+    void go() {}
 };
 
 

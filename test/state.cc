@@ -1,6 +1,19 @@
+#include <err.h>
 #include <stdio.h>
 
 #include "state.h"
+#include "spice_load.h"
+
+
+struct byte_emitter_t : emitter_t
+{
+    byte_emitter_t(unsigned char c[256]) :
+        code(c) { }
+    void emit_byte(int address, int byte) {
+        code[address] = byte;
+    }
+    unsigned char * const code;
+};
 
 
 void state_t::assemble(emitter_t && emit)
@@ -211,6 +224,61 @@ void state_t::zero_init()
 }
 
 
+template<typename T>
+bool state_t::verify(T & expected, T actual, const char * name)
+{
+    if (expected == actual)
+        return true;
+
+    fprintf(stderr, "Verify mismatch @%#02x %s = %#02x expected %#02x\n",
+            pc, name, actual, expected);
+    return false;
+}
+
+
+void state_t::verify_spice(const char * path)
+{
+    FILE * f = fopen(path, "r");
+    if (!f)
+        err(1, "fopen %s", path);
+    spice_load spice(f, 10e-6, 4e-6, false);
+    //auto Ohash = spice.extract_byte("o", "#");
+    auto AA = spice.extract_byte("a");
+    auto XX = spice.extract_byte("vx_s", "c");
+    auto YY = spice.extract_byte("vy_s", "c");
+    auto UU = spice.extract_byte("vu_s", "c");
+    auto PP = spice.extract_byte("p");
+    const auto FC = spice.extract_signal("fc");
+    const auto FZ = spice.extract_signal("fz");
+    auto II = spice.extract_byte("i", "_c");
+
+    unsigned char code[256];
+    assemble(byte_emitter_t(code));
+
+    // Load the main state.  The first instruction to check is at sample 2,
+    // pc=0.
+    reg[A] = AA[2];
+    reg[X] = XX[2];
+    reg[Y] = YY[2];
+    reg[U] = UU[2];
+    flag_C = FC[2];
+    flag_Z = FZ[2];
+    kreg = -1;
+    pc = 0;
+    for (int i = 3; i < spice.num_samples; ++i) {
+        step(code[pc]);
+        verify(reg[A], AA[i], "A");
+        verify(reg[X], XX[i], "X");
+        verify(reg[Y], YY[i], "Y");
+        verify(reg[U], UU[i], "U");
+        verify(flag_C, FC[i], "C");
+        verify(flag_Z, FZ[i], "Z");
+        if (!verify(pc, (int) PP[i], "PC"))
+            abort();                    // No point in carrying on.
+    }
+}
+
+
 void emitter_t::emit_two(int address, int b1, int b2)
 {
     emit_byte(address, b1);
@@ -252,4 +320,63 @@ void munge_emitter_t::emit_byte(int address, int byte)
             continue;
         printf("R%c%u%c%c%c\n", column, i, quad, quad8, board);
     }
+}
+
+
+step_check_t::step_check_t(state_t * o) :
+    orig(o)
+{
+    byte_emitter_t emit(code);
+    assemble(byte_emitter_t(code));
+}
+
+
+void step_check_t::verify(int o, int f, const char * name)
+{
+    if (o != f)
+        errx(1, "%s mismatch src 0x%02x, bin 0x%02x at step %i pc 0x%02x\n",
+             name, o, f, orig->executed, pc);
+}
+
+
+void step_check_t::verify()
+{
+    verify(orig->reg[A], reg[A], "A");
+    verify(orig->reg[X], reg[X], "X");
+    verify(orig->reg[Y], reg[Y], "Y");
+    verify(orig->reg[U], reg[U], "U");
+    verify(orig->flag_Z, flag_Z, "Z");
+    verify(orig->flag_C, flag_C, "C");
+    if (memcmp(orig->mem, mem, 256) != 0)
+        for (int i = 0; i != 256; ++i) {
+            char name[8];
+            snprintf(name, sizeof name, "mem[0x%02x]", i);
+            verify(orig->mem[i], mem[i], name);
+        }
+}
+
+
+void step_check_t::run_check()
+{
+    orig->assemble(byte_emitter_t(code));
+    zero_init();
+    orig->zero_init();
+    orig->emitter = this;
+    orig->straight_through = false;
+    orig->go();
+    verify();
+}
+
+
+void step_check_t::emit_byte(int address, int byte)
+{
+    verify();
+    step(code[pc]);
+}
+
+void step_check_t::emit_two(int address, int b1, int b2)
+{
+    verify();
+    step(code[pc]);
+    step(code[pc]);
 }

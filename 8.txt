@@ -202,7 +202,9 @@ FIXME : Put reset on the pc board.
 FIXME : Does SRAM really need the double-buffer on output?
 FIXME : Pullup resistors.
 FIXME : Buffers on FC/FZ?
-FIXME : vdilatch in the slice owns it's input.  But the input is shared.
+FIXME : we should probably only write strobe the stack latches during phi0.
+FIXME : those glitches on FZ are yuck.  Use a proper Dflop instead.
+FIXME : vdilatch driving the regs is dodgy too...
 
 FIXME : Is the gating on SRAM MR -> RD# required?  We already have the select
 strobes, so we could rely on that and just set RD# = !MR?

@@ -13,7 +13,7 @@ int main()
     const auto I5 = S.extract_signal("i5");
     const auto I6 = S.extract_signal("i6");
     const auto I7 = S.extract_signal("i7");
-    const auto CRi = S.extract_signal("cr#");
+    const auto CR = S.extract_signal("cr");
     const auto CSi = S.extract_signal("cs#");
     const auto CINRi = S.extract_signal("cinr#");
     const auto CINS = S.extract_signal("cins");
@@ -26,7 +26,7 @@ int main()
     for (int i = 0; i != S.num_samples; ++i) {
         int opcode = I7[i] * 128 + I6[i] * 64 + I5[i] * 32
             +        I4[i] * 16  + I3[i] * 8;
-        bool cr = !CRi[i];
+        bool cr = CR[i];
         bool cs = !CSi[i];
 
         bool cinr = !CINRi[i];

@@ -41,7 +41,7 @@ int main()
 
         // Dominances...
         //ar &= !as;
-        cr &= !cs;
+        //cr &= !cs;
         cinr &= !cins;
 
         const char * tag = NULL;

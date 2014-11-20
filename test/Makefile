@@ -1,12 +1,14 @@
 
 TESTCC = alu pcdecode opdecode sp
-TESTPROGS=$(test%)
+TESTPROGS=$(TESTCC:%=test%)
 
 SCRIPTS=test1
 
 GNETLIST=/home/archive/bin/gnetlist
 
-all: rmsim script $(TESTPROGS)
+all: rmsim $(TESTPROGS)
+
+verify: $(SCRIPTS:%=%.verify)
 
 %.rcr: %.sch
 	$(GNETLIST) -L../subckt -g spice-sdb -o $@ $+
@@ -28,18 +30,21 @@ CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11 -I.
 .PRECIOUS: %.raw
 %.raw: % ../board/univlight.cir
 	./$< -C
-	./$< -R | ./rommunge.py -t100u -w $@ ../board/univlight.cir $*.cir
-	ngspice $*.cir
+	./$< -T -R | ./rommunge.py -w $@ ../board/univlight.cir $*.cir
+	ngspice -b $*.cir
+
+.PHONY: %.verify
+%.verify: %.raw
+	./$* -V $<
 
 rmsim: state.o spice_load.o
-script: state.o spice_load.o
 
 $(TESTPROGS): spice_load.o
 
 $(SCRIPTS): state.o spice_load.o script.o
 
 script.o state.o rmsim.o: state.h
-$(TESTS:%=test%.o): spice_load.h
+$(TESTCC:%=test%.o): spice_load.h
 $(SCRIPTS:%=%.o): state.h script.h
 
 .PHONY: clean

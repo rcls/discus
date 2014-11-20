@@ -2,7 +2,7 @@
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test%)
 
-SCRIPTS=test1
+SCRIPTS=testadd testsub testcall testmem
 
 GNETLIST=/home/archive/bin/gnetlist
 

@@ -40,7 +40,7 @@ int main()
         bool n = N[i];
 
         // Dominances...
-        ar &= !as;
+        //ar &= !as;
         cr &= !cs;
         cinr &= !cins;
 

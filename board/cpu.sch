@@ -965,12 +965,12 @@ netname=CS#
 N 15100 19800 14900 19800 4
 {
 T 15100 19800 5 10 1 1 0 1 1
-netname=CinS
+netname=CinS#
 }
 N 15100 19600 14900 19600 4
 {
 T 15100 19600 5 10 1 1 0 1 1
-netname=CinR#
+netname=CinR
 }
 N 15100 19400 14900 19400 4
 {
@@ -1255,12 +1255,12 @@ netname=Cout#
 N 15100 15600 14900 15600 4
 {
 T 15100 15600 5 10 1 1 0 1 1
-netname=CinS
+netname=CinS#
 }
 N 15100 15400 14900 15400 4
 {
 T 15100 15400 5 10 1 1 0 1 1
-netname=CinR#
+netname=CinR
 }
 N 13100 15200 13300 15200 4
 {

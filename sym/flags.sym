@@ -88,7 +88,7 @@ pinnumber=0
 T 1600 1000 5 10 0 0 0 0 1
 pinseq=0
 T 1395 995 5 10 1 1 0 7 1
-pinlabel=CinS
+pinlabel=CinS#
 }
 P 1600 800 1400 800 1 0 0
 {
@@ -99,7 +99,7 @@ pinnumber=0
 T 1600 800 5 10 0 0 0 0 1
 pinseq=0
 T 1395 795 5 10 1 1 0 7 1
-pinlabel=CinR#
+pinlabel=CinR
 }
 P 0 600 200 600 1 0 0
 {

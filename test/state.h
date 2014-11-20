@@ -141,13 +141,13 @@ struct state_t {
     // FIXME: CMP
 
     void INC(register_name_t w, const operand_t & val) {
-        account(0xe0 + w * 8, val);
+        account(0xc0 + w * 8, val);
         reg[w] = get(val) + 1;
         flag_Z = (reg[w] == 0);
     }
 
     void DEC(register_name_t w, const operand_t & val) {
-        account(0xc0 + w * 8, val);
+        account(0xe0 + w * 8, val);
         reg[w] = get(val) - 1;
         flag_Z = (reg[w] == 0);
     }

@@ -15,8 +15,8 @@ int main()
     const auto I7 = S.extract_signal("i7");
     const auto CR = S.extract_signal("cr");
     const auto CSi = S.extract_signal("cs#");
-    const auto CINRi = S.extract_signal("cinr#");
-    const auto CINS = S.extract_signal("cins");
+    const auto CINR = S.extract_signal("cinr");
+    const auto CINSi = S.extract_signal("cins#");
     const auto ARi = S.extract_signal("ar#");
     const auto AS = S.extract_signal("as");
     const auto AND = S.extract_signal("and");
@@ -29,8 +29,8 @@ int main()
         bool cr = CR[i];
         bool cs = !CSi[i];
 
-        bool cinr = !CINRi[i];
-        bool cins = CINS[i];
+        bool cinr = CINR[i];
+        bool cins = !CINSi[i];
 
         bool ar = !ARi[i];
         bool as = AS[i];
@@ -42,7 +42,7 @@ int main()
         // Dominances...
         //ar &= !as;
         //cr &= !cs;
-        cinr &= !cins;
+        //cinr &= !cins;
 
         const char * tag = NULL;
         bool ex_cr = false;
@@ -86,15 +86,15 @@ int main()
             ex_cinr = true;
             //ex_cr = true; - don't care.
             break;
-        case 0xc0:                      // DEC
-            tag = "DEC";
-            ex_as = true;
-            ex_cinr = true;
-            break;
-        case 0xe0:                      // INC
+        case 0xc0:                      // INC
             tag = "INC";
             ex_ar = true;
             ex_cins = true;
+            break;
+        case 0xe0:                      // DEC
+            tag = "DEC";
+            ex_as = true;
+            ex_cinr = true;
             break;
         }
 

@@ -193,6 +193,7 @@ CinS: CinForce &
 
 CinR: ADD, OR, XOR, 1* except 111*:
  0xx00 (Add, or)
+ 0x10x (xor, or)
  x0xxx (ld, misc)
  1x0xx (& dec)
 

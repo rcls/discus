@@ -199,7 +199,7 @@ void state_t::step(int opcode)
         break;
     default: {                          // inc/dec
         //fprintf(stderr, "opcode %02x is inc or dec\n", opcode);
-        int q = (opcode & 0x20) ? b + 1 : b - 1;
+        int q = (opcode & 0x20) ? b - 1 : b + 1;
         reg[(opcode >> 3) & 3] = q;
         flag_Z = (q & 255) == 0;
         break;

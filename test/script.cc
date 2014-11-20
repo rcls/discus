@@ -1,32 +1,9 @@
-#include "spice_load.h"
+#include "script.h"
 #include "state.h"
 
 #include <getopt.h>
 
-static bool output_hex;
-static bool output_rom;
-static bool check_flag;
 static int comp_num;
-static const char * verify_path;
-
-struct Script1 : public state_t {
-    void go();
-};
-
-
-void Script1::go()
-{
-    stack[0] = NULL;
-    executed = 0;
-
-    XOR(A);
-start:
-    ADD(2);
-    INC(A);
-    JP(NZ,start);
-    RET();
-}
-
 
 [[ noreturn ]] static void usage(const char * argv0, FILE * f, int r)
 {
@@ -35,7 +12,8 @@ start:
     exit(r);
 }
 
-static void process_opts(int argc, char * const argv[])
+
+void sim_main(state_t && program, int argc, char * argv[])
 {
     while (1)
         switch (getopt(argc, argv, "n:HRV:C")) {
@@ -43,16 +21,20 @@ static void process_opts(int argc, char * const argv[])
             comp_num = strtoul(optarg, NULL, 0);
             break;
         case 'H':
-            output_hex = true;
+            program.extract_branches();
+            program.assemble(print_emitter_t(stdout));
             break;
         case 'R':
-            output_rom = true;
+            program.extract_branches();
+            program.assemble(munge_emitter_t(stdout, ""));
             break;
         case 'V':
-            verify_path = optarg;
+            program.extract_branches();
+            program.verify_spice(optarg);
             break;
         case 'C':
-            check_flag = true;
+            program.extract_branches();
+            step_check_t(&program).run_check();
             break;
         case 'h':
             usage(argv[0], stdout, EXIT_SUCCESS);
@@ -63,27 +45,4 @@ static void process_opts(int argc, char * const argv[])
         default:
             abort();
         }
-}
-
-
-int main(int argc, char * argv[])
-{
-    process_opts(argc, argv);
-
-    Script1 script;
-    script.extract_branches();
-
-    if (output_hex)
-        script.assemble(print_emitter_t(stdout));
-
-    if (output_rom)
-        script.assemble(munge_emitter_t(stdout, ""));
-
-    if (check_flag)
-        step_check_t(&script).run_check();
-
-    if (verify_path)
-        script.verify_spice(verify_path);
-
-    return 0;
 }

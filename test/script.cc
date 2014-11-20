@@ -16,7 +16,7 @@ static int comp_num;
 void sim_main(state_t && program, int argc, char * argv[])
 {
     while (1)
-        switch (getopt(argc, argv, "n:HRV:C")) {
+        switch (getopt(argc, argv, "n:HRV:CT")) {
         case 'n':
             comp_num = strtoul(optarg, NULL, 0);
             break;
@@ -31,6 +31,13 @@ void sim_main(state_t && program, int argc, char * argv[])
         case 'V':
             program.extract_branches();
             program.verify_spice(optarg);
+            break;
+        case 'T':
+            program.extract_branches();
+            program.executed = 0;
+            program.straight_through = false;
+            program.go();
+            printf("executed %i\n", program.executed);
             break;
         case 'C':
             program.extract_branches();

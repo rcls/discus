@@ -211,11 +211,13 @@ struct state_t {
         return !straight_through && wanted(cond);
     }
 
+    void check_fail(const char * what);
+
     void extract_branches();
 };
 
 
-#define JP(cond,label) do { if (jump(cond, #label, 32)) goto label; } while (0)
+#define JP(cond,label) do if (jump(cond, #label, 32)) goto label; while (0)
 #define JMP(label) JP(ALWAYS,label)
 
 #define JOIN2(x,y) x##y
@@ -223,14 +225,16 @@ struct state_t {
 #define RET_LABEL JOIN(return_label_,__LINE__)
 #define call(label) do { push(&&RET_LABEL); goto label; RET_LABEL: ; } while (0)
 
-#define CL(cond,label) do { if (jump(cond, #label)) call(label); } while (0)
+#define CL(cond,label) do if (jump(cond, #label)) call(label); while (0)
 #define CALL(label) CL(ALWAYS,label)
 
 #define do_ret() do if (stack[0] == NULL) return; else goto *pop(); while (0)
 
-#define RT(cond) do { if (retrn(cond)) do_ret(); } while (0)
+#define RT(cond) do if (retrn(cond)) do_ret(); while (0)
 
 #define RET() RT(ALWAYS_R)
+
+#define CHECK(T) do if (!straight_through) { if (T); else check_fail(#T); } while (0)
 
 struct print_emitter_t : emitter_t {
     print_emitter_t(FILE * f) : file(f) { }

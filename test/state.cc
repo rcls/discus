@@ -280,6 +280,12 @@ void state_t::verify_spice(const char * path)
 }
 
 
+void state_t::check_fail(const char * what)
+{
+    fprintf(stderr, "Check failed: %s after %i\n", what, executed);
+}
+
+
 void emitter_t::emit_two(int address, int b1, int b2)
 {
     emit_byte(address, b1);

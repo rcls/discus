@@ -233,6 +233,7 @@ bool state_t::verify(T & expected, T actual, const char * name)
 
     fprintf(stderr, "Verify mismatch @%#02x %s = %#02x expected %#02x\n",
             pc, name, actual, expected);
+    expected = actual;
     return false;
 }
 

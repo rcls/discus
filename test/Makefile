@@ -2,12 +2,13 @@
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test%)
 
-SCRIPTS=testadd testsub testcall testmem
+SCRIPTS=testadd testsub testcall testmem hazard
 
 GNETLIST=/home/archive/bin/gnetlist
 
 all: rmsim $(TESTPROGS)
 
+raw: $(SCRIPTS:%=%.raw)
 verify: $(SCRIPTS:%=%.verify)
 
 %.rcr: %.sch

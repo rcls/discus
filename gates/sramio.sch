@@ -147,3 +147,29 @@ device=NMOS
 }
 N 7100 6100 7100 5800 4
 N 6100 6100 6100 5800 4
+C 7700 6500 1 0 0 vdd-1.sym
+C 5900 6100 1 90 0 resistor-load.sym
+{
+T 5500 6400 5 10 0 0 90 0 1
+device=RESISTOR
+T 5750 6750 5 10 1 1 90 0 1
+refdes=R1
+T 5800 6500 5 10 0 1 90 0 1
+footprint=0603-boxed
+T 5800 6500 5 10 0 1 90 0 1
+value=3.3k
+}
+C 7300 7000 1 270 0 resistor-load.sym
+{
+T 7700 6700 5 10 0 0 270 0 1
+device=RESISTOR
+T 7450 6350 5 10 1 1 270 0 1
+refdes=R2
+T 7400 6600 5 10 0 1 270 0 1
+footprint=0603-boxed
+T 7400 6600 5 10 0 1 270 0 1
+value=3.3k
+}
+N 5800 6100 6100 6100 4
+C 7200 7000 1 0 0 vdd-1.sym
+C 5600 7000 1 0 0 vdd-1.sym

@@ -12,15 +12,21 @@ void TestSub::go()
     executed = 0;
 
     SUB(A);
-    CHECK(!flag_C && reg[A] == 0);
-    SBC(0x7d);
-    LOAD(X,A);
+    CHECK(flag_C && reg[A] == 0);
+    JP(C,carry_on);
+zero_on:
     SUB(X);
-    CHECK(flag_C);
-    SBC(X);
+    CHECK(!flag_C);
     SBC(X);
     SUB(X);
     RET();
+carry_on:
+    SBC(0x7d);
+    LOAD(X,A);
+    CHECK(!flag_C);
+    SUB(X);
+    CHECK(flag_C && flag_Z);
+    JP(Z,zero_on);
 }
 
 

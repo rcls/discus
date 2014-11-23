@@ -13,13 +13,18 @@ void TestAdd::go()
 
     XOR(A);
     CHECK(!flag_C && reg[A] == 0);
+    JP(NZ,crap);
     ADC(0x83);
     LOAD(Y,A);
+    CHECK(!flag_C);
+    JP(C,crap);
     ADD(Y);
     CHECK(flag_C);
     ADC(Y);
     ADC(Y);
+    CHECK(flag_C);
     ADD(Y);
+crap:
     RET();
 }
 

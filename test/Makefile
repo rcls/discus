@@ -2,23 +2,12 @@
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test%)
 
-SCRIPTS=testadd testsub testcall testmem hazard
-
-GNETLIST=/home/archive/bin/gnetlist
+SCRIPTS=testadd testsub testcall testmem hazard logic
 
 all: rmsim $(TESTPROGS)
 
 raw: $(SCRIPTS:%=%.raw)
 verify: $(SCRIPTS:%=%.verify)
-
-%.rcr: %.sch
-	$(GNETLIST) -L../subckt -g spice-sdb -o $@ $+
-
-%.cir: %.rcr
-	perl substrate.pl $< > $@
-
-%.fake-cir: %.cir
-	perl test/fake.pl $< > $@
 
 CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11 -I.
 

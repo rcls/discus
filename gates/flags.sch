@@ -159,12 +159,12 @@ C 6000 9100 1 0 0 nand1or.sym
 T 6550 9550 5 10 1 1 0 0 1
 refdes=S2
 }
-C 7700 6700 1 0 0 vdilatch.sym
+C 7700 6700 1 0 0 dilatch.sym
 {
 T 9050 7100 5 10 1 1 0 6 1
 refdes=Z
 T 8500 7400 5 10 1 1 0 4 1
-source=vdilatch.sch
+source=dilatch.sch
 }
 C 7100 8400 1 0 0 vdd-1.sym
 C 7000 10800 1 0 0 vdd-1.sym

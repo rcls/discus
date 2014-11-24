@@ -356,12 +356,12 @@ device=NMOS
 }
 N 51000 47000 48500 47000 4
 N 51600 46500 51400 46500 4
-C 53800 45900 1 0 1 vdilatch.sym
+C 53800 45900 1 0 1 dilatch.sym
 {
 T 52450 46300 5 10 1 1 0 0 1
 refdes=L
 T 53000 46600 5 10 1 1 0 4 1
-source=vdilatch.sch
+source=dilatch.sch
 }
 C 54400 46300 1 0 1 in-1.sym
 {

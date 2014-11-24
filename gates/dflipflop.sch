@@ -44,7 +44,7 @@ device=INPUT
 T 43625 63075 5 10 1 1 0 5 1
 refdes=C
 }
-C 44000 62600 1 0 0 vdilatch.sym
+C 44000 62600 1 0 0 dilatch.sym
 {
 T 44800 63300 5 10 1 1 0 4 1
 source=vdilatch.sch

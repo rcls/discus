@@ -69,4 +69,4 @@ pinseq=8
 T 1350 400 8 10 1 1 0 7 1
 refdes=S?
 T 800 650 8 10 1 1 0 4 1
-source=vdflipflop.sch
+source=dflipflop.sch

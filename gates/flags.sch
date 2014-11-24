@@ -1,10 +1,10 @@
 v 20130925 2
-C 7700 9200 1 0 0 vdflipflop.sym
+C 7700 9200 1 0 0 dflipflop.sym
 {
 T 9050 9600 5 10 1 1 0 7 1
 refdes=C
 T 8500 9850 5 10 1 1 0 4 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
 C 8300 10700 1 0 0 vdd-1.sym
 C 8400 8900 1 0 0 gnd-1.sym

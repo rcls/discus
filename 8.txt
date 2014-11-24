@@ -206,9 +206,6 @@ x1xxxxxx,1x0xxxxx,IN
 
 FIXME : Put reset on the pc board.
 FIXME : Does SRAM really need the double-buffer on output?
-FIXME : those glitches on FZ are yuck.  Use a proper Dflop instead.
-FIXME : vdilatch driving the regs is dodgy too...
-FIXME : vdilatch is just dodgy.
 
 FIXME : we should probably only write strobe the stack latches during phi0.
 FIXME : Do we have races on the PUSH strobe for the stack?

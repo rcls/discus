@@ -6,61 +6,61 @@ refdes=U
 T 47100 49950 5 10 1 1 0 0 1
 source=inc8.sch
 }
-C 49200 50500 1 0 0 vdflipflop.sym
+C 49200 50500 1 0 0 dflipflop.sym
 {
 T 50250 50900 5 10 1 1 0 0 1
 refdes=F0
 T 49475 51125 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 49200 47100 1 0 0 vdflipflop.sym
+C 49200 47100 1 0 0 dflipflop.sym
 {
 T 50250 47500 5 10 1 1 0 0 1
 refdes=F7
 T 49475 47725 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 51400 50500 1 0 0 vdflipflop.sym
+C 51400 50500 1 0 0 dflipflop.sym
 {
 T 52450 50900 5 10 1 1 0 0 1
 refdes=F1
 T 51675 51125 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 51400 47100 1 0 0 vdflipflop.sym
+C 51400 47100 1 0 0 dflipflop.sym
 {
 T 52450 47500 5 10 1 1 0 0 1
 refdes=F6
 T 51675 47725 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 53600 50500 1 0 0 vdflipflop.sym
+C 53600 50500 1 0 0 dflipflop.sym
 {
 T 54650 50900 5 10 1 1 0 0 1
 refdes=F2
 T 53875 51125 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 53600 47100 1 0 0 vdflipflop.sym
+C 53600 47100 1 0 0 dflipflop.sym
 {
 T 54650 47500 5 10 1 1 0 0 1
 refdes=F5
 T 53875 47725 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 55800 50500 1 0 0 vdflipflop.sym
+C 55800 50500 1 0 0 dflipflop.sym
 {
 T 56850 50900 5 10 1 1 0 0 1
 refdes=F3
 T 56075 51125 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 55800 47100 1 0 0 vdflipflop.sym
+C 55800 47100 1 0 0 dflipflop.sym
 {
 T 56850 47500 5 10 1 1 0 0 1
 refdes=F4
 T 56075 47725 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
 C 47000 50500 1 0 0 3.3V-plus-1.sym
 C 56400 48600 1 0 0 3.3V-plus-1.sym

@@ -1,17 +1,17 @@
 v 20130925 2
-C 48200 21200 1 0 1 vdflipflop.sym
+C 48200 21200 1 0 1 dflipflop.sym
 {
 T 46850 21600 5 10 1 1 0 1 1
 refdes=L
 T 47400 21850 5 10 1 1 0 4 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
-C 50800 21200 1 0 1 vdflipflop.sym
+C 50800 21200 1 0 1 dflipflop.sym
 {
 T 49450 21600 5 10 1 1 0 1 1
 refdes=H
 T 50000 21850 5 10 1 1 0 4 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
 N 47200 23500 49200 23500 4
 N 46600 22300 46600 23600 4

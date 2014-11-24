@@ -47,7 +47,7 @@ refdes=C
 C 44000 62600 1 0 0 dilatch.sym
 {
 T 44800 63300 5 10 1 1 0 4 1
-source=vdilatch.sch
+source=dilatch.sch
 T 45150 63050 5 10 1 1 0 0 1
 refdes=A
 }

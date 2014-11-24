@@ -46,12 +46,12 @@ N 53500 63500 53800 63500 4
 T 53850 63450 5 10 1 1 0 0 1
 netname=Q#
 }
-C 51900 62600 1 0 0 vdflipflop.sym
+C 51900 62600 1 0 0 dflipflop.sym
 {
 T 52950 63000 5 10 1 1 0 0 1
 refdes=S
 T 52175 63225 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 }
 C 50300 63400 1 0 0 not.sym
 {

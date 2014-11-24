@@ -277,10 +277,10 @@ device=INPUT
 T 44350 47750 5 10 1 1 180 0 1
 refdes=Vdd
 }
-C 43700 46100 1 0 0 vdflipflop.sym
+C 43700 46100 1 0 0 dflipflop.sym
 {
 T 43975 46725 5 10 1 1 0 0 1
-source=vdflipflop.sch
+source=dflipflop.sch
 T 44750 46500 5 10 1 1 0 0 1
 refdes=F
 }

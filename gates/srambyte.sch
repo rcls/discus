@@ -281,12 +281,14 @@ refdes=GND
 }
 N 7400 8500 7400 8400 4
 N 7400 9000 7400 8900 4
-C 7000 8400 1 0 0 dta124.sym
+C 7000 8400 1 0 0 BSS84.sym
 {
-T 7200 8700 5 10 1 1 0 1 1
-refdes=Q
-T 7700 8900 5 10 0 1 0 0 1
-footprint=sot323-bjt
-T 7100 9100 5 10 0 1 0 0 1
-value=DTA124T
+T 7225 8700 5 10 1 1 0 1 1
+refdes=M
+T 7100 9200 5 10 0 1 0 0 1
+value=BSS84
+T 7500 9000 5 10 0 1 0 0 1
+footprint=sot23-pmos
+T 8500 9000 5 10 0 1 0 0 1
+device=PMOS
 }

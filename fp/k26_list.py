@@ -14,7 +14,7 @@ def verbose(*args, **kwargs):
 def remove_page(F):
     '''Remove page breaks'''
     for L in F:
-        if 'K22 Sub-Family Reference Manual' in L:
+        if 'K26 Sub-Family Reference Manual' in L:
             continue
         if re.match(r'\d+\s+Freescale', L):
             continue
@@ -28,16 +28,16 @@ def remove_page(F):
 def pinout_section(F):
     IT = F
     for L in IT:
-        if L.startswith('10.3.1 K22'):
+        if L.startswith('11.3.1 MK26'):
             break
     for L in IT:
-        if L.startswith(' 144 144'):
+        if L.startswith(' 169   169 144 144'):
             #yield L
             break
     for L in IT:
-        if L.startswith(' 144 144') or L == ' MAP LQFP' or L == ' BGA':
+        if L.startswith(' 169   169 144 144') or L == ' CSP   BGA LQFP BGA':
             continue
-        if L.startswith('10.3.2 K22'):
+        if L.startswith('11.3.2 MK26'):
             break
         if L:
             yield L
@@ -53,7 +53,7 @@ def combine(S,T):
     W = word_cols(S)
     for L in T:
         for c, w in word_cols(L).items():
-            for offset in (0, -1, 1):
+            for offset in (0, -1, 1, 2):
                 if c + offset in W:
                     c += offset
                     break
@@ -62,11 +62,14 @@ def combine(S,T):
 
 def combine_continuation(F):
     S = F.__next__()
+    #print("Start::", S)
     T = []
     for L in F:
         if L.startswith('   '):
+            #print("Append:", L)
             T.append(L)
         else:
+            #print("Init:::", L)
             yield combine(S,T)
             S = L
             T = []
@@ -75,12 +78,13 @@ def combine_continuation(F):
 def bga_only(F):
     for W in F:
         K = sorted(W.keys())
-        if K[0] > 3 or W[K[0]] == '--':
+        if len(K) < 4 or W[K[3]] == '--':
             continue                    # Not BGA
-        if K[1] < 12:
-            del(K[1])
+        #if K[1] < 12:
+        #    del(K[1])
         C = [ W[I] for I in K ]
-        yield C[0], C[1], C[2], C[3:]
+        # ball, name, dflt fncs...
+        yield C[3], C[4], C[5], C[6:]
 
 IT = sys.stdin
 IT = remove_page(IT)
@@ -165,20 +169,21 @@ def assign_fixed_pins():
 
 # Nix USB_CLKIN and have UART4 flow control?
 
-wanted_prefixes=('FB_', 'JTAG', 'EZP_CS', 'USB', 'XTAL0', 'EXTAL0',
-                 'UART4', 'SPI[02]', 'I2C', 'CLKOUT')
+wanted_prefixes=('FB_', 'JTAG', 'EZP_CS', 'USB1', 'XTAL0', 'EXTAL0',
+                 'UART4', 'SPI[02]', 'I2C[012]', 'CLKOUT')
 wanted_prefixes=tuple(re.compile(M) for M in wanted_prefixes)
-wanted_skip=('FB_A[0-9]+$', 'FB_TA_b$', 'USB_SOF', 'SPI0_PCS[^0]', 'SPI2_PCS0',
+wanted_skip=('FB_A[0-9]', 'FB_TA_b$', 'USBx0_SOF', 'SPI0_PCS[^0]', 'SPI2_PCS0',
              'JTAG_TRST')
 wanted_skip=tuple(re.compile(M) for M in wanted_skip)
 
 def prefix_check(L):
-    debug("Check skip", L)
     if any(re.match(M,L) for M in wanted_skip):
+        debug("Skip", L)
         return False
-    debug("Check want", L)
     if any(P.match(L) for P in wanted_prefixes):
+        debug("Want", L)
         return True
+    debug("Defer", L)
     return False
 
 for F in sorted(unassigned_func_pins):
@@ -197,8 +202,10 @@ def assign_unique_pins():
     debug("**** Unique pin assignment ****")
     unique = []
     for P, FF in unassigned_pin_funcs.items():
-        if len(FF) == 1 and len(unassigned_pin_funcs[FF[0]]) == 1:
-            unique.append((P, FF[0]))
+        if len(FF) == 1:
+            func = next(iter(FF))
+            if len(unassigned_func_pins[func]) == 1:
+                unique.append((P, func))
     for P, F in unique:
         assign(P, F)
 

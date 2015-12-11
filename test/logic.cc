@@ -14,6 +14,8 @@ void Logic::go()
     LOAD(U,0x36);
     LOAD(A,U);
     ADD(A);
+n1:
+    JP(C,n1);
     LOAD(Y,A);
     XOR(U);
     OR(Y);

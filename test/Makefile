@@ -2,9 +2,9 @@
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test%)
 
-SCRIPTS=testadd testsub testcall testmem hazard logic
+SCRIPTS=testadd testsub testcall testinc testmem hazard logic
 
-all: rmsim $(TESTPROGS)
+all: rmsim $(TESTPROGS) $(SCRIPTS)
 
 raw: $(SCRIPTS:%=%.raw)
 verify: $(SCRIPTS:%=%.verify)
@@ -24,7 +24,7 @@ CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11 -I.
 	ngspice -b $*.cir
 
 .PHONY: %.verify
-%.verify: %.raw
+%.verify: %.raw %
 	./$* -V $<
 
 rmsim: state.o spice_load.o

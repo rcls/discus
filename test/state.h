@@ -2,8 +2,9 @@
 #define STATE_H_
 
 #include <assert.h>
-#include <string.h>
 #include <map>
+#include <string.h>
+#include <string>
 
 enum register_name_t { A, X, Y, U };
 

@@ -4,7 +4,7 @@ PCB.*
 *.rcr
 *.fake-cir
 \#*#
-/rmsim
+test/rmsim
 test/testalu
 test/testopdecode
 test/testpcdecode

@@ -554,14 +554,3 @@ pinnumber=0
 T 800 0 5 10 0 0 0 0 1
 pinseq=0
 }
-P 1600 400 1400 400 1 0 0
-{
-T 1600 400 5 10 0 0 0 0 1
-pintype=unknown
-T 1495 445 5 10 0 1 0 0 1
-pinnumber=0
-T 1600 400 5 10 0 0 0 0 1
-pinseq=0
-T 1395 395 5 10 1 1 0 7 1
-pinlabel=VR
-}

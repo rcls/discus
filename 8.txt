@@ -66,6 +66,9 @@ result bus is ALU output, or operand bus direct (add 0...)
 101001xx - STA - note M bit is set, memory read will be ignored.
 101011xx - OUT - note M bit is set, ignore memory read.
 
+* If we nix IN/OUT then the uncond never rets are 1010x1xx & we can simplify ret
+  decode.
+
 AAA = 000 : ADD
 AAA = 001 : ADC
 AAA = 010 : SUB

@@ -1,3 +1,6 @@
+R-M code has only one conditional return - can get rid of them.
+Then instruction-fetch can fully run ahead of exec.
+
 Registers:
 A
 X
@@ -44,11 +47,10 @@ result bus is ALU output, or operand bus direct (add 0...)
 
 00LCCCxx - with prefix, jump, opt link.
 
-01AAAMRR - ins that r/w A. (flags Z C O?)
+01AAAMRR - ins that r/w A. (flags Z C)
   * 7 basic operations:
      add(c) sub(c) or and xor
-  * also possibly cmp or sta?
-  * probably don't need sub...
+  * also cmp.
 
 
 00 - prefix or jmp/call constant. (Inc. uncond.)
@@ -58,6 +60,7 @@ result bus is ALU output, or operand bus direct (add 0...)
 110WWMRR - WW = src-1, flag Z.
 111WWMRR - WW = src+1, flag Z.
 
+-- redo the stuff below, it's best only to have uncond ret...
 101CCCxx - ret.
 101010xx - uncond ret.
 

@@ -161,15 +161,15 @@ void state_t::step(int opcode)
     case 0x60:                          // ALU logic.
         //fprintf(stderr, "opcode %02x is logic\n", opcode);
         switch (opcode & 0x18) {
-        case 0x00:                         // Or.
+        case 0x00:                      // Or.
             reg[A] = reg[A] | b;
             flag_C = false;
             break;
-        case 0x08:                         // Xor.
+        case 0x08:                      // Xor.
             reg[A] = reg[A] ^ b;
             flag_C = false;
             break;
-        case 0x10:                         // And.
+        case 0x10:                      // And.
             reg[A] = reg[A] & b;
             flag_C = true;
             break;
@@ -357,7 +357,7 @@ void step_check_t::verify()
     verify(orig->flag_C, flag_C, "C");
     if (memcmp(orig->mem, mem, 256) != 0)
         for (int i = 0; i != 256; ++i) {
-            char name[8];
+            char name[12];
             snprintf(name, sizeof name, "mem[0x%02x]", i);
             verify(orig->mem[i], mem[i], name);
         }

@@ -208,7 +208,10 @@ struct state_t {
     bool jump(condition_t cond, const char * name, int opcode = 0);
 
     bool retrn(condition_t cond) {
-        account(0xa0 + cond * 4);
+        if (cond < 4)
+            account(0xa0 + cond * 4);
+        else
+            account(0xa0 + cond * 4, 0);
         return !straight_through && wanted(cond);
     }
 

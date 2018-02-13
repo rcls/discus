@@ -69,7 +69,8 @@ void state_t::extract_branches()
 }
 
 
-void state_t::account(int opcode, const operand_t & v) {
+void state_t::account(int opcode, const operand_t & v)
+{
     if (v.is_mem)
         opcode += 4;
     if (v.reg < 0) {

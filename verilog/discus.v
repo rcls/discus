@@ -39,8 +39,11 @@ module discus(input wire clk,
    reg       Zflag;
    reg [7:0] regs[3:0];
    reg [7:0] stack[3:0];
-   reg [1:0] rdSP = 1'b00;
-   reg [1:0] wrSP = 1'b11;
+   // XST is too clever and removes one of the low bits...
+   (* KEEP = "true" *)
+   reg [1:0] rdSP = 2'b00;
+   (* KEEP = "true" *)
+   reg [1:0] wrSP = 2'b11;
 
    // Instruction in decode; downstream uses the decoded flags.
    (* KEEP = "true" *)
@@ -95,6 +98,7 @@ module discus(input wire clk,
 
       reg [7:0] nextPC;
       reg [7:0] insn_latch;
+      reg [2:0] ZflagEff_Adder;
 
       prev_data <= instruction[5:0];
 
@@ -109,10 +113,10 @@ module discus(input wire clk,
       else if (instruction[7:5] != 3'b101)
         decode_needs_memory = instruction[2];
 
-      if (commit_Z_write)
-        ZflagEff = (Q == 0);
-      else
-        ZflagEff = Zflag;
+      ZflagEff_Adder = { 1'b0, |Q[7:4], |Q[3:0] };
+      ZflagEff_Adder = ZflagEff_Adder
+                       + { !commit_Z_write && Zflag, 1'b0, commit_Z_write };
+      ZflagEff = ZflagEff_Adder[2];
 
       // Do two cycles for ALU instructions that read memory.
       decode_alu = !decode_needs_memory || decode_post_mem_read;
@@ -217,10 +221,10 @@ module discus(input wire clk,
       exec_C_write <= (instruction[7:6] == 2'b01) && decode_alu;
 
       // Note that we want to increment PC in decode_branch_stall...
-      if (!decode_mem_read)
-        nextPC = PC + 1;
-      else if (decode_take_branch)
+      if (decode_take_branch)
         nextPC = branch_target;
+      else
+        nextPC = nextPC + !decode_post_mem_read;
 
       PC <= nextPC;
       insn_latch <= prgram[nextPC];

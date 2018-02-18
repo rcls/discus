@@ -1,4 +1,4 @@
 
 #Created by Constraints Editor (xc6slx9-tqg144-3) - 2018/02/11
 NET "clk" TNM_NET = clk;
-TIMESPEC TS_clk = PERIOD "clk" 4.51 ns;
+TIMESPEC TS_clk = PERIOD "clk" 245 mhz;

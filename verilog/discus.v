@@ -1,22 +1,21 @@
 module discus(input wire clk,
-              input wire [8:0] snoopa,
+              input wire [7:0] snoopa,
               input wire [7:0] snoopd,
-              // output reg [7:0] snoopq,
-              // input wire snoopm,
-              output wire Co,
+              output reg [7:0] snoopq,
+              input wire snoopm,
               input wire snoopp);
 
    reg [7:0] memory[255:0];
    reg [7:0] prgram[255:0];
 
    always@(posedge clk) begin : snoop
-      // if (snoopm)
-      //  memory[snoopa] <= snoopd;
+      if (snoopm)
+        memory[snoopa] <= snoopd;
 
       if (snoopp)
         prgram[snoopa[7:0]] <= snoopd;
 
-      // snoopq <= memory[snoopa];
+      snoopq <= memory[snoopa];
    end
 
    // Pipeline stages:
@@ -40,7 +39,8 @@ module discus(input wire clk,
    reg       Zflag;
    reg [7:0] regs[3:0];
    reg [7:0] stack[3:0];
-   reg [1:0] SP;
+   reg [1:0] rdSP = 1'b00;
+   reg [1:0] wrSP = 1'b11;
 
    // Instruction in decode; downstream uses the decoded flags.
    (* KEEP = "true" *)
@@ -72,8 +72,6 @@ module discus(input wire clk,
    reg commit_reg_write;
    reg [1:0] commit_reg_to_write;
    reg [7:0] Q;
-
-   assign Co = Cflag;
 
    localparam Bpass   = 0;
    localparam AandB   = 1;
@@ -136,13 +134,15 @@ module discus(input wire clk,
          decode_take_branch = 1;
       end
       if (is_ret && condition && !decode_branch_stall) begin
-         branch_target = stack[SP];
-         SP <= SP + 1;
+         branch_target = stack[rdSP];
+         rdSP <= rdSP + 1;
+         wrSP <= rdSP;
          decode_take_branch = 1;
       end
       if (is_jump && condition && instruction[5] && !decode_branch_stall) begin
-         stack[SP - 1] <= PC;
-         SP <= SP - 1;
+         stack[wrSP] <= PC;
+         rdSP <= rdSP - 1;
+         wrSP <= rdSP - 2;
       end
 
       if (instruction[7])
@@ -150,7 +150,6 @@ module discus(input wire clk,
       else
         exec_reg_to_write <= 2'b00;     // ALU.
 
-      // FIXME - this doesn't cover 'in' and 'out'.
       if (instruction[7:6] != 2'b00
           && instruction[7:3] != 5'b01111
           && instruction[7:5] != 3'b101)

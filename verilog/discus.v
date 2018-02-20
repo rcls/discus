@@ -1,4 +1,5 @@
 module discus(input wire clk,
+              input wire snoop_clk,
               input wire [7:0] snoopa,
               input wire [7:0] snoopd,
               output reg [7:0] snoopq,
@@ -8,7 +9,7 @@ module discus(input wire clk,
    reg [7:0] memory[255:0];
    reg [7:0] prgram[255:0];
 
-   always@(posedge clk) begin : snoop
+   always@(posedge snoop_clk) begin : snoop
       if (snoopm)
         memory[snoopa] <= snoopd;
 
@@ -33,27 +34,36 @@ module discus(input wire clk,
    // SP and the stack is updated by decode.
    // Cflag is updated by exec.
    // regs & Zflag is updated by commit.
-   reg [7:0] PC;
+   reg [7:0] decode_PC;
    reg [7:0] A;
    reg       Cflag;
    reg       Zflag;
    reg [7:0] regs[3:0];
    reg [7:0] stack[3:0];
+
+   reg [7:0] fetch_instruction;
+   reg fetch_prev_was_data;
+   reg fetch_post_mem_read;
+
    // XST is too clever and removes one of the low bits...
    (* KEEP = "true" *)
-   reg [1:0] rdSP = 2'b00;
+   reg [1:0] decode_rdSP = 2'b00;
    (* KEEP = "true" *)
-   reg [1:0] wrSP = 2'b11;
+   reg [1:0] decode_wrSP = 2'b11;
 
    // Instruction in decode; downstream uses the decoded flags.
    (* KEEP = "true" *)
-   reg [7:0] instruction;
+   reg [7:0] decode_instruction;
 
    // For instruction decode only.
-   reg decode_post_mem_read;
+   reg decode_is_ret;
+   reg decode_is_call;
+   reg [2:0] decode_condition;
    reg decode_branch_stall;
-   reg [5:0] prev_data;
-   reg prev_was_data;
+   reg [5:0] decode_prev_data;
+   reg decode_prev_was_data;
+   wire decode_mem_read = fetch_post_mem_read;
+   reg decode_alu;                      // ALU step of load+op
 
    // For exec.
    reg [7:0] exec_constant;
@@ -66,8 +76,8 @@ module discus(input wire clk,
    reg exec_reg_write;
    reg exec_C_write;
    reg exec_Z_write;
-   wire exec_memory_read = decode_post_mem_read;
-   reg exec_memory_write;
+   reg exec_mem_read;
+   reg exec_mem_write;
    reg [2:0] exec_op;
 
    // For commit.
@@ -85,108 +95,144 @@ module discus(input wire clk,
    localparam Bplus1  = 6;
    localparam Bminus1 = 7;
 
-   always@(posedge clk) begin : decode
+   always@(posedge clk) begin : fetch
       reg [7:0] branch_target;
-      reg is_jump;                   // Includes call.
-      reg is_ret;
       reg ZflagEff;
       reg condition;
-      reg decode_needs_memory;
-      reg decode_alu;
-      reg decode_mem_read;
       reg decode_take_branch;
-
-      reg [7:0] nextPC;
-      reg [7:0] insn_latch;
+      reg [7:0] fetch_PC;
       reg [2:0] ZflagEff_Adder;
+      reg fetch_needs_memory;
+      reg fetch_mem_read;
 
-      prev_data <= instruction[5:0];
-
-      prev_was_data <= (instruction[7:6] == 2'b0 && !prev_was_data);
-
-      is_jump = instruction[7:6] == 2'b00 && prev_was_data;
-      is_ret = instruction[7:5] == 3'b101;
-
-      // Work out if this instruction really does read memory.
-      if (instruction[7:6] == 2'b00)
-        decode_needs_memory = 0;
-      else if (instruction[7:5] != 3'b101)
-        decode_needs_memory = instruction[2];
+      decode_condition <= fetch_instruction[4:2];
+      decode_is_call <= 0;
+      decode_is_ret <= 0;
+      if (fetch_instruction[7:5] == 3'b00 && fetch_prev_was_data)
+        decode_is_call <= fetch_instruction[5];
+      else if (fetch_instruction[7:5] == 3'b101)
+        decode_is_ret <= 1;
+      else
+        decode_condition <= 0;          // Not a branch.
 
       ZflagEff_Adder = { 1'b0, |Q[7:4], |Q[3:0] };
       ZflagEff_Adder = ZflagEff_Adder
-                       + { !commit_Z_write && Zflag, 1'b0, commit_Z_write };
+                       + { !commit_Z_write && !Zflag, commit_Z_write, commit_Z_write };
       ZflagEff = ZflagEff_Adder[2];
 
-      // Do two cycles for ALU instructions that read memory.
-      decode_alu = !decode_needs_memory || decode_post_mem_read;
-      decode_mem_read = decode_needs_memory && !decode_post_mem_read;
-      decode_post_mem_read <= decode_mem_read;
-
-      case (instruction[4:2])
-        3'b000, 3'b010: condition = 0;
-        3'b001, 3'b011: condition = 1;
-        3'b100: condition = ZflagEff;
-        3'b101: condition = !ZflagEff;
-        3'b110: condition = Cflag;
-        3'b111: condition = !Cflag;
+      case (decode_condition)
+        3'b000, 3'b010: decode_take_branch = 0;
+        3'b001, 3'b011: decode_take_branch = 1;
+        3'b100: decode_take_branch = ZflagEff;
+        3'b101: decode_take_branch = !ZflagEff;
+        3'b110: decode_take_branch = Cflag;
+        3'b111: decode_take_branch = !Cflag;
       endcase;
 
-      decode_take_branch = 0;
-      if (is_jump && condition && !decode_branch_stall) begin
-         branch_target = { prev_data, instruction[1:0] };
-         decode_take_branch = 1;
-      end
-      if (is_ret && condition && !decode_branch_stall) begin
-         branch_target = stack[rdSP];
-         rdSP <= rdSP + 1;
-         wrSP <= rdSP;
-         decode_take_branch = 1;
-      end
-      if (is_jump && condition && instruction[5] && !decode_branch_stall) begin
-         stack[wrSP] <= PC;
-         rdSP <= rdSP - 1;
-         wrSP <= rdSP - 2;
+      if (decode_is_ret)
+        branch_target = stack[decode_rdSP];
+      else
+        branch_target = { decode_prev_data, decode_instruction[1:0] };
+
+      if (decode_take_branch) begin
+         if (decode_is_call) begin
+            stack[decode_wrSP] <= decode_PC;
+            decode_rdSP <= decode_rdSP - 1;
+            decode_wrSP <= decode_rdSP - 2;
+         end
+         else if (decode_is_ret) begin
+            decode_rdSP <= decode_rdSP + 1;
+            decode_wrSP <= decode_rdSP;
+         end
       end
 
-      if (instruction[7])
-        exec_reg_to_write <= instruction[4:3]; // Load / inc /dec.
+      decode_instruction <= fetch_instruction;
+
+      if (!fetch_prev_was_data && fetch_instruction[7:6] == 2'b00)
+        fetch_prev_was_data <= 1;
+      else
+        fetch_prev_was_data <= 0;
+
+      decode_prev_was_data <= fetch_prev_was_data;
+
+      // Work out if this instruction really does read memory.
+      fetch_needs_memory = !fetch_instruction[1] && fetch_instruction[2];
+      if (fetch_instruction[7:6] == 2'b00
+          || fetch_instruction[7:5] == 3'b101)
+        fetch_needs_memory = 0;
+      else
+        fetch_needs_memory = fetch_instruction[2];
+
+      fetch_mem_read = fetch_needs_memory && !fetch_post_mem_read;
+      fetch_post_mem_read <= fetch_mem_read;
+
+      // Do two cycles for ALU instructions that read memory.
+      decode_alu <= !fetch_needs_memory || fetch_post_mem_read;
+
+      if (decode_take_branch)
+        fetch_PC = branch_target;
+      else
+        fetch_PC = decode_PC + !fetch_post_mem_read;
+      decode_PC <= fetch_PC;
+
+      // When fetch_mem_read is set, we want to keep the current instruction.
+      // [Or we could just not advance the PC on fetch_mem_read.]
+      if (!fetch_mem_read)
+        fetch_instruction <= prgram[fetch_PC];
+
+      // If we took a branch then the currently fetched instruction is bogus.
+      // fetch discards what is has just done; decode will stall.
+      decode_branch_stall <= decode_take_branch;
+      if (decode_take_branch) begin
+         fetch_prev_was_data <= 0;
+         fetch_post_mem_read <= 0;
+         decode_condition <= 0;
+         decode_is_call <= 0;
+         decode_is_ret <= 0;
+      end
+   end
+
+   always@(posedge clk) begin : decode
+      decode_prev_data <= decode_instruction[5:0];
+
+      if (decode_instruction[7])
+        exec_reg_to_write <= decode_instruction[4:3]; // Load / inc /dec.
       else
         exec_reg_to_write <= 2'b00;     // ALU.
 
-      if (instruction[7:6] != 2'b00
-          && instruction[7:3] != 5'b01111
-          && instruction[7:5] != 3'b101)
+      if (decode_instruction[7:6] != 2'b00
+          && decode_instruction[7:3] != 5'b01111
+          && decode_instruction[7:5] != 3'b101)
         exec_reg_write <= decode_alu;
       else
         exec_reg_write <= 0;
 
-      if (instruction[7:2] == 6'b101001)
-        exec_memory_write <= 1;
+      if (decode_instruction[7:2] == 6'b101001)
+        exec_mem_write <= 1;
       else
-        exec_memory_write <= 0;
+        exec_mem_write <= 0;
 
       // Arith operation...
-      if (instruction[7:4] == 5'b0100)
+      if (decode_instruction[7:4] == 5'b0100)
         exec_op <= AplusB;
-      else if (instruction[7:4] == 5'b0101)
+      else if (decode_instruction[7:4] == 5'b0101)
         exec_op <= AminusB;
-      else if (instruction[7:3] == 5'b01100)
+      else if (decode_instruction[7:3] == 5'b01100)
         exec_op <= AorB;
-      else if (instruction[7:3] == 5'b01101)
+      else if (decode_instruction[7:3] == 5'b01101)
         exec_op <= AxorB;
-      else if (instruction[7:3] == 5'b01110)
+      else if (decode_instruction[7:3] == 5'b01110)
         exec_op <= AandB;
-      else if (instruction[7:3] == 5'b01111)
+      else if (decode_instruction[7:3] == 5'b01111)
         exec_op <= AminusB;
-      else if (instruction[7:5] == 3'b110)
+      else if (decode_instruction[7:5] == 3'b110)
         exec_op <= Bminus1;
-      else if (instruction[7:5] == 3'b111)
+      else if (decode_instruction[7:5] == 3'b111)
         exec_op <= Bplus1;
       else
         exec_op <= Bpass;
 
-      exec_use_C <= (instruction[7:3] == 5'b01001 || instruction[7:3] == 5'b01011);
+      exec_use_C <= (decode_instruction[7:3] == 5'b01001 || decode_instruction[7:3] == 5'b01011);
 
       // Work out the source of the 'B' input to the ALU.  If can be any of:
       // Constant.
@@ -195,55 +241,38 @@ module discus(input wire clk,
       // Register read (ff).
       // For post-mem-read or using a constant, set exec_reg_read=0 and
       // reg_to_read=0.  The values are OR'd in.
-      if (decode_post_mem_read || prev_was_data) begin
+      if (exec_mem_read || decode_prev_was_data) begin
          exec_reg_to_read <= 2'bXX;
          exec_reg_read <= 0;
          exec_reg_ff <= 1'bX;
       end
       // For register fast-forward, set exec_reg_read=0 and reg_to_read=1.
-      else if (exec_reg_to_write == instruction[1:0]) begin
+      else if (exec_reg_to_write == decode_instruction[1:0]) begin
          exec_reg_to_read <= 2'bXX;
          exec_reg_read <= 1;
          exec_reg_ff <= 1;
       end
       else begin
-         exec_reg_to_read <= instruction[1:0];
+         exec_reg_to_read <= decode_instruction[1:0];
          exec_reg_read <= 1;
          exec_reg_ff <= 0;
       end
 
-      if (prev_was_data)
-        exec_constant <= { prev_data, instruction[1:0] };
+      if (decode_prev_was_data)
+        exec_constant <= { decode_prev_data, decode_instruction[1:0] };
       else
         exec_constant <= 0;
 
-      exec_Z_write <= instruction[6] && decode_alu;
-      exec_C_write <= (instruction[7:6] == 2'b01) && decode_alu;
-
-      // Note that we want to increment PC in decode_branch_stall...
-      if (decode_take_branch)
-        nextPC = branch_target;
-      else
-        nextPC = nextPC + !decode_post_mem_read;
-
-      PC <= nextPC;
-      insn_latch <= prgram[nextPC];
-
-      // When decode_mem_read is set, we want to keep the current instruction.
-      if (!decode_mem_read)
-        instruction <= insn_latch;
-
-      decode_branch_stall <= decode_take_branch;
+      exec_mem_read <= decode_mem_read;
+      exec_Z_write <= decode_instruction[6] && decode_alu;
+      exec_C_write <= (decode_instruction[7:6] == 2'b01) && decode_alu;
 
       if (decode_branch_stall) begin
-         // Override nearly all the output flags.
-         decode_post_mem_read <= 0;
          exec_Z_write <= 0;
          exec_C_write <= 0;
          exec_reg_write <= 0;
-         exec_memory_write <= 0;
-         prev_was_data <= 0;
-      end;
+         exec_mem_write <= 0;
+      end
    end
 
    always@(posedge clk) begin : exec
@@ -265,7 +294,7 @@ module discus(input wire clk,
       else
         effB = regs[exec_reg_to_read];
 
-      if (exec_memory_read)
+      if (exec_mem_read)
         exec_memB <= memory[effB];
       else
         exec_memB <= 0;
@@ -302,7 +331,7 @@ module discus(input wire clk,
       Q <= sum[8:1];
       Cflag <= sum[10];
 
-      if (exec_memory_write)
+      if (exec_mem_write)
         memory[effB] <= effA;
    end
 

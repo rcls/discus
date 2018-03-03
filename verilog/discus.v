@@ -1,4 +1,5 @@
 module discus(input wire clk,
+              input wire reset,
               input wire snoop_clk,
               input wire [7:0] snoopa,
               input wire [7:0] snoopd,
@@ -19,6 +20,14 @@ module discus(input wire clk,
       snoopq <= memory[snoopa];
    end
 
+   // Buffer the reset line a bit.
+   reg reset_input;
+   always@(posedge clk) begin : reset_buffer
+      reg reset_io;
+      reset_io <= reset;
+      reset_input <= reset_io;
+   end
+
    // Pipeline stages:
    // Instruction fetch.
    // Instruction decode.
@@ -27,10 +36,10 @@ module discus(input wire clk,
    //
    // Instructions looking up memory do two cycles in Execute.
    // Commit saves Z and result.  (Execute writes C).
-   // Z has fast-forward to jump in decode.
-   // Result and mem-load have fast-forward to execute.
+   // Z has fast-forward  processing in decode.
+   // Results of previous instructions have a fast-forward path into execute.
 
-   // PC is the fetch PC.  During decode is PC+1.
+   // decode_PC is 1+ the address of the instruction in decode.
    // SP and the stack is updated by decode.
    // Cflag is updated by exec.
    // regs & Zflag is updated by commit.
@@ -44,6 +53,7 @@ module discus(input wire clk,
    reg [7:0] fetch_instruction;
    reg fetch_prev_was_data;
    reg fetch_post_mem_read;
+   reg fetch_reset;
 
    // XST is too clever and removes one of the low bits...
    (* KEEP = "true" *)
@@ -56,14 +66,13 @@ module discus(input wire clk,
    reg [7:0] decode_instruction;
 
    // For instruction decode only.
-   reg decode_is_ret;
-   reg decode_is_call;
    reg [2:0] decode_condition;
    reg decode_branch_stall;
    reg [5:0] decode_prev_data;
    reg decode_prev_was_data;
    wire decode_mem_read = fetch_post_mem_read;
    reg decode_alu;                      // ALU step of load+op
+   reg decode_reset;
 
    // For exec.
    reg [7:0] exec_constant;
@@ -96,53 +105,64 @@ module discus(input wire clk,
    localparam Bminus1 = 7;
 
    always@(posedge clk) begin : fetch
-      reg [7:0] branch_target;
-      reg ZflagEff;
+      reg [7:0] decode_branch_target;
       reg condition;
       reg decode_take_branch;
       reg [7:0] fetch_PC;
-      reg [2:0] ZflagEff_Adder;
       reg fetch_needs_memory;
       reg fetch_mem_read;
 
-      decode_condition <= fetch_instruction[4:2];
-      decode_is_call <= 0;
-      decode_is_ret <= 0;
       if (fetch_instruction[7:5] == 3'b00 && fetch_prev_was_data)
-        decode_is_call <= fetch_instruction[5];
+        decode_condition <= fetch_instruction[4:2];
       else if (fetch_instruction[7:5] == 3'b101)
-        decode_is_ret <= 1;
+        decode_condition <= fetch_instruction[4:2];
       else
-        decode_condition <= 0;          // Not a branch.
+        decode_condition <= 0;
 
-      ZflagEff_Adder = { 1'b0, |Q[7:4], |Q[3:0] };
-      ZflagEff_Adder = ZflagEff_Adder
-                       + { !commit_Z_write && !Zflag, commit_Z_write, commit_Z_write };
-      ZflagEff = ZflagEff_Adder[2];
+      begin : decode_branch_evaluate
+         // The carry into the last stage is !Z or !C or 0, which we then
+         // invert if decode_condition[0]==0.
+         reg [3:0] take_branch_addendA;
+         reg [3:0] take_branch_addendB;
+         reg [3:0] take_branch_sum;
+         take_branch_addendA[0] = |Q[3:0];
+         take_branch_addendB[0] = 1;
+         take_branch_addendA[1] = |Q[7:4];
+         take_branch_addendB[1] = 1;
 
-      case (decode_condition)
-        3'b000, 3'b010: decode_take_branch = 0;
-        3'b001, 3'b011: decode_take_branch = 1;
-        3'b100: decode_take_branch = ZflagEff;
-        3'b101: decode_take_branch = !ZflagEff;
-        3'b110: decode_take_branch = Cflag;
-        3'b111: decode_take_branch = !Cflag;
-      endcase;
+         case (decode_condition[2:1])
+           2'b00, 2'b01: take_branch_addendA[2] = 0;
+           2'b10: take_branch_addendA[2] = !Zflag | commit_Z_write;
+           2'b11: take_branch_addendA[2] = !Cflag;
+         endcase
+         case (decode_condition[2:1])
+           2'b00, 2'b01: take_branch_addendB[2] = 0;
+           2'b10: take_branch_addendB[2] = !Zflag & !commit_Z_write;
+           2'b11: take_branch_addendB[2] = !Cflag;
+         endcase
+         take_branch_addendA[3] = 0;
+         take_branch_addendB[3] = !decode_condition[0];
+         take_branch_sum = take_branch_addendA + take_branch_addendB;
+         decode_take_branch = take_branch_sum[3];
+      end
 
-      if (decode_is_ret)
-        branch_target = stack[decode_rdSP];
+      if (decode_instruction[7])
+        decode_branch_target = stack[decode_rdSP];
       else
-        branch_target = { decode_prev_data, decode_instruction[1:0] };
+        // fetch_prev_data = decode_instruction[5:0].
+        decode_branch_target = { decode_prev_data[5:0], decode_instruction[1:0] };
 
       if (decode_take_branch) begin
-         if (decode_is_call) begin
+         // Branch with the high bit set is a RET.
+         if (decode_instruction[7]) begin
+            decode_rdSP <= decode_rdSP + 1;
+            decode_wrSP <= decode_rdSP;
+         end
+         // Other branches with bit 5 set are CALLs.
+         else if (decode_instruction[5]) begin
             stack[decode_wrSP] <= decode_PC;
             decode_rdSP <= decode_rdSP - 1;
             decode_wrSP <= decode_rdSP - 2;
-         end
-         else if (decode_is_ret) begin
-            decode_rdSP <= decode_rdSP + 1;
-            decode_wrSP <= decode_rdSP;
          end
       end
 
@@ -156,7 +176,6 @@ module discus(input wire clk,
       decode_prev_was_data <= fetch_prev_was_data;
 
       // Work out if this instruction really does read memory.
-      fetch_needs_memory = !fetch_instruction[1] && fetch_instruction[2];
       if (fetch_instruction[7:6] == 2'b00
           || fetch_instruction[7:5] == 3'b101)
         fetch_needs_memory = 0;
@@ -170,15 +189,22 @@ module discus(input wire clk,
       decode_alu <= !fetch_needs_memory || fetch_post_mem_read;
 
       if (decode_take_branch)
-        fetch_PC = branch_target;
+        fetch_PC = decode_branch_target;
       else
         fetch_PC = decode_PC + !fetch_post_mem_read;
       decode_PC <= fetch_PC;
 
       // When fetch_mem_read is set, we want to keep the current instruction.
       // [Or we could just not advance the PC on fetch_mem_read.]
-      if (!fetch_mem_read)
+      if (fetch_reset)
+        fetch_instruction <= 0;
+      else if (!fetch_mem_read)
         fetch_instruction <= prgram[fetch_PC];
+
+      if (reset_input)
+        fetch_reset <= 1;
+      else if (fetch_prev_was_data)
+        fetch_reset <= 0;
 
       // If we took a branch then the currently fetched instruction is bogus.
       // fetch discards what is has just done; decode will stall.
@@ -186,9 +212,7 @@ module discus(input wire clk,
       if (decode_take_branch) begin
          fetch_prev_was_data <= 0;
          fetch_post_mem_read <= 0;
-         decode_condition <= 0;
-         decode_is_call <= 0;
-         decode_is_ret <= 0;
+         decode_condition <= 3'b001;
       end
    end
 
@@ -258,7 +282,7 @@ module discus(input wire clk,
          exec_reg_ff <= 0;
       end
 
-      if (decode_prev_was_data)
+      if (decode_prev_was_data && !exec_mem_read)
         exec_constant <= { decode_prev_data, decode_instruction[1:0] };
       else
         exec_constant <= 0;

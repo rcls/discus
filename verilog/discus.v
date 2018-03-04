@@ -55,11 +55,9 @@ module discus(input wire clk,
    reg fetch_post_mem_read;
    reg fetch_reset;
 
-   // XST is too clever and removes one of the low bits...
-   (* KEEP = "true" *)
-   reg [1:0] decode_rdSP = 2'b00;
-   (* KEEP = "true" *)
-   reg [1:0] decode_wrSP = 2'b11;
+   reg [1:0] SP;
+   reg [1:0] SP_index;
+   reg [1:0] SP_next;
 
    // Instruction in decode; downstream uses the decoded flags.
    (* KEEP = "true" *)
@@ -117,7 +115,21 @@ module discus(input wire clk,
       else if (fetch_instruction[7:5] == 3'b101)
         decode_condition <= fetch_instruction[4:2];
       else
-        decode_condition <= 0;
+        decode_condition <= 3'b001;
+
+      // We can only update the SP every other clock cycle, so we can process
+      // the SP both in fetch & decode.
+      if (fetch_instruction[7])
+        SP_index <= SP;
+      else
+        SP_index <= SP - 1;
+
+      if (fetch_instruction[7])
+        SP_next <= SP + 1;              // For returns.
+      else if (fetch_instruction[5])
+        SP_next <= SP - 1;              // For calls.
+      else
+        SP_next <= SP;                  // Jumps.
 
       begin : decode_branch_evaluate
          // The carry into the last stage is !Z or !C or 0, which we then
@@ -147,24 +159,23 @@ module discus(input wire clk,
       end
 
       if (decode_instruction[7])
-        decode_branch_target = stack[decode_rdSP];
+        decode_branch_target = stack[SP_index];
       else
         // fetch_prev_data = decode_instruction[5:0].
         decode_branch_target = { decode_prev_data[5:0], decode_instruction[1:0] };
 
-      if (decode_take_branch) begin
-         // Branch with the high bit set is a RET.
-         if (decode_instruction[7]) begin
-            decode_rdSP <= decode_rdSP + 1;
-            decode_wrSP <= decode_rdSP;
-         end
-         // Other branches with bit 5 set are CALLs.
-         else if (decode_instruction[5]) begin
-            stack[decode_wrSP] <= decode_PC;
-            decode_rdSP <= decode_rdSP - 1;
-            decode_wrSP <= decode_rdSP - 2;
-         end
-      end
+      if (!decode_take_branch)
+        SP <= SP;
+      else if (fetch_instruction[7])
+        SP <= SP + 1;              // For returns.
+      else if (fetch_instruction[5])
+        SP <= SP - 1;              // For calls.
+      else
+        SP <= SP;                  // Jumps.
+
+      // If we are taking a 'call' then write the stack.
+      if (decode_take_branch && !decode_instruction[7] && decode_instruction[5])
+        stack[SP_index] <= decode_PC;
 
       decode_instruction <= fetch_instruction;
 
@@ -207,7 +218,7 @@ module discus(input wire clk,
         fetch_reset <= 0;
 
       // If we took a branch then the currently fetched instruction is bogus.
-      // fetch discards what is has just done; decode will stall.
+      // fetch discards what it has just done; decode will stall.
       decode_branch_stall <= decode_take_branch;
       if (decode_take_branch) begin
          fetch_prev_was_data <= 0;

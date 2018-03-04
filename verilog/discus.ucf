@@ -1,4 +1,7 @@
 
 #Created by Constraints Editor (xc6slx9-tqg144-3) - 2018/02/11
-NET "clk" TNM_NET = clk;
-TIMESPEC TS_clk = PERIOD "clk" 250 mhz;
+NET "clk" TNM_NET = "clk";
+TIMESPEC TS_clk = PERIOD "clk" 4 ns;
+
+INST "Mram_prgram" LOC = RAMB8_X1Y10;
+INST "Mram_memory" LOC = RAMB8_X1Y9;

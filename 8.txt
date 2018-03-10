@@ -171,7 +171,7 @@ OR# is low for 01100xxx
 don't care 00xxxxxx
 Take 0x100xxx
 
-AS is high for DEC: 110xxxxx (i7 & i6 & i5#)
+AS is high for DEC: 111xxxxx (i7 & i6 & i5#)
 AS dominates
 AR# is low for INC,MV, 100xxxxx, 111xxxxx, For IN: all 101xxxxx, simplifies to:
   1xxxxxxx

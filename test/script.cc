@@ -12,17 +12,34 @@ static int comp_num;
     exit(r);
 }
 
+struct verilog_print_emitter_t : emitter_t {
+    verilog_print_emitter_t(FILE * f) : file(f) { }
+    void emit_byte(int address, int byte) {
+        fprintf(file, "8'h%02x,\n", byte);
+    }
+
+    void emit_two(int address, int b1, int b2) {
+        fprintf(file, "8'h%02x, 8'h%02x,\n", b1, b2);
+    }
+
+    FILE * file;
+};
+
 
 void sim_main(state_t && program, int argc, char * argv[])
 {
     while (1)
-        switch (getopt(argc, argv, "n:HRV:CT")) {
+        switch (getopt(argc, argv, "n:HXRV:CT")) {
         case 'n':
             comp_num = strtoul(optarg, NULL, 0);
             break;
         case 'H':
             program.extract_branches();
             program.assemble(print_emitter_t(stdout));
+            break;
+        case 'X':
+            program.extract_branches();
+            program.assemble(verilog_print_emitter_t(stdout));
             break;
         case 'R':
             program.extract_branches();

@@ -43,55 +43,52 @@ module discus(input wire clk,
    // SP and the stack is updated by decode.
    // Cflag is updated by exec.
    // regs & Zflag is updated by commit.
-   reg [7:0] decode_PC;
-   reg [7:0] A;
-   reg       Cflag;
-   reg       Zflag;
-   reg [7:0] regs[3:0];
-   reg [7:0] stack[3:0];
+   reg [7:0] decode_PC = 0;
+   reg [7:0] A = 0;
+   reg       Cflag = 0;
+   reg       Zflag = 0;
+   reg [7:0] regs[0:3];
+   reg [7:0] stack[0:3];
 
-   reg [7:0] fetch_instruction;
-   reg fetch_prev_was_data;
-   reg fetch_post_mem_read;
-   reg fetch_reset;
+   reg [7:0] fetch_instruction = 0;
+   reg fetch_prev_was_data = 0;
+   reg fetch_post_mem_read = 0;
+   reg fetch_reset = 0;
 
-   reg [1:0] SP;
-   reg [1:0] SP_index;
-   reg [1:0] SP_next;
+   reg [1:0] SP = 0;
+   reg [1:0] SP_index = 0;
 
    // Instruction in decode; downstream uses the decoded flags.
-   (* KEEP = "true" *)
-   reg [7:0] decode_instruction;
+   reg [7:0] decode_instruction = 3'b1;
 
    // For instruction decode only.
-   reg [2:0] decode_condition;
-   reg decode_branch_stall;
-   reg [5:0] decode_prev_data;
-   reg decode_prev_was_data;
+   reg [2:0] decode_condition = 0;
+   reg decode_branch_stall = 0;
+   reg [5:0] decode_prev_data = 0;
+   reg decode_prev_was_data = 0;
    wire decode_mem_read = fetch_post_mem_read;
-   reg decode_alu;                      // ALU step of load+op
-   reg decode_reset;
+   reg decode_alu = 0;                  // ALU step of load+op
 
    // For exec.
-   reg [7:0] exec_constant;
-   reg [7:0] exec_memB;
-   reg [1:0] exec_reg_to_write;
-   reg [1:0] exec_reg_to_read;
-   reg exec_reg_read;
-   reg exec_reg_ff;
-   reg exec_use_C;
-   reg exec_reg_write;
-   reg exec_C_write;
-   reg exec_Z_write;
-   reg exec_mem_read;
-   reg exec_mem_write;
-   reg [2:0] exec_op;
+   reg [7:0] exec_constant = 0;
+   reg [7:0] exec_memB = 0;
+   reg [1:0] exec_reg_to_write = 0;
+   reg [1:0] exec_reg_to_read = 0;
+   reg exec_reg_read = 0;
+   reg exec_reg_ff = 0;
+   reg exec_use_C = 0;
+   reg exec_reg_write = 0;
+   reg exec_C_write = 0;
+   reg exec_Z_write = 0;
+   reg exec_mem_read = 0;
+   reg exec_mem_write = 0;
+   reg [2:0] exec_op = 0;
 
    // For commit.
-   reg commit_Z_write;
-   reg commit_reg_write;
-   reg [1:0] commit_reg_to_write;
-   reg [7:0] Q;
+   reg commit_Z_write = 0;
+   reg commit_reg_write = 0;
+   reg [1:0] commit_reg_to_write = 0;
+   reg [7:0] Q = 0;
 
    localparam Bpass   = 0;
    localparam AandB   = 1;
@@ -101,6 +98,23 @@ module discus(input wire clk,
    localparam AminusB = 5;
    localparam Bplus1  = 6;
    localparam Bminus1 = 7;
+
+   initial begin : zero
+      integer i;
+      for (i = 0; i < 256; i = i + 1) begin
+         memory[i] = 0;
+         prgram[i] = 0;
+      end
+
+      regs[0] = 0;
+      regs[1] = 0;
+      regs[2] = 0;
+      regs[3] = 0;
+      stack[0] = 0;
+      stack[1] = 0;
+      stack[2] = 0;
+      stack[3] = 0;
+   end
 
    always@(posedge clk) begin : fetch
       reg [7:0] decode_branch_target;
@@ -123,13 +137,6 @@ module discus(input wire clk,
         SP_index <= SP;
       else
         SP_index <= SP - 1;
-
-      if (fetch_instruction[7])
-        SP_next <= SP + 1;              // For returns.
-      else if (fetch_instruction[5])
-        SP_next <= SP - 1;              // For calls.
-      else
-        SP_next <= SP;                  // Jumps.
 
       begin : decode_branch_evaluate
          // The carry into the last stage is !Z or !C or 0, which we then
@@ -162,19 +169,19 @@ module discus(input wire clk,
         decode_branch_target = stack[SP_index];
       else
         // fetch_prev_data = decode_instruction[5:0].
-        decode_branch_target = { decode_prev_data[5:0], decode_instruction[1:0] };
+        decode_branch_target = { decode_instruction[1:0], decode_prev_data[5:0] };
 
       if (!decode_take_branch)
         SP <= SP;
-      else if (fetch_instruction[7])
+      else if (decode_instruction[7])
         SP <= SP + 1;              // For returns.
-      else if (fetch_instruction[5])
-        SP <= SP - 1;              // For calls.
-      else
+      else if (decode_instruction[5])
         SP <= SP;                  // Jumps.
+      else
+        SP <= SP - 1;              // For calls.
 
       // If we are taking a 'call' then write the stack.
-      if (decode_take_branch && !decode_instruction[7] && decode_instruction[5])
+      if (decode_take_branch && !decode_instruction[7] && !decode_instruction[5])
         stack[SP_index] <= decode_PC;
 
       decode_instruction <= fetch_instruction;
@@ -261,9 +268,9 @@ module discus(input wire clk,
       else if (decode_instruction[7:3] == 5'b01111)
         exec_op <= AminusB;
       else if (decode_instruction[7:5] == 3'b110)
-        exec_op <= Bminus1;
-      else if (decode_instruction[7:5] == 3'b111)
         exec_op <= Bplus1;
+      else if (decode_instruction[7:5] == 3'b111)
+        exec_op <= Bminus1;
       else
         exec_op <= Bpass;
 
@@ -282,7 +289,8 @@ module discus(input wire clk,
          exec_reg_ff <= 1'bX;
       end
       // For register fast-forward, set exec_reg_read=0 and reg_to_read=1.
-      else if (exec_reg_to_write == decode_instruction[1:0]) begin
+      else if (exec_reg_write
+               && exec_reg_to_write == decode_instruction[1:0]) begin
          exec_reg_to_read <= 2'bXX;
          exec_reg_read <= 1;
          exec_reg_ff <= 1;
@@ -294,7 +302,7 @@ module discus(input wire clk,
       end
 
       if (decode_prev_was_data && !exec_mem_read)
-        exec_constant <= { decode_prev_data, decode_instruction[1:0] };
+        exec_constant <= { decode_instruction[1:0], decode_prev_data };
       else
         exec_constant <= 0;
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/ralph/fpga/disc/verilog/work/testmem_isim_beh1.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="testmem" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/testmem/dcs/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/fetch_reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fetch_reset</obj_property>
+      <obj_property name="ObjectShortName">fetch_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/decode_branch_stall" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">decode_branch_stall</obj_property>
+      <obj_property name="ObjectShortName">decode_branch_stall</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/decode_mem_read" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">decode_mem_read</obj_property>
+      <obj_property name="ObjectShortName">decode_mem_read</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/decode_PC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">decode_PC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">decode_PC[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/decode_instruction" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">decode_instruction[7:0]</obj_property>
+      <obj_property name="ObjectShortName">decode_instruction[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/Q" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">Q[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/snoopa" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">snoopa[7:0]</obj_property>
+      <obj_property name="ObjectShortName">snoopa[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testmem/dcs/snoopq" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">snoopq[7:0]</obj_property>
+      <obj_property name="ObjectShortName">snoopq[7:0]</obj_property>
+   </wvobject>
+</wave_config>

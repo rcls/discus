@@ -15,7 +15,7 @@ module discus(input wire clk,
         memory[snoopa] <= snoopd;
 
       if (snoopp)
-        prgram[snoopa[7:0]] <= snoopd;
+        prgram[snoopa] <= snoopd;
 
       snoopq <= memory[snoopa];
    end
@@ -59,10 +59,10 @@ module discus(input wire clk,
    reg [1:0] SP_index = 0;
 
    // Instruction in decode; downstream uses the decoded flags.
-   reg [7:0] decode_instruction = 3'b1;
+   reg [7:0] decode_instruction = 0;
 
    // For instruction decode only.
-   reg [2:0] decode_condition = 0;
+   reg [2:0] decode_condition = 3'b1;
    reg decode_branch_stall = 0;
    reg [5:0] decode_prev_data = 0;
    reg decode_prev_was_data = 0;
@@ -124,7 +124,7 @@ module discus(input wire clk,
       reg fetch_needs_memory;
       reg fetch_mem_read;
 
-      if (fetch_instruction[7:5] == 3'b00 && fetch_prev_was_data)
+      if (fetch_instruction[7:6] == 2'b00 && fetch_prev_was_data)
         decode_condition <= fetch_instruction[4:2];
       else if (fetch_instruction[7:5] == 3'b101)
         decode_condition <= fetch_instruction[4:2];
@@ -208,8 +208,11 @@ module discus(input wire clk,
 
       if (decode_take_branch)
         fetch_PC = decode_branch_target;
+      else if (fetch_post_mem_read)
+        fetch_PC = decode_PC;
       else
-        fetch_PC = decode_PC + !fetch_post_mem_read;
+        fetch_PC = decode_PC + 1;
+
       decode_PC <= fetch_PC;
 
       // When fetch_mem_read is set, we want to keep the current instruction.
@@ -368,7 +371,7 @@ module discus(input wire clk,
       if (!exec_C_write) begin
          logicA[9] = Cflag;
          logicB[9] = Cflag;
-      end;
+      end
 
       sum = logicA + logicB;
       Q <= sum[8:1];

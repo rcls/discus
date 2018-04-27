@@ -2,7 +2,7 @@
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test%)
 
-SCRIPTS=testadd testsub testcall testinc testmem hazard logic
+SCRIPTS=testadd testsub testcall testinc testmem hazard logic pattern rmsim
 
 all: rmsim $(TESTPROGS) $(SCRIPTS)
 

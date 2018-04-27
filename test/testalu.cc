@@ -46,7 +46,7 @@ int main()
 
         bool cr = CR[i];
         bool cs = CS[i];
-        cr &= ~cs;                      // CS is dominant.
+        cr &= !cs;                      // CS is dominant.
 
         if (cs && !Co[i])
             errx(1, "CS not applied at %i", i);

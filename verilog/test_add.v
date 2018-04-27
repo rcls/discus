@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module testadd();
 
    reg clk;
@@ -34,14 +36,16 @@ module testadd();
       snoopp = 1;
       reset = 1;
 
+      #105;
+
       for (i = 0; i <= 255; i = i + 1) begin
          if (prgram[i] != 0) begin
             snoopa = i;
             snoopd = prgram[i];
             clk = 0;
-            #10;
+            #5;
             clk = 1;
-            #10;
+            #5;
             clk = 0;
          end
       end
@@ -51,9 +55,9 @@ module testadd();
 
       for (i = 0; i <= 20; i = i + 1) begin
          clk = 0;
-         #10;
+         #5;
          clk = 1;
-         #10;
+         #5;
          clk = 0;
       end
    end

@@ -3,9 +3,30 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "script.h"
 #include "state.h"
 
+#define RM_IN() LOADM(A,64)
+#define RM_OUT(A) STA(64)
+#define RESULT() mem[0]
+
+// 1411807385341 needs 325, 443538368977861 needs 9375, 4341937413061 needs
+// 28178, 5517315475561 needs 450775 3933464309633 needs 9780504,
+// 107528788110061 needs 1795265022.
+static unsigned mr_bases[7] = {
+    2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
+
 struct miller_rabin_state : state_t {
+    miller_rabin_state() {
+        write_limit = 64;
+
+        memset(mem, 0, sizeof mem);
+        set64(one, 1);
+        set64(zero, 0);
+
+        for (int i = 0; i != 7; ++i)
+            set64(base_start + 8 * i, mr_bases[i]);
+    }
 
     // Word length for this run...
     static const int len = 8;
@@ -67,26 +88,29 @@ void miller_rabin_state::go()
     }
 restart:
     INC(A);
-    OUT(A);
+    RM_OUT(A);
     if (start_point == te_single) {
         RET();
         return;
     }
     // The input consists of 64bits BE...
 read1:
-    // Pulse bit 7 for 1, pulse bit 6 for 0.
-    IN();
-    AND(0xc0);
-    JP(Z,read1);
+    // We sample bit 6 on the rising edge of bit 7...
+    RM_IN();
+    ADD(A);
+    JP(NC,read1);
     ADD(A);
     LOAD(X,modulus);
     CALL(leftrot);
-    // Long pulse on bit 7 is start...
-    IN();
+    // Wait for bit 7 to fall.  If bit 6 stays up we are done.
+read0:
+    RM_IN();
+    ADD(A);
+    JP(C,read0);
     ADD(A);
     JP(NC,read1);
     SUB(A);
-    OUT(A);
+    RM_OUT(A);
 single:                                 // Test entry point
     // Now generate the exponent...
     LOAD(Y,modulus);
@@ -308,12 +332,6 @@ void miller_rabin_state::test_power(unsigned long mod,
 }
 
 
-// 1411807385341 needs 325, 443538368977861 needs 9375, 4341937413061 needs
-// 28178, 5517315475561 needs 450775 3933464309633 needs 9780504,
-// 107528788110061 needs 1795265022.
-static unsigned mr_bases[7] = {
-    2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
-
 static bool is_prime(unsigned long n)
 {
     int tz = __builtin_ctzl(n - 1);
@@ -350,8 +368,8 @@ void miller_rabin_state::test_single(unsigned long mod)
     step_check_t(this).run_check();
 #endif
     unsigned exp = is_prime(mod) ? len : 1;
-    printf("mr %lu -> %u exp %u in %u\n", mod, out_latch, exp, executed);
-    assert(exp == out_latch);
+    printf("mr %lu -> %u exp %u in %u\n", mod, RESULT(), exp, executed);
+    assert(exp == RESULT());
 }
 
 
@@ -368,13 +386,6 @@ void miller_rabin_state::run_tests()
 
     emitter = NULL;
     straight_through = false;
-    write_limit = 64;
-
-    set64(one, 1);
-    set64(zero, 0);
-
-    for (int i = 0; i != 7; ++i)
-        set64(base_start + 8 * i, mr_bases[i]);
 
     test_power(100000, 2, 10);
     test_power(6700417, 2, 6700416);
@@ -402,8 +413,11 @@ void miller_rabin_state::run_tests()
 }
 
 
-int main()
+int main(int argc, char * argv[])
 {
-    miller_rabin_state().run_tests();
+    if (argc <= 1)
+        miller_rabin_state().run_tests();
+    else
+        sim_main(miller_rabin_state(), argc, argv);
     return 0;
 }

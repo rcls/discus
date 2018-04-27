@@ -26,10 +26,33 @@ struct verilog_print_emitter_t : emitter_t {
 };
 
 
+struct fpga_print_emitter_t : emitter_t {
+    fpga_print_emitter_t(FILE * f, char op) : file(f), oper(op) { }
+    ~fpga_print_emitter_t() {
+        if (next >= 0)
+            fprintf(file, "\n");
+    }
+
+    void emit_byte(int address, int byte) {
+        if (address % 16 == 0 || address != next) {
+            if (next >= 0)
+                fprintf(file, "\n");
+            fprintf(file, "%c%02x\n", oper, address);
+        }
+        fprintf(file, "%02x", byte);
+        next = address + 1;
+    }
+
+    FILE * file;
+    int next = -1;
+    char oper;
+};
+
+
 void sim_main(state_t && program, int argc, char * argv[])
 {
     while (1)
-        switch (getopt(argc, argv, "n:HXRV:CT")) {
+        switch (getopt(argc, argv, "n:HFXRV:CT")) {
         case 'n':
             comp_num = strtoul(optarg, NULL, 0);
             break;
@@ -37,6 +60,16 @@ void sim_main(state_t && program, int argc, char * argv[])
             program.extract_branches();
             program.assemble(print_emitter_t(stdout));
             break;
+        case 'F': {
+            program.extract_branches();
+            program.assemble(fpga_print_emitter_t(stdout, 'p'));
+            fpga_print_emitter_t mem(stdout, 'w');
+            for (int i = 0; i < 256; ++i)
+                if (program.mem[i])
+                    mem.emit_byte(i, program.mem[i]);
+
+            break;
+        }
         case 'X':
             program.extract_branches();
             program.assemble(verilog_print_emitter_t(stdout));

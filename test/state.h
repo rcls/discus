@@ -180,6 +180,8 @@ struct state_t {
         account(0xa4, val);
         if (!straight_through) {
             assert(get(val) < write_limit);
+            if (get(val) == 0)
+                printf("mem[0] = 0x%02x\n", reg[A]);
             mem[get(val)] = reg[A];
         }
     }

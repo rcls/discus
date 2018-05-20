@@ -2,7 +2,7 @@ CONFIG VCCAUX = "3.3";
 
 # AKA LCD_clk
 NET "cpu_clk_ext" LOC = "P16" | IOSTANDARD = "LVCMOS33" | TNM_NET = "cpu_clk_ext";
-TIMESPEC TS_cpu_clk_ext = PERIOD "cpu_clk_ext" 50MHz;
+TIMESPEC TS_cpu_clk_ext = PERIOD "cpu_clk_ext" 250MHz;
 
 NET "cpu_reset" LOC = "P12" | IOSTANDARD = "LVCMOS33";
 

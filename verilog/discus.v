@@ -62,7 +62,7 @@ module discus(input wire clk,
    reg [7:0] decode_instruction = 0;
 
    // For instruction decode only.
-   reg [2:0] decode_condition = 3'b1;
+   reg decode_is_branch = 0;
    reg decode_branch_stall = 0;
    reg [5:0] decode_prev_data = 0;
    reg decode_prev_was_data = 0;
@@ -118,18 +118,19 @@ module discus(input wire clk,
 
    always@(posedge clk) begin : fetch
       reg [7:0] decode_branch_target;
-      reg condition;
       reg decode_take_branch;
       reg [7:0] fetch_PC;
       reg fetch_needs_memory;
       reg fetch_mem_read;
 
       if (fetch_instruction[7:6] == 2'b00 && fetch_prev_was_data)
-        decode_condition <= fetch_instruction[4:2];
+        decode_is_branch <= 1;
+      else if (fetch_instruction[4:3] == 2'b00)
+        decode_is_branch <= 0;
       else if (fetch_instruction[7:5] == 3'b101)
-        decode_condition <= fetch_instruction[4:2];
+        decode_is_branch <= 1;
       else
-        decode_condition <= 3'b001;
+        decode_is_branch <= 0;
 
       // We can only update the SP every other clock cycle, so we can process
       // the SP both in fetch & decode.
@@ -149,18 +150,24 @@ module discus(input wire clk,
          take_branch_addendA[1] = |Q[7:4];
          take_branch_addendB[1] = 1;
 
-         case (decode_condition[2:1])
+         case (decode_instruction[4:3])
            2'b00, 2'b01: take_branch_addendA[2] = 0;
            2'b10: take_branch_addendA[2] = !Zflag | commit_Z_write;
            2'b11: take_branch_addendA[2] = !Cflag;
          endcase
-         case (decode_condition[2:1])
+         case (decode_instruction[4:3])
            2'b00, 2'b01: take_branch_addendB[2] = 0;
            2'b10: take_branch_addendB[2] = !Zflag & !commit_Z_write;
            2'b11: take_branch_addendB[2] = !Cflag;
          endcase
          take_branch_addendA[3] = 0;
-         take_branch_addendB[3] = !decode_condition[0];
+         take_branch_addendB[3] = !decode_instruction[2];
+         if (!decode_is_branch) begin
+            take_branch_addendA[3] = 0;
+            take_branch_addendA[3] = 0;
+            take_branch_addendB[2] = 0;
+            take_branch_addendB[2] = 0;
+         end
          take_branch_sum = take_branch_addendA + take_branch_addendB;
          decode_take_branch = take_branch_sum[3];
       end
@@ -233,7 +240,7 @@ module discus(input wire clk,
       if (decode_take_branch) begin
          fetch_prev_was_data <= 0;
          fetch_post_mem_read <= 0;
-         decode_condition <= 3'b001;
+         decode_is_branch <= 0;
       end
    end
 

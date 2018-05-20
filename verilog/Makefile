@@ -6,9 +6,9 @@ MAP=$(XIL)/map
 PAR=$(XIL)/par
 TRCE=$(XIL)/trce
 
-COST_TABLE=64
+COST_TABLE=29
 
-MAP_OPTS=-p xc6slx9-tqg144-3 -w -logic_opt on -ol high -t $(COST_TABLE) -global_opt speed -ir off -pr b
+MAP_OPTS=-p xc6slx9-tqg144-3 -w -logic_opt on -ol high -t $(COST_TABLE) -global_opt speed -ir off -pr b -detail
 
 .PHONY: all
 all: work/swinterface.twr
@@ -16,7 +16,7 @@ all: work/swinterface.twr
 work/discus.ngc: discus.v discus.ucf
 	cd work ; $(XST) -intstyle ise -ifn discus.xst -ofn discus.syr
 
-work/swinterface.ngc: swinterface.v swinterface.ucf
+work/swinterface.ngc: swinterface.v discus.v swinterface.ucf
 	cd work ; $(XST) -intstyle ise -ifn swinterface.xst -ofn swinterface.syr
 
 %.ngd: %.ngc ../%.ucf

@@ -2,7 +2,6 @@ module swinterface(input wire cpu_clk_ext,
                    input wire cpu_reset,
                    input wire clkin100,
                    output wire clkin100_en,
-                   input wire cpu_clk_sel,
                    input wire ssp1_sck,
                    input wire ssp1_ssel,
                    input wire ssp1_mosi,
@@ -29,38 +28,26 @@ module swinterface(input wire cpu_clk_ext,
    wire [7:0] snoopq;
    reg snoopp;
    reg snoopm;
+   wire khz_pulse;
 
    assign clkin100_en = 1'b1;
    wire clk_main = clkin100;
 
-   discus cpu(.clk(cpu_clk), .reset(cpu_reset), .snoop_clk(clk_main),
+   discus cpu(.clk(cpu_clk_ext), .reset(cpu_reset), .snoop_clk(clk_main),
      .snoopa(snoopa), .snoopd(snoopd), .snoopq(snoopq),
      .snoopm(snoopm), .snoopp(snoopp));
 
+   div100k khz_gen(clk_main, khz_pulse);
+
    // The LEDs are negative logic.
-   watchdog w_clk(clk_main, !sck_iob, led[0]);
-   watchdog w_ssel(clk_main, ss_iob, led[1]);
-   watchdog w_mosi(clk_main, mosi_iob, led[2]);
-   watchdog w_cpuclk(clk_main, !cpu_clk_ext, led[3]);
-   watchdog w_reset(clk_main, !cpu_reset, led[4]);
+   watchdog w_clk   (clk_main, khz_pulse, !sck_iob,      led[0]);
+   watchdog w_ssel  (clk_main, khz_pulse, ss_iob,       led[1]);
+   watchdog w_mosi  (clk_main, khz_pulse, mosi_iob,     led[2]);
+   watchdog w_cpuclk(clk_main, khz_pulse, !cpu_clk_ext, led[3]);
+   watchdog w_reset (clk_main, khz_pulse, !cpu_reset,   led[4]);
    assign led[5] = 1;
    assign led[6] = 1;
    assign led[7] = 1;
-
-   PLL_BASE #(
-     .CLKFBOUT_MULT(10),
-     .CLKOUT0_DIVIDE(4),
-     // .CLKOUT1_DIVIDE(10),
-     .DIVCLK_DIVIDE(1),
-     .CLK_FEEDBACK("CLKFBOUT")) clkgen
-     (.CLKIN(clkin100),
-     .CLKOUT0(clk250mhz),
-     // .CLKOUT1(clk_main),
-     .CLKFBOUT(clkgen_fb),
-     .CLKFBIN(clkgen_fb)
-     );
-
-   BUFGMUX cpu_clk_mux (.I1(cpu_clk_ext), .I0(clk250mhz), .S(cpu_clk_sel), .O(cpu_clk));
 
    always@(posedge clk_main) begin : inputbuffers
       ss_iob <= ssp1_ssel;
@@ -118,24 +105,35 @@ module swinterface(input wire cpu_clk_ext,
       snoopp <= (spi_op == 2'b01 && ss_rise);
       snoopm <= (spi_op == 2'b11 && ss_rise);
    end
-
 endmodule
 
-module watchdog(input wire clk, input wire I, output reg O);
+module div100k(input wire clk, output reg pulse);
+   reg [17:0] counter;
+
+   always@(posedge clk) begin
+      pulse <= counter[17];
+      if (counter[17])
+        counter <= counter - 999999;
+      else
+        counter <= counter + 1;
+   end
+endmodule
+
+module watchdog(input wire clk, input wire en, input wire I, output reg O);
 
    // Stretch transitions on I onto O: If we are not counting, and I/=O then
    // flip O and reset the counter.
 
-   reg[24:0] counter;
+   reg[7:0] counter;
    reg II;
 
    always@(posedge clk) begin
       II <= I;
-      if (counter[24] && II != O) begin
+      if (counter[7] && II != O) begin
          O <= II;
-         counter <= 6777216;
-      end;
-      if (!counter[24])
+         counter <= 28;
+      end
+      else if (en)
         counter <= counter + 1;
    end
 endmodule

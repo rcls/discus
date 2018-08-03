@@ -8,7 +8,7 @@
 
 #define RM_IN() LOADM(A,64)
 #define RM_OUT(A) STA(64)
-#define RESULT() mem[0]
+#define RESULT() mem[64]
 
 // 1411807385341 needs 325, 443538368977861 needs 9375, 4341937413061 needs
 // 28178, 5517315475561 needs 450775 3933464309633 needs 9780504,
@@ -18,7 +18,7 @@ static unsigned mr_bases[7] = {
 
 struct miller_rabin_state : state_t {
     miller_rabin_state() {
-        write_limit = 64;
+        write_limit = 65;
 
         memset(mem, 0, sizeof mem);
         set64(one, 1);

@@ -60,14 +60,17 @@ result bus is ALU output, or operand bus direct (add 0...)
 110WWMRR - WW = src-1, flag Z.
 111WWMRR - WW = src+1, flag Z.
 
--- redo the stuff below, it's best only to have uncond ret...
+-- redo the stuff below, it's best only to have uncond ret?
 101CCCxx - ret.
-101010xx - uncond ret.
+
+1010x0xx - uncond ret, allow only 101010xx?
+1010x1xx - uncond non ret.
 
 101000xx - IN, to make the reg = A (saves decode...), keep ram off bus.
+101011xx - OUT - note M bit is set, ignore memory read.
+better?:
 
 101001xx - STA - note M bit is set, memory read will be ignored.
-101011xx - OUT - note M bit is set, ignore memory read.
 
 * If we nix IN/OUT then the uncond never rets are 1010x1xx & we can simplify ret
   decode.
@@ -79,7 +82,8 @@ AAA = 011 : SBC
 AAA = 100 : OR
 AAA = 101 : XOR
 AAA = 110 : AND
-AAA = 111 : CMP
+AAA = 111 : CMP (not used in Rabin-Miller, nix it?)
+(setc / clrc used in Rabin-Miller, but not or, xor).
 
 
 CCC = 000 : always [but not ret]
@@ -223,3 +227,22 @@ TODO : Merge Q* and P* on pcbit.
 
 ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 
+
+.... Alt jump encoding:
+
+00xxLCCC
+
+rets fit in
+
+101..CCC [or 10101CCC]
+Leaves other
+
+10100... IN [writes A, puts value on bus]
+10101... OUT [puts value on bus]
+
+
+01x - arith
+100 - load
+11x - inc dec.
+
+101ZZMRR

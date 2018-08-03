@@ -30,16 +30,16 @@ struct fpga_print_emitter_t : emitter_t {
     fpga_print_emitter_t(FILE * f, char op) : file(f), oper(op) { }
     ~fpga_print_emitter_t() {
         if (next >= 0)
-            fprintf(file, "\n");
+            fprintf(file, "\n\377");
     }
 
     void emit_byte(int address, int byte) {
         if (address % 16 == 0 || address != next) {
             if (next >= 0)
-                fprintf(file, "\n");
-            fprintf(file, "%c%02x\n", oper, address);
+                fprintf(file, "\n\377");
+            fprintf(file, "%02x=", address);
         }
-        fprintf(file, "%02x", byte);
+        fprintf(file, "%02x%c", byte, oper);
         next = address + 1;
     }
 
@@ -49,10 +49,17 @@ struct fpga_print_emitter_t : emitter_t {
 };
 
 
+struct memfile_emitter_t : emitter_t {
+    void emit_byte(int address, int byte) {
+        printf("%02x\n", byte);
+    }
+};
+
+
 void sim_main(state_t && program, int argc, char * argv[])
 {
     while (1)
-        switch (getopt(argc, argv, "n:HFXRV:CT")) {
+        switch (getopt(argc, argv, "n:HFMRXV:CT")) {
         case 'n':
             comp_num = strtoul(optarg, NULL, 0);
             break;
@@ -62,8 +69,8 @@ void sim_main(state_t && program, int argc, char * argv[])
             break;
         case 'F': {
             program.extract_branches();
-            program.assemble(fpga_print_emitter_t(stdout, 'p'));
-            fpga_print_emitter_t mem(stdout, 'w');
+            program.assemble(fpga_print_emitter_t(stdout, ';'));
+            fpga_print_emitter_t mem(stdout, '!');
             for (int i = 0; i < 256; ++i)
                 if (program.mem[i])
                     mem.emit_byte(i, program.mem[i]);
@@ -77,6 +84,10 @@ void sim_main(state_t && program, int argc, char * argv[])
         case 'R':
             program.extract_branches();
             program.assemble(munge_emitter_t(stdout, ""));
+            break;
+        case 'M':
+            program.extract_branches();
+            program.assemble(memfile_emitter_t());
             break;
         case 'V':
             program.extract_branches();

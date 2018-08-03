@@ -23,19 +23,42 @@ module swinterface(input wire cpu_clk_ext,
    reg sck_buf;
    reg ss_buf;
 
-   reg [7:0] snoopd;
-   reg [7:0] snoopa;
-   wire [7:0] snoopq;
-   reg snoopp;
-   reg snoopm;
    wire khz_pulse;
+
+   reg [7:0] memory[0:255];
+   reg [7:0] prgram[0:255];
+   wire memory_read;
+   wire write;
+   wire [7:0] memory_address;
+   wire [7:0] memory_D;
+   reg  [7:0] memory_Q;
+   wire [7:0] fetch_PC;
+   wire fetch_reset;
+   reg [7:0] fetch_instruction;
 
    assign clkin100_en = 1'b1;
    wire clk_main = clkin100;
 
-   discus cpu(.clk(cpu_clk_ext), .reset(cpu_reset), .snoop_clk(clk_main),
-     .snoopa(snoopa), .snoopd(snoopd), .snoopq(snoopq),
-     .snoopm(snoopm), .snoopp(snoopp));
+   discus cpu(.clk(cpu_clk_ext), .reset(cpu_reset),
+     .memory_read(memory_read), .memory_write(memory_write),
+     .memory_address(memory_address), .memory_D(memory_D), .memory_Q(memory_Q),
+     .fetch_PC(fetch_PC), .fetch_reset(fetch_reset),
+     .fetch_instruction(fetch_instruction));
+
+   always@(posedge cpu_clk_ext) begin
+      if (memory_read)
+        memory_Q <= memory[memory_address];
+      else
+        memory_Q <= 0;
+
+      if (memory_write)
+        memory[memory_address] <= memory_D;
+
+      if (fetch_reset)
+        fetch_instruction <= 0;
+      else
+        fetch_instruction <= prgram[fetch_PC];
+   end
 
    div100k khz_gen(clk_main, khz_pulse);
 
@@ -66,6 +89,12 @@ module swinterface(input wire cpu_clk_ext,
       reg sck_rise;
       reg ss_rise;
       reg increment;
+
+      reg [7:0] snoopa;
+      reg [7:0] snoopd;
+      reg [7:0] snoopq;
+      reg snoopm;
+      reg snoopp;
 
       sck_rise = sck_iob && !sck_buf;
       ss_rise = ss_iob && !ss_buf;
@@ -104,6 +133,14 @@ module swinterface(input wire cpu_clk_ext,
 
       snoopp <= (spi_op == 2'b01 && ss_rise);
       snoopm <= (spi_op == 2'b11 && ss_rise);
+
+      if (snoopp)
+        prgram[snoopa] <= snoopd;
+
+      if (snoopm)
+        memory[snoopa] <= snoopd;
+
+      snoopq <= memory[snoopa];
    end
 endmodule
 

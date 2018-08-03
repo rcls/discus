@@ -93,15 +93,6 @@ struct state_t {
     const char * jump_target_name;
     std::map<std::string, int> jump_targets;
 
-    void ADD(int opcode, const operand_t & val,
-             bool cin = false, unsigned char flip = 0) {
-        account(opcode, val);
-        unsigned r = reg[A] + (get(val) ^ flip) + cin;
-        flag_C = !!(r & 256);
-        reg[A] = r;
-        flag_Z = !(r & 255);
-    }
-
     void ADD(const operand_t & val)  { ADD(0x40, val); }
     void ADDM(const operand_t & val) { ADD(val.mem()); }
     void ADC(const operand_t & val)  { ADD(0x48, val, flag_C); }
@@ -139,7 +130,13 @@ struct state_t {
 
     void XORM(const operand_t & val) { XOR(val.mem()); }
 
-    // FIXME: CMP
+    void CMP(const operand_t & val)  {
+        account(0x78, val);
+        unsigned r = reg[A] + (256 - get(val));
+        flag_C = !!(r & 256);
+        flag_Z = !(r & 255);
+    }
+    void CMPM(const operand_t & val) { SUB(val.mem()); }
 
     void INC(register_name_t w, const operand_t & val) {
         account(0xc0 + w * 8, val);
@@ -180,8 +177,6 @@ struct state_t {
         account(0xa4, val);
         if (!straight_through) {
             assert(get(val) < write_limit);
-            if (get(val) == 0)
-                printf("mem[0] = 0x%02x\n", reg[A]);
             mem[get(val)] = reg[A];
         }
     }
@@ -220,6 +215,15 @@ struct state_t {
     void check_fail(const char * what);
 
     void extract_branches();
+private:
+    void ADD(int opcode, const operand_t & val,
+             bool cin = false, unsigned char flip = 0) {
+        account(opcode, val);
+        unsigned r = reg[A] + (get(val) ^ flip) + cin;
+        flag_C = !!(r & 256);
+        reg[A] = r;
+        flag_Z = !(r & 255);
+    }
 };
 
 

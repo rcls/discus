@@ -2,7 +2,8 @@
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test%)
 
-SCRIPTS=testadd testsub testcall testinc testmem hazard logic pattern rmsim
+SCRIPTS=testadd testsub testcall testinc testmem hazard logic pattern rmsim \
+	monitor blink
 
 all: rmsim $(TESTPROGS) $(SCRIPTS)
 
@@ -26,8 +27,6 @@ CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11 -I.
 .PHONY: %.verify
 %.verify: %.raw %
 	./$* -V $<
-
-rmsim: state.o spice_load.o
 
 $(TESTPROGS): spice_load.o
 

@@ -112,7 +112,8 @@ read0:
     SUB(A);
     RM_OUT(A);
 single:                                 // Test entry point
-    // Now generate the exponent...
+    // Now work out some details of the exponent, namely the number of trailing
+    // zeros of (modulus-1).
     LOAD(Y,modulus);
     LOAD(X,exponent);
     CALL(copy);
@@ -160,8 +161,8 @@ power_y:
     LOAD(A,Y);
     JP(Z,power_x);
 power1:
-    CALL(square);
-    CALL(leftrot_exponent);
+    CALL(square);                       // Starts with STA(outer_loop_count)
+    call(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
     DECM(A,outer_loop_count);
@@ -198,12 +199,15 @@ classify:                               // min(result,255) -> A
     LOAD(X,result - 1);
     SUB(A);
 classify1:
+    // A=0 at this point, so SUBM(X) sets C=!Z and Z reflects M(X).
     SUBM(X);
+    // Sets A=0 or -1 (C-1), preserves C, sets Z=!C (which we already had).
     SBC(A);
+    // So the Z flag works here with or without a hazard.
     RT(NZ);
     DEC(X);
     JP(NZ,classify1);
-    ADDM(result);
+    ADDM(result);                       // A=mem(result) but sets flags.
     RET();
 
 square:                                 // product * product -> product

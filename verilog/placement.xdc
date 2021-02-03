@@ -4,33 +4,6 @@ set_property LOC RAMB18_X1Y27 [get_cells memory_reg]
 set_property BEL RAMB18E1 [get_cells prgram_reg]
 set_property LOC RAMB18_X1Y26 [get_cells prgram_reg]
 
-#set_property BEL RAMB18E1 [get_cells io_instruction_reg]
-#set_property LOC RAMB18_X2Y25 [get_cells io_instruction_reg]
-
-
-# Lock down Q and carry chain to be next to the memory.
-#set_property BEL CARRY4 [get_cells {cpu/Q_reg[7]_i_1}]
-#set_property LOC SLICE_X62Y69 [get_cells {cpu/Q_reg[7]_i_1}]
-
-#set_property BEL BFF [get_cells {cpu/Q_reg[0]}]
-#set_property BEL CFF [get_cells {cpu/Q_reg[1]}]
-#set_property BEL DFF [get_cells {cpu/Q_reg[2]}]
-#set_property BEL AFF [get_cells {cpu/Q_reg[3]}]
-#set_property BEL BFF [get_cells {cpu/Q_reg[4]}]
-#set_property BEL CFF [get_cells {cpu/Q_reg[5]}]
-#set_property BEL DFF [get_cells {cpu/Q_reg[6]}]
-#set_property BEL AFF [get_cells {cpu/Q_reg[7]}]
-#set_property BEL CFF [get_cells cpu/Cflag_reg]
-
-#set_property LOC SLICE_X62Y67 [get_cells {cpu/Q_reg[0]}]
-#set_property LOC SLICE_X62Y67 [get_cells {cpu/Q_reg[1]}]
-#set_property LOC SLICE_X62Y67 [get_cells {cpu/Q_reg[2]}]
-#set_property LOC SLICE_X62Y68 [get_cells {cpu/Q_reg[3]}]
-#set_property LOC SLICE_X62Y68 [get_cells {cpu/Q_reg[4]}]
-#set_property LOC SLICE_X62Y68 [get_cells {cpu/Q_reg[5]}]
-#set_property LOC SLICE_X62Y68 [get_cells {cpu/Q_reg[6]}]
-#set_property LOC SLICE_X62Y69 [get_cells {cpu/Q_reg[7]}]
-#set_property LOC SLICE_X62Y69 [get_cells cpu/Cflag_reg]
 
 # IO pins.
 set_property IOSTANDARD LVCMOS33 [get_ports {BASE_UART0_rxd BASE_UART0_txd}]

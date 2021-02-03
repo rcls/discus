@@ -22,8 +22,8 @@ module trinterface(input wire BASE_UART0_rxd,
 
    bit [7:0] program_address;
    bit [7:0] program_data;
-   (* ram_style = "block" *)
    bit program_w;
+   (* ram_style = "block" *)
    bit [7:0] prgram[0:255];
    wire [7:0] fetch_PC;
    wire fetch_reset;

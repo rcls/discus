@@ -10,7 +10,7 @@ all: rmsim $(TESTPROGS) $(SCRIPTS)
 raw: $(SCRIPTS:%=%.raw)
 verify: $(SCRIPTS:%=%.verify)
 
-CXXFLAGS=-O2 -Wall -Werror -ggdb -std=c++11 -I.
+CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I.
 
 %.o: %.cc
 	g++ $(CXXFLAGS) -o $@ -c $<

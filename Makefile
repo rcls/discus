@@ -1,5 +1,5 @@
 
-GNETLIST=/home/archive/bin/gnetlist
+GNETLIST=/home/geda/bin/gnetlist
 
 all:
 

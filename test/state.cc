@@ -165,22 +165,24 @@ void state_t::step(int opcode)
         case 0x00:                      // Or.
             reg[A] = reg[A] | b;
             flag_C = false;
+            flag_Z = reg[A] == 0;
             break;
         case 0x08:                      // Xor.
             reg[A] = reg[A] ^ b;
             flag_C = false;
+            flag_Z = reg[A] == 0;
             break;
         case 0x10:                      // And.
             reg[A] = reg[A] & b;
             flag_C = true;
+            flag_Z = reg[A] == 0;
             break;
         default: ;                      // Cmp.
-            int q = reg[A] + b + 1;
+            int q = reg[A] + (b ^ 255) + 1;
             flag_C = !!(q & 256);
             flag_Z = (q & 255) == 0;
             break;
         }
-        flag_Z = reg[A] == 0;
         break;
     case 0x80:                          // Load.
         //fprintf(stderr, "opcode %02x is load\n", opcode);
@@ -370,6 +372,7 @@ void step_check_t::run_check()
     orig->assemble(byte_emitter_t(code));
     zero_init();
     orig->zero_init();
+    memset(orig->mem, 0, 256);
     memcpy(mem, orig->mem, 256);
     orig->emitter = this;
     orig->straight_through = false;
@@ -382,12 +385,15 @@ void step_check_t::run_check()
 void step_check_t::emit_byte(int address, int byte)
 {
     verify();
+    assert(byte == code[pc]);
     step(code[pc]);
 }
 
 void step_check_t::emit_two(int address, int b1, int b2)
 {
     verify();
+    assert(b1 == code[pc]);
+    assert(b2 == code[pc+1]);
     step(code[pc]);
     step(code[pc]);
 }

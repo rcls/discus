@@ -132,7 +132,8 @@ struct state_t {
 
     void CMP(const operand_t & val)  {
         account(0x78, val);
-        unsigned r = reg[A] + (256 - get(val));
+        unsigned v = get(val);
+        unsigned r = reg[A] + (256 - v);
         flag_C = !!(r & 256);
         flag_Z = !(r & 255);
     }

@@ -99,7 +99,12 @@ void spice_load::read_var_list(FILE * f)
             errx(1, "Dodgy variable line: %s", line);
         if (num != i)
             errx(1, "Out of sequence variable line: %s", line);
-        variables.insert(std::make_pair(name, num));
+        // Rewrite v(x) to x.
+        int l = strlen(name);
+        std::string n = name;
+        if (name[0] == 'v' && name[1] == '(' && name[l-1] == ')')
+            n = std::string(name + 2, l - 3);
+        variables.emplace(n, num);
         free(name);
         free(type);
     }

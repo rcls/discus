@@ -120,7 +120,6 @@ void state_t::step(int opcode)
     ++pc;
 
     if (kreg < 0 && opcode < 0x40) {
-        //fprintf(stderr, "opcode %02x is prefix\n", opcode);
         kreg = opcode;
         return;
     }

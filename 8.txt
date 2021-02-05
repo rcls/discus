@@ -228,21 +228,65 @@ TODO : Merge Q* and P* on pcbit.
 ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 
 
-.... Alt jump encoding:
+================== Pure risc =============================
 
-00xxLCCC
+00nnnnnn - const
+00scccrr - jmp/call [const is modal so may as well do this.]
 
-rets fit in
+010.11rr - STA
 
-101..CCC [or 10101CCC]
-Leaves other
+011ccc.. - rets (+2 or 3 ret never)
+011001rr - CMP (C,Z) - match SUB on 432
 
-10100... IN [writes A, puts value on bus]
-10101... OUT [puts value on bus]
+0?????rr - OUT (place on a ret never) (strobe, B is used?)
+
+100aaarr - arith (C+Z) [write A except CMP, should CMP be elsewhere?]
+
+101.11rr - MEM (prefix)
+101.10.. - IN - prefix.
+
+11dd00rr - INC (Z)
+11dd01rr - DEC (Z) (match sub, cmp)
+11dd10rr - MV (implement as OR 0)
+11dd11rr - LOAD
+
+Memory (strobe memory, Q is open drain).
+1x1x11
+x10x11
+010x11 is write strobe
+
+Writes any reg: 00 (not jump), 1, i.e., 1 or x0 not jump
+
+Assigns C: 100, 011001
+Assigns Z: 100, 11xx0, x11001
+
+Q from alu: 1x0, MV (11xx10)
+
+Writes DD 11
+Writes K  00 (not jump), x01 (harmless to include jump)
+
+A-forced-to-1 for 11xxx1
+A-forced-to-0 for 11xxx0
+(dont care for 11xx11)
+
+carry forcing & Q negation follows AAA except for 1011 (MV) & INC, DEC.
 
 
-01x - arith
-100 - load
-11x - inc dec.
 
-101ZZMRR
+
+
+AAA
+- Bit 2 (1) invert B v. no invert B (0)
+- Bit 3 (0) C-chain v. no C-chain
+- Bit 4 (0) use C on input [can override.]
+- force carry low (add, or, xor)
+- force carry high (sub, and)
+000 - add
+001 - sub
+010 - or
+011 - xor (just like and on inversion & carry handling.)
+100 - adc
+101 - sbc
+110 - xor (just like or on inversion & carry handling.)
+111 - and
+

@@ -8,7 +8,7 @@ refdes=RA0
 T 13200 14000 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 14000 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 }
 C 12800 13700 1 0 0 linko.sym
 {
@@ -19,7 +19,7 @@ refdes=RA1
 T 13200 13800 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 13800 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 }
 C 13400 13500 1 0 0 baw56d.sym
 {
@@ -33,7 +33,7 @@ device=RESISTOR
 T 14700 13800 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 13800 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 13850 5 10 1 1 0 3 1
 refdes=RA2
 }
@@ -44,7 +44,7 @@ device=RESISTOR
 T 14700 13600 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 13600 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 13550 5 10 1 1 0 5 1
 refdes=RA3
 }
@@ -65,7 +65,7 @@ device=RESISTOR
 T 13200 12700 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 12700 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 13100 12750 5 10 1 1 0 3 1
 refdes=RA4
 }
@@ -76,7 +76,7 @@ device=RESISTOR
 T 13200 12500 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 12500 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 13100 12450 5 10 1 1 0 5 1
 refdes=RA5
 }
@@ -92,7 +92,7 @@ device=RESISTOR
 T 14700 12500 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 12500 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 12550 5 10 1 1 0 3 1
 refdes=RA6
 }
@@ -103,7 +103,7 @@ device=RESISTOR
 T 14700 12300 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 12300 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 12250 5 10 1 1 0 5 1
 refdes=RA7
 }
@@ -187,7 +187,7 @@ device=RESISTOR
 T 13200 11400 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 11400 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 13100 11450 5 10 1 1 0 3 1
 refdes=RB0
 }
@@ -198,7 +198,7 @@ device=RESISTOR
 T 13200 11200 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 11200 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 13100 11150 5 10 1 1 0 5 1
 refdes=RB1
 }
@@ -214,7 +214,7 @@ device=RESISTOR
 T 14700 11200 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 11200 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 11250 5 10 1 1 0 3 1
 refdes=RB2
 }
@@ -225,7 +225,7 @@ device=RESISTOR
 T 14700 11000 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 11000 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 10950 5 10 1 1 0 5 1
 refdes=RB3
 }
@@ -246,7 +246,7 @@ device=RESISTOR
 T 13200 10100 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 10100 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 13100 10150 5 10 1 1 0 3 1
 refdes=RB4
 }
@@ -257,7 +257,7 @@ device=RESISTOR
 T 13200 9900 5 10 0 1 0 0 1
 footprint=jumper2
 T 13200 9900 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 13100 9850 5 10 1 1 0 5 1
 refdes=RB5
 }
@@ -273,7 +273,7 @@ device=RESISTOR
 T 14700 9900 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 9900 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 9950 5 10 1 1 0 3 1
 refdes=RB6
 }
@@ -284,7 +284,7 @@ device=RESISTOR
 T 14700 9700 5 10 0 1 0 6 1
 footprint=jumper2
 T 14700 9700 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 14800 9650 5 10 1 1 0 5 1
 refdes=RB7
 }
@@ -361,7 +361,7 @@ device=RESISTOR
 T 17900 14000 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 14000 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 14050 5 10 1 1 0 3 1
 refdes=RC0
 }
@@ -372,7 +372,7 @@ device=RESISTOR
 T 17900 13800 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 13800 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 13750 5 10 1 1 0 5 1
 refdes=RC1
 }
@@ -388,7 +388,7 @@ device=RESISTOR
 T 19400 13800 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 13800 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 13850 5 10 1 1 0 3 1
 refdes=RC2
 }
@@ -399,7 +399,7 @@ device=RESISTOR
 T 19400 13600 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 13600 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 13550 5 10 1 1 0 5 1
 refdes=RC3
 }
@@ -420,7 +420,7 @@ device=RESISTOR
 T 17900 12700 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 12700 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 12750 5 10 1 1 0 3 1
 refdes=RC4
 }
@@ -431,7 +431,7 @@ device=RESISTOR
 T 17900 12500 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 12500 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 12450 5 10 1 1 0 5 1
 refdes=RC5
 }
@@ -447,7 +447,7 @@ device=RESISTOR
 T 19400 12500 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 12500 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 12550 5 10 1 1 0 3 1
 refdes=RC6
 }
@@ -458,7 +458,7 @@ device=RESISTOR
 T 19400 12300 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 12300 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 12250 5 10 1 1 0 5 1
 refdes=RC7
 }
@@ -535,7 +535,7 @@ device=RESISTOR
 T 17900 11400 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 11400 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 11450 5 10 1 1 0 3 1
 refdes=RD0
 }
@@ -546,7 +546,7 @@ device=RESISTOR
 T 17900 11200 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 11200 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 11150 5 10 1 1 0 5 1
 refdes=RD1
 }
@@ -562,7 +562,7 @@ device=RESISTOR
 T 19400 11200 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 11200 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 11250 5 10 1 1 0 3 1
 refdes=RD2
 }
@@ -573,7 +573,7 @@ device=RESISTOR
 T 19400 11000 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 11000 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 10950 5 10 1 1 0 5 1
 refdes=RD3
 }
@@ -594,7 +594,7 @@ device=RESISTOR
 T 17900 10100 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 10100 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 10150 5 10 1 1 0 3 1
 refdes=RD4
 }
@@ -605,7 +605,7 @@ device=RESISTOR
 T 17900 9900 5 10 0 1 0 0 1
 footprint=jumper2
 T 17900 9900 5 10 0 1 0 0 1
-value=1e9
+value=INFINITY
 T 17800 9850 5 10 1 1 0 5 1
 refdes=RD5
 }
@@ -621,7 +621,7 @@ device=RESISTOR
 T 19400 9900 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 9900 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 9950 5 10 1 1 0 3 1
 refdes=RD6
 }
@@ -632,7 +632,7 @@ device=RESISTOR
 T 19400 9700 5 10 0 1 0 6 1
 footprint=jumper2
 T 19400 9700 5 10 0 1 0 6 1
-value=1e9
+value=INFINITY
 T 19500 9650 5 10 1 1 0 5 1
 refdes=RD7
 }

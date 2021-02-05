@@ -1,11 +1,10 @@
 
 TESTCC = alu pcdecode opdecode sp
 TESTPROGS=$(TESTCC:%=test%)
+SCRIPTS=testadd testsub testcall testinc testmem hazard logic
+PROGS=pattern rmsim monitor blink
 
-SCRIPTS=testadd testsub testcall testinc testmem hazard logic pattern rmsim \
-	monitor blink
-
-all: rmsim $(TESTPROGS) $(SCRIPTS)
+all: rmsim $(TESTPROGS) $(SCRIPTS) $(PROGS)
 
 raw: $(SCRIPTS:%=%.raw)
 verify: $(SCRIPTS:%=%.verify)

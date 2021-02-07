@@ -18,12 +18,12 @@ O - opcode fetch, positive logic open drain.
 I - instruction executing, differential.
 
 A0..7 & # : Accumulator value.
-V0..7 & # : Operand / address.
 B0#..B7# : Operand (B-input to ALU).
+Q : Instruction result, open drain.
 
 P0..P7 & # : Program counter.
-O0#..O7# : Opcode (from ROM).
-J0..J6 & # : Opcode (1 cycle delay from ROM).
+O0..O7 : Opcode (from ROM).
+I0..I7 & # : Opcode (1 cycle delay from ROM).
 
 ϕ0, ϕ1 : Clocks : Rising edge ϕ0 is main clock, rising edge active, ϕ1 only used
 for memory strobing.  C0, C1 : Clock source input.
@@ -35,81 +35,25 @@ MR : Memory read strobe.
 MW : Memory write strobe to RAM (synchronous to clock).
 
 
-
-source bus is register or constant.  Memory address is always source bus.
-operand bus is source bus direct or memory lookup
-result bus is ALU output, or operand bus direct (add 0...)
-
 00XXXXXX - data prefix (load immediate register).
   * any other instruction clears data prefix.
 
 00LCCCxx - with prefix, jump, opt link.
 
-01AAAMRR - ins that r/w A. (flags Z C)
-  * 7 basic operations:
-     add(c) sub(c) or and xor
-  * also cmp.
-
-
-00 - prefix or jmp/call constant. (Inc. uncond.)
-00LCCCxx - call(L=0) or jmp(L=1).
-01AAAMRR - ops that r/w A.
-100WWMRR - Load WW = src, no flags.
-110WWMRR - WW = src-1, flag Z.
-111WWMRR - WW = src+1, flag Z.
-
--- redo the stuff below, it's best only to have uncond ret?
-101CCCxx - ret.
-
-1010x0xx - uncond ret, allow only 101010xx?
-1010x1xx - uncond non ret.
-
-101000xx - IN, to make the reg = A (saves decode...), keep ram off bus.
-101011xx - OUT - note M bit is set, ignore memory read.
-better?:
-
-101001xx - STA - note M bit is set, memory read will be ignored.
-
-* If we nix IN/OUT then the uncond never rets are 1010x1xx & we can simplify ret
-  decode.
-
-AAA = 000 : ADD
-AAA = 001 : ADC
-AAA = 010 : SUB
-AAA = 011 : SBC
-AAA = 100 : OR
-AAA = 101 : XOR
-AAA = 110 : AND
-AAA = 111 : CMP (not used in Rabin-Miller, nix it?)
-(setc / clrc used in Rabin-Miller, but not or, xor).
-
-
-CCC = 000 : always [but not ret]
-CCC = 001 : never (unittest as don't care for jump/call).
-CCC = 010 : always (unittest for ret, don't care for jump/call).
-CCC = 011 : never (unittest for ret, don't care for jump/call).
+CCC = 000 : always
+CCC = 001 : never
+CCC = 010 : always
+CCC = 011 : never
 CCC = 100 : z
 CCC = 101 : nz
 CCC = 110 : c
 CCC = 111 : nc
 
-
 A : 00
 X : 01
 Y : 10
 U : 11
-
-01xxxxxx : write A
-(100/11x)WWxxx : write WW.
-
-
-Out can just use V or B bus. (V->Out, In->B?)
-
-constant latch 0,1 also can serve for reg write address latch.
-
-Put the VR strobe into the read-select strobes (push-pull)?
-
-Fixme - Z flag...
+K: 100
 
 
 Decode signals...
@@ -126,10 +70,6 @@ BV - B# taken from V bus (i.e., not memory read, i2#).
 AND
 OR
 
-O4# - Flag = 0
-O3#, O4 - Flag = FZ#
-O3, O4 - Flag = FC#
-
 N - high only for SUB, SBC and CMP
 OR - high only for OR
 AND - high only for AND
@@ -143,87 +83,7 @@ straight though:
 Either ADD, OR, XOR with A=0, [CR don't care for ADD].
 Or AND with A=255.
 
-BV - if B not coming from memory or I/O port.
-
-Write reg:
-
- 01xxxxxx except 01110xxx (cmp)
- 1xxxxxxx except 101xxxxx
- also IN (some 101xxxxx).
-
-[~7 & 6 & (~5 | ~4 | 3)]  |  [7 & (~6 | 5 | IN)]
-
-C is written by 01xxxxxx
-Z is written by everything that writes a reg, plus cmp
-   except: move (100xxxxxx), in (some 101xxxxx).
-   i.e. x1xxxxxx
-
-Load mem (many don't care): 01xxx1xx, 1xxxx1xx except some 101xx1xx
-Use i2, don't care about exceptions, specials get it right.
-
-IN is a do care (we want the bus...)
-
-
-AND is high for 01110xxx
-is low for 1xxxxxxx
-don't care 00xxxxxx
-So take 0x110xxx
-
-OR# is low for 01100xxx
-don't care 00xxxxxx
-Take 0x100xxx
-
-AS is high for DEC: 111xxxxx (i7 & i6 & i5#)
-AS dominates
-AR# is low for INC,MV, 100xxxxx, 111xxxxx, For IN: all 101xxxxx, simplifies to:
-  1xxxxxxx
-
-AR is high for 1xxxxxxx except 110xxxxxx, needs strong drive.
-i7 & (i6# | i5)
-
-
-
-CS - high for AND (anything else?), 0x101xxx
-CR# - low for OR, XOR, 0x100xxx, 0x101xxx, i.e.
-   0x10xxxx,
-Also special 1010xxxx... simplifies x010xxxx
-
-
-CinForce - ADD, SUB, OR, AND, XOR, CMP, all INC,DEC,MV,spec...
- 1xxxxxxx, xx1xxxxx, xxxx0xxx
-everything except ADC, SBC: 010x1xxx, don't cares give 0x0x1xxx
-
-CinS: CinForce &
- 0[1]x10xxx (SUB, AND)
- 0[1]11xxxx (CMP, AND)
- 1 1 1xxxxx (DEC)
-[CinS dominant.]
-
-CinR: ADD, OR, XOR, 1* except 111*:
- 0xx00 (Add, or)
- 0x10x (xor, or)
- x0xxx (ld, misc)
- 1x0xx (& dec)
-
-N - assert for SUB, SBC, CMP: 0x00xxxx, 0x[1]00xxx
-
-WZ - assert for 01xxxxxx, 11xxxxxx, i.e, i6.
-
-Write : not jump except ret/write/STA/OUT.
-x1xxxxxx,1x0xxxxx,IN
-
-FIXME : Put reset on the pc board.
-FIXME : Does SRAM really need the double-buffer on output?
-
-FIXME : we should probably only write strobe the stack latches during phi0.
-FIXME : Do we have races on the PUSH strobe for the stack?
-+ strobe the selects from phi0 should do it, it is not critical.
-
-TODO : Caps, osc, clocking on integration.
-TODO : OUT buffer/latch?
-TODO : Merge Q* and P* on pcbit.
-
-ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
+FIXME : ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 
 
 ================== Pure risc =============================
@@ -231,8 +91,8 @@ ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 00nnnnnn - const
 00scccrr - jmp/call [const is modal so may as well do this.]
 
-010.11rr - STA
-010?00rr - OUT (strobe, B is used?)
+0101..rr - STA
+0100..rr - OUT
 
 011ccc.. - rets (+2 or 3 ret never)
 011001rr - CMP (C,Z) - match SUB on 432
@@ -243,7 +103,7 @@ ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 100aaarr - arith (C+Z) [write A except CMP, should CMP be elsewhere?]
 
 101.11rr - MEM (prefix)
-101.10.. - IN - prefix. (fixme - tweak opcodes and fix decode).
+101.0... - IN - prefix.
 
 11dd00rr - INC (Z)
 11dd01rr - DEC (Z) (match sub, cmp)
@@ -301,12 +161,10 @@ nn.x10
 Cin force 1
 nn.0x1
 11..00
-Cin force
-11....
-nn.0..
-nn.x10
-can force for
-nn.x1x
+Cin force, except on ADC/SBC:
+100.01
+101 is don't care (IN,MEM)....
+so 10..01 is usable.
 
 
 EA force
@@ -353,3 +211,10 @@ C write
 
 Z write
 C write or 11..0
+
+
+ADD - Cin0
+ADC - .
+OR  - Cin0,C0
+XOR - Cin0,C0
+INC - Cin0

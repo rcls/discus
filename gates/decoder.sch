@@ -132,7 +132,7 @@ footprint=anchor
 T 43600 67900 5 10 0 0 0 0 1
 device=INPUT
 T 43600 67700 5 10 1 1 0 7 1
-refdes=Vo
+refdes=Vdd
 }
 C 44500 66800 1 0 0 BSS84.sym
 {

@@ -675,7 +675,7 @@ refdes=P
 C 9300 10300 1 0 0 decoder.sym
 {
 T 10000 10800 5 8 1 1 0 4 1
-source=decoder.sch
+source=FIXME.sch
 T 10000 11300 5 10 1 1 0 4 1
 refdes=S
 }

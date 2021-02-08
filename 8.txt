@@ -192,8 +192,8 @@ use nn..01
 ...011 - AND, sets carry.
 ...100 - ADC
 ...101 - SBC
-...110 - XOR - force carry off, negate.  (Or flip both.)
-...111 - (was cmp)
+...110 - XOR - force carry off.  (Or flip both.)
+...111 - don't care, aliases AND (was cmp)
 
 also...
 11..00 - inc

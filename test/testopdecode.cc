@@ -49,7 +49,6 @@ int main()
     const auto Ni = S.extract_signal("n#");
 
     const auto QE = S.extract_signal("qe");
-    const auto QK = S.extract_signal("qk");
     const auto IN = S.extract_signal("in");
     const auto OUTi = S.extract_signal("out#");
     const auto MW = S.extract_signal("mw");
@@ -74,13 +73,11 @@ int main()
         bool Or = !ORi[i];
         bool n = !Ni[i];
 
-        // bool qk = QK[i];
         bool in = IN[i];
         bool out = !OUTi[i];
         bool mw = MW[i];
         bool mr = MR[i];
         bool qe = QE[i];
-        bool qk = QK[i];
         bool cw = CW[i];
         bool zw = !ZWi[i];
 
@@ -98,12 +95,8 @@ int main()
         bool ex_mr = false;
         bool ex_mw = false;
         bool ex_qe = false;
-        bool ex_qk = false;
         bool ex_zw = false;
         bool ex_cw = false;
-        // FIXME ZW, CW.
-        // bool ex_qk = false;
-        // Also ALU OE....
 
         // Instructions that use ALU output value; ALU ops + INC/DEC/MV
         if ((opcode >= 0x80 && opcode <= 0x9f)
@@ -111,10 +104,6 @@ int main()
             || (opcode & 0xcc) == 0xc4
             || (opcode & 0xcc) == 0xc8)
             ex_qe = true;
-
-        // Constant prefix.
-        if (opcode < 0x40)
-            ex_qk = true;
 
         // Instructions that write the C flag: ALU ops plus CMP.
         if ((opcode >= 0x80 && opcode <= 0x9f)
@@ -181,9 +170,6 @@ int main()
             break;
         }
 
-        // if (opcode < 0x40)
-        //     ex_qk = true;
-
         if ((opcode & 0xf0) == 0x50)
             ex_mw = true;               // STA.
         if ((opcode & 0xec) == 0xac)
@@ -205,10 +191,6 @@ int main()
         if (zw != ex_zw)
             errx(1, "ZW %i exp %i on %s %#02x at %i\n",
                  zw, ex_zw, tag, opcode, i);
-
-        if (qk != ex_qk)
-            errx(1, "QK %i exp %i on %s %#02x at %i\n",
-                 qk, ex_qk, tag, opcode, i);
 
         if (mw != ex_mw)
             errx(1, "MW %i exp %i on %s %#02x at %i\n",

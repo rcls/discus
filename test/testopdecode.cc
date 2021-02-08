@@ -45,7 +45,7 @@ int main()
     const auto ARi = S.extract_signal("ar#");
     const auto AS = S.extract_signal("as");
     const auto AND = S.extract_signal("and");
-    const auto ORi = S.extract_signal("or#");
+    const auto OR = S.extract_signal("or");
     const auto Ni = S.extract_signal("n#");
 
     const auto QE = S.extract_signal("qe");
@@ -70,7 +70,7 @@ int main()
         bool as = AS[i];
 
         bool And = AND[i];
-        bool Or = !ORi[i];
+        bool Or = OR[i];
         bool n = !Ni[i];
 
         bool in = IN[i];
@@ -178,6 +178,14 @@ int main()
             ex_in = true;               // IN
         if ((opcode & 0xf0) == 0x40)    // OUT
             ex_out = true;
+
+        // Test for undesirable combos.
+        if (cs && cr)
+            errx(1, "CS and CR on %s %#02x at %i\n", tag, opcode, i);
+
+        // Test for undesirable combos.
+        if (as && ar)
+            errx(1, "AS and AR on %s %#02x at %i\n", tag, opcode, i);
 
         // Various flags we test on every cycle.
         if (qe != ex_qe)

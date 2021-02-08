@@ -156,7 +156,7 @@ pinnumber=0
 T 0 600 5 10 0 0 0 6 1
 pinseq=0
 T 205 595 5 10 1 1 0 1 1
-pinlabel=OR#
+pinlabel=OR
 }
 P 0 400 200 400 1 0 0
 {

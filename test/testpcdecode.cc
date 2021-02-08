@@ -6,125 +6,88 @@
 
 int main()
 {
-    spice_load S(stdin, 10e-6);
+    spice_load S(stdin, 5e-6);
 
-    const auto O2I = S.extract_signal("o2#");
-    const auto O3I = S.extract_signal("o3#");
-    const auto O4I = S.extract_signal("o4#");
-    const auto O5I = S.extract_signal("o5#");
-    const auto O6I = S.extract_signal("o6#");
-    const auto O7I = S.extract_signal("o7#");
-    const auto PO = S.extract_signal("po");
-    const auto FZ = S.extract_signal("fz");
-    const auto FC = S.extract_signal("fc");
+    const auto O2 = S.extract_signal("o2");
+    const auto O3 = S.extract_signal("o3");
+    const auto O4 = S.extract_signal("o4");
+    const auto O5 = S.extract_signal("o5");
+    const auto O6 = S.extract_signal("o6");
+    const auto O7 = S.extract_signal("o7");
+    const auto OJumpi = S.extract_signal("ojump#");
+    const auto CO = S.extract_signal("co");
+    const auto ZOi = S.extract_signal("zo#");
+
     const auto JUMP = S.extract_signal("jump");
     const auto RET = S.extract_signal("ret");
     const auto PUSH = S.extract_signal("push");
     const auto INC = S.extract_signal("inc");
-    const auto FLAG = S.extract_signal("flag_p");
-    const auto CONDI = S.extract_signal("cond#_p");
 
     for (int i = 0; i != S.num_samples; ++i) {
-        int opcode = !O7I[i] * 128 + !O6I[i] * 64 + !O5I[i] * 32
-            +        !O4I[i] * 16  + !O3I[i] * 8  + !O2I[i] * 4;
-        bool po = PO[i];
-        bool fz = FZ[i];
-        bool fc = FC[i];
+        int opcode = O7[i] * 128 + O6[i] * 64 + O5[i] * 32
+            +        O4[i] * 16  + O3[i] * 8  + O2[i] * 4;
+        bool ojump = !OJumpi[i];
+        bool co = CO[i];
+        bool zo = !ZOi[i];
+
+        // printf("Opcode %02x OJ %i Co %i Zo %i\n", opcode, ojump, co, zo);
+        if (opcode >= 0x40 && ojump)
+            continue;                   // Impossible combination.
 
         bool jump = JUMP[i];
-        bool ret = RET[i];
+        bool ret  = RET[i];
         bool push = PUSH[i];
-        bool inc = INC[i];
+        bool inc  = INC[i];
 
-        bool jump_or_call_ins = po && (opcode & 0xc0) == 0;
-        bool ret_ins = (opcode & 0xf0) == 0xb0 || opcode == 0xa8;
-
-        if (jump + ret + inc != 1)
-            errx(1, "Multiple: jump %i ret %i inc %i", jump, ret, inc);
-
-        if (!jump_or_call_ins && (jump || push))
-            errx(1, "Not jump but: jump %i push %i", jump, push);
-
-        if (!ret_ins && ret)
-            errx(1, "Not ret but: ret %i", ret);
-
-        if (!jump_or_call_ins && !ret_ins)
-            continue;                   // Don't care.
-
-        bool taken;
-        switch (opcode & 0x1c) {
+        bool condition = false;
+        switch (opcode & 0x18) {
         case 0x00:
-            taken = jump_or_call_ins;
-            break;
-        case 0x04:
         case 0x08:
-        case 0x0c:
-            if (jump_or_call_ins)
-                continue;               // Don't care.
-            taken = (opcode == 0xa8);
+            condition = true;
             break;
         case 0x10:
-            taken = fz;
-            break;
-        case 0x14:
-            taken = !fz;
+            condition = zo;
             break;
         case 0x18:
-            taken = fc;
+            condition = co;
             break;
-        case 0x1c:
-            taken = !fc;
-            break;
-        default:
-            taken = false;
         }
+        if (opcode & 0x04)
+            condition = !condition;
 
-        bool flag = taken ^ !(opcode & 4);
+        bool is_ret = (opcode & 0xe0) == 0x60;
 
-        if (flag != FLAG[i])
-            errx(1, "Flag %i/flag %i mismatch at %i (%02x C%i Z%i)",
-                 flag, FLAG[i], i, opcode, fc, fz);
+        if (!is_ret && !ojump)
+            condition = false;          // Not jump or not taken.
 
-        if (taken == CONDI[i])
-            errx(1, "Taken %i/cond# %i mismatch at %i (%02x C%i Z%i)",
-                 taken, CONDI[i], i, opcode, fc, fz);
+        // Check that the ret-never instructions have condition==false.
+        if ((opcode & 0xf4) == 0x64)
+            assert(!condition);
 
-        if (!taken || (!jump_or_call_ins && !ret_ins)) {
-            if (!inc)
-                errx(1, "Nothing but !inc at %i (%02x)", i, opcode);
-            if (jump)
-                errx(1, "Nothing but jump at %i", i);
-            if (push)
-                errx(1, "Nothing but push at %i", i);
-            if (ret)
-                errx(1, "Nothing but ret at %i", i);
-            continue;
+        bool ex_ret = false;
+        bool ex_push = false;
+        bool ex_jump = false;
+        bool ex_inc = false;
+
+        if (!condition)
+            ex_inc = true;
+        else if ((opcode & 0xe0) == 0x00)
+            ex_jump = true;
+        else if ((opcode & 0xe0) == 0x20) {
+            ex_jump = true;
+            ex_push = true;
         }
-
-        assert(!jump_or_call_ins || !ret_ins);
-
-        if (ret_ins) {
-            if (inc)
-                errx(1, "Return but inc at %i", i);
-            if (jump)
-                errx(1, "Return but jump at %i", i);
-            if (push)
-                errx(1, "Return but push at %i", i);
-            if (!ret)
-                errx(1, "Return but !ret at %i", i);
-            continue;
+        else if ((opcode & 0xe0) == 0x60) {
+            ex_ret = true;
         }
-
-        if (inc)
-            errx(1, "Jump but inc at %i", i);
-        if (!jump)
-            errx(1, "Jump but !jump at %i", i);
-        if ((opcode & 0x20) && push)
-            errx(1, "Call but !push at %i", i);
-        if (!(opcode & 0x20) && !push)
-            errx(1, "Non call but push at %i", i);
-        if (ret)
-            errx(1, "Jump but ret at %i\n", i);
+        if (ret != ex_ret)
+            errx(1, "Ret ex %i got %i on %#02x", ex_ret, ret, opcode);
+        if (jump != ex_jump)
+            errx(1, "Jump ex %i got %i on %#02x", ex_jump, jump, opcode);
+        if (push != ex_push)
+            errx(1, "Push ex %i got %i on %#02x", ex_push, push, opcode);
+        if (inc != ex_inc)
+            errx(1, "Inc ex %i got %i on %#02x", ex_inc, inc, opcode);
     }
     fprintf(stderr, "Tested: %zi\n", S.num_samples);
     return 0;

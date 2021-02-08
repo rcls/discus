@@ -107,7 +107,7 @@ FIXME : ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 
 11dd00rr - INC (Z)
 11dd01rr - DEC (Z) (match sub, cmp)
-11dd10rr - MV (implement as OR 0)
+11dd10rr - MV (implement as OR 0 or ADD 0)
 11dd11rr - LOAD
 
 Memory (strobe memory, strong drives).
@@ -162,9 +162,9 @@ Cin force 1
 nn.0x1
 11..00
 Cin force, except on ADC/SBC:
-100.01
+10010x
 101 is don't care (IN,MEM)....
-so 10..01 is usable.
+so 10.10 is usable.
 
 
 EA force

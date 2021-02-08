@@ -28,7 +28,7 @@ static const char * const alu_ops[] = {
 
 int main()
 {
-    spice_load S(stdin, 10e-6);
+    spice_load S(stdin, 5e-6);
 
     const auto I2 = S.extract_signal("i2");
     const auto I3 = S.extract_signal("i3");
@@ -40,7 +40,7 @@ int main()
 
     const auto CR = S.extract_signal("cr");
     const auto CSi = S.extract_signal("cs#");
-    const auto CoEi = S.extract_signal("CoE#");
+    const auto CoEi = S.extract_signal("coe#");
     const auto ARi = S.extract_signal("ar#");
     const auto AS = S.extract_signal("as");
     const auto AND = S.extract_signal("and");
@@ -48,10 +48,10 @@ int main()
     const auto Ni = S.extract_signal("n#");
 
     // const auto QK = S.extract_signal("Qk");
-    const auto IN = S.extract_signal("IN");
-    const auto OUTi = S.extract_signal("OUT#");
-    const auto MW = S.extract_signal("MW");
-    const auto MR = S.extract_signal("MR");
+    const auto IN = S.extract_signal("in");
+    const auto OUTi = S.extract_signal("out#");
+    const auto MW = S.extract_signal("mw");
+    const auto MR = S.extract_signal("mr");
 
     for (int i = 0; i != S.num_samples; ++i) {
         int opcode = I7[i] * 128 + I6[i] * 64 + I5[i] * 32
@@ -67,11 +67,11 @@ int main()
 
         bool And = AND[i];
         bool Or = !ORi[i];
-        bool n = !n[i];
+        bool n = !Ni[i];
 
         // bool qk = QK[i];
         bool in = IN[i];
-        bool out = OUTi[i];
+        bool out = !OUTi[i];
         bool mw = MW[i];
         bool mr = MR[i];
 
@@ -120,6 +120,11 @@ int main()
             ex_cs = true;
             ex_and = true;
             break;
+        case op_dnc:
+            ex_coe = coe;
+            ex_cs = cs;
+            ex_and = And;
+            break;
         }
         switch (opcode & regreg_mask) {
         case op_inc:
@@ -134,7 +139,7 @@ int main()
             ex_ar = true;
             ex_coe = false;
             ex_cr = true;
-            ex_or = true;
+            ex_or = Or;
             break;
         case op_load:
             ex_mr = true;
@@ -144,18 +149,18 @@ int main()
         // if (opcode < 0x40)
         //     ex_qk = true;
 
-        if (opcode == 0x50)
+        if ((opcode & 0xf0) == 0x50)
             ex_mw = true;               // STA.
-        if (opcode == 0xac)
+        if ((opcode & 0xec) == 0xac)
             ex_mr = true;               // MEM
-        if (opcode == 0xa0)
+        if ((opcode & 0xe8) == 0xa0)
             ex_in = true;               // IN
-        if (opcode == 0x40)
+        if ((opcode & 0xf0) == 0x40)    // OUT
             ex_out = true;
 
         // Various flags we test on every cycle.
         if (mw != ex_mw)
-            errx(1, "MW %i exp %i on %s %02x at %i\n",
+            errx(1, "MW %i exp %i on %s %#02x at %i\n",
                  mw, ex_mw, tag, opcode, i);
 
         if (mr != ex_mr)
@@ -173,7 +178,7 @@ int main()
         // Only check arithmetic flags on things that use the ALU.
         // FIXME - should be on the QA flag! & CMP.
         if ((opcode >= 0x80 && opcode <= 0x9f)
-            || (opcode >= 0xc0 && opcode < 0xec)) {
+            || (opcode >= 0xc0 && opcode < 0xcc)) {
             if (as != ex_as)
                 errx(1, "AS %i exp %i on %s %02x at %i\n",
                      as, ex_as, tag, opcode, i);

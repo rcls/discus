@@ -120,7 +120,10 @@ Writes any reg: 00 (not jump), 1, i.e., 1 or x0 not jump
 Assigns C: 100, 011001
 Assigns Z: 100, 11xx0, x11001
 
-Q from alu: 1x0, MV (11xx10)
+Q from alu: 100, INC/DEC/MV (11xx10)
+100
+11..0x
+11..x0
 
 Writes DD 11
 Writes K  00 (not jump), x01 (harmless to include jump)
@@ -212,6 +215,12 @@ C write
 Z write
 C write or 11..0
 
+QE - insns that use ALU Q.
+1.0
+11.0
+
+QK - constant prefix
+00
 
 ADD - Cin0
 ADC - .

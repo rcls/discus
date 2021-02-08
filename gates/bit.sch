@@ -709,7 +709,7 @@ C 43450 41550 1 0 0 out-1.sym
 T 43450 41850 5 10 0 0 0 0 1
 device=OUTPUT
 T 43750 41750 5 10 1 1 0 3 1
-refdes=I#
+refdes=I
 T 43450 42050 5 10 0 0 0 0 1
 footprint=anchor
 }
@@ -718,7 +718,7 @@ C 43450 41350 1 0 0 out-1.sym
 T 43450 41650 5 10 0 0 0 0 1
 device=OUTPUT
 T 43650 41350 5 10 1 1 0 5 1
-refdes=I
+refdes=I#
 T 43450 41850 5 10 0 0 0 0 1
 footprint=anchor
 }
@@ -804,7 +804,7 @@ footprint=anchor
 T 56300 49100 5 10 0 0 180 2 1
 device=INPUT
 T 56000 49000 5 10 1 1 0 3 1
-refdes=QA
+refdes=QE
 }
 C 41200 48600 1 0 0 in-1.sym
 {

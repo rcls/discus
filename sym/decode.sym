@@ -180,6 +180,17 @@ pinlabel=I2#
 }
 T 800 1700 8 10 1 1 0 4 1
 refdes=S?
+P 0 4200 200 4200 1 0 0
+{
+T 0 4200 5 10 0 0 0 0 1
+pintype=unknown
+T 105 4245 5 10 0 1 0 6 1
+pinnumber=0
+T 0 4200 5 10 0 0 0 0 1
+pinseq=0
+T 205 4195 5 10 1 1 0 1 1
+pinlabel=O4
+}
 P 0 4000 200 4000 1 0 0
 {
 T 0 4000 5 10 0 0 0 0 1
@@ -189,7 +200,7 @@ pinnumber=0
 T 0 4000 5 10 0 0 0 0 1
 pinseq=0
 T 205 3995 5 10 1 1 0 1 1
-pinlabel=O4
+pinlabel=O5
 }
 P 0 3800 200 3800 1 0 0
 {
@@ -200,7 +211,7 @@ pinnumber=0
 T 0 3800 5 10 0 0 0 0 1
 pinseq=0
 T 205 3795 5 10 1 1 0 1 1
-pinlabel=O5
+pinlabel=O6
 }
 P 0 3600 200 3600 1 0 0
 {
@@ -211,18 +222,18 @@ pinnumber=0
 T 0 3600 5 10 0 0 0 0 1
 pinseq=0
 T 205 3595 5 10 1 1 0 1 1
-pinlabel=O6
-}
-P 0 3400 200 3400 1 0 0
-{
-T 0 3400 5 10 0 0 0 0 1
-pintype=unknown
-T 105 3445 5 10 0 1 0 6 1
-pinnumber=0
-T 0 3400 5 10 0 0 0 0 1
-pinseq=0
-T 205 3395 5 10 1 1 0 1 1
 pinlabel=O7
+}
+P 0 4600 200 4600 1 0 0
+{
+T 0 4600 5 10 0 0 0 0 1
+pintype=unknown
+T 105 4645 5 10 0 1 0 6 1
+pinnumber=0
+T 0 4600 5 10 0 0 0 0 1
+pinseq=0
+T 205 4595 5 10 1 1 0 1 1
+pinlabel=O2
 }
 P 0 4400 200 4400 1 0 0
 {
@@ -233,17 +244,6 @@ pinnumber=0
 T 0 4400 5 10 0 0 0 0 1
 pinseq=0
 T 205 4395 5 10 1 1 0 1 1
-pinlabel=O2
-}
-P 0 4200 200 4200 1 0 0
-{
-T 0 4200 5 10 0 0 0 0 1
-pintype=unknown
-T 105 4245 5 10 0 1 0 6 1
-pinnumber=0
-T 0 4200 5 10 0 0 0 0 1
-pinseq=0
-T 205 4195 5 10 1 1 0 1 1
 pinlabel=O3
 }
 P 0 5400 200 5400 1 0 0
@@ -476,4 +476,26 @@ T 1600 4600 5 10 0 0 0 6 1
 pinseq=0
 T 1395 4595 5 10 1 1 0 7 1
 pinlabel=OJump#
+}
+P 0 3200 200 3200 1 0 0
+{
+T 0 3200 5 10 0 0 0 0 1
+pintype=unknown
+T 105 3245 5 10 0 1 0 6 1
+pinnumber=0
+T 0 3200 5 10 0 0 0 0 1
+pinseq=0
+T 205 3195 5 10 1 1 0 1 1
+pinlabel=ϕ1
+}
+P 1600 1600 1400 1600 1 0 0
+{
+T 1600 1600 5 10 0 0 0 0 1
+pintype=unknown
+T 1495 1645 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 1600 5 10 0 0 0 0 1
+pinseq=0
+T 1395 1595 5 10 1 1 0 7 1
+pinlabel=QE
 }

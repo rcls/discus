@@ -40,7 +40,7 @@ footprint=anchor
 T 38100 46000 5 10 0 0 0 0 1
 device=INPUT
 T 38100 45750 5 10 1 1 0 6 1
-refdes=GC
+refdes=GND
 }
 C 37600 46700 1 0 0 in-1.sym
 {
@@ -72,12 +72,5 @@ refdes=C
 N 38200 46800 38700 46800 4
 C 39400 47700 1 0 0 vdd-1.sym
 C 38500 46800 1 0 0 vdd-1.sym
-C 39600 46600 1 0 0 out-1.sym
-{
-T 39600 47100 5 10 0 0 0 0 1
-footprint=anchor
-T 39600 46900 5 10 0 0 0 0 1
-device=OUTPUT
-T 40200 46650 5 10 1 1 0 0 1
-refdes=GQ
-}
+C 38600 45500 1 0 0 gnd-1.sym
+C 39500 46400 1 0 0 gnd-1.sym

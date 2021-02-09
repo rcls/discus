@@ -488,3 +488,14 @@ pinseq=0
 T 1395 1395 5 10 1 1 0 7 1
 pinlabel=QE
 }
+P 1600 4400 1400 4400 1 0 0
+{
+T 1600 4400 5 10 0 0 0 6 1
+pintype=unknown
+T 1495 4445 5 10 0 1 0 0 1
+pinnumber=0
+T 1600 4400 5 10 0 0 0 6 1
+pinseq=0
+T 1395 4395 5 10 1 1 0 7 1
+pinlabel=VPush
+}

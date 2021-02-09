@@ -1,16 +1,49 @@
 
 GNETLIST=/home/geda/bin/gnetlist
 
+
+TESTCC = alu pcdecode opdecode sp
+SCRIPTS= testadd testsub testcall testinc testmem hazard logic
+TESTPROGS=$(TESTCC:%=test/test%)
+SCRIPTPROG=$(SCRIPTS:%=test/%)
+PROGS=pattern rmsim monitor blink
+
 all:
+
+verify: $(TESTPROGS:%=%.verify)
 
 %.rcr: %.sch
 	$(GNETLIST) -Lsubckt -g spice-sdb -o $@ $+
 
 %.cir: %.rcr
-	perl substrate.pl $< > $@
+	./substrate.py $< > $@
 
 %.fake-cir: %.cir
 	perl test/fake.pl $< > $@
+
+DEPS=-MMD -MP -MF.$(subst /,:,$@).d
+CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I. $(DEPS)
+
+-include *.d
+
+.cc.o:
+CC=g++
+
+$(TESTPROGS) $(SCRIPTPROG): test/spice_load.o
+
+%.verify: %.raw %
+	./$* < $*.raw
+
+$(SCRIPTPROG:%=%.cir): %.cir: % board/unilight.cir
+	./$< -C
+	./$< -T -R | ./rommunge.py -w $@ board/univlight.cir $*.cir
+
+$(SCRIPTPROG:%.verify): %.verify: %.raw %
+	./$* -V $<
+
+.PRECIOUS: %.raw
+%.raw: %.cir
+	ngspice -r $@ -b $<
 
 RENAME=mv $*-gerber/$*.$1 $*-gerber/$($1_ext)
 DELETE=rm $*-gerber/$*.$1

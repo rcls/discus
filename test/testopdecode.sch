@@ -318,3 +318,12 @@ N 12700 11700 12900 11700 4
 T 12925 11700 5 10 1 1 0 1 1
 netname=QE
 }
+C 3200 14700 1 0 0 spice-directive-1.sym
+{
+T 3300 15000 5 10 0 1 0 0 1
+device=directive
+T 3300 15100 5 10 1 1 0 0 1
+refdes=A1
+T 3300 14800 5 10 1 1 0 0 1
+value=tran 1u 1000u uic
+}

@@ -232,3 +232,12 @@ N 21800 12700 21600 12700 4
 T 21550 12700 5 10 1 1 0 7 1
 netname=Zo#
 }
+C 15400 12600 1 0 0 spice-directive-1.sym
+{
+T 15500 12900 5 10 0 1 0 0 1
+device=directive
+T 15500 13000 5 10 1 1 0 0 1
+refdes=A1
+T 15500 12700 5 10 1 1 0 0 1
+value=tran 1u 3000u uic
+}

@@ -11,39 +11,29 @@ int main()
     const auto C = S.extract_signal("c");
     const auto PUSH = S.extract_signal("push");
     const auto POP = S.extract_signal("pop");
-    const auto Q0 = S.extract_signal("q0");
-    const auto Q1 = S.extract_signal("q1");
+    const auto S0 = S.extract_signal("s0");
+    const auto S1 = S.extract_signal("s1");
+    const auto S2 = S.extract_signal("s2");
+    const auto S3 = S.extract_signal("s3");
 
-    int errors = 0;
     for (int i = 2; i != S.num_samples; ++i) {
-        unsigned pre = Q0[i-1] + 2 * Q1[i-1];
-        unsigned now = Q0[i] + 2 * Q1[i];
+        unsigned now = S0[i] + S1[i] * 2 + S2[i] * 4 + S3[i] * 8;
+        if (!now)
+            errx(1, "Nothing set at %i\n", i);
+        if (now & (now - 1))
+            errx(1, "Multiple set %#x at %i\n", now, i);
 
-        unsigned add = 0;
+        unsigned prev = S0[i-1] + S1[i-1] * 2 + S2[i-1] * 4 + S3[i-1] * 8;
+        unsigned expect = prev;
         if (PUSH[i-1])
-            add += 1;
+            expect <<= 1;
         if (POP[i])
-            add += 3;
-        unsigned exp = (pre + add) & 3;
+            expect <<= 3;
+        expect %= 15;             // Close enough.
 
-        if (now != exp) {
-            printf("%3i %c %c %c %c %c %i %i\n", i,
-                   C[i] ? '*' : ' ',
-                   PUSH[i] ? '*' : ' ',
-                   POP[i] ? '*' : ' ',
-                   Q0[i] ? '*' : ' ',
-                   Q1[i] ? '*' : ' ',
-                   now, exp);
-            ++errors;
-        }
+        if (expect != now)
+            errx(1, "Expect %#x got %#x at %i\n", expect, now, prev);
     }
-
-    if (errors) {
-        printf("%li rows, %i errors.\n", S.num_samples, errors);
-        return EXIT_FAILURE;
-    }
-    else {
-        printf("%li rows, no errors.\n", S.num_samples);
-        return EXIT_SUCCESS;
-    }
+    printf("%li samples\n", S.num_samples);
+    return 0;
 }

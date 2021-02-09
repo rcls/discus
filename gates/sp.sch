@@ -128,22 +128,22 @@ C 51700 22300 1 0 0 vdd-1.sym
 C 51500 23600 1 0 0 notp.sym
 {
 T 51850 23900 5 10 1 1 0 4 1
-refdes=I?
+refdes=I
 }
 C 51500 21700 1 0 0 notp.sym
 {
 T 51850 22000 5 10 1 1 0 4 1
-refdes=I?
+refdes=K
 }
 C 52500 23600 1 0 0 notp.sym
 {
 T 52850 23900 5 10 1 1 0 4 1
-refdes=I?
+refdes=J
 }
 C 52500 21700 1 0 0 notp.sym
 {
 T 52850 22000 5 10 1 1 0 4 1
-refdes=I?
+refdes=N
 }
 N 52500 22000 52300 22000 4
 {
@@ -172,22 +172,22 @@ netname=A0
 C 46900 19500 1 0 0 nor.sym
 {
 T 47300 20000 5 10 1 1 0 4 1
-refdes=D0
+refdes=E
 }
 C 50700 19500 1 0 0 nor.sym
 {
 T 51100 20000 5 10 1 1 0 4 1
-refdes=D2
+refdes=G
 }
 C 48700 19500 1 0 0 nor.sym
 {
 T 49100 20000 5 10 1 1 0 4 1
-refdes=D1
+refdes=F
 }
 C 52500 19500 1 0 0 nor.sym
 {
 T 52900 20000 5 10 1 1 0 4 1
-refdes=D3
+refdes=M
 }
 C 47000 20500 1 0 0 vdd-1.sym
 C 48800 20500 1 0 0 vdd-1.sym

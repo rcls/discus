@@ -5,7 +5,7 @@
 
 static int comp_num;
 
-[[ noreturn ]] static void usage(const char * argv0, FILE * f, int r)
+[[noreturn]] static void usage(const char * argv0, FILE * f, int r)
 {
     fprintf(f, "Usage: %s [-n <component>] [-H] [-R] [-V <spice>] [-C]\n",
             argv0);

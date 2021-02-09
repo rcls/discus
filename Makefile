@@ -3,10 +3,10 @@ GNETLIST=/home/geda/bin/gnetlist
 
 
 TESTCC = alu pcdecode opdecode sp
-SCRIPTS= testadd testsub testcall testinc testmem hazard logic
+SCRIPTS= testadd testsub testcall testinc testmem hazard logic rmsim
 TESTPROGS=$(TESTCC:%=test/test%)
 SCRIPTPROG=$(SCRIPTS:%=test/%)
-PROGS=pattern rmsim monitor blink
+PROGS=pattern monitor blink
 
 all:
 
@@ -24,12 +24,13 @@ verify: $(TESTPROGS:%=%.verify)
 DEPS=-MMD -MP -MF.$(subst /,:,$@).d
 CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I. $(DEPS)
 
--include *.d
+-include .*.d
 
-.cc.o:
+%: %.cc
 CC=g++
 
 $(TESTPROGS) $(SCRIPTPROG): test/spice_load.o
+$(SCRIPTPROG): test/state.o test/script.o
 
 %.verify: %.raw %
 	./$* < $*.raw

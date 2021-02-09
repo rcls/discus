@@ -1,4 +1,5 @@
 PCB.*
+*.d
 *.bin
 *.cir
 *.cmd
@@ -8,9 +9,11 @@ PCB.*
 *.rcr
 *.fake-cir
 \#*#
-test/rmsim
 test/hazard
 test/logic
+test/monitor
+test/pattern
+test/rmsim
 test/test1
 test/testadd
 test/testalu

@@ -38,7 +38,7 @@ bool state_t::wanted(condition_t c) const
     case NZ:
         return !flag_Z;
     case ALWAYS:
-    case ALWAYS_R:
+    case ALWAYS2:
         return true;
     default:
         return false;
@@ -69,18 +69,32 @@ void state_t::extract_branches()
 }
 
 
-void state_t::account(int opcode, const operand_t & v)
+void state_t::account(int opcode, const operand_t & B)
 {
-    if (v.is_mem)
-        opcode += 4;
-    if (v.reg < 0) {
+    if (B.is_mem && B.reg < 0) {
         if (emitter)
-            emitter->emit_two(executed, v.value & 63, opcode + (v.value >> 6));
+            emitter->emit_three(executed,
+                                B.value & 63,
+                                0xac + (B.value >> 6 & 3),
+                                opcode);
+        executed += 3;
+    }
+    else if (B.is_mem) {
+        if (emitter)
+            emitter->emit_two(executed, 0xac + B.reg, opcode);
+        executed += 2;
+    }
+    else if (B.reg < 0) {
+        if (emitter)
+            emitter->emit_two(executed, B.value & 63,
+                              opcode + (B.value >> 6 & 3));
+        executed += 2;
+    }
+    else {
+        if (emitter)
+            emitter->emit_byte(executed, opcode + B.reg);
         ++executed;
     }
-    else if (emitter)
-        emitter->emit_byte(executed, opcode + v.reg);
-    ++executed;
 }
 
 void state_t::account(int opcode) {
@@ -107,103 +121,137 @@ bool state_t::jump(condition_t cond, const char * name, int opcode) {
 
 void state_t::step(int opcode)
 {
-    int v;
-    if (kreg >= 0)
-        v = kreg + (opcode & 3) * 64;
-    else
-        v = reg[opcode & 3];
+    int B;
+    if (prev_was_const)
+        regK = regK + (opcode & 3) * 64;
 
-    int b = v;
-    if (opcode & 4)
-        b = mem[v];
+    if (prev_set_K)
+        B = regK;
+    else
+        B = reg[opcode & 3];
 
     ++pc;
 
-    if (kreg < 0 && opcode < 0x40) {
-        kreg = opcode;
+    if (!prev_was_const && opcode < 0x40) {
+        regK = opcode & 63;
+        prev_was_const = true;
+        prev_set_K = true;
         return;
     }
-    kreg = -1;
+
+    // prev_set_K has been processed (setting B above).  If we have an
+    // const/jump insn, it must be a jump, so we don't need prev_was_const.
+    prev_was_const = false;
+    prev_set_K = false;
 
     bool cond_flag;
-    if (opcode & 0x10) {
+    if (opcode & 0x10)
         cond_flag = (opcode & 8) ? flag_C : flag_Z;
-        if (opcode & 4)
-            cond_flag = !cond_flag;
-    }
-    else {
-        cond_flag = (opcode & 0xd4) == 0 || (opcode & 0xfc) == 0xa8;
-    }
+    else
+        cond_flag = !!(opcode & 8);
+
+    if (opcode & 4)
+        cond_flag = !cond_flag;
+
+    // Mask off the low two bits, we've done them.
+    opcode &= 0xfc;
 
     switch (opcode & 0xe0) {
     case 0x00:                          // Const or jump.
-        //fprintf(stderr, "opcode %02x is call\n", opcode);
+        //fprintf(stderr, "opcode %02x is jump\n", opcode);
         if (cond_flag) {
             push((void *) (intptr_t) pc);
-            pc = v;
+            pc = B;
         }
         break;
-    case 0x20:
-        //fprintf(stderr, "opcode %02x is jump to %02x\n", opcode, v);
-        if (cond_flag)
-            pc = v;
+    case 0x20:                         // Const or call.
+        //fprintf(stderr, "opcode %02x is call to %02x\n", opcode, B);
+        if (cond_flag) {
+            push((void *) (intptr_t) pc);
+            pc = B;
+        }
         break;
-    case 0x40: {                         // ALU arithmetic.
-        //fprintf(stderr, "opcode %02x is arith\n", opcode);
-        int cin = (opcode & 8) ? flag_C : !!(opcode & 0x10);
-        int bn = (opcode & 0x10) ? b ^ 255 : b;
-        int q = reg[A] + bn + cin;
-        flag_C = !!(q & 256);
-        reg[A] = q & 255;
-        flag_Z = reg[A] == 0;
+    case 0x40: {                         // STA or OUT.
+        if (opcode & 0x10)
+            // STA...
+            mem[B] = A;
+        else
+            out_latch = B;  // Arbitrary.
         break;
     }
-    case 0x60:                          // ALU logic.
-        //fprintf(stderr, "opcode %02x is logic\n", opcode);
-        switch (opcode & 0x18) {
-        case 0x00:                      // Or.
-            reg[A] = reg[A] | b;
-            flag_C = false;
-            flag_Z = reg[A] == 0;
-            break;
-        case 0x08:                      // Xor.
-            reg[A] = reg[A] ^ b;
-            flag_C = false;
-            flag_Z = reg[A] == 0;
-            break;
-        case 0x10:                      // And.
-            reg[A] = reg[A] & b;
-            flag_C = true;
-            flag_Z = reg[A] == 0;
-            break;
-        default: ;                      // Cmp.
-            int q = reg[A] + (b ^ 255) + 1;
-            flag_C = !!(q & 256);
-            flag_Z = (q & 255) == 0;
-            break;
-        }
-        break;
-    case 0x80:                          // Load.
-        //fprintf(stderr, "opcode %02x is load\n", opcode);
-        reg[(opcode >> 3) & 3] = b;
-        break;
-    case 0xa0:                          // Misc.
-        //fprintf(stderr, "opcode %02x is misc\n", opcode);
-        opcode &= ~3;
-        if (opcode == 0xa4)
-            mem[v] = reg[0];
+    case 0x60:                          // Returns, also CMP/TST.
+        //fprintf(stderr, "opcode %02x is return/CMP\n", opcode);
         if (cond_flag)
             pc = (intptr_t) pop();
-        if (opcode == 0xac)
-            out_latch = v;
-        if (opcode == 0xa0)             // in.
-            abort();
+
+        if (opcode == 0x64) {           // CMP
+            int q = reg[A] + 256 - B;
+            flag_C = !!(q & 256);
+            flag_Z = !(q & 255);
+        }
+        if (opcode == 0x6c) {           // TST
+            flag_C = true;
+            flag_Z = !(reg[A] & B);
+        }
         break;
-    default: {                          // inc/dec
-        //fprintf(stderr, "opcode %02x is inc or dec\n", opcode);
-        int q = (opcode & 0x20) ? b - 1 : b + 1;
-        reg[(opcode >> 3) & 3] = q;
-        flag_Z = (q & 255) == 0;
+    case 0x80:                          // ALU.
+        switch (opcode) {
+        case 0x80:                      // ADD
+        case 0x84:                      // SUB
+        case 0x90:                      // ADC
+        case 0x94: {                    // SBC
+            int flip = (opcode & 4) ? 255 : 0;
+            int c = flag_C;
+            if ((opcode & 0x1c) == 0)
+                c = false;
+            else if ((opcode & 0x1c) == 4)
+                c = true;
+            int q = reg[A] + (flip ^ B) + c;
+            reg[A] = q;
+            flag_C = !!(q & 256);
+            break;
+        }
+        case 0x88:                      // OR
+            reg[A] |= B;
+            flag_C = 0;
+            break;
+        case 0x8c:                      // AND
+        case 0x9c:
+            reg[A] &= B;
+            flag_C = 1;
+            break;
+        case 0x98:                      // XOR
+            reg[A] ^= B;
+            flag_C = 0;
+            break;
+        }
+        flag_Z = !reg[A];
+        break;
+    case 0xa0:                          // MEM / IN.
+        //fprintf(stderr, "opcode %02x is misc\n", opcode);
+        // MEM and IN.
+        if (opcode == 0xac || opcode == 0xbc)
+            // MEM...
+            regK = mem[B];
+        else
+            // FIXME - IN not done.
+            abort();
+        prev_set_K = true;
+        break;
+    case 0xc0:                          // INC / DEC / MOV / LOAD
+    case 0xe0: {
+        int dd = (opcode >> 4) & 3;
+        if (opcode & 8)                 // MOV / LOAD
+            if (opcode & 4)
+                reg[dd] = mem[B];
+            else
+                reg[dd] = B;
+        else                            // INC / DEC.
+            if (opcode & 4)
+                reg[dd] = B - 1;
+            else
+                reg[dd] = B + 1;
+        flag_Z = !!reg[dd];
         break;
     }
     }
@@ -223,7 +271,9 @@ void state_t::zero_init()
     flag_Z = false;
     flag_C = false;
     pc = 0;
-    kreg = -1;
+    regK = 0;
+    prev_set_K = false;
+    prev_was_const = false;
 }
 
 
@@ -251,6 +301,7 @@ void state_t::verify_spice(const char * path)
     auto XX = spice.extract_byte("vx_s", "c");
     auto YY = spice.extract_byte("vy_s", "c");
     auto UU = spice.extract_byte("vu_s", "c");
+    auto KK = spice.extract_byte("vk_s", "c");
     auto PP = spice.extract_byte("p");
     const auto FC = spice.extract_signal("fc");
     const auto FZ = spice.extract_signal("fz");
@@ -265,9 +316,9 @@ void state_t::verify_spice(const char * path)
     reg[X] = XX[2];
     reg[Y] = YY[2];
     reg[U] = UU[2];
+    regK   = KK[2];
     flag_C = FC[2];
     flag_Z = FZ[2];
-    kreg = -1;
     pc = 0;
     for (int i = 3; i < spice.num_samples; ++i) {
         step(code[pc]);
@@ -275,6 +326,7 @@ void state_t::verify_spice(const char * path)
         verify(reg[X], XX[i], "X");
         verify(reg[Y], YY[i], "Y");
         verify(reg[U], UU[i], "U");
+        verify(regK  , KK[i], "K");
         verify(flag_C, FC[i], "C");
         verify(flag_Z, FZ[i], "Z");
         if (!verify(pc, (int) PP[i], "PC"))
@@ -296,6 +348,14 @@ void emitter_t::emit_two(int address, int b1, int b2)
 }
 
 
+void emitter_t::emit_three(int address, int b1, int b2, int b3)
+{
+    emit_byte(address, b1);
+    emit_byte(address + 1, b2);
+    emit_byte(address + 2, b3);
+}
+
+
 void print_emitter_t::emit_byte(int address, int byte)
 {
     fprintf(file, "%02x: %02x\n", address, byte);
@@ -304,6 +364,11 @@ void print_emitter_t::emit_byte(int address, int byte)
 void print_emitter_t::emit_two(int address, int b1, int b2)
 {
     fprintf(file, "%02x: %02x %02x\n", address, b1, b2);
+}
+
+void print_emitter_t::emit_three(int address, int b1, int b2, int b3)
+{
+    fprintf(file, "%02x: %02x %02x %02x\n", address, b1, b2, b3);
 }
 
 static int select_bits(int n, int mask)
@@ -355,6 +420,7 @@ void step_check_t::verify()
     verify(orig->reg[X], reg[X], "X");
     verify(orig->reg[Y], reg[Y], "Y");
     verify(orig->reg[U], reg[U], "U");
+    verify(orig->regK  , regK  , "K");
     verify(orig->flag_Z, flag_Z, "Z");
     verify(orig->flag_C, flag_C, "C");
     if (memcmp(orig->mem, mem, 256) != 0)
@@ -393,6 +459,17 @@ void step_check_t::emit_two(int address, int b1, int b2)
     verify();
     assert(b1 == code[pc]);
     assert(b2 == code[pc+1]);
+    step(code[pc]);
+    step(code[pc]);
+}
+
+void step_check_t::emit_three(int address, int b1, int b2, int b3)
+{
+    verify();
+    assert(b1 == code[pc]);
+    assert(b2 == code[pc+1]);
+    assert(b3 == code[pc+2]);
+    step(code[pc]);
     step(code[pc]);
     step(code[pc]);
 }

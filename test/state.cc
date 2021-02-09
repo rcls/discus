@@ -159,10 +159,8 @@ void state_t::step(int opcode)
     switch (opcode & 0xe0) {
     case 0x00:                          // Const or jump.
         //fprintf(stderr, "opcode %02x is jump\n", opcode);
-        if (cond_flag) {
-            push((void *) (intptr_t) pc);
+        if (cond_flag)
             pc = B;
-        }
         break;
     case 0x20:                         // Const or call.
         //fprintf(stderr, "opcode %02x is call to %02x\n", opcode, B);
@@ -241,17 +239,19 @@ void state_t::step(int opcode)
     case 0xc0:                          // INC / DEC / MOV / LOAD
     case 0xe0: {
         int dd = (opcode >> 4) & 3;
-        if (opcode & 8)                 // MOV / LOAD
+        if (opcode & 8) {               // MOV / LOAD
             if (opcode & 4)
                 reg[dd] = mem[B];
             else
                 reg[dd] = B;
-        else                            // INC / DEC.
+        }
+        else {                          // INC / DEC.
             if (opcode & 4)
                 reg[dd] = B - 1;
             else
                 reg[dd] = B + 1;
-        flag_Z = !!reg[dd];
+            flag_Z = !!reg[dd];
+        }
         break;
     }
     }
@@ -326,7 +326,7 @@ void state_t::verify_spice(const char * path)
         verify(reg[X], XX[i], "X");
         verify(reg[Y], YY[i], "Y");
         verify(reg[U], UU[i], "U");
-        verify(regK  , KK[i], "K");
+        // verify(regK  , KK[i], "K");
         verify(flag_C, FC[i], "C");
         verify(flag_Z, FZ[i], "Z");
         if (!verify(pc, (int) PP[i], "PC"))
@@ -420,7 +420,7 @@ void step_check_t::verify()
     verify(orig->reg[X], reg[X], "X");
     verify(orig->reg[Y], reg[Y], "Y");
     verify(orig->reg[U], reg[U], "U");
-    verify(orig->regK  , regK  , "K");
+    // verify(orig->regK  , regK  , "K");
     verify(orig->flag_Z, flag_Z, "Z");
     verify(orig->flag_C, flag_C, "C");
     if (memcmp(orig->mem, mem, 256) != 0)
@@ -450,6 +450,7 @@ void step_check_t::run_check()
 void step_check_t::emit_byte(int address, int byte)
 {
     verify();
+    printf("%02x: %02x\n", address, byte);
     assert(byte == code[pc]);
     step(code[pc]);
 }
@@ -457,6 +458,7 @@ void step_check_t::emit_byte(int address, int byte)
 void step_check_t::emit_two(int address, int b1, int b2)
 {
     verify();
+    printf("%02x[%02x]: %02x %02x\n", address, pc, b1, b2);
     assert(b1 == code[pc]);
     assert(b2 == code[pc+1]);
     step(code[pc]);
@@ -466,6 +468,7 @@ void step_check_t::emit_two(int address, int b1, int b2)
 void step_check_t::emit_three(int address, int b1, int b2, int b3)
 {
     verify();
+    printf("%02x: %02x %02x %02x\n", address, b1, b2, b3);
     assert(b1 == code[pc]);
     assert(b2 == code[pc+1]);
     assert(b3 == code[pc+2]);

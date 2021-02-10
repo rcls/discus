@@ -1,4 +1,4 @@
-v 20130925 2
+v 20201216 2
 T -200 700 8 10 0 1 0 0 1
 source=nor1and.sch
 L 200 900 200 500 3 0 0 0 -1 -1
@@ -16,7 +16,7 @@ pinlabel=A
 T 105 845 5 10 0 1 0 6 1
 pinnumber=1
 T 0 800 5 10 0 0 0 0 1
-pinseq=0
+pinseq=1
 }
 P 0 600 200 600 1 0 0
 {
@@ -27,7 +27,7 @@ pinlabel=B
 T 105 645 5 10 0 1 0 6 1
 pinnumber=2
 T 0 600 5 10 0 0 0 0 1
-pinseq=0
+pinseq=2
 }
 P 200 300 400 300 1 0 0
 {
@@ -38,7 +38,7 @@ pinlabel=C
 T 305 345 5 10 0 1 0 6 1
 pinnumber=3
 T 200 300 5 10 0 0 0 0 1
-pinseq=0
+pinseq=3
 }
 P 1000 500 800 500 1 0 0
 {
@@ -47,9 +47,9 @@ pintype=unknown
 T 945 295 5 10 0 1 0 6 1
 pinlabel=Q
 T 895 545 5 10 0 1 0 0 1
-pinnumber=5
+pinnumber=6
 T 1000 500 5 10 0 0 0 0 1
-pinseq=0
+pinseq=6
 }
 T 650 500 8 10 1 1 0 4 1
 refdes=S?
@@ -60,9 +60,9 @@ pintype=unknown
 T 605 775 5 8 1 1 0 0 1
 pinlabel=Vdd
 T 550 895 5 10 0 1 90 0 1
-pinnumber=6
+pinnumber=4
 T 600 1000 5 10 0 0 0 0 1
-pinseq=0
+pinseq=4
 }
 P 600 0 600 225 1 0 0
 {
@@ -71,7 +71,7 @@ pintype=unknown
 T 605 225 5 8 1 1 180 6 1
 pinlabel=GND
 T 550 105 5 10 0 1 90 6 1
-pinnumber=7
+pinnumber=5
 T 600 0 5 10 0 0 0 0 1
-pinseq=0
+pinseq=5
 }

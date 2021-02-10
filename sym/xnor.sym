@@ -1,4 +1,4 @@
-v 20130925 2
+v 20201216 2
 T 750 700 8 10 0 1 0 0 1
 source=xnor.sch
 P 0 600 200 600 1 0 0
@@ -35,9 +35,9 @@ pintype=unknown
 T 745 595 5 10 0 1 0 6 1
 pinlabel=Q
 T 805 455 5 10 0 1 180 0 1
-pinnumber=3
+pinnumber=6
 T 800 500 5 10 0 0 0 0 1
-pinseq=3
+pinseq=6
 }
 P 300 1000 300 800 1 0 0
 {
@@ -46,9 +46,9 @@ pintype=unknown
 T 305 800 5 8 1 1 0 0 1
 pinlabel=Vdd
 T 250 895 5 10 0 1 90 0 1
-pinnumber=4
+pinnumber=3
 T 300 1000 5 10 0 0 0 0 1
-pinseq=4
+pinseq=3
 }
 P 300 0 300 200 1 0 0
 {
@@ -57,9 +57,9 @@ pintype=unknown
 T 305 200 5 8 1 1 180 6 1
 pinlabel=GND
 T 250 105 5 10 0 1 90 6 1
-pinnumber=5
+pinnumber=4
 T 300 0 5 10 0 0 0 0 1
-pinseq=5
+pinseq=4
 }
 T 200 600 8 10 1 1 0 0 1
 refdes=S?
@@ -72,8 +72,8 @@ pintype=unknown
 T 470 295 5 10 0 1 0 6 1
 pinlabel=C
 T 620 345 5 10 0 1 0 0 1
-pinnumber=6
+pinnumber=5
 T 600 300 5 10 0 0 0 0 1
-pinseq=0
+pinseq=5
 }
 V 650 500 50 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1

@@ -1,4 +1,4 @@
-v 20130925 2
+v 20201216 2
 T 700 1200 8 10 1 1 0 4 1
 source=sramio.sch
 B 200 200 1000 1500 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
@@ -9,9 +9,9 @@ pintype=unknown
 T 205 995 5 10 1 1 0 1 1
 pinlabel=L
 T 105 1045 5 10 0 1 0 6 1
-pinnumber=0
+pinnumber=3
 T 0 1000 5 10 0 0 0 0 1
-pinseq=0
+pinseq=3
 }
 P 0 800 200 800 1 0 0
 {
@@ -20,9 +20,9 @@ pintype=unknown
 T 205 795 5 10 1 1 0 1 1
 pinlabel=R
 T 105 845 5 10 0 1 0 6 1
-pinnumber=0
+pinnumber=4
 T 0 800 5 10 0 0 0 0 1
-pinseq=0
+pinseq=4
 }
 P 0 1600 200 1600 1 0 0
 {
@@ -31,9 +31,9 @@ pintype=unknown
 T 205 1595 5 10 1 1 0 1 1
 pinlabel=D
 T 105 1645 5 10 0 1 0 6 1
-pinnumber=0
+pinnumber=1
 T 0 1600 5 10 0 0 0 0 1
-pinseq=0
+pinseq=1
 }
 P 0 1400 200 1400 1 0 0
 {
@@ -42,9 +42,9 @@ pintype=unknown
 T 205 1395 5 10 1 1 0 1 1
 pinlabel=D#
 T 105 1445 5 10 0 1 0 6 1
-pinnumber=0
+pinnumber=2
 T 0 1400 5 10 0 0 0 0 1
-pinseq=0
+pinseq=2
 }
 P 0 400 200 400 1 0 0
 {
@@ -53,20 +53,20 @@ pintype=unknown
 T 205 395 5 10 1 1 0 1 1
 pinlabel=W
 T 105 445 5 10 0 1 0 6 1
-pinnumber=0
+pinnumber=5
 T 0 400 5 10 0 0 0 0 1
-pinseq=0
+pinseq=5
 }
 P 1400 1000 1200 1000 1 0 0
 {
 T 1400 1000 5 10 0 0 0 6 1
 pintype=unknown
 T 1195 995 5 10 1 1 0 7 1
-pinlabel=Q#
+pinlabel=Q
 T 1295 1045 5 10 0 1 0 0 1
-pinnumber=0
+pinnumber=8
 T 1400 1000 5 10 0 0 0 6 1
-pinseq=0
+pinseq=8
 }
 P 1400 400 1200 400 1 0 0
 {
@@ -75,9 +75,9 @@ pintype=unknown
 T 1195 395 5 10 1 1 0 7 1
 pinlabel=RD#
 T 1295 445 5 10 0 1 0 0 1
-pinnumber=0
+pinnumber=9
 T 1400 400 5 10 0 0 0 6 1
-pinseq=0
+pinseq=9
 }
 P 700 0 700 200 1 0 0
 {
@@ -86,9 +86,9 @@ pintype=unknown
 T 705 200 5 7 1 1 0 2 1
 pinlabel=GND
 T 650 105 5 10 0 1 90 6 1
-pinnumber=0
+pinnumber=7
 T 700 0 5 10 0 0 0 0 1
-pinseq=0
+pinseq=7
 }
 T 700 700 8 10 1 1 0 4 1
 refdes=S?
@@ -99,7 +99,7 @@ pintype=unknown
 T 695 1700 5 7 1 1 0 0 1
 pinlabel=Vdd
 T 650 1795 5 10 0 1 90 0 1
-pinnumber=0
+pinnumber=6
 T 700 1900 5 10 0 0 0 0 1
-pinseq=0
+pinseq=6
 }

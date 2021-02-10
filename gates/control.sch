@@ -63,26 +63,6 @@ N 43400 45600 42900 45600 4
 T 43000 45600 5 10 1 1 0 0 1
 netname=O4
 }
-C 42300 46800 1 0 0 in-1.sym
-{
-T 42300 47300 5 10 0 0 0 0 1
-footprint=anchor
-T 42300 47100 5 10 0 0 0 0 1
-device=INPUT
-T 42300 46900 5 10 1 1 0 7 1
-refdes=Vdd
-}
-C 42300 46600 1 0 0 in-1.sym
-{
-T 42300 47100 5 10 0 0 0 0 1
-footprint=anchor
-T 42300 46900 5 10 0 0 0 0 1
-device=INPUT
-T 42300 46700 5 10 1 1 0 7 1
-refdes=GND
-}
-C 42700 46900 1 0 0 vdd-1.sym
-C 42800 46400 1 0 0 gnd-1.sym
 N 42900 46000 43400 46000 4
 {
 T 43000 46000 5 10 1 1 0 0 1
@@ -357,24 +337,6 @@ netname=Zo#
 N 48800 43100 48800 41800 4
 N 48800 41800 45600 41800 4
 N 45600 41800 45600 42400 4
-C 48500 45800 1 0 1 in-1.sym
-{
-T 48500 45900 5 10 1 1 0 1 1
-refdes=Vdd
-T 48500 46300 5 10 0 0 0 6 1
-footprint=anchor
-T 48500 46100 5 10 0 0 0 6 1
-device=INPUT
-}
-C 47300 44300 1 0 0 in-1.sym
-{
-T 47300 44400 5 10 1 1 0 7 1
-refdes=GND
-T 47300 44800 5 10 0 0 0 0 1
-footprint=anchor
-T 47300 44600 5 10 0 0 0 0 1
-device=INPUT
-}
 N 45500 45000 45500 45600 4
 C 46500 43700 1 0 0 vdd-1.sym
 C 46500 46000 1 0 0 vdd-1.sym
@@ -393,7 +355,7 @@ C 45800 43600 1 0 0 resistor-load.sym
 T 46100 44000 5 10 0 0 0 0 1
 device=RESISTOR
 T 45950 43750 5 10 1 1 0 6 1
-refdes=R?
+refdes=R9
 T 46200 43700 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 46200 43700 5 10 0 1 0 0 1
@@ -468,7 +430,7 @@ netname=W2
 C 55200 46300 1 0 0 BSS84.sym
 {
 T 55425 46600 5 10 1 1 0 1 1
-refdes=M?
+refdes=M3
 T 55300 47100 5 10 0 1 0 0 1
 value=BSS84
 T 55700 46900 5 10 0 1 0 0 1
@@ -479,7 +441,7 @@ device=PMOS
 C 55200 45700 1 0 0 BSS84.sym
 {
 T 55425 46000 5 10 1 1 0 1 1
-refdes=M?
+refdes=M4
 T 55300 46500 5 10 0 1 0 0 1
 value=BSS84
 T 55700 46300 5 10 0 1 0 0 1
@@ -490,7 +452,7 @@ device=PMOS
 C 55200 43500 1 0 0 BSS84.sym
 {
 T 55425 43800 5 10 1 1 0 1 1
-refdes=M?
+refdes=M2
 T 55300 44300 5 10 0 1 0 0 1
 value=BSS84
 T 55700 44100 5 10 0 1 0 0 1
@@ -525,7 +487,7 @@ netname=W1
 C 50900 37300 1 0 0 nor.sym
 {
 T 51300 37800 5 10 1 1 0 4 1
-refdes=S?
+refdes=U1
 }
 C 51700 36700 1 0 0 dlatch.sym
 {
@@ -786,7 +748,7 @@ device=INPUT
 C 45600 38000 1 0 0 nand1or.sym
 {
 T 46250 38500 5 10 1 1 0 4 1
-refdes=S?
+refdes=U9
 }
 N 48300 38300 48300 39200 4
 N 48300 39200 45600 39200 4
@@ -869,7 +831,7 @@ N 48200 38500 48400 38500 4
 C 50900 39100 1 0 0 nor.sym
 {
 T 51300 39600 5 10 1 1 0 4 1
-refdes=S?
+refdes=G0
 }
 N 50900 39700 50700 39700 4
 {
@@ -898,7 +860,7 @@ refdes=QK
 C 51500 44700 1 0 0 nor3.sym
 {
 T 51900 45200 5 10 1 1 0 4 1
-refdes=S?
+refdes=U2
 }
 N 51500 45000 51300 45000 4
 {
@@ -918,7 +880,7 @@ netname=IWK
 C 52200 45800 1 0 0 nor3.sym
 {
 T 52600 46300 5 10 1 1 0 4 1
-refdes=S?
+refdes=U3
 }
 N 52000 46500 52200 46500 4
 {
@@ -979,17 +941,17 @@ C 46100 40000 1 0 1 gnd-1.sym
 C 45400 40300 1 0 0 nand1or.sym
 {
 T 46050 40800 5 10 1 1 0 4 1
-refdes=S?
+refdes=U8
 }
 C 50900 42700 1 0 0 nor.sym
 {
 T 51300 43200 5 10 1 1 0 4 1
-refdes=S?
+refdes=G2
 }
 C 50600 40900 1 0 0 nand1or3.sym
 {
 T 51350 41400 5 10 1 1 0 4 1
-refdes=S?
+refdes=G1
 }
 N 50400 41200 51100 41200 4
 {
@@ -999,14 +961,14 @@ netname=I7
 C 42600 43200 1 0 0 not.sym
 {
 T 42950 43500 5 10 1 1 0 4 1
-refdes=N?
+refdes=N0
 }
 C 42800 43800 1 0 0 vdd-1.sym
 C 43100 42900 1 0 1 gnd-1.sym
 C 42600 42300 1 0 0 not.sym
 {
 T 42950 42600 5 10 1 1 0 4 1
-refdes=N?
+refdes=N1
 }
 C 42800 42900 1 0 0 vdd-1.sym
 C 43100 42000 1 0 1 gnd-1.sym
@@ -1043,17 +1005,17 @@ netname=O1
 C 45600 42000 1 0 0 nand.sym
 {
 T 46000 42500 5 10 1 1 0 4 1
-refdes=S?
+refdes=U6
 }
 C 46100 42600 1 0 0 nand1or.sym
 {
 T 46650 43050 5 10 1 1 0 0 1
-refdes=S?
+refdes=U7
 }
 C 46100 45000 1 0 0 nor1and.sym
 {
 T 46750 45500 5 10 1 1 0 4 1
-refdes=S?
+refdes=U5
 }
 N 45500 45600 46100 45600 4
 {
@@ -1081,7 +1043,7 @@ C 54900 41900 1 0 0 decoder.sym
 T 55600 42300 5 8 1 1 0 4 1
 source=decoder.sch
 T 55600 42900 5 10 1 1 0 4 1
-refdes=S?
+refdes=D2
 }
 C 55200 40500 1 0 0 BSS84.sym
 {
@@ -1092,7 +1054,7 @@ footprint=sot23-pmos
 T 56700 41100 5 10 0 1 0 0 1
 device=PMOS
 T 55425 40800 5 10 1 1 0 1 1
-refdes=M?
+refdes=M1
 }
 N 55600 40600 55600 40500 4
 N 54900 40200 54700 40200 4
@@ -1161,14 +1123,14 @@ C 54900 38900 1 0 0 decoder.sym
 T 55600 39300 5 8 1 1 0 4 1
 source=decoder.sch
 T 55600 39900 5 10 1 1 0 4 1
-refdes=S?
+refdes=D1
 }
 C 55700 41600 1 0 1 gnd-1.sym
 C 55700 38600 1 0 1 gnd-1.sym
 C 45500 44400 1 0 0 nor.sym
 {
 T 45900 44900 5 10 1 1 0 4 1
-refdes=S?
+refdes=U4
 }
 C 55500 37400 1 0 0 gnd-1.sym
 C 55500 45800 1 270 0 resistor-load.sym
@@ -1180,7 +1142,7 @@ footprint=0603-boxed
 T 55600 45400 5 10 0 1 270 0 1
 value=3.3k
 T 55650 45150 5 10 1 1 270 0 1
-refdes=R?
+refdes=R8
 }
 C 55500 44600 1 0 0 gnd-1.sym
 B 44800 44000 4800 2400 5 0 1 0 -1 -1 0 -1 -1 -1 -1 -1
@@ -1216,12 +1178,12 @@ C 59200 44600 1 0 1 gnd-1.sym
 C 55200 37700 1 0 0 notp.sym
 {
 T 55550 38000 5 10 1 1 0 4 1
-refdes=N?
+refdes=N2
 }
 C 48400 38200 1 0 0 notp.sym
 {
 T 48750 38500 5 10 1 1 0 4 1
-refdes=N?
+refdes=N3
 }
 C 59800 45900 1 0 0 out-1.sym
 {
@@ -1471,7 +1433,7 @@ device=OUTPUT
 T 59900 40000 5 10 0 0 0 0 1
 footprint=anchor
 T 60500 39600 5 10 1 1 0 1 1
-refdes=OR#
+refdes=OR
 }
 C 59900 39300 1 0 0 out-1.sym
 {
@@ -1562,4 +1524,33 @@ N 59900 42400 60450 42400 4
 {
 T 60500 42400 5 10 1 1 0 1 1
 netname=Push
+}
+C 42500 40500 1 0 0 in-1.sym
+{
+T 42500 41000 5 10 0 0 0 0 1
+footprint=anchor
+T 42500 40800 5 10 0 0 0 0 1
+device=INPUT
+T 42500 40600 5 10 1 1 0 7 1
+refdes=Vdd
+}
+C 42500 40300 1 0 0 in-1.sym
+{
+T 42500 40800 5 10 0 0 0 0 1
+footprint=anchor
+T 42500 40600 5 10 0 0 0 0 1
+device=INPUT
+T 42500 40400 5 10 1 1 0 7 1
+refdes=GND
+}
+C 42900 40600 1 0 0 vdd-1.sym
+C 43000 40100 1 0 0 gnd-1.sym
+C 42500 41500 1 0 0 in-1.sym
+{
+T 42500 41600 5 10 1 1 0 7 1
+refdes=ϕin
+T 42500 42000 5 10 0 0 0 0 1
+footprint=anchor
+T 42500 41800 5 10 0 0 0 0 1
+device=INPUT
 }

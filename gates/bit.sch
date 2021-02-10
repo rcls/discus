@@ -308,7 +308,7 @@ N 55500 48700 55500 42500 4
 C 51800 48700 1 0 0 not.sym
 {
 T 52150 49000 5 10 1 1 0 4 1
-refdes=I3
+refdes=I4
 }
 C 52400 47700 1 0 0 xnor.sym
 {
@@ -597,7 +597,7 @@ footprint=anchor
 T 41200 48300 5 10 0 0 0 0 1
 device=INPUT
 T 41150 48150 5 10 1 1 180 0 1
-refdes=Jmp
+refdes=Jump
 }
 C 44700 47600 1 0 0 gnd-1.sym
 N 41000 46300 41000 45800 4
@@ -849,14 +849,14 @@ footprint=anchor
 C 39300 47300 1 0 1 not.sym
 {
 T 38950 47600 5 10 1 1 0 4 1
-refdes=I?
+refdes=I3
 }
 C 39100 47900 1 0 1 vdd-1.sym
 C 38800 47000 1 0 0 gnd-1.sym
 C 38600 48200 1 0 0 xor.sym
 {
 T 38800 48800 5 10 1 1 0 0 1
-refdes=S?
+refdes=S4
 }
 N 39300 47600 39300 48500 4
 N 39300 48500 39200 48500 4

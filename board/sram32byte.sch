@@ -225,7 +225,7 @@ footprint=anchor
 T 14100 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 14300 19900 5 10 1 1 0 3 1
-refdes=Q0#
+refdes=Q0
 }
 C 16600 19300 1 90 0 out-1.sym
 {
@@ -234,7 +234,7 @@ footprint=anchor
 T 16300 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 16500 19900 5 10 1 1 0 3 1
-refdes=Q1#
+refdes=Q1
 }
 C 18800 19300 1 90 0 out-1.sym
 {
@@ -243,7 +243,7 @@ footprint=anchor
 T 18500 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 18700 19900 5 10 1 1 0 3 1
-refdes=Q2#
+refdes=Q2
 }
 C 21000 19300 1 90 0 out-1.sym
 {
@@ -252,7 +252,7 @@ footprint=anchor
 T 20700 19300 5 10 0 0 90 0 1
 device=OUTPUT
 T 20900 19900 5 10 1 1 0 3 1
-refdes=Q3#
+refdes=Q3
 }
 C 16600 16100 1 90 0 out-1.sym
 {
@@ -261,7 +261,7 @@ footprint=anchor
 T 16300 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 16500 16700 5 10 1 1 0 3 1
-refdes=Q5#
+refdes=Q5
 }
 C 14400 16100 1 90 0 out-1.sym
 {
@@ -270,7 +270,7 @@ footprint=anchor
 T 14100 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 14300 16700 5 10 1 1 0 3 1
-refdes=Q4#
+refdes=Q4
 }
 C 18800 16100 1 90 0 out-1.sym
 {
@@ -279,7 +279,7 @@ footprint=anchor
 T 18500 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 18700 16700 5 10 1 1 0 3 1
-refdes=Q6#
+refdes=Q6
 }
 C 21000 16100 1 90 0 out-1.sym
 {
@@ -288,7 +288,7 @@ footprint=anchor
 T 20700 16100 5 10 0 0 90 0 1
 device=OUTPUT
 T 20900 16700 5 10 1 1 0 3 1
-refdes=Q7#
+refdes=Q7
 }
 C 10100 20800 1 0 0 vdd-1.sym
 C 10100 16500 1 0 0 vdd-1.sym

@@ -7,7 +7,8 @@ PROGS=pattern rmsim monitor blink
 all: rmsim $(TESTPROGS) $(SCRIPTS) $(PROGS)
 
 raw: $(SCRIPTS:%=%.raw)
-verify: $(SCRIPTS:%=%.verify)
+#verify: $(SCRIPTS:%=%.verify)
+verify: $(TESTPROCS
 
 CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I.
 
@@ -18,7 +19,12 @@ CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I.
 	g++ $(CXXFLAGS) -o $@ $+
 
 .PRECIOUS: %.raw
-%.raw: % ../board/univlight.cir
+
+$(TESTCC:%=%.circ): %.cir: %.sch
+
+
+
+$(SCRIPTS:%=%.raw): %.raw: % ../board/univlight.cir
 	./$< -C
 	./$< -T -R | ./rommunge.py -w $@ ../board/univlight.cir $*.cir
 	ngspice -b $*.cir

@@ -116,7 +116,7 @@ struct state_t {
     void ANDM(const operand_t & val) { AND(val.mem()); }
 
     void OR(const operand_t & val) {
-        account(0x60, val);
+        account(0x88, val);
         reg[A] |= get(val);
         flag_Z = (reg[A] == 0);
         flag_C = false;
@@ -125,7 +125,7 @@ struct state_t {
     void ORM(const operand_t & val) { OR(val.mem()); }
 
     void XOR(const operand_t & val) {
-        account(0x68, val);
+        account(0x98, val);
         reg[A] ^= get(val);
         flag_Z = (reg[A] == 0);
         flag_C = false;
@@ -134,7 +134,7 @@ struct state_t {
     void XORM(const operand_t & val) { XOR(val.mem()); }
 
     void CMP(const operand_t & val)  {
-        account(0xa4, val);
+        account(0x64, val);
         unsigned v = get(val);
         unsigned r = reg[A] + (256 - v);
         flag_C = !!(r & 256);
@@ -213,10 +213,7 @@ struct state_t {
     bool jump(condition_t cond, const char * name, int opcode = 0);
 
     bool retrn(condition_t cond) {
-        if (cond < 4)
-            account(0xa0 + cond * 4);
-        else
-            account(0xa0 + cond * 4, 0);
+        account(0x60 + cond * 4);
         return !straight_through && wanted(cond);
     }
 

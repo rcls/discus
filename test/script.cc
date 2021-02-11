@@ -7,8 +7,15 @@ static int comp_num;
 
 [[noreturn]] static void usage(const char * argv0, FILE * f, int r)
 {
-    fprintf(f, "Usage: %s [-n <component>] [-H] [-R] [-V <spice>] [-C]\n",
+    fprintf(f, "Usage: %s [-n <component>] [-H] [-F] [-M] [-R] [-X] [-V <spice>] [-C]\n",
             argv0);
+    fprintf(f, "\t-H : Assemble to hex\n");
+    fprintf(f, "\t-F : Assemble to fpga upload\n");
+    fprintf(f, "\t-X : Assemble to verilog hex\n");
+    fprintf(f, "\t-X : Assemble to board resistors\n");
+    fprintf(f, "\t-V <spice> : Verify against spice run\n");
+    fprintf(f, "\t-T : Print run timing\n");
+    fprintf(f, "\t-C : Consistency check\n");
     exit(r);
 }
 
@@ -59,7 +66,7 @@ struct memfile_emitter_t : emitter_t {
 void sim_main(state_t && program, int argc, char * argv[])
 {
     while (1)
-        switch (getopt(argc, argv, "n:HFMRXV:CT")) {
+        switch (getopt(argc, argv, "n:HFMRXV:CTh")) {
         case 'n':
             comp_num = strtoul(optarg, NULL, 0);
             break;

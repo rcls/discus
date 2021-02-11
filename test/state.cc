@@ -121,23 +121,23 @@ bool state_t::jump(condition_t cond, const char * name, int opcode) {
 
 void state_t::step(int opcode)
 {
-    int B;
     if (prev_was_const)
         regK = regK + (opcode & 3) * 64;
-
-    if (prev_set_K)
-        B = regK;
-    else
-        B = reg[opcode & 3];
 
     ++pc;
 
     if (!prev_was_const && opcode < 0x40) {
-        regK = opcode & 63;
+        regK = opcode;
         prev_was_const = true;
         prev_set_K = true;
         return;
     }
+
+    int B;
+    if (prev_set_K)
+        B = regK;
+    else
+        B = reg[opcode & 3];
 
     // prev_set_K has been processed (setting B above).  If we have an
     // const/jump insn, it must be a jump, so we don't need prev_was_const.
@@ -268,12 +268,13 @@ void state_t::run(const unsigned char program[256])
 void state_t::zero_init()
 {
     memset(reg, 0, sizeof reg);
+    regK = 0;
     flag_Z = false;
     flag_C = false;
-    pc = 0;
-    regK = 0;
     prev_set_K = false;
     prev_was_const = false;
+    executed = 0;
+    pc = 0;
 }
 
 

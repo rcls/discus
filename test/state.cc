@@ -250,7 +250,8 @@ void state_t::step(int opcode)
                 reg[dd] = B - 1;
             else
                 reg[dd] = B + 1;
-            flag_Z = !!reg[dd];
+
+            flag_Z = !reg[dd];
         }
         break;
     }

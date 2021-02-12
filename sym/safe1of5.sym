@@ -119,9 +119,9 @@ P 0 700 200 700 1 0 0
 T 0 700 5 10 0 0 0 0 1
 pintype=unknown
 T 105 745 5 10 0 1 0 6 1
-pinnumber=3
+pinnumber=11
 T 0 700 5 10 0 0 0 0 1
-pinseq=3
+pinseq=11
 T 205 695 5 10 1 1 0 1 1
 pinlabel=A2
 }
@@ -130,9 +130,9 @@ P 0 500 200 500 1 0 0
 T 0 500 5 10 0 0 0 0 1
 pintype=unknown
 T 105 545 5 10 0 1 0 6 1
-pinnumber=4
+pinnumber=12
 T 0 500 5 10 0 0 0 0 1
-pinseq=4
+pinseq=12
 T 205 495 5 10 1 1 0 1 1
 pinlabel=A2#
 }
@@ -143,7 +143,7 @@ pintype=unknown
 T 1195 595 5 10 1 1 0 7 1
 pinlabel=Q4
 T 1295 645 5 10 0 1 0 0 1
-pinnumber=10
+pinnumber=13
 T 1400 600 5 10 0 0 0 0 1
-pinseq=10
+pinseq=13
 }

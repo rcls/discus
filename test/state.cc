@@ -148,7 +148,7 @@ void state_t::step(int opcode)
     if (opcode & 0x10)
         cond_flag = (opcode & 8) ? flag_C : flag_Z;
     else
-        cond_flag = !!(opcode & 8);
+        cond_flag = !(opcode & 8);
 
     if (opcode & 4)
         cond_flag = !cond_flag;

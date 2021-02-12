@@ -1,269 +1,202 @@
 v 20201216 2
-C 6300 7600 1 0 0 pdtc124.sym
+C 1600 2500 1 270 0 in-1.sym
 {
-T 6500 7900 5 10 1 1 0 1 1
-refdes=Q0
-T 7000 8100 5 10 0 1 0 0 1
-footprint=sot323-bjt
-T 6400 8300 5 10 0 1 0 0 1
-value=PDTC124TU
-}
-C 5500 7800 1 0 0 in-1.sym
-{
-T 5500 8100 5 10 0 0 0 0 1
+T 1900 2500 5 10 0 0 270 0 1
 device=INPUT
-T 5800 7925 5 10 1 1 0 3 1
-refdes=D0
-T 5500 8300 5 10 0 0 0 0 1
-footprint=anchor
-}
-C 7800 7600 1 0 0 pdtc124.sym
-{
-T 8500 8100 5 10 0 1 0 0 1
-footprint=sot323-bjt
-T 7900 8300 5 10 0 1 0 0 1
-value=PDTC124TU
-T 8000 7900 5 10 1 1 0 1 1
-refdes=Q1
-}
-C 7000 7800 1 0 0 in-1.sym
-{
-T 7000 8100 5 10 0 0 0 0 1
-device=INPUT
-T 7000 8300 5 10 0 0 0 0 1
-footprint=anchor
-T 7300 7925 5 10 1 1 0 3 1
-refdes=D1
-}
-C 9300 7600 1 0 0 pdtc124.sym
-{
-T 10000 8100 5 10 0 1 0 0 1
-footprint=sot323-bjt
-T 9400 8300 5 10 0 1 0 0 1
-value=PDTC124TU
-T 9500 7900 5 10 1 1 0 1 1
-refdes=Q2
-}
-C 8500 7800 1 0 0 in-1.sym
-{
-T 8500 8100 5 10 0 0 0 0 1
-device=INPUT
-T 8500 8300 5 10 0 0 0 0 1
-footprint=anchor
-T 8800 7925 5 10 1 1 0 3 1
-refdes=D2
-}
-C 10800 7600 1 0 0 pdtc124.sym
-{
-T 11500 8100 5 10 0 1 0 0 1
-footprint=sot323-bjt
-T 10900 8300 5 10 0 1 0 0 1
-value=PDTC124TU
-T 11000 7900 5 10 1 1 0 1 1
-refdes=Q3
-}
-C 10000 7800 1 0 0 in-1.sym
-{
-T 10000 8100 5 10 0 0 0 0 1
-device=INPUT
-T 10000 8300 5 10 0 0 0 0 1
-footprint=anchor
-T 10300 7925 5 10 1 1 0 3 1
-refdes=D3
-}
-N 6700 8100 6700 8200 4
-N 6700 8200 11700 8200 4
-N 11200 8200 11200 8100 4
-N 9700 8100 9700 8200 4
-N 8200 8100 8200 8200 4
-C 12100 8300 1 0 0 out-1.sym
-{
-T 12100 8600 5 10 0 0 0 0 1
-device=OUTPUT
-T 12700 8400 5 10 1 1 0 0 1
-refdes=Q
-T 12100 8800 5 10 0 0 0 0 1
-footprint=anchor
-}
-C 6300 7000 1 0 0 2n7002.sym
-{
-T 6525 7300 5 10 1 1 0 1 1
-refdes=M0
-T 6400 7800 5 10 0 1 0 0 1
-value=2N7002P
-T 6800 7600 5 10 0 1 0 0 1
-footprint=sot23-nmos
-T 7800 7600 5 10 0 1 0 0 1
-device=NMOS
-}
-C 7800 7000 1 0 0 2n7002.sym
-{
-T 8025 7300 5 10 1 1 0 1 1
-refdes=M1
-T 7900 7800 5 10 0 1 0 0 1
-value=2N7002P
-T 8300 7600 5 10 0 1 0 0 1
-footprint=sot23-nmos
-T 9300 7600 5 10 0 1 0 0 1
-device=NMOS
-}
-C 9300 7000 1 0 0 2n7002.sym
-{
-T 9525 7300 5 10 1 1 0 1 1
-refdes=M2
-T 9400 7800 5 10 0 1 0 0 1
-value=2N7002P
-T 9800 7600 5 10 0 1 0 0 1
-footprint=sot23-nmos
-T 10800 7600 5 10 0 1 0 0 1
-device=NMOS
-}
-C 10800 7000 1 0 0 2n7002.sym
-{
-T 11025 7300 5 10 1 1 0 1 1
-refdes=M3
-T 10900 7800 5 10 0 1 0 0 1
-value=2N7002P
-T 11300 7600 5 10 0 1 0 0 1
-footprint=sot23-nmos
-T 12300 7600 5 10 0 1 0 0 1
-device=NMOS
-}
-N 6700 7500 6700 7700 4
-N 8200 7700 8200 7500 4
-N 9700 7500 9700 7700 4
-N 11200 7700 11200 7500 4
-C 5500 7200 1 0 0 in-1.sym
-{
-T 5500 7500 5 10 0 0 0 0 1
-device=INPUT
-T 5800 7325 5 10 1 1 0 3 1
+T 1700 2525 5 10 1 1 0 3 1
 refdes=S0
-T 5500 7700 5 10 0 0 0 0 1
+T 2100 2500 5 10 0 0 270 0 1
 footprint=anchor
 }
-C 7000 7200 1 0 0 in-1.sym
+C 10000 2800 1 0 0 out-1.sym
 {
-T 7000 7500 5 10 0 0 0 0 1
+T 10000 3100 5 10 0 0 0 0 1
+device=OUTPUT
+T 10600 2900 5 10 1 1 0 0 1
+refdes=Q
+T 10000 3300 5 10 0 0 0 0 1
+footprint=anchor
+}
+C 300 1500 1 0 0 in-1.sym
+{
+T 300 1800 5 10 0 0 0 0 1
 device=INPUT
-T 7300 7325 5 10 1 1 0 3 1
-refdes=S1
-T 7000 7700 5 10 0 0 0 0 1
+T 600 1625 5 10 1 1 0 3 1
+refdes=D0
+T 300 2000 5 10 0 0 0 0 1
 footprint=anchor
 }
-C 8500 7200 1 0 0 in-1.sym
+C 800 400 1 0 0 gnd-1.sym
+C 300 2300 1 0 0 in-1.sym
 {
-T 8500 7500 5 10 0 0 0 0 1
+T 300 2600 5 10 0 0 0 0 1
 device=INPUT
-T 8800 7325 5 10 1 1 0 3 1
-refdes=S2
-T 8500 7700 5 10 0 0 0 0 1
+T 300 2800 5 10 0 0 0 0 1
 footprint=anchor
-}
-C 10000 7200 1 0 0 in-1.sym
-{
-T 10000 7500 5 10 0 0 0 0 1
-device=INPUT
-T 10300 7325 5 10 1 1 0 3 1
-refdes=S3
-T 10000 7700 5 10 0 0 0 0 1
-footprint=anchor
-}
-C 6600 6800 1 0 0 gnd-1.sym
-C 8100 6800 1 0 0 gnd-1.sym
-C 9600 6800 1 0 0 gnd-1.sym
-C 11100 6800 1 0 0 gnd-1.sym
-C 8100 6200 1 0 0 in-1.sym
-{
-T 8100 6500 5 10 0 0 0 0 1
-device=INPUT
-T 8100 6700 5 10 0 0 0 0 1
-footprint=anchor
-T 8400 6325 5 10 1 1 0 3 1
-refdes=GND
-}
-C 8600 6000 1 0 0 gnd-1.sym
-N 6100 7900 6300 7900 4
-N 6100 7300 6300 7300 4
-N 7600 7900 7800 7900 4
-N 7600 7300 7800 7300 4
-N 9100 7300 9300 7300 4
-N 9100 7900 9300 7900 4
-N 10600 7900 10800 7900 4
-N 10600 7300 10800 7300 4
-C 6300 6300 1 90 0 resistor-1.sym
-{
-T 5900 6600 5 10 0 0 90 0 1
-device=RESISTOR
-T 6200 6525 5 10 1 1 0 2 1
-refdes=R0
-T 6100 6700 5 10 1 1 0 7 1
-value=22k
-}
-C 6100 6000 1 0 0 gnd-1.sym
-N 6200 7200 6200 7900 4
-N 7700 7200 7700 7900 4
-C 7800 6300 1 90 0 resistor-1.sym
-{
-T 7400 6600 5 10 0 0 90 0 1
-device=RESISTOR
-T 7700 6525 5 10 1 1 0 2 1
-refdes=R1
-T 7600 6700 5 10 1 1 0 7 1
-value=22k
-}
-C 7600 6000 1 0 0 gnd-1.sym
-N 9200 7200 9200 7900 4
-C 9300 6300 1 90 0 resistor-1.sym
-{
-T 8900 6600 5 10 0 0 90 0 1
-device=RESISTOR
-T 9200 6525 5 10 1 1 0 2 1
-refdes=R2
-T 9100 6700 5 10 1 1 0 7 1
-value=22k
-}
-C 9100 6000 1 0 0 gnd-1.sym
-N 10700 7200 10700 7900 4
-C 10800 6300 1 90 0 resistor-1.sym
-{
-T 10400 6600 5 10 0 0 90 0 1
-device=RESISTOR
-T 10700 6525 5 10 1 1 0 2 1
-refdes=R3
-T 10600 6700 5 10 1 1 0 7 1
-value=22k
-}
-C 10600 6000 1 0 0 gnd-1.sym
-C 12000 7700 1 0 0 gnd-1.sym
-C 11700 7900 1 0 0 2n7002.sym
-{
-T 11925 8200 5 10 1 1 0 1 1
-refdes=M
-T 11800 8700 5 10 0 1 0 0 1
-value=2N7002P
-T 12200 8500 5 10 0 1 0 0 1
-footprint=sot23-nmos
-T 13200 8500 5 10 0 1 0 0 1
-device=NMOS
-}
-C 11300 8200 1 90 0 resistor-load.sym
-{
-T 10900 8500 5 10 0 0 90 0 1
-device=RESISTOR
-T 11150 8850 5 10 1 1 90 0 1
-refdes=R
-T 11200 8600 5 10 0 1 90 0 1
-footprint=0603-boxed
-T 11200 8600 5 10 0 1 90 0 1
-value=3.3k
-}
-C 10600 9000 1 0 0 in-1.sym
-{
-T 10600 9300 5 10 0 0 0 0 1
-device=INPUT
-T 10600 9500 5 10 0 0 0 0 1
-footprint=anchor
-T 10900 9125 5 10 1 1 0 3 1
+T 600 2425 5 10 1 1 0 3 1
 refdes=Vdd
 }
+C 900 1300 1 0 0 notb.sym
+{
+T 1325 1600 5 10 1 1 0 4 1
+refdes=I0
+}
+C 1700 1200 1 0 0 nandod.sym
+{
+T 2100 1700 5 10 1 1 0 4 1
+refdes=O0
+}
+C 1900 900 1 0 0 gnd-1.sym
+N 1700 1900 1700 1800 4
+N 10000 2900 10000 1700 4
+C 4100 2500 1 270 0 in-1.sym
+{
+T 4400 2500 5 10 0 0 270 0 1
+device=INPUT
+T 4600 2500 5 10 0 0 270 0 1
+footprint=anchor
+T 4200 2525 5 10 1 1 0 3 1
+refdes=S1
+}
+C 2800 1500 1 0 0 in-1.sym
+{
+T 2800 1800 5 10 0 0 0 0 1
+device=INPUT
+T 2800 2000 5 10 0 0 0 0 1
+footprint=anchor
+T 3100 1625 5 10 1 1 0 3 1
+refdes=D1
+}
+C 3300 400 1 0 0 gnd-1.sym
+C 3400 1300 1 0 0 notb.sym
+{
+T 3825 1600 5 10 1 1 0 4 1
+refdes=I1
+}
+C 4200 1200 1 0 0 nandod.sym
+{
+T 4600 1700 5 10 1 1 0 4 1
+refdes=O1
+}
+C 4400 900 1 0 0 gnd-1.sym
+N 4200 1900 4200 1800 4
+C 6600 2500 1 270 0 in-1.sym
+{
+T 6900 2500 5 10 0 0 270 0 1
+device=INPUT
+T 7100 2500 5 10 0 0 270 0 1
+footprint=anchor
+T 6700 2525 5 10 1 1 0 3 1
+refdes=S2
+}
+C 5300 1500 1 0 0 in-1.sym
+{
+T 5300 1800 5 10 0 0 0 0 1
+device=INPUT
+T 5300 2000 5 10 0 0 0 0 1
+footprint=anchor
+T 5600 1625 5 10 1 1 0 3 1
+refdes=D2
+}
+C 5800 400 1 0 0 gnd-1.sym
+C 5900 1300 1 0 0 notb.sym
+{
+T 6325 1600 5 10 1 1 0 4 1
+refdes=I2
+}
+C 6700 1200 1 0 0 nandod.sym
+{
+T 7100 1700 5 10 1 1 0 4 1
+refdes=O2
+}
+C 6900 900 1 0 0 gnd-1.sym
+N 6700 1900 6700 1800 4
+C 9100 2500 1 270 0 in-1.sym
+{
+T 9400 2500 5 10 0 0 270 0 1
+device=INPUT
+T 9600 2500 5 10 0 0 270 0 1
+footprint=anchor
+T 9200 2525 5 10 1 1 0 3 1
+refdes=S3
+}
+C 7800 1500 1 0 0 in-1.sym
+{
+T 7800 1800 5 10 0 0 0 0 1
+device=INPUT
+T 7800 2000 5 10 0 0 0 0 1
+footprint=anchor
+T 8100 1625 5 10 1 1 0 3 1
+refdes=D3
+}
+C 8300 400 1 0 0 gnd-1.sym
+C 8400 1300 1 0 0 notb.sym
+{
+T 8825 1600 5 10 1 1 0 4 1
+refdes=I3
+}
+C 9200 1200 1 0 0 nandod.sym
+{
+T 9600 1700 5 10 1 1 0 4 1
+refdes=O3
+}
+C 9400 900 1 0 0 gnd-1.sym
+N 9200 1900 9200 1800 4
+N 10000 2900 2500 2900 4
+N 2500 2900 2500 1700 4
+N 5000 1700 5000 2900 4
+N 7500 1700 7500 2900 4
+C 1000 700 1 90 0 resistor-1.sym
+{
+T 600 1000 5 10 0 0 90 0 1
+device=RESISTOR
+T 900 925 5 10 1 1 0 2 1
+refdes=R0
+T 800 1100 5 10 1 1 0 7 1
+value=100k
+}
+C 3500 700 1 90 0 resistor-1.sym
+{
+T 3100 1000 5 10 0 0 90 0 1
+device=RESISTOR
+T 3400 925 5 10 1 1 0 2 1
+refdes=R1
+T 3300 1100 5 10 1 1 0 7 1
+value=100k
+}
+C 6000 700 1 90 0 resistor-1.sym
+{
+T 5600 1000 5 10 0 0 90 0 1
+device=RESISTOR
+T 5900 925 5 10 1 1 0 2 1
+refdes=R2
+T 5800 1100 5 10 1 1 0 7 1
+value=100k
+}
+C 8500 700 1 90 0 resistor-1.sym
+{
+T 8100 1000 5 10 0 0 90 0 1
+device=RESISTOR
+T 8400 925 5 10 1 1 0 2 1
+refdes=R3
+T 8300 1100 5 10 1 1 0 7 1
+value=100k
+}
+C 300 600 1 0 0 in-1.sym
+{
+T 300 900 5 10 0 0 0 0 1
+device=INPUT
+T 300 1100 5 10 0 0 0 0 1
+footprint=anchor
+T 600 675 5 10 1 1 180 3 1
+refdes=GND
+}
+C 700 2400 1 0 0 vdd-1.sym
+C 3600 1900 1 0 0 vdd-1.sym
+C 6100 1900 1 0 0 vdd-1.sym
+C 8600 1900 1 0 0 vdd-1.sym
+C 1200 1000 1 0 0 gnd-1.sym
+C 3700 1000 1 0 0 gnd-1.sym
+C 6200 1000 1 0 0 gnd-1.sym
+C 8700 1000 1 0 0 gnd-1.sym
+C 1100 1900 1 0 0 vdd-1.sym

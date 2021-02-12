@@ -171,7 +171,7 @@ spice_load::spice_load(FILE * f, double q, double sp, bool st) :
         int this_item = timestamps[i] / QUANTUM;
         double remainder = timestamps[i] - this_item * QUANTUM;
         if (last_remainder < SAMPLE_POINT && remainder >= SAMPLE_POINT) {
-            //printf("%e %i\n", timestamps[i], this_item);
+            // printf("%e %i\n", timestamps[i], this_item);
             assert(this_item < num_samples);
             indexes[this_item] = i;
         }

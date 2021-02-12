@@ -32,14 +32,14 @@ CC=g++
 $(TESTPROGS) $(SCRIPTPROG): test/spice_load.o
 $(SCRIPTPROG): test/state.o test/script.o
 
-%.verify: %.raw %
+$(TESTPROGS:%=%.verify): %.raw %
 	./$* < $*.raw
 
-$(SCRIPTPROG:%=%.cir): %.cir: % board/unilight.cir
+$(SCRIPTPROG:%=%.cir): %.cir: % board/univlight.cir
 	./$< -C
-	./$< -T -R | ./rommunge.py -w $@ board/univlight.cir $*.cir
+	./$< -T -R | test/rommunge.py -w $@ board/univlight.cir $*.cir
 
-$(SCRIPTPROG:%.verify): %.verify: %.raw %
+$(SCRIPTPROG:%=%.verify): %.verify: %.raw %
 	./$* -V $<
 
 .PRECIOUS: %.raw

@@ -296,41 +296,41 @@ void state_t::verify_spice(const char * path)
     FILE * f = fopen(path, "r");
     if (!f)
         err(1, "fopen %s", path);
-    spice_load spice(f, 10e-6, 4e-6, false);
+    spice_load spice(f, 10e-6, 7e-6, false);
     //auto Ohash = spice.extract_byte("o", "#");
     auto AA = spice.extract_byte("a");
-    auto XX = spice.extract_byte("vx_s", "c");
-    auto YY = spice.extract_byte("vy_s", "c");
-    auto UU = spice.extract_byte("vu_s", "c");
-    auto KK = spice.extract_byte("vk_s", "c");
+    auto XX = spice.extract_byte("vx_b");
+    auto YY = spice.extract_byte("vy_b");
+    auto UU = spice.extract_byte("vu_b");
+    auto KK = spice.extract_byte("vk_b");
     auto PP = spice.extract_byte("p");
-    const auto FC = spice.extract_signal("fc");
-    const auto FZ = spice.extract_signal("fz");
-    auto II = spice.extract_byte("i", "_c");
+    const auto FC = spice.extract_signal("co_c");
+    const auto FZ = spice.extract_signal("zo_c");
+    auto II = spice.extract_byte("i");
 
     unsigned char code[256];
     assemble(byte_emitter_t(code));
 
-    // Load the main state.  The first instruction to check is at sample 2,
+    // Load the main state.  The first instruction to check is at sample 4,
     // pc=0.
-    reg[A] = AA[2];
-    reg[X] = XX[2];
-    reg[Y] = YY[2];
-    reg[U] = UU[2];
-    regK   = KK[2];
-    flag_C = FC[2];
-    flag_Z = FZ[2];
-    pc = 0;
-    for (int i = 3; i < spice.num_samples; ++i) {
+    reg[A] = AA[4];
+    reg[X] = XX[4];
+    reg[Y] = YY[4];
+    reg[U] = UU[4];
+    regK   = KK[4];
+    flag_C = FC[4];
+    flag_Z = FZ[4];
+    for (int i = 5; i < spice.num_samples; ++i) {
         step(code[pc]);
         verify(reg[A], AA[i], "A");
         verify(reg[X], XX[i], "X");
         verify(reg[Y], YY[i], "Y");
         verify(reg[U], UU[i], "U");
-        // verify(regK  , KK[i], "K");
+        //verify(regK  , KK[i], "K");
         verify(flag_C, FC[i], "C");
         verify(flag_Z, FZ[i], "Z");
-        if (!verify(pc, (int) PP[i], "PC"))
+        // fprintf(stderr, "%i %i %i %i %i\n", i, pc, PP[i-1], reg[A], AA[i]);
+        if (!verify(pc, (int) PP[i-1], "PC"))
             abort();                    // No point in carrying on.
     }
 }

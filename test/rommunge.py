@@ -32,18 +32,19 @@ for X in src:
     dst.write(' '.join(X) + '\n')
 
 dst.write('.control\n')
-dst.write('save fz fc phi0 phi1 vk_c')
+dst.write('save zo_c co_c phi0')
 
-for X in 'p.', 'i._c', 'a.', 'vx_s.c', 'vy_s.c', 'vu_s.c':
+for X in 'p.', 'i.', 'a.', 'vx_b.', 'vy_b.', 'vu_b.', 'vk_b.':
     for D in '01234567':
         dst.write(' ' + X.replace('.',D))
 
 dst.write('\n')
 
 if 'executed' in params:
-    dst.write('tran 1u ' + str(int(params['executed']) * 10 + 20) + 'u uic\n')
+    dst.write('tran 50n ' + str(int(params['executed']) * 10 + 40) + 'u uic\n')
 
 if args.w is not None:
-    dst.write('write ' + args.w + '\n')
+    dst.write('write\n')
+#    dst.write('write ' + args.w.removesuffix('.cir') + '.raw\n')
     dst.write('quit\n')
 dst.write('.endc\n')

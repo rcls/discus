@@ -123,7 +123,7 @@ refdes=C
 T 55200 39100 5 10 0 0 90 0 1
 symversion=0.1
 T 55875 39075 5 10 1 1 0 8 1
-value=1n
+value=100p
 T 55900 39200 5 10 0 1 0 0 1
 footprint=0402w
 }

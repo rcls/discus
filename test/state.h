@@ -176,7 +176,7 @@ struct state_t {
     }
     void LOADM(register_name_t ww, const operand_t & val) {
         assert(!val.is_mem);
-        account(0xcc + ww * 8, val);
+        account(0xcc + ww * 16, val);
         reg[ww] = mem[get(val)];
     }
 

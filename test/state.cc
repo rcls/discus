@@ -314,14 +314,14 @@ void state_t::verify_spice(const char * path)
 
     // Load the main state.  The first instruction to check is at sample 4,
     // pc=0.
-    reg[A] = AA[4];
-    reg[X] = XX[4];
-    reg[Y] = YY[4];
-    reg[U] = UU[4];
-    regK   = KK[4];
-    flag_C = FC[4];
-    flag_Z = FZ[4];
-    for (int i = 5; i < spice.num_samples; ++i) {
+    reg[A] = AA[3];
+    reg[X] = XX[3];
+    reg[Y] = YY[3];
+    reg[U] = UU[3];
+    regK   = KK[3];
+    flag_C = FC[3];
+    flag_Z = FZ[3];
+    for (int i = 4; i < spice.num_samples; ++i) {
         step(code[pc]);
         verify(reg[A], AA[i], "A");
         verify(reg[X], XX[i], "X");
@@ -334,6 +334,11 @@ void state_t::verify_spice(const char * path)
         if (!verify(pc, (int) PP[i-1], "PC"))
             abort();                    // No point in carrying on.
     }
+    // Sanity check that we've run the correct number of instructions.  The
+    // stack should be empy and the current instruction should be an
+    // unconditional return (0x60).
+    assert(stack[0] == NULL);
+    assert(code[pc] == 0x60);
 }
 
 

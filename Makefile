@@ -29,7 +29,7 @@ CC=g++
 
 $(ALL_PROG): test/state.o test/script.o test/spice_load.o
 
-$(PROG_TEST:%=%.cir): %.cir: % board/univlight.cir
+$(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir
 	./$< -C
 	./$< -T -R | test/rommunge.py -w $@ board/univlight.cir $*.cir
 

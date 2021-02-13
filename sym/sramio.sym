@@ -73,7 +73,7 @@ P 1400 400 1200 400 1 0 0
 T 1400 400 5 10 0 0 0 6 1
 pintype=unknown
 T 1195 395 5 10 1 1 0 7 1
-pinlabel=RD
+pinlabel=SEL#
 T 1295 445 5 10 0 1 0 0 1
 pinnumber=9
 T 1400 400 5 10 0 0 0 6 1

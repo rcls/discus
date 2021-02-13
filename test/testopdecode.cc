@@ -52,7 +52,7 @@ int main()
     const auto IN = S.extract_signal("in");
     const auto OUTi = S.extract_signal("out#");
     const auto MW = S.extract_signal("mw");
-    const auto MR = S.extract_signal("mr");
+    const auto MRi = S.extract_signal("mr#");
 
     const auto CW = S.extract_signal("cw");
     const auto ZWi = S.extract_signal("zw#");
@@ -76,7 +76,7 @@ int main()
         bool in = IN[i];
         bool out = !OUTi[i];
         bool mw = MW[i];
-        bool mr = MR[i];
+        bool mr = !MRi[i];
         bool qe = QE[i];
         bool cw = CW[i];
         bool zw = !ZWi[i];
@@ -178,6 +178,9 @@ int main()
             ex_in = true;               // IN
         if ((opcode & 0xf0) == 0x40)    // OUT
             ex_out = true;
+
+        // We assert MR whenever MW is asserted.
+        ex_mr |= ex_mw;
 
         // Test for undesirable combos.
         if (cs && cr)

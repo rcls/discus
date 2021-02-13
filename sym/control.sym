@@ -288,7 +288,7 @@ pinnumber=66
 T 1600 600 5 10 0 0 0 6 1
 pinseq=66
 T 1395 595 5 10 1 1 0 7 1
-pinlabel=MR
+pinlabel=MR#
 }
 P 1600 3400 1400 3400 1 0 0
 {

@@ -172,7 +172,7 @@ void state_t::step(int opcode)
     case 0x40: {                         // STA or OUT.
         if (opcode & 0x10)
             // STA...
-            mem[B] = A;
+            mem[B] = reg[A];
         else
             out_latch = B;  // Arbitrary.
         break;
@@ -460,7 +460,7 @@ void step_check_t::emit_byte(int address, int byte)
 void step_check_t::emit_two(int address, int b1, int b2)
 {
     verify();
-    printf("%02x[%02x]: %02x %02x\n", address, pc, b1, b2);
+    printf("%02x: %02x %02x\n", address, b1, b2);
     assert(b1 == code[pc]);
     assert(b2 == code[pc+1]);
     step(code[pc]);

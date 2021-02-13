@@ -180,8 +180,8 @@ pinnumber=20
 }
 P 0 600 200 600 1 0 0
 {
-T 255 595 5 10 1 1 0 0 1
-pinlabel=SEL
+T 205 595 5 10 1 1 0 1 1
+pinlabel=S1#
 T 105 645 5 10 0 1 0 6 1
 pinnumber=9
 T 0 600 5 10 0 0 0 0 1
@@ -193,8 +193,8 @@ P 0 400 200 400 1 0 0
 {
 T 0 400 5 10 0 0 0 0 1
 pintype=unknown
-T 255 395 5 10 1 1 0 0 1
-pinlabel=SEL#
+T 205 395 5 10 1 1 0 1 1
+pinlabel=S2#
 T 105 445 5 10 0 1 0 6 1
 pinnumber=10
 T 0 400 5 10 0 0 0 0 1

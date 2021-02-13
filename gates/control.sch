@@ -1437,7 +1437,7 @@ device=OUTPUT
 T 59900 38400 5 10 0 0 0 0 1
 footprint=anchor
 T 60500 38000 5 10 1 1 0 1 1
-refdes=MR
+refdes=MR#
 }
 N 59900 42000 60100 42000 4
 {
@@ -1455,7 +1455,7 @@ T 58150 45800 5 10 1 1 0 7 1
 netname=Push
 }
 C 58100 45300 1 0 0 phi0.sym
-C 58000 40500 1 0 0 phi1.sym
+C 58000 40400 1 0 0 phi1.sym
 T 55800 43800 9 12 1 0 0 0 1
 FIXME - transients on ph0 rising?
 C 59900 38700 1 0 0 out-1.sym
@@ -1565,5 +1565,6 @@ refdes=D1
 }
 T 45100 36900 9 12 1 0 0 0 1
 FIXME - simplify, Jump, IWK on each reset cycle
-T 55900 44200 9 12 1 0 0 0 1
+T 53300 44800 9 12 1 0 0 0 1
 FIXME - jump mess?
+C 58000 40600 1 0 0 phi0.sym

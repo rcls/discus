@@ -13,7 +13,7 @@ all:
 verify: $(TESTPROGS:%=%.verify)
 
 %.rcr: %.sch
-	$(GNETLIST) -Lsubckt -g spice-sdb -o $@ $+
+	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $+
 
 %.cir: %.rcr
 	./substrate.py $< > $@
@@ -32,7 +32,7 @@ CC=g++
 $(TESTPROGS) $(SCRIPTPROG): test/spice_load.o
 $(SCRIPTPROG): test/state.o test/script.o
 
-$(TESTPROGS:%=%.verify): %.raw %
+$(TESTPROGS:%=%.verify): %.verify: %.raw %
 	./$* < $*.raw
 
 $(SCRIPTPROG:%=%.cir): %.cir: % board/univlight.cir

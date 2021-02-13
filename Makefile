@@ -2,24 +2,22 @@
 GNETLIST=/home/geda/bin/gnetlist
 
 
-TESTCC = alu pcdecode opdecode sp
-SCRIPTS= testadd testsub testcall testinc testmem hazard logic rmsim
-TESTPROGS=$(TESTCC:%=test/test%)
-SCRIPTPROG=$(SCRIPTS:%=test/%)
-PROGS=pattern monitor blink
+ADHOC_TEST = alu pcdecode opdecode sp
+PROG_TEST=testadd testsub testcall testinc testmem hazard logic
+TESTS=$(ADHOC_TEST:%=test/test%) $(PROG_TEST:%=test/%)
+PROG=rmsim pattern monitor blink
+ALL_PROG=$(TESTS) $(PROG:%=test/%)
 
 all:
 
-verify: $(TESTPROGS:%=%.verify)
+verify: $(TESTS:%=%.verify)
+programs: $(ALL_PROG)
 
 %.rcr: %.sch
 	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $+
 
 %.cir: %.rcr
 	./substrate.py $< > $@
-
-%.fake-cir: %.cir
-	perl test/fake.pl $< > $@
 
 DEPS=-MMD -MP -MF.$(subst /,:,$@).d
 CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I. $(DEPS)
@@ -29,17 +27,13 @@ CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I. $(DEPS)
 %: %.cc
 CC=g++
 
-$(TESTPROGS) $(SCRIPTPROG): test/spice_load.o
-$(SCRIPTPROG): test/state.o test/script.o
+$(ALL_PROG): test/state.o test/script.o test/spice_load.o
 
-$(TESTPROGS:%=%.verify): %.verify: %.raw %
-	./$* < $*.raw
-
-$(SCRIPTPROG:%=%.cir): %.cir: % board/univlight.cir
+$(PROG_TEST:%=%.cir): %.cir: % board/univlight.cir
 	./$< -C
 	./$< -T -R | test/rommunge.py -w $@ board/univlight.cir $*.cir
 
-$(SCRIPTPROG:%=%.verify): %.verify: %.raw %
+%.verify: %.raw %
 	./$* -V $<
 
 .PRECIOUS: %.raw

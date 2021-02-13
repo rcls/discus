@@ -27,9 +27,9 @@ enum regreg_t {
 static const char * const alu_ops[] = {
     "ADD", "SUB", "OR", "AND", "ADC", "SBC", "XOR", "DNC" };
 
-int main()
+int main(int argc, char * argv[])
 {
-    spice_load S(stdin, 5e-6);
+    spice_load S(argc, argv, 5e-6);
 
     const auto I2 = S.extract_signal("i2");
     const auto I3 = S.extract_signal("i3");

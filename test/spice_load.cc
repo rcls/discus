@@ -2,17 +2,9 @@
 
 #include <assert.h>
 #include <err.h>
+#include <getopt.h>
 #include <sstream>
 #include <string.h>
-
-spice_load::spice_load(double q, double sp, bool st) :
-    QUANTUM(q),
-    SAMPLE_POINT(sp),
-    STABILITY_CHECK(st),
-    num_vars(0),
-    num_points(0)
-{
-}
 
 std::vector<double> spice_load::extract_raw_column(const char * name)
 {
@@ -53,22 +45,7 @@ std::vector<bool> spice_load::extract_signal(const char * name)
 }
 
 
-std::vector<unsigned char> spice_load::extract_number4(
-    const char * n0, const char * n1, const char * n2, const char * n3)
-{
-    const auto v0 = extract_signal(n0);
-    const auto v1 = extract_signal(n1);
-    const auto v2 = extract_signal(n2);
-    const auto v3 = extract_signal(n3);
-    std::vector<unsigned char> r(num_samples);
-    for (int i = 0; i != num_samples; ++i)
-        r[i] = v0[i] + v1[i] * 2 + v2[i] * 4 + v3[i] * 8;
-    return r;
-}
-
-
-std::vector<unsigned char> spice_load::extract_byte(const char * p,
-                                                    const char * s)
+std::vector<uint8_t> spice_load::extract_byte(const char * p, const char * s)
 {
     std::vector<unsigned char> r(num_samples);
     for (int i = 0; i != 8; ++i) {
@@ -113,7 +90,11 @@ void spice_load::read_var_list(FILE * f)
 
 
 spice_load::spice_load(FILE * f, double q, double sp, bool st) :
-    spice_load(q, sp, st)
+    QUANTUM(q),
+    SAMPLE_POINT(sp),
+    STABILITY_CHECK(st),
+    num_vars(0),
+    num_points(0)
 {
     char * line = NULL;
     size_t linesize = 0;
@@ -177,4 +158,28 @@ spice_load::spice_load(FILE * f, double q, double sp, bool st) :
         }
         last_remainder = remainder;
     }
+}
+
+
+FILE * spice_load::parse_args(int argc, char * const argv[])
+{
+    const char * path = NULL;
+    int c;
+    while ((c = getopt(argc, argv, "V:")) > 0) {
+        switch (c) {
+        case 'V':
+            path = optarg;
+            break;
+        default:
+            errx(1, "Usage: %s [-V path]\n", argv[0]);
+            break;
+        }
+    }
+    if (path == NULL)
+        return stdin;
+
+    FILE * f = fopen(path, "r");
+    if (f == NULL)
+        err(1, "opening %s failed", path);
+    return f;
 }

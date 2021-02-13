@@ -95,12 +95,20 @@ FIXME : ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 0100..rr - OUT
 
 011ccc.. - rets (+2 or 3 ret never)
-011001rr - CMP (C,Z) - match SUB on 432
+011001rr - CMP (C,Z) - matches SUB on 432
 011011rr [also do whatever the other ret-never gives us.]
 
 
 
-100aaarr - arith (C+Z) [write A except CMP, should CMP be elsewhere?]
+100aaarr - arith
+...000 - ADD
+...001 - SUB
+...010 - OR, clears carry.
+...011 - AND, sets carry.
+...100 - ADC
+...101 - SBC
+...110 - XOR - force carry off.  (Or flip both.)
+...111 - don't care, aliases AND (was cmp)
 
 101.11rr - MEM (prefix)
 101.0... - IN - prefix.
@@ -187,16 +195,6 @@ nn.001
 nn.101
 nn.111 is don't care.
 use nn..01
-
-...AAA
-...000 - ADD
-...001 - SUB
-...010 - OR, clears carry.
-...011 - AND, sets carry.
-...100 - ADC
-...101 - SBC
-...110 - XOR - force carry off.  (Or flip both.)
-...111 - don't care, aliases AND (was cmp)
 
 also...
 11..00 - inc

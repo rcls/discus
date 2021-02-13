@@ -3,9 +3,9 @@
 
 #include "spice_load.h"
 
-int main()
+int main(int argc, char * const argv[])
 {
-    spice_load S(stdin, 10e-6);
+    spice_load S(argc, argv, 10e-6);
 
     const auto A = S.extract_signal("a");
     const auto B = S.extract_signal("b");

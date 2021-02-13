@@ -23,20 +23,18 @@ struct spice_load {
     std::vector<double> timestamps;
     std::vector<unsigned> indexes;
 
-    spice_load(double q) : spice_load(q, q * 0.7, true) { }
-    spice_load(double q, double sp, bool st);
+    spice_load(int argc, char * const argv[], double q) :
+        spice_load(parse_args(argc, argv), q) {}
     spice_load(FILE * f, double q) : spice_load(f, q, q * 0.7, true) { }
     spice_load(FILE * f, double q, double sp, bool st);
 
     std::vector<double> extract_raw_column(const char * name);
     std::vector<bool> extract_signal(const char * name);
-    std::vector<unsigned char> extract_number4(
-        const char * n0, const char * n1, const char * n2, const char * n3);
-    std::vector<unsigned char> extract_byte(const char * n,
-                                            const char * s = "");
+    std::vector<uint8_t> extract_byte(const char * n, const char * s = "");
 
 private:
     void read_var_list(FILE * f);
+    static FILE * parse_args(int argc, char * const argv[]);
 };
 
 #endif

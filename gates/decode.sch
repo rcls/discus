@@ -1225,8 +1225,6 @@ N 51500 44000 51300 44000 4
 T 51250 44000 5 10 1 1 0 7 1
 netname=I7
 }
-T 46300 43800 9 12 1 0 0 0 1
-FIXME - check for MW transient on phi1 rising
 C 49800 41500 1 0 0 2n7002.sym
 {
 T 50025 41800 5 10 1 1 0 1 1

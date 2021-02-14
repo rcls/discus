@@ -14,10 +14,12 @@ verify: $(TESTS:%=%.verify)
 programs: $(ALL_PROG)
 
 %.rcr: %.sch
-	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $+
+	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $<
 
 %.cir: %.rcr
 	./substrate.py $< > $@
+
+board/univlight.rcr: gates/*.sch
 
 DEPS=-MMD -MP -MF.$(subst /,:,$@).d
 CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I. $(DEPS)

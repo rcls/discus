@@ -420,7 +420,7 @@ pinnumber=27
 T 1600 5000 5 10 0 0 0 6 1
 pinseq=27
 T 1395 4995 5 10 1 1 0 7 1
-pinlabel=Push
+pinlabel=Push#
 }
 P 1600 4800 1400 4800 1 0 0
 {

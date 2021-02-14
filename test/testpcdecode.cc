@@ -20,7 +20,7 @@ int main(int argc, char * const argv[])
 
     const auto JUMP = S.extract_signal("jump");
     const auto RET = S.extract_signal("ret");
-    const auto PUSH = S.extract_signal("push");
+    const auto PUSHi = S.extract_signal("push#");
     const auto INC = S.extract_signal("inc");
 
     for (int i = 0; i != S.num_samples; ++i) {
@@ -36,7 +36,7 @@ int main(int argc, char * const argv[])
 
         bool jump = JUMP[i];
         bool ret  = RET[i];
-        bool push = PUSH[i];
+        bool push = !PUSHi[i];
         bool inc  = INC[i];
 
         bool condition = false;

@@ -1423,7 +1423,7 @@ netname=Ret
 N 58400 45800 58200 45800 4
 {
 T 58150 45800 5 10 1 1 0 7 1
-netname=Push
+netname=Push#
 }
 C 58100 45300 1 0 0 phi0.sym
 C 58000 40400 1 0 0 phi1.sym
@@ -1448,7 +1448,7 @@ refdes=VPush
 N 59900 42400 60450 42400 4
 {
 T 60500 42400 5 10 1 1 0 1 1
-netname=Push
+netname=Push#
 }
 C 42500 40500 1 0 0 in-1.sym
 {

@@ -9,7 +9,7 @@ int main(int argc, char * const argv[])
     spice_load S(argc, argv, 10e-6);
 
     const auto C = S.extract_signal("c");
-    const auto PUSH = S.extract_signal("push");
+    const auto PUSHi = S.extract_signal("push#");
     const auto POP = S.extract_signal("pop");
     const auto S0 = S.extract_signal("s0");
     const auto S1 = S.extract_signal("s1");
@@ -25,7 +25,7 @@ int main(int argc, char * const argv[])
 
         unsigned prev = S0[i-1] + S1[i-1] * 2 + S2[i-1] * 4 + S3[i-1] * 8;
         unsigned expect = prev;
-        if (PUSH[i-1])
+        if (!PUSHi[i-1])
             expect <<= 1;
         if (POP[i])
             expect <<= 3;

@@ -188,7 +188,7 @@ netname=JUMP
 N 23400 12700 23800 12700 4
 {
 T 23850 12700 5 10 1 1 0 1 1
-netname=PUSH
+netname=PUSH#
 }
 C 21800 7700 1 0 0 decode.sym
 {

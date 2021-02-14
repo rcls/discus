@@ -13,13 +13,11 @@ all:
 verify: $(TESTS:%=%.verify)
 programs: $(ALL_PROG)
 
-%.rcr: %.sch
+%.rcr: %.sch gates/*.sch
 	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $<
 
-%.cir: %.rcr
+%.cir: %.rcr ./substrate.py
 	./substrate.py $< > $@
-
-board/univlight.rcr: gates/*.sch
 
 DEPS=-MMD -MP -MF.$(subst /,:,$@).d
 CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I. $(DEPS)
@@ -31,7 +29,7 @@ CC=g++
 
 $(ALL_PROG): test/state.o test/script.o test/spice_load.o
 
-$(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir
+$(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 	./$< -C
 	./$< -T -R | test/rommunge.py -w $@ board/univlight.cir $*.cir
 

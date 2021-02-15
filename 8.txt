@@ -136,7 +136,15 @@ Q from alu: 100, INC/DEC/MV (11xx10)
 Writes DD 11
 Writes K  00 (not jump), x01 (harmless to include jump)
 
-ALU disable: 0, 11xx11
+ALU
+disable:
+00
+11xx11
+.01...
+enable:
+other 1...
+011001
+
 
 100 - write A
 101, 00nJ - write K

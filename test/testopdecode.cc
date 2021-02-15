@@ -105,7 +105,7 @@ int main(int argc, char * argv[])
             || (opcode & 0xcc) == 0xc8)
             ex_qe = true;
 
-        // Instructions that write the C flag: ALU ops plus CMP.
+        // Instructions that write the C flag: ALU ops plus CMP/TST.
         if ((opcode >= 0x80 && opcode <= 0x9f)
             || (opcode & 0xf4) == 0x64)
             ex_cw = true;
@@ -114,6 +114,10 @@ int main(int argc, char * argv[])
         ex_zw = ex_cw;
         if ((opcode & 0xc8) == 0xc0)
             ex_zw = true;
+
+        // Instructions that write Z need QE also.
+        if (ex_zw)
+            ex_qe = true;
 
         if (opcode < 0xc0) {
             switch (opcode & op_alu_mask) {

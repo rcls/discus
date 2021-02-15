@@ -40,6 +40,9 @@ $(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 %.raw: %.cir
 	ngspice -r $@ -b $<
 
+count: gates/bit.rcr gates/control.rcr
+	grep -c '^[MQ]' $+
+
 RENAME=mv $*-gerber/$*.$1 $*-gerber/$($1_ext)
 DELETE=rm $*-gerber/$*.$1
 

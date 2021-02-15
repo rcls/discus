@@ -55,7 +55,7 @@ int main(int argc, char * argv[])
     const auto MRi = S.extract_signal("mr#");
 
     const auto CW = S.extract_signal("cw");
-    const auto ZWi = S.extract_signal("zw#");
+    const auto ZW = S.extract_signal("zw");
 
     for (int i = 0; i != S.num_samples; ++i) {
         int opcode = I7[i] * 128 + I6[i] * 64 + I5[i] * 32
@@ -79,7 +79,7 @@ int main(int argc, char * argv[])
         bool mr = !MRi[i];
         bool qe = QE[i];
         bool cw = CW[i];
-        bool zw = !ZWi[i];
+        bool zw = ZW[i];
 
         const char * tag = "";
         bool ex_coe = co;

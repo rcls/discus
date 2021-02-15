@@ -264,7 +264,7 @@ pinnumber=64
 T 1600 1000 5 10 0 0 0 0 1
 pinseq=64
 T 1395 995 5 10 1 1 0 7 1
-pinlabel=OUT#
+pinlabel=OUT
 }
 P 1600 800 1400 800 1 0 0
 {

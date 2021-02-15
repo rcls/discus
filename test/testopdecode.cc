@@ -50,7 +50,7 @@ int main(int argc, char * argv[])
 
     const auto QE = S.extract_signal("qe");
     const auto IN = S.extract_signal("in");
-    const auto OUTi = S.extract_signal("out#");
+    const auto OUT = S.extract_signal("out");
     const auto MW = S.extract_signal("mw");
     const auto MRi = S.extract_signal("mr#");
 
@@ -74,7 +74,7 @@ int main(int argc, char * argv[])
         bool n = !Ni[i];
 
         bool in = IN[i];
-        bool out = !OUTi[i];
+        bool out = OUT[i];
         bool mw = MW[i];
         bool mr = !MRi[i];
         bool qe = QE[i];

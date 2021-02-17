@@ -719,14 +719,3 @@ pinseq=4
 T 205 6995 5 10 1 1 0 1 1
 pinlabel=VPush
 }
-P 1600 5000 1400 5000 1 0 0
-{
-T 1600 5000 5 10 0 0 0 0 1
-pintype=unknown
-T 1495 5045 5 10 0 1 0 0 1
-pinnumber=48
-T 1600 5000 5 10 0 0 0 0 1
-pinseq=48
-T 1395 4995 5 10 1 1 0 7 1
-pinlabel=WK
-}

@@ -42,7 +42,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 	ngspice -r $@ -b $<
 
 count: gates/bit.rcr gates/control.rcr
-	grep -c '^[MQ]' $+
+	grep -E -c -v -e '^[^MQ]' -e 'unknown' -e 'No valid' $+
 
 RENAME=mv $*-gerber/$*.$1 $*-gerber/$($1_ext)
 DELETE=rm $*-gerber/$*.$1

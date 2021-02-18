@@ -162,7 +162,7 @@ power_y:
     JP(Z,power_x);
 power1:
     CALL(square);                       // Starts with STA(outer_loop_count)
-    call(leftrot_exponent);
+    CALL(leftrot_exponent);
     LOAD(Y,base);
     CL(C,mult);
     DECM(A,outer_loop_count);

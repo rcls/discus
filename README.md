@@ -1,7 +1,7 @@
 discus
 ======
 
-Discus is an 8-bit CPU built from 1243 discrete transistors.  Currently it runs
+Discus is an 8-bit CPU built from 1232 discrete transistors.  Currently it runs
 in simulation.
 
 It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
@@ -50,7 +50,7 @@ CMOS is used in a few places, mostly some bus drivers, and the clock drives, to
 give high fanout with decent speed.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on eight
-identical boards (123 transistors each), and a separate control board (259
+identical boards (123 transistors each), and a separate control board (248
 transistors).
 
 

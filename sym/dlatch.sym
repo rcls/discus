@@ -6,7 +6,7 @@ T 0 1100 5 10 0 0 0 0 1
 pintype=unknown
 T 205 1045 5 10 1 1 0 0 1
 pinlabel=D
-T 105 1145 5 10 1 1 0 6 1
+T 105 1145 5 10 0 1 0 6 1
 pinnumber=1
 T 0 1100 5 10 0 0 0 0 1
 pinseq=1
@@ -17,7 +17,7 @@ T 0 500 5 10 0 0 0 0 1
 pintype=unknown
 T 205 445 5 10 1 1 0 0 1
 pinlabel=C
-T 105 545 5 10 1 1 0 6 1
+T 105 545 5 10 0 1 0 6 1
 pinnumber=3
 T 0 500 5 10 0 0 0 0 1
 pinseq=3
@@ -28,7 +28,7 @@ T 1600 1100 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 1045 5 10 1 1 0 6 1
 pinlabel=Q
-T 1495 1145 5 10 1 1 0 0 1
+T 1495 1145 5 10 0 1 0 0 1
 pinnumber=4
 T 1600 1100 5 10 0 0 0 0 1
 pinseq=4
@@ -39,7 +39,7 @@ T 1600 900 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 845 5 10 1 1 0 6 1
 pinlabel=Q#
-T 1495 945 5 10 1 1 0 0 1
+T 1495 945 5 10 0 1 0 0 1
 pinnumber=5
 T 1600 900 5 10 0 0 0 0 1
 pinseq=5
@@ -50,7 +50,7 @@ T 800 1500 5 10 0 0 0 0 1
 pintype=unknown
 T 795 1275 5 8 1 1 0 5 1
 pinlabel=Vdd
-T 750 1395 5 10 1 1 90 0 1
+T 750 1395 5 10 0 1 90 0 1
 pinnumber=6
 T 800 1500 5 10 0 0 0 0 1
 pinseq=6
@@ -61,7 +61,7 @@ T 800 0 5 10 0 0 0 0 1
 pintype=unknown
 T 805 225 5 8 1 1 0 3 1
 pinlabel=GND
-T 750 105 5 10 1 1 90 6 1
+T 750 105 5 10 0 1 90 6 1
 pinnumber=7
 T 800 0 5 10 0 0 0 0 1
 pinseq=7

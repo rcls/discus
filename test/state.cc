@@ -335,7 +335,7 @@ void state_t::verify_spice(const char * path)
             abort();                    // No point in carrying on.
     }
     // Sanity check that we've run the correct number of instructions.  The
-    // stack should be empy and the current instruction should be an
+    // stack should be empty and the current instruction should be an
     // unconditional return (0x60).
     assert(stack[0] == NULL);
     assert(code[pc] == 0x60);

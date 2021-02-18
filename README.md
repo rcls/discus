@@ -6,9 +6,9 @@ in simulation.
 
 It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a separate four entry stack.  There are four general purpose registers, one of
-which is the accumulator.  It runs a 2.5 stage pipeline (opcode fetch/branch,
-instruction execute, and writeback).  The pipelining costs around 100
-transistors.
+which is the accumulator.  It uses a 2.5 stage RISC pipeline (opcode
+fetch/branch, instruction execute, and writeback).  The pipelining costs around
+100 transistors.
 
 The instruction set is minimalist but functional.  Execution is strict single
 cycle throughput, and all instructions are a single byte.  Constant values and
@@ -17,17 +17,17 @@ separate instructions, but leave their result in a "hidden" register that is
 implicitly accessed by the following instruction.
 
 Instructions with two operands have the accumulator as one operand and the
-destination.  Single operand instructions (INC, DEC, MOV, LOADM) can use any
-registers as their source and destination.
+destination.  Single operand instructions (`INC`, `DEC`, `MOV`, `LOADM`) can use
+any registers as their source and destination.
 
 The instruction set is RISC style load/store.  Arithmetic instructions are
-register-to-register.  Memory reads are either LOADM (to a named register), MEM
-(prefix loading to hidden register).  STA is the only memory write instruction.
+register-to-register.  Memory reads are either `LOADM` (to a named register), or
+`MEM` (prefix loading to hidden register).  `STA` is the only memory write
+instruction.
 
 Branch (jump, call, return) instructions are executed in the first pipeline
-stage.  All branches may be conditional, and there are no indirect branches, and
-no data access to the stack - it is not possible to branch to a computed
-address.
+stage.  All branches may be conditional. There are no indirect branches, and no
+data access to the stack - it is not possible to branch to a computed address.
 
 
 Circuitry Overview
@@ -46,6 +46,9 @@ Extensive use is made of stacked gates, where the output of one gate is
 connected to the ground connection of other gates, essentially forming a
 wired-and.
 
+CMOS is used in a few places, mostly some bus drivers, and the clock drives, to
+give high fanout with decent speed.
+
 The overall layout is bit-sliced, with the per-bit circuitry laid out on eight
 identical boards (123 transistors each), and a separate control board (259
 transistors).
@@ -54,26 +57,25 @@ transistors).
 Registers
 =========
 
-The general purpose registers are A, X, Y, U.  A is the accumulator, an implicit
-operand and destination of two argument instructions.  Otherwise all GP
-registers are equal.
+The general purpose registers are `A`, `X`, `Y`, `U`.  `A` is the accumulator,
+an implicit operand and destination of two argument instructions.  Otherwise all
+GP registers are equal.
 
-The hidden register is K.  This is written by prefix instructions (constants or
-MEM prefix).  If an instruction writes K, then the next instruction uses K
-instead of the source register encoded in the instruction.
+The hidden register is `K`.  This is written by prefix instructions (constants
+or MEM prefix).  If an instruction writes `K`, then the next instruction uses
+`K` instead of the source register encoded in the instruction.
 
-There are two condition flags, C and Z.
+There are two condition flags, `C` and `Z`.
 
 There is an 8-bit program counter, and two bit stack pointer.  The four entry
 stack is implemented as a register file in the CPU, 128 transisters for storing
-4 bytes, plus 38 for interfacing to that register file.
+4 bytes, plus 38 for interfacing to the register file.
 
-There is a hidden 8-bit register K for holding results from prefix instructions.
 
-Instruction Set
-===============
+Instruction Set & Encoding
+==========================
 
-### Source Register (......RR)
+### Source Register (`......RR`)
 
 The last two bits of (nearly all) instructions identify a source register.
 Values of RR are:
@@ -83,12 +85,15 @@ Values of RR are:
 * 10 : Y
 * 11 : U
 
-### Destination Register (11DD..RR)
+When there is a `CONST` prefix, these two bits are instead combined with 6 bits
+of the prefix to give a 8-bit constant.
+
+### Destination Register (`11DD..RR`)
 
 Instructions with an explicit destination register put the register number in
 bits 4 and 5.  The encoding is the same as the source register.
 
-### Condition Codes (...CCC..)
+### Condition Codes (`...CCC..`)
 
 Branch instructions put the condition in bits 2, 3, 4.  The encoding is:
 
@@ -101,7 +106,7 @@ Branch instructions put the condition in bits 2, 3, 4.  The encoding is:
 * 110 : If C
 * 111 : If not C
 
-### CONST prefix 00nnnnnn
+### `CONST` prefix : `00nnnnnn`
 
 This instruction writes K with an 8-bit constant.  The low 6-bits are taken from
 the opcode, while the high two bits are "stolen" from bits 0 and 1 of the
@@ -111,33 +116,36 @@ CONST executes.
 The CONST instruction is never written explicitly in assembly code---instead, it
 is generated automatically when a numeric constant operand is used.
 
-### JUMP, CALL : 00LCCCnn
+### `JUMP`, `CALL` : `00LCCCnn`
 
-You cannot have two CONST instructions in a row.  Instead, the instruction
-following a CONST prefix may be interpreted as a branch instead.  The L bit is 0
-for a jump and 1 for a call.
+You cannot have two `CONST` instructions in a row.  Instead, the instruction
+following a `CONST` prefix may be interpreted as a branch instead.  The L bit is
+0 for a jump and 1 for a call.
 
-The target address is as per the CONST prefix (6 bits from the CONST and 2 bits
-from the jump or call.  Note that the circuitry can't use the K register
+All branches have a condition code; see above for the enumeration of the CCC
+values.
+
+The target address is given by the `CONST` prefix (6 bits from the `CONST` and 2
+bits from the jump or call.  Note that the circuitry can't use the `K` register
 though----the branch instruction happens in the wrong pipeline stage; the target
 handling is separate.
 
-### OUT : 010000rr
+### `OUT` : `010000rr`
 
-OUT instruction.  This does nothing, but pulses a strobe.  External peripherals
-may use the values from the accumulator and operand busses.
+`OUT` instruction.  This does nothing, but pulses a strobe.  External
+peripherals may use the values from the accumulator and operand busses.
 
 Only the first four bits are decoded; any instruction starting 0100 is decoded
-as OUT.
+as `OUT`.
 
-### STA : 010100rr
+### `STA` : `010100rr`
 
 Store the acumulator to memory.  The operand is the memory address to write.
 
 Note that only the first four bits are decoded; any instruction starting 0101 is
-decoded as STA.
+decoded as `STA`.
 
-### Return : 011CCC..
+### Return : `011CCC..`
 
 Pops the PC from the stack, if the condition passes.  The operand is ignored.
 
@@ -148,97 +156,98 @@ condition flags set in the second stage.  This means that a condition flag
 update by the immediately preceding instruction is missed, a hazard to be aware
 of.
 
-(Jump and call have the same quirk, but for those instructions, there is no
-impact---for jump & call, the preceding instruction must be CONST which does not
-change the condition flags.)
+(`JUMP` and `CALL` have the same quirk, but for those instructions, there is no
+impact---for `JUMP` & `CALL`, the preceding instruction must be `CONST` which
+does not change the condition flags.)
 
-### CMP : 011001rr
+### `CMP` : `011001rr`
 
-Compute subtract the operand from A, discarding the result, but updating Z and C
-flags.  Subtraction A - R is implemented as (A + ~R + 1) which determines the
-polarity of the C flag for subtract instructions.
-
-This takes an instruction encoding otherwise assigned to "return never".
-
-### TST : 011011rr
-
-Compute the logical and of A, discarding the result, but updating Z and setting
-C to 1.
+Subtract the operand from `A`, discarding the result, but updating `Z` and `C`
+flags.  Subtraction `A-R` is implemented as `A + ~R + 1`, which determines the
+polarity of the `C` flag for subtract instructions.
 
 This takes an instruction encoding otherwise assigned to "return never".
 
-### Arithmetic 100aaarr
+### `TST` : `011011rr`
+
+Compute the logical and of `A`, discarding the result, but updating `Z` and
+setting `C` to 1.
+
+This takes an instruction encoding otherwise assigned to "return never".
+
+### Arithmetic : `100aaarr`
 
 Perform an arithmetic operation on the accumulator and operand, writing the
-result to the accumlator and updating the Z and C flags.
+result to the accumlator and updating the `Z` and `C` flags.
 
-The encoding of aaa is:
-* 000 : ADD (add without carry)
-* 001 : SUB (subtract without carry)
-* 010 : OR  (sets C to 0 also)
-* 011 : AND (sets C to 1 also)
-* 100 : ADC (add with carry)
-* 101 : SBC (subtract with carry)
-* 110 : XOR (sets C to 0 also)
-* 111 : unused alias of AND.
+The encoding of `aaa` is:
+* 000 : `ADD` (add without carry)
+* 001 : `SUB` (subtract without carry)
+* 010 : `OR ` (sets `C` to 0 also)
+* 011 : `AND` (sets `C` to 1 also)
+* 100 : `ADC` (add with carry)
+* 101 : `SBC` (subtract with carry)
+* 110 : `XOR` (sets `C` to 0 also)
+* 111 : unused alias of `AND`.
 
-### MEM prefix : 101011rr
+### `MEM` prefix : `101011rr`
 
-Load K from memory.  The operand is the memory address.
+Load the `K` register from memory.  The operand is the memory address.
 
 Not all bits are decoded; there are aliases.
 
-The MEM prefix is typically not written explicitly in assembly code.  Instead,
-the letter 'M' is suffixed to the following instruction, e.g., ADDM instead of
-ADD.
+The `MEM` prefix is typically not written explicitly in assembly code.  Instead,
+the letter 'M' is suffixed to the following instruction, e.g., `ADDM` instead of
+`MEM`,`ADD`.
 
-Note that with a MEM prefix, the operand bits of the following instruction are
+Note that with a `MEM` prefix, the operand bits of the following instruction are
 ignored.
 
-### IN prefix : 101000rr
+### `IN` prefix : `101000rr`
 
-Load K from the external result bus.  (The bus is open-drain).  The accumulator
-and operand buses may be used by external circuitry, and the IN strobe line is
-pulsed.
+Load `K` from the external result bus `Q` (the bus is open-drain).  The
+accumulator and operand buses may be used by external circuitry, and the `IN`
+strobe line is asserted.
 
-### INC : 11dd00rr
+### `INC` : `11dd00rr`
 
-Write the operand plus one into the destination, and update Z.  The C flag is
-not changed.
+Write the operand plus one into the destination, and update `Z`.  The `C` flag
+is not changed.
 
-### DEC : 11dd01rr
+### `DEC` : `11dd01rr`
 
-Write the operand minus one into the destination, and update Z.  The C flags is
-not changed.
+Write the operand minus one into the destination, and update `Z`.  The `C` flags
+is not changed.
 
-### MOV : 11dd10rr
+### `MOV` : `11dd10rr`
 
 Write the operand into the destination.  No condition flag updates.
 
-### LOADM : 11dd11rr
+### `LOADM` : `11dd11rr`
 
 Load the destination register from memory.  The operand is the memory address.
 
-This is a convenience, MEM,MOV would acheive the same result.
+This is a convenience, `MEM`,`MOV` would achieve the same result, but taking two
+bytes.
 
 
 Processor Busses
 ================
 
 There are several busses:
-* A : Accumulator bus.  This is a differential CMOS bus outputing the
-  accumulator value for STA and OUT instructions.
-* B : Operand bus.  This is a differential CMOS bus outputing the current
+* `A` : Accumulator bus.  This is a differential CMOS bus outputing the
+  accumulator value for `STA` and `OUT` instructions.
+* `B` : Operand bus.  This is a differential CMOS bus outputing the current
   instruction operand.  It is used as the address lines for memory instructions.
-* Q : Result bus.  This is an open drain bus carrying the result of the current
-  instruction.  It is driven by memory reads and IN instructions.
-* P : Program counter.  This is a differential CMOS bus outputing the PC for
+* `Q` : Result bus.  This is an open drain bus carrying the result of the
+  current instruction.  It is driven by memory reads and IN instructions.
+* `P` : Program counter.  This is a differential CMOS bus outputing the PC for
   instruction fetch.
-* O : Opcode bus.  Open drain bus inputing the fetched instruction.
+* `O` : Opcode bus.  Open drain bus inputing the fetched instruction.
 
 Internally, there is also the I bus, carrying the instruction currently in
 execute.  The J and K busses are looped to lines on the O and I busses to give
-respectively the jump target and CONST value.
+respectively the jump target and `CONST` value.
 
 
 Reset
@@ -247,11 +256,11 @@ Reset
 The opcode bus is open-drain.  Reset is implemented by pulling down the opcode
 bus, giving continuous 00000000 instructions.
 
-Normally this would alternate CONST prefix and JUMP-always instructions, jumping
-to address 0.  To make sure the exit from reset always follows the JUMP, not the
-CONST, the decode is overridden in reset to always jump.
+Normally this would alternate `CONST` prefix and `JUMP`-always instructions,
+jumping to address 0.  To make sure the exit from reset always follows the
+`JUMP`, not the `CONST`, the decode is overridden in reset to always jump.
 
-The above takes two transistors to implement. We also latch the reset to
+The above takes two transistors to implement.  We also latch the reset to
 synchronise with the clock, which takes several more.
 
 
@@ -269,28 +278,29 @@ and carry chain.  E.g.,
   `NAND`, which can be inverted in the carry logic.
 
 This is visible in logic operations setting the carry flag to fixed values, so
-that AND(A) and OR(A) can be used as carry-set and carry-clear instructions.
+that `AND(A)` and `OR(A)` can be used as carry-set and carry-clear instructions.
 
 The ripple carry uses two gate levels per bit.  One gate level per bit could be
-achieved by dualizing every second ALU bit, saving a few transistors.
+achieved by dualizing every second ALU bit, saving a few transistors; I chose to
+keep each bit identical, instead.
 
 Increment and decrement instructions are implemented by forcing one arithmetic
 input to be all-zeros or all-ones, and forcing the carry chain input.
 
 The transistor count is 20 transistors per bit, including the output-enable
-driving the Q bus.
+driving the `Q` bus.
 
 
 Register File
 =============
 
-The main register file consists of the four architectural registers A, X, Y, U
-and the hidden register K.  The register file is dual ported, with seperate read
-and write ports.
+The main register file consists of the four architectural registers `A`, `X`,
+`Y`, `U` and the hidden register `K`.  The register file is dual ported, with
+seperate read and write ports.
 
-The accumulator A also outputs directly to a bus.  Four of the registers are
+The accumulator `A` also outputs directly to a bus.  Four of the registers are
 5T2R NMOS SRAM cells, while the accumulator is a 7T2R CMOS SRAM cell, to give
-high drive strength for the A bus.
+high drive strength for the `A` bus.
 
 The read port provides only weak access from the bit-line to the SRAM cell, so
 that precharge is not necessary.  Writes are latched in a separate latch during
@@ -301,7 +311,8 @@ Stack
 =====
 
 There is an integrated four-entry stack, with a Gray-coded stack point.  There
-is no access to the stack or stack-pointer other than via CALL/RET instructions.
+is no access to the stack or stack-pointer other than via `CALL`/`RET`
+instructions.
 
 The stack storage is implement as a four byte register file, using single ported
 4T2R SRAM cells (identical to main memory below).
@@ -320,7 +331,7 @@ Main Memory
 
 As well as the CPU, there is memory...  SRAM is implemented as arrays of 4T2R
 cells, consisting of two cross-coupled NMOS inverters, and two BJTs as pass
-gates.
+gates.  A 32 byte SRAM board takes 2048 transistors, more than the CPU.
 
 Precharging the bit lines is necessary.  Pull-up resistors suffice.  Memory
 accesses take place on the second half of the clock cycle, leaving the first

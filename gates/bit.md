@@ -1,0 +1,16 @@
+# bit.sch schematic
+![bit.sch](bit.png)
+# Gates in bit.sch
+[ ![alu.sym](../sym/alu.png) ](alu.html)
+[ ![sramcell2.sym](../sym/sramcell2.png) ](sramcell2.html)
+[ ![sramcell2s.sym](../sym/sramcell2s.png) ](sramcell2s.html)
+[ ![dilatch.sym](../sym/dilatch.png) ](dilatch.html)
+[ ![not.sym](../sym/not.png) ](not.html)
+[ ![sramcell.sym](../sym/sramcell.png) ](sramcell.html)
+[ ![dflipflop.sym](../sym/dflipflop.png) ](dflipflop.html)
+[ ![nandod.sym](../sym/nandod.png) ](nandod.html)
+[ ![notb.sym](../sym/notb.png) ](notb.html)
+[ ![cnot.sym](../sym/cnot.png) ](cnot.html)
+[ ![seli.sym](../sym/seli.png) ](seli.html)
+[ ![nor.sym](../sym/nor.png) ](nor.html)
+[ ![nand.sym](../sym/nand.png) ](nand.html)

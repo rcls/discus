@@ -44,6 +44,28 @@ $(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 count: gates/bit.rcr gates/control.rcr
 	grep -E -c -v -e '^[^MQ]' -e 'unknown' -e 'No valid' $+
 
+SYMS=$(wildcard sym/*.sym)
+GATES=$(wildcard gates/*.sch) $(wildcard board/*.sch)
+
+.PHONY: png md web
+web: png md
+png: $(SYMS:%.sym=%.png) $(GATES:%.sch=%.png)
+
+%.png: %.sym
+	/home/geda/bin/gaf export -m 1 -k 1 -d 300 -c -o "$@" "$<"
+
+gates/%.png: gates/%.sch
+	/home/geda/bin/gaf export -m 1 -k 1 -d 300 -c -o "$@" "$<"
+
+board/%.png: board/%.sch
+	/home/geda/bin/gaf export -c -o "$@" "$<"
+
+md: $(GATES:%.sch=%.md)
+
+%.md: %.sch make-md.py
+	./make-md.py $< $@
+
+
 RENAME=mv $*-gerber/$*.$1 $*-gerber/$($1_ext)
 DELETE=rm $*-gerber/$*.$1
 

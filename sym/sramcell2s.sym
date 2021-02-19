@@ -81,3 +81,25 @@ pinnumber=3
 T 0 600 5 10 0 0 0 0 1
 pinseq=3
 }
+P 1600 600 1400 600 1 0 0
+{
+T 1600 600 5 10 0 0 0 0 1
+pintype=unknown
+T 1395 545 5 10 1 1 0 6 1
+pinlabel=QL
+T 1395 620 5 10 0 1 0 0 1
+pinnumber=8
+T 1600 600 5 10 0 0 0 0 1
+pinseq=8
+}
+P 1600 400 1400 400 1 0 0
+{
+T 1600 400 5 10 0 0 0 0 1
+pintype=unknown
+T 1395 345 5 10 1 1 0 6 1
+pinlabel=QR
+T 1395 420 5 10 0 1 0 0 1
+pinnumber=9
+T 1600 400 5 10 0 0 0 0 1
+pinseq=9
+}

@@ -246,10 +246,12 @@ There are several buses:
 * **`B`** : Operand bus.  This is a differential CMOS bus outputing the current
   instruction operand.  It is used as the address lines for memory instructions.
 * **`Q`** : Result bus.  This is an open drain bus carrying the result of the
-  current instruction.  It is driven by memory reads and IN instructions.
+  current instruction.  It is driven by memory reads and IN instructions,
+  in addition to all internal instruction result values.
 * **`P`** : Program counter.  This is a differential CMOS bus outputing the PC
-  for instruction fetch.
-* **`O`** : Opcode bus.  Open drain bus inputing the fetched instruction.
+  for the code memory read.
+* **`O`** : Opcode bus.  Open drain bus inputing the fetched opcode from
+  the code memory read.
 
 Internally, there is also the I bus, carrying the instruction currently in
 execute.  The J and K buses are looped to lines on the O and I buses to give
@@ -263,8 +265,10 @@ The opcode bus is open-drain.  Reset is implemented by pulling down the opcode
 bus, giving continuous 00000000 instructions.
 
 Normally this would alternate `CONST` prefix and `JUMP`-always instructions,
-jumping to address 0.  To make sure the exit from reset always follows the
-`JUMP`, not the `CONST`, the decode is overridden in reset to always jump.
+jumping to address 0, reseting the program counter.  To make sure the exit from
+reset always leaves the instruction decode in the correct state, while in reset,
+the decode is modified so that the jump to zero takes place on every clock
+cycle.
 
 The above takes two transistors to implement.  We also latch the reset to
 synchronise with the clock, which takes several more.

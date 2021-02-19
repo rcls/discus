@@ -152,24 +152,6 @@ device=INPUT
 T 49400 48175 5 10 1 1 0 5 1
 refdes=GND
 }
-C 47700 49000 1 90 0 out-1.sym
-{
-T 47200 49000 5 10 0 0 90 0 1
-footprint=anchor
-T 47400 49000 5 10 0 0 90 0 1
-device=OUTPUT
-T 47700 49750 5 10 1 1 180 0 1
-refdes=QR
-}
-C 47300 49000 1 90 0 out-1.sym
-{
-T 46800 49000 5 10 0 0 90 0 1
-footprint=anchor
-T 47000 49000 5 10 0 0 90 0 1
-device=OUTPUT
-T 47300 49750 5 10 1 1 180 0 1
-refdes=QL
-}
 C 47900 47900 1 0 0 gnd-1.sym
 C 46700 47900 1 0 0 gnd-1.sym
 N 46800 48200 46800 48400 4

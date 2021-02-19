@@ -300,10 +300,10 @@ void state_t::verify_spice(const char * path)
     spice_load spice(f, 10e-6, 7e-6, false);
     //auto Ohash = spice.extract_byte("o", "#");
     auto AA = spice.extract_byte("a");
-    auto XX = spice.extract_byte("vx_b");
-    auto YY = spice.extract_byte("vy_b");
-    auto UU = spice.extract_byte("vu_b");
-    auto KK = spice.extract_byte("vk_b");
+    auto XX = spice.extract_byte("r_xb");
+    auto YY = spice.extract_byte("r_yb");
+    auto UU = spice.extract_byte("r_ub");
+    auto KK = spice.extract_byte("r_kb");
     auto PP = spice.extract_byte("p");
     const auto FC = spice.extract_signal("co_c");
     const auto FZ = spice.extract_signal("zo_c");
@@ -311,6 +311,7 @@ void state_t::verify_spice(const char * path)
 
     unsigned char code[256];
     assemble(byte_emitter_t(code));
+    bool success = true;
 
     // Load the main state.  The first instruction to check is at sample 4,
     // pc=0.
@@ -323,13 +324,13 @@ void state_t::verify_spice(const char * path)
     flag_Z = FZ[3];
     for (int i = 4; i < spice.num_samples; ++i) {
         step(code[pc]);
-        verify(reg[A], AA[i], "A");
-        verify(reg[X], XX[i], "X");
-        verify(reg[Y], YY[i], "Y");
-        verify(reg[U], UU[i], "U");
+        success &= verify(reg[A], AA[i], "A");
+        success &= verify(reg[X], XX[i], "X");
+        success &= verify(reg[Y], YY[i], "Y");
+        success &= verify(reg[U], UU[i], "U");
         //verify(regK  , KK[i], "K");
-        verify(flag_C, FC[i], "C");
-        verify(flag_Z, FZ[i], "Z");
+        success &= verify(flag_C, FC[i], "C");
+        success &= verify(flag_Z, FZ[i], "Z");
         // fprintf(stderr, "%i %i %i %i %i\n", i, pc, PP[i-1], reg[A], AA[i]);
         if (!verify(pc, (int) PP[i-1], "PC"))
             abort();                    // No point in carrying on.
@@ -339,6 +340,7 @@ void state_t::verify_spice(const char * path)
     // unconditional return (0x60).
     assert(stack[0] == NULL);
     assert(code[pc] == 0x60);
+    assert(success);
 }
 
 

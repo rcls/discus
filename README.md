@@ -1,7 +1,7 @@
 discus
 ======
 
-Discus is an 8-bit CPU built from 1232 discrete transistors.  Currently it runs
+Discus is an 8-bit CPU built from 1229 discrete transistors.  Currently it runs
 in simulation.
 
 It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
@@ -53,7 +53,7 @@ give high fanout with decent speed.  PMOS logic is used in a few places, mostly
 for 1-of-N decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on eight
-identical boards (123 transistors each), and a separate control board (248
+identical boards (123 transistors each), and a separate control board (245
 transistors).
 
 

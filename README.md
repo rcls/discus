@@ -31,6 +31,12 @@ Branch (jump, call, return) instructions are executed in the first pipeline
 stage.  All branches may be conditional. There are no indirect branches, and no
 data access to the stack—it is not possible to branch to a computed address.
 
+An earlier version of the instruction set is implemented in [verilog](verilog)
+and ran 64-bit Miller-Rabin primality testing on an FPGA.  This application
+drives some of the design decisions.  For example, using the hidden register `K`
+for prefixes rather than a general purpose register, is because if the register
+pressure in that code.
+
 
 Circuitry Overview
 ------------------
@@ -38,7 +44,7 @@ Circuitry Overview
 [ <img align="right" src="sym/bit.png"> ](gates/bit.md)
 
 The bulk of the implementation is in NMOS logic, with N-channel MOSFET switches
-and 3.3k load resistors, giving a 1mA current per logic gate at 3.3V.  BJTs are
+and 3.3kΩ load resistors, giving a 1mA current per logic gate at 3.3V.  BJTs are
 used in the register files, both as pass gates, and as low-capacitance
 interfaces to the sense lines.
 
@@ -51,10 +57,9 @@ resistors and two BJT pass gates.  Outside of the register files,
 Arbitrary AOI gates are used as needed, where sensible these are drawn in the
 circuit diagram by connecting the outputs of open-drain gates together, although
 there are a couple of discrete monsters in
-[instruction decode](gates/decode.md).
-Significant use is made of stacked gates, where the
-output of one gate is connected to the ground connection of other gates,
-essentially forming a wired-and.
+[instruction decode](gates/decode.md).  Significant use is made of stacked
+gates, where the output of one gate is used as the ground connection of other
+gates, essentially forming a wired-or.
 
 Lines needing high fanout or high drive strength—mostly the bus and clock
 lines—are driven by CMOS outputs.  PMOS logic is also used, mostly for 1-of-N
@@ -79,10 +84,11 @@ an implicit operand and destination of two argument instructions.  Otherwise,
 all GP registers are interchangeable.
 
 The hidden register is `K`.  This is written by prefix instructions (constants
-or MEM prefix).  If an instruction writes `K`, then the next instruction uses
-that as the srouce register, instead of the register encoded in the instruction.
+or MEM prefix).  The instruction after a prefix, uses `K` as the source
+register, instead of the register encoded in the instruction.
 
-There are two condition flags, `C` and `Z`.
+There are two condition flags, `C` and `Z`, stored as flip-flops in the
+[control board](gates/control.md).
 
 There is an 8-bit program counter, and two bit [stack pointer](gates/sp.md).
 The four entry stack is implemented as a register file in the CPU, 128
@@ -176,10 +182,10 @@ Pops the PC from the stack, if the condition passes.  The operand is ignored.
 
 Note that return-never instructions are overloaded.
 
-This opcode in the first stage of the pipeline, but uses the condition flags set
-in the second stage.  This means that the condition flag for the return is
-evaluated before an update by the immediately preceding instruction, a hazard to
-be aware of.
+This opcode is processed in the first stage of the pipeline, but uses the
+condition flags set in the second stage.  This means that the condition flag for
+the return is evaluated before an update by the immediately preceding
+instruction, a hazard to be aware of.
 
 (`JUMP` and `CALL` have the same quirk, but for those instructions, there is no
 impact—for `JUMP` & `CALL`, the preceding instruction must be `CONST`
@@ -345,9 +351,9 @@ seperate read and write ports.
 [ <img align="right" src="sym/sramcell2.png"> ](gates/sramcell2.md)
 
 The accumulator `A` also outputs directly to a bus.  Four of the registers are
-[5T2R NMOS SRAM cells](gates/sramcell2.md), while the accumulator is a [7T2R
-CMOS SRAM cell](gates/sramcell2s.md), to give high drive strength for the `A`
-bus.
+[5T2R NMOS SRAM cells](gates/sramcell2.md), while the accumulator is a
+[7T2R CMOS SRAM cell](gates/sramcell2s.md), to give high drive strength for the
+`A` bus.
 
 The read port provides only weak access from the bit-line to the SRAM cell, so
 that precharge is not necessary.  Writes are latched in a separate latch during
@@ -379,8 +385,8 @@ four-entry stack, with a Gray-coded stack pointer.  There is no access to the
 stack or stack-pointer other than via `CALL`/`RET` instructions.
 
 The stack storage is implemented as a four byte register file, using
-[single ported 4T2R SRAM cells](gates/sramcell.md)
-(identical to main memory below).
+[single ported 4T2R SRAM cells](gates/sramcell.md) (identical to main memory
+below).
 
 Precharging the bit-lines is necessary, which is achieved by only accessing the
 stack on the second half of each clock cycle.  The output path from the stack
@@ -396,8 +402,8 @@ the CPU core to integrate the stack.  However, the
 [SRAM cells](gates/sramcell.md) for this only total 16 transistors on each
 bit-slice, very competitive with the transistor count of muxing stack operations
 onto the data memory bus.  In any case, storing stack entries in
-[main memory](board/sram32byte.md) SRAM cells would cost just as many
-transistors for the storage, just on a different circuit board.
+[main memory](board/sram32byte.md) would cost just as many transistors for the
+storage, just on a different circuit board.
 
 Main Memory
 ===========

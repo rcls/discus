@@ -54,11 +54,14 @@ png: $(SYMS:%.sym=%.png) $(GATES:%.sch=%.png)
 %.png: %.sym
 	/home/geda/bin/gaf export -m 1 -k 1 -d 300 -c -o "$@" "$<"
 
-gates/%.png: gates/%.sch
-	/home/geda/bin/gaf export -m 1 -k 1 -d 300 -c -o "$@" "$<"
+%.png: %.sch
+	/home/geda/bin/gaf export -m 1 -k 1 -d 600 -c -o "$@" "$<"
 
-board/%.png: board/%.sch
-	/home/geda/bin/gaf export -c -o "$@" "$<"
+board/universe.png: board/universe.sch
+	touch "$@"
+
+#board/%.png: board/%.sch
+#	/home/geda/bin/gaf export -c -o "$@" "$<"
 
 md: $(GATES:%.sch=%.md)
 

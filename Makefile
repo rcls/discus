@@ -45,29 +45,30 @@ count: gates/bit.rcr gates/control.rcr board/dram64byte.rcr
 	grep -E -c -v -e '^[^MQ]' -e 'unknown' -e 'No valid' $+
 
 SYMS=$(wildcard sym/*.sym)
-GATES=$(wildcard gates/*.sch) $(wildcard board/*.sch)
+GATES=$(wildcard gates/*.sch)
+BOARD=$(wildcard board/*.sch)
+ALL_SYM=$(SYMS:sym/%.sym=%)
+ALL_SCH=$(GATES:gates/%.sch=%) $(BOARD:board/%.sch=%)
 
 .PHONY: png md web
 web: png md
-png: $(SYMS:%.sym=%.png) $(GATES:%.sch=%.png)
+png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png)
+md: $(ALL_SCH:%=docs/%.md)
 
-%.png: %.sym
+vpath %.sch gates board
+vpath %.sym sym
+
+docs/%-sym.png: %.sym
 	/home/geda/bin/gaf export -m 1 -k 1 -d 300 -c -o "$@" "$<"
 
-%.png: %.sch
+docs/%.png: %.sch
 	/home/geda/bin/gaf export -m 1 -k 1 -d 600 -c -o "$@" "$<"
 
-board/universe.png: board/universe.sch
-	touch "$@"
-
-#board/%.png: board/%.sch
-#	/home/geda/bin/gaf export -c -o "$@" "$<"
-
-md: $(GATES:%.sch=%.md)
-
-%.md: %.sch make-md.py
+docs/%.md: %.sch make-md.py
 	./make-md.py $< $@
 
+docs/universe.png:
+	touch "$@"
 
 RENAME=mv $*-gerber/$*.$1 $*-gerber/$($1_ext)
 DELETE=rm $*-gerber/$*.$1

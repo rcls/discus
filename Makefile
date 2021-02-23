@@ -14,7 +14,7 @@ all:
 verify: $(TESTS:%=%.verify)
 programs: $(ALL_PROG)
 
-%.rcr: %.sch gates/*.sch board/*.sch
+%.rcr: %.sch gates/*.sch board/*.sch sym/*.sym
 	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $<
 
 %.cir: %.rcr ./substrate.py

@@ -42,9 +42,9 @@ pintype=unknown
 T 205 395 5 10 1 1 0 1 1
 pinlabel=WE#
 T 105 445 5 10 0 1 0 6 1
-pinnumber=5
+pinnumber=4
 T 0 400 5 10 0 0 0 0 1
-pinseq=5
+pinseq=4
 }
 P 1400 1000 1200 1000 1 0 0
 {
@@ -53,9 +53,9 @@ pintype=unknown
 T 1195 995 5 10 1 1 0 7 1
 pinlabel=Q
 T 1295 1045 5 10 0 1 0 0 1
-pinnumber=8
+pinnumber=7
 T 1400 1000 5 10 0 0 0 6 1
-pinseq=8
+pinseq=7
 }
 P 1400 400 1200 400 1 0 0
 {
@@ -75,9 +75,9 @@ pintype=unknown
 T 705 200 5 7 1 1 0 2 1
 pinlabel=GND
 T 650 105 5 10 0 1 90 6 1
-pinnumber=7
+pinnumber=6
 T 700 0 5 10 0 0 0 0 1
-pinseq=7
+pinseq=6
 }
 T 700 700 8 10 1 1 0 4 1
 refdes=S?
@@ -88,9 +88,9 @@ pintype=unknown
 T 695 1700 5 7 1 1 0 0 1
 pinlabel=Vdd
 T 650 1795 5 10 0 1 90 0 1
-pinnumber=6
+pinnumber=5
 T 700 1900 5 10 0 0 0 0 1
-pinseq=6
+pinseq=5
 }
 P 1400 600 1200 600 1 0 0
 {

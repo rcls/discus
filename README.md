@@ -3,14 +3,15 @@ discus
 
 [ <img align="right" src="sym/control.png"> ](gates/control.md)
 
-Discus is an 8-bit CPU built from 1229 discrete transistors.  Currently it runs
+Discus is an 8-bit CPU built from discrete transistors.  Currently it runs
 in simulation, [integrated into a system with RAM and ROM](board/univlight.md).
 
 It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a separate four entry stack.  There are four general purpose registers, one of
 which is the accumulator.  It uses a 2.5 stage RISC pipeline (opcode
-fetch/branch, instruction execute, and writeback).  The pipelining costs around
-100 transistors.
+fetch/branch, instruction execute, and writeback).  There is an integrated
+dynamic RAM controller.  The CPU totals 1408 transistors.  Without the
+pipelining and DRAM refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
 byte and execution is strict single cycle throughput.  Constant values and some
@@ -48,11 +49,12 @@ and 3.3kΩ load resistors, giving a 1mA current per logic gate at 3.3V.  BJTs ar
 used in the register files, both as pass gates, and as low-capacitance
 interfaces to the sense lines.
 
-Most [SRAM cells](gates/sramcell.md) are 4T2R, with two NMOS transistors, two
-resistors and two BJT pass gates.  Outside of the register files,
-[latches](gates/dilatch.md) have six NMOS transistors (plus resistors) and
-[two](gates/dilatch.md) [latches](gates/rslatch.md) form a
-[flip-flop](gates/dflipflop.md).
+[SRAM cells](gates/sramcell.md) are a mix of 4T2R, 5T3R and 7T3R depending on
+the number of ports and drive strength.  Each SRAM cell has NMOS or CMOS
+cross-coupled inverters, and uses BJT pass gates for the read and write ports.
+Outside of the register files, [latches](gates/dilatch.md) have six NMOS
+transistors (plus resistors) and [two](gates/dilatch.md)
+[latches](gates/rslatch.md) form a [flip-flop](gates/dflipflop.md).
 
 Arbitrary AOI gates are used as needed, where sensible these are drawn in the
 circuit diagram by connecting the outputs of open-drain gates together, although
@@ -75,6 +77,11 @@ The [control board](gates/bit.md) contains the status flags and register strobe
 handling, with the [stack pointer](gates/sp.md) and
 [instruction decode](gates/decode.md) in sub-circuits.
 
+Bit slicing does cost some transistors, as some parts of the bit slice are not
+need in each bit position.  For example the DRAM refresh controller is 8-bits
+wide but only needs to be 6-bits wide, while the lowest bit of the program
+counter could be simplified.
+
 
 Registers
 =========
@@ -93,6 +100,8 @@ There are two condition flags, `C` and `Z`, stored as flip-flops in the
 There is an 8-bit program counter, and two bit [stack pointer](gates/sp.md).
 The four entry stack is implemented as a register file in the CPU, 128
 transisters for storing 4 bytes, plus 38 for interfacing to the register file.
+
+The DRAM refresh control contains an 8-bit counter.
 
 
 Instruction Set & Encoding
@@ -276,8 +285,10 @@ Processor Buses
 There are several buses:
 * **`A`** : Accumulator bus.  This is a differential CMOS bus outputing the
   accumulator value for `STA` and `OUT` instructions.
-* **`B`** : Operand bus.  This is a differential CMOS bus outputing the current
-  instruction operand.  It is used as the address lines for memory instructions.
+* **`B`** : Operand bus.  This is a differential CMOS bus outputing a 
+  memory address.  For instructions accessing memory, this is the instruction
+  operand.  For instructions not accessing memory, the DRAM refresh address
+  is output.
 * **`Q`** : Result bus.  This is an open drain bus carrying the result of the
   current instruction.  It is driven by memory reads and IN instructions,
   in addition to all internal instruction result values.
@@ -289,22 +300,6 @@ There are several buses:
 Internally, there is also the I bus, carrying the instruction currently in
 execute.  The J and K buses are looped to lines on the O and I buses to give
 respectively the jump target and `CONST` value.
-
-
-Reset
-=====
-
-The opcode bus is open-drain.  Reset is implemented by pulling down the opcode
-bus, giving continuous 00000000 instructions.
-
-Normally this would alternate `CONST` prefix and `JUMP`-always instructions,
-jumping to address 0, reseting the program counter.  To make sure the exit from
-reset always leaves the instruction decode in the correct state, while in reset,
-the decode is modified so that the jump to zero takes place on every clock
-cycle.
-
-The above takes two transistors to implement.  We also latch the reset to
-synchronise with the clock, which takes several more.
 
 
 Arithmetic Unit
@@ -346,7 +341,7 @@ Register File
 
 The main register file consists of the four architectural registers `A`, `X`,
 `Y`, `U` and the hidden register `K`.  The register file is dual ported, with
-seperate read and write ports.
+separate read and write ports.
 
 [ <img align="right" src="sym/sramcell2.png"> ](gates/sramcell2.md)
 
@@ -400,20 +395,53 @@ clock cycle.
 At first sight, it appears to be an exhorbitent expenditure of transistors in
 the CPU core to integrate the stack.  However, the
 [SRAM cells](gates/sramcell.md) for this only total 16 transistors on each
-bit-slice, very competitive with the transistor count of muxing stack operations
-onto the data memory bus.  In any case, storing stack entries in
-[main memory](board/sram32byte.md) would cost just as many transistors for the
-storage, just on a different circuit board.
+bit-slice, competitive with the transistor count of muxing stack operations onto
+the data memory bus and the consequent coordination overheads.
+
+
+Reset
+=====
+
+The opcode bus is open-drain.  Reset is implemented by pulling down the opcode
+bus, giving continuous 00000000 instructions.
+
+Normally this would alternate `CONST` prefix and `JUMP`-always instructions,
+jumping to address 0, reseting the program counter.  To make sure the exit from
+reset always leaves the instruction decode in the correct state, while in reset,
+the decode is modified so that the jump to zero takes place on every clock
+cycle.
+
+The above takes two transistors to implement.  We also latch the reset to
+synchronise with the clock, which takes several more.
+
+
+Clocking
+========
+
+A two phase clock is used, generated from a single phase clock input.  The main
+clock is ϕ0, the main CPU flip-flops are positive edge triggered.  The main
+register file combined with the preceeding latch again gives positive
+edge-triggered behaviour.
+
+The [clock drive](gates/noverlap.md) is a CMOS flip-flop producing two out of
+phase clocks, ϕ0 and ϕ1.  The flip-flop produces output duty cycles of slightly
+less than 50%, with non-overlapping clock pulses: the falling edge of one clock
+is before the rising edge the other.
+
+The secondary clock ϕ1 is used for strobing writes to the stack and DRAM.  For
+DRAM in particular, the non-overlapping clock phases are critical to correct
+operation.
+
 
 Main Memory
 ===========
 
-[ <img align="right" src="sym/sram32byte.png"> ](board/sram32byte.md)
+[ <img align="right" src="sym/dram64byte.png"> ](board/dram64byte.md)
 
-As well as the CPU, there is memory… SRAM is implemented as arrays of 4T2R
-cells, consisting of two cross-coupled NMOS inverters, and two BJTs as pass
-gates.  A 32-byte SRAM board takes 2048 transistors for storage, plus those
-needed for decode and bus interfaces, more than the CPU.
+As well as the CPU, there is memory… DRAM is implemented as arrays of 1T1C
+cells, consisting of a discrete capacitor and a BJT pass gate.  A 64-byte DRAM
+board takes 512 transistors and 512 capacitors for storage, plus 215 transistors
+for the decode, sense logic and I/O.
 
 Precharging the bit-lines is necessary.  Pull-up resistors suffice.  Memory
 accesses take place on the second half of the clock cycle, leaving the first
@@ -421,7 +449,8 @@ half for pre-charge, even on back-to-back memory accesses.  Because memory reads
 always go directly into a register, the reduced time available from the half
 clock cycle is not a concern.
 
-Program storage is intended to be implemented as ROM, so there is no allowance
-for precharge allowance.  Opcode fetch is not critical path for performance.
-While branches are executed in the same clock cycle as opcode fetch, the logic
-for those is much simpler and shorter than the main execution pipeline stage.
+Program storage is intended to be implemented as ROM, so there is no DRAM
+refresh or precharge timing allowance on the program memory bus.  Opcode fetch
+is not critical path for performance.  While branches are executed in the same
+clock cycle as opcode fetch, the logic for those is much simpler and shorter
+than the main execution pipeline stage.

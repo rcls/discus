@@ -1,6 +1,6 @@
 v 20201216 2
 T 700 1200 8 10 1 1 0 4 1
-source=sramio.sch
+source=dramio.sch
 B 200 200 1000 1500 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
 P 0 1000 200 1000 1 0 0
 {
@@ -12,17 +12,6 @@ T 105 1045 5 10 0 1 0 6 1
 pinnumber=3
 T 0 1000 5 10 0 0 0 0 1
 pinseq=3
-}
-P 0 800 200 800 1 0 0
-{
-T 0 800 5 10 0 0 0 0 1
-pintype=unknown
-T 205 795 5 10 1 1 0 1 1
-pinlabel=R
-T 105 845 5 10 0 1 0 6 1
-pinnumber=4
-T 0 800 5 10 0 0 0 0 1
-pinseq=4
 }
 P 0 1600 200 1600 1 0 0
 {
@@ -51,7 +40,7 @@ P 0 400 200 400 1 0 0
 T 0 400 5 10 0 0 0 0 1
 pintype=unknown
 T 205 395 5 10 1 1 0 1 1
-pinlabel=W
+pinlabel=WE#
 T 105 445 5 10 0 1 0 6 1
 pinnumber=5
 T 0 400 5 10 0 0 0 0 1
@@ -73,7 +62,7 @@ P 1400 400 1200 400 1 0 0
 T 1400 400 5 10 0 0 0 6 1
 pintype=unknown
 T 1195 395 5 10 1 1 0 7 1
-pinlabel=SEL#
+pinlabel=OE
 T 1295 445 5 10 0 1 0 0 1
 pinnumber=9
 T 1400 400 5 10 0 0 0 6 1
@@ -102,4 +91,15 @@ T 650 1795 5 10 0 1 90 0 1
 pinnumber=6
 T 700 1900 5 10 0 0 0 0 1
 pinseq=6
+}
+P 1400 600 1200 600 1 0 0
+{
+T 1400 600 5 10 0 0 0 6 1
+pintype=unknown
+T 1195 595 5 10 1 1 0 7 1
+pinlabel=ϕ0
+T 1295 645 5 10 0 1 0 0 1
+pinnumber=8
+T 1400 600 5 10 0 0 0 6 1
+pinseq=8
 }

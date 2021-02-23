@@ -14,4 +14,4 @@
 [ ![nor1and.sym](../sym/nor1and.png) ](nor1and.html)
 [ ![seli.sym](../sym/seli.png) ](seli.html)
 [ ![decoder.sym](../sym/decoder.png) ](decoder.html)
-[ ![cnot.sym](../sym/cnot.png) ](cnot.html)
+[ ![noverlap.sym](../sym/noverlap.png) ](noverlap.html)

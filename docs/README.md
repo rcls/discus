@@ -7,11 +7,11 @@ Discus is an 8-bit CPU built from discrete transistors.  Currently it runs
 in simulation, [integrated into a system with RAM and ROM](univlight.md).
 
 It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
-a separate four entry stack.  There are four general purpose registers, one of
-which is the accumulator.  It uses a 2.5 stage RISC pipeline (opcode
-fetch/branch, instruction execute, and writeback).  There is an integrated
-dynamic RAM controller.  The CPU totals 1408 transistors.  Without the
-pipelining and DRAM refresh the count would be more like 1000.
+a four entry stack.  There are four general purpose registers, one of which is
+the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
+instruction execute, and writeback).  There is an integrated dynamic RAM
+controller.  The CPU totals 1408 transistors.  Without the pipelining and DRAM
+refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
 byte and execution is strict single cycle throughput.  Constant values and some
@@ -440,7 +440,7 @@ Main Memory
 
 As well as the CPU, there is memory… DRAM is implemented as arrays of 1T1C
 cells, consisting of a discrete capacitor and a BJT pass gate.  A 64-byte DRAM
-board takes 512 transistors and 512 capacitors for storage, plus 215 transistors
+board takes 512 transistors and 512 capacitors for storage, plus 181 transistors
 for the decode, sense logic and I/O.
 
 Precharging the bit-lines is necessary.  Pull-up resistors suffice.  Memory

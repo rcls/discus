@@ -15,7 +15,7 @@ footprint=anchor
 T 6100 7000 5 10 0 0 0 0 1
 device=INPUT
 T 6100 6800 5 10 1 1 0 7 1
-refdes=L
+refdes=B
 }
 C 6100 6200 1 0 0 in-1.sym
 {
@@ -105,7 +105,7 @@ C 7300 8100 1 0 0 vdd-1.sym
 N 7900 7600 9500 7600 4
 {
 T 8100 7650 5 10 1 1 0 0 1
-netname=L#
+netname=B#
 }
 C 6900 7100 1 0 0 nand1or.sym
 {

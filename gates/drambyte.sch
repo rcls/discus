@@ -7,7 +7,7 @@ footprint=anchor
 T 6400 9300 5 10 0 0 0 0 1
 device=INPUT
 T 6400 9100 5 10 1 1 180 1 1
-refdes=SEL
+refdes=H
 }
 C 6400 8700 1 0 0 in-1.sym
 {
@@ -16,7 +16,7 @@ footprint=anchor
 T 6400 9000 5 10 0 0 0 0 1
 device=INPUT
 T 6400 8794 5 10 1 1 0 7 1
-refdes=SEL#
+refdes=L#
 }
 C 8100 10500 1 270 0 in-1.sym
 {
@@ -25,7 +25,7 @@ footprint=anchor
 T 8400 10500 5 10 0 0 270 0 1
 device=INPUT
 T 8200 10500 5 10 1 1 0 3 1
-refdes=L0
+refdes=B0
 }
 N 7800 9600 7800 8500 4
 N 7400 8500 14100 8500 4
@@ -86,7 +86,7 @@ footprint=anchor
 T 9300 10500 5 10 0 0 270 0 1
 device=INPUT
 T 9100 10500 5 10 1 1 0 3 1
-refdes=L1
+refdes=B1
 }
 N 8700 9600 8700 8500 4
 C 9300 8800 1 90 0 capacitor.sym
@@ -118,7 +118,7 @@ footprint=anchor
 T 10200 10500 5 10 0 0 270 0 1
 device=INPUT
 T 10000 10500 5 10 1 1 0 3 1
-refdes=L2
+refdes=B2
 }
 N 9600 9600 9600 8500 4
 C 10200 8800 1 90 0 capacitor.sym
@@ -150,7 +150,7 @@ footprint=anchor
 T 11100 10500 5 10 0 0 270 0 1
 device=INPUT
 T 10900 10500 5 10 1 1 0 3 1
-refdes=L3
+refdes=B3
 }
 N 10500 9600 10500 8500 4
 C 11100 8800 1 90 0 capacitor.sym
@@ -182,7 +182,7 @@ footprint=anchor
 T 12000 10500 5 10 0 0 270 0 1
 device=INPUT
 T 11800 10500 5 10 1 1 0 3 1
-refdes=L4
+refdes=B4
 }
 N 11400 9600 11400 8500 4
 C 12000 8800 1 90 0 capacitor.sym
@@ -214,7 +214,7 @@ footprint=anchor
 T 12900 10500 5 10 0 0 270 0 1
 device=INPUT
 T 12700 10500 5 10 1 1 0 3 1
-refdes=L5
+refdes=B5
 }
 N 12300 9600 12300 8500 4
 C 12900 8800 1 90 0 capacitor.sym
@@ -246,7 +246,7 @@ footprint=anchor
 T 13800 10500 5 10 0 0 270 0 1
 device=INPUT
 T 13600 10500 5 10 1 1 0 3 1
-refdes=L6
+refdes=B6
 }
 N 13200 9600 13200 8500 4
 C 13800 8800 1 90 0 capacitor.sym
@@ -278,7 +278,7 @@ footprint=anchor
 T 14700 10500 5 10 0 0 270 0 1
 device=INPUT
 T 14500 10500 5 10 1 1 0 3 1
-refdes=L7
+refdes=B7
 }
 N 14100 9600 14100 8500 4
 C 14700 8800 1 90 0 capacitor.sym

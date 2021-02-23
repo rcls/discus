@@ -5,3 +5,5 @@
 [ ![dramio](dramio-sym.png) ](dramio.html)
 [ ![nor3](nor3-sym.png) ](nor3.html)
 [ ![nand3](nand3-sym.png) ](nand3.html)
+[ ![eightn](eightn-sym.png) ](eightn.html)
+[ ![eightp](eightp-sym.png) ](eightp.html)

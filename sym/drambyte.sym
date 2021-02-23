@@ -7,7 +7,7 @@ P 0 2400 200 2400 1 0 0
 T 0 2400 5 10 0 0 0 0 1
 pintype=unknown
 T 205 2395 5 10 1 1 0 1 1
-pinlabel=L0
+pinlabel=B0
 T 105 2445 5 10 0 1 0 6 1
 pinnumber=1
 T 0 2400 5 10 0 0 0 0 1
@@ -18,7 +18,7 @@ P 0 2200 200 2200 1 0 0
 T 0 2200 5 10 0 0 0 0 1
 pintype=unknown
 T 205 2195 5 10 1 1 0 1 1
-pinlabel=L1
+pinlabel=B1
 T 105 2245 5 10 0 1 0 6 1
 pinnumber=2
 T 0 2200 5 10 0 0 0 0 1
@@ -31,7 +31,7 @@ pintype=unknown
 T 0 2000 5 10 0 0 0 0 1
 pinseq=3
 T 205 1995 5 10 1 1 0 1 1
-pinlabel=L2
+pinlabel=B2
 T 105 2045 5 10 0 1 0 6 1
 pinnumber=3
 }
@@ -42,7 +42,7 @@ pintype=unknown
 T 0 1800 5 10 0 0 0 0 1
 pinseq=4
 T 205 1795 5 10 1 1 0 1 1
-pinlabel=L3
+pinlabel=B3
 T 105 1845 5 10 0 1 0 6 1
 pinnumber=4
 }
@@ -53,7 +53,7 @@ pintype=unknown
 T 0 1600 5 10 0 0 0 0 1
 pinseq=5
 T 205 1595 5 10 1 1 0 1 1
-pinlabel=L4
+pinlabel=B4
 T 105 1645 5 10 0 1 0 6 1
 pinnumber=5
 }
@@ -64,7 +64,7 @@ pintype=unknown
 T 0 1400 5 10 0 0 0 0 1
 pinseq=6
 T 205 1395 5 10 1 1 0 1 1
-pinlabel=L5
+pinlabel=B5
 T 105 1445 5 10 0 1 0 6 1
 pinnumber=6
 }
@@ -75,7 +75,7 @@ pintype=unknown
 T 0 1200 5 10 0 0 0 0 1
 pinseq=7
 T 205 1195 5 10 1 1 0 1 1
-pinlabel=L6
+pinlabel=B6
 T 105 1245 5 10 0 1 0 6 1
 pinnumber=7
 }
@@ -86,14 +86,14 @@ pintype=unknown
 T 0 1000 5 10 0 0 0 0 1
 pinseq=8
 T 205 995 5 10 1 1 0 1 1
-pinlabel=L7
+pinlabel=B7
 T 105 1045 5 10 0 1 0 6 1
 pinnumber=8
 }
 P 0 600 200 600 1 0 0
 {
 T 205 595 5 10 1 1 0 1 1
-pinlabel=SEL#
+pinlabel=L#
 T 105 645 5 10 0 1 0 6 1
 pinnumber=9
 T 0 600 5 10 0 0 0 0 1
@@ -106,7 +106,7 @@ P 0 400 200 400 1 0 0
 T 0 400 5 10 0 0 0 0 1
 pintype=unknown
 T 205 395 5 10 1 1 0 1 1
-pinlabel=SEL
+pinlabel=H
 T 105 445 5 10 0 1 0 6 1
 pinnumber=10
 T 0 400 5 10 0 0 0 0 1

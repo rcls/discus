@@ -202,3 +202,14 @@ pintype=unknown
 T 1395 395 5 10 1 1 0 7 1
 pinlabel=L3#
 }
+P 1600 1400 1400 1400 1 0 0
+{
+T 1395 1395 5 10 1 1 0 7 1
+pinlabel=ϕ1
+T 1495 1445 5 10 0 1 0 0 1
+pinnumber=24
+T 1600 1400 5 10 0 0 0 6 1
+pinseq=24
+T 1400 1400 5 10 0 1 0 6 1
+pintype=unknown
+}

@@ -9,6 +9,7 @@ PCB.*
 *.rcr
 *.fake-cir
 \#*#
+unused
 test/hazard
 test/logic
 test/monitor
@@ -20,6 +21,8 @@ test/testalu
 test/testcall
 test/testinc
 test/testmem
+test/testmemi
+test/testmemw
 test/testopdecode
 test/testpcdecode
 test/testsp

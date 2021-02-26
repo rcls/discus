@@ -158,3 +158,14 @@ pinseq=23
 T 1400 400 5 10 0 1 0 6 1
 pintype=unknown
 }
+P 1600 1000 1400 1000 1 0 0
+{
+T 1395 995 5 10 1 1 0 7 1
+pinlabel=ϕ1
+T 1495 1045 5 10 0 1 0 0 1
+pinnumber=22
+T 1600 1000 5 10 0 0 0 6 1
+pinseq=22
+T 1400 1000 5 10 0 1 0 6 1
+pintype=unknown
+}

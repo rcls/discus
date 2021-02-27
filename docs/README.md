@@ -49,12 +49,12 @@ and 3.3kΩ load resistors, giving a 1mA current per logic gate at 3.3V.  BJTs ar
 used in the register files, both as pass gates, and as low-capacitance
 interfaces to the sense lines.
 
-[SRAM cells](sramcell.md) are a mix of 4T2R, 5T3R and 7T3R depending on
-the number of ports and drive strength.  Each SRAM cell has NMOS or CMOS
+[SRAM cells](sramcell.md) are a mix of 4T2R, 5T3R and 7T3R depending on the
+number of ports and drive strength.  Each SRAM cell has NMOS or CMOS
 cross-coupled inverters, and uses BJT pass gates for the read and write ports.
-Outside of the register files, [latches](dilatch.md) have six NMOS
-transistors (plus resistors) and [two](dilatch.md)
-[latches](sramcell2w.md) form a [flip-flop](dflipflop.md).
+Outside of the register files, [latches](sramcell2w.md) are similar, with an
+[optional inverter](dlatch.md).  [Two](dlatch.md) [latches](sramcell2w.md) form
+a [flip-flop](dflipflop.md).
 
 Arbitrary AOI gates are used as needed, where sensible these are drawn in the
 circuit diagram by connecting the outputs of open-drain gates together, although

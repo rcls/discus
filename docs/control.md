@@ -2,7 +2,6 @@
 ![control.sch](control.png)
 # Gates in control.sch
 [ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
-[ ![dilatch](dilatch-sym.png) ](dilatch.html)
 [ ![dlatch](dlatch-sym.png) ](dlatch.html)
 [ ![nor3](nor3-sym.png) ](nor3.html)
 [ ![not](not-sym.png) ](not.html)

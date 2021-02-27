@@ -1,15 +1,4 @@
 v 20201216 2
-C 4400 1000 1 0 0 resistor-load.sym
-{
-T 4700 1400 5 8 0 0 0 0 1
-device=RESISTOR
-T 5050 1150 5 8 1 1 0 0 1
-refdes=R2
-T 4800 1100 5 8 0 1 0 0 1
-footprint=0603-boxed
-T 4700 900 5 8 1 1 0 0 1
-value=10k
-}
 C 6000 2200 1 90 1 pdtc124.sym
 {
 T 5700 1950 5 8 1 1 180 3 1
@@ -29,17 +18,6 @@ T 2800 2100 5 8 0 1 90 8 1
 value=PDTC124TU
 }
 N 2800 1800 2800 1100 4
-C 2800 1000 1 0 0 resistor-load.sym
-{
-T 3100 1400 5 8 0 0 0 0 1
-device=RESISTOR
-T 3450 1150 5 8 1 1 0 0 1
-refdes=R1
-T 3200 1100 5 8 0 1 0 0 1
-footprint=0603-boxed
-T 3000 900 5 8 1 1 0 0 1
-value=10k
-}
 C 4300 1100 1 270 0 out-1.sym
 {
 T 4600 1100 5 10 0 0 270 0 1
@@ -147,4 +125,26 @@ N 1200 1800 1000 1800 4
 {
 T 950 1800 5 10 1 1 0 7 1
 netname=D
+}
+C 2800 1000 1 0 0 resistor-pull.sym
+{
+T 3100 1400 5 10 0 0 0 0 1
+device=RESISTOR
+T 3450 1150 5 10 1 1 0 0 1
+refdes=R1
+T 3200 1100 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 3200 1100 5 10 0 1 0 0 1
+value=22k
+}
+C 4400 1000 1 0 0 resistor-pull.sym
+{
+T 4700 1400 5 10 0 0 0 0 1
+device=RESISTOR
+T 5050 1150 5 10 1 1 0 0 1
+refdes=R2
+T 4800 1100 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 4800 1100 5 10 0 1 0 0 1
+value=22k
 }

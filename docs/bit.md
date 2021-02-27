@@ -4,7 +4,6 @@
 [ ![alu](alu-sym.png) ](alu.html)
 [ ![sramcell2](sramcell2-sym.png) ](sramcell2.html)
 [ ![sramcell2s](sramcell2s-sym.png) ](sramcell2s.html)
-[ ![dilatch](dilatch-sym.png) ](dilatch.html)
 [ ![not](not-sym.png) ](not.html)
 [ ![sramcell](sramcell-sym.png) ](sramcell.html)
 [ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
@@ -15,3 +14,4 @@
 [ ![cnot](cnot-sym.png) ](cnot.html)
 [ ![xnor](xnor-sym.png) ](xnor.html)
 [ ![halfadd](halfadd-sym.png) ](halfadd.html)
+[ ![dlatch](dlatch-sym.png) ](dlatch.html)

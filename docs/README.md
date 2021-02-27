@@ -10,7 +10,7 @@ It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is
 the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1408 transistors.  Without the pipelining and DRAM
+controller.  The CPU totals 1287 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -68,8 +68,8 @@ lines—are driven by CMOS outputs.  PMOS logic is also used, mostly for 1-of-N
 decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
-[eight identical boards](bit.md) (145 transistors each), and a
-[separate control board](control.md) (248 transistors).
+[eight identical boards](bit.md) (132 transistors each), and a
+[separate control board](control.md) (231 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
 logic on the left, and the instruction execute pipe line stage on the right.
@@ -439,7 +439,7 @@ Main Memory
 
 As well as the CPU, there is memory… DRAM is implemented as arrays of 1T1C
 cells, consisting of a discrete capacitor and a BJT pass gate.  A 64-byte DRAM
-board takes 512 transistors and 512 capacitors for storage, plus 174 transistors
+board takes 512 transistors and 512 capacitors for storage, plus 170 transistors
 for the decode, sense logic and I/O.  (There are also 64 diodes).
 
 Precharging the bit-lines is necessary.  Pull-up resistors suffice.  Memory

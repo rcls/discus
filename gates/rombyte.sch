@@ -1,0 +1,227 @@
+v 20201216 2
+C 10900 11900 1 270 0 in-1.sym
+{
+T 11200 11900 5 10 0 0 270 0 1
+device=INPUT
+T 11000 11900 5 10 1 1 0 3 1
+refdes=H
+}
+C 12800 11300 1 0 0 linko.sym
+{
+T 13100 11700 5 10 0 0 0 0 1
+device=RESISTOR
+T 13200 11400 5 10 0 1 0 0 1
+footprint=jumper2
+T 13200 11400 5 10 0 1 0 0 1
+value=INFINITY
+T 13100 11450 5 10 1 1 0 3 1
+refdes=R0
+}
+C 12800 11100 1 0 0 linko.sym
+{
+T 13100 11500 5 10 0 0 0 0 1
+device=RESISTOR
+T 13200 11200 5 10 0 1 0 0 1
+footprint=jumper2
+T 13200 11200 5 10 0 1 0 0 1
+value=INFINITY
+T 13100 11150 5 10 1 1 0 5 1
+refdes=R1
+}
+C 13400 10900 1 0 0 baw56d.sym
+{
+T 13950 11525 5 10 1 1 0 3 1
+refdes=X0
+}
+C 15100 11100 1 0 1 linko.sym
+{
+T 14800 11500 5 10 0 0 0 6 1
+device=RESISTOR
+T 14700 11200 5 10 0 1 0 6 1
+footprint=jumper2
+T 14700 11200 5 10 0 1 0 6 1
+value=INFINITY
+T 14800 11250 5 10 1 1 0 3 1
+refdes=R2
+}
+C 15100 10900 1 0 1 linko.sym
+{
+T 14800 11300 5 10 0 0 0 6 1
+device=RESISTOR
+T 14700 11000 5 10 0 1 0 6 1
+footprint=jumper2
+T 14700 11000 5 10 0 1 0 6 1
+value=INFINITY
+T 14800 10950 5 10 1 1 0 5 1
+refdes=R3
+}
+N 13400 11000 12800 11000 4
+{
+T 12750 11000 5 10 1 1 0 7 1
+netname=S
+}
+N 14500 11400 15100 11400 4
+{
+T 15150 11400 5 10 1 1 0 1 1
+netname=S
+}
+C 12800 10000 1 0 0 linko.sym
+{
+T 13100 10400 5 10 0 0 0 0 1
+device=RESISTOR
+T 13200 10100 5 10 0 1 0 0 1
+footprint=jumper2
+T 13200 10100 5 10 0 1 0 0 1
+value=INFINITY
+T 13100 10150 5 10 1 1 0 3 1
+refdes=R4
+}
+C 12800 9800 1 0 0 linko.sym
+{
+T 13100 10200 5 10 0 0 0 0 1
+device=RESISTOR
+T 13200 9900 5 10 0 1 0 0 1
+footprint=jumper2
+T 13200 9900 5 10 0 1 0 0 1
+value=INFINITY
+T 13100 9850 5 10 1 1 0 5 1
+refdes=R5
+}
+C 13400 9600 1 0 0 baw56d.sym
+{
+T 13950 10225 5 10 1 1 0 3 1
+refdes=X1
+}
+C 15100 9800 1 0 1 linko.sym
+{
+T 14800 10200 5 10 0 0 0 6 1
+device=RESISTOR
+T 14700 9900 5 10 0 1 0 6 1
+footprint=jumper2
+T 14700 9900 5 10 0 1 0 6 1
+value=INFINITY
+T 14800 9950 5 10 1 1 0 3 1
+refdes=R6
+}
+C 15100 9600 1 0 1 linko.sym
+{
+T 14800 10000 5 10 0 0 0 6 1
+device=RESISTOR
+T 14700 9700 5 10 0 1 0 6 1
+footprint=jumper2
+T 14700 9700 5 10 0 1 0 6 1
+value=INFINITY
+T 14800 9650 5 10 1 1 0 5 1
+refdes=R7
+}
+N 14500 10100 15100 10100 4
+{
+T 15150 10100 5 10 1 1 0 1 1
+netname=S
+}
+N 13400 9700 12800 9700 4
+{
+T 12750 9700 5 10 1 1 0 7 1
+netname=S
+}
+C 12800 11300 1 0 1 out-1.sym
+{
+T 12800 11600 5 10 0 0 0 6 1
+device=OUTPUT
+T 12200 11400 5 10 1 1 0 7 1
+refdes=B0
+}
+C 12800 11100 1 0 1 out-1.sym
+{
+T 12800 11400 5 10 0 0 0 6 1
+device=OUTPUT
+T 12200 11200 5 10 1 1 0 7 1
+refdes=B1
+}
+C 15100 11100 1 0 0 out-1.sym
+{
+T 15100 11400 5 10 0 0 0 0 1
+device=OUTPUT
+T 15700 11200 5 10 1 1 0 1 1
+refdes=B2
+}
+C 15100 10900 1 0 0 out-1.sym
+{
+T 15100 11200 5 10 0 0 0 0 1
+device=OUTPUT
+T 15700 11000 5 10 1 1 0 1 1
+refdes=B3
+}
+C 12800 10000 1 0 1 out-1.sym
+{
+T 12800 10300 5 10 0 0 0 6 1
+device=OUTPUT
+T 12200 10100 5 10 1 1 0 7 1
+refdes=B4
+}
+C 12800 9800 1 0 1 out-1.sym
+{
+T 12800 10100 5 10 0 0 0 6 1
+device=OUTPUT
+T 12200 9900 5 10 1 1 0 7 1
+refdes=B5
+}
+C 15100 9800 1 0 0 out-1.sym
+{
+T 15100 10100 5 10 0 0 0 0 1
+device=OUTPUT
+T 15700 9900 5 10 1 1 0 1 1
+refdes=B6
+}
+C 15100 9600 1 0 0 out-1.sym
+{
+T 15100 9900 5 10 0 0 0 0 1
+device=OUTPUT
+T 15700 9700 5 10 1 1 0 1 1
+refdes=B7
+}
+N 11000 10900 11200 10900 4
+{
+T 11250 10900 5 10 1 1 0 1 1
+netname=S
+}
+C 10000 11000 1 0 0 in-1.sym
+{
+T 10000 11300 5 10 0 0 0 0 1
+device=INPUT
+T 10000 11100 5 10 1 1 0 7 1
+refdes=L#
+T 10000 11500 5 10 0 0 0 0 1
+footprint=anchor
+}
+C 11100 9400 1 90 0 in-1.sym
+{
+T 10800 9400 5 10 0 0 90 0 1
+device=INPUT
+T 11000 9400 5 10 1 1 0 5 1
+refdes=GND
+T 10600 9400 5 10 0 0 90 0 1
+footprint=anchor
+}
+C 11100 10000 1 90 0 resistor-load.sym
+{
+T 10700 10300 5 10 0 0 90 0 1
+device=RESISTOR
+T 11050 10200 5 10 1 1 0 2 1
+refdes=R
+T 11000 10400 5 10 0 1 90 0 1
+footprint=0603-boxed
+T 11000 10400 5 10 0 1 90 0 1
+value=3.3k
+}
+C 10600 10800 1 0 0 BSS84.sym
+{
+T 10825 11100 5 10 1 1 0 1 1
+refdes=M
+T 10700 11600 5 10 0 1 0 0 1
+value=BSS84
+T 11100 11400 5 10 0 1 0 0 1
+footprint=sot23-pmos
+T 12100 11400 5 10 0 1 0 0 1
+device=PMOS
+}

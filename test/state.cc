@@ -395,14 +395,13 @@ static int select_bits(int n, int mask)
 
 void munge_emitter_t::emit_byte(int address, int byte)
 {
-    char board = select_bits(address, 0x80) + 'R';
-    char quad8 = select_bits(address, 0x30) + 'A';
-    char quad = select_bits(address, 0xd) + 'A';
-    char column = select_bits(address, 0x42) + 'A';
+    char board = select_bits(address, 0xc0) + 'R';
+    char rom16 = select_bits(address, 0x24) + 'A';
+    char rom4  = select_bits(address, 0x12) + 'A';
+    char row   = select_bits(address,  0x9) + 'A';
     for (int i = 0; i != 8; ++i) {
-        if ((byte & (1<<i)) == 0)
-            continue;
-        printf("R%c%u%c%c%c\n", column, i, quad, quad8, board);
+        if (byte & (1 << i))
+            printf("R%u%c%c%c%c\n", i, row, rom4, rom16, board);
     }
 }
 

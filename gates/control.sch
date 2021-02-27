@@ -269,7 +269,7 @@ netname=I2
 }
 C 5300 7900 1 0 0 dflipflop.sym
 {
-T 6650 8300 5 10 1 1 0 7 1
+T 6650 8150 5 10 1 1 0 6 1
 refdes=C
 T 6100 8550 5 10 1 1 0 4 1
 source=dflipflop.sch
@@ -324,28 +324,28 @@ C 4800 7100 1 0 0 vdd-1.sym
 C 4800 9400 1 0 0 vdd-1.sym
 C 5300 5600 1 0 0 dflipflop.sym
 {
-T 6650 6000 5 10 1 1 0 7 1
+T 6650 5850 5 10 1 1 0 6 1
 refdes=Z
 T 6100 6250 5 10 1 1 0 4 1
 source=dflipflop.sch
 }
 C 9500 2400 1 0 0 dilatch.sym
 {
-T 10850 2850 5 10 1 1 0 7 1
+T 10850 2650 5 10 1 1 0 6 1
 refdes=W0
 T 10300 3075 5 10 1 1 0 4 1
 source=dilatch.sch
 }
 C 9500 4200 1 0 0 dilatch.sym
 {
-T 10850 4650 5 10 1 1 0 7 1
+T 10850 4450 5 10 1 1 0 6 1
 refdes=W1
 T 10300 4875 5 10 1 1 0 4 1
 source=dilatch.sch
 }
 C 9500 6000 1 0 0 dilatch.sym
 {
-T 10850 6450 5 10 1 1 0 7 1
+T 10850 6250 5 10 1 1 0 6 1
 refdes=W2
 T 10300 6675 5 10 1 1 0 4 1
 source=dilatch.sch
@@ -409,7 +409,7 @@ netname=W1
 }
 C 9500 600 1 0 0 dlatch.sym
 {
-T 10650 1050 5 10 1 1 0 0 1
+T 10850 850 5 10 1 1 0 6 1
 refdes=K
 T 10300 1325 5 10 1 1 0 4 1
 source=dlatch.sch
@@ -479,7 +479,7 @@ refdes=WU
 }
 C 5300 3200 1 0 0 dflipflop.sym
 {
-T 6650 3600 5 10 1 1 0 7 1
+T 6650 3450 5 10 1 1 0 6 1
 refdes=J
 T 6100 3850 5 10 1 1 0 4 1
 source=dflipflop.sch
@@ -932,7 +932,7 @@ C 12600 6400 1 0 0 sp.sym
 {
 T 13300 6750 5 8 1 1 0 4 1
 source=sp.sch
-T 13300 7100 5 10 1 1 0 4 1
+T 13300 7000 5 10 1 1 0 4 1
 refdes=S
 }
 C 13100 7900 1 0 0 vdd-1.sym
@@ -1346,7 +1346,7 @@ netname=iRST
 }
 C 4500 1000 1 0 0 dlatch.sym
 {
-T 5650 1450 5 10 1 1 0 0 1
+T 5850 1250 5 10 1 1 0 6 1
 refdes=R
 T 5300 1725 5 10 1 1 0 4 1
 source=dlatch.sch

@@ -449,8 +449,8 @@ half for pre-charge, even on back-to-back memory accesses.  Because memory reads
 always go directly into a register, the reduced time available from the half
 clock cycle is not a concern.
 
-Program storage is intended to be implemented as ROM, so there is no DRAM
-refresh or precharge timing allowance on the program memory bus.  Opcode fetch
-is not critical path for performance.  While branches are executed in the same
-clock cycle as opcode fetch, the logic for those is much simpler and shorter
-than the main execution pipeline stage.
+[Program storage](rom64byte.md) is intended to be implemented as ROM, so there
+is no DRAM refresh or precharge timing allowance on the program memory bus.
+Opcode fetch is not critical path for performance.  While branches are executed
+in the same clock cycle as opcode fetch, the logic for those is much simpler and
+shorter than the main execution pipeline stage.

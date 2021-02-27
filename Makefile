@@ -42,7 +42,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 	ngspice -r $@ -b $<
 
 count: gates/bit.rcr gates/control.rcr board/dram64byte.rcr board/rom64byte.rcr
-	grep -E -c -v -e '^[^MQ]' -e 'unknown' -e 'No valid' $+
+	grep -E -c -v -e '^$$' -e '^[^MQ]' -e 'unknown' -e 'No valid' $+
 
 SYMS=$(wildcard sym/*.sym)
 GATES=$(wildcard gates/*.sch)

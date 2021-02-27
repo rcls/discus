@@ -5,7 +5,7 @@ P 0 900 200 900 1 0 0
 T 0 900 5 10 0 0 0 0 1
 pintype=unknown
 T 205 895 5 10 1 1 0 1 1
-pinlabel=WSTROBE
+pinlabel=WE
 T 205 920 5 10 0 1 0 6 1
 pinnumber=2
 T 0 900 5 10 0 0 0 0 1
@@ -75,7 +75,7 @@ P 0 500 200 500 1 0 0
 T 0 500 5 10 0 0 0 0 1
 pintype=unknown
 T 205 495 5 10 1 1 0 1 1
-pinlabel=RSTROBE
+pinlabel=RE
 T 205 520 5 10 0 1 0 6 1
 pinnumber=3
 T 0 500 5 10 0 0 0 0 1

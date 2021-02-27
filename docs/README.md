@@ -54,7 +54,7 @@ the number of ports and drive strength.  Each SRAM cell has NMOS or CMOS
 cross-coupled inverters, and uses BJT pass gates for the read and write ports.
 Outside of the register files, [latches](dilatch.md) have six NMOS
 transistors (plus resistors) and [two](dilatch.md)
-[latches](rslatch.md) form a [flip-flop](dflipflop.md).
+[latches](sramcell2w.md) form a [flip-flop](dflipflop.md).
 
 Arbitrary AOI gates are used as needed, where sensible these are drawn in the
 circuit diagram by connecting the outputs of open-drain gates together, although

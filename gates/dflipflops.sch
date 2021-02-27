@@ -48,15 +48,8 @@ C 44000 62600 1 0 0 dilatch.sym
 {
 T 44800 63300 5 10 1 1 0 4 1
 source=dilatch.sch
-T 45150 63050 5 10 1 1 0 0 1
+T 45350 63050 5 10 1 1 0 7 1
 refdes=A
-}
-C 45600 62600 1 0 0 rslatch.sym
-{
-T 46350 63300 5 10 1 1 0 4 1
-source=rslatchs.sch
-T 46750 63050 5 10 1 1 0 0 1
-refdes=B
 }
 C 43200 64000 1 0 0 in-1.sym
 {
@@ -78,3 +71,10 @@ N 43800 63100 44000 63100 4
 C 43700 62300 1 0 0 gnd-1.sym
 C 44700 62300 1 0 0 gnd-1.sym
 C 46300 62300 1 0 0 gnd-1.sym
+C 45600 62600 1 0 0 sramcells.sym
+{
+T 46950 63050 5 10 1 1 0 7 1
+refdes=B
+T 46400 63300 5 10 1 1 0 4 1
+source=sramcells.sch
+}

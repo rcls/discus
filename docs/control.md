@@ -16,3 +16,4 @@
 [ ![fourpd](fourpd-sym.png) ](fourpd.html)
 [ ![decoder](decoder-sym.png) ](decoder.html)
 [ ![noverlap](noverlap-sym.png) ](noverlap.html)
+[ ![cnot](cnot-sym.png) ](cnot.html)

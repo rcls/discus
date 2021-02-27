@@ -5,4 +5,3 @@
 [ ![seli](seli-sym.png) ](seli.html)
 [ ![not](not-sym.png) ](not.html)
 [ ![fourpd](fourpd-sym.png) ](fourpd.html)
-[ ![cnot](cnot-sym.png) ](cnot.html)

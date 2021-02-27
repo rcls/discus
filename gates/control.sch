@@ -980,7 +980,7 @@ refdes=S3
 }
 C 15800 600 1 0 0 decode.sym
 {
-T 16600 1000 5 10 1 1 0 4 1
+T 16600 950 5 10 1 1 0 4 1
 source=decode.sch
 T 16600 2300 5 10 1 1 0 4 1
 refdes=D
@@ -1344,13 +1344,6 @@ N 4500 4100 4500 3900 4
 T 4500 3850 5 10 1 1 0 5 1
 netname=iRST
 }
-C 4500 1000 1 0 0 dlatch.sym
-{
-T 5850 1250 5 10 1 1 0 6 1
-refdes=R
-T 5300 1725 5 10 1 1 0 4 1
-source=dlatch.sch
-}
 N 12900 5300 12700 5300 4
 {
 T 12650 5300 5 10 1 1 0 7 1
@@ -1492,4 +1485,11 @@ C 13100 9000 1 0 0 noverlap.sym
 {
 T 13400 9300 5 10 1 1 0 4 1
 refdes=P
+}
+C 4500 1000 1 0 0 dflipflop.sym
+{
+T 5850 1250 5 10 1 1 0 6 1
+refdes=R
+T 5300 1650 5 10 1 1 0 4 1
+source=dflipflop.sch
 }

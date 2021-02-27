@@ -440,8 +440,8 @@ Main Memory
 
 As well as the CPU, there is memory… DRAM is implemented as arrays of 1T1C
 cells, consisting of a discrete capacitor and a BJT pass gate.  A 64-byte DRAM
-board takes 512 transistors and 512 capacitors for storage, plus 181 transistors
-for the decode, sense logic and I/O.
+board takes 512 transistors and 512 capacitors for storage, plus 174 transistors
+for the decode, sense logic and I/O.  (There are also 64 diodes).
 
 Precharging the bit-lines is necessary.  Pull-up resistors suffice.  Memory
 accesses take place on the second half of the clock cycle, leaving the first

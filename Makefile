@@ -41,7 +41,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 %.raw: %.cir
 	ngspice -r $@ -b $<
 
-count: gates/bit.rcr gates/control.rcr board/dram64byte.rcr
+count: gates/bit.rcr gates/control.rcr board/dram64byte.rcr board/rom64byte.rcr
 	grep -E -c -v -e '^[^MQ]' -e 'unknown' -e 'No valid' $+
 
 SYMS=$(wildcard sym/*.sym)

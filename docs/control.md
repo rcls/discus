@@ -13,5 +13,6 @@
 [ ![nor](nor-sym.png) ](nor.html)
 [ ![nor1and](nor1and-sym.png) ](nor1and.html)
 [ ![seli](seli-sym.png) ](seli.html)
+[ ![fourpd](fourpd-sym.png) ](fourpd.html)
 [ ![decoder](decoder-sym.png) ](decoder.html)
 [ ![noverlap](noverlap-sym.png) ](noverlap.html)

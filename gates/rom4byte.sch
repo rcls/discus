@@ -286,28 +286,28 @@ netname=B7
 }
 C 1100 2500 1 0 0 rombyte.sym
 {
-T 1900 3325 5 10 1 1 0 4 1
+T 1900 3300 5 10 1 1 0 4 1
 source=rombyte.sch
 T 1900 4000 5 10 1 1 0 3 1
 refdes=A
 }
 C 3800 2500 1 0 0 rombyte.sym
 {
-T 4600 3325 5 10 1 1 0 4 1
+T 4600 3300 5 10 1 1 0 4 1
 source=rombyte.sch
 T 4600 4000 5 10 1 1 0 3 1
 refdes=B
 }
 C 6500 2500 1 0 0 rombyte.sym
 {
-T 7300 3325 5 10 1 1 0 4 1
+T 7300 3300 5 10 1 1 0 4 1
 source=rombyte.sch
 T 7300 4000 5 10 1 1 0 3 1
 refdes=C
 }
 C 9200 2500 1 0 0 rombyte.sym
 {
-T 10000 3325 5 10 1 1 0 4 1
+T 10000 3300 5 10 1 1 0 4 1
 source=rombyte.sch
 T 10000 4000 5 10 1 1 0 3 1
 refdes=D

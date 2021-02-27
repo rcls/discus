@@ -380,8 +380,7 @@ four-entry stack, with a Gray-coded stack pointer.  There is no access to the
 stack or stack-pointer other than via `CALL`/`RET` instructions.
 
 The stack storage is implemented as a four byte register file, using
-[single ported 4T2R SRAM cells](sramcell.md) (identical to main memory
-below).
+[single ported 4T2R SRAM cells](sramcell.md).
 
 Precharging the bit-lines is necessary, which is achieved by only accessing the
 stack on the second half of each clock cycle.  The output path from the stack

@@ -418,12 +418,12 @@ Clocking
 ========
 
 A two phase clock is used, generated from a single phase clock input.  The main
-clock is ϕ0, the main CPU flip-flops are positive edge triggered.  The main
+clock is ϕ, the main CPU flip-flops are positive edge triggered.  The main
 register file combined with the preceeding latch again gives positive
 edge-triggered behaviour.
 
 The [clock drive](noverlap.md) is a CMOS flip-flop producing two out of
-phase clocks, ϕ0 and ϕ1.  The flip-flop produces output duty cycles of slightly
+phase clocks, ϕ and ϕ1.  The flip-flop produces output duty cycles of slightly
 less than 50%, with non-overlapping clock pulses: the falling edge of one clock
 is before the rising edge the other.
 

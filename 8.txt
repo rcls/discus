@@ -25,7 +25,7 @@ P0..P7 & # : Program counter.
 O0..O7 : Opcode (from ROM).
 I0..I7 & # : Opcode (1 cycle delay from ROM).
 
-ϕ0, ϕ1 : Clocks : Rising edge ϕ0 is main clock, rising edge active, ϕ1 only used
+ϕ, ϕ1 : Clocks : Rising edge ϕ0 is main clock, rising edge active, ϕ1 only used
 for memory strobing.  C0, C1 : Clock source input.
 
 FC : Carry flag out.

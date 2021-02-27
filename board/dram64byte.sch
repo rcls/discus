@@ -743,9 +743,9 @@ footprint=anchor
 T 600 1400 5 10 0 0 0 0 1
 device=INPUT
 T 600 1200 5 10 1 1 0 7 1
-refdes=ϕ0
+refdes=ϕ
 }
-C 1500 1100 1 0 1 phi0.sym
+C 1400 1100 1 0 1 phi.sym
 C 6100 3400 1 0 0 dramio.sym
 {
 T 6800 4600 5 10 1 1 0 4 1
@@ -802,14 +802,14 @@ source=dramio.sch
 T 13400 900 5 10 1 1 0 4 1
 refdes=S7
 }
-C 5800 3900 1 0 0 phi0.sym
-C 8000 3900 1 0 0 phi0.sym
-C 10200 3900 1 0 0 phi0.sym
-C 12400 3900 1 0 0 phi0.sym
-C 5800 700 1 0 0 phi0.sym
-C 8000 700 1 0 0 phi0.sym
-C 10200 700 1 0 0 phi0.sym
-C 12400 700 1 0 0 phi0.sym
+C 5900 3900 1 0 0 phi.sym
+C 8100 3900 1 0 0 phi.sym
+C 10300 3900 1 0 0 phi.sym
+C 12500 3900 1 0 0 phi.sym
+C 5900 700 1 0 0 phi.sym
+C 8100 700 1 0 0 phi.sym
+C 10300 700 1 0 0 phi.sym
+C 12500 700 1 0 0 phi.sym
 C 1000 2400 1 0 0 nor3.sym
 {
 T 1400 2900 5 10 1 1 0 4 1

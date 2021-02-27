@@ -97,7 +97,7 @@ P 0 600 200 600 1 0 0
 T 0 600 5 10 0 0 0 0 1
 pintype=unknown
 T 205 595 5 10 1 1 0 1 1
-pinlabel=ϕ0
+pinlabel=ϕ
 T 105 645 5 10 0 1 0 6 1
 pinnumber=8
 T 0 600 5 10 0 0 0 0 1

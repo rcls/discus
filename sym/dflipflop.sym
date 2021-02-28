@@ -51,9 +51,9 @@ pintype=unknown
 T 795 1275 5 8 1 1 0 5 1
 pinlabel=Vdd
 T 775 1320 5 10 0 1 90 0 1
-pinnumber=7
+pinnumber=2
 T 800 1500 5 10 0 0 0 0 1
-pinseq=7
+pinseq=2
 }
 P 800 0 800 200 1 0 0
 {
@@ -62,9 +62,9 @@ pintype=unknown
 T 805 225 5 7 1 1 0 3 1
 pinlabel=GND
 T 775 180 5 10 0 1 90 6 1
-pinnumber=8
+pinnumber=7
 T 800 0 5 10 0 0 0 0 1
-pinseq=8
+pinseq=7
 }
 T 1350 400 8 10 1 1 0 7 1
 refdes=S?
@@ -77,7 +77,7 @@ pintype=unknown
 T 205 395 5 10 1 1 0 1 1
 pinlabel=C#
 T 180 420 5 10 0 1 0 6 1
-pinnumber=3
+pinnumber=4
 T 0 400 5 10 0 0 0 0 1
-pinseq=3
+pinseq=4
 }

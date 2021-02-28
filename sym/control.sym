@@ -339,9 +339,9 @@ P 1600 4800 1400 4800 1 0 0
 T 1600 4800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 4845 5 10 0 1 0 0 1
-pinnumber=49
+pinnumber=48
 T 1600 4800 5 10 0 0 0 0 1
-pinseq=49
+pinseq=48
 T 1395 4795 5 10 1 1 0 7 1
 pinlabel=ϕ
 }

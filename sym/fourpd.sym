@@ -29,9 +29,9 @@ pintype=unknown
 T 205 695 5 10 1 1 0 1 1
 pinlabel=A1
 T 105 745 5 10 0 1 0 6 1
-pinnumber=3
+pinnumber=4
 T 0 700 5 10 0 0 0 0 1
-pinseq=3
+pinseq=4
 }
 P 0 500 200 500 1 0 0
 {
@@ -40,9 +40,9 @@ pintype=unknown
 T 205 495 5 10 1 1 0 1 1
 pinlabel=A1#
 T 105 545 5 10 0 1 0 6 1
-pinnumber=4
+pinnumber=6
 T 0 500 5 10 0 0 0 0 1
-pinseq=4
+pinseq=6
 }
 P 1400 1100 1200 1100 1 0 0
 {
@@ -73,7 +73,7 @@ pintype=unknown
 T 1195 695 5 10 1 1 0 7 1
 pinlabel=Q2
 T 1295 745 5 10 0 1 0 0 1
-pinnumber=9
+pinnumber=10
 T 1400 700 5 10 0 0 0 0 1
 pinseq=9
 }
@@ -84,9 +84,9 @@ pintype=unknown
 T 1195 495 5 10 1 1 0 7 1
 pinlabel=Q3
 T 1295 545 5 10 0 1 0 0 1
-pinnumber=10
+pinnumber=11
 T 1400 500 5 10 0 0 0 0 1
-pinseq=10
+pinseq=11
 }
 P 700 0 700 200 1 0 0
 {
@@ -95,12 +95,12 @@ pintype=unknown
 T 730 175 5 7 1 1 0 2 1
 pinlabel=GND
 T 650 205 5 10 0 1 90 6 1
-pinnumber=6
+pinnumber=9
 T 700 0 5 10 0 0 0 0 1
-pinseq=6
+pinseq=10
 }
 T 700 300 8 8 1 1 0 4 1
-source=decoder.sch
+source=fourpd.sch
 T 700 800 8 10 1 1 0 4 1
 refdes=S?
 P 700 1500 700 1300 1 0 0
@@ -110,9 +110,9 @@ pintype=unknown
 T 680 1325 5 8 1 1 0 6 1
 pinlabel=Vdd
 T 750 1395 5 10 0 1 90 2 1
-pinnumber=5
+pinnumber=3
 T 700 1500 5 10 0 0 0 6 1
-pinseq=5
+pinseq=3
 }
 P 900 1500 900 1300 1 0 0
 {

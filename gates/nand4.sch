@@ -1,21 +1,21 @@
 v 20130925 2
-C 58800 45800 1 0 0 2n7002.sym
+C 58800 45800 1 0 0 nmos-switch.sym
 {
 T 59025 46100 5 10 1 1 0 1 1
 refdes=M1
 T 58900 46600 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 59300 46400 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 60300 46400 5 10 0 1 0 0 1
 device=NMOS
 }
-C 58800 44600 1 0 0 2n7002.sym
+C 58800 44600 1 0 0 nmos-switch.sym
 {
 T 59025 44900 5 10 1 1 0 1 1
 refdes=M3
 T 58900 45400 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 59300 45200 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 60300 45200 5 10 0 1 0 0 1
@@ -68,12 +68,12 @@ device=OUTPUT
 T 59400 46400 5 10 1 1 0 0 1
 refdes=Q
 }
-C 58800 45200 1 0 0 2n7002.sym
+C 58800 45200 1 0 0 nmos-switch.sym
 {
 T 59025 45500 5 10 1 1 0 1 1
 refdes=M2
 T 58900 46000 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 59300 45800 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 60300 45800 5 10 0 1 0 0 1
@@ -99,12 +99,12 @@ device=INPUT
 T 58200 45500 5 10 1 1 0 7 1
 refdes=B
 }
-C 58800 44000 1 0 0 2n7002.sym
+C 58800 44000 1 0 0 nmos-switch.sym
 {
 T 59025 44300 5 10 1 1 0 1 1
 refdes=M4
 T 58900 44800 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 59300 44600 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 60300 44600 5 10 0 1 0 0 1

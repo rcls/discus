@@ -373,12 +373,12 @@ value=BAS40
 }
 N 1400 2300 1600 2300 4
 N 2000 2300 2200 2300 4
-C 1400 1200 1 0 0 BSS84.sym
+C 1400 1200 1 0 0 pmos-switch.sym
 {
 T 1600 1500 5 8 1 1 0 1 1
 refdes=M
 T 1500 2000 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 1900 1800 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 2900 1800 5 10 0 1 0 0 1

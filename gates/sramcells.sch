@@ -1,43 +1,43 @@
 v 20201216 2
-C 42600 45600 1 0 0 2n7002.sym
+C 42600 45600 1 0 0 nmos-switch.sym
 {
 T 42825 45900 5 8 1 1 0 1 1
 refdes=M2
 T 42700 46400 5 8 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 43100 46200 5 8 0 1 0 0 1
 footprint=sot23-nmos
 T 44100 46200 5 8 0 1 0 0 1
 device=NMOS
 }
-C 44900 45600 1 0 1 2n7002.sym
+C 44900 45600 1 0 1 nmos-switch.sym
 {
 T 44675 45900 5 8 1 1 0 7 1
 refdes=M4
 T 44800 46400 5 8 0 1 0 6 1
-value=2N7002P
+value=NMOS_switch
 T 44400 46200 5 8 0 1 0 6 1
 footprint=sot23-nmos
 T 43400 46200 5 8 0 1 0 6 1
 device=NMOS
 }
-C 44900 46600 1 0 1 BSS84.sym
+C 44900 46600 1 0 1 pmos-switch.sym
 {
 T 44675 46900 5 8 1 1 0 7 1
 refdes=M3
 T 44800 47400 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 44400 47200 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T 43400 47200 5 10 0 1 0 6 1
 device=PMOS
 }
-C 42600 46600 1 0 0 BSS84.sym
+C 42600 46600 1 0 0 pmos-switch.sym
 {
 T 42825 46900 5 8 1 1 0 1 1
 refdes=M1
 T 42700 47400 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 43100 47200 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 44100 47200 5 10 0 1 0 0 1

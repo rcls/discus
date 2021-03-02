@@ -8,10 +8,10 @@ value=PDTC124TU
 T 59875 46400 5 10 1 1 0 6 1
 refdes=Q
 }
-C 60500 46000 1 0 1 2n7002.sym
+C 60500 46000 1 0 1 nmos-switch.sym
 {
 T 60400 46800 5 10 0 1 0 6 1
-value=2N7002P
+value=NMOS_switch
 T 60000 46600 5 10 0 1 0 6 1
 footprint=sot23-nmos
 T 59000 46600 5 10 0 1 0 6 1

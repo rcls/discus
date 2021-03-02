@@ -1,10 +1,10 @@
 v 20201216 2
-C 1000 800 1 0 0 2n7002.sym
+C 1000 800 1 0 0 nmos-switch.sym
 {
 T 1225 1100 5 10 1 1 0 1 1
 refdes=M
 T 1100 1600 5 10 0 1 0 1 1
-value=2N7002P
+value=NMOS_switch
 T 1500 1400 5 10 0 1 0 1 1
 footprint=sot23-nmos
 T 2500 1400 5 10 0 1 0 1 1

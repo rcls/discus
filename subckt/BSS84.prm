@@ -1,6 +1,6 @@
 *SRC=BSS84;DI_BSS84;MOSFETs P;Enh;50.0V 0.130A 6.00ohms  Diodes Inc. MOSFET
 * VTO reduced from 1.6 as the transistors I'm actually using have lower VTO.
-.MODEL BSS84 PMOS VTO=-1.2 RS=3.091 RD=0.979 IS=1E-15 KP=0.146
+.MODEL PMOS_switch PMOS VTO=-1.2 RS=3.091 RD=0.979 IS=1E-15 KP=0.146
 +CBD=12P PB=1
 
 * Fakery...

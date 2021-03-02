@@ -214,12 +214,12 @@ footprint=0603-boxed
 T 1400 1500 5 10 0 1 90 0 1
 value=3.3k
 }
-C 1000 1900 1 0 0 BSS84.sym
+C 1000 1900 1 0 0 pmos-switch.sym
 {
 T 1225 2200 5 10 1 1 0 1 1
 refdes=M
 T 1100 2700 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 1500 2500 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 2500 2500 5 10 0 1 0 0 1

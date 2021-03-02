@@ -11,14 +11,14 @@ T 2575 1775 5 10 1 1 0 6 1
 refdes=R2
 }
 N 2600 900 2600 1100 4
-C 2200 400 1 0 0 2n7002.sym
+C 2200 400 1 0 0 nmos-switch.sym
 {
 T 3700 1000 5 10 0 1 0 0 1
 device=NMOS
 T 2425 700 5 10 1 1 0 1 1
 refdes=M2
 T 2300 1200 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 2700 1000 5 10 0 1 0 0 1
 footprint=sot23-nmos
 }
@@ -34,14 +34,14 @@ device=RESISTOR
 T 1400 1775 5 10 1 1 0 6 1
 refdes=R1
 }
-C 1800 400 1 0 1 2n7002.sym
+C 1800 400 1 0 1 nmos-switch.sym
 {
 T 300 1000 5 10 0 1 0 6 1
 device=NMOS
 T 1575 700 5 10 1 1 0 7 1
 refdes=M1
 T 1700 1200 5 10 0 1 0 6 1
-value=2N7002P
+value=NMOS_switch
 T 1300 1000 5 10 0 1 0 6 1
 footprint=sot23-nmos
 }

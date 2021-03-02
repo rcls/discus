@@ -46,12 +46,12 @@ device=OUTPUT
 T 60700 47100 5 10 1 1 0 1 1
 refdes=Q
 }
-C 59700 47100 1 0 0 BSS84.sym
+C 59700 47100 1 0 0 pmos-switch.sym
 {
 T 59925 47400 5 10 1 1 0 1 1
 refdes=M
 T 59800 47900 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 60200 47700 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 61200 47700 5 10 0 1 0 0 1

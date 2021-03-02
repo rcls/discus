@@ -92,23 +92,23 @@ netname=S#
 N 56300 38100 56100 38100 4
 N 55000 40000 55000 38300 4
 N 55000 38300 55700 38300 4
-C 55900 39700 1 0 0 BSS84.sym
+C 55900 39700 1 0 0 pmos-switch.sym
 {
 T 56125 40000 5 8 1 1 0 1 1
 refdes=M1
 T 56000 40500 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 56400 40300 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 57400 40300 5 10 0 1 0 0 1
 device=PMOS
 }
-C 55700 38000 1 0 0 BSS84.sym
+C 55700 38000 1 0 0 pmos-switch.sym
 {
 T 55925 38300 5 8 1 1 0 1 1
 refdes=M2
 T 55800 38800 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 56200 38600 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 57200 38600 5 10 0 1 0 0 1

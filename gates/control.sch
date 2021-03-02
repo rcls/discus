@@ -1349,12 +1349,12 @@ C 8600 1400 1 0 0 not.sym
 T 8950 1700 5 10 1 1 0 4 1
 refdes=U1
 }
-C 3900 8300 1 0 0 2n7002.sym
+C 3900 8300 1 0 0 nmos-switch.sym
 {
 T 4125 8600 5 8 1 1 0 1 1
 refdes=M1
 T 4000 9100 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 4400 8900 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 5400 8900 5 10 0 1 0 0 1
@@ -1387,12 +1387,12 @@ source=fourpd.sch
 T 13300 4100 5 10 1 1 0 4 1
 refdes=W
 }
-C 12900 4700 1 0 0 BSS84.sym
+C 12900 4700 1 0 0 pmos-switch.sym
 {
 T 13125 5000 5 8 1 1 0 1 1
 refdes=M2
 T 13000 5500 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 13400 5300 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 14400 5300 5 10 0 1 0 0 1
@@ -1440,12 +1440,12 @@ netname=rh
 }
 N 13300 2600 13300 2700 4
 C 13400 300 1 0 1 gnd-1.sym
-C 12900 2100 1 0 0 BSS84.sym
+C 12900 2100 1 0 0 pmos-switch.sym
 {
 T 13125 2400 5 8 1 1 0 1 1
 refdes=M3
 T 13000 2900 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 13400 2700 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 14400 2700 5 10 0 1 0 0 1

@@ -1,43 +1,43 @@
 v 20201216 2
-C 900 1500 1 0 0 2n7002.sym
+C 900 1500 1 0 0 nmos-switch.sym
 {
 T 800 1900 5 10 1 1 0 0 1
 refdes=M1
 T 1000 2300 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 1400 2100 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 2400 2100 5 10 0 1 0 0 1
 device=NMOS
 }
-C 900 800 1 0 0 2n7002.sym
+C 900 800 1 0 0 nmos-switch.sym
 {
 T 800 1200 5 10 1 1 0 0 1
 refdes=M3
 T 1000 1600 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 1400 1400 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 2400 1400 5 10 0 1 0 0 1
 device=NMOS
 }
-C 2100 1500 1 0 1 2n7002.sym
+C 2100 1500 1 0 1 nmos-switch.sym
 {
 T 2200 1900 5 10 1 1 0 6 1
 refdes=M2
 T 2000 2300 5 10 0 1 0 6 1
-value=2N7002P
+value=NMOS_switch
 T 1600 2100 5 10 0 1 0 6 1
 footprint=sot23-nmos
 T 600 2100 5 10 0 1 0 6 1
 device=NMOS
 }
-C 2100 800 1 0 1 2n7002.sym
+C 2100 800 1 0 1 nmos-switch.sym
 {
 T 2200 1200 5 10 1 1 0 6 1
 refdes=M4
 T 2000 1600 5 10 0 1 0 6 1
-value=2N7002P
+value=NMOS_switch
 T 1600 1400 5 10 0 1 0 6 1
 footprint=sot23-nmos
 T 600 1400 5 10 0 1 0 6 1

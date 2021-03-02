@@ -125,12 +125,12 @@ C 2800 2600 1 0 0 xor2g.sym
 T 3000 3200 5 10 1 1 0 0 1
 refdes=E
 }
-C 2800 1700 1 0 0 2n7002.sym
+C 2800 1700 1 0 0 nmos-switch.sym
 {
 T 3025 2000 5 10 1 1 0 1 1
 refdes=M
 T 2900 2500 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 3300 2300 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 4300 2300 5 10 0 1 0 0 1

@@ -8,23 +8,23 @@ device=INPUT
 T 3200 3600 5 10 1 1 0 3 1
 refdes=Vdd
 }
-C 1800 2400 1 0 0 BSS84.sym
+C 1800 2400 1 0 0 pmos-switch.sym
 {
 T 2000 2700 5 8 1 1 0 1 1
 refdes=M8
 T 1900 3200 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 2300 3000 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 3300 3000 5 10 0 1 0 0 1
 device=PMOS
 }
-C 4600 2400 1 0 1 BSS84.sym
+C 4600 2400 1 0 1 pmos-switch.sym
 {
 T 4400 2700 5 8 1 1 0 7 1
 refdes=M9
 T 4500 3200 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 4100 3000 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T 3100 3000 5 10 0 1 0 6 1
@@ -35,10 +35,10 @@ N 2200 3000 4200 3000 4
 N 4200 3000 4200 2900 4
 N 2200 2200 2200 2500 4
 N 4200 2200 4200 2500 4
-C 600 1700 1 0 0 BSS84.sym
+C 600 1700 1 0 0 pmos-switch.sym
 {
 T 700 2500 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 1100 2300 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 2100 2300 5 10 0 1 0 0 1
@@ -47,10 +47,10 @@ T 800 2000 5 8 1 1 0 1 1
 refdes=M10
 }
 N 1000 1800 1000 1500 4
-C 2600 1700 1 0 1 BSS84.sym
+C 2600 1700 1 0 1 pmos-switch.sym
 {
 T 2500 2500 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 2100 2300 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T 1100 2300 5 10 0 1 0 6 1
@@ -65,10 +65,10 @@ T 1600 2250 5 6 1 1 0 5 1
 netname=f0
 }
 N 1000 2300 1000 2200 4
-C 3800 1700 1 0 0 BSS84.sym
+C 3800 1700 1 0 0 pmos-switch.sym
 {
 T 3900 2500 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 4300 2300 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 5300 2300 5 10 0 1 0 0 1
@@ -77,10 +77,10 @@ T 4000 2000 5 8 1 1 0 1 1
 refdes=M12
 }
 N 4200 1800 4200 1500 4
-C 5800 1700 1 0 1 BSS84.sym
+C 5800 1700 1 0 1 pmos-switch.sym
 {
 T 5700 2500 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 5300 2300 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T 4300 2300 5 10 0 1 0 6 1
@@ -95,10 +95,10 @@ T 4800 2250 5 6 1 1 0 5 1
 netname=f1
 }
 N 5400 2300 5400 2200 4
-C 200 1000 1 0 0 BSS84.sym
+C 200 1000 1 0 0 pmos-switch.sym
 {
 T 300 1800 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 700 1600 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 1700 1600 5 10 0 1 0 0 1
@@ -111,10 +111,10 @@ N 200 1100 200 1300 4
 T 200 1050 5 10 1 1 180 3 1
 netname=A0
 }
-C 1400 1000 1 0 1 BSS84.sym
+C 1400 1000 1 0 1 pmos-switch.sym
 {
 T 1300 1800 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 900 1600 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T -100 1600 5 10 0 1 0 6 1
@@ -133,10 +133,10 @@ N 1400 1100 1400 1300 4
 T 1400 1050 5 10 1 1 180 3 1
 netname=A0#
 }
-C 1800 1000 1 0 0 BSS84.sym
+C 1800 1000 1 0 0 pmos-switch.sym
 {
 T 1900 1800 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 2300 1600 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 3300 1600 5 10 0 1 0 0 1
@@ -149,10 +149,10 @@ N 1800 1100 1800 1300 4
 T 1800 1050 5 10 1 1 180 3 1
 netname=A0
 }
-C 3000 1000 1 0 1 BSS84.sym
+C 3000 1000 1 0 1 pmos-switch.sym
 {
 T 2900 1800 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 2500 1600 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T 1500 1600 5 10 0 1 0 6 1
@@ -171,10 +171,10 @@ T 3000 1050 5 10 1 1 180 3 1
 netname=A0#
 }
 N 2600 1600 2600 1500 4
-C 3400 1000 1 0 0 BSS84.sym
+C 3400 1000 1 0 0 pmos-switch.sym
 {
 T 3500 1800 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 3900 1600 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 4900 1600 5 10 0 1 0 0 1
@@ -187,10 +187,10 @@ N 3400 1100 3400 1300 4
 T 3400 1050 5 10 1 1 180 3 1
 netname=A1
 }
-C 4600 1000 1 0 1 BSS84.sym
+C 4600 1000 1 0 1 pmos-switch.sym
 {
 T 4500 1800 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 4100 1600 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T 3100 1600 5 10 0 1 0 6 1
@@ -209,10 +209,10 @@ N 4600 1100 4600 1300 4
 T 4600 1050 5 10 1 1 180 3 1
 netname=A1#
 }
-C 5000 1000 1 0 0 BSS84.sym
+C 5000 1000 1 0 0 pmos-switch.sym
 {
 T 5100 1800 5 10 0 1 0 0 1
-value=BSS84
+value=PMOS_switch
 T 5500 1600 5 10 0 1 0 0 1
 footprint=sot23-pmos
 T 6500 1600 5 10 0 1 0 0 1
@@ -225,10 +225,10 @@ N 5000 1100 5000 1300 4
 T 5000 1050 5 10 1 1 180 3 1
 netname=A1
 }
-C 6200 1000 1 0 1 BSS84.sym
+C 6200 1000 1 0 1 pmos-switch.sym
 {
 T 6100 1800 5 10 0 1 0 6 1
-value=BSS84
+value=PMOS_switch
 T 5700 1600 5 10 0 1 0 6 1
 footprint=sot23-pmos
 T 4700 1600 5 10 0 1 0 6 1

@@ -10,45 +10,45 @@ footprint=0603-boxed
 T 41000 54000 5 10 0 1 90 0 1
 value=3k3
 }
-C 41400 52900 1 0 1 2n7002.sym
+C 41400 52900 1 0 1 nmos-switch.sym
 {
 T 41150 53200 5 10 1 1 0 7 1
 refdes=M1
 T 41300 53700 5 10 0 1 0 6 1
-value=2N7002P
+value=NMOS_switch
 T 40900 53500 5 10 0 1 0 6 1
 footprint=sot23-nmos
 T 39900 53500 5 10 0 1 0 6 1
 device=NMOS
 }
-C 39700 53900 1 0 0 2n7002.sym
+C 39700 53900 1 0 0 nmos-switch.sym
 {
 T 39950 54200 5 10 1 1 0 1 1
 refdes=M2
 T 39800 54700 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 40200 54500 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 41200 54500 5 10 0 1 0 0 1
 device=NMOS
 }
-C 39700 53300 1 0 0 2n7002.sym
+C 39700 53300 1 0 0 nmos-switch.sym
 {
 T 39950 53600 5 10 1 1 0 1 1
 refdes=M3
 T 39800 54100 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 40200 53900 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 41200 53900 5 10 0 1 0 0 1
 device=NMOS
 }
-C 39700 52700 1 0 0 2n7002.sym
+C 39700 52700 1 0 0 nmos-switch.sym
 {
 T 39950 53000 5 10 1 1 0 1 1
 refdes=M4
 T 39800 53500 5 10 0 1 0 0 1
-value=2N7002P
+value=NMOS_switch
 T 40200 53300 5 10 0 1 0 0 1
 footprint=sot23-nmos
 T 41200 53300 5 10 0 1 0 0 1

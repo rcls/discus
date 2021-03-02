@@ -1,6 +1,6 @@
 *SRC=2N7002A;DI_2N7002A;MOSFETs N;Enh;60.0V 0.115A 5.00ohms  Diodes Inc. MOSFET
 * VTO reduced from 2.0 as the transistors I'm actually using have lower VTO.
-.MODEL 2N7002P  NMOS( LEVEL=1 VTO=1.80 KP=55.7m  GAMMA=2.48
+.MODEL NMOS_switch NMOS( LEVEL=1 VTO=1.80 KP=55.7m  GAMMA=2.48
 + PHI=.75  LAMBDA=69.6u RD=0.700 RS=0.700
 + IS=57.5f  PB=0.800 MJ=0.460 CBD=9.88p
 + CBS=11.9p  CGSO=16.8n CGDO=14.0n CGBO=199n  )

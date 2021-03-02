@@ -126,12 +126,12 @@ N 1100 2600 1300 2600 4
 N 3900 1900 4200 1900 4
 C 1800 100 1 0 0 gnd-1.sym
 C 2900 600 1 0 0 gnd-1.sym
-C 3400 900 1 0 1 2n7002.sym
+C 3400 900 1 0 1 nmos-switch.sym
 {
 T 3175 1200 5 8 1 1 0 7 1
 refdes=M
 T 3300 1700 5 10 0 1 0 6 1
-value=2N7002P
+value=NMOS_switch
 T 2900 1500 5 10 0 1 0 6 1
 footprint=sot23-nmos
 T 1900 1500 5 10 0 1 0 6 1

@@ -2502,11 +2502,3 @@ netname=B7
 C 13400 8300 1 0 1 phi1.sym
 C 8500 7500 1 0 0 gnd-1.sym
 C 16700 10800 1 0 1 phin.sym
-C 18200 10800 1 0 0 phin.sym
-C 21400 10800 1 0 0 phin.sym
-C 24600 10800 1 0 0 phin.sym
-C 27800 10800 1 0 0 phin.sym
-C 18200 3700 1 0 0 phin.sym
-C 21400 3700 1 0 0 phin.sym
-C 24600 3700 1 0 0 phin.sym
-C 27800 3700 1 0 0 phin.sym

@@ -108,7 +108,7 @@ device=vpulse
 T 52850 41000 5 10 0 0 270 0 1
 footprint=none
 T 51700 41350 5 10 1 1 0 6 1
-value=pulse 0 3.3 2u 1n 1n 2u 10u
+value=pulse 0 3.3 0.5u 1n 1n 2u 10u
 }
 C 53000 40400 1 0 0 xor.sym
 {

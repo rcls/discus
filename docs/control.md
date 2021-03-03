@@ -1,12 +1,11 @@
 # control.sch schematic
 ![control.sch](control.png)
 # Gates in control.sch
+[ ![dpflipflop](dpflipflop-sym.png) ](dpflipflop.html)
 [ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
-[ ![dlatch](dlatch-sym.png) ](dlatch.html)
 [ ![nor3](nor3-sym.png) ](nor3.html)
 [ ![not](not-sym.png) ](not.html)
 [ ![sp](sp-sym.png) ](sp.html)
-[ ![notp](notp-sym.png) ](notp.html)
 [ ![decode](decode-sym.png) ](decode.html)
 [ ![nandor](nandor-sym.png) ](nandor.html)
 [ ![nor](nor-sym.png) ](nor.html)
@@ -14,5 +13,7 @@
 [ ![seli](seli-sym.png) ](seli.html)
 [ ![fourpd](fourpd-sym.png) ](fourpd.html)
 [ ![decoder](decoder-sym.png) ](decoder.html)
+[ ![notp](notp-sym.png) ](notp.html)
 [ ![noverlap](noverlap-sym.png) ](noverlap.html)
 [ ![cnot](cnot-sym.png) ](cnot.html)
+[ ![diplatch](diplatch-sym.png) ](diplatch.html)

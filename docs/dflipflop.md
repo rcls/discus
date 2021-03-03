@@ -2,4 +2,4 @@
 ![dflipflop.sch](dflipflop.png)
 # Gates in dflipflop.sch
 [ ![sramcellw](sramcellw-sym.png) ](sramcellw.html)
-[ ![dlatch](dlatch-sym.png) ](dlatch.html)
+[ ![dilatch](dilatch-sym.png) ](dilatch.html)

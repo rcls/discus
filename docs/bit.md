@@ -6,6 +6,7 @@
 [ ![sramcell2s](sramcell2s-sym.png) ](sramcell2s.html)
 [ ![not](not-sym.png) ](not.html)
 [ ![sramcell](sramcell-sym.png) ](sramcell.html)
+[ ![dpflipflops](dpflipflops-sym.png) ](dpflipflops.html)
 [ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
 [ ![nandod](nandod-sym.png) ](nandod.html)
 [ ![notb](notb-sym.png) ](notb.html)
@@ -14,4 +15,4 @@
 [ ![cnot](cnot-sym.png) ](cnot.html)
 [ ![xnor](xnor-sym.png) ](xnor.html)
 [ ![halfadd](halfadd-sym.png) ](halfadd.html)
-[ ![dlatch](dlatch-sym.png) ](dlatch.html)
+[ ![diplatch](diplatch-sym.png) ](diplatch.html)

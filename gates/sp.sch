@@ -1,17 +1,17 @@
 v 20201216 2
-C 1300 400 1 0 0 dflipflop.sym
+C 1300 400 1 0 0 dpflipflop.sym
 {
 T 2650 800 5 10 1 1 0 7 1
 refdes=F0
 T 2100 1050 5 8 1 1 0 4 1
-source=dflipflop.sch
+source=dpflipflop.sch
 }
-C 4400 400 1 0 0 dflipflop.sym
+C 4400 400 1 0 0 dpflipflop.sym
 {
 T 5750 800 5 10 1 1 0 7 1
 refdes=F1
 T 5200 1050 5 8 1 1 0 4 1
-source=dflipflop.sch
+source=dpflipflop.sch
 }
 C 700 2300 1 0 0 in-1.sym
 {

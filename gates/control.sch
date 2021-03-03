@@ -233,12 +233,12 @@ N 16300 7800 16100 7800 4
 T 16050 7800 5 10 1 1 0 7 1
 netname=I6
 }
-N 8400 7100 8600 7100 4
+N 8400 7200 8600 7200 4
 {
-T 8350 7100 5 10 1 1 0 7 1
-netname=I7
+T 8350 7200 5 10 1 1 0 7 1
+netname=I7#
 }
-C 8800 7400 1 0 0 vdd-1.sym
+C 8700 7600 1 0 0 vdd-1.sym
 C 1000 3000 1 0 0 in-1.sym
 {
 T 1000 3300 5 10 0 0 0 0 1
@@ -267,12 +267,12 @@ N 1600 3300 1800 3300 4
 T 1850 3300 5 10 1 1 0 1 1
 netname=I2
 }
-C 5300 7900 1 0 0 dflipflop.sym
+C 5300 7900 1 0 0 dpflipflop.sym
 {
 T 6650 8150 5 10 1 1 0 6 1
 refdes=C
 T 6100 8550 5 8 1 1 0 4 1
-source=dflipflop.sch
+source=dpflipflop.sch
 }
 C 5900 9400 1 0 0 vdd-1.sym
 C 6000 7600 1 0 0 gnd-1.sym
@@ -322,12 +322,12 @@ netname=Zo#
 }
 C 4500 7100 1 0 0 vdd-1.sym
 C 4700 9400 1 0 0 vdd-1.sym
-C 5300 5600 1 0 0 dflipflop.sym
+C 5300 5600 1 0 0 dpflipflop.sym
 {
 T 6650 5850 5 10 1 1 0 6 1
 refdes=Z
 T 6100 6250 5 8 1 1 0 4 1
-source=dflipflop.sch
+source=dpflipflop.sch
 }
 C 10100 3900 1 0 0 vdd-1.sym
 C 10100 5700 1 0 0 vdd-1.sym
@@ -338,12 +338,12 @@ C 10400 5700 1 0 1 gnd-1.sym
 N 11100 3500 11300 3500 4
 {
 T 11350 3500 5 10 1 1 0 1 1
-netname=W0#
+netname=W0
 }
 N 11100 3300 11300 3300 4
 {
 T 11350 3300 5 10 1 1 0 1 1
-netname=W0
+netname=W0#
 }
 N 11100 5300 11300 5300 4
 {
@@ -358,12 +358,12 @@ netname=W1#
 N 11100 7100 11300 7100 4
 {
 T 11350 7100 5 10 1 1 0 1 1
-netname=W2
+netname=W2#
 }
 N 11100 6900 11300 6900 4
 {
 T 11350 6900 5 10 1 1 0 1 1
-netname=W2#
+netname=W2
 }
 C 13200 5500 1 270 0 phi.sym
 N 12600 4300 12400 4300 4
@@ -386,29 +386,29 @@ N 12600 3900 12400 3900 4
 T 12350 3900 5 10 1 1 0 7 1
 netname=W1
 }
-N 8600 1700 8400 1700 4
+N 8600 1800 8400 1800 4
 {
-T 8350 1700 5 10 1 1 0 7 1
-netname=W2
+T 8350 1800 5 10 1 1 0 7 1
+netname=W2#
 }
-N 9000 1400 8400 1400 4
+N 8600 1600 8400 1600 4
 {
-T 8350 1400 5 10 1 1 0 7 1
+T 8350 1600 5 10 1 1 0 7 1
 netname=W1
 }
 N 11100 1700 11300 1700 4
 {
 T 11350 1700 5 10 1 1 0 1 1
-netname=BK#
+netname=BK
 }
 C 10100 2100 1 0 0 vdd-1.sym
-C 8800 2000 1 0 0 vdd-1.sym
+C 8700 2200 1 0 0 vdd-1.sym
 C 10400 300 1 0 1 gnd-1.sym
 C 9300 2800 1 0 0 phi.sym
 N 11100 1500 11300 1500 4
 {
 T 11350 1500 5 10 1 1 0 1 1
-netname=BK
+netname=BK#
 }
 C 14000 4200 1 0 0 out-1.sym
 {
@@ -668,15 +668,15 @@ N 1600 4100 1800 4100 4
 T 1850 4100 5 10 1 1 0 1 1
 netname=I0
 }
-N 9000 3200 8400 3200 4
+N 8600 3400 8400 3400 4
 {
-T 8350 3200 5 10 1 1 0 7 1
+T 8350 3400 5 10 1 1 0 7 1
 netname=I6#
 }
-N 8400 3500 8600 3500 4
+N 8400 3600 8600 3600 4
 {
-T 8350 3500 5 10 1 1 0 7 1
-netname=I4
+T 8350 3600 5 10 1 1 0 7 1
+netname=I4#
 }
 N 6900 4100 7100 4100 4
 {
@@ -702,9 +702,9 @@ N 17400 7600 17100 7600 4
 T 17500 7700 5 10 1 1 0 6 1
 netname=QK
 }
-N 8400 6800 9000 6800 4
+N 8400 7000 8600 7000 4
 {
-T 8350 6800 5 10 1 1 0 7 1
+T 8350 7000 5 10 1 1 0 7 1
 netname=IWK
 }
 C 16900 8200 1 0 0 nor3.sym
@@ -800,7 +800,7 @@ footprint=anchor
 T 11300 8400 5 10 1 1 0 1 1
 refdes=K7#
 }
-C 8800 3800 1 0 0 vdd-1.sym
+C 8700 4000 1 0 0 vdd-1.sym
 N 9900 9300 9700 9300 4
 {
 T 9650 9300 5 10 1 1 0 7 1
@@ -1322,21 +1322,6 @@ C 4500 8600 1 0 0 seli.sym
 T 4725 9000 5 10 1 1 0 1 1
 refdes=U4
 }
-C 8600 6800 1 0 0 not.sym
-{
-T 8950 7100 5 10 1 1 0 4 1
-refdes=G2
-}
-C 8600 3200 1 0 0 not.sym
-{
-T 8950 3500 5 10 1 1 0 4 1
-refdes=G0
-}
-C 8600 1400 1 0 0 not.sym
-{
-T 8950 1700 5 10 1 1 0 4 1
-refdes=U1
-}
 C 3900 8300 1 0 0 nmos-switch.sym
 {
 T 4125 8600 5 8 1 1 0 1 1
@@ -1492,17 +1477,17 @@ netname=iw1
 N 9400 3500 9500 3500 4
 {
 T 9450 3525 5 6 1 1 0 3 1
-netname=iw0#
+netname=iw0
 }
 N 9400 7100 9500 7100 4
 {
 T 9450 7125 5 6 1 1 0 3 1
-netname=iw2
+netname=iw2#
 }
 N 9400 1700 9500 1700 4
 {
 T 9450 1725 5 6 1 1 0 3 1
-netname=ibk#
+netname=ibk
 }
 N 4200 4400 4300 4400 4
 {
@@ -1519,33 +1504,51 @@ C 6300 1600 1 0 0 cnot.sym
 T 6625 1900 5 10 1 1 0 4 1
 refdes=N3
 }
-C 9500 600 1 0 0 dilatch.sym
+C 9500 600 1 0 0 diplatch.sym
 {
 T 10850 1100 5 10 1 1 0 7 1
 refdes=K
-T 10300 1325 5 10 1 1 0 4 1
-source=dilatch.sch
+T 10300 1300 5 10 1 1 0 4 1
+source=diplatch.sch
 }
-C 9500 2400 1 0 0 dilatch.sym
+C 9500 2400 1 0 0 diplatch.sym
 {
 T 10850 2900 5 10 1 1 0 7 1
 refdes=W0
-T 10300 3125 5 10 1 1 0 4 1
-source=dilatch.sch
+T 10300 3100 5 10 1 1 0 4 1
+source=diplatch.sch
 }
-C 9500 4200 1 0 0 dilatch.sym
+C 9500 4200 1 0 0 diplatch.sym
 {
 T 10850 4700 5 10 1 1 0 7 1
 refdes=W1
-T 10300 4925 5 10 1 1 0 4 1
-source=dilatch.sch
+T 10300 4900 5 10 1 1 0 4 1
+source=diplatch.sch
 }
-C 9500 6000 1 0 0 dilatch.sym
+C 9500 6000 1 0 0 diplatch.sym
 {
 T 10850 6500 5 10 1 1 0 7 1
 refdes=W2
-T 10300 6725 5 10 1 1 0 4 1
-source=dilatch.sch
+T 10300 6700 5 10 1 1 0 4 1
+source=diplatch.sch
 }
 C 9300 4600 1 0 0 phi.sym
 C 9300 6400 1 0 0 phi.sym
+C 8600 1200 1 0 0 nor.sym
+{
+T 9000 1700 5 10 1 1 0 4 1
+refdes=U1
+}
+C 8800 900 1 0 0 gnd-1.sym
+C 8600 3000 1 0 0 nor.sym
+{
+T 9000 3500 5 10 1 1 0 4 1
+refdes=G0
+}
+C 8800 2700 1 0 0 gnd-1.sym
+C 8600 6600 1 0 0 nor.sym
+{
+T 9000 7100 5 10 1 1 0 4 1
+refdes=G2
+}
+C 8800 6300 1 0 0 gnd-1.sym

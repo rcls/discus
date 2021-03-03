@@ -290,28 +290,28 @@ C 300 6900 1 0 0 sramcell.sym
 {
 T 1650 7150 5 10 1 1 0 6 1
 refdes=L0
-T 1100 7625 5 10 1 1 0 4 1
+T 1100 7625 5 8 1 1 0 4 1
 source=sramcell.sch
 }
 C 2100 6900 1 0 0 sramcell.sym
 {
 T 3450 7150 5 10 1 1 0 6 1
 refdes=L1
-T 2400 7550 5 10 1 1 0 0 1
+T 2900 7625 5 8 1 1 0 4 1
 source=sramcell.sch
 }
 C 3900 6900 1 0 0 sramcell.sym
 {
 T 5250 7150 5 10 1 1 0 6 1
 refdes=L2
-T 4200 7550 5 10 1 1 0 0 1
+T 4700 7625 5 8 1 1 0 4 1
 source=sramcell.sch
 }
 C 5700 6900 1 0 0 sramcell.sym
 {
 T 7050 7150 5 10 1 1 0 6 1
 refdes=L3
-T 6000 7550 5 10 1 1 0 0 1
+T 6500 7625 5 8 1 1 0 4 1
 source=sramcell.sch
 }
 C 400 6800 1 90 0 in-1.sym
@@ -427,10 +427,10 @@ T 2400 2950 5 10 1 1 180 6 1
 refdes=Jump
 }
 C 5900 2900 1 0 0 gnd-1.sym
-C 5200 3200 1 0 0 dflipflops.sym
+C 5200 3200 1 0 0 dpflipflops.sym
 {
 T 6000 3875 5 8 1 1 0 4 1
-source=dflipflops.sch
+source=dpflipflops.sch
 T 6550 3450 5 10 1 1 0 6 1
 refdes=F
 }
@@ -1015,11 +1015,11 @@ N 13000 5000 12900 5000 4
 T 12900 5050 5 6 1 1 0 0 1
 netname=_b
 }
-C 15800 1400 1 0 1 dilatch.sym
+C 15800 1400 1 0 1 diplatch.sym
 {
 T 14450 1900 5 10 1 1 0 1 1
 refdes=L
-T 15000 2125 5 10 1 1 0 4 1
-source=dilatch.sch
+T 15000 2075 5 8 1 1 0 4 1
+source=diplatch.sch
 }
 C 16000 1800 1 0 1 phi.sym

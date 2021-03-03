@@ -48,7 +48,7 @@ C 3000 500 1 0 0 sramcells.sym
 {
 T 3800 1200 5 10 1 1 0 4 1
 source=sramcells.sch
-T 4150 950 5 10 1 1 0 0 1
+T 4350 950 5 10 1 1 0 7 1
 refdes=B
 }
 C 700 1900 1 0 0 in-1.sym
@@ -87,8 +87,8 @@ refdes=C#
 }
 C 1300 500 1 0 0 dlatch.sym
 {
-T 2450 950 5 10 1 1 0 0 1
+T 2650 950 5 10 1 1 0 7 1
 refdes=A
-T 2100 1225 5 10 1 1 0 4 1
+T 2100 1200 5 10 1 1 0 4 1
 source=dlatch.sch
 }

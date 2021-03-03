@@ -62,7 +62,7 @@ refdes=C0
 T 1900 1700 5 10 0 0 90 0 1
 symversion=0.1
 T 2650 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 2200 2000 1 0 0 pdtc124.sym
 {
@@ -98,7 +98,7 @@ symversion=0.1
 T 3550 1650 5 8 1 1 0 2 1
 refdes=C1
 T 3550 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 3100 2000 1 0 0 pdtc124.sym
 {
@@ -130,7 +130,7 @@ symversion=0.1
 T 4450 1650 5 8 1 1 0 2 1
 refdes=C2
 T 4450 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 4000 2000 1 0 0 pdtc124.sym
 {
@@ -162,7 +162,7 @@ symversion=0.1
 T 5350 1650 5 8 1 1 0 2 1
 refdes=C3
 T 5350 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 4900 2000 1 0 0 pdtc124.sym
 {
@@ -194,7 +194,7 @@ symversion=0.1
 T 6250 1650 5 8 1 1 0 2 1
 refdes=C4
 T 6250 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 5800 2000 1 0 0 pdtc124.sym
 {
@@ -226,7 +226,7 @@ symversion=0.1
 T 7150 1650 5 8 1 1 0 2 1
 refdes=C5
 T 7150 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 6700 2000 1 0 0 pdtc124.sym
 {
@@ -258,7 +258,7 @@ symversion=0.1
 T 8050 1650 5 8 1 1 0 2 1
 refdes=C6
 T 8050 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 7600 2000 1 0 0 pdtc124.sym
 {
@@ -290,7 +290,7 @@ symversion=0.1
 T 8950 1650 5 8 1 1 0 2 1
 refdes=C7
 T 8950 1850 5 8 1 1 0 0 1
-value=360p
+value=680p
 }
 C 8500 2000 1 0 0 pdtc124.sym
 {

@@ -427,7 +427,7 @@ T 2400 2950 5 10 1 1 180 6 1
 refdes=Jump
 }
 C 5900 2900 1 0 0 gnd-1.sym
-C 5200 3200 1 0 0 dflipflop.sym
+C 5200 3200 1 0 0 dflipflops.sym
 {
 T 6000 3875 5 8 1 1 0 4 1
 source=dflipflops.sch

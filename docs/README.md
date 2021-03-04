@@ -10,7 +10,7 @@ It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is
 the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1287 transistors.  Without the pipelining and DRAM
+controller.  The CPU totals 1336 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -49,12 +49,15 @@ and 3.3kΩ load resistors, giving a 1mA current per logic gate at 3.3V.  BJTs ar
 used in the register files, both as pass gates, and as low-capacitance
 interfaces to the sense lines.
 
-[SRAM cells](sramcell.md) are a mix of 4T2R, 5T3R and 7T3R depending on the
-number of ports and drive strength.  Each SRAM cell has NMOS or CMOS
-cross-coupled inverters, and uses BJT pass gates for the read and write ports.
-Outside of the register files, [latches](sramcell2w.md) are similar, with an
-[optional inverter](dlatch.md).  [Two](dlatch.md) [latches](sramcell2w.md) form
-a [flip-flop](dflipflop.md).
+[SRAM cells](sramcell.md) are a mix of [4T2R](sramcell.md), [5T3R](sramcell2.md)
+and [7T3R](sramcell2s.md) depending on the number of ports and drive strength.
+Each SRAM cell has NMOS or CMOS cross-coupled inverters, and uses BJT pass gates
+for the read and write ports.
+
+Outside of the register files, [flip-flops](dflipflop.md) consist of a
+[6T3R NMOS latch](dilatch.md) followed by a [SRAM cell](sramcellw.md).  There
+are minor variants such as using a [5T3R NMOS latch](diplatch.md) when it is
+save for spurious pull-downs on the input.
 
 Arbitrary AOI gates are used as needed, where sensible these are drawn in the
 circuit diagram by connecting the outputs of open-drain gates together, although
@@ -439,14 +442,20 @@ Main Memory
 
 As well as the CPU, there is memory… DRAM is implemented as arrays of 1T1C
 cells, consisting of a discrete capacitor and a BJT pass gate.  A 64-byte DRAM
-board takes 512 transistors and 512 capacitors for storage, plus 170 transistors
+board takes 512 transistors and 512 capacitors for storage, plus 176 transistors
 for the decode, sense logic and I/O.  (There are also 64 diodes).
 
-Precharging the bit-lines is necessary.  Pull-up resistors suffice.  Memory
-accesses take place on the second half of the clock cycle, leaving the first
-half for pre-charge, even on back-to-back memory accesses.  Because memory reads
-always go directly into a register, the reduced time available from the half
-clock cycle is not a concern.
+Typical DRAM uses differential bit-lines and sense circuitry.  Because of the
+compromises of using BJT pass gates, we have to make do with single-ended
+circuity.
+
+Precharging the bit-lines is necessary.  The precharge is implemented by
+lowering the Vdd of the sense circuitry during the first half of the clock
+cycle, and pulling up the bit-lines to that.  The lowered Vdd is approx 200mV
+above the threshold of the sense transistors, a compromise to keep the sense
+circuitry in a stable state.  The actual access happens in the second half of
+the clock cycle.  Because memory reads always go directly into a register, the
+reduced time available from the half clock cycle is not a concern.
 
 [Program storage](rom64byte.md) is intended to be implemented as ROM, so there
 is no DRAM refresh or precharge timing allowance on the program memory bus.

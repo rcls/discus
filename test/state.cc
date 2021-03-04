@@ -297,7 +297,7 @@ void state_t::verify_spice(const char * path)
     FILE * f = fopen(path, "r");
     if (!f)
         err(1, "fopen %s", path);
-    spice_load spice(f, 10e-6, 7e-6, false);
+    spice_load spice(f, 5e-6, 3.5e-6, false);
     //auto Ohash = spice.extract_byte("o", "#");
     auto AA = spice.extract_byte("a");
     auto XX = spice.extract_byte("r_xb");

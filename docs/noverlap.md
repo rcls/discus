@@ -1,5 +1,5 @@
 # noverlap.sch schematic
 ![noverlap.sch](noverlap.png)
 # Gates in noverlap.sch
-[ ![not](not-sym.png) ](not.html)
+[ ![notp](notp-sym.png) ](notp.html)
 [ ![cnot](cnot-sym.png) ](cnot.html)

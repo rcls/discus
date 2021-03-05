@@ -33,7 +33,7 @@ footprint=anchor
 T 500 2800 5 10 0 0 0 0 1
 device=INPUT
 T 500 2600 5 10 1 1 0 7 1
-refdes=D
+refdes=W
 }
 C 500 600 1 0 0 in-1.sym
 {
@@ -42,7 +42,7 @@ footprint=anchor
 T 500 900 5 10 0 0 0 0 1
 device=INPUT
 T 500 700 5 10 1 1 0 7 1
-refdes=D#
+refdes=W#
 }
 C 500 200 1 0 0 in-1.sym
 {

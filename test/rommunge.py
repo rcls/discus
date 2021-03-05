@@ -25,7 +25,7 @@ dst = open(args.dst, 'w')
 
 for X in src:
     X = X.rstrip().split(' ')
-    if len(X) >= 4 and X[3] == 'INFINITY':
+    if len(X) >= 4 and X[3] == '{INFINITY}':
         if not X[0] in lines:
             continue
         X[3] = '1'

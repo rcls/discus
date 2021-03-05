@@ -13,7 +13,7 @@ device=RESISTOR
 T 3600 2500 5 10 0 1 0 0 1
 footprint=jumper2
 T 3600 2500 5 10 0 1 0 0 1
-value=INFINITY
+value={INFINITY}
 T 3350 2525 5 8 1 1 0 6 1
 refdes=R0
 }
@@ -24,7 +24,7 @@ device=RESISTOR
 T 3600 2300 5 10 0 1 0 0 1
 footprint=jumper2
 T 3600 2300 5 10 0 1 0 0 1
-value=INFINITY
+value={INFINITY}
 T 3350 2275 5 8 1 1 0 8 1
 refdes=R1
 }
@@ -40,7 +40,7 @@ device=RESISTOR
 T 5100 2300 5 10 0 1 0 6 1
 footprint=jumper2
 T 5100 2300 5 10 0 1 0 6 1
-value=INFINITY
+value={INFINITY}
 T 5350 2325 5 8 1 1 0 0 1
 refdes=R2
 }
@@ -51,7 +51,7 @@ device=RESISTOR
 T 5100 2100 5 10 0 1 0 6 1
 footprint=jumper2
 T 5100 2100 5 10 0 1 0 6 1
-value=INFINITY
+value={INFINITY}
 T 5350 2075 5 8 1 1 0 2 1
 refdes=R3
 }
@@ -72,7 +72,7 @@ device=RESISTOR
 T 3600 1200 5 10 0 1 0 0 1
 footprint=jumper2
 T 3600 1200 5 10 0 1 0 0 1
-value=INFINITY
+value={INFINITY}
 T 3350 1225 5 8 1 1 0 6 1
 refdes=R4
 }
@@ -83,7 +83,7 @@ device=RESISTOR
 T 3600 1000 5 10 0 1 0 0 1
 footprint=jumper2
 T 3600 1000 5 10 0 1 0 0 1
-value=INFINITY
+value={INFINITY}
 T 3350 975 5 8 1 1 0 8 1
 refdes=R5
 }
@@ -99,7 +99,7 @@ device=RESISTOR
 T 5100 1000 5 10 0 1 0 6 1
 footprint=jumper2
 T 5100 1000 5 10 0 1 0 6 1
-value=INFINITY
+value={INFINITY}
 T 5350 1025 5 8 1 1 0 0 1
 refdes=R6
 }
@@ -110,7 +110,7 @@ device=RESISTOR
 T 5100 800 5 10 0 1 0 6 1
 footprint=jumper2
 T 5100 800 5 10 0 1 0 6 1
-value=INFINITY
+value={INFINITY}
 T 5350 775 5 8 1 1 0 2 1
 refdes=R7
 }

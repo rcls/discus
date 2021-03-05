@@ -2,7 +2,7 @@
 GNETLIST=/home/geda/bin/gnetlist
 
 
-ADHOC_TEST = alu pcdecode opdecode sp
+ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
 PROG_TEST=testadd testsub testcall testinc testmem testmemi testmemw \
 	testcmp hazard logic
 TESTS=$(ADHOC_TEST:%=test/test%) $(PROG_TEST:%=test/%)

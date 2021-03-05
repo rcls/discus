@@ -1,5 +1,5 @@
 v 20201216 2
-T 800 775 8 10 1 1 0 4 1
+T 800 775 8 8 1 1 0 4 1
 source=dram4byte.sch
 B 200 200 1200 2300 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
 P 0 2400 200 2400 1 0 0
@@ -93,7 +93,7 @@ pinnumber=9
 P 0 600 200 600 1 0 0
 {
 T 205 595 5 10 1 1 0 1 1
-pinlabel=H0
+pinlabel=A0
 T 105 645 5 10 0 1 0 6 1
 pinnumber=10
 T 0 600 5 10 0 0 0 0 1
@@ -128,7 +128,7 @@ refdes=S?
 P 0 400 200 400 1 0 0
 {
 T 205 395 5 10 1 1 0 1 1
-pinlabel=H1
+pinlabel=A1
 T 105 445 5 10 0 1 0 6 1
 pinnumber=11
 T 0 400 5 10 0 0 0 0 1
@@ -139,7 +139,7 @@ pintype=unknown
 P 1600 600 1400 600 1 0 0
 {
 T 1395 595 5 10 1 1 0 7 1
-pinlabel=L0#
+pinlabel=A0#
 T 1495 645 5 10 0 1 0 0 1
 pinnumber=14
 T 1600 600 5 10 0 0 0 6 1
@@ -150,7 +150,7 @@ pintype=unknown
 P 1600 400 1400 400 1 0 0
 {
 T 1395 395 5 10 1 1 0 7 1
-pinlabel=L1#
+pinlabel=A1#
 T 1495 445 5 10 0 1 0 0 1
 pinnumber=15
 T 1600 400 5 10 0 0 0 6 1
@@ -167,5 +167,16 @@ pinnumber=12
 T 1600 1000 5 10 0 0 0 6 1
 pinseq=12
 T 1400 1000 5 10 0 1 0 6 1
+pintype=unknown
+}
+P 1600 1200 1400 1200 1 0 0
+{
+T 1395 1195 5 10 1 1 0 7 1
+pinlabel=H
+T 1495 1245 5 10 0 1 0 0 1
+pinnumber=12
+T 1600 1200 5 10 0 0 0 6 1
+pinseq=12
+T 1400 1200 5 10 0 1 0 6 1
 pintype=unknown
 }

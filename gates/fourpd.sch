@@ -136,7 +136,7 @@ refdes=Vdd
 C 44500 66300 1 0 0 pmos-switch.sym
 {
 T 44725 66600 5 10 1 1 0 1 1
-refdes=M1
+refdes=M4
 T 44600 67100 5 10 0 1 0 0 1
 value=PMOS_switch
 T 45000 66900 5 10 0 1 0 0 1
@@ -147,7 +147,7 @@ device=PMOS
 C 47500 66300 1 0 1 pmos-switch.sym
 {
 T 47275 66600 5 10 1 1 0 7 1
-refdes=M4
+refdes=M5
 T 47400 67100 5 10 0 1 0 6 1
 value=PMOS_switch
 T 47000 66900 5 10 0 1 0 6 1
@@ -158,7 +158,7 @@ device=PMOS
 C 44200 65500 1 0 0 pmos-switch.sym
 {
 T 44425 65800 5 10 1 1 0 1 1
-refdes=M2
+refdes=M0
 T 44300 66300 5 10 0 1 0 0 1
 value=PMOS_switch
 T 44700 66100 5 10 0 1 0 0 1
@@ -169,7 +169,7 @@ device=PMOS
 C 45600 65500 1 0 1 pmos-switch.sym
 {
 T 45375 65800 5 10 1 1 0 7 1
-refdes=M3
+refdes=M1
 T 45500 66300 5 10 0 1 0 6 1
 value=PMOS_switch
 T 45100 66100 5 10 0 1 0 6 1
@@ -180,7 +180,7 @@ device=PMOS
 C 46400 65500 1 0 0 pmos-switch.sym
 {
 T 46625 65800 5 10 1 1 0 1 1
-refdes=M5
+refdes=M2
 T 46500 66300 5 10 0 1 0 0 1
 value=PMOS_switch
 T 46900 66100 5 10 0 1 0 0 1
@@ -191,7 +191,7 @@ device=PMOS
 C 47800 65500 1 0 1 pmos-switch.sym
 {
 T 47575 65800 5 10 1 1 0 7 1
-refdes=M6
+refdes=M3
 T 47700 66300 5 10 0 1 0 6 1
 value=PMOS_switch
 T 47300 66100 5 10 0 1 0 6 1

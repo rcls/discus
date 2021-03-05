@@ -14,7 +14,7 @@ C 56300 38800 1 0 0 resistor-load.sym
 T 56400 39000 5 10 1 1 0 0 1
 refdes=R2
 }
-C 55000 39700 1 0 0 not.sym
+C 55000 39700 1 0 0 notp.sym
 {
 T 55350 40000 5 10 1 1 0 4 1
 refdes=I

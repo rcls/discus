@@ -37,7 +37,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 %.verify: %.raw %
 	./$* -V $<
 
-.PRECIOUS: %.rcr %.raw
+.PRECIOUS: %.rcr %.raw %.cir
 %.raw: %.cir
 	ngspice -r $@ -b $<
 

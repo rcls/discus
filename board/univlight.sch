@@ -338,7 +338,7 @@ device=vpulse
 T 14100 4150 5 10 0 0 0 6 1
 footprint=none
 T 16400 2750 5 10 1 1 0 6 1
-value=pulse 0 3.3v 1u 10n 10n 2.5u 5u
+value=pulse 0 3.3v 1u 10n 10n 1.99u 4u
 }
 C 14600 2800 1 0 1 gnd-1.sym
 C 11700 3100 1 0 0 vpulse-1.sym
@@ -350,7 +350,7 @@ device=vpulse
 T 12400 4150 5 10 0 0 0 0 1
 footprint=none
 T 12100 2850 5 10 1 1 0 5 1
-value=pulse 0 3.3v 8u 10n 10n 9 10
+value=pulse 0 3.3v 7u 10n 10n 9 10
 }
 C 11900 2800 1 0 0 gnd-1.sym
 C 9100 14700 1 0 0 vdd-1.sym

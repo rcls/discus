@@ -48,15 +48,6 @@ refdes=S
 }
 C 2200 500 1 0 0 gnd-1.sym
 N 2000 1500 2000 1400 4
-C 1300 300 1 90 0 resistor-1.sym
-{
-T 900 600 5 10 0 0 90 0 1
-device=RESISTOR
-T 1200 525 5 10 1 1 0 2 1
-refdes=R
-T 1100 700 5 10 1 1 0 7 1
-value=100k
-}
 C 600 200 1 0 0 in-1.sym
 {
 T 600 500 5 10 0 0 0 7 1
@@ -68,3 +59,14 @@ refdes=GND
 }
 C 1500 600 1 0 0 gnd-1.sym
 N 1200 1500 1600 1500 4
+C 1300 300 1 90 0 resistor-load.sym
+{
+T 900 600 5 10 0 0 90 0 1
+device=RESISTOR
+T 1150 950 5 10 1 1 0 6 1
+refdes=R
+T 1200 700 5 10 0 1 90 0 1
+footprint=0603-boxed
+T 1200 700 5 10 0 1 90 0 1
+value=3.3k
+}

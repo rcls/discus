@@ -1,0 +1,2 @@
+
+.model ISS55 VDMOS(pchan vto=-1.5 kp=0.05 rd=1 rs=1m rg=50 cgdmin=1.7p cgdmax=20p cgs=25p cjo=4.3p m=0.25 is=0.14p)

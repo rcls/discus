@@ -65,9 +65,63 @@
 + MJS = 0.333
 + FC = 0.5
 
-* Fakery...
-.MODEL sw_npn_100 SW (VT=0.9 RON=100 ROFF=1e7)
-.SUBCKT fake_PDTC124TU collector base emitter ground
-S_fake_npn collector emitter base ground sw_npn_100
-R_npn emitter base 22k
+
+.SUBCKT PDTC124TUs 1 20 3
+R 20 2 10k
+Q1 1 2 3 MAIN
+D1 2 1 DIODE 
+*
+.MODEL MAIN NPN
++ IS = 7.325E-15
++ NF = 0.9774
++ ISE = 5.414E-14
++ NE = 2.963
++ BF = 291
++ IKF = 0.1276
++ VAF = 41.31
++ NR = 0.9762
++ ISC = 8.521E-16
++ NC = 1.094
++ BR = 20.09
++ IKR = 4.137
++ VAR = 63.1
++ RB = 160
++ IRB = 0.000145
++ RBM = 4.2
++ RE = 0.3822
++ RC = 0.5684
++ XTB = 1.156
++ EG = 1.11
++ XTI = 3.659
++ CJE = 1.014E-11
++ VJE = 0.67
++ MJE = 0.3354
++ TF = 5.95E-10
++ XTF = 25
++ VTF = 2
++ ITF = 0.18
++ PTF = 0
++ CJC = 2.96E-12
++ VJC = 0.4591
++ MJC = 0.2626
++ XCJC = 1
++ TR = 8E-08
++ CJS = 0
++ VJS = 0.75
++ MJS = 0.333
++ FC = 0.78
+.MODEL DIODE D
++ IS = 1.077E-15
++ N = 0.988
++ BV = 1000
++ IBV = 0.001
++ RS = 857.2
++ CJO = 0
++ VJ = 1
++ M = 0.5
++ FC = 0
++ TT = 0
++ EG = 1.11
++ XTI = 3
 .ENDS
+*

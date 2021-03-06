@@ -79,7 +79,7 @@ footprint=anchor
 T 3700 1300 5 10 0 0 0 6 1
 device=INPUT
 T 3700 1100 5 10 1 1 0 1 1
-refdes=ϕ
+refdes=Pre
 }
 C 3700 1900 1 0 0 nandod.sym
 {

@@ -41,7 +41,7 @@ for X in 'p.', 'i.', 'a.', 'vx_b.', 'vy_b.', 'vu_b.', 'vk_b.':
 dst.write('\n')
 
 if 'executed' in params:
-    dst.write('tran 50n ' + str(int(params['executed']) * 4 + 12) + 'u uic\n')
+    dst.write('tran 50n ' + str(int(params['executed']) * (10.0/3) + 10) + 'u uic\n')
 
 if args.w is not None:
     dst.write('write\n')

@@ -337,8 +337,8 @@ T 14100 3950 5 10 0 0 0 6 1
 device=vpulse
 T 14100 4150 5 10 0 0 0 6 1
 footprint=none
-T 16400 2750 5 10 1 1 0 6 1
-value=pulse 0 3.3v 1u 10n 10n 1.99u 4u
+T 16400 2550 5 10 1 1 0 6 1
+value=pulse 0 3.3v 1u 10n 10n 1.6566666667u 3.333333333u
 }
 C 14600 2800 1 0 1 gnd-1.sym
 C 11700 3100 1 0 0 vpulse-1.sym
@@ -350,7 +350,7 @@ device=vpulse
 T 12400 4150 5 10 0 0 0 0 1
 footprint=none
 T 12100 2850 5 10 1 1 0 5 1
-value=pulse 0 3.3v 7u 10n 10n 9 10
+value=pulse 0 3.3v 5u 10n 10n 9 10
 }
 C 11900 2800 1 0 0 gnd-1.sym
 C 9100 14700 1 0 0 vdd-1.sym
@@ -2501,3 +2501,19 @@ netname=B7
 }
 C 13400 8300 1 0 1 phi1.sym
 C 8500 7500 1 0 0 gnd-1.sym
+C 9600 5500 1 0 0 resistor-1.sym
+{
+T 9900 5900 5 10 0 0 0 0 1
+device=RESISTOR
+T 9800 5800 5 10 1 1 0 0 1
+refdes=R0
+T 10100 5600 5 10 1 1 0 0 1
+value=1.4k
+}
+N 10500 5600 11000 5600 4
+{
+T 10900 5600 5 10 1 1 0 0 1
+netname=Ret
+}
+N 11000 5600 11000 5700 4
+C 9400 5600 1 0 0 vdd-1.sym

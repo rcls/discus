@@ -4,7 +4,7 @@ C 1300 1500 1 90 0 resistor-load.sym
 T 1200 1900 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 1200 1900 5 10 0 1 90 0 1
-value=3k3
+value=rload
 T 900 1800 5 10 0 0 90 0 1
 device=RESISTOR
 T 1000 1900 5 10 1 1 90 0 1

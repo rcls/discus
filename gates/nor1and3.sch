@@ -8,7 +8,7 @@ refdes=R
 T 41000 54000 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 41000 54000 5 10 0 1 90 0 1
-value=3k3
+value=rload
 }
 C 41400 52900 1 0 1 nmos-switch.sym
 {

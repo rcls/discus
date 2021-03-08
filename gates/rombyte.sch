@@ -212,7 +212,7 @@ refdes=R
 T 1400 1500 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 1400 1500 5 10 0 1 90 0 1
-value=3.3k
+value=rload
 }
 C 1000 1900 1 0 0 pmos-switch.sym
 {

@@ -68,5 +68,5 @@ refdes=R
 T 1200 700 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 1200 700 5 10 0 1 90 0 1
-value=3.3k
+value=rload
 }

@@ -842,7 +842,7 @@ refdes=R1
 T 12900 1800 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 12900 1800 5 10 0 1 90 0 1
-value=3.3k
+value=rload
 }
 N 12700 700 12700 900 4
 N 12700 800 15400 800 4
@@ -1172,7 +1172,7 @@ device=RESISTOR
 T 10000 2400 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 10000 2400 5 10 0 1 90 0 1
-value=3.3k
+value=rload
 T 9950 2650 5 10 1 1 90 0 1
 refdes=R3
 }

@@ -4,7 +4,7 @@ C 2700 1100 1 90 0 resistor-load.sym
 T 2600 1500 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 2600 1500 5 10 0 1 90 0 1
-value=3k3
+value=rload
 T 2300 1400 5 10 0 0 90 0 1
 device=RESISTOR
 T 2575 1775 5 10 1 1 0 6 1
@@ -28,7 +28,7 @@ C 1500 1100 1 90 0 resistor-load.sym
 T 1400 1500 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 1400 1500 5 10 0 1 90 0 1
-value=3k3
+value=rload
 T 1100 1400 5 10 0 0 90 0 1
 device=RESISTOR
 T 1400 1775 5 10 1 1 0 6 1

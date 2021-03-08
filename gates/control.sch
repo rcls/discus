@@ -504,7 +504,7 @@ refdes=R0
 T 2200 9000 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 9000 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 1800 8700 1 0 0 resistor-load.sym
 {
@@ -515,7 +515,7 @@ refdes=R1
 T 2200 8800 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 8800 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 1800 8500 1 0 0 resistor-load.sym
 {
@@ -526,7 +526,7 @@ refdes=R2
 T 2200 8600 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 8600 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 1800 8300 1 0 0 resistor-load.sym
 {
@@ -537,7 +537,7 @@ refdes=R3
 T 2200 8400 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 8400 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 1800 8100 1 0 0 resistor-load.sym
 {
@@ -548,7 +548,7 @@ refdes=R4
 T 2200 8200 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 8200 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 1800 7900 1 0 0 resistor-load.sym
 {
@@ -559,7 +559,7 @@ refdes=R5
 T 2200 8000 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 8000 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 1800 7700 1 0 0 resistor-load.sym
 {
@@ -570,7 +570,7 @@ refdes=R6
 T 2200 7800 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 7800 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 1800 7500 1 0 0 resistor-load.sym
 {
@@ -581,7 +581,7 @@ refdes=R7
 T 2200 7600 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 2200 7600 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 N 2700 9000 2700 7400 4
 {

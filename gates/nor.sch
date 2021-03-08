@@ -30,7 +30,7 @@ device=RESISTOR
 T 1200 1900 5 10 1 1 90 0 1
 refdes=R
 T 1400 1900 5 10 0 1 0 0 1
-value=3k3
+value=rload
 }
 C 1200 200 1 270 1 in-1.sym
 {

@@ -54,7 +54,7 @@ refdes=R0
 T 44100 64800 5 10 0 1 90 2 1
 footprint=0603-boxed
 T 44100 64800 5 10 0 1 90 2 1
-value=3.3k
+value=rload
 }
 C 45800 64400 1 90 0 resistor-load.sym
 {
@@ -63,7 +63,7 @@ device=RESISTOR
 T 45700 64800 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 45700 64800 5 10 0 1 90 0 1
-value=3.3k
+value=rload
 T 45400 65100 5 10 1 1 0 0 1
 refdes=R1
 }
@@ -74,7 +74,7 @@ device=RESISTOR
 T 46300 64800 5 10 0 1 90 2 1
 footprint=0603-boxed
 T 46300 64800 5 10 0 1 90 2 1
-value=3.3k
+value=rload
 T 46600 65100 5 10 1 1 0 6 1
 refdes=R2
 }
@@ -85,7 +85,7 @@ device=RESISTOR
 T 47900 64800 5 10 0 1 90 0 1
 footprint=0603-boxed
 T 47900 64800 5 10 0 1 90 0 1
-value=3.3k
+value=rload
 T 47600 65100 5 10 1 1 0 0 1
 refdes=R3
 }

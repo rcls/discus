@@ -170,7 +170,7 @@ refdes=R1
 T 43700 46600 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 43700 46600 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 43300 46100 1 0 0 resistor-load.sym
 {
@@ -181,5 +181,5 @@ refdes=R2
 T 43700 46200 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 43700 46200 5 10 0 1 0 0 1
-value=3.3k
+value=rload
 }

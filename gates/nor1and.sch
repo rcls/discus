@@ -95,7 +95,7 @@ device=RESISTOR
 T 1450 2400 5 10 1 1 90 0 1
 refdes=R
 T -600 4300 5 10 0 1 0 0 1
-value=3k3
+value=rload
 }
 N 1400 1800 1600 1800 4
 N 1600 1100 1600 700 4

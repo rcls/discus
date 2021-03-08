@@ -52,7 +52,7 @@ refdes=R2
 T 43800 46200 5 8 0 1 0 0 1
 footprint=0603-boxed
 T 43800 46200 5 8 0 1 0 0 1
-value=3.3k
+value=rload
 }
 C 42800 47800 1 90 1 pdtc124.sym
 {
@@ -98,7 +98,7 @@ refdes=R1
 T 43700 46600 5 8 0 1 0 0 1
 footprint=0603-boxed
 T 43700 46600 5 8 0 1 0 0 1
-value=3.3k
+value=rload
 }
 N 42700 46200 43400 46200 4
 N 44300 46200 44500 46200 4

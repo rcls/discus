@@ -12,10 +12,10 @@ device=NMOS
 }
 C 1500 1400 1 90 0 resistor-load.sym
 {
+T 1800 1600 5 10 0 1 90 0 1
+value=rload
 T 1400 1800 5 10 0 1 90 0 1
 footprint=0603-boxed
-T 1400 1800 5 10 0 1 90 0 1
-value=3k3
 T 1100 1700 5 10 0 0 90 0 1
 device=RESISTOR
 T 1350 2100 5 10 1 1 0 6 1

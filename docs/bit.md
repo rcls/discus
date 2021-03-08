@@ -9,6 +9,7 @@
 [ ![dpflipflops](dpflipflops-sym.png) ](dpflipflops.html)
 [ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
 [ ![nandod](nandod-sym.png) ](nandod.html)
+[ ![noth](noth-sym.png) ](noth.html)
 [ ![nand](nand-sym.png) ](nand.html)
 [ ![seli](seli-sym.png) ](seli.html)
 [ ![cnot](cnot-sym.png) ](cnot.html)

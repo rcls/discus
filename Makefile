@@ -3,8 +3,8 @@ GNETLIST=/home/geda/bin/gnetlist
 
 
 ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
-PROG_TEST=testadd testsub testcall testinc testmem testmemi testmemw \
-	testcmp hazard logic
+PROG_TEST=testmem testmemi testmemw testinc testadd testsub logic hazard \
+	testcmp testcall
 TESTS=$(ADHOC_TEST:%=test/test%) $(PROG_TEST:%=test/%)
 PROG=rmsim pattern monitor blink
 ALL_PROG=$(TESTS) $(PROG:%=test/%)
@@ -50,7 +50,7 @@ BOARD=$(wildcard board/*.sch)
 ALL_SYM=$(SYMS:sym/%.sym=%)
 ALL_SCH=$(GATES:gates/%.sch=%) $(BOARD:board/%.sch=%)
 
-.PHONY: png md web
+.PHONY: png md web %.verify
 web: png md
 png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png)
 md: $(ALL_SCH:%=docs/%.md)

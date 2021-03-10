@@ -42,7 +42,7 @@ P 400 0 400 175 1 0 0
 {
 T 400 0 5 10 0 0 0 0 1
 pintype=unknown
-T 405 175 5 6 1 1 0 2 1
+T 430 175 5 6 1 1 0 2 1
 pinlabel=GND
 T 350 105 5 10 0 1 90 6 1
 pinnumber=5

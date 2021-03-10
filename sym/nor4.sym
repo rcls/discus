@@ -40,7 +40,7 @@ P 300 1000 300 888 1 0 0
 {
 T 300 1000 5 10 0 0 0 0 1
 pintype=unknown
-T 320 875 5 7 1 1 0 0 1
+T 320 900 5 7 1 1 0 0 1
 pinlabel=Vdd
 T 250 895 5 10 0 1 90 0 1
 pinnumber=5
@@ -51,7 +51,7 @@ P 300 0 300 112 1 0 0
 {
 T 300 0 5 10 0 0 0 0 1
 pintype=unknown
-T 305 125 5 6 1 1 0 2 1
+T 330 100 5 6 1 1 0 2 1
 pinlabel=GND
 T 250 105 5 10 0 1 90 6 1
 pinnumber=6

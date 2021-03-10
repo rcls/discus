@@ -19,12 +19,15 @@ test/test1
 test/testadd
 test/testalu
 test/testcall
+test/testcmp
 test/testinc
 test/testmem
 test/testmemi
 test/testmemw
 test/testopdecode
 test/testpcdecode
+test/testramdecode
+test/testromdecode
 test/testsp
 test/testsub
 /doc

@@ -70,7 +70,7 @@ P 600 1000 600 775 1 0 0
 {
 T 600 1000 5 10 0 0 0 0 1
 pintype=unknown
-T 620 775 5 7 1 1 0 0 1
+T 620 800 5 7 1 1 0 0 1
 pinlabel=Vdd
 T 550 895 5 10 0 1 90 0 1
 pinnumber=5
@@ -81,7 +81,7 @@ P 600 0 600 225 1 0 0
 {
 T 600 0 5 10 0 0 0 0 1
 pintype=unknown
-T 605 225 5 6 1 1 0 2 1
+T 630 200 5 6 1 1 0 2 1
 pinlabel=GND
 T 550 105 5 10 0 1 90 6 1
 pinnumber=6

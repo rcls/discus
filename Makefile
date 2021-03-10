@@ -5,7 +5,7 @@ GNETLIST=/home/geda/bin/gnetlist
 ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
 PROG_TEST=testmem testmemi testmemw testinc testadd testsub logic hazard \
 	testcmp testcall
-TESTS=$(ADHOC_TEST:%=test/test%) $(PROG_TEST:%=test/%)
+TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/test%)
 PROG=rmsim pattern monitor blink
 ALL_PROG=$(TESTS) $(PROG:%=test/%)
 

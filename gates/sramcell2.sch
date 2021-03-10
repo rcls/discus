@@ -122,7 +122,7 @@ C 44900 48800 1 0 0 resistor-load.sym
 T 45200 49200 5 10 0 0 0 0 1
 device=RESISTOR
 T 45550 48950 5 10 1 1 0 0 1
-refdes=R
+refdes=R1
 T 45900 48700 5 10 0 1 0 0 1
 footprint=0603-boxed
 T 45100 48500 5 10 0 1 0 0 1

@@ -10,8 +10,6 @@ PCB.*
 *.fake-cir
 \#*#
 unused
-test/hazard
-test/logic
 test/monitor
 test/pattern
 test/rmsim
@@ -20,7 +18,9 @@ test/testadd
 test/testalu
 test/testcall
 test/testcmp
+test/testhazard
 test/testinc
+test/testlogic
 test/testmem
 test/testmemi
 test/testmemw

@@ -447,9 +447,14 @@ BJT pass gate.  A 64-byte DRAM board takes 512 transistors and 512 capacitors
 for storage, plus 211 transistors for the decode, sense logic and I/O.  (There
 are also 64 diodes).
 
+The BJTs used are in fact heterojunction devices (HBT).  The device used are
+designed for RF operation, however the critical parameters for us are the low
+parasitic capacitance and the high reverse gain, rather than operation
+frequency.
+
 Typical DRAM uses differential bit-lines and sense circuitry.  Because of the
 compromises of using BJT pass gates, we have to make do with single-ended
-circuity.
+circuitry.
 
 Precharging the bit-lines is necessary.  The precharge is implemented by
 lowering the Vdd of the sense circuitry during the first half of the clock

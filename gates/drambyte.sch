@@ -294,7 +294,7 @@ value=BAS40
 N 1400 2300 1600 2300 4
 C 1400 1200 1 0 0 pmos-switch.sym
 {
-T 1600 1500 5 8 1 1 0 1 1
+T 1625 1500 5 8 1 1 0 1 1
 refdes=M
 T 1500 2000 5 10 0 1 0 0 1
 value=PMOS_switch

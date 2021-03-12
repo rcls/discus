@@ -13,7 +13,7 @@ all:
 verify: $(TESTS:%=%.verify)
 programs: $(ALL_PROG)
 
-%.rcr: %.sch gates/*.sch board/*.sch sym/*.sym
+%.rcr: %.sch gates/*.sch board/*.sch sym/*.sym subckt/*.prm
 	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $<
 
 %.cir: %.rcr ./substrate.py
@@ -49,7 +49,7 @@ BOARD=$(wildcard board/*.sch)
 ALL_SYM=$(SYMS:sym/%.sym=%)
 ALL_SCH=$(GATES:gates/%.sch=%) $(BOARD:board/%.sch=%)
 
-.PHONY: png md web %.verify
+.PHONY: png md web
 web: png md
 png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png)
 md: $(ALL_SCH:%=docs/%.md)

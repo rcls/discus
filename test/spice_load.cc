@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <err.h>
 #include <getopt.h>
+#include <math.h>
 #include <sstream>
 #include <string.h>
 
@@ -24,7 +25,7 @@ std::vector<bool> spice_load::extract_signal(const char * name)
     const auto raw = extract_raw_column(name);
     std::vector<bool> sig(num_samples);
     for (int i = 0; i != num_samples; ++i)
-        sig[i] = raw[indexes[i]] > 1.65;
+        sig[i] = raw[indexes[i]] > 1.2;
     // Now check that the signal levels are stable between 0.5 QUANTUM and 0.9
     // QUANTUM...
     if (!STABILITY_CHECK)
@@ -139,25 +140,18 @@ spice_load::spice_load(FILE * f, double q, double sp, bool st) :
         last = timestamps[i];
     }
 
-    // Now select the indexes to use for sampling; the sample is taken every
-    // time we cross 0.7*QUANTUM.  We will ignore the first two samples.
-    num_samples = last / QUANTUM;
-    if (last - num_samples * QUANTUM >= SAMPLE_POINT)
-        ++num_samples;
-    //printf("last = %e, num_samples = %li\n", last, num_samples);
-
-    double last_remainder = 0;
-    indexes.resize(num_samples);
+    // Select the indexes to use for sampling.
+    int last_index = -1;
     for (int i = 0; i != num_points; ++i) {
-        int this_item = timestamps[i] / QUANTUM;
-        double remainder = timestamps[i] - this_item * QUANTUM;
-        if (last_remainder < SAMPLE_POINT && remainder >= SAMPLE_POINT) {
-            // printf("%e %i\n", timestamps[i], this_item);
-            assert(this_item < num_samples);
-            indexes[this_item] = i;
-        }
-        last_remainder = remainder;
+        int index = floor((timestamps[i] - SAMPLE_POINT) / QUANTUM);
+        if (index < 0 || index == last_index)
+            continue;
+        assert(index == last_index + 1);
+        assert(index == (int) indexes.size());
+        last_index = index;
+        indexes.push_back(i);
     }
+    num_samples = indexes.size();
 }
 
 

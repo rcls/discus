@@ -315,6 +315,9 @@ void state_t::verify_spice(const char * path)
 
     // Load the main state.  The first instruction to check is at sample 4,
     // pc=0.
+    pc = 0;
+    prev_was_const = false;
+    prev_set_K = false;
     reg[A] = AA[3];
     reg[X] = XX[3];
     reg[Y] = YY[3];

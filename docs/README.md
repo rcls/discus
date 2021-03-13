@@ -45,7 +45,7 @@ Circuitry Overview
 [ <img align="right" src="bit-sym.png"> ](bit.md)
 
 The bulk of the implementation is in NMOS logic, with N-channel MOSFET switches
-and 3.3kΩ load resistors, giving a 1mA current per logic gate at 3.3V.  BJTs are
+and 2.7kΩ load resistors, giving a 1mA current per logic gate at 2.7V.  BJTs are
 used in the register files, both as pass gates, and as low-capacitance
 interfaces to the sense lines.
 

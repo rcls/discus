@@ -319,13 +319,13 @@ netname=P7
 C 9200 3100 1 0 0 vdc-1.sym
 {
 T 9900 3750 5 10 1 1 0 0 1
-refdes=V33
+refdes=Vsupply
 T 9900 3950 5 10 0 0 0 0 1
 device=VOLTAGE_SOURCE
 T 9900 4150 5 10 0 0 0 0 1
 footprint=none
 T 9900 3550 5 10 1 1 0 0 1
-value=DC 2.7V
+value=DC 2.5V
 }
 C 9300 4300 1 0 0 vdd-1.sym
 C 9400 2800 1 0 0 gnd-1.sym
@@ -338,7 +338,7 @@ device=vpulse
 T 14100 4150 5 10 0 0 0 6 1
 footprint=none
 T 16700 2750 5 10 1 1 0 6 1
-value=pulse 0 2.7v 1u 10n 10n 1.49u 3u
+value=pulse 0 2.5v 1u 10n 10n 1.49u 3u
 }
 C 14600 2800 1 0 1 gnd-1.sym
 C 11700 3100 1 0 0 vpulse-1.sym
@@ -350,7 +350,7 @@ device=vpulse
 T 12400 4150 5 10 0 0 0 0 1
 footprint=none
 T 12100 2850 5 10 1 1 0 5 1
-value=pulse 0 3.3v 5u 10n 10n 9 10
+value=pulse 0 2.5v 4.1u 10n 10n 9 10
 }
 C 11900 2800 1 0 0 gnd-1.sym
 C 9100 14700 1 0 0 vdd-1.sym

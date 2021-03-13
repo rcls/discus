@@ -1,2 +1,2 @@
-.MODEL rload R (R=2.7k)
-.MODEL rstrong R (R=1k)
+.MODEL rload R (R=2.49k)
+.MODEL rstrong R (R=820)

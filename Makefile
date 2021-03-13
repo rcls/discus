@@ -8,7 +8,7 @@ TESTS=$(PROG_TEST:%=test/test%) $(ADHOC_TEST:%=test/test%)
 PROG=rmsim pattern monitor blink
 ALL_PROG=$(TESTS) $(PROG:%=test/%)
 
-all:
+all: programs
 
 verify: $(TESTS:%=%.verify)
 programs: $(ALL_PROG)

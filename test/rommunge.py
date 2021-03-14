@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('src', help='Input file')
 parser.add_argument('dst', help='Output .cir file')
 parser.add_argument('-w', help='Output spice trace')
-parser.add_argument('-t', help='Spice simulation time')
+parser.add_argument('-t', help='Spice simulation time', default=3000, type=int)
 args = parser.parse_args()
 
 params = { }
@@ -22,6 +22,8 @@ for X in sys.stdin:
 
 src = open(args.src)
 dst = open(args.dst, 'w')
+
+dst.write(f'* {args.dst}\n')
 
 for X in src:
     X = X.rstrip().split(' ')
@@ -41,10 +43,10 @@ for X in 'p.', 'i.', 'a.', 'vx_b.', 'vy_b.', 'vu_b.', 'vk_b.':
 dst.write('\n')
 
 if 'executed' in params:
-    dst.write('tran 50n ' + str(int(params['executed']) * 3 + 9) + 'u uic\n')
+    ns = args.t * (int(params['executed']) + 3) + 1000
+    dst.write(f'tran 50n {ns}n uic\n')
 
 if args.w is not None:
     dst.write('write\n')
-#    dst.write('write ' + args.w.removesuffix('.cir') + '.raw\n')
     dst.write('quit\n')
 dst.write('.endc\n')

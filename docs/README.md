@@ -45,8 +45,8 @@ Circuitry Overview
 [ <img align="right" src="bit-sym.png"> ](bit.md)
 
 The bulk of the implementation is in NMOS logic, with N-channel MOSFET switches
-and 2.7kΩ load resistors, giving a 1mA current per logic gate at 2.7V.  BJTs are
-used in the register files, both as pass gates, and as low-capacitance
+and 2.49kΩ load resistors, giving a 1mA current per logic gate at 2.5V.  BJTs
+are used in the register files, both as pass gates, and as low-capacitance
 interfaces to the sense lines.
 
 [SRAM cells](sramcell.md) are a mix of [4T2R](sramcell.md), [5T3R](sramcell2.md)
@@ -57,7 +57,7 @@ for the read and write ports.
 Outside of the register files, [flip-flops](dflipflop.md) consist of a
 [6T3R NMOS latch](dilatch.md) followed by a [SRAM cell](sramcellw.md).  There
 are minor variants such as using a [5T3R NMOS latch](diplatch.md) when it is
-save for spurious pull-downs on the input.
+safe for spurious pull-downs on the input.
 
 Arbitrary AOI gates are used as needed, where sensible these are drawn in the
 circuit diagram by connecting the outputs of open-drain gates together, although
@@ -174,7 +174,7 @@ instruction for the execute pipeline stage.
 ### `OUT` : `010000rr`
 
 `OUT` instruction.  This does nothing, but pulses a strobe.  External
-peripherals may use the values from the accumulator and operand buses.
+peripherals may use the values from the accumulator bus.
 
 Only the first four bits are decoded; any instruction starting 0100 is decoded
 as `OUT`.

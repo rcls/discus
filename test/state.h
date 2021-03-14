@@ -64,7 +64,7 @@ struct state_t {
     }
 
     void step(int opcode);              // Binary interpreter.
-    void run(const unsigned char program[256]);
+    void run(const uint8_t program[256]);
 
     void zero_init();
 
@@ -74,11 +74,11 @@ struct state_t {
 
     bool wanted(condition_t) const;
 
-    unsigned char get(const operand_t & val) const {
+    uint8_t get(const operand_t & val) const {
         uint8_t v = val.reg < 0 ? val.value : reg[val.reg];
         return val.is_mem ? mem[v] : v;
     }
-    unsigned char & get(register_name_t r) {
+    uint8_t & get(register_name_t r) {
         return reg[r];
     }
 
@@ -86,7 +86,7 @@ struct state_t {
 
     void assemble(emitter_t && emit);
 
-    void verify_spice(const char * path);
+    void verify_spice(const char * path, double quantum);
 
     template<typename T>
     bool verify(T & expected, T actual, const char * name);
@@ -222,7 +222,7 @@ struct state_t {
     void extract_branches();
 private:
     void ADD(int opcode, const operand_t & val,
-             bool cin = false, unsigned char flip = 0) {
+             bool cin = false, uint8_t flip = 0) {
         account(opcode, val);
         unsigned r = reg[A] + (get(val) ^ flip) + cin;
         flag_C = !!(r & 256);
@@ -277,7 +277,7 @@ struct step_check_t : state_t, emitter_t {
     void emit_two(int address, int b1, int b2);
     void emit_three(int address, int b1, int b2, int b3);
     state_t * const orig;
-    unsigned char code[256];
+    uint8_t code[256];
 
     void run_check();
 

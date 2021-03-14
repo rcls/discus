@@ -65,8 +65,9 @@ struct memfile_emitter_t : emitter_t {
 
 void sim_main(state_t && program, int argc, char * argv[])
 {
+    double quantum = 3e-6;
     while (1)
-        switch (getopt(argc, argv, "n:HFMRXV:CTh")) {
+        switch (getopt(argc, argv, "n:HFMRXV:CTt:h")) {
         case 'n':
             comp_num = strtoul(optarg, NULL, 0);
             break;
@@ -98,7 +99,7 @@ void sim_main(state_t && program, int argc, char * argv[])
             break;
         case 'V':
             program.extract_branches();
-            program.verify_spice(optarg);
+            program.verify_spice(optarg, quantum);
             break;
         case 'T':
             program.extract_branches();
@@ -110,6 +111,9 @@ void sim_main(state_t && program, int argc, char * argv[])
         case 'C':
             program.extract_branches();
             step_check_t(&program).run_check();
+            break;
+        case 't':
+            quantum = strtod(optarg, NULL) * 1e-9;
             break;
         case 'h':
             usage(argv[0], stdout, EXIT_SUCCESS);

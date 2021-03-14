@@ -48,7 +48,7 @@ std::vector<bool> spice_load::extract_signal(const char * name)
 
 std::vector<uint8_t> spice_load::extract_byte(const char * p, const char * s)
 {
-    std::vector<unsigned char> r(num_samples);
+    std::vector<uint8_t> r(num_samples);
     for (int i = 0; i != 8; ++i) {
         int bit = 1 << i;
         std::ostringstream name;
@@ -159,11 +159,13 @@ FILE * spice_load::parse_args(int argc, char * const argv[])
 {
     const char * path = NULL;
     int c;
-    while ((c = getopt(argc, argv, "V:")) > 0) {
+    while ((c = getopt(argc, argv, "V:t:")) > 0) {
         switch (c) {
         case 'V':
             path = optarg;
             break;
+        case 't':
+            break;                      // Ignore for compatibility.
         default:
             errx(1, "Usage: %s [-V path]\n", argv[0]);
             break;

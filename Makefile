@@ -31,10 +31,12 @@ $(ALL_PROG): test/state.o test/script.o test/spice_load.o
 
 $(PROG_TEST:%=test/test%.cir): %.cir: % board/univlight.cir test/rommunge.py
 	./$< -C
-	./$< -T -R | test/rommunge.py -w $@ board/univlight.cir $*.cir
+	./$< -T -R | test/rommunge.py -t $(QUANTUM) -w $@ board/univlight.cir $*.cir
+
+QUANTUM=3000
 
 %.verify: %.raw %
-	./$* -V $<
+	./$* -t $(QUANTUM) -V $<
 
 .PRECIOUS: %.rcr %.raw %.cir
 %.raw: %.cir

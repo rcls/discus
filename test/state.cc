@@ -7,12 +7,12 @@
 
 struct byte_emitter_t : emitter_t
 {
-    byte_emitter_t(unsigned char c[256]) :
+    byte_emitter_t(uint8_t c[256]) :
         code(c) { }
     void emit_byte(int address, int byte) {
         code[address] = byte;
     }
-    unsigned char * const code;
+    uint8_t * const code;
 };
 
 
@@ -259,7 +259,7 @@ void state_t::step(int opcode)
 }
 
 
-void state_t::run(const unsigned char program[256])
+void state_t::run(const uint8_t program[256])
 {
     while (pc > 0)
         step(program[pc]);
@@ -292,13 +292,13 @@ bool state_t::verify(T & expected, T actual, const char * name)
 }
 
 
-void state_t::verify_spice(const char * path)
+void state_t::verify_spice(const char * path, double quantum)
 {
     FILE * f = fopen(path, "r");
     if (!f)
         err(1, "fopen %s", path);
-    spice_load spice(f, 3e-6, 2.99e-6, false);
-    //auto Ohash = spice.extract_byte("o", "#");
+    spice_load spice(f, quantum, quantum, false);
+
     auto AA = spice.extract_byte("a");
     auto XX = spice.extract_byte("r_xb");
     auto YY = spice.extract_byte("r_yb");
@@ -309,7 +309,7 @@ void state_t::verify_spice(const char * path)
     const auto FZ = spice.extract_signal("zo_c");
     auto II = spice.extract_byte("i");
 
-    unsigned char code[256];
+    uint8_t code[256];
     assemble(byte_emitter_t(code));
     bool success = true;
 

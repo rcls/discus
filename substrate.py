@@ -6,6 +6,8 @@ FILE = open(sys.argv[1])
 
 TRANS = None
 
+print('*', sys.argv[1])
+
 for L in FILE:
     L = L.strip()
     words = L.split()

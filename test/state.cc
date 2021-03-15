@@ -326,6 +326,7 @@ void state_t::verify_spice(const char * path, double quantum)
     flag_C = FC[3];
     flag_Z = FZ[3];
     for (int i = 4; i < spice.num_samples; ++i) {
+        printf("Timestamp %g\n", spice.timestamps[spice.indexes[i]]);
         step(code[pc]);
         success &= verify(reg[A], AA[i], "A");
         success &= verify(reg[X], XX[i], "X");

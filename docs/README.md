@@ -10,7 +10,7 @@ It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is
 the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1356 transistors.  Without the pipelining and DRAM
+controller.  The CPU totals 1361 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -47,7 +47,8 @@ Circuitry Overview
 The bulk of the implementation is in NMOS logic, with N-channel MOSFET switches
 and 2.49kΩ load resistors, giving a 1mA current per logic gate at 2.5V.  BJTs
 are used in the register files, both as pass gates, and as low-capacitance
-interfaces to the sense lines.
+interfaces to the sense lines.  A few gates use 820Ω load resistors, giving
+faster response on higher-fan out lines critical for performance.
 
 [SRAM cells](sramcell.md) are a mix of [4T2R](sramcell.md), [5T3R](sramcell2.md)
 and [7T3R](sramcell2s.md) depending on the number of ports and drive strength.
@@ -72,7 +73,7 @@ decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
 [eight identical boards](bit.md) (139 transistors each), and a
-[separate control board](control.md) (244 transistors).
+[separate control board](control.md) (249 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
 logic on the left, and the instruction execute pipe line stage on the right.
@@ -171,7 +172,7 @@ though—the branch instruction happens in the wrong pipeline stage.  Instead,
 when the branch is handled, the prefix can be found in the register holding the
 instruction for the execute pipeline stage.
 
-### `OUT` : `010000rr`
+### `OUT` : `01000000`
 
 `OUT` instruction.  This does nothing, but pulses a strobe.  External
 peripherals may use the values from the accumulator bus.
@@ -254,11 +255,13 @@ the letter 'M' is suffixed to the following instruction, e.g., `ADDM` instead of
 Note that with a `MEM` prefix, the operand bits of the following instruction are
 ignored.
 
-### `IN` prefix : `101000rr`
+### `IN` prefix : `10100000`
 
 Load `K` from the external result bus `Q` (the bus is open-drain).  The
-accumulator and operand buses may be used by external circuitry, and the `IN`
-strobe line is asserted.
+accumulator bus may be used by external circuitry, and the `IN` strobe line is
+asserted.
+
+Not all bits are decoded; there are aliases.
 
 ### `INC` : `11dd00rr`
 
@@ -358,9 +361,10 @@ that precharge is not necessary.  Writes are latched in a separate latch during
 the execute stage, and written back to the register file in the first half of
 the following clock cycle; hence the nominal 2.5 stage pipeline.
 
-Because the write-back occurs simultaneously with the execute stage of the
-following instruction, the write-back is on the critical path for the CPU cycle
-time.
+The write-back occurs simultaneously with decode logic of the execute stage of
+the following instruction.  This keeps the write-back off the critical path for
+the cycle time—the write-back is complete by the time the read strobes for the
+next instruction have settled.
 
 
 Program Counter and Stack

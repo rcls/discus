@@ -65,7 +65,7 @@ struct memfile_emitter_t : emitter_t {
 
 void sim_main(state_t && program, int argc, char * argv[])
 {
-    double quantum = 3e-6;
+    double quantum = 2.5e-6;
     while (1)
         switch (getopt(argc, argv, "n:HFMRXV:CTt:h")) {
         case 'n':

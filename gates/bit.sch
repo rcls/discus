@@ -909,7 +909,7 @@ T 4300 2100 9 12 1 0 0 2 1
 DRAM Refresh
 C 5900 0 1 0 0 gnd-1.sym
 C 5800 1800 1 0 0 vdd-1.sym
-C 12200 4600 1 0 0 seli.sym
+C 12200 4600 1 0 0 selis.sym
 {
 T 12425 5000 5 10 1 1 0 1 1
 refdes=B1

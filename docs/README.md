@@ -82,7 +82,7 @@ handling, with the [stack pointer](sp.md) and
 [instruction decode](decode.md) in sub-circuits.
 
 Bit slicing does cost some transistors, as some parts of the bit slice are not
-need in each bit position.  For example the DRAM refresh controller is 8-bits
+needed in each bit position.  For example the DRAM refresh controller is 8-bits
 wide but only needs to be 6-bits wide, while the lowest bit of the program
 counter could be simplified.
 

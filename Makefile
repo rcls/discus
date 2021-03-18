@@ -43,7 +43,7 @@ QUANTUM=2500
 	ngspice -r $@ -b $<
 
 count: gates/bit.rcr gates/control.rcr board/dram64byte.rcr board/rom64byte.rcr
-	grep -E -c -v -e '^$$' -e '^[^MQ]' -e 'unknown' -e 'No valid' $+
+	grep -Ec -e '^M.*\b[PN]MOS_switch' -e '^Q.*\b(Q2SC4774|PDTC124TU)' $+
 
 SYMS=$(wildcard sym/*.sym)
 GATES=$(wildcard gates/*.sch)

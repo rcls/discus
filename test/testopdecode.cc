@@ -48,14 +48,12 @@ int main(int argc, char * argv[])
     const auto OR = S.extract_signal("or");
     const auto Ni = S.extract_signal("n#");
 
-    const auto QE = S.extract_signal("qe");
     const auto INi = S.extract_signal("in#");
     const auto OUT = S.extract_signal("out");
     const auto MW = S.extract_signal("mw");
     const auto MRi = S.extract_signal("mr#");
 
     const auto CW = S.extract_signal("cw");
-    const auto ZW = S.extract_signal("zw");
 
     for (int i = 0; i != S.num_samples; ++i) {
         int opcode = I7[i] * 128 + I6[i] * 64 + I5[i] * 32
@@ -77,9 +75,7 @@ int main(int argc, char * argv[])
         bool out = OUT[i];
         bool mw = MW[i];
         bool mr = !MRi[i];
-        bool qe = QE[i];
         bool cw = CW[i];
-        bool zw = ZW[i];
 
         const char * tag = "";
         bool ex_coe = co;
@@ -94,30 +90,19 @@ int main(int argc, char * argv[])
         bool ex_out = false;
         bool ex_mr = false;
         bool ex_mw = false;
-        bool ex_qe = false;
-        bool ex_zw = false;
         bool ex_cw = false;
+        bool check_alu = false;
 
         // Instructions that use ALU output value; ALU ops + INC/DEC/MV
-        if ((opcode >= 0x80 && opcode <= 0x9f)
-            || (opcode & 0xcc) == 0xc0
-            || (opcode & 0xcc) == 0xc4
-            || (opcode & 0xcc) == 0xc8)
-            ex_qe = true;
+        if (opcode >= 0x80 && (opcode & 0xcc) != 0xcc)
+            check_alu = true;
 
         // Instructions that write the C flag: ALU ops plus CMP/TST.
         if ((opcode >= 0x80 && opcode <= 0x9f)
-            || (opcode & 0xf4) == 0x64)
+            || (opcode & 0xf4) == 0x64) {
+            check_alu = true;
             ex_cw = true;
-
-        // Instructions that write Z : Same as C + INC/DEC.
-        ex_zw = ex_cw;
-        if ((opcode & 0xc8) == 0xc0)
-            ex_zw = true;
-
-        // Instructions that write Z need QE also.
-        if (ex_zw)
-            ex_qe = true;
+        }
 
         if (opcode < 0xc0) {
             switch (opcode & op_alu_mask) {
@@ -203,8 +188,7 @@ int main(int argc, char * argv[])
         // 101...... are unused...
         if ((opcode & 0xe0) == 0xa0) {
             ex_cw = cw;
-            ex_qe = qe;
-            ex_zw = zw;
+            check_alu = false;
         }
 
         // Test for undesirable combos.
@@ -215,18 +199,9 @@ int main(int argc, char * argv[])
         if (as && ar)
             errx(1, "AS and AR on %s %#02x at %i\n", tag, opcode, i);
 
-        // Various flags we test on every cycle.
-        if (qe != ex_qe)
-            errx(1, "QE %i exp %i on %s %#02x at %i\n",
-                 qe, ex_qe, tag, opcode, i);
-
         if (cw != ex_cw)
             errx(1, "CW %i exp %i on %s %#02x at %i\n",
                  cw, ex_cw, tag, opcode, i);
-
-        if (zw != ex_zw)
-            errx(1, "ZW %i exp %i on %s %#02x at %i\n",
-                 zw, ex_zw, tag, opcode, i);
 
         if (mw != ex_mw)
             errx(1, "MW %i exp %i on %s %#02x at %i\n",
@@ -245,41 +220,42 @@ int main(int argc, char * argv[])
                  out, ex_out, tag, opcode, i);
 
         // Only check arithmetic flags on things that use the ALU.
-        if (qe || zw || cw) {
-            if (as != ex_as)
-                errx(1, "AS %i exp %i on %s %02x at %i\n",
-                     as, ex_as, tag, opcode, i);
+        if (!check_alu)
+            continue;
 
-            if (ar != ex_ar)
-                errx(1, "AR %i exp %i on %s %02x at %i\n",
-                     ar, ex_ar, tag, opcode, i);
+        if (as != ex_as)
+            errx(1, "AS %i exp %i on %s %02x at %i\n",
+                 as, ex_as, tag, opcode, i);
 
-            if (cs != ex_cs)
-                errx(1, "CS %i exp %i on %s %02x at %i\n",
-                     cs, ex_cs, tag, opcode, i);
+        if (ar != ex_ar)
+            errx(1, "AR %i exp %i on %s %02x at %i\n",
+                 ar, ex_ar, tag, opcode, i);
 
-            if (cr != ex_cr)
-                errx(1, "CR %i exp %i on %s %02x at %i\n",
-                     cr, ex_cr, tag, opcode, i);
+        if (cs != ex_cs)
+            errx(1, "CS %i exp %i on %s %02x at %i\n",
+                 cs, ex_cs, tag, opcode, i);
 
-            if (coe != ex_coe)
-                errx(1, "CoE %i exp %i on %s %02x at %i\n",
-                     coe, ex_coe, tag, opcode, i);
+        if (cr != ex_cr)
+            errx(1, "CR %i exp %i on %s %02x at %i\n",
+                 cr, ex_cr, tag, opcode, i);
 
-            if (And != ex_and)
-                errx(1, "AND %i exp %i on %s %02x at %i\n",
-                     And, ex_and, tag, opcode, i);
+        if (coe != ex_coe)
+            errx(1, "CoE %i exp %i on %s %02x at %i\n",
+                 coe, ex_coe, tag, opcode, i);
 
-            if (Or != ex_or)
-                errx(1, "OR %i exp %i on %s %02x at %i\n",
-                     Or, ex_or, tag, opcode, i);
+        if (And != ex_and)
+            errx(1, "AND %i exp %i on %s %02x at %i\n",
+                 And, ex_and, tag, opcode, i);
 
-            if (n != ex_n)
-                errx(1, "N %i exp %i on %s %02x at %i\n",
-                     n, ex_n, tag, opcode, i);
-        }
+        if (Or != ex_or)
+            errx(1, "OR %i exp %i on %s %02x at %i\n",
+                 Or, ex_or, tag, opcode, i);
 
+        if (n != ex_n)
+            errx(1, "N %i exp %i on %s %02x at %i\n",
+                 n, ex_n, tag, opcode, i);
     }
+
     fprintf(stderr, "Tested: %zi\n", S.num_samples);
     return 0;
 }

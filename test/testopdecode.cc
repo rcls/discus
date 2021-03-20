@@ -49,7 +49,7 @@ int main(int argc, char * argv[])
     const auto Ni = S.extract_signal("n#");
 
     const auto QE = S.extract_signal("qe");
-    const auto IN = S.extract_signal("in");
+    const auto INi = S.extract_signal("in#");
     const auto OUT = S.extract_signal("out");
     const auto MW = S.extract_signal("mw");
     const auto MRi = S.extract_signal("mr#");
@@ -73,7 +73,7 @@ int main(int argc, char * argv[])
         bool Or = OR[i];
         bool n = !Ni[i];
 
-        bool in = IN[i];
+        bool in = !INi[i];
         bool out = OUT[i];
         bool mw = MW[i];
         bool mr = !MRi[i];
@@ -174,17 +174,38 @@ int main(int argc, char * argv[])
             break;
         }
 
-        if ((opcode & 0xf0) == 0x50)
-            ex_mw = true;               // STA.
-        if ((opcode & 0xec) == 0xac)
-            ex_mr = true;               // MEM
-        if ((opcode & 0xe8) == 0xa0)
+        // Ad. hoc. insns.
+        switch (opcode) {
+        case 0x40:
+        case 0x44:
+            ex_out = true;              // OUT
+            break;
+        case 0x50:
+        case 0x54:
             ex_in = true;               // IN
-        if ((opcode & 0xf0) == 0x40)    // OUT
-            ex_out = true;
+            break;
+        case 0x58:
+            ex_mr = mr;                 // Might be MEM, might not.
+            break;
+        case 0x5c:
+            ex_mr = true;               // MEM
+            break;
+        case 0x48:
+            ex_mr = mr;                 // Might be STA, might not.
+            ex_mw = mw;
+            break;
+        case 0x4c:
+            ex_mw = true;               // STA
+            ex_mr = true;
+            break;
+        }
 
-        // We assert MR whenever MW is asserted.
-        ex_mr |= ex_mw;
+        // 101...... are unused...
+        if ((opcode & 0xe0) == 0xa0) {
+            ex_cw = cw;
+            ex_qe = qe;
+            ex_zw = zw;
+        }
 
         // Test for undesirable combos.
         if (cs && cr)

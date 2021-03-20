@@ -181,7 +181,7 @@ struct state_t {
     }
 
     void STA(const operand_t & val) {
-        account(0x50, val);
+        account(0x4c, val);
         if (!straight_through) {
             assert(get(val) < write_limit);
             mem[get(val)] = reg[A];
@@ -190,7 +190,7 @@ struct state_t {
     void STAM(const operand_t & val) { STA(val.mem()); }
 
     void IN() {
-        account(0xa0);
+        account(0x50);
         // FIXME.
     }
 

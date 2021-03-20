@@ -10,7 +10,7 @@ It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is
 the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1316 transistors.  Without the pipelining and DRAM
+controller.  The CPU totals 1311 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -73,7 +73,7 @@ decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
 [eight identical boards](bit.md) (134 transistors each), and a
-[separate control board](control.md) (244 transistors).
+[separate control board](control.md) (239 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
 logic on the left, and the instruction execute pipe line stage on the right.
@@ -177,17 +177,32 @@ instruction for the execute pipeline stage.
 `OUT` instruction.  This does nothing, but pulses a strobe.  External
 peripherals may use the values from the accumulator bus.
 
-Only the first four bits are decoded; any instruction starting 0100 is decoded
-as `OUT`.
+Not all bits are decoded; there are aliases.
 
-### `STA` : `010100rr`
+### `STA` : `010011rr`
 
 Store the acumulator to memory.  The operand is the memory address to write.
 Like the `OUT` instruction, the only circuitry within the CPU for `STA` is to
 assert appropriate control strobes—the address and data buses are always driven.
 
-Note that only the first four bits are decoded; any instruction starting 0101 is
-decoded as `STA`.
+### `IN` prefix : `01010000`
+
+Load `K` from the external result bus `Q` (the bus is open-drain).  The
+accumulator bus may be used by external circuitry, and the `IN` strobe line is
+asserted.
+
+Not all bits are decoded; there are aliases.
+
+### `MEM` prefix : `010111rr`
+
+Load the `K` register from memory.  The operand is the memory address.
+
+The `MEM` prefix is typically not written explicitly in assembly code.  Instead,
+the letter 'M' is suffixed to the following instruction, e.g., `ADDM` instead of
+`MEM`,`ADD`.
+
+Note that with a `MEM` prefix, the operand bits of the following instruction are
+ignored.
 
 ### RET : `011CCC..`
 
@@ -241,27 +256,6 @@ and `AND` respectively, simplifying the instruction decode.
 
 `ADD(A)` and `ADC(A)` instructions give left shift and (9-bit) rotate.  There
 are no right shift instructions.
-
-### `MEM` prefix : `101011rr`
-
-Load the `K` register from memory.  The operand is the memory address.
-
-Not all bits are decoded; there are aliases.
-
-The `MEM` prefix is typically not written explicitly in assembly code.  Instead,
-the letter 'M' is suffixed to the following instruction, e.g., `ADDM` instead of
-`MEM`,`ADD`.
-
-Note that with a `MEM` prefix, the operand bits of the following instruction are
-ignored.
-
-### `IN` prefix : `10100000`
-
-Load `K` from the external result bus `Q` (the bus is open-drain).  The
-accumulator bus may be used by external circuitry, and the `IN` strobe line is
-asserted.
-
-Not all bits are decoded; there are aliases.
 
 ### `INC` : `11dd00rr`
 
@@ -336,10 +330,11 @@ The per-bit transistor count is 20 transistors per bit, including the
 output-enable driving the `Q` bus.  Decoding the instruction to produce the
 control stobes for the ALU takes 41 transistors.
 
-The ripple carry uses two gate levels per bit.  This is on the critical path for
-the CPU clock cycle time, and accounts for over half of it.  One gate level per
-bit could be achieved by dualizing every second ALU bit, saving a transistor and
-improving performance.  Pragmatically, keeping each bit identical is preferable.
+The ripple carry uses two gate levels per bit.  To reduce the propagation delay
+through the carry chain, 820Ω pull-ups are used, rather than the 2.49kΩ used
+elsewhere.  One gate level per bit could be achieved by dualizing every second
+ALU bit, saving a transistor and improving performance.  Pragmatically, keeping
+each bit identical is preferable.
 
 
 Register File
@@ -419,7 +414,9 @@ cycle.
 
 The above takes no transistors to implement!  There is a 11 transistor flip-flop
 synchronising with the clock, the combinatorial logic for reset is implemented
-by using the flip-flop output as gated power to appropriate circuits.
+by using the flip-flop output as gated power to appropriate circuits.  (Scanning
+the input timing with spice, a single flip-flop stage appeared to give adequate
+protection against metastability).
 
 
 Clocking

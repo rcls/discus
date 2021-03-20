@@ -147,7 +147,7 @@ other 1...
 
 
 100 - write A
-101, 00nJ - write K
+misc, 00nJ - write K
 11  - write DD.
 
 W2 : 1 if:
@@ -233,3 +233,16 @@ ADC - .
 OR  - Cin0,C0
 XOR - Cin0,C0
 INC - Cin0
+
+
+
+OUT 01000
+STA 01001(1)
+IN  01010
+MEM 01011(1)
+
+pre... 0101
+
+MR
+.10.11
+11..11

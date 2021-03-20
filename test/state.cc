@@ -75,13 +75,13 @@ void state_t::account(int opcode, const operand_t & B)
         if (emitter)
             emitter->emit_three(executed,
                                 B.value & 63,
-                                0xac + (B.value >> 6 & 3),
+                                0x5c + (B.value >> 6 & 3),
                                 opcode);
         executed += 3;
     }
     else if (B.is_mem) {
         if (emitter)
-            emitter->emit_two(executed, 0xac + B.reg, opcode);
+            emitter->emit_two(executed, 0x5c + B.reg, opcode);
         executed += 2;
     }
     else if (B.reg < 0) {
@@ -169,14 +169,28 @@ void state_t::step(int opcode)
             pc = B;
         }
         break;
-    case 0x40: {                         // STA or OUT.
-        if (opcode & 0x10)
+    case 0x40:                          // MISC
+        switch (opcode & 0xf8) {
+        case 0x40:                      // OUT.
+            out_latch = A;
+            break;
+        case 0x48:                      // STA.
             // STA...
+            assert(opcode & 4);
             mem[B] = reg[A];
-        else
-            out_latch = B;  // Arbitrary.
+            break;
+        case 0x50:                      // IN
+            // FIXME - IN not done.
+            abort();
+            prev_set_K = true;
+            break;
+        case 0x58:                      // MEM
+            // MEM...
+            regK = mem[B];
+            prev_set_K = true;
+            break;
+        }
         break;
-    }
     case 0x60:                          // Returns, also CMP/TST.
         //fprintf(stderr, "opcode %02x is return/CMP\n", opcode);
         if (cond_flag)
@@ -225,16 +239,8 @@ void state_t::step(int opcode)
         }
         flag_Z = !reg[A];
         break;
-    case 0xa0:                          // MEM / IN.
-        //fprintf(stderr, "opcode %02x is misc\n", opcode);
-        // MEM and IN.
-        if (opcode == 0xac || opcode == 0xbc)
-            // MEM...
-            regK = mem[B];
-        else
-            // FIXME - IN not done.
-            abort();
-        prev_set_K = true;
+    case 0xa0:               // Unused
+        abort();
         break;
     case 0xc0:                          // INC / DEC / MOV / LOAD
     case 0xe0: {

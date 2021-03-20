@@ -679,7 +679,7 @@ device=OUTPUT
 T 17400 8000 5 10 0 0 0 0 1
 footprint=anchor
 T 18000 7600 5 10 1 1 0 1 1
-refdes=QK
+refdes=CON
 }
 N 16300 7400 16100 7400 4
 {
@@ -688,13 +688,13 @@ netname=IJ
 }
 N 17400 7600 17100 7600 4
 {
-T 17500 7700 5 10 1 1 0 6 1
-netname=QK
+T 17250 7650 5 10 1 1 0 0 1
+netname=CON
 }
 N 8400 7000 8600 7000 4
 {
 T 8350 7000 5 10 1 1 0 7 1
-netname=IWK
+netname=PRE
 }
 C 16900 8200 1 0 0 nor3.sym
 {
@@ -719,7 +719,7 @@ netname=I5#
 N 17700 8700 17900 8700 4
 {
 T 17950 8700 5 10 1 1 0 1 1
-netname=IWK
+netname=PRE
 }
 C 16400 8100 1 0 0 vdd-1.sym
 C 17000 9200 1 0 0 vdd-1.sym
@@ -739,7 +739,7 @@ C 8800 5800 1 0 0 vdd-1.sym
 N 4500 4400 4500 4200 4
 {
 T 4500 4450 5 10 1 1 0 3 1
-netname=QK
+netname=CON
 }
 N 3400 4100 3600 4100 4
 {
@@ -1265,7 +1265,7 @@ refdes=G1
 N 8200 5000 8400 5000 4
 {
 T 8150 5000 5 10 1 1 0 7 1
-netname=IWK
+netname=PRE
 }
 C 3600 3500 1 0 0 nor.sym
 {

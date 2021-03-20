@@ -145,7 +145,7 @@ pinnumber=29
 T 0 2200 5 10 0 0 0 6 1
 pinseq=27
 T 205 2195 5 10 1 1 0 1 1
-pinlabel=QK
+pinlabel=CON
 }
 P 0 4200 200 4200 1 0 0
 {

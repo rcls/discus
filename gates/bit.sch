@@ -578,7 +578,7 @@ footprint=anchor
 T 14400 4100 5 10 0 0 180 8 1
 device=INPUT
 T 14400 3900 5 10 1 1 0 7 1
-refdes=QK
+refdes=CON
 }
 C 16600 7800 1 0 1 in-1.sym
 {

@@ -295,7 +295,7 @@ P 1600 3400 1400 3400 1 0 0
 T 1600 3400 5 10 0 0 0 0 1
 pintype=unknown
 T 1395 3395 5 10 1 1 0 7 1
-pinlabel=QK
+pinlabel=CON
 T 1495 3445 5 10 0 1 0 0 1
 pinnumber=53
 T 1600 3400 5 10 0 0 0 0 1

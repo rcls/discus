@@ -14,13 +14,13 @@ void TestCmp::go()
     XOR(A);
     LOAD(A,27);
     LOAD(X,54);
-    CHECK(!flag_C && flag_Z);
+    CHECK(!flag_C);
     CMP(X);
-    CHECK(!flag_C && !flag_Z);
+    CHECK(!flag_C && regK != 0);
     CMP(A);
-    CHECK(flag_C && flag_Z);
+    CHECK(flag_C && regK == 0);
     CMP(12);
-    CHECK(flag_C && !flag_Z);
+    CHECK(flag_C && regK != 0);
     RET();
 }
 

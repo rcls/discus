@@ -26,17 +26,17 @@ void state_t::assemble(emitter_t && emit)
 }
 
 
-bool state_t::wanted(condition_t c) const
+bool state_t::wanted(condition_t c, int K) const
 {
     switch (c) {
     case C:
         return flag_C;
     case Z:
-        return flag_Z;
+        return K == 0;
     case NC:
         return !flag_C;
     case NZ:
-        return !flag_Z;
+        return K != 0;
     case ALWAYS:
     case ALWAYS2:
         return true;
@@ -110,7 +110,7 @@ bool state_t::jump(condition_t cond, const char * name, int opcode) {
     else
         account(opcode + cond * 4, operand_t(0));
     if (!straight_through)
-        return wanted(cond);
+        return wanted(cond, regK);      // This doesn't get hazards right!
     if (jump_take_number-- != 0)
         return false;
     jump_source = executed;
@@ -121,44 +121,38 @@ bool state_t::jump(condition_t cond, const char * name, int opcode) {
 
 void state_t::step(int opcode)
 {
+    ++pc;
+
     if (prev_was_const)
         regK = regK + (opcode & 3) * 64;
 
-    ++pc;
+    bool cond_flag = wanted(condition_t(opcode >> 2 & 7), prevK);
+    prevK = regK;
 
     if (!prev_was_const && opcode < 0x40) {
         regK = opcode;
         prev_was_const = true;
-        prev_set_K = true;
+        prev_prefix = true;
         return;
     }
 
     int B;
-    if (prev_set_K)
+    if (prev_prefix)
         B = regK;
     else
         B = reg[opcode & 3];
 
-    // prev_set_K has been processed (setting B above).  If we have an
+    // prev_prefix has been processed (setting B above).  If we have an
     // const/jump insn, it must be a jump, so we don't need prev_was_const.
     prev_was_const = false;
-    prev_set_K = false;
-
-    bool cond_flag;
-    if (opcode & 0x10)
-        cond_flag = (opcode & 8) ? flag_C : flag_Z;
-    else
-        cond_flag = !(opcode & 8);
-
-    if (opcode & 4)
-        cond_flag = !cond_flag;
+    prev_prefix = false;
 
     // Mask off the low two bits, we've done them.
     opcode &= 0xfc;
 
     switch (opcode & 0xe0) {
     case 0x00:                          // Const or jump.
-        //fprintf(stderr, "opcode %02x is jump\n", opcode);
+        fprintf(stderr, "opcode %02x is jump, taken %i\n", opcode, cond_flag);
         if (cond_flag)
             pc = B;
         break;
@@ -182,12 +176,12 @@ void state_t::step(int opcode)
         case 0x50:                      // IN
             // FIXME - IN not done.
             abort();
-            prev_set_K = true;
+            prev_prefix = true;
             break;
         case 0x58:                      // MEM
             // MEM...
             regK = mem[B];
-            prev_set_K = true;
+            prev_prefix = true;
             break;
         }
         break;
@@ -199,11 +193,11 @@ void state_t::step(int opcode)
         if (opcode == 0x64) {           // CMP
             int q = reg[A] + 256 - B;
             flag_C = !!(q & 256);
-            flag_Z = !(q & 255);
+            regK = q & 255;
         }
         if (opcode == 0x6c) {           // TST
             flag_C = true;
-            flag_Z = !(reg[A] & B);
+            regK = reg[A] & B;
         }
         break;
     case 0x80:                          // ALU.
@@ -237,7 +231,7 @@ void state_t::step(int opcode)
             flag_C = 0;
             break;
         }
-        flag_Z = !reg[A];
+        regK = reg[A];
         break;
     case 0xa0:               // Unused
         abort();
@@ -256,9 +250,8 @@ void state_t::step(int opcode)
                 reg[dd] = B - 1;
             else
                 reg[dd] = B + 1;
-
-            flag_Z = !reg[dd];
         }
+        regK = reg[dd];
         break;
     }
     }
@@ -276,9 +269,8 @@ void state_t::zero_init()
 {
     memset(reg, 0, sizeof reg);
     regK = 0;
-    flag_Z = false;
     flag_C = false;
-    prev_set_K = false;
+    prev_prefix = false;
     prev_was_const = false;
     executed = 0;
     pc = 0;
@@ -309,10 +301,9 @@ void state_t::verify_spice(const char * path, double quantum)
     auto XX = spice.extract_byte("r_xb");
     auto YY = spice.extract_byte("r_yb");
     auto UU = spice.extract_byte("r_ub");
-    auto KK = spice.extract_byte("r_kb");
+    // auto KK = spice.extract_byte("r_kb");
     auto PP = spice.extract_byte("p");
     const auto FC = spice.extract_signal("co_c");
-    const auto FZ = spice.extract_signal("zo_c");
     auto II = spice.extract_byte("i");
 
     uint8_t code[256];
@@ -323,14 +314,13 @@ void state_t::verify_spice(const char * path, double quantum)
     // pc=0.
     pc = 0;
     prev_was_const = false;
-    prev_set_K = false;
+    prev_prefix = false;
     reg[A] = AA[3];
     reg[X] = XX[3];
     reg[Y] = YY[3];
     reg[U] = UU[3];
-    regK   = KK[3];
+    // regK   = KK[3];
     flag_C = FC[3];
-    flag_Z = FZ[3];
     for (int i = 4; i < spice.num_samples; ++i) {
         printf("Timestamp %g\n", spice.timestamps[spice.indexes[i]]);
         step(code[pc]);
@@ -340,7 +330,6 @@ void state_t::verify_spice(const char * path, double quantum)
         success &= verify(reg[U], UU[i], "U");
         //verify(regK  , KK[i], "K");
         success &= verify(flag_C, FC[i], "C");
-        success &= verify(flag_Z, FZ[i], "Z");
         // fprintf(stderr, "%i %i %i %i %i\n", i, pc, PP[i-1], reg[A], AA[i]);
         if (!verify(pc, (int) PP[i-1], "PC"))
             abort();                    // No point in carrying on.
@@ -439,7 +428,7 @@ void step_check_t::verify()
     verify(orig->reg[Y], reg[Y], "Y");
     verify(orig->reg[U], reg[U], "U");
     // verify(orig->regK  , regK  , "K");
-    verify(orig->flag_Z, flag_Z, "Z");
+    // verify(orig->flag_Z, flag_Z, "Z");
     verify(orig->flag_C, flag_C, "C");
     if (memcmp(orig->mem, mem, 256) != 0)
         for (int i = 0; i != 256; ++i) {

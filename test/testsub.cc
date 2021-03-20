@@ -25,7 +25,7 @@ carry_on:
     LOAD(X,A);
     CHECK(!flag_C);
     SUB(X);
-    CHECK(flag_C && flag_Z);
+    CHECK(flag_C && regK == 0);
     JP(Z,zero_on);
 }
 

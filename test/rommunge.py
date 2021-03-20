@@ -34,13 +34,12 @@ for X in src:
     dst.write(' '.join(X) + '\n')
 
 dst.write('.control\n')
-dst.write('save zo_c co_c phi0')
 
-for X in 'p.', 'i.', 'a.', 'vx_b.', 'vy_b.', 'vu_b.', 'vk_b.':
-    for D in '01234567':
-        dst.write(' ' + X.replace('.',D))
-
-dst.write('\n')
+#dst.write('save zo_c co_c phi')
+#for X in 'p', 'i', 'a', 'r_xb', 'r_yb', 'r_ub', 'r_kb':
+#    for D in '01234567':
+#        dst.write(f' {X}{D}')
+#dst.write('\n')
 
 if 'executed' in params:
     ns = args.t * (int(params['executed']) + 3) + 1000

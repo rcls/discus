@@ -35,9 +35,9 @@ enum condition_t {
 struct state_t {
     uint8_t reg[4];
     uint8_t regK;
+    uint8_t prevK;
     bool flag_C;
-    bool flag_Z;
-    bool prev_set_K;
+    bool prev_prefix;
     bool prev_was_const;
     uint8_t out_latch;
     void * stack[4];
@@ -72,7 +72,7 @@ struct state_t {
 
     void account(int opcode);
 
-    bool wanted(condition_t) const;
+    bool wanted(condition_t, int K) const;
 
     uint8_t get(const operand_t & val) const {
         uint8_t v = val.reg < 0 ? val.value : reg[val.reg];
@@ -109,7 +109,7 @@ struct state_t {
     void AND(const operand_t & val) {
         account(0x8c, val);
         reg[A] &= get(val);
-        flag_Z = (reg[A] == 0);
+        regK = reg[A];
         flag_C = true;
     }
 
@@ -118,7 +118,7 @@ struct state_t {
     void OR(const operand_t & val) {
         account(0x88, val);
         reg[A] |= get(val);
-        flag_Z = (reg[A] == 0);
+        regK = reg[A];
         flag_C = false;
     }
 
@@ -127,7 +127,7 @@ struct state_t {
     void XOR(const operand_t & val) {
         account(0x98, val);
         reg[A] ^= get(val);
-        flag_Z = (reg[A] == 0);
+        regK = reg[A];
         flag_C = false;
     }
 
@@ -138,7 +138,7 @@ struct state_t {
         unsigned v = get(val);
         unsigned r = reg[A] + (256 - v);
         flag_C = !!(r & 256);
-        flag_Z = !(r & 255);
+        regK = r;
     }
     void CMPM(const operand_t & val) { CMP(val.mem()); }
     // FIXME - also TST and TSTM.
@@ -146,13 +146,13 @@ struct state_t {
     void INC(register_name_t w, const operand_t & val) {
         account(0xc0 + w * 16, val);
         reg[w] = get(val) + 1;
-        flag_Z = (reg[w] == 0);
+        regK = reg[w];
     }
 
     void DEC(register_name_t w, const operand_t & val) {
         account(0xc4 + w * 16, val);
         reg[w] = get(val) - 1;
-        flag_Z = (reg[w] == 0);
+        regK = reg[w];
     }
 
     void INC(register_name_t r) { INC(r, r); }
@@ -173,11 +173,13 @@ struct state_t {
         assert(!val.is_mem);
         account(0xc8 + ww * 16, val);
         reg[ww] = get(val);
+        regK = reg[ww];
     }
     void LOADM(register_name_t ww, const operand_t & val) {
         assert(!val.is_mem);
         account(0xcc + ww * 16, val);
         reg[ww] = mem[get(val)];
+        regK = reg[ww];
     }
 
     void STA(const operand_t & val) {
@@ -214,7 +216,7 @@ struct state_t {
 
     bool retrn(condition_t cond) {
         account(0x60 + cond * 4);
-        return !straight_through && wanted(cond);
+        return !straight_through && wanted(cond, regK); // FIXME hazard
     }
 
     void check_fail(const char * what);
@@ -227,7 +229,7 @@ private:
         unsigned r = reg[A] + (get(val) ^ flip) + cin;
         flag_C = !!(r & 256);
         reg[A] = r;
-        flag_Z = !(r & 255);
+        regK = reg[A];
     }
 };
 

@@ -8,6 +8,7 @@
 [ ![sramcell](sramcell-sym.png) ](sramcell.html)
 [ ![dpflipflops](dpflipflops-sym.png) ](dpflipflops.html)
 [ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
+[ ![sramcell2t](sramcell2t-sym.png) ](sramcell2t.html)
 [ ![nandod](nandod-sym.png) ](nandod.html)
 [ ![noth](noth-sym.png) ](noth.html)
 [ ![nand](nand-sym.png) ](nand.html)

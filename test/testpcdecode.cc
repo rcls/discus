@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 #include "spice_load.h"
+#include "state.h"
 
 int main(int argc, char * const argv[])
 {
@@ -16,7 +17,7 @@ int main(int argc, char * const argv[])
     const auto O7 = S.extract_signal("o7");
     const auto OJumpi = S.extract_signal("ojump#");
     const auto CO = S.extract_signal("co");
-    const auto ZOi = S.extract_signal("zo#");
+    const auto Zi = S.extract_signal("z#");
 
     const auto JUMP = S.extract_signal("jump");
     const auto RET = S.extract_signal("ret");
@@ -28,9 +29,9 @@ int main(int argc, char * const argv[])
             +        O4[i] * 16  + O3[i] * 8  + O2[i] * 4;
         bool ojump = !OJumpi[i];
         bool co = CO[i];
-        bool zo = !ZOi[i];
+        bool z = !Zi[i];
 
-        // printf("Opcode %02x OJ %i Co %i Zo %i\n", opcode, ojump, co, zo);
+        // printf("Opcode %02x OJ %i Co %i Z %i\n", opcode, ojump, co, z);
         if (opcode >= 0x40 && ojump)
             continue;                   // Impossible combination.
 
@@ -39,21 +40,31 @@ int main(int argc, char * const argv[])
         bool push = !PUSHi[i];
         bool inc  = INC[i];
 
-        bool condition = false;
-        switch (opcode & 0x18) {
-        case 0x00:
-        case 0x08:
+        bool condition;
+        switch ((opcode & 0x1c) >> 2) {
+        case ALWAYS:
+        case ALWAYS2:
             condition = true;
             break;
-        case 0x10:
-            condition = zo;
+        case NEVER:
+        case NEVER2:
+            condition = false;
             break;
-        case 0x18:
+        case Z:
+            condition = z;
+            break;
+        case NZ:
+            condition = !z;
+            break;
+        case C:
             condition = co;
             break;
+        case NC:
+            condition = !co;
+            break;
+        default:
+            abort();
         }
-        if (opcode & 0x04)
-            condition = !condition;
 
         bool is_ret = (opcode & 0xe0) == 0x60;
 

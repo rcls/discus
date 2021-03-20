@@ -10,7 +10,7 @@ It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is
 the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1311 transistors.  Without the pipelining and DRAM
+controller.  The CPU totals 1297 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -73,7 +73,7 @@ decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
 [eight identical boards](bit.md) (134 transistors each), and a
-[separate control board](control.md) (239 transistors).
+[separate control board](control.md) (225 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
 logic on the left, and the instruction execute pipe line stage on the right.
@@ -94,12 +94,17 @@ The general purpose registers are `A`, `X`, `Y`, `U`.  `A` is the accumulator,
 an implicit operand and destination of two argument instructions.  Otherwise,
 all GP registers are interchangeable.
 
-The hidden register is `K`.  This is written by prefix instructions (constants
-or MEM prefix).  The instruction after a prefix, uses `K` as the source
-register, instead of the register encoded in the instruction.
+The hidden register is `K`.  The primary usage of this is to contain the result
+of prefix instructions (constants, MEM prefix and IN).  The instruction after a
+prefix, uses `K` as the source register, instead of the register encoded in the
+instruction.
 
-There are two condition flags, `C` and `Z`, stored as flip-flops in the
-[control board](control.md).
+The `K` register is however written on every clock cycle.  For instructions that
+do not produce and output value, the value is indeterminate.
+
+There are two condition flags, `C` and `Z`.  `C` is stored as a flip-flops in
+the [control board](control.md), while `Z` is asserted exactly when `K` is
+non-zero.
 
 There is an 8-bit program counter, and two bit [stack pointer](sp.md).
 The four entry stack is implemented as a register file in the CPU, 128

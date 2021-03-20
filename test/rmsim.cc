@@ -136,6 +136,7 @@ main_loop:
     LOADM(Y,base_index);
     CALL(mult);                         // product is now the base (reduced).
     CALL(classify);
+    LOAD(A,A);
     JP(Z,main_loop_next);               // base==0, next.
 
     // Now do the exponentiation...
@@ -176,13 +177,14 @@ power_x:
     AND(0xfd);
     JP(Z,main_loop_next);
 
-    LOADM(A,exp_twos);
+    LOADM(Y,exp_twos);
 square_loop:
-    DEC(A);
+    DEC(A,Y);
     JP(Z,restart);                      // Didn't get -1 : composite
     CALL(square);
     CALL(classifyp1);                   // -1 -> useless
-    LOADM(A,outer_loop_count);
+    LOADM(Y,outer_loop_count);
+    LOAD(A,A);
     JP(NZ,square_loop);
 
 main_loop_next:

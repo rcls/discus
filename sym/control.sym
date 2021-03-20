@@ -486,7 +486,7 @@ pinnumber=6
 T 0 6200 5 10 0 0 0 0 1
 pinseq=6
 T 205 6195 5 10 1 1 0 1 1
-pinlabel=Zi
+pinlabel=Z
 }
 P 0 6000 200 6000 1 0 0
 {

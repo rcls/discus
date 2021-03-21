@@ -10,7 +10,7 @@ It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is
 the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1297 transistors.  Without the pipelining and DRAM
+controller.  The CPU totals 1293 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -73,7 +73,7 @@ decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
 [eight identical boards](bit.md) (134 transistors each), and a
-[separate control board](control.md) (225 transistors).
+[separate control board](control.md) (221 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
 logic on the left, and the instruction execute pipe line stage on the right.
@@ -103,8 +103,9 @@ The `K` register is however written on every clock cycle.  For instructions that
 do not produce and output value, the value is indeterminate.
 
 There are two condition flags, `C` and `Z`.  `C` is stored as a flip-flops in
-the [control board](control.md), while `Z` is asserted exactly when `K` is
-non-zero.
+the [control board](control.md).  `Z` is asserted when the result of the
+previous instruction was zero; this is implemented a combinatorial logic on the
+`K` register.
 
 There is an 8-bit program counter, and two bit [stack pointer](sp.md).
 The four entry stack is implemented as a register file in the CPU, 128
@@ -262,6 +263,11 @@ and `AND` respectively, simplifying the instruction decode.
 `ADD(A)` and `ADC(A)` instructions give left shift and (9-bit) rotate.  There
 are no right shift instructions.
 
+### Arithmetic, writing `Y` : `101aaarr`
+
+This is an accident of the decode logic.  Perform an arithmetic operation on `A`
+and the operand, writing the result to `Y` and updating `C` and `Z`.
+
 ### `INC` : `11dd00rr`
 
 Write the operand plus one into the destination, and update `Z`.  The `C` flag
@@ -274,11 +280,12 @@ is not changed.
 
 ### `MOV` : `11dd10rr`
 
-Write the operand into the destination.  No condition flag updates.
+Write the operand into the destination.  `C` is unchanged.
 
 ### `LOADM` : `11dd11rr`
 
 Load the destination register from memory.  The operand is the memory address.
+`C` is unchanged.
 
 This is a convenience, `MEM`,`MOV` would achieve the same result, but taking two
 bytes.
@@ -290,7 +297,7 @@ Processor Buses
 There are several buses:
 * **`A`** : Accumulator bus.  This is a differential CMOS bus outputing the
   accumulator value for `STA` and `OUT` instructions.
-* **`B`** : Operand bus.  This is a differential CMOS bus outputing a 
+* **`B`** : Operand bus.  This is a differential CMOS bus outputing a
   memory address.  For instructions accessing memory, this is the instruction
   operand.  For instructions not accessing memory, the DRAM refresh address
   is output.
@@ -407,6 +414,10 @@ the data memory bus and the consequent coordination overheads.
 
 Reset
 =====
+
+There is an external reset input.  This must be asserted for at least two clock
+cycles to reset the process.  Reset jumps to address 0, but otherwise does not
+change processor state.
 
 The opcode bus is open-drain.  Reset is implemented by pulling down the opcode
 bus, giving continuous 00000000 instructions.

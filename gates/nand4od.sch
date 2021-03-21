@@ -1,4 +1,4 @@
-v 20130925 2
+v 20201216 2
 C 58800 45800 1 0 0 nmos-switch.sym
 {
 T 59025 46100 5 10 1 1 0 1 1
@@ -21,17 +21,6 @@ footprint=sot23-nmos
 T 60300 45200 5 10 0 1 0 0 1
 device=NMOS
 }
-C 59300 46300 1 90 0 resistor-load.sym
-{
-T 59200 46700 5 10 0 1 90 0 1
-footprint=0603-boxed
-T 58900 46600 5 10 0 0 90 0 1
-device=RESISTOR
-T 59000 46700 5 10 1 1 90 0 1
-refdes=R
-T 59200 46700 5 10 0 1 0 0 1
-value=rload
-}
 C 58200 44800 1 0 0 in-1.sym
 {
 T 58200 45300 5 10 0 0 0 0 1
@@ -49,15 +38,6 @@ T 58200 46300 5 10 0 0 0 0 1
 device=INPUT
 T 58200 46100 5 10 1 1 0 7 1
 refdes=A
-}
-C 59100 47800 1 270 0 in-1.sym
-{
-T 59600 47800 5 10 0 0 270 0 1
-footprint=anchor
-T 59400 47800 5 10 0 0 270 0 1
-device=INPUT
-T 59300 47600 5 10 1 1 270 0 1
-refdes=Vdd
 }
 C 59200 46200 1 0 0 out-1.sym
 {

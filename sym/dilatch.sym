@@ -66,7 +66,7 @@ pinnumber=7
 T 800 0 5 10 0 0 0 0 1
 pinseq=7
 }
-T 1350 500 8 10 1 1 0 7 1
+T 1350 250 8 10 1 1 0 6 1
 refdes=S?
 T 800 725 8 10 1 1 0 4 1
 source=dilatch.sch

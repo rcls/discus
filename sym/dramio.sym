@@ -110,7 +110,7 @@ pintype=unknown
 T 905 1675 5 10 1 1 0 5 1
 pinlabel=Bias
 T 950 1795 5 10 0 1 90 2 1
-pinnumber=5
+pinnumber=10
 T 900 1900 5 10 0 0 0 6 1
-pinseq=5
+pinseq=10
 }

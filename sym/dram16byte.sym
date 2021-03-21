@@ -218,9 +218,9 @@ P 1600 1600 1400 1600 1 0 0
 T 1395 1595 5 10 1 1 0 7 1
 pinlabel=H
 T 1495 1645 5 10 0 1 0 0 1
-pinnumber=14
+pinnumber=20
 T 1600 1600 5 10 0 0 0 6 1
-pinseq=14
+pinseq=20
 T 1400 1600 5 10 0 1 0 6 1
 pintype=unknown
 }

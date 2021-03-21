@@ -88,7 +88,7 @@ pintype=unknown
 T 1395 495 5 10 1 1 0 7 1
 pinlabel=TR
 T 1395 520 5 10 0 1 0 0 1
-pinnumber=7
+pinnumber=8
 T 1600 500 5 10 0 0 0 0 1
-pinseq=7
+pinseq=8
 }

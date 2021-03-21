@@ -100,7 +100,7 @@ prefix, uses `K` as the source register, instead of the register encoded in the
 instruction.
 
 The `K` register is however written on every clock cycle.  For instructions that
-do not produce and output value, the value is indeterminate.
+do not produce an output value, the value is indeterminate.
 
 There are two condition flags, `C` and `Z`.  `C` is stored as a flip-flops in
 the [control board](control.md).  `Z` is asserted when the result of the

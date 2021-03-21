@@ -17,7 +17,7 @@ for L in FILE:
         words[4] = 'NX3008'
     if len(words) == 5 and words[0].startswith('Q') and words[4] == 'PDTC124TU':
         words[0] = 'X' + words[0]
-        words[4] = 'PDTC124TUs'
+        #words[4] = 'PDTC124TU'
 
     if words and words[0] == 'tran':
         TRANS = L

@@ -75,9 +75,9 @@ P 0 400 200 400 1 0 0
 T 0 400 5 10 0 0 0 0 1
 pintype=unknown
 T 105 445 5 10 0 1 0 6 1
-pinnumber=3
+pinnumber=8
 T 0 400 5 10 0 0 0 0 1
-pinseq=3
+pinseq=8
 T 205 395 5 10 1 1 0 1 1
 pinlabel=E2#
 }

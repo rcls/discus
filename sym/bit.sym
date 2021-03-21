@@ -550,7 +550,7 @@ pintype=unknown
 T 1020 6625 5 7 1 1 0 0 1
 pinlabel=Bling
 T 950 6695 5 10 0 1 90 0 1
-pinnumber=3
+pinnumber=51
 T 1000 6800 5 10 0 0 0 0 1
-pinseq=3
+pinseq=51
 }

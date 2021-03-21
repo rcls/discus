@@ -77,7 +77,7 @@ pintype=unknown
 T 205 395 5 10 1 1 0 1 1
 pinlabel=E#
 T 180 420 5 10 0 1 0 6 1
-pinnumber=3
+pinnumber=8
 T 0 400 5 10 0 0 0 0 1
-pinseq=3
+pinseq=8
 }

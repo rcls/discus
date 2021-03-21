@@ -253,7 +253,7 @@ pinnumber=63
 T 1600 1200 5 10 0 0 0 0 1
 pinseq=63
 T 1395 1195 5 10 1 1 0 7 1
-pinlabel=IN
+pinlabel=IN#
 }
 P 1600 1000 1400 1000 1 0 0
 {
@@ -726,7 +726,7 @@ pintype=unknown
 T 1020 8225 5 7 1 1 0 0 1
 pinlabel=Bling
 T 950 8295 5 10 0 1 90 0 1
-pinnumber=33
+pinnumber=67
 T 1000 8400 5 10 0 0 0 0 1
-pinseq=33
+pinseq=67
 }

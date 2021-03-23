@@ -11,5 +11,4 @@
 [ ![nandod](nandod-sym.png) ](nandod.html)
 [ ![nor4od](nor4od-sym.png) ](nor4od.html)
 [ ![norod](norod-sym.png) ](norod.html)
-[ ![nand3od](nand3od-sym.png) ](nand3od.html)
 [ ![nand4od](nand4od-sym.png) ](nand4od.html)

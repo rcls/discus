@@ -11,6 +11,7 @@
 [ ![fourpd](fourpd-sym.png) ](fourpd.html)
 [ ![noverlap](noverlap-sym.png) ](noverlap.html)
 [ ![cnot](cnot-sym.png) ](cnot.html)
+[ ![dflipflops](dflipflops-sym.png) ](dflipflops.html)
 [ ![diplatch](diplatch-sym.png) ](diplatch.html)
 [ ![dilatch](dilatch-sym.png) ](dilatch.html)
 [ ![fiveof8](fiveof8-sym.png) ](fiveof8.html)

@@ -490,12 +490,12 @@ C 4900 6600 1 0 0 gnd-1.sym
 C 3000 8300 1 0 0 vdd-1.sym
 C 6600 8300 1 0 0 vdd-1.sym
 C 4800 8300 1 0 0 vdd-1.sym
-C 800 300 1 0 0 dflipflop.sym
+C 800 300 1 0 0 dflipflops.sym
 {
 T 2150 550 5 10 1 1 0 6 1
 refdes=G
 T 1600 950 5 8 1 1 0 4 1
-source=dflipflop.sch
+source=dflipflops.sch
 }
 C 700 2000 1 270 0 in-1.sym
 {
@@ -626,24 +626,6 @@ T 11625 5900 5 10 1 1 0 4 1
 refdes=I4
 }
 C 11900 6200 1 0 1 vdd-1.sym
-C 1900 8800 1 0 0 resistor-1.sym
-{
-T 2200 9200 5 10 0 0 0 0 1
-device=RESISTOR
-T 2600 8950 5 10 1 1 0 0 1
-refdes=R2
-T 2100 9000 5 10 1 1 0 0 1
-value=22k
-}
-C 1500 8800 1 0 1 resistor-1.sym
-{
-T 1200 9200 5 10 0 0 0 6 1
-device=RESISTOR
-T 800 8950 5 10 1 1 0 6 1
-refdes=R1
-T 1300 9000 5 10 1 1 0 6 1
-value=22k
-}
 C 1700 8900 1 0 1 vdd-1.sym
 C 1700 8900 1 0 0 vdd-1.sym
 C 1000 3200 1 90 0 in-1.sym
@@ -1033,15 +1015,6 @@ N 14100 1700 14000 1700 4
 T 14050 1675 5 6 1 1 0 5 1
 netname=Wg#
 }
-C 11400 5000 1 90 0 resistor-1.sym
-{
-T 11000 5300 5 10 0 0 90 0 1
-device=RESISTOR
-T 11200 5600 5 10 1 1 90 0 1
-refdes=R3
-T 11200 5200 5 10 1 1 90 0 1
-value=22k
-}
 C 11400 4700 1 0 1 gnd-1.sym
 C 11800 2000 1 270 0 led-green.sym
 {
@@ -1104,4 +1077,37 @@ N 10700 800 10400 800 4
 {
 T 10550 825 5 10 1 1 0 3 1
 netname=K
+}
+C 1500 8800 1 0 1 resistor-pull.sym
+{
+T 1200 9200 5 10 0 0 0 6 1
+device=RESISTOR
+T 850 8950 5 10 1 1 0 6 1
+refdes=R1
+T 1300 9600 5 10 0 1 0 6 1
+footprint=0603-boxed
+T 1300 9800 5 10 0 1 0 6 1
+value=rpull
+}
+C 1900 8800 1 0 0 resistor-pull.sym
+{
+T 2200 9200 5 10 0 0 0 0 1
+device=RESISTOR
+T 2550 8950 5 10 1 1 0 0 1
+refdes=R2
+T 2100 9600 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 2100 9800 5 10 0 1 0 0 1
+value=rpull
+}
+C 11200 5900 1 270 0 resistor-pull.sym
+{
+T 11600 5600 5 10 0 0 270 0 1
+device=RESISTOR
+T 11350 5250 5 10 1 1 0 2 1
+refdes=R3
+T 12000 5700 5 10 0 1 270 0 1
+footprint=0603-boxed
+T 12200 5700 5 10 0 1 270 0 1
+value=rpull
 }

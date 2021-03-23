@@ -48,7 +48,7 @@ C 3100 500 1 0 0 sramcells.sym
 {
 T 3900 1200 5 10 1 1 0 4 1
 source=sramcells.sch
-T 4450 950 5 10 1 1 0 7 1
+T 4450 750 5 10 1 1 0 6 1
 refdes=B
 }
 C 500 1900 1 0 0 in-1.sym
@@ -78,7 +78,7 @@ netname=R
 }
 C 1300 500 1 0 0 dilatch.sym
 {
-T 2650 1000 5 10 1 1 0 7 1
+T 2650 750 5 10 1 1 0 6 1
 refdes=A
 T 2100 1225 5 10 1 1 0 4 1
 source=dilatch.sch

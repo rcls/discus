@@ -350,7 +350,7 @@ device=vpulse
 T 12400 4150 5 10 0 0 0 0 1
 footprint=none
 T 12100 2850 5 10 1 1 0 5 1
-value=pulse 0 2.5v 4.1u 10n 10n 9 10
+value=pulse 0 2.5v 5u 10n 10n 9 10
 }
 C 11900 2800 1 0 0 gnd-1.sym
 C 9100 14700 1 0 0 vdd-1.sym

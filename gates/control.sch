@@ -1260,12 +1260,12 @@ N 8500 6200 8600 6200 4
 T 8550 6175 5 6 1 1 0 5 1
 netname=okj
 }
-C 4300 4500 1 0 0 dflipflop.sym
+C 4300 4500 1 0 0 dflipflops.sym
 {
 T 5650 4750 5 10 1 1 0 6 1
 refdes=K
 T 5100 5200 5 10 1 1 0 4 1
-source=dflipflop.sch
+source=dflipflops.sch
 }
 C 8900 700 1 0 0 diplatch.sym
 {

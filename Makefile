@@ -4,9 +4,9 @@ GNETLIST=/home/geda/bin/gnetlist
 
 ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
 PROG_TEST = mem memi memw inc sub logic hazard cmp call add
-TESTS=$(PROG_TEST:%=test/test%) $(ADHOC_TEST:%=test/test%)
+TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
 PROG=rmsim pattern monitor blink
-ALL_PROG=$(TESTS) $(PROG:%=test/%)
+ALL_PROG=$(TESTS) $(PROG:%=prog/%)
 
 all: programs
 
@@ -20,16 +20,16 @@ programs: $(ALL_PROG)
 	./substrate.py $< > $@
 
 DEPS=-MMD -MP -MF.$(subst /,:,$@).d
-CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -I. $(DEPS)
+CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -Ilib $(DEPS)
 
 -include .*.d
 
 %: %.cc
 CC=g++
 
-$(ALL_PROG): test/state.o test/script.o test/spice_load.o
+$(ALL_PROG): lib/state.o lib/script.o lib/spice_load.o
 
-$(PROG_TEST:%=test/test%.cir): %.cir: % board/univlight.cir test/rommunge.py
+$(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 	./$< -C
 	./$< -T -R | test/rommunge.py -t $(QUANTUM) -w $@ board/univlight.cir $*.cir
 

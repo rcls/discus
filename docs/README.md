@@ -10,7 +10,7 @@ It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is
 the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1299 transistors.  Without the pipelining and DRAM
+controller.  The CPU totals 1283 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -72,7 +72,7 @@ lines—are driven by CMOS outputs.  PMOS logic is also used, mostly for 1-of-N
 decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
-[eight identical boards](bit.md) (136 transistors each), and a
+[eight identical boards](bit.md) (134 transistors each), and a
 [separate control board](control.md) (211 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
@@ -340,7 +340,7 @@ be all-zeros or all-ones, and forcing the carry chain input oppositely.
 
 The per-bit transistor count is 20 transistors per bit, including the
 output-enable driving the `Q` bus.  Decoding the instruction to produce the
-control stobes for the ALU takes 41 transistors.
+control stobes for the ALU takes 38 transistors.
 
 The ripple carry uses two gate levels per bit.  To reduce the propagation delay
 through the carry chain, 820Ω pull-ups are used, rather than the 2.49kΩ used

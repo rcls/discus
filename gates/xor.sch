@@ -60,15 +60,6 @@ device=OUTPUT
 T 40600 47150 5 10 1 1 0 0 1
 refdes=Q
 }
-C 39200 46200 1 0 0 out-1.sym
-{
-T 39200 46700 5 10 0 0 0 0 1
-footprint=anchor
-T 39200 46500 5 10 0 0 0 0 1
-device=OUTPUT
-T 39800 46250 5 10 1 1 0 0 1
-refdes=C
-}
 N 38200 46800 38700 46800 4
 C 39400 47700 1 0 0 vdd-1.sym
 C 38500 46800 1 0 0 vdd-1.sym

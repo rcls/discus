@@ -17,13 +17,13 @@ refdes=O
 T 2800 1700 5 10 0 0 0 0 1
 footprint=anchor
 }
-C 600 1100 1 0 0 in-1.sym
+C -300 1100 1 0 0 in-1.sym
 {
-T 600 1400 5 10 0 0 0 7 1
+T -300 1400 5 10 0 0 0 7 1
 device=INPUT
-T 600 1200 5 10 1 1 0 7 1
+T -300 1200 5 10 1 1 0 7 1
 refdes=B
-T 600 1600 5 10 0 0 0 7 1
+T -300 1600 5 10 0 0 0 7 1
 footprint=anchor
 }
 C 1100 0 1 0 0 gnd-1.sym
@@ -35,11 +35,6 @@ T 600 1900 5 10 0 0 0 7 1
 footprint=anchor
 T 600 1500 5 10 1 1 0 7 1
 refdes=Vdd
-}
-C 1200 900 1 0 0 notb.sym
-{
-T 1625 1200 5 10 1 1 0 4 1
-refdes=I
 }
 C 2000 800 1 0 0 nandod.sym
 {
@@ -59,14 +54,30 @@ refdes=GND
 }
 C 1500 600 1 0 0 gnd-1.sym
 N 1200 1500 1600 1500 4
-C 1300 300 1 90 0 resistor-load.sym
+C 1200 1300 1 180 0 resistor-load.sym
 {
-T 900 600 5 10 0 0 90 0 1
+T 900 900 5 10 0 0 180 0 1
 device=RESISTOR
-T 1150 950 5 10 1 1 0 6 1
-refdes=R
-T 1200 700 5 10 0 1 90 0 1
+T 550 1150 5 10 1 1 0 8 1
+refdes=R1
+T 800 1200 5 10 0 1 180 0 1
 footprint=0603-boxed
-T 1200 700 5 10 0 1 90 0 1
+T 800 1200 5 10 0 1 180 0 1
 value=rload
+}
+C 1200 900 1 0 0 noth.sym
+{
+T 1525 1200 5 10 1 1 0 4 1
+refdes=I
+}
+C 1100 1200 1 270 0 resistor-pull.sym
+{
+T 1500 900 5 10 0 0 270 0 1
+device=RESISTOR
+T 1250 550 5 10 1 1 0 2 1
+refdes=R2
+T 1900 1000 5 10 0 1 270 0 1
+footprint=0603-boxed
+T 2100 1000 5 10 0 1 270 0 1
+value=rpull
 }

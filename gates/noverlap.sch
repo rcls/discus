@@ -1,22 +1,30 @@
 v 20201216 2
 C 57100 40300 1 0 0 vdd-1.sym
 C 57200 39400 1 0 0 gnd-1.sym
-C 56300 39300 1 0 0 resistor-load.sym
+C 56300 39300 1 0 0 resistor-strong.sym
 {
-T 56400 39500 5 10 1 1 0 0 1
+T 56600 39700 5 10 0 0 0 0 1
+device=RESISTOR
+T 57300 39200 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 56400 39000 5 10 0 1 0 0 1
+value=rstrong
+T 56550 39350 5 10 1 1 0 8 1
 refdes=R1
-T 56800 39500 5 10 1 1 0 0 1
-value=1k
 }
 N 54900 40000 55000 40000 4
 C 57100 38600 1 0 0 vdd-1.sym
 C 57200 37700 1 0 0 gnd-1.sym
-C 56300 38800 1 0 0 resistor-load.sym
+C 56300 38800 1 0 0 resistor-strong.sym
 {
-T 56400 39000 5 10 1 1 0 0 1
+T 56600 39200 5 10 0 0 0 0 1
+device=RESISTOR
+T 57300 38700 5 10 0 1 0 0 1
+footprint=0603-boxed
+T 56400 38500 5 10 0 1 0 0 1
+value=rstrong
+T 56950 38950 5 10 1 1 0 0 1
 refdes=R2
-T 56800 39000 5 10 1 1 0 0 1
-value=1k
 }
 C 55000 39700 1 0 0 notp.sym
 {

@@ -126,12 +126,12 @@ refdes=R1
 T 44700 49100 5 10 0 1 180 0 1
 footprint=0603-boxed
 }
-C 47900 48300 1 0 0 not.sym
+C 47900 48300 1 0 0 nots.sym
 {
 T 48250 48600 5 10 1 1 0 4 1
 refdes=J
 }
-C 47300 48300 1 0 1 not.sym
+C 47300 48300 1 0 1 nots.sym
 {
 T 46950 48600 5 10 1 1 0 4 1
 refdes=I

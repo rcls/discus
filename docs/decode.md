@@ -9,4 +9,5 @@
 [ ![nandod](nandod-sym.png) ](nandod.html)
 [ ![nor4od](nor4od-sym.png) ](nor4od.html)
 [ ![norod](norod-sym.png) ](norod.html)
+[ ![nots](nots-sym.png) ](nots.html)
 [ ![nand4od](nand4od-sym.png) ](nand4od.html)

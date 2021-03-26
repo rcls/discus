@@ -144,15 +144,6 @@ C 1300 300 1 0 0 norod.sym
 T 1700 800 5 10 1 1 0 4 1
 refdes=P
 }
-C 1200 1300 1 0 0 resistor-1.sym
-{
-T 1500 1700 5 10 0 0 0 0 1
-device=RESISTOR
-T 1850 1450 5 10 1 1 0 0 1
-refdes=R
-T 1300 1450 5 10 1 1 0 6 1
-value=1k
-}
 C 2500 800 1 0 1 nmos-switch.sym
 {
 T 2275 1100 5 8 1 1 0 7 1
@@ -171,3 +162,14 @@ netname=X
 }
 N 1200 1400 1100 1400 4
 N 1100 300 1600 300 4
+C 1200 1300 1 0 0 resistor-strong.sym
+{
+T 1300 1000 5 10 0 1 0 0 1
+value=rstrong
+T 1500 1700 5 10 0 0 0 0 1
+device=RESISTOR
+T 1850 1450 5 10 1 1 0 0 1
+refdes=R
+T 2200 1200 5 10 0 1 0 0 1
+footprint=0603-boxed
+}

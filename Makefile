@@ -3,7 +3,7 @@ GNETLIST=/home/geda/bin/gnetlist
 
 
 ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
-PROG_TEST = mem memi memw inc sub logic hazard cmp call add
+PROG_TEST = mem memi memw inc sub logic hazard hazard2 cmp call add
 TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
 PROG=rmsim pattern monitor blink
 ALL_PROG=$(TESTS) $(PROG:%=prog/%)
@@ -33,7 +33,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
 	./$< -C
 	./$< -T -R | test/rommunge.py -t $(QUANTUM) -w $@ board/univlight.cir $*.cir
 
-QUANTUM=2500
+QUANTUM=2000
 
 %.verify: %.raw %
 	./$* -t $(QUANTUM) -V $<

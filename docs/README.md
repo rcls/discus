@@ -47,8 +47,8 @@ Circuitry Overview
 The bulk of the implementation is in NMOS logic, with N-channel MOSFET switches
 and 2.49kΩ load resistors, giving a 1mA current per logic gate at 2.5V.  BJTs
 are used in the register files, both as pass gates, and as low-capacitance
-interfaces to the sense lines.  A few gates use 820Ω load resistors, giving
-faster response on higher-fan out lines critical for performance.
+interfaces to the sense lines.  Gates on the critical paths for performance use
+820Ω load resistors, giving 3mA current.
 
 [SRAM cells](sramcell.md) are a mix of [4T2R](sramcell.md), [5T3R](sramcell2.md)
 and [7T3R](sramcell2s.md) depending on the number of ports and drive strength.
@@ -287,8 +287,8 @@ Write the operand into the destination.  `C` is unchanged.
 Load the destination register from memory.  The operand is the memory address.
 `C` is unchanged.
 
-This is a convenience, `MEM`,`MOV` would achieve the same result, but taking two
-bytes.
+This is a convenience, `MEM`,`MOV` would achieve the same result, but taking an
+extra byte.
 
 
 Processor Buses

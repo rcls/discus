@@ -1,6 +1,6 @@
 
 GNETLIST=/home/geda/bin/gnetlist
-
+GAF=/home/geda/bin/gaf
 
 ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
 PROG_TEST = mem memi memw inc sub logic hazard hazard2 cmp call add
@@ -56,14 +56,19 @@ web: png md
 png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png)
 md: $(ALL_SCH:%=docs/%.md)
 
+boards: ${BOARDS:%=board/%-board.sch}
+
+board/%-board.sch: board/%.sch
+	./board.py -s "sym/$*.sym" "$<" "$@"
+
 vpath %.sch gates board
 vpath %.sym sym
 
 docs/%-sym.png: %.sym
-	/home/geda/bin/gaf export -m 1 -k 1 -d 300 -c -o "$@" "$<"
+	$(GAF) export -m 1 -k 1 -d 300 -c -o "$@" "$<"
 
 docs/%.png: %.sch
-	/home/geda/bin/gaf export -m 1 -k 1 -d 600 -c -o "$@" "$<"
+	$(GAF) export -m 1 -k 1 -d 600 -c -o "$@" "$<"
 
 docs/%.md: %.sch make-md.py
 	./make-md.py $< $@

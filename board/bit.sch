@@ -968,6 +968,8 @@ netname=R#
 }
 C 13400 8000 1 90 0 schottky.sym
 {
+T 12200 8300 5 10 0 1 90 0 1
+footprint=SOD523
 T 12703 8297 5 10 0 0 90 0 1
 device=DIODE
 T 13300 8400 5 10 1 1 0 0 1
@@ -1083,7 +1085,7 @@ device=RESISTOR
 T 850 8950 5 10 1 1 0 6 1
 refdes=R1
 T 1300 9600 5 10 0 1 0 6 1
-footprint=0603-boxed
+footprint=0603-pull
 T 1300 9800 5 10 0 1 0 6 1
 value=rpull
 }
@@ -1094,7 +1096,7 @@ device=RESISTOR
 T 2550 8950 5 10 1 1 0 0 1
 refdes=R2
 T 2100 9600 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 2100 9800 5 10 0 1 0 0 1
 value=rpull
 }
@@ -1105,7 +1107,7 @@ device=RESISTOR
 T 11350 5250 5 10 1 1 0 2 1
 refdes=R3
 T 12000 5700 5 10 0 1 270 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 12200 5700 5 10 0 1 270 0 1
 value=rpull
 }
@@ -1115,7 +1117,7 @@ C 4400 3100 1 0 1 2sc4774.sym
 T 4175 3400 5 8 1 1 0 7 1
 refdes=Q3
 T 3700 3600 5 10 0 1 0 6 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 4300 3800 5 10 0 1 0 6 1
 value=Q2SC4774
 }
@@ -1126,7 +1128,7 @@ device=RESISTOR
 T 5050 3450 5 10 1 1 0 0 1
 refdes=R6
 T 4600 4100 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 4600 4300 5 10 0 1 0 0 1
 value=rpull
 }
@@ -1137,7 +1139,7 @@ device=RESISTOR
 T 5050 2950 5 10 1 1 0 0 1
 refdes=R7
 T 4600 3600 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 4600 3800 5 10 0 1 0 0 1
 value=rpull
 }

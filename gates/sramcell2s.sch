@@ -50,7 +50,7 @@ device=RESISTOR
 T 44050 46250 5 8 1 1 0 0 1
 refdes=R2
 T 43800 46200 5 8 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 43800 46200 5 8 0 1 0 0 1
 value=rload
 }
@@ -96,7 +96,7 @@ device=RESISTOR
 T 43950 46650 5 8 1 1 0 0 1
 refdes=R1
 T 43700 46600 5 8 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 43700 46600 5 8 0 1 0 0 1
 value=rload
 }
@@ -221,7 +221,7 @@ device=RESISTOR
 T 41550 47350 5 10 1 1 180 0 1
 refdes=R3
 T 41200 47600 5 10 0 1 180 0 1
-footprint=0603-boxed
+footprint=0603-load
 }
 C 41500 46700 1 0 0 capacitor.sym
 {
@@ -233,6 +233,8 @@ T 41700 47600 5 10 0 0 0 0 1
 symversion=0.1
 T 41650 46850 5 10 1 1 0 8 1
 value=100p
+T 41800 47000 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 42000 46900 42200 46900 4
 N 42200 46900 42200 47400 4

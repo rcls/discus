@@ -55,7 +55,7 @@ device=RESISTOR
 T 1350 2050 5 10 1 1 90 0 1
 refdes=R
 T 1600 2400 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1800 1500 5 10 0 1 90 0 1
 value=rstrong
 }

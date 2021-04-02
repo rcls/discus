@@ -6,7 +6,7 @@ device=RESISTOR
 T 41300 54100 5 10 1 1 90 0 1
 refdes=R
 T 41000 54000 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 41000 54000 5 10 0 1 90 0 1
 value=rload
 }

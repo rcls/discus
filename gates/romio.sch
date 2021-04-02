@@ -59,7 +59,7 @@ device=RESISTOR
 T 1050 1150 5 10 1 1 0 8 1
 refdes=R1
 T 1300 1200 5 10 0 1 180 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1300 1200 5 10 0 1 180 0 1
 value=rload
 }
@@ -70,7 +70,7 @@ device=RESISTOR
 T 1750 550 5 10 1 1 0 2 1
 refdes=R2
 T 2400 1000 5 10 0 1 270 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 2600 1000 5 10 0 1 270 0 1
 value=rpull
 }
@@ -79,7 +79,7 @@ C 1700 900 1 0 0 2sc4774.sym
 T 1925 1200 5 8 1 1 0 1 1
 refdes=Q1
 T 2400 1400 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 1800 1600 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -91,7 +91,7 @@ device=RESISTOR
 T 2150 1750 5 10 1 1 270 0 1
 refdes=R3
 T 1900 1400 5 10 0 1 270 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1700 2300 5 10 0 1 270 0 1
 value=rstrong
 }

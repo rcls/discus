@@ -53,7 +53,7 @@ device=RESISTOR
 T 2150 1350 5 10 1 1 90 0 1
 refdes=R0
 T 2400 1700 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 2600 800 5 10 0 1 90 0 1
 value=rstrong
 }
@@ -64,7 +64,7 @@ device=RESISTOR
 T 3550 1350 5 10 1 1 90 0 1
 refdes=R1
 T 3800 1700 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 4000 800 5 10 0 1 90 0 1
 value=rstrong
 }
@@ -75,7 +75,7 @@ device=RESISTOR
 T 4250 1350 5 10 1 1 90 0 1
 refdes=R2
 T 4500 1700 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 4700 800 5 10 0 1 90 0 1
 value=rstrong
 }
@@ -86,7 +86,7 @@ device=RESISTOR
 T 5650 1350 5 10 1 1 90 0 1
 refdes=R3
 T 5900 1700 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 6100 800 5 10 0 1 90 0 1
 value=rstrong
 }

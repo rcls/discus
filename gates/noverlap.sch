@@ -6,7 +6,7 @@ C 56300 39300 1 0 0 resistor-strong.sym
 T 56600 39700 5 10 0 0 0 0 1
 device=RESISTOR
 T 57300 39200 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 56400 39000 5 10 0 1 0 0 1
 value=rstrong
 T 56550 39350 5 10 1 1 0 8 1
@@ -20,7 +20,7 @@ C 56300 38800 1 0 0 resistor-strong.sym
 T 56600 39200 5 10 0 0 0 0 1
 device=RESISTOR
 T 57300 38700 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 56400 38500 5 10 0 1 0 0 1
 value=rstrong
 T 56950 38950 5 10 1 1 0 0 1
@@ -144,8 +144,6 @@ T 55200 39100 5 10 0 0 90 0 1
 symversion=0.1
 T 55875 39075 5 10 1 1 0 8 1
 value=1p
-T 55900 39200 5 10 0 1 0 0 1
-footprint=0402w
 T 55800 39100 5 10 0 1 0 0 1
 footprint=0603-cap
 }

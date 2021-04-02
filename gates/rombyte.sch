@@ -30,6 +30,10 @@ refdes=R1
 }
 C 3800 2000 1 0 0 baw56d.sym
 {
+T 4700 2600 5 10 0 1 0 0 1
+model-name=baw56d
+T 4700 3000 5 10 0 1 0 0 1
+footprint=sot23-baw56d
 T 4350 2625 5 10 1 1 0 3 1
 refdes=X0
 }
@@ -89,6 +93,10 @@ refdes=R5
 }
 C 3800 700 1 0 0 baw56d.sym
 {
+T 4700 1300 5 10 0 1 0 0 1
+model-name=baw56d
+T 4700 1700 5 10 0 1 0 0 1
+footprint=sot23-baw56d
 T 4350 1325 5 10 1 1 0 3 1
 refdes=X1
 }
@@ -210,7 +218,7 @@ device=RESISTOR
 T 1450 1300 5 10 1 1 0 2 1
 refdes=R
 T 1400 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1400 1500 5 10 0 1 90 0 1
 value=rload
 }

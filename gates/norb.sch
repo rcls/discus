@@ -22,7 +22,7 @@ refdes=M
 C 60200 46700 1 90 0 resistor-load.sym
 {
 T 60100 47100 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 59800 47000 5 10 0 0 90 0 1
 device=RESISTOR
 T 60050 47350 5 10 1 1 0 6 1

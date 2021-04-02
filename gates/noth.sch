@@ -2,7 +2,7 @@ v 20201216 2
 C 1300 1500 1 90 0 resistor-load.sym
 {
 T 1200 1900 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1200 1900 5 10 0 1 90 0 1
 value=rload
 T 900 1800 5 10 0 0 90 0 1
@@ -53,7 +53,7 @@ C 800 800 1 0 0 2sc4774.sym
 T 1025 1100 5 8 1 1 0 1 1
 refdes=Q
 T 1500 1300 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 900 1500 5 10 0 1 0 0 1
 value=Q2SC4774
 }

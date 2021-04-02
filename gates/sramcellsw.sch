@@ -149,7 +149,7 @@ device=RESISTOR
 T 42950 47050 5 10 1 1 90 0 1
 refdes=R1
 T 43000 46800 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 43000 46800 5 10 0 1 90 0 1
 value=rload
 }
@@ -160,7 +160,7 @@ device=RESISTOR
 T 43650 46175 5 10 1 1 0 8 1
 refdes=R2
 T 43800 46200 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 43800 46200 5 10 0 1 0 0 1
 value=rload
 }

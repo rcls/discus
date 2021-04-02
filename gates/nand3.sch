@@ -24,7 +24,7 @@ device=NMOS
 C 59700 46800 1 90 0 resistor-load.sym
 {
 T 59600 47200 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 59300 47100 5 10 0 0 90 0 1
 device=RESISTOR
 T 59900 47200 5 10 1 1 90 0 1

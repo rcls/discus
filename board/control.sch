@@ -464,7 +464,7 @@ device=RESISTOR
 T 9450 9500 5 10 1 1 0 1 1
 refdes=R0
 T 8900 9500 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 9500 5 10 0 1 0 0 1
 value=rload
 }
@@ -475,7 +475,7 @@ device=RESISTOR
 T 9450 9300 5 10 1 1 0 1 1
 refdes=R1
 T 8900 9300 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 9300 5 10 0 1 0 0 1
 value=rload
 }
@@ -486,7 +486,7 @@ device=RESISTOR
 T 9450 9100 5 10 1 1 0 1 1
 refdes=R2
 T 8900 9100 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 9100 5 10 0 1 0 0 1
 value=rload
 }
@@ -497,7 +497,7 @@ device=RESISTOR
 T 9450 8900 5 10 1 1 0 1 1
 refdes=R3
 T 8900 8900 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 8900 5 10 0 1 0 0 1
 value=rload
 }
@@ -508,7 +508,7 @@ device=RESISTOR
 T 9450 8700 5 10 1 1 0 1 1
 refdes=R4
 T 8900 8700 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 8700 5 10 0 1 0 0 1
 value=rload
 }
@@ -519,7 +519,7 @@ device=RESISTOR
 T 9450 8500 5 10 1 1 0 1 1
 refdes=R5
 T 8900 8500 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 8500 5 10 0 1 0 0 1
 value=rload
 }
@@ -530,7 +530,7 @@ device=RESISTOR
 T 9450 8300 5 10 1 1 0 1 1
 refdes=R6
 T 8900 8300 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 8300 5 10 0 1 0 0 1
 value=rload
 }
@@ -541,7 +541,7 @@ device=RESISTOR
 T 9450 8100 5 10 1 1 0 1 1
 refdes=R7
 T 8900 8100 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 8900 8100 5 10 0 1 0 0 1
 value=rload
 }

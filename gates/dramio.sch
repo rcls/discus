@@ -166,12 +166,10 @@ C 1200 1300 1 0 0 resistor-strong.sym
 {
 T 1850 1450 5 10 1 1 0 0 1
 refdes=R
-T 1300 1000 5 10 0 1 0 0 1
-value=820
 T 1500 1700 5 10 0 0 0 0 1
 device=RESISTOR
 T 2200 1200 5 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1450 1375 5 10 1 1 0 8 1
 value=820
 }

@@ -2,7 +2,7 @@ v 20201216 2
 C 60200 46200 1 90 0 resistor-load.sym
 {
 T 60100 46600 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 60100 46600 5 10 0 1 90 0 1
 value=rload
 T 59800 46500 5 10 0 0 90 0 1

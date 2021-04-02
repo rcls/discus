@@ -51,7 +51,7 @@ device=RESISTOR
 T 44075 64475 5 10 1 1 0 6 1
 refdes=R0
 T 44100 64200 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 44100 64200 5 10 0 1 90 0 1
 value=rload
 }
@@ -60,7 +60,7 @@ C 45600 63800 1 270 1 resistor-load.sym
 T 46000 64100 5 10 0 0 90 2 1
 device=RESISTOR
 T 45700 64200 5 10 0 1 90 2 1
-footprint=0603-boxed
+footprint=0603-load
 T 45700 64200 5 10 0 1 90 2 1
 value=rload
 T 45725 64475 5 10 1 1 0 0 1
@@ -71,7 +71,7 @@ C 46400 63800 1 90 0 resistor-load.sym
 T 46000 64100 5 10 0 0 90 6 1
 device=RESISTOR
 T 46300 64200 5 10 0 1 90 6 1
-footprint=0603-boxed
+footprint=0603-load
 T 46300 64200 5 10 0 1 90 6 1
 value=rload
 T 46275 64475 5 10 1 1 0 6 1
@@ -82,7 +82,7 @@ C 47800 63800 1 270 1 resistor-load.sym
 T 48200 64100 5 10 0 0 90 2 1
 device=RESISTOR
 T 47900 64200 5 10 0 1 90 2 1
-footprint=0603-boxed
+footprint=0603-load
 T 47900 64200 5 10 0 1 90 2 1
 value=rload
 T 47925 64475 5 10 1 1 0 0 1
@@ -238,6 +238,8 @@ N 46200 65800 46400 65800 4
 N 45800 65800 45600 65800 4
 C 44600 64900 1 0 1 schottky.sym
 {
+T 44300 66100 5 10 0 1 0 6 1
+footprint=SOD523
 T 44303 65597 5 10 0 0 0 6 1
 device=DIODE
 T 44275 65150 5 10 1 1 0 6 1
@@ -247,6 +249,8 @@ value=BAS40
 }
 C 45200 64900 1 0 0 schottky.sym
 {
+T 45500 66100 5 10 0 1 0 0 1
+footprint=SOD523
 T 45497 65597 5 10 0 0 0 0 1
 device=DIODE
 T 45525 65150 5 10 1 1 0 0 1
@@ -256,6 +260,8 @@ value=BAS40
 }
 C 46800 64900 1 0 1 schottky.sym
 {
+T 46500 66100 5 10 0 1 0 6 1
+footprint=SOD523
 T 46503 65597 5 10 0 0 0 6 1
 device=DIODE
 T 46475 65150 5 10 1 1 0 6 1
@@ -265,6 +271,8 @@ value=BAS40
 }
 C 47400 64900 1 0 0 schottky.sym
 {
+T 47700 66100 5 10 0 1 0 0 1
+footprint=SOD523
 T 47697 65597 5 10 0 0 0 0 1
 device=DIODE
 T 47725 65150 5 10 1 1 0 0 1

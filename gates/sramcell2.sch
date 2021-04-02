@@ -124,7 +124,7 @@ device=RESISTOR
 T 45050 48850 5 10 1 1 0 8 1
 refdes=R1
 T 44700 49100 5 10 0 1 180 0 1
-footprint=0603-boxed
+footprint=0603-load
 }
 C 47900 48300 1 0 0 nots.sym
 {

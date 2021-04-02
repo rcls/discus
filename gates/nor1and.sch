@@ -89,7 +89,7 @@ refdes=Q
 C 1700 2100 1 90 0 resistor-load.sym
 {
 T 1600 2500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1300 2400 5 10 0 0 90 0 1
 device=RESISTOR
 T 1450 2400 5 10 1 1 90 0 1

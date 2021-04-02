@@ -1099,6 +1099,8 @@ T 4900 1100 5 10 0 0 270 0 1
 symversion=0.1
 T 4000 500 5 10 1 1 0 0 1
 value=330p
+T 4200 1100 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 4200 1300 4200 1400 4
 C 3100 900 1 0 0 gnd-1.sym
@@ -1178,6 +1180,8 @@ T 5000 1100 5 10 1 1 270 0 1
 refdes=R3
 T 5000 800 5 10 1 1 270 0 1
 value=560
+T 4800 800 5 10 0 1 0 0 1
+footprint=0603
 }
 C 4700 100 1 0 0 gnd-1.sym
 C 5300 1600 1 270 0 capacitor.sym
@@ -1190,6 +1194,8 @@ T 6200 1400 5 10 0 0 270 0 1
 symversion=0.1
 T 5300 800 5 10 1 1 0 0 1
 value=330p
+T 5500 1400 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 5200 1600 5800 1600 4
 C 5400 800 1 0 0 gnd-1.sym
@@ -1341,23 +1347,14 @@ netname=H3
 }
 C 5100 2500 1 0 1 schottky.sym
 {
+T 4800 3700 5 10 0 1 0 6 1
+footprint=SOD523
 T 4803 3197 5 10 0 0 0 6 1
 device=DIODE
 T 4750 2750 5 10 1 1 0 6 1
 refdes=D
 T 4800 3550 5 10 0 1 0 6 1
 value=BAS40
-}
-C 4400 3100 1 0 0 resistor-load.sym
-{
-T 4700 3500 5 10 0 0 0 0 1
-device=RESISTOR
-T 5050 3250 5 10 1 1 0 0 1
-refdes=R4
-T 4800 3200 5 10 0 1 0 0 1
-footprint=0603-boxed
-T 4550 3225 5 10 1 1 0 6 1
-value=1
 }
 C 5900 3200 1 90 1 capacitor.sym
 {
@@ -1369,6 +1366,8 @@ T 5675 2875 5 10 1 1 0 8 1
 refdes=C3
 T 5900 2900 5 10 1 1 0 0 1
 value=1p
+T 5700 2900 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 C 5600 2400 1 0 0 gnd-1.sym
 N 5100 2700 5300 2700 4
@@ -1432,4 +1431,15 @@ T 3100 1900 5 10 1 1 0 7 1
 model-name=bias_pot
 T 3200 1700 5 10 0 1 0 0 1
 value=bias_pot
+}
+C 4400 3100 1 0 0 resistor-1.sym
+{
+T 4700 3500 5 10 0 0 0 0 1
+device=RESISTOR
+T 5050 3250 5 10 1 1 0 0 1
+refdes=R4
+T 4550 3250 5 10 1 1 0 6 1
+value=1
+T 4900 3250 5 10 0 1 0 0 1
+footprint=0603
 }

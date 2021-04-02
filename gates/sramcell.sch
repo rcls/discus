@@ -2,7 +2,7 @@ v 20201216 2
 C 2700 1100 1 90 0 resistor-load.sym
 {
 T 2600 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 2600 1500 5 10 0 1 90 0 1
 value=rload
 T 2300 1400 5 10 0 0 90 0 1
@@ -26,7 +26,7 @@ N 2200 700 1800 1100 4
 C 1500 1100 1 90 0 resistor-load.sym
 {
 T 1400 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1400 1500 5 10 0 1 90 0 1
 value=rload
 T 1100 1400 5 10 0 0 90 0 1

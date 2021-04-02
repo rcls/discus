@@ -37,3 +37,5 @@ T 300 900 8 10 0 1 0 0 1
 file=subckt/BAS40.prm
 T 300 1050 8 10 0 1 0 0 1
 value=BAS40
+T 300 1200 8 10 0 1 0 0 1
+footprint=SOD523

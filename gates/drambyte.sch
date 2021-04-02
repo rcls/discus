@@ -62,6 +62,8 @@ T 1900 1700 5 10 0 0 90 0 1
 symversion=0.1
 T 2625 1825 5 8 1 1 0 0 1
 value=680p
+T 2600 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 2600 2100 2600 2000 4
 {
@@ -88,6 +90,8 @@ T 3525 1675 5 8 1 1 0 2 1
 refdes=C1
 T 3525 1825 5 8 1 1 0 0 1
 value=680p
+T 3500 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 3500 2600 3500 2500 4
 C 4300 1200 1 0 0 gnd-1.sym
@@ -110,6 +114,8 @@ T 4425 1675 5 8 1 1 0 2 1
 refdes=C2
 T 4425 1825 5 8 1 1 0 0 1
 value=680p
+T 4400 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 4400 2600 4400 2500 4
 C 5200 1200 1 0 0 gnd-1.sym
@@ -132,6 +138,8 @@ T 5325 1675 5 8 1 1 0 2 1
 refdes=C3
 T 5325 1825 5 8 1 1 0 0 1
 value=680p
+T 5300 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 5300 2600 5300 2500 4
 C 6100 1200 1 0 0 gnd-1.sym
@@ -154,6 +162,8 @@ T 6225 1675 5 8 1 1 0 2 1
 refdes=C4
 T 6225 1825 5 8 1 1 0 0 1
 value=680p
+T 6200 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 6200 2600 6200 2500 4
 C 7000 1200 1 0 0 gnd-1.sym
@@ -176,6 +186,8 @@ T 7125 1675 5 8 1 1 0 2 1
 refdes=C5
 T 7125 1825 5 8 1 1 0 0 1
 value=680p
+T 7100 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 7100 2600 7100 2500 4
 C 7900 1200 1 0 0 gnd-1.sym
@@ -198,6 +210,8 @@ T 8025 1675 5 8 1 1 0 2 1
 refdes=C6
 T 8025 1825 5 8 1 1 0 0 1
 value=680p
+T 8000 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 8000 2600 8000 2500 4
 C 8800 1200 1 0 0 gnd-1.sym
@@ -220,6 +234,8 @@ T 8925 1675 5 8 1 1 0 2 1
 refdes=C7
 T 8925 1825 5 8 1 1 0 0 1
 value=680p
+T 8900 1700 5 10 0 1 0 0 1
+footprint=0603-cap
 }
 N 8900 2600 8900 2500 4
 N 1400 1900 1800 1900 4
@@ -231,7 +247,7 @@ device=RESISTOR
 T 1750 950 5 10 1 1 90 0 1
 refdes=R
 T 1800 700 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 1800 700 5 10 0 1 90 0 1
 value=rload
 }
@@ -284,6 +300,8 @@ refdes=ϕ1
 }
 C 2000 2500 1 180 0 schottky.sym
 {
+T 1700 1300 5 10 0 1 180 0 1
+footprint=SOD523
 T 1703 1803 5 10 0 0 180 0 1
 device=DIODE
 T 1800 2450 5 10 1 1 0 3 1
@@ -325,7 +343,7 @@ C 2200 2000 1 0 0 2sc4774.sym
 T 2425 2300 5 8 1 1 0 1 1
 refdes=Q0
 T 2900 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 2300 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -334,7 +352,7 @@ C 3100 2000 1 0 0 2sc4774.sym
 T 3325 2300 5 8 1 1 0 1 1
 refdes=Q1
 T 3800 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 3200 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -343,7 +361,7 @@ C 4000 2000 1 0 0 2sc4774.sym
 T 4225 2300 5 8 1 1 0 1 1
 refdes=Q2
 T 4700 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 4100 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -352,7 +370,7 @@ C 4900 2000 1 0 0 2sc4774.sym
 T 5125 2300 5 8 1 1 0 1 1
 refdes=Q3
 T 5600 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 5000 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -361,7 +379,7 @@ C 5800 2000 1 0 0 2sc4774.sym
 T 6025 2300 5 8 1 1 0 1 1
 refdes=Q4
 T 6500 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 5900 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -370,7 +388,7 @@ C 6700 2000 1 0 0 2sc4774.sym
 T 6925 2300 5 8 1 1 0 1 1
 refdes=Q5
 T 7400 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 6800 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -379,7 +397,7 @@ C 7600 2000 1 0 0 2sc4774.sym
 T 7825 2300 5 8 1 1 0 1 1
 refdes=Q6
 T 8300 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 7700 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
@@ -388,14 +406,14 @@ C 8500 2000 1 0 0 2sc4774.sym
 T 8725 2300 5 8 1 1 0 1 1
 refdes=Q7
 T 9200 2500 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=sot323-hbt
 T 8600 2700 5 10 0 1 0 0 1
 value=Q2SC4774
 }
 C 2300 1300 1 90 0 resistor-pull.sym
 {
 T 1500 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 1300 1500 5 10 0 1 90 0 1
 value=rpull
 T 1900 1600 5 10 0 0 90 0 1
@@ -406,7 +424,7 @@ refdes=R0
 C 3200 1300 1 90 0 resistor-pull.sym
 {
 T 2400 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 2200 1500 5 10 0 1 90 0 1
 value=rpull
 T 2800 1600 5 10 0 0 90 0 1
@@ -417,7 +435,7 @@ refdes=R1
 C 4100 1300 1 90 0 resistor-pull.sym
 {
 T 3300 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 3100 1500 5 10 0 1 90 0 1
 value=rpull
 T 3700 1600 5 10 0 0 90 0 1
@@ -428,7 +446,7 @@ refdes=R2
 C 5000 1300 1 90 0 resistor-pull.sym
 {
 T 4200 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 4000 1500 5 10 0 1 90 0 1
 value=rpull
 T 4600 1600 5 10 0 0 90 0 1
@@ -439,7 +457,7 @@ refdes=R3
 C 5900 1300 1 90 0 resistor-pull.sym
 {
 T 5100 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 4900 1500 5 10 0 1 90 0 1
 value=rpull
 T 5500 1600 5 10 0 0 90 0 1
@@ -450,7 +468,7 @@ refdes=R4
 C 6800 1300 1 90 0 resistor-pull.sym
 {
 T 6000 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 5800 1500 5 10 0 1 90 0 1
 value=rpull
 T 6400 1600 5 10 0 0 90 0 1
@@ -461,7 +479,7 @@ refdes=R5
 C 7700 1300 1 90 0 resistor-pull.sym
 {
 T 6900 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 6700 1500 5 10 0 1 90 0 1
 value=rpull
 T 7300 1600 5 10 0 0 90 0 1
@@ -472,7 +490,7 @@ refdes=R6
 C 8600 1300 1 90 0 resistor-pull.sym
 {
 T 7800 1500 5 10 0 1 90 0 1
-footprint=0603-boxed
+footprint=0603-pull
 T 7600 1500 5 10 0 1 90 0 1
 value=rpull
 T 8200 1600 5 10 0 0 90 0 1

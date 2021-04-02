@@ -10,6 +10,7 @@ PCB.*
 *.fake-cir
 \#*#
 unused
+board/*-board.sch
 prog/blink
 prog/monitor
 prog/pattern

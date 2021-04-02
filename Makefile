@@ -8,7 +8,9 @@ TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
 PROG=rmsim pattern monitor blink
 ALL_PROG=$(TESTS) $(PROG:%=prog/%)
 
-all: programs
+BOARDS=bit control dram64byte rom64byte
+
+all: programs boards
 
 verify: $(TESTS:%=%.verify)
 programs: $(ALL_PROG)

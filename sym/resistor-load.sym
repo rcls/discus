@@ -37,7 +37,7 @@ pins=2
 T 0 -100 8 10 0 1 0 0 1
 class=DISCRETE
 T 1000 -100 8 10 0 1 0 0 1
-footprint=0603-boxed
+footprint=0603-load
 T 200 -300 8 10 0 1 0 0 1
 value=rload
 T 600 -300 8 10 0 1 0 0 1

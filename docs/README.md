@@ -35,7 +35,7 @@ data access to the stack—it is not possible to branch to a computed address.
 An earlier version of the instruction set is implemented in [verilog](verilog)
 and ran 64-bit Miller-Rabin primality testing on an FPGA.  This application
 drives some of the design decisions.  For example, using the hidden register `K`
-for prefixes rather than a general purpose register, is because if the register
+for prefixes rather than a general purpose register, is because of the register
 pressure in that code.
 
 
@@ -104,7 +104,7 @@ do not produce an output value, the value is indeterminate.
 
 There are two condition flags, `C` and `Z`.  `C` is stored as a flip-flops in
 the [control board](control.md).  `Z` is asserted when the result of the
-previous instruction was zero; this is implemented a combinatorial logic on the
+previous instruction was zero; this is implemented as combinatorial logic on the
 `K` register.
 
 There is an 8-bit program counter, and two bit [stack pointer](sp.md).

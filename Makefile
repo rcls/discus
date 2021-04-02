@@ -42,7 +42,7 @@ QUANTUM=2000
 %.raw: %.cir
 	ngspice -r $@ -b $<
 
-count: gates/bit.rcr gates/control.rcr board/dram64byte.rcr board/rom64byte.rcr
+count: board/bit.rcr board/control.rcr board/dram64byte.rcr board/rom64byte.rcr
 	grep -Ec -e '^M.*\b[PN]MOS_switch' -e '^Q.*\b(Q2SC4774|PDTC124TU)' $+
 
 SYMS=$(wildcard sym/*.sym)

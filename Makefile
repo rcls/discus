@@ -60,7 +60,7 @@ md: $(ALL_SCH:%=docs/%.md)
 
 boards: ${BOARDS:%=board/%-board.sch}
 
-board/%-board.sch: board/%.sch sym/*.sym gates/*.sch
+board/%-board.sch: board/%.sch board.py sym/*.sym gates/*.sch
 	./board.py -s "sym/$*.sym" "$<" "$@"
 
 vpath %.sch gates board

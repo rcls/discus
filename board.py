@@ -12,8 +12,7 @@ args = parser.parse_args()
 
 def parseCP(IN, L):
     if IN.peek('') != '{':
-        yield L
-        return
+        return L
 
     next(IN)
 
@@ -28,13 +27,13 @@ def parseCP(IN, L):
         key, value = attr.split('=', 1)
         assert not key in attrs # We don't cope!
         attrs[key] = (T, value)
-    yield L, attrs
+    return L, attrs
 
 def parse(IN):
     lines = peekable(L.removesuffix('\n') for L in IN)
     for L in lines:
         if L.startswith('C ') or L.startswith('P '):
-            yield from parseCP(lines, L)
+            yield parseCP(lines, L)
         else:
             yield L
 
@@ -53,6 +52,8 @@ def flatten(S):
 
 def build_pinmap(PATH):
     pins = {}
+    pinnumbers = set()
+    pinseqs = set()
     for I in parse(open(PATH)):
         if type(I) == str:
             continue
@@ -62,8 +63,20 @@ def build_pinmap(PATH):
         _, pinlabel  = attrs['pinlabel']
         _, pinnumber = attrs['pinnumber']
         _, pinseq    = attrs['pinseq']
-        assert pinnumber == pinseq # We probably want to break this.
-        pins[pinlabel] = pinnumber
+        #assert pinnumber == pinseq # We probably want to break this.
+        assert not pinlabel in pins
+        assert not pinnumber in pinnumbers, pinnumber
+        assert not pinseq in pinseqs
+        slot = pinnumber
+        if slot.startswith('A'):
+            slot = str(100 + int(pinnumber[1:]))
+        elif slot.startswith('B'):
+            slot = str(200 + int(pinnumber[1:]))
+        else:
+            print('Unassigned', pinlabel, pinnumber)
+        pins[pinlabel] = slot, pinnumber
+        pinnumbers.add(pinnumber)
+        pinseqs.add(pinseq)
     return pins
 
 # e.g., invisible: T 14600 300 5 10 0 1 0 1 1
@@ -72,6 +85,8 @@ def invisible(L):
     W = L.split(' ')
     W[5] = '0'
     return ' '.join(W)
+
+name_map = { 'ϕ': 'phi' }
 
 def replace_in_out(pinmap, I):
     if type(I) == str:
@@ -88,11 +103,14 @@ def replace_in_out(pinmap, I):
     footT, footprint = attrs['footprint']
     devT , device    = attrs['device']
     refT , refdes    = attrs['refdes']
+    slot , pinname   = pinmap[refdes]
+    net = name_map.get(refdes, refdes)
     return [L, {
         'footprint': [footT, args.conn],
-        'slot'     : [devT , str(pinmap[refdes])],
-        'refdes'   : [invisible(refT), 'CMAIN'],
-        'device'   : [refT , refdes]}]
+        'slot'     : [devT , slot],
+        'net'      : [refT, f'{net}:{pinname}'],
+        'refdes'   : [invisible(refT), 'CMAIN']}]
+#        'comment'  : [refT , net]}]
 
 
 pinmap = build_pinmap(args.sym)

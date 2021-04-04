@@ -163,23 +163,23 @@ N 43000 45500 43000 45600 4
 N 43000 47300 43000 47200 4
 C 43300 46500 1 0 0 resistor-strong.sym
 {
+T 44300 46400 5 10 0 1 0 0 1
+footprint=0603-strong
 T 43600 46900 5 10 0 0 0 0 1
 device=RESISTOR
 T 43950 46650 5 10 1 1 0 0 1
 refdes=R1
-T 44300 46400 5 10 0 1 0 0 1
-footprint=0603-load
 T 43400 46200 5 10 0 1 0 0 1
 value=rstrong
 }
 C 43300 46100 1 0 0 resistor-strong.sym
 {
+T 44300 46000 5 10 0 1 0 0 1
+footprint=0603-strong
 T 43600 46500 5 10 0 0 0 0 1
 device=RESISTOR
 T 43950 46250 5 10 1 1 0 0 1
 refdes=R2
-T 44300 46000 5 10 0 1 0 0 1
-footprint=0603-load
 T 43400 45800 5 10 0 1 0 0 1
 value=rstrong
 }

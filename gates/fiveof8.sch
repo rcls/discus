@@ -48,45 +48,45 @@ refdes=A2#
 C 1500 1000 1 0 0 vdd-1.sym
 C 2300 700 1 90 0 resistor-strong.sym
 {
+T 2400 1700 5 10 0 1 90 0 1
+footprint=0603-strong
 T 1900 1000 5 10 0 0 90 0 1
 device=RESISTOR
 T 2150 1350 5 10 1 1 90 0 1
 refdes=R0
-T 2400 1700 5 10 0 1 90 0 1
-footprint=0603-load
 T 2600 800 5 10 0 1 90 0 1
 value=rstrong
 }
 C 3700 700 1 90 0 resistor-strong.sym
 {
+T 3800 1700 5 10 0 1 90 0 1
+footprint=0603-strong
 T 3300 1000 5 10 0 0 90 0 1
 device=RESISTOR
 T 3550 1350 5 10 1 1 90 0 1
 refdes=R1
-T 3800 1700 5 10 0 1 90 0 1
-footprint=0603-load
 T 4000 800 5 10 0 1 90 0 1
 value=rstrong
 }
 C 4400 700 1 90 0 resistor-strong.sym
 {
+T 4500 1700 5 10 0 1 90 0 1
+footprint=0603-strong
 T 4000 1000 5 10 0 0 90 0 1
 device=RESISTOR
 T 4250 1350 5 10 1 1 90 0 1
 refdes=R2
-T 4500 1700 5 10 0 1 90 0 1
-footprint=0603-load
 T 4700 800 5 10 0 1 90 0 1
 value=rstrong
 }
 C 5800 700 1 90 0 resistor-strong.sym
 {
+T 5900 1700 5 10 0 1 90 0 1
+footprint=0603-strong
 T 5400 1000 5 10 0 0 90 0 1
 device=RESISTOR
 T 5650 1350 5 10 1 1 90 0 1
 refdes=R3
-T 5900 1700 5 10 0 1 90 0 1
-footprint=0603-load
 T 6100 800 5 10 0 1 90 0 1
 value=rstrong
 }

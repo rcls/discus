@@ -952,12 +952,12 @@ refdes=A3
 }
 C 14900 2500 1 0 1 resistor-strong.sym
 {
+T 13900 2400 5 10 0 1 0 6 1
+footprint=0603-strong
 T 14600 2900 5 10 0 0 0 6 1
 device=RESISTOR
 T 14250 2650 5 10 1 1 0 6 1
 refdes=R2
-T 13900 2400 5 10 0 1 0 6 1
-footprint=0603-load
 T 14800 2200 5 10 0 1 0 6 1
 value=rstrong
 }
@@ -969,12 +969,12 @@ refdes=S3
 }
 C 6000 8600 1 0 1 resistor-strong.sym
 {
+T 5000 8500 5 10 0 1 0 6 1
+footprint=0603-strong
 T 5700 9000 5 10 0 0 0 6 1
 device=RESISTOR
 T 5350 8750 5 10 1 1 0 6 1
 refdes=R4
-T 5000 8500 5 10 0 1 0 6 1
-footprint=0603-load
 T 5900 8300 5 10 0 1 0 6 1
 value=rstrong
 }
@@ -990,12 +990,12 @@ N 8200 400 8200 500 4
 N 8800 400 8800 500 4
 C 5700 4900 1 0 0 resistor-strong.sym
 {
+T 6700 4800 5 10 0 1 0 0 1
+footprint=0603-strong
 T 6000 5300 5 10 0 0 0 0 1
 device=RESISTOR
 T 6350 5050 5 10 1 1 0 0 1
 refdes=R5
-T 6700 4800 5 10 0 1 0 0 1
-footprint=0603-load
 T 5800 4600 5 10 0 1 0 0 1
 value=rstrong
 }

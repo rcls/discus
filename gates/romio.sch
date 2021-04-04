@@ -86,12 +86,12 @@ value=Q2SC4774
 N 2100 900 2100 1000 4
 C 2000 2400 1 270 0 resistor-strong.sym
 {
+T 1900 1400 5 10 0 1 270 0 1
+footprint=0603-strong
 T 2400 2100 5 10 0 0 270 0 1
 device=RESISTOR
 T 2150 1750 5 10 1 1 270 0 1
 refdes=R3
-T 1900 1400 5 10 0 1 270 0 1
-footprint=0603-load
 T 1700 2300 5 10 0 1 270 0 1
 value=rstrong
 }

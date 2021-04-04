@@ -1011,7 +1011,6 @@ N 14100 1700 14000 1700 4
 T 14050 1675 5 6 1 1 0 5 1
 netname=Wg#
 }
-C 11400 4700 1 0 1 gnd-1.sym
 C 11800 2000 1 270 0 led-green.sym
 {
 T 11800 1900 5 10 1 1 0 6 1
@@ -1104,17 +1103,6 @@ footprint=0603-pull
 T 2100 9800 5 10 0 1 0 0 1
 value=rpull
 }
-C 11200 5900 1 270 0 resistor-pull.sym
-{
-T 11600 5600 5 10 0 0 270 0 1
-device=RESISTOR
-T 11350 5250 5 10 1 1 0 2 1
-refdes=R3
-T 12000 5700 5 10 0 1 270 0 1
-footprint=0603-pull
-T 12200 5700 5 10 0 1 270 0 1
-value=rpull
-}
 N 11100 500 11100 600 4
 C 4400 3100 1 0 1 2sc4774.sym
 {
@@ -1136,18 +1124,5 @@ footprint=0603-pull
 T 4600 4300 5 10 0 1 0 0 1
 value=rpull
 }
-C 4400 2800 1 0 0 resistor-pull.sym
-{
-T 4700 3200 5 10 0 0 0 0 1
-device=RESISTOR
-T 5050 2950 5 10 1 1 0 0 1
-refdes=R7
-T 4600 3600 5 10 0 1 0 0 1
-footprint=0603-pull
-T 4600 3800 5 10 0 1 0 0 1
-value=rpull
-}
-C 5200 2600 1 0 0 gnd-1.sym
-N 4400 3400 4400 2900 4
 N 4700 4300 4700 5500 4
 N 4700 5500 5100 5500 4

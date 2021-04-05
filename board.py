@@ -122,3 +122,10 @@ OUT = open(args.dst, 'w')
 parsed = parse(IN)
 
 OUT.writelines(flatten(replace_in_out(pinmap, I) for I in parsed))
+
+try:
+    EXTRA = open(args.src.removesuffix('.sch') + '-extra.sch')
+    next(EXTRA)
+    OUT.writelines(EXTRA)
+except FileNotFoundError:
+    pass

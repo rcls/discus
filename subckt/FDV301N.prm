@@ -52,10 +52,4 @@ EDB DB1 0 VB1 0 1
 
 
 
-
-
 .model FDV301N VDMOS(Rg=100 vto=0.9 Rds=100Meg kp=0.29 theta=0.225 Rd=0.7 Rs=20m Rb=40m Ksubthres=.1 Mtriode=0.9 Lambda=1m Cgdmin=0.6p Cgdmax=30p Cgs=9p tt=100n ibv=250u nbv=3 a=0.7 is=1.4e-13 cjo=13p bv=26 m=0.36 vj=0.8 mfg=Fairchild Vds=25 Ron=5 Qg=0.7n)
-
-
-.model NMOS_switch VDMOS(Rg=100 vto=0.9 Rds=100Meg kp=0.29 theta=0.225 Rd=0.7 Rs=20m Rb=40m Ksubthres=.1 Mtriode=0.9 Lambda=1m Cgdmin=0.6p Cgdmax=30p Cgs=9p tt=100n ibv=250u nbv=3 a=0.7 is=1.4e-13 cjo=13p bv=26 m=0.36 vj=0.8 mfg=Fairchild Vds=25 Ron=5 Qg=0.7n)
-

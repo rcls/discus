@@ -11,13 +11,12 @@ print('*', sys.argv[1])
 for L in FILE:
     L = L.strip()
     words = L.split()
-    if len(words) == 5 and words[0].startswith('M') and words[4] == 'MMOS_switch':
+    if len(words) == 5 and words[0].startswith('M') and words[4] == 'NMOS_switch':
         words[4] = 'FDV301N'
     if len(words) == 5 and words[0].startswith('M') and words[4] == 'PMOS_switch':
         words[4] = 'NX3008'
     if len(words) == 5 and words[0].startswith('Q') and words[4] == 'PDTC124TU':
         words[0] = 'X' + words[0]
-        #words[4] = 'PDTC124TU'
 
     if words and words[0] == 'tran':
         TRANS = L

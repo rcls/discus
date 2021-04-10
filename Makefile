@@ -55,7 +55,7 @@ ALL_SCH=$(GATES:gates/%.sch=%) $(BOARD:board/%.sch=%)
 
 .PHONY: png md web
 web: png md
-png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png)
+png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png) docs/bit-top.png
 md: $(ALL_SCH:%=docs/%.md)
 
 boards: ${BOARDS:%=board/%-board.sch}
@@ -75,8 +75,11 @@ docs/%.png: %.sch
 docs/%.md: %.sch make-md.py
 	./make-md.py $< $@
 
-docs/universe.png:
-	touch "$@"
+docs/%-top.png: board/%-board.pcb
+	pcb -x png --photo-mode --photo-plating gold --outfile $@.tmp --xy-max 4000 $<
+	convert -extract 4000x2000+0+0 -scale 1000 $@.tmp $@
+	rm $@.tmp
+
 
 RENAME=mv $*-gerber/$*.$1 $*-gerber/$($1_ext)
 DELETE=rm $*-gerber/$*.$1

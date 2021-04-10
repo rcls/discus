@@ -1,5 +1,6 @@
 PCB.*
 *.d
+*.backup
 *.bin
 *.cir
 *.cmd

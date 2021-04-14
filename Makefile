@@ -55,7 +55,8 @@ ALL_SCH=$(GATES:gates/%.sch=%) $(BOARD:board/%.sch=%)
 
 .PHONY: png md web
 web: png md
-png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png) docs/bit-top.png
+png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png) \
+	docs/bit-top.png docs/control-top.png
 md: $(ALL_SCH:%=docs/%.md)
 
 boards: ${BOARDS:%=board/%-board.sch}

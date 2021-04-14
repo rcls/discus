@@ -42,7 +42,7 @@ pressure in that code.
 Circuitry Overview
 ------------------
 
-[ <img align="right" src="bit-sym.png"> ](bit.md)
+[ <img align="right" src="bit-top.png"> ](bit.md)
 
 The bulk of the implementation is in NMOS logic, with N-channel MOSFET switches
 and 2.49kΩ load resistors, giving a 1mA current per logic gate at 2.5V.  BJTs

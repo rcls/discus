@@ -1,3 +1,5 @@
+[ <img align="right" src="bit-control-sym.png"> ](control.md)
+
 discus
 ======
 
@@ -102,16 +104,19 @@ instruction.
 The `K` register is however written on every clock cycle.  For instructions that
 do not produce an output value, the value is indeterminate.
 
-There are two condition flags, `C` and `Z`.  `C` is stored as a flip-flops in
-the [control board](control.md).  `Z` is asserted when the result of the
-previous instruction was zero; this is implemented as combinatorial logic on the
-`K` register.
+There are two condition flags, `C` (carry) and `Z` (zero).  `C` is stored as a
+flip-flops in the [control board](control.md).  `Z` is asserted when the result
+of the previous instruction was zero; this is implemented as combinatorial logic
+on the `K` register.  (In the instruction listing below, some instructions are
+listed as writing `Z`.  In reality, this is just a reminder that a useful value
+is left in `K` for a conditional branch to zero-test.)
 
 There is an 8-bit program counter, and two bit [stack pointer](sp.md).
 The four entry stack is implemented as a register file in the CPU, 128
 transisters for storing 4 bytes, plus 38 for interfacing to the register file.
 
-The DRAM refresh control contains an 8-bit counter.
+The DRAM refresh control contains an 8-bit counter.  Instructions that do not
+access memory, drive the counter onto the address bus and increment the counter.
 
 
 Instruction Set & Encoding

@@ -1,12 +1,10 @@
-[ <img align="right" src="bit-control-sym.png"> ](control.md)
-
-discus
-======
-
 [ <img align="right" src="control-sym.png"> ](control.md)
 
 Discus is an 8-bit CPU built from discrete transistors.  Currently it runs
 in simulation, [integrated into a system with RAM and ROM](univlight.md).
+
+Overview
+========
 
 It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
 a four entry stack.  There are four general purpose registers, one of which is

@@ -63,7 +63,7 @@ module swinterface(input wire cpu_clk_ext,
    div100k khz_gen(clk_main, khz_pulse);
 
    // The LEDs are negative logic.
-   watchdog w_clk   (clk_main, khz_pulse, !sck_iob,      led[0]);
+   watchdog w_clk   (clk_main, khz_pulse, !sck_iob,     led[0]);
    watchdog w_ssel  (clk_main, khz_pulse, ss_iob,       led[1]);
    watchdog w_mosi  (clk_main, khz_pulse, mosi_iob,     led[2]);
    watchdog w_cpuclk(clk_main, khz_pulse, !cpu_clk_ext, led[3]);
@@ -150,7 +150,7 @@ module div100k(input wire clk, output reg pulse);
    always@(posedge clk) begin
       pulse <= counter[17];
       if (counter[17])
-        counter <= counter - 999999;
+        counter <= counter - 99999;
       else
         counter <= counter + 1;
    end

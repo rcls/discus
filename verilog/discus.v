@@ -1,3 +1,5 @@
+`default_nettype none
+
 module discus(input wire clk,
               input wire reset,
               output wire memory_read,
@@ -39,7 +41,7 @@ module discus(input wire clk,
    bit [7:0] regs[0:3];
    bit [7:0] stack[0:3];
 
-   bit fetch_prev_was_data;
+   bit fetch_prev_was_const;
 
    bit [1:0] SP;
    bit [7:0] return_PC;
@@ -50,8 +52,7 @@ module discus(input wire clk,
    // For instruction decode only.
    bit decode_is_branch;
    bit [5:0] decode_prev_data;
-   bit decode_prev_was_data;
-   bit decode_not_mem_read = 1;
+   bit decode_prev_was_const;
 
    // For exec.
    bit [7:0] exec_constant;
@@ -59,7 +60,8 @@ module discus(input wire clk,
    bit [1:0] exec_reg_to_write;
    bit [1:0] exec_reg_to_read;
    bit exec_reg_read;
-   bit exec_reg_ff;
+   bit exec_reg_use_K;
+   bit exec_is_prefix;
    bit exec_use_C;
    bit exec_reg_write;
    bit exec_C_write;
@@ -69,11 +71,14 @@ module discus(input wire clk,
    bit [2:0] exec_op;
 
    // For commit.
-   bit commit_Z_write;
    bit commit_reg_write;
    bit commit_reg_write_A;
    bit [1:0] commit_reg_to_write;
    bit [7:0] Q;
+   bit [7:0] K;
+
+   wire [7:0] effA;
+   wire [7:0] effB;
 
    localparam Bpass   = 0;
    localparam AandB   = 1;
@@ -84,10 +89,12 @@ module discus(input wire clk,
    localparam Bplus1  = 6;
    localparam Bminus1 = 7;
 
-   assign memory_address = effB;
+   assign memory_address = effB | memory_Q;
    assign memory_D       = effA;
    assign memory_read    = exec_mem_read;
    assign memory_write   = exec_mem_write;
+
+   assign K = Q | memory_Q;
 
    (* keep = "true" *)
    bit decode_take_branch;
@@ -99,7 +106,7 @@ module discus(input wire clk,
       case (decode_instruction[4:3])
         2'b00: conditionZ = !decode_instruction[2];
         2'b01: conditionZ = !decode_instruction[2];
-        2'b10: conditionZ = (Zflag | commit_Z_write) ^ decode_instruction[2];
+        2'b10: conditionZ = !decode_instruction[2];
         2'b11: conditionZ = Cflag ^ decode_instruction[2];
       endcase
    end
@@ -107,34 +114,36 @@ module discus(input wire clk,
       case (decode_instruction[4:3])
         2'b00: conditionNZ = !decode_instruction[2];
         2'b01: conditionNZ = !decode_instruction[2];
-        2'b10: conditionNZ = (Zflag & !commit_Z_write) ^ decode_instruction[2];
+        2'b10: conditionNZ = decode_instruction[2];
         2'b11: conditionNZ = Cflag ^ decode_instruction[2];
       endcase
    end
    always@(*) begin : decode_branch_evaluate2
       bit [7:0] decode_branch_target;
 
-      decode_take_branch = decode_is_branch && ((Q == 0) ? conditionZ : conditionNZ);
+      if (conditionZ && decode_is_branch && memory_Q == 0 && Q == 0)
+        decode_take_branch = 1;
+      else if (conditionNZ && decode_is_branch && (memory_Q != 0 || Q != 0))
+        decode_take_branch = 1;
+      else
+        decode_take_branch = 0;
+      // decode_take_branch = decode_is_branch && ((K == 0) ? conditionZ : conditionNZ);
 
-      if (decode_instruction[7])
+      if (decode_instruction[6])
         decode_branch_target = return_PC;
       else
         decode_branch_target = { decode_instruction[1:0], decode_prev_data[5:0] };
 
       if (decode_take_branch)
         fetch_PC = decode_branch_target;
-      else if (decode_not_mem_read)
-        fetch_PC = decode_PC + 1;
       else
-        fetch_PC = decode_PC;
+        fetch_PC = decode_PC + 1;
    end
 
    always@(posedge clk) begin : fetch
-      if (fetch_instruction[7:6] == 2'b00 && fetch_prev_was_data)
+      if (fetch_instruction[7:6] == 2'b00 && fetch_prev_was_const)
         decode_is_branch <= 1;
-      else if (fetch_instruction[4:3] == 2'b00)
-        decode_is_branch <= 0;
-      else if (fetch_instruction[7:5] == 3'b101)
+      else if (fetch_instruction[7:5] == 3'b011)
         decode_is_branch <= 1;
       else
         decode_is_branch <= 0;
@@ -145,44 +154,26 @@ module discus(input wire clk,
 
       decode_instruction <= fetch_instruction;
 
-      if (!fetch_prev_was_data && fetch_instruction[7:6] == 2'b00
-                                                          && decode_not_mem_read)
-        fetch_prev_was_data <= 1;
+      if (!fetch_prev_was_const && fetch_instruction[7:6] == 2'b00)
+        fetch_prev_was_const <= 1;
       else
-        fetch_prev_was_data <= 0;
+        fetch_prev_was_const <= 0;
 
-      decode_prev_was_data <= fetch_prev_was_data;
-
-      // Work out if this instruction really does read memory.  The memory read
-      // takes two cycles.  For the second cycle in fetch (= first cycle in
-      // decode), the instruction is bogus and and we take care to ignore it.
-      if (fetch_instruction[7:6] == 2'b00
-          || fetch_instruction[7:5] == 3'b101)
-        decode_not_mem_read <= 1;
-      else
-        decode_not_mem_read <= !fetch_instruction[2] | !decode_not_mem_read;
+      decode_prev_was_const <= fetch_prev_was_const;
 
       decode_PC <= fetch_PC;
 
       if (reset_input)
         fetch_reset <= 1;
-      else if (fetch_prev_was_data)
+      else if (fetch_prev_was_const)
         fetch_reset <= 0;
-
-      // In decode_mem_read the fetch instruction is bogus; we need to continue
-      // the previous instruction.  So pause appropriate outputs.
-      if (!decode_not_mem_read) begin
-         decode_instruction <= decode_instruction;
-         decode_is_branch <= decode_is_branch;
-      end
 
       // If we took a branch then the currently fetched instruction is bogus.
       // Pass a NOP (mov A,A) through to decode.
       if (decode_take_branch) begin
-         fetch_prev_was_data <= 0;
-         decode_not_mem_read <= 1;
+         fetch_prev_was_const <= 0;
          decode_is_branch <= 0;
-         decode_instruction <= 8'h80;
+         decode_instruction <= 8'hc8;
       end
    end
 
@@ -210,7 +201,7 @@ module discus(input wire clk,
       if (decode_instruction[7:6] != 2'b00
           && decode_instruction[7:3] != 5'b01111
           && decode_instruction[7:5] != 3'b101)
-        exec_reg_write <= decode_not_mem_read;
+        exec_reg_write <= 1;
       else
         exec_reg_write <= 0;
 
@@ -219,63 +210,81 @@ module discus(input wire clk,
       else
         exec_mem_write <= 0;
 
+      // FIXME - when executing a memory read we need to get the arithmetic
+      // output to be zero.  (Or do we just use a reset?)
       // Arith operation...
-      if (decode_instruction[7:4] == 5'b0100)
-        exec_op <= AplusB;
-      else if (decode_instruction[7:4] == 5'b0101)
-        exec_op <= AminusB;
-      else if (decode_instruction[7:3] == 5'b01100)
-        exec_op <= AorB;
-      else if (decode_instruction[7:3] == 5'b01101)
-        exec_op <= AxorB;
-      else if (decode_instruction[7:3] == 5'b01110)
-        exec_op <= AandB;
-      else if (decode_instruction[7:3] == 5'b01111)
-        exec_op <= AminusB;
-      else if (decode_instruction[7:5] == 3'b110)
-        exec_op <= Bplus1;
-      else if (decode_instruction[7:5] == 3'b111)
-        exec_op <= Bminus1;
-      else
-        exec_op <= Bpass;
+      casez (decode_instruction)
+        8'b00??????: exec_op <= Bpass;   // Constant
+        // OUT, STA, IN
+        // 8'b01000???: OUT
+        // 8'b01001???: STA
+        // 8'b01010???: IN
+        8'b01011???: exec_op <= AandB;   // MEM
+        8'b011001??: exec_op <= AminusB; // CMP
+        8'b011011??: exec_op <= AandB;   // TST
+        8'b10??00??: exec_op <= AplusB;  // ADD/ADC
+        8'b10??01??: exec_op <= AminusB; // SUB/SBC
+        8'b10?010??: exec_op <= AorB;    // OR
+        8'b10??11??: exec_op <= AandB;   // AND (& unused alias)
+        8'b10?110??: exec_op <= AxorB;   // XOR
+        8'b11??00??: exec_op <= Bplus1;  // INC
+        8'b11??01??: exec_op <= Bminus1; // DEC
+        8'b11??10??: exec_op <= Bpass;   // MOV
+        8'b11??11??: exec_op <= AandB;   // LOADM
+        default    : exec_op <= 3'bxxx;  // Don't care
+      endcase
 
-      exec_use_C <= (decode_instruction[7:3] == 5'b01001 || decode_instruction[7:3] == 5'b01011);
+      exec_use_C <= (  decode_instruction[7:3] == 5'b10010
+                    || decode_instruction[7:3] == 5'b10110);
 
       // Work out the source of the 'B' input to the ALU.  If can be any of:
       // Constant.
       // Memory read.
       // Register read (normal).
       // Register read (ff).
-      // For post-mem-read or using a constant, set exec_reg_read=0 and
-      // reg_to_read=0.  The values are OR'd in.
-      if (exec_mem_read || decode_prev_was_data)
+      // For using a constant, set exec_reg_read=0.
+      if (decode_prev_was_const)
         exec_reg_read <= 0;
       else
         exec_reg_read <= 1;
 
       exec_reg_to_read <= decode_instruction[1:0];
 
-      if (exec_reg_write && exec_reg_to_write == decode_instruction[1:0])
-        exec_reg_ff <= 1;
+      if (!decode_prev_was_const && decode_instruction[7:6] == 2'b00)
+        exec_is_prefix <= 1;
       else
-        exec_reg_ff <= 0;
+        exec_is_prefix <= (decode_instruction[7:5] == 3'b010);
 
-      if (decode_prev_was_data && !exec_mem_read)
+      // Fast-forward or prefix...
+      if (exec_reg_write && exec_reg_to_write == decode_instruction[1:0])
+        exec_reg_use_K <= 1;
+      else
+        exec_reg_use_K <= exec_is_prefix;
+
+      if (decode_prev_was_const)
         exec_constant <= { decode_instruction[1:0], decode_prev_data };
       else
         exec_constant <= 0;
 
-      exec_mem_read <= !decode_not_mem_read;
-      exec_Z_write <= decode_instruction[6] && decode_not_mem_read;
-      exec_C_write <= (decode_instruction[7:6] == 2'b01) && decode_not_mem_read;
+      // For memory ops, we also force the ALU op to `and`, and set effA to
+      // zero, leaving Q=0 and K=Q|memory_Q=memory_Q
+      casez (decode_instruction)
+        8'b01011???: exec_mem_read <= 1; // MEM
+        8'b11??11??: exec_mem_read <= 1; // LOADM
+        default    : exec_mem_read <= 0;
+      endcase
+
+      casez (decode_instruction)
+        8'b0110?1??: exec_C_write <= 1; // CMP & TST
+        8'b10??????: exec_C_write <= 1; // arithmetic.
+        default    : exec_C_write <= 0;
+      endcase
    end
 
-   wire [7:0] effB;
-   wire [7:0] effA;
    assign effB = exec_reg_read
-                 ? (exec_reg_ff ? Q : regs[exec_reg_to_read])
+                 ? (exec_reg_use_K ? Q : regs[exec_reg_to_read])
                  : exec_constant;
-   assign effA = commit_reg_write_A ? Q : A;
+   assign effA = !exec_mem_read ? commit_reg_write_A ? K : A : 0;
 
    (* keep = "true" *)
    bit [7:0] logicB0;
@@ -315,12 +324,14 @@ module discus(input wire clk,
       reg [10:0] sum;
 
       addendB = { 2'b00,
-        ((effB | memory_Q) & logicB1) | (~effB & ~memory_Q & logicB0), 1'b0 };
+        ((effB | memory_Q) & logicB1) | (~effB & ~memory_Q & logicB0),
+        1'b0 };
 
       if (exec_op == AminusB)
         addendB[0] = Cflag | !exec_use_C;
       if (exec_op == AplusB)
         addendB[0] = Cflag & exec_use_C;
+
       if (exec_op == AandB)
         addendB[9] = 1'b1;
 
@@ -339,15 +350,11 @@ module discus(input wire clk,
       commit_reg_write <= exec_reg_write;
       commit_reg_to_write <= exec_reg_to_write;
       commit_reg_write_A <= exec_reg_write && exec_reg_to_write == 0;
-      commit_Z_write <= exec_Z_write;
 
       if (commit_reg_write)
-        regs[commit_reg_to_write] <= Q;
+        regs[commit_reg_to_write] <= K;
 
       if (commit_reg_write_A)
-        A <= Q;
-
-      if (commit_Z_write)
-        Zflag <= (Q == 0);
+        A <= K;
    end
 endmodule

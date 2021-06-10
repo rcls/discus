@@ -1,3 +1,5 @@
+`default_nettype none
+
 module trinterface(input wire BASE_UART0_rxd,
                    output reg BASE_UART0_txd,
                    output reg LED_RED_XA_SC,
@@ -60,6 +62,7 @@ module trinterface(input wire BASE_UART0_rxd,
    wire [7:0] io_address;
    wire [7:0] io_PC;
    wire io_reset;
+   wire io_write;
    bit [7:0] io_instruction;
 
    (* ram_style = "block" *)
@@ -141,11 +144,12 @@ module trinterface(input wire BASE_UART0_rxd,
       endcase
    end
 
+   wire pllfb;
    PLLE2_BASE #(
-     .CLKFBOUT_MULT(20),
+     .CLKFBOUT_MULT(20),                // 2GHz
      .CLKIN1_PERIOD(10),
-     .CLKOUT0_DIVIDE(6),
-     .CLKOUT1_DIVIDE(60),
+     .CLKOUT0_DIVIDE(8),                // 250MHz
+     .CLKOUT1_DIVIDE(24),               // 83.333MHz
      .BANDWIDTH("LOW")
      ) pll (.CLKIN1(sys_clk_i_0), .CLKOUT0(cpu_clk), .CLKOUT1(io_clk),
             .CLKFBOUT(pllfb), .CLKFBIN(pllfb), .PWRDWN(0), .RST(0));

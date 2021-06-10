@@ -419,7 +419,7 @@ Reset
 =====
 
 There is an external reset input.  This must be asserted for at least two clock
-cycles to reset the process.  Reset jumps to address 0, but otherwise does not
+cycles to reset the processor.  Reset jumps to address 0, but otherwise does not
 change processor state.
 
 The opcode bus is open-drain.  Reset is implemented by pulling down the opcode

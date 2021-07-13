@@ -6,9 +6,9 @@ in simulation, [integrated into a system with RAM and ROM](univlight.md).
 Overview
 ========
 
-It is a pure 8-bit Harvard architecture, with 8-bit code and data addresses, and
-a four entry stack.  There are four general purpose registers, one of which is
-the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
+Discus is a pure 8-bit Harvard architecture, with 8-bit code and data addresses,
+and a four entry stack.  There are four general purpose registers, one of which
+is the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is an integrated dynamic RAM
 controller.  The CPU totals 1283 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.

@@ -1,6 +1,6 @@
 
 #[derive(Clone, Copy, Debug)]
-pub struct Memory([u8; 256]);
+pub struct Memory(pub [u8; 256]);
 
 impl Default for Memory {
     fn default() -> Memory { Memory([0; 256]) }
@@ -18,7 +18,7 @@ pub struct State {
     pub prev_const: bool,
     pub c: bool,
     pub pc: u8,
-    pub sp: u8,
+    pub sp: i8,
 
     pub prev_z: bool,
     pub prev_c: bool,
@@ -28,6 +28,9 @@ pub struct State {
 }
 
 impl State {
+    pub fn step(&mut self, program: &[u8]) {
+        self.update(program[self.pc as usize]);
+    }
     pub fn update(&mut self, opcode: u8) {
         let prev_const = self.prev_const;
         let prefixed = self.prefixed;
@@ -39,8 +42,8 @@ impl State {
         self.prefixed = false;
         self.prev_const = false;
         self.pc += 1;
-        let prev_c = self.c;
-        let prev_z = k != 0;
+        let c = self.c;
+        let z = k == 0;
 
         match opcode {
             0x00..=0x3f => if prev_const {
@@ -53,10 +56,10 @@ impl State {
             }
 
             0x40..=0x47 => self.out(),
-            0x48..=0x4b => (),          // Unallocated.
+            0x48..=0x4b => unreachable!(), // Unallocated, NOP?
             0x4c..=0x4f => self.memory.0[operand as usize] = self.a,
             0x50..=0x57 => self.inp(),
-            0x58..=0x5b => (),          // Unallocated.
+            0x58..=0x5b => unreachable!(), // Unallocated (preserve K prefix?).
             0x5c..=0x5f => {            // MEM prefix.
                 self.k = Some(self.memory.0[operand as usize]);
                 self.prefixed = true;
@@ -69,8 +72,8 @@ impl State {
             0xc0..=0xff => self.xfer(opcode, operand),
         }
 
-        self.prev_c = prev_c;
-        self.prev_z = prev_z;
+        self.prev_c = c;
+        self.prev_z = z;
     }
     fn op_reg(&self, op: u8) -> u8 {
         match op & 3 {
@@ -105,9 +108,9 @@ impl State {
         if self.condition(opcode) {
             if opcode & 32 != 0 {
                 self.stack[self.sp as usize & 3] = self.pc;
+                self.sp += 1;
             }
             self.pc = addr;
-            self.sp += 1;
         }
     }
     fn ret(&mut self, opcode: u8) {
@@ -120,7 +123,7 @@ impl State {
     fn inp(&self) { todo!() }
 
     fn xfer(&mut self, opcode: u8, operand: u8) {
-        let r = match opcode & 12 >> 2 {
+        let r = match opcode >> 2 & 3 {
             0 => operand.wrapping_add(1),
             1 => operand.wrapping_sub(1),
             2 => operand,
@@ -128,7 +131,7 @@ impl State {
             _ => unreachable!()
         };
         self.k = Some(r);
-        match opcode & 0x30 >> 4 {
+        match opcode >> 4 & 3 {
             0 => self.a = r,
             1 => self.x = r,
             2 => self.y = r,
@@ -138,9 +141,7 @@ impl State {
     }
 
     fn condition(&self, opcode: u8) -> bool {
-        // let cc = opcode & 16 == 0 || if opcode & 8 == 0 { z } else { c };
-        // if opcode & 32 == 0 { cc } else { !cc }
-        match opcode >> 2 & 7 {
+        match (opcode >> 2) & 7 {
             0 => true,
             1 => false,
             2 => true,

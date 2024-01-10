@@ -5,6 +5,12 @@ use Register::*;
 use Value::*;
 use XferOp::*;
 
+// Convenience for "use instructions.constants.*;" without undue pollution.
+pub mod constants {
+    pub use super::Register::*;
+    pub use super::Condition::*;
+}
+
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Register {A, X, Y, U}
 
@@ -27,16 +33,15 @@ type Labels = std::collections::HashMap<String, u8>;
 const ADD: u8 = 0x80;
 const SUB: u8 = 0x84;
 const OR : u8 = 0x88;
-const AND: u8 = 0x8c;
+const AND: u8 = 0x8c;                   // Also 0x9c is an alias.
 const ADC: u8 = 0x90;
 const SBC: u8 = 0x94;
 const XOR: u8 = 0x98;
-//const AND2:u8 = 0x9c;
 
 pub enum XferOp {Inc = 0xc0, Dec = 0xc4, Mov = 0xc8, MovM = 0xcc}
 
 pub enum Condition {
-    Always = 0, Never = 4, Always2 = 8, Never2 = 12,
+    Always = 0, Never = 4,              // Also 8 and 12 as aliases.
     Z = 16, NZ = 20, C = 24, NC = 28
 }
 
@@ -104,6 +109,7 @@ impl Instructions {
         self
     }
     pub fn label(&mut self, l: impl Into<String>) -> &mut Self {
+        assert_eq!(std::cmp::max(self.insns.len(), 256), 256);
         self.labels.insert(l.into(), self.insns.len().try_into().unwrap());
         self
     }
@@ -121,8 +127,8 @@ impl Instructions {
     pub fn mem(&mut self, v: impl Into<Value>) -> &mut Self {self.code(MEM, v)}
     pub fn add(&mut self, v: impl Into<Value>) -> &mut Self {self.code(ADD, v)}
     pub fn sub(&mut self, v: impl Into<Value>) -> &mut Self {self.code(SUB, v)}
-    pub fn and(&mut self, v: impl Into<Value>) -> &mut Self {self.code(AND, v)}
     pub fn or (&mut self, v: impl Into<Value>) -> &mut Self {self.code(OR , v)}
+    pub fn and(&mut self, v: impl Into<Value>) -> &mut Self {self.code(AND, v)}
     pub fn adc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(ADC, v)}
     pub fn sbc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(SBC, v)}
     pub fn xor(&mut self, v: impl Into<Value>) -> &mut Self {self.code(XOR, v)}
@@ -166,6 +172,14 @@ impl Instructions {
             MemNumber(n) => self.code(MovM as u8 + d as u8 * 16, n),
         }
     }
+
+    pub fn out(&mut self) -> &mut Self {self.byte(0x40)}
+    pub fn inp(&mut self) -> &mut Self {self.byte(0x50)}
+
+    /// Set carry.
+    pub fn setc(&mut self) -> &mut Self {self.and(A)}
+    // Clear carry.
+    pub fn clrc(&mut self) -> &mut Self {self.or(A)}
 }
 
 #[test]

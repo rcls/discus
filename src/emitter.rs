@@ -76,7 +76,7 @@ impl<T> Emitter for Disassemble<T> where T: std::io::Write {
             writeln!(&mut self.0, "ret")
         }
         else {
-            writeln!(&mut self.0, "rt   {}", cc)
+            writeln!(&mut self.0, "ret  {}", cc)
         }
     }
     fn emit_operand(&mut self, a: u8, op: &[u8],
@@ -127,9 +127,9 @@ pub trait Emitter {
 
 
 
-impl Emitter for std::cell::Cell<usize> {
+impl Emitter for usize {
     fn emit_bytes(&mut self, _a: u8, op: &[u8]) -> Result {
-        self.set(self.get() + op.len());
+        *self += op.len();
         Ok(())
     }
 }
@@ -225,12 +225,7 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
                 }
                 if let Some(con) = take(&mut self.constant) {
                     let cc = op as usize >> 2 & 7;
-                    let opcode = if op & 0x20 == 0 {
-                        if cc == 0 { "jump" } else { "jp" }
-                    }
-                    else {
-                        if cc == 0 { "call" } else { "cl" }
-                    };
+                    let opcode = if op & 0x20 == 0 {"jump"} else {"call"};
                     self.e.emit_jump(a - 1, &[con, op],
                                      opcode, CONDITIONS[cc], steal(con, op))?;
                 }

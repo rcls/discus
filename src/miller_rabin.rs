@@ -62,7 +62,7 @@ fn input(i: &mut Instructions) -> &mut Instructions {
         .add (A)
         .jp  (NC, "read1")
         .add (A)
-        .mov (X, MODULUS)
+        .load(X, MODULUS)
         .call("leftrot");
 
     // Wait for bit 7 to fall.  If bit 6 stays up we are done.
@@ -78,37 +78,37 @@ fn input(i: &mut Instructions) -> &mut Instructions {
 
 fn work(i: &mut Instructions) -> &mut Instructions {
     i.label("single")
-        .mov (Y, MODULUS)
-        .mov (X, EXPONENT)
+        .load(Y, MODULUS)
+        .load(X, EXPONENT)
         .call("copy")
-        .mov (Y, LEN * 8 - 1);
+        .load(Y, LEN * 8 - 1);
 
     i.label("expgen1")  // Find the position of the lowest 1 bit in (modulus-1).
         .call("leftrot_exponent")
         .jp  (NC, "expgen2")
-        .mov (A, Y)
+        .load(A, Y)
         .sta (EXP_TWOS);
 
     i.label("expgen2")
         .dec (Y)
         .jp  (NZ, "expgen1")
 
-        .mov (A, BASE_START);           // Loop over the bases.
+        .load(A, BASE_START);           // Loop over the bases.
     i.label("main_loop")
         .sta (BASE_INDEX)
-        .mov (Y, ONE)
+        .load(Y, ONE)
         .call("copy_to_product")
-        .mov (Y, [BASE_INDEX])
+        .load(Y, [BASE_INDEX])
         .call("mult")
         .call("classify")
-        .mov (A,A)
+        .load(A,A)
         .jp  (Z, "main_loop_next");
 
     // Now do the exponentiation....
     assert_eq!(PRODUCT, MODULUS + LEN);
     assert_eq!(BASE, EXPONENT + LEN);
-    i   .mov (Y, PRODUCT)
-        .mov (X, BASE)
+    i   .load(Y, PRODUCT)
+        .load(X, BASE)
         .call("copy")
     // Y = MODULUS,
     // X = EXPONENT.
@@ -119,31 +119,33 @@ fn work(i: &mut Instructions) -> &mut Instructions {
     power_body(i)
         .call("classifyp1")
         .and (0xfd)
-        .jp  (Z, "main_loop_next")
+        .jp  (Z, "main_loop_next")      // Got 1 or -1, passes this check.
 
-        .mov (Y, [EXP_TWOS]);
+        .load(Y, [EXP_TWOS]);
     i.label("square_loop")
         .decv(A, Y)
-        .jp  (Z, "restart")             // FIXME
+        .jp  (Z, "restart")             // Didn't get to -1, not prime.
         .call("square")
         .call("classifyp1")
-        .mov (Y,[OUTER_LOOP_COUNT])
-        .mov (A, A)
-        .jp  (NZ, "square_loop");
+        .load(Y,[OUTER_LOOP_COUNT])
+        .load(A, A)
+        .jp  (NZ, "square_loop");       // Not -1 yet.
 
-    i.label("main_loop_next")
-        .mov (A, [BASE_INDEX])
+    i.label("main_loop_next")           // We've passed this check, on to next.
+        .load(A, [BASE_INDEX])
         .add (8)
         .jp  (NC, "main_loop")
         .jump("restart");               // Passed all checks.
 
 
     i.label("classifyp1")               // Classify result+1
-        .mov (X, ONE)
+        .load(X, ONE)
         .call("add64m");
 
+    // If result is multi-byte, return A = -1, C = 1.
+    // Else return result in A and C = 0.
     i.label("classify")
-        .mov (X, RESULT - 1)
+        .load(X, RESULT - 1)
         .sub (A)
         .label("classify1")
     // A=0 at this point, so SUBM(X) sets C=!Z and Z reflects M(X).
@@ -161,23 +163,23 @@ fn work(i: &mut Instructions) -> &mut Instructions {
 
 fn power_body(i: &mut Instructions) -> &mut Instructions {
     i.label("power")
-        .mov (A, LEN * 8)
+        .load(A, LEN * 8)
         .sub ([EXP_TWOS])
 
     // First left shift until we find a set bit...
-        .mov (Y,A);
+        .load(Y,A);
 
     i.label("power_y")
         .call("leftrot_exponent")
         .dec (Y)
         .jp  (NC, "power_y")            // Note that exponent==0 never happens.
-        .mov (A, Y)
+        .load(A, Y)
         .jp  (Z, "power_x");
 
     i.label("power_1")
         .call("square")                 // Starts with sta(OUTER_LOOP_COUNT).
         .call("leftrot_exponent")
-        .mov (Y, BASE)
+        .load(Y, BASE)
         .cl  (C, "mult")
         .decv(A, [OUTER_LOOP_COUNT])
         .jp  (NZ, "power_1");
@@ -189,39 +191,39 @@ fn power_body(i: &mut Instructions) -> &mut Instructions {
 fn arithmetic(i: &mut Instructions) -> &mut Instructions {
     i.label("square")
         .sta (OUTER_LOOP_COUNT)
-        .mov (Y, PRODUCT);
+        .load(Y, PRODUCT);
 
     i.label("mult")
-        .mov (X, FACTOR)
+        .load(X, FACTOR)
         .call("copy")
-        .mov (Y, ZERO)
-        .mov (X, RESULT)
+        .load(Y, ZERO)
+        .load(X, RESULT)
         .call("copy")
-        .mov (A, LEN * 8);
+        .load(A, LEN * 8);
     i.label("mult1")
         .sta (MULT_LOOP_COUNT)
-        .mov (X, RESULT)
+        .load(X, RESULT)
         .call("add64m");                  // result * 2 -> result
     assert!(FACTOR == PRODUCT + LEN); // Leaves x==product below.
-    i   .mov (X, FACTOR)
+    i   .load(X, FACTOR)
         .call("leftrot")
     // mov(X, PRODUCT)
         .cl  (C, "add64m")
         .decv(A, [MULT_LOOP_COUNT])
         .jp  (NZ, "mult1")
-        .mov (Y, RESULT);
+        .load(Y, RESULT);
 
     i.label("copy_to_product")
-        .mov (X, PRODUCT)
+        .load(X, PRODUCT)
         .jump("copy");
 
     i.label("leftrot_exponent")
-        .mov (X, EXPONENT);
+        .load(X, EXPONENT);
 
     i.label("leftrot")
-        .mov (U, LEN)
+        .load(U, LEN)
         .label("leftrot1")
-        .mov (A, [X])
+        .load(A, [X])
         .adc (A)
         .sta (X)
         .dec (X)
@@ -231,9 +233,9 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
 
     i.label("add64m")                 // result + mem(X) -> result (mod modulus)
         .clrc()
-        .mov (Y, RESULT)
+        .load(Y, RESULT)
         .label("add64m1")
-        .mov (A, [Y])
+        .load(A, [Y])
         .adc ([X])
         .sta (Y)
         .dec (X)
@@ -243,15 +245,15 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
     // Do a trial subtract result - modulus -> temp
     assert!(TEMP == RESULT + LEN);        // necessary to leave X==result below.
     assert!(MODULUS == TEMP + LEN);       // And Y==temp.
-    i   .mov (U, RESULT)
-        .mov (Y, MODULUS)
-        .mov (X, TEMP)
+    i   .load(U, RESULT)
+        .load(Y, MODULUS)
+        .load(X, TEMP)
         .jp  (NC, "add64m2")
-        .mov (X, U)      // Write subtract into result; will leave NC & no copy.
+        .load(X, U)      // Write subtract into result; will leave NC & no copy.
         .label("add64m2")
         .setc()
         .label("add64m3")
-        .mov (A, [U])
+        .load(A, [U])
         .sbc ([Y])
         .sta (X)
         .dec (Y)
@@ -261,9 +263,9 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
         .rt  (NC);
 
     i.label("copy")
-        .mov (U, LEN)
+        .load(U, LEN)
         .label("copy1")
-        .mov (A, [Y])
+        .load(A, [Y])
         .sta (X)
         .dec (X)
         .dec (Y)

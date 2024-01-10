@@ -30,15 +30,7 @@ pub enum Target {
 
 type Labels = std::collections::HashMap<String, u8>;
 
-const ADD: u8 = 0x80;
-const SUB: u8 = 0x84;
-const OR : u8 = 0x88;
-const AND: u8 = 0x8c;                   // Also 0x9c is an alias.
-const ADC: u8 = 0x90;
-const SBC: u8 = 0x94;
-const XOR: u8 = 0x98;
-
-pub enum XferOp {Inc = 0xc0, Dec = 0xc4, Mov = 0xc8, MovM = 0xcc}
+pub enum XferOp {Inc = 0xc0, Dec = 0xc4, Load = 0xc8, LoadM = 0xcc}
 
 pub enum Condition {
     Always = 0, Never = 4,              // Also 8 and 12 as aliases.
@@ -46,12 +38,6 @@ pub enum Condition {
 }
 
 const MEM: u8 = 0x5c;
-const CMP: u8 = 0x44;
-const TST: u8 = 0x6c;
-const STA: u8 = 0x4c;
-const RET: u8 = 0x60;
-const JUMP: u8 = 0;
-const CALL: u8 = 32;
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Instruction {
@@ -125,34 +111,35 @@ impl Instructions {
     }
 
     pub fn mem(&mut self, v: impl Into<Value>) -> &mut Self {self.code(MEM, v)}
-    pub fn add(&mut self, v: impl Into<Value>) -> &mut Self {self.code(ADD, v)}
-    pub fn sub(&mut self, v: impl Into<Value>) -> &mut Self {self.code(SUB, v)}
-    pub fn or (&mut self, v: impl Into<Value>) -> &mut Self {self.code(OR , v)}
-    pub fn and(&mut self, v: impl Into<Value>) -> &mut Self {self.code(AND, v)}
-    pub fn adc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(ADC, v)}
-    pub fn sbc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(SBC, v)}
-    pub fn xor(&mut self, v: impl Into<Value>) -> &mut Self {self.code(XOR, v)}
-    pub fn cmp(&mut self, v: impl Into<Value>) -> &mut Self {self.code(CMP, v)}
-    pub fn tst(&mut self, v: impl Into<Value>) -> &mut Self {self.code(TST, v)}
+    pub fn add(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x80, v)}
+    pub fn sub(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x84, v)}
+    pub fn or (&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x88, v)}
+    pub fn and(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x8c, v)}
+    pub fn adc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x90, v)}
+    pub fn sbc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x94, v)}
+    pub fn xor(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x98, v)}
+    pub fn cmp(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x64, v)}
+    pub fn tst(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x6c, v)}
+    pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x4c, v)}
 
     pub fn jp(&mut self, cc: Condition, t: impl Into<Target>) -> &mut Self {
-        self.insn(Address(t.into())).byte(JUMP + cc as u8)
+        self.insn(Address(t.into())).byte(cc as u8)
     }
     pub fn jump(&mut self, t: impl Into<Target>) -> &mut Self {
         self.jp(Always, t)
     }
 
     pub fn cl(&mut self, cc: Condition, t: impl Into<Target>) -> &mut Self {
-        self.insn(Address(t.into())).byte(CALL + cc as u8)
+        self.insn(Address(t.into())).byte(0x20 + cc as u8)
     }
     pub fn call(&mut self, t: impl Into<Target>) -> &mut Self {
         self.cl(Always, t)
     }
 
-    pub fn rt(&mut self, cc: Condition) -> &mut Self {self.byte(RET + cc as u8)}
+    pub fn rt(&mut self, cc: Condition) -> &mut Self {
+        self.byte(0x60 + cc as u8)
+    }
     pub fn ret(&mut self) -> &mut Self { self.rt(Always) }
-
-    pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(STA, v)}
 
     pub fn inc(&mut self, r: Register) -> &mut Self { self.incv(r, r) }
     pub fn dec(&mut self, r: Register) -> &mut Self { self.decv(r, r) }
@@ -164,12 +151,12 @@ impl Instructions {
         self.code(Dec as u8 + r as u8 * 16, v)
     }
 
-    pub fn mov(&mut self, d: Register, v: impl Into<Value>) -> &mut Self {
+    pub fn load(&mut self, d: Register, v: impl Into<Value>) -> &mut Self {
         match v.into() {
-            Reg(r) => self.code(Mov as u8 + d as u8 * 16, r),
-            Number(n) => self.code(Mov as u8 + d as u8 * 16, n),
-            MemReg(r) => self.code(MovM as u8 + d as u8 * 16, r),
-            MemNumber(n) => self.code(MovM as u8 + d as u8 * 16, n),
+            Reg(r) => self.code(Load as u8 + d as u8 * 16, r),
+            Number(n) => self.code(Load as u8 + d as u8 * 16, n),
+            MemReg(r) => self.code(LoadM as u8 + d as u8 * 16, r),
+            MemNumber(n) => self.code(LoadM as u8 + d as u8 * 16, n),
         }
     }
 

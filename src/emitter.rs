@@ -1,18 +1,18 @@
-use self::Operand::*;
+pub use crate::instructions::{Register, Value};
+use self::Value::*;
 
 use std::mem::take;
 
 type Result = std::io::Result<()>;
 
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum Operand {
-    Reg(char),
-    Const(u8),
-    MemReg(char),
-    MemConst(u8),
+impl std::fmt::Display for Register {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        use std::fmt::Write;
+        f.write_char(['A', 'X', 'Y', 'U'][*self as usize])
+    }
 }
 
-impl std::fmt::Display for Operand {
+impl std::fmt::Display for Value {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match *self {
             Reg     (c) => write!(f, "{}"       , c),
@@ -23,7 +23,10 @@ impl std::fmt::Display for Operand {
     }
 }
 
-pub struct Hexdump<T>(pub T);
+fn reg(r: u8) -> Register {
+    use Register::*;
+    [A, X, Y, U][r as usize & 3]
+}
 
 fn write_code(o: &mut impl std::io::Write,
               a: u8, op: &[u8], align: bool) -> Result {
@@ -32,15 +35,12 @@ fn write_code(o: &mut impl std::io::Write,
         write!(o, " {:02x}", b)?;
     }
     if align {
-        match op.len() {
-            0 => write!(o, "           ")?,
-            1 => write!(o, "        ")?,
-            2 => write!(o, "     ")?,
-            _ => write!(o, "  ")?,
-        }
+        write!(o, "{}", &"           "[std::cmp::min(op.len(), 3) * 3 ..])?;
     }
     Ok(())
 }
+
+pub struct Hexdump<T>(pub T);
 
 impl<T> Emitter for Hexdump<T> where T: std::io::Write {
     fn emit_bytes(&mut self, a: u8, op: &[u8]) -> Result {
@@ -80,12 +80,12 @@ impl<T> Emitter for Disassemble<T> where T: std::io::Write {
         }
     }
     fn emit_operand(&mut self, a: u8, op: &[u8],
-                    opcode: &str, v: Operand) -> Result {
+                    opcode: &str, v: Value) -> Result {
         write_code(&mut self.0, a, op, true)?;
         writeln!(&mut self.0, "{:4} {}", opcode, v)
     }
     fn emit_xfer(&mut self, a: u8, op: &[u8],
-                 opcode: &str, d: char, v: Operand) -> Result {
+                 opcode: &str, d: Register, v: Value) -> Result {
         write_code(&mut self.0, a, op, true)?;
         if v == Reg(d) {
             writeln!(&mut self.0, "{:4} {}", opcode, d)
@@ -114,21 +114,20 @@ pub trait Emitter {
         self.emit_bytes(a, op)
     }
 
-    fn emit_operand(&mut self, a: u8, op: &[u8],
-                    _opcode: &str, _value: Operand) -> Result {
+    fn emit_operand(&mut self, a: u8, op: &[u8], _opcode: &str, _value: Value)
+                    -> Result {
         self.emit_bytes(a, op)
     }
 
     fn emit_xfer(&mut self, a: u8, op: &[u8],
-                 _opcode: &str, _d: char, _v: Operand) -> Result {
+                 _opcode: &str, _d: Register, _value: Value) -> Result {
         self.emit_bytes(a, op)
     }
 }
 
-
-
 impl Emitter for usize {
-    fn emit_bytes(&mut self, _a: u8, op: &[u8]) -> Result {
+    fn emit_bytes(&mut self, a: u8, op: &[u8]) -> Result {
+        assert_eq!(*self, a as usize);
         *self += op.len();
         Ok(())
     }
@@ -137,7 +136,6 @@ impl Emitter for usize {
 static CONDITIONS: [&str; 8] = [
     "", "never", "always2", "never2", "z", "nz", "c", "nc"
 ];
-static REGISTERS: [char; 4] = ['A', 'X', 'Y', 'U'];
 
 static ARITH: [&str; 16] = [
     "add", "sub", "or", "and", "adc", "sbc", "xor", "and2",
@@ -161,16 +159,15 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
             (Some(con), None) => self.e.emit_operand(
                 a - 1, &[con], "pre", Const(con)),
             (None, Some(mem)) => self.e.emit_operand(
-                a - 1, &[mem], "pre", MemReg(REGISTERS[mem as usize & 3])),
+                a - 1, &[mem], "pre", MemReg(reg(mem))),
             (Some(con), Some(mem)) => self.e.emit_operand(
                 a - 2, &[con, mem], "pre", MemConst(steal(con, mem))),
         }
     }
 
     fn get_ops<'a, 'b>(&'a mut self, a: u8, op: u8, b: &'b mut [u8; 3])
-                       -> (u8, &'b [u8], Operand)
+                       -> (u8, &'b [u8], Value)
     {
-        let reg = |x| REGISTERS[x as usize & 3];
         match (take(&mut self.constant), take(&mut self.memory)) {
             (None, None) => { *b = [op, 0, 0]; (a, &b[0..1], Reg(reg(op))) }
             (Some(con), None) => {
@@ -188,7 +185,7 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
 
     fn emit_operand(&mut self, a: u8, op: u8, opcode: &str) -> Result {
         // A memory prefix with non-zero register bits gets ejected.
-        if self.memory.is_some() && (op & 3 != 0 || op & 0xcc == 0xcc) {
+        if self.memory.is_some() && op & 3 != 0 {
             self.eject(a)?;
         }
         let mut buffer = [0, 0, 0];
@@ -210,11 +207,10 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
                 operand = MemConst(steal(con, op))
             }
             else {
-                operand = MemReg(REGISTERS[op as usize & 3])
+                operand = MemReg(reg(op))
             }
         }
-        self.e.emit_xfer(a, ops, opcode,
-                         REGISTERS[op as usize >> 4 & 3], operand)
+        self.e.emit_xfer(a, ops, opcode, reg(op >> 4), operand)
     }
 
     fn emit(&mut self, a: u8, op: u8) -> Result {
@@ -280,15 +276,7 @@ pub fn emit(e: &mut impl Emitter, program: &[u8]) -> Result {
 #[test]
 fn count_check() {
     let full = crate::miller_rabin::full().assemble();
-    struct CheckAddress(usize);
-    impl Emitter for CheckAddress {
-        fn emit_bytes(&mut self, a: u8, ops: &[u8]) -> Result {
-            assert_eq!(a as usize, self.0);
-            self.0 += ops.len();
-            Ok(())
-        }
-    }
-    let mut ca = CheckAddress(0);
+    let mut ca = 0;
     emit(&mut ca, &full).unwrap();
-    assert_eq!(ca.0, full.len());
+    assert_eq!(ca, full.len());
 }

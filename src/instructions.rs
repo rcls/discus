@@ -11,18 +11,18 @@ pub mod constants {
     pub use super::Condition::*;
 }
 
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Register {A, X, Y, U}
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Value {
     Reg(Register),
-    Number(u8),
+    Const(u8),
     MemReg(Register),
-    MemNumber(u8),
+    MemConst(u8),
 }
 
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Target {
     Label(String),
     Addr(u8),
@@ -51,14 +51,14 @@ pub struct Instructions {
     pub labels: Labels,
 }
 
-impl From<u8> for Value { fn from(v: u8) -> Value {Number(v)} }
+impl From<u8> for Value { fn from(v: u8) -> Value {Const(v)} }
 
 impl From<Register> for Value { fn from(r: Register) -> Value {Reg(r)} }
 
-impl From<[u8; 1]> for Value { fn from([n]: [u8; 1]) -> Value {MemNumber(n)} }
+impl From<[u8; 1]> for Value { fn from([n]: [u8; 1]) -> Value {MemConst(n)} }
 
 impl From<[Register; 1]> for Value {
-    fn from([r]: [Register; 1]) -> Value { MemReg(r) }
+    fn from([r]: [Register; 1]) -> Value {MemReg(r)}
 }
 
 impl From<u8> for Target { fn from(a: u8) -> Target { Target::Addr(a) } }
@@ -104,9 +104,9 @@ impl Instructions {
     fn code(&mut self, b: u8, v: impl Into<Value>) -> &mut Self {
         match v.into() {
             Reg(r) => self.byte(b + r as u8),
-            Number(n) => self.byte(n & 0x3f).byte(b + (n >> 6)),
+            Const(n) => self.byte(n & 0x3f).byte(b + (n >> 6)),
             MemReg(r) => self.byte(MEM + r as u8).byte(b),
-            MemNumber(n) => self.byte(n & 0x3f).byte(MEM + (n >> 6)).byte(b),
+            MemConst(n) => self.byte(n & 0x3f).byte(MEM + (n >> 6)).byte(b),
         }
     }
 
@@ -154,9 +154,9 @@ impl Instructions {
     pub fn load(&mut self, d: Register, v: impl Into<Value>) -> &mut Self {
         match v.into() {
             Reg(r) => self.code(Load as u8 + d as u8 * 16, r),
-            Number(n) => self.code(Load as u8 + d as u8 * 16, n),
+            Const(n) => self.code(Load as u8 + d as u8 * 16, n),
             MemReg(r) => self.code(LoadM as u8 + d as u8 * 16, r),
-            MemNumber(n) => self.code(LoadM as u8 + d as u8 * 16, n),
+            MemConst(n) => self.code(LoadM as u8 + d as u8 * 16, n),
         }
     }
 

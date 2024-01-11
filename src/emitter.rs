@@ -1,9 +1,9 @@
 pub use crate::instructions::{Register, Value};
-use self::Value::*;
+use Value::*;
 
 use std::mem::take;
 
-type Result = std::io::Result<()>;
+pub type Result = std::io::Result<()>;
 
 impl std::fmt::Display for Register {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -28,77 +28,10 @@ fn reg(r: u8) -> Register {
     [A, X, Y, U][r as usize & 3]
 }
 
-fn write_code(o: &mut impl std::io::Write,
-              a: u8, op: &[u8], align: bool) -> Result {
-    write!(o, "{:02x}:", a)?;
-    for &b in op {
-        write!(o, " {:02x}", b)?;
-    }
-    if align {
-        write!(o, "{}", &"           "[std::cmp::min(op.len(), 3) * 3 ..])?;
-    }
-    Ok(())
-}
-
-pub struct Hexdump<T>(pub T);
-
-impl<T> Emitter for Hexdump<T> where T: std::io::Write {
-    fn emit_bytes(&mut self, a: u8, op: &[u8]) -> Result {
-        write_code(&mut self.0, a, op, false)?;
-        writeln!(self.0)
-    }
-}
-
-pub struct Disassemble<T>(pub T);
-
-impl<T> Emitter for Disassemble<T> where T: std::io::Write {
-    fn emit_bytes(&mut self, a: u8, op: &[u8]) -> Result {
-        write_code(&mut self.0, a, op, false)?;
-        writeln!(self.0)
-    }
-    fn emit_basic(&mut self, a: u8, op: &[u8], opcode: &str) -> Result {
-        write_code(&mut self.0, a, op, true)?;
-        writeln!(&mut self.0, "{}", opcode)
-    }
-    fn emit_jump(&mut self, a: u8, op: &[u8],
-                 opcode: &str, cc: &str, target: u8) -> Result {
-        write_code(&mut self.0, a, op, true)?;
-        if cc.len() == 0 {
-            writeln!(&mut self.0, "{:4} {:#04x}", opcode, target)
-        }
-        else {
-            writeln!(&mut self.0, "{:4} {},{:#04x}", opcode, cc, target)
-        }
-    }
-    fn emit_ret(&mut self, a: u8, op: &[u8], cc: &str) -> Result {
-        write_code(&mut self.0, a, op, true)?;
-        if cc.len() == 0 {
-            writeln!(&mut self.0, "ret")
-        }
-        else {
-            writeln!(&mut self.0, "ret  {}", cc)
-        }
-    }
-    fn emit_operand(&mut self, a: u8, op: &[u8],
-                    opcode: &str, v: Value) -> Result {
-        write_code(&mut self.0, a, op, true)?;
-        writeln!(&mut self.0, "{:4} {}", opcode, v)
-    }
-    fn emit_xfer(&mut self, a: u8, op: &[u8],
-                 opcode: &str, d: Register, v: Value) -> Result {
-        write_code(&mut self.0, a, op, true)?;
-        if v == Reg(d) {
-            writeln!(&mut self.0, "{:4} {}", opcode, d)
-        }
-        else {
-            writeln!(&mut self.0, "{:4} {},{}", opcode, d, v)
-        }
-    }
-}
-
 pub trait Emitter {
-    // ops.len() will be in 1..=3.  3 only occurs if one of the below is not
-    // implemented.  (1 and 2 may occur on illegal byte sequences).
+    // When called from emit(), ops.len() will be in 1..=3.  3 only occurs if
+    // one of the below is not implemented.  (1 and 2 may occur on illegal byte
+    // sequences).
     fn emit_bytes(&mut self, a: u8, op: &[u8]) -> Result;
 
     fn emit_jump(&mut self, a: u8, op: &[u8],
@@ -203,11 +136,10 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
         let mut buffer = [0, 0, 0];
         let (a, ops, mut operand) = self.get_ops(a, op, &mut buffer);
         if op & 0xcc == 0xcc {          // Special case the LOAD [*] operand.
-            if let Some(con) = self.constant {
-                operand = MemConst(steal(con, op))
-            }
-            else {
-                operand = MemReg(reg(op))
+            operand = match operand {
+                Const(c) => MemConst(c),
+                Reg(r) => MemReg(r),
+                _ => unreachable!(),
             }
         }
         self.e.emit_xfer(a, ops, opcode, reg(op >> 4), operand)

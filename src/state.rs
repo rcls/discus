@@ -31,6 +31,7 @@ impl State {
     pub fn step(&mut self, program: &[u8]) {
         self.update(program[self.pc as usize]);
     }
+
     pub fn update(&mut self, opcode: u8) {
         let prev_const = self.prev_const;
         let prefixed = self.prefixed;
@@ -75,6 +76,7 @@ impl State {
         self.prev_c = c;
         self.prev_z = z;
     }
+
     fn op_reg(&self, op: u8) -> u8 {
         match op & 3 {
             0 => self.a,
@@ -84,6 +86,7 @@ impl State {
             _ => unreachable!()
         }
     }
+
     fn arith(&mut self, opcode: u8, operand: u8) -> u8 {
         let a = self.a as u16;
         let v = operand as u16;
@@ -104,6 +107,7 @@ impl State {
         self.k = Some(r);
         r
     }
+
     fn jump(&mut self, opcode: u8, addr: u8) {
         if self.condition(opcode) {
             if opcode & 32 != 0 {
@@ -113,12 +117,14 @@ impl State {
             self.pc = addr;
         }
     }
+
     fn ret(&mut self, opcode: u8) {
         if self.condition(opcode) {
             self.sp -= 1;
             self.pc = self.stack[self.sp as usize & 3];
         }
     }
+
     fn out(&self) { todo!() }
     fn inp(&self) { todo!() }
 

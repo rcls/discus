@@ -57,7 +57,7 @@ fn input(i: &mut Instructions) -> &mut Instructions {
 
     // The input consists of 64bits BE...
     i.label("read1")
-    // We sample bit 6 on the rising edge of bit 7...
+        // We sample bit 6 on the rising edge of bit 7...
         .inp ()
         .add (A)
         .jp  (NC, "read1")
@@ -65,7 +65,7 @@ fn input(i: &mut Instructions) -> &mut Instructions {
         .load(X, MODULUS)
         .call("leftrot");
 
-    // Wait for bit 7 to fall.  If bit 6 stays up we are done.
+        // Wait for bit 7 to fall.  If bit 6 stays up we are done.
     i.label("read0")
         .inp ()
         .add (A)
@@ -110,12 +110,12 @@ fn work(i: &mut Instructions) -> &mut Instructions {
     i   .load(Y, PRODUCT)
         .load(X, BASE)
         .call("copy")
-    // Y = MODULUS,
-    // X = EXPONENT.
+        // Y = MODULUS,
+        // X = EXPONENT.
         .call("copy");
 
-    // Fall into power...  At this point we should have
-    // result==product==base.
+        // Fall into power...  At this point we should have
+        // result==product==base.
     power_body(i)
         .call("classifyp1")
         .and (0xfd)
@@ -137,20 +137,19 @@ fn work(i: &mut Instructions) -> &mut Instructions {
         .jp  (NC, "main_loop")
         .jump("restart");               // Passed all checks.
 
-
     i.label("classifyp1")               // Classify result+1
         .load(X, ONE)
         .call("add64m");
 
-    // If result is multi-byte, return A = -1, C = 1.
-    // Else return result in A and C = 0.
+        // If result is multi-byte, return A = -1, C = 1.
+        // Else return result in A and C = 0.
     i.label("classify")
         .load(X, RESULT - 1)
         .sub (A)
-        .label("classify1")
-    // A=0 at this point, so SUBM(X) sets C=!Z and Z reflects M(X).
+    .label("classify1")
+        // A=0 at this point, so SUBM(X) sets C=!Z and Z reflects M(X).
         .sub ([X])
-    // Sets A=0 or -1 (C-1), preserves C, sets Z=!C (which we already had).
+        // Sets A=0 or -1 (C-1), preserves C, sets Z=!C (which we already had).
         .sbc (A)
         // The Z flag works here with or without a hazard.
         .rt  (NZ)
@@ -166,7 +165,7 @@ fn power_body(i: &mut Instructions) -> &mut Instructions {
         .load(A, LEN * 8)
         .sub ([EXP_TWOS])
 
-    // First left shift until we find a set bit...
+        // First left shift until we find a set bit...
         .load(Y,A);
 
     i.label("power_y")
@@ -207,7 +206,7 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
     assert!(FACTOR == PRODUCT + LEN); // Leaves x==product below.
     i   .load(X, FACTOR)
         .call("leftrot")
-    // mov(X, PRODUCT)
+        // mov(X, PRODUCT)
         .cl  (C, "add64m")
         .decv(A, [MULT_LOOP_COUNT])
         .jp  (NZ, "mult1")
@@ -222,7 +221,7 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
 
     i.label("leftrot")
         .load(U, LEN)
-        .label("leftrot1")
+    .label("leftrot1")
         .load(A, [X])
         .adc (A)
         .sta (X)
@@ -234,7 +233,7 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
     i.label("add64m")                 // result + mem(X) -> result (mod modulus)
         .clrc()
         .load(Y, RESULT)
-        .label("add64m1")
+    .label("add64m1")
         .load(A, [Y])
         .adc ([X])
         .sta (Y)
@@ -250,21 +249,21 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
         .load(X, TEMP)
         .jp  (NC, "add64m2")
         .load(X, U)      // Write subtract into result; will leave NC & no copy.
-        .label("add64m2")
+    .label("add64m2")
         .setc()
-        .label("add64m3")
+    .label("add64m3")
         .load(A, [U])
         .sbc ([Y])
         .sta (X)
         .dec (Y)
         .dec (X)
         .dec (U)
-        .jp  (NZ, "add64m3")
+    .jp  (NZ, "add64m3")
         .rt  (NC);
 
     i.label("copy")
         .load(U, LEN)
-        .label("copy1")
+    .label("copy1")
         .load(A, [Y])
         .sta (X)
         .dec (X)

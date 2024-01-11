@@ -15,10 +15,10 @@ impl std::fmt::Display for Register {
 impl std::fmt::Display for Value {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match *self {
-            Reg     (c) => write!(f, "{}"       , c),
-            Const   (c) => write!(f, "{:#04x}"  , c),
-            MemReg  (c) => write!(f, "[{}]"     , c),
-            MemConst(c) => write!(f, "[{:#04x}]", c),
+            Reg   (r) => write!(f, "{}"       , r),
+            Num   (n) => write!(f, "{:#04x}"  , n),
+            MemReg(r) => write!(f, "[{}]"     , r),
+            MemNum(n) => write!(f, "[{:#04x}]", n),
         }
     }
 }
@@ -90,11 +90,11 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
         match (take(&mut self.constant), take(&mut self.memory)) {
             (None, None) => Ok(()),
             (Some(con), None) => self.e.emit_operand(
-                a - 1, &[con], "pre", Const(con)),
+                a - 1, &[con], "pre", Num(con)),
             (None, Some(mem)) => self.e.emit_operand(
                 a - 1, &[mem], "pre", MemReg(reg(mem))),
             (Some(con), Some(mem)) => self.e.emit_operand(
-                a - 2, &[con, mem], "pre", MemConst(steal(con, mem))),
+                a - 2, &[con, mem], "pre", MemNum(steal(con, mem))),
         }
     }
 
@@ -102,16 +102,14 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
                        -> (u8, &'b [u8], Value)
     {
         match (take(&mut self.constant), take(&mut self.memory)) {
-            (None, None) => { *b = [op, 0, 0]; (a, &b[0..1], Reg(reg(op))) }
-            (Some(con), None) => {
-                *b = [con, op, 0];
-                (a - 1, &b[0..2], Const(steal(con, op)))
-            }
+            (None, None) => { *b = [op, 0, 0]; (a, &b[..1], Reg(reg(op))) }
+            (Some(con), None)
+                => { *b = [con, op, 0]; (a - 1, &b[..2], Num(steal(con, op))) }
             (None, Some(mem))
-                => { *b = [mem, op, 0]; (a - 1, &b[0..2], MemReg(reg(mem))) }
+                => { *b = [mem, op, 0]; (a - 1, &b[..2], MemReg(reg(mem))) }
             (Some(con), Some(mem)) => {
                 *b = [con, mem, op];
-                (a - 2, &b[..], MemConst(steal(con, mem)))
+                (a - 2, b, MemNum(steal(con, mem)))
             }
         }
     }
@@ -137,7 +135,7 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
         let (a, ops, mut operand) = self.get_ops(a, op, &mut buffer);
         if op & 0xcc == 0xcc {          // Special case the LOAD [*] operand.
             operand = match operand {
-                Const(c) => MemConst(c),
+                Num(n) => MemNum(n),
                 Reg(r) => MemReg(r),
                 _ => unreachable!(),
             }
@@ -196,13 +194,13 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
     }
 }
 
-pub fn emit(e: &mut impl Emitter, program: &[u8]) -> Result {
+pub fn emit(e: &mut impl Emitter, program: &[u8]) -> Result
+{
     let mut prefixes = Prefixes{constant: None, memory: None, e};
     for (a, op) in program.iter().enumerate() {
         prefixes.emit(a as u8, *op)?;
     }
-    prefixes.eject(program.len() as u8)?;
-    Ok(())
+    prefixes.eject(program.len() as u8)
 }
 
 #[test]

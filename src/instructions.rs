@@ -3,7 +3,6 @@ use Condition::*;
 use Instruction::*;
 use Register::*;
 use Value::*;
-use XferOp::*;
 
 // Convenience for "use instructions.constants.*;" without undue pollution.
 pub mod constants {
@@ -17,9 +16,9 @@ pub enum Register {A, X, Y, U}
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Value {
     Reg(Register),
-    Const(u8),
+    Num(u8),
     MemReg(Register),
-    MemConst(u8),
+    MemNum(u8),
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -30,14 +29,14 @@ pub enum Target {
 
 type Labels = std::collections::HashMap<String, u8>;
 
-pub enum XferOp {Inc = 0xc0, Dec = 0xc4, Load = 0xc8, LoadM = 0xcc}
-
 pub enum Condition {
     Always = 0, Never = 4,              // Also 8 and 12 as aliases.
     Z = 16, NZ = 20, C = 24, NC = 28
 }
 
-const MEM: u8 = 0x5c;
+const MEM  : u8 = 0x5c;
+const LOAD : u8 = 0xc8;
+const LOADM: u8 = 0xcc;
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum Instruction {
@@ -51,11 +50,11 @@ pub struct Instructions {
     pub labels: Labels,
 }
 
-impl From<u8> for Value { fn from(v: u8) -> Value {Const(v)} }
+impl From<u8> for Value { fn from(v: u8) -> Value {Num(v)} }
 
 impl From<Register> for Value { fn from(r: Register) -> Value {Reg(r)} }
 
-impl From<[u8; 1]> for Value { fn from([n]: [u8; 1]) -> Value {MemConst(n)} }
+impl From<[u8; 1]> for Value { fn from([n]: [u8; 1]) -> Value {MemNum(n)} }
 
 impl From<[Register; 1]> for Value {
     fn from([r]: [Register; 1]) -> Value {MemReg(r)}
@@ -103,10 +102,10 @@ impl Instructions {
     fn byte(&mut self, b: u8) -> &mut Self { self.insn(Byte(b)) }
     fn code(&mut self, b: u8, v: impl Into<Value>) -> &mut Self {
         match v.into() {
-            Reg(r) => self.byte(b + r as u8),
-            Const(n) => self.byte(n & 0x3f).byte(b + (n >> 6)),
+            Reg   (r) => self.byte(b + r as u8),
+            Num   (n) => self.byte(n & 0x3f).byte(b + (n >> 6)),
             MemReg(r) => self.byte(MEM + r as u8).byte(b),
-            MemConst(n) => self.byte(n & 0x3f).byte(MEM + (n >> 6)).byte(b),
+            MemNum(n) => self.byte(n & 0x3f).byte(MEM + (n >> 6)).byte(b),
         }
     }
 
@@ -145,18 +144,18 @@ impl Instructions {
     pub fn dec(&mut self, r: Register) -> &mut Self { self.decv(r, r) }
 
     pub fn incv(&mut self, r: Register, v: impl Into<Value>) -> &mut Self {
-        self.code(Inc as u8 + r as u8 * 16, v)
+        self.code(0xc0 as u8 + r as u8 * 16, v)
     }
     pub fn decv(&mut self, r: Register, v: impl Into<Value>) -> &mut Self {
-        self.code(Dec as u8 + r as u8 * 16, v)
+        self.code(0xc4 as u8 + r as u8 * 16, v)
     }
 
     pub fn load(&mut self, d: Register, v: impl Into<Value>) -> &mut Self {
         match v.into() {
-            Reg(r) => self.code(Load as u8 + d as u8 * 16, r),
-            Const(n) => self.code(Load as u8 + d as u8 * 16, n),
-            MemReg(r) => self.code(LoadM as u8 + d as u8 * 16, r),
-            MemConst(n) => self.code(LoadM as u8 + d as u8 * 16, n),
+            Reg   (r) => self.code(LOAD  as u8 + d as u8 * 16, r),
+            Num   (n) => self.code(LOAD  as u8 + d as u8 * 16, n),
+            MemReg(r) => self.code(LOADM as u8 + d as u8 * 16, r),
+            MemNum(n) => self.code(LOADM as u8 + d as u8 * 16, n),
         }
     }
 
@@ -165,7 +164,7 @@ impl Instructions {
 
     /// Set carry.
     pub fn setc(&mut self) -> &mut Self {self.and(A)}
-    // Clear carry.
+    /// Clear carry.
     pub fn clrc(&mut self) -> &mut Self {self.or(A)}
 }
 
@@ -191,9 +190,9 @@ fn test_basic() {
 #[test]
 fn test_parse_jump() {
     let mut i = Instructions::default();
-    i   .call("foo")
-        .label("foo")
-        .ret();
+    i.call("foo")
+     .label("foo")
+     .ret();
     assert_eq!(i.insns.len(), 3);
     assert_eq!(i.labels.len(), 1);
     assert_eq!(i.labels["foo"], 2);

@@ -12,10 +12,9 @@ fn main() {
     let code = mr.assemble();
 
     let stdio = std::io::stdout();
-    {
-        let mut dis = disassemble::Disassemble(stdio.lock());
-        emitter::emit(&mut dis, &code).unwrap();
-    }
-    emitter::emit(&mut resistors::Resistors(&mut stdio.lock()), &code)
-        .unwrap();
+
+    let mut dis = disassemble::Disassemble(stdio.lock());
+    emitter::emit(&mut dis, &code).unwrap();
+    //emitter::emit(&mut resistors::Resistors(&mut stdio.lock()), &code)
+    //.unwrap();
 }

@@ -2,18 +2,18 @@ use std::io::Write;
 
 use crate::emitter::{Emitter, Register, Result, Value, Value::*, emit};
 
-pub struct Disassemble<T>(pub T);
+struct Disassemble<T>(T);
 
-pub struct HexDump<T>(pub T);
+struct HexDump<T>(T);
 
 pub fn disassemble(o: impl Write, program: &[u8]) -> Result {
-    let mut b = Disassemble(std::io::BufWriter::new(o));
+    let mut b = Disassemble(o);
     emit(&mut b, program)?;
     b.0.flush()
 }
 
 pub fn hex_dump(o: impl Write, program: &[u8]) -> Result {
-    let mut b = HexDump(std::io::BufWriter::new(o));
+    let mut b = HexDump(o);
     emit(&mut b, program)?;
     b.0.flush()
 }

@@ -13,8 +13,8 @@ fn main() {
 
     let stdio = std::io::stdout();
 
-    let mut dis = disassemble::Disassemble(stdio.lock());
-    emitter::emit(&mut dis, &code).unwrap();
+    disassemble::disassemble(std::io::BufWriter::new(stdio.lock()), &code)
+        .unwrap();
     //emitter::emit(&mut resistors::Resistors(&mut stdio.lock()), &code)
     //.unwrap();
 }

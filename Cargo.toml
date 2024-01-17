@@ -3,6 +3,12 @@ name = "discus"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "discus"
+
+[[bin]]
+name = "opdecode"
+path = "src/opdecode.rs"
 
 [dependencies]
+getopts = "*"

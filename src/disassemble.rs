@@ -25,7 +25,7 @@ fn write_code(o: &mut impl Write,
         write!(o, " {:02x}", b)?;
     }
     if align {
-        write!(o, "{}", &"           "[std::cmp::min(op.len(), 3) * 3 ..])?;
+        write!(o, "{}", &"           "[op.len().min(3) * 3 ..])?;
     }
     Ok(())
 }

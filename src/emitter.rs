@@ -1,5 +1,4 @@
-pub use crate::instructions::{Register, Value};
-use Value::*;
+pub use crate::instructions::{Register, Value, Value::*};
 
 use std::mem::take;
 
@@ -119,7 +118,7 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
         if self.memory.is_some() && op & 3 != 0 {
             self.eject(a)?;
         }
-        let mut buffer = [0, 0, 0];
+        let mut buffer = [0; 3];
         let (a, ops, v) = self.get_ops(a, op, &mut buffer);
         self.e.emit_operand(a, ops, opcode, v)
     }

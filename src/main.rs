@@ -4,8 +4,10 @@ pub mod disassemble;
 pub mod emitter;
 pub mod instructions;
 pub mod miller_rabin;
-pub mod state;
 pub mod resistors;
+pub mod state;
+pub mod spice_load;
+pub mod spice_check;
 
 fn main() {
     let mr = miller_rabin::full();

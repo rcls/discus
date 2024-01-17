@@ -6,8 +6,8 @@ use Value::*;
 
 // Convenience for "use instructions.constants.*;" without undue pollution.
 pub mod constants {
-    pub use super::Register::*;
     pub use super::Condition::*;
+    pub use super::Register::*;
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -30,8 +30,8 @@ pub enum Target {
 type Labels = std::collections::HashMap<String, u8>;
 
 pub enum Condition {
-    Always = 0, Never = 4,              // Also 8 and 12 as aliases.
-    Z = 16, NZ = 20, C = 24, NC = 28
+    // Also 8 and 12 as aliases.
+    Always = 0, Never = 4, Z = 16, NZ = 20, C = 24, NC = 28
 }
 
 const MEM  : u8 = 0x5c;
@@ -50,20 +50,20 @@ pub struct Instructions {
     pub labels: Labels,
 }
 
-impl From<u8> for Value { fn from(v: u8) -> Value {Num(v)} }
+impl From<u8> for Value {fn from(v: u8) -> Value {Num(v)}}
 
-impl From<Register> for Value { fn from(r: Register) -> Value {Reg(r)} }
+impl From<Register> for Value {fn from(r: Register) -> Value {Reg(r)}}
 
-impl From<[u8; 1]> for Value { fn from([n]: [u8; 1]) -> Value {MemNum(n)} }
+impl From<[u8; 1]> for Value {fn from([n]: [u8; 1]) -> Value {MemNum(n)}}
 
 impl From<[Register; 1]> for Value {
     fn from([r]: [Register; 1]) -> Value {MemReg(r)}
 }
 
-impl From<u8> for Target { fn from(a: u8) -> Target { Target::Addr(a) } }
+impl From<u8> for Target { fn from(a: u8) -> Target {Target::Addr(a)} }
 
 impl From<String> for Target {
-    fn from(l: String) -> Target { Target::Label(l) }
+    fn from(l: String) -> Target {Target::Label(l)}
 }
 
 impl From<&str> for Target {
@@ -93,6 +93,7 @@ impl Instructions {
         self.insns.push(insn);
         self
     }
+
     pub fn label(&mut self, l: impl Into<String>) -> &mut Self {
         assert_eq!(std::cmp::max(self.insns.len(), 256), 256);
         self.labels.insert(l.into(), self.insns.len().try_into().unwrap());
@@ -124,6 +125,7 @@ impl Instructions {
     pub fn jp(&mut self, cc: Condition, t: impl Into<Target>) -> &mut Self {
         self.insn(Address(t.into())).byte(cc as u8)
     }
+
     pub fn jump(&mut self, t: impl Into<Target>) -> &mut Self {
         self.jp(Always, t)
     }
@@ -131,6 +133,7 @@ impl Instructions {
     pub fn cl(&mut self, cc: Condition, t: impl Into<Target>) -> &mut Self {
         self.insn(Address(t.into())).byte(0x20 + cc as u8)
     }
+
     pub fn call(&mut self, t: impl Into<Target>) -> &mut Self {
         self.cl(Always, t)
     }
@@ -152,10 +155,10 @@ impl Instructions {
 
     pub fn load(&mut self, d: Register, v: impl Into<Value>) -> &mut Self {
         match v.into() {
-            Reg   (r) => self.code(LOAD  as u8 + d as u8 * 16, r),
-            Num   (n) => self.code(LOAD  as u8 + d as u8 * 16, n),
-            MemReg(r) => self.code(LOADM as u8 + d as u8 * 16, r),
-            MemNum(n) => self.code(LOADM as u8 + d as u8 * 16, n),
+            Reg   (r) => self.code(LOAD  + d as u8 * 16, r),
+            Num   (n) => self.code(LOAD  + d as u8 * 16, n),
+            MemReg(r) => self.code(LOADM + d as u8 * 16, r),
+            MemNum(n) => self.code(LOADM + d as u8 * 16, n),
         }
     }
 

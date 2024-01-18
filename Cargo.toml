@@ -4,9 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "discus"
-
-[[bin]]
 name = "opdecode"
 path = "src/opdecode.rs"
 

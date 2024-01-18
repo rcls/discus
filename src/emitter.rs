@@ -66,7 +66,7 @@ impl Emitter for usize {
 }
 
 static CONDITIONS: [&str; 8] = [
-    "", "never", "always2", "never2", "z", "nz", "c", "nc"
+    "", "Never", "Always2", "Never2", "Z", "NZ", "C", "NC"
 ];
 
 static ARITH: [&str; 16] = [

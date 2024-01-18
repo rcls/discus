@@ -1,7 +1,9 @@
 use std::fmt::Display;
 
-use crate::{instructions::Instructions, state::State, spice_load::SpiceRead};
-use crate::disassemble;
+use crate::{
+    disassemble, instructions::Instructions, state::State,
+    spice_load::SpiceRead
+};
 
 pub struct SpiceCheck<'a> {
     success: bool,

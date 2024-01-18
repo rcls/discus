@@ -1,4 +1,4 @@
-
+#![deny(warnings)]
 use crate::instructions::{Instructions, constants::*};
 use crate::state::State;
 
@@ -72,20 +72,20 @@ pub fn math() -> Instructions {
 fn input(i: &mut Instructions) -> &mut Instructions {
     i.label("restart")
         .inc (A)
-        .out ();
+        .out ()
 
     // The input consists of 64bits BE...
-    i.label("read1")
+    .label("read1")
         // We sample bit 6 on the rising edge of bit 7...
         .inp ()
         .add (A)
         .jp  (NC, "read1")
         .add (A)
         .load(X, MODULUS)
-        .call("leftrot");
+        .call("leftrot")
 
         // Wait for bit 7 to fall.  If bit 6 stays up we are done.
-    i.label("read0")
+    .label("read0")
         .inp ()
         .add (A)
         .jp  (C, "read0")
@@ -100,20 +100,20 @@ fn work(i: &mut Instructions) -> &mut Instructions {
         .load(Y, MODULUS)
         .load(X, EXPONENT)
         .call("copy")
-        .load(Y, LEN * 8 - 1);
+        .load(Y, LEN * 8 - 1)
 
-    i.label("expgen1")  // Find the position of the lowest 1 bit in (modulus-1).
+    .label("expgen1")  // Find the position of the lowest 1 bit in (modulus-1).
         .call("leftrot_exponent")
         .jp  (NC, "expgen2")
         .load(A, Y)
-        .sta (EXP_TWOS);
+        .sta (EXP_TWOS)
 
-    i.label("expgen2")
+    .label("expgen2")
         .dec (Y)
         .jp  (NZ, "expgen1")
 
-        .load(A, BASE_START);           // Loop over the bases.
-    i.label("main_loop")
+        .load(A, BASE_START)           // Loop over the bases.
+    .label("main_loop")
         .sta (BASE_INDEX)
         .load(Y, ONE)
         .call("copy_to_product")
@@ -140,29 +140,29 @@ fn work(i: &mut Instructions) -> &mut Instructions {
         .and (0xfd)
         .jp  (Z, "main_loop_next")      // Got 1 or -1, passes this check.
 
-        .load(Y, [EXP_TWOS]);
-    i.label("square_loop")
+        .load(Y, [EXP_TWOS])
+    .label("square_loop")
         .decv(A, Y)
         .jp  (Z, "restart")             // Didn't get to -1, not prime.
         .call("square")
         .call("classifyp1")
         .load(Y,[OUTER_LOOP_COUNT])
         .load(A, A)
-        .jp  (NZ, "square_loop");       // Not -1 yet.
+        .jp  (NZ, "square_loop")        // Not -1 yet.
 
-    i.label("main_loop_next")           // We've passed this check, on to next.
+    .label("main_loop_next")            // We've passed this check, on to next.
         .load(A, [BASE_INDEX])
         .add (8)
         .jp  (NC, "main_loop")
-        .jump("restart");               // Passed all checks.
+        .jump("restart")                // Passed all checks.
 
-    i.label("classifyp1")               // Classify result+1
+    .label("classifyp1")                // Classify result+1
         .load(X, ONE)
-        .call("add64m");
+        .call("add64m")
 
         // If result is multi-byte, return A = -1, C = 1.
         // Else return result in A and C = 0.
-    i.label("classify")
+    .label("classify")
         .load(X, RESULT - 1)
         .sub (A)
     .label("classify1")
@@ -185,40 +185,40 @@ fn power_body(i: &mut Instructions) -> &mut Instructions {
         .sub ([EXP_TWOS])
 
         // First left shift until we find a set bit...
-        .load(Y,A);
+        .load(Y,A)
 
-    i.label("power_y")
+    .label("power_y")
         .call("leftrot_exponent")
         .dec (Y)
         .jp  (NC, "power_y")            // Note that exponent==0 never happens.
         .load(A, Y)
-        .jp  (Z, "power_x");
+        .jp  (Z, "power_x")
 
-    i.label("power_1")
+    .label("power_1")
         .call("square")                 // Starts with sta(OUTER_LOOP_COUNT).
         .call("leftrot_exponent")
         .load(Y, BASE)
         .cl  (C, "mult")
         .decv(A, [OUTER_LOOP_COUNT])
-        .jp  (NZ, "power_1");
+        .jp  (NZ, "power_1")
 
-    i.label("power_x")
+    .label("power_x")
 }
 
 
 fn arithmetic(i: &mut Instructions) -> &mut Instructions {
     i.label("square")
         .sta (OUTER_LOOP_COUNT)
-        .load(Y, PRODUCT);
+        .load(Y, PRODUCT)
 
-    i.label("mult")
+    .label("mult")
         .load(X, FACTOR)
         .call("copy")
         .load(Y, ZERO)
         .load(X, RESULT)
         .call("copy")
-        .load(A, LEN * 8);
-    i.label("mult1")
+        .load(A, LEN * 8)
+    .label("mult1")
         .sta (MULT_LOOP_COUNT)
         .load(X, RESULT)
         .call("add64m");                  // result * 2 -> result
@@ -229,16 +229,15 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
         .cl  (C, "add64m")
         .decv(A, [MULT_LOOP_COUNT])
         .jp  (NZ, "mult1")
-        .load(Y, RESULT);
+        .load(Y, RESULT)
 
-    i.label("copy_to_product")
+    .label("copy_to_product")
         .load(X, PRODUCT)
         .jump("copy");
 
     i.label("leftrot_exponent")
-        .load(X, EXPONENT);
-
-    i.label("leftrot")
+        .load(X, EXPONENT)
+    .label("leftrot")
         .load(U, LEN)
     .label("leftrot1")
         .load(A, [X])
@@ -277,10 +276,10 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
         .dec (Y)
         .dec (X)
         .dec (U)
-    .jp  (NZ, "add64m3")
-        .rt  (NC);
+        .jp  (NZ, "add64m3")
+        .rt  (NC)
 
-    i.label("copy")
+    .label("copy")
         .load(U, LEN)
     .label("copy1")
         .load(A, [Y])

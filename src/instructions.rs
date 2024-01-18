@@ -27,8 +27,6 @@ pub enum Target {
     Addr(u8),
 }
 
-type Labels = std::collections::HashMap<String, u8>;
-
 pub enum Condition {
     // Also 8 and 12 as aliases.
     Always = 0, Never = 4, Z = 16, NZ = 20, C = 24, NC = 28
@@ -44,10 +42,13 @@ pub enum Instruction {
     Address(Target),
 }
 
-#[derive(Clone, Debug, Default)]
+type Check = Box<dyn Fn(&crate::state::State) -> bool>;
+
+#[derive(Default)]
 pub struct Instructions {
     pub insns: Vec<Instruction>,
-    pub labels: Labels,
+    pub labels: std::collections::BTreeMap<String, u8>,
+    pub checks: std::collections::BTreeMap<u8, Check>,
 }
 
 impl From<u8> for Value {fn from(v: u8) -> Value {Num(v)}}
@@ -169,13 +170,18 @@ impl Instructions {
     pub fn setc(&mut self) -> &mut Self {self.and(A)}
     /// Clear carry.
     pub fn clrc(&mut self) -> &mut Self {self.or(A)}
+
+    pub fn check(&mut self, c: impl 'static + Fn(&crate::state::State) -> bool)
+                -> &mut Self {
+        self.checks.insert(self.insns.len() as u8, Box::new(c));
+        self
+    }
 }
 
 #[test]
 fn test_basic() {
     let mut i = Instructions::default();
     i.add(24).sub(Y).adc([0x9b]).sbc([U]);
-    println!("{:?}", i);
     assert_eq!(i.insns.len(), 8);
 
     let c = i.assemble();

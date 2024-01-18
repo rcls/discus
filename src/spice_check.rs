@@ -99,29 +99,29 @@ pub fn spice_check_args(gen: impl Fn(usize) -> Instructions) {
         disassemble: bool,
     }
     let args = Args::parse();
-    let code = gen(args.num).assemble();
+    let insns = gen(args.num);
+    let code = insns.assemble();
     let stdout = std::io::stdout();
     if args.disassemble {
-        disassemble::disassemble(std::io::BufWriter::new(stdout.lock()), &code)
+        disassemble::disassemble(stdout.lock(), &code)
            .unwrap();
     }
     if args.hex {
-        disassemble::hex_dump(std::io::BufWriter::new(stdout.lock()), &code)
+        disassemble::hex_dump(stdout.lock(), &code)
            .unwrap();
     }
     if args.time {
         let mut state = crate::state::State::default();
         let mut count = 0;
-        while state.sp > 0 {
+        while state.sp >= 0 {
+            state.check(&insns);
             state.step(&code);
             count += 1;
         }
         println!("executed {}", count);
     }
     if args.resistors {
-         crate::resistors::resistors(
-             &mut std::io::BufWriter::new(stdout.lock()),
-             &code).unwrap();
+         crate::resistors::resistors(stdout.lock(), &code).unwrap();
     }
     if let Some(s) = args.verify {
         use std::fs::File;

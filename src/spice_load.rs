@@ -4,6 +4,8 @@ use std::io::{BufRead, BufReader};
 
 const SKIP: f64 = 2.0;
 
+const THRESHOLD: f64 = 1.2;
+
 #[derive(Default)]
 pub struct SpiceRead {
     quantum: f64,
@@ -144,7 +146,7 @@ impl SpiceRead {
         if self.stability_check {
             self.stability_check(column);
         }
-        self.index.iter().map(move |i| self.raw_values[i + column] > 1.2)
+        self.index.iter().map(move |i| self.raw_values[i + column] > THRESHOLD)
             .collect()
     }
 
@@ -159,10 +161,27 @@ impl SpiceRead {
         let mut res = Vec::new();
         for i in &self.index {
             res.push(columns.iter().enumerate()
-                     .map(|(c,b)| (self.raw_values[i+c] > 2.0) as (u8) << b)
+                     .map(|(c,b)| (self.raw_values[i+c] > THRESHOLD) as (u8)
+                                   << b)
                      .sum());
         }
         res
+    }
+
+    pub fn extract_positive<const N: usize>(&self, names: &[&str; N]) -> Vec<[bool; N]> {
+        let columns: Vec<_> = names.iter().map(|n| self.vars[*n]).collect();
+        let mut r = Vec::new();
+        for i in self.index.iter() {
+            let values = std::array::from_fn::<bool, N, _>(
+                |j| {
+                    let c = columns[j];
+                    let val = self.raw_values[i+c] > THRESHOLD;
+                    val ^ names[j].ends_with("#")
+                }
+            );
+            r.push(values);
+        }
+        r
     }
 
     fn stability_check(&self, column: usize) {

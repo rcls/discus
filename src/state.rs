@@ -1,3 +1,4 @@
+use crate::instructions::Instructions;
 
 #[derive(Clone, Copy, Debug)]
 pub struct Memory(pub [u8; 256]);
@@ -30,6 +31,18 @@ pub struct State {
 impl State {
     pub fn step(&mut self, program: &[u8]) {
         self.update(program[self.pc as usize]);
+    }
+
+    pub fn step_n(&mut self, program: &[u8], n: usize) {
+        for _ in 0..n {
+            self.update(program[self.pc as usize]);
+        }
+    }
+
+    pub fn check(&self, insns: &Instructions) {
+        if let Some(c) = insns.checks.get(&self.pc) {
+            assert!(c(self))
+        }
     }
 
     pub fn update(&mut self, opcode: u8) {

@@ -1,13 +1,13 @@
 
 use crate::emitter::{Emitter, Result, emit};
 
-pub fn resistors(o: &mut impl std::io::Write, code: &[u8]) -> Result {
+pub fn resistors(o: impl std::io::Write, code: &[u8]) -> Result {
     emit(&mut Resistors(o), code)
 }
 
-pub struct Resistors<'a, T>(pub &'a mut T);
+pub struct Resistors<T>(pub T);
 
-impl<T: std::io::Write> Emitter for Resistors<'_, T> {
+impl<T: std::io::Write> Emitter for Resistors<T> {
     fn emit_bytes(&mut self, a: u8, ops: &[u8]) -> Result {
         for (i, op) in ops.iter().enumerate() {
             let a = a + i as u8;

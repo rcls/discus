@@ -13,7 +13,7 @@ pub struct SpiceRead {
     num_vars: usize,
     num_points: usize,
     vars: BTreeMap<String, usize>,
-    pub index: Vec<usize>,
+    index: Vec<usize>,
     raw_values: Vec<f64>,
 }
 
@@ -26,22 +26,22 @@ impl SpiceRead {
     }
 
     pub fn from_args(quantum: f64) -> SpiceRead {
-        let args: Vec<String> = std::env::args().collect();
-        let mut opts = getopts::Options::new();
-        opts.optopt("V", "", "Spice file to verify", "PATH");
-        opts.optopt("t", "", "", "");               // Ignore for compatibility.
-        let matches = match opts.parse(&args[1..]) {
-            Ok(m) => m,
-            Err(f) => panic!("{}", f),
-        };
+        use clap::Parser;
+        #[derive(Parser)]
+        struct Args {
+            #[arg(short, long)]
+            t: Option<String>,
+            #[arg(id="Verify", short, long)]
+            verify: String,
+        }
+        let args = Args::parse();
         let mut r = SpiceRead::new(quantum, quantum * 0.7, true);
-        if let Some(path) = matches.opt_str("V") {
-            r.spice_read(&mut BufReader::new(File::open(path).unwrap()))
-        }
-        else {
-            r.spice_read(&mut BufReader::new(std::io::stdin()));
-        }
+        r.spice_read(&mut BufReader::new(File::open(args.verify).unwrap()));
         r
+    }
+
+    pub fn num_samples(&self) -> usize {
+        self.index.len()
     }
 
     pub fn spice_read(&mut self, f: &mut impl BufRead) {
@@ -105,21 +105,21 @@ impl SpiceRead {
         self.index = index;
     }
 
-    pub fn read_var_list(&mut self, f: &mut impl BufRead) {
+    fn read_var_list(&mut self, f: &mut impl BufRead) {
         let mut line = String::new();
         for i in 0..self.num_vars {
             getline(&mut line, f);
             let mut parts = line.trim_end().split('\t');
-            let p1 = parts.next();
-            if !p1.is_some_and(|x| x == "") {
-                panic!("Corrupt var line '{:?}'", p1);
-            }
+            assert!(parts.next().is_some_and(|x| x == ""),
+                    "Corrupt var line '{}'", line);
+
             let index: usize = parts.next().expect("Truncated var line").parse()
                 .expect("Corrupt index");
             assert_eq!(index, i);
             let mut name  = parts.next().expect("Truncated var line");
             let _type = parts.next().expect("Truncated var line");
             parts.next().ok_or(()).expect_err("Trailing junk");
+
             if let Some(n) = name.strip_prefix("v(") {
                 if let Some(n) = n.strip_suffix(")") {
                     name = n;
@@ -129,8 +129,7 @@ impl SpiceRead {
         }
     }
 
-    pub fn iterate_column(&self, name: &str)
-                          -> impl '_ + Iterator<Item=f64> {
+    pub fn iterate_column(&self, name: &str) -> impl '_ + Iterator<Item=f64> {
         let column = self.vars[name];
         self.raw_values[column..].iter().step_by(self.num_vars).copied()
     }

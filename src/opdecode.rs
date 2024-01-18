@@ -29,7 +29,7 @@ fn main() {
     let mr   = s.extract_invert("mr#");
     let cw   = s.extract_invert("cw#");
 
-    for i in 0..s.index.len() {
+    for i in 0..s.num_samples() {
         let opcode = i2[i] as u8 * 4 + i3[i] as u8 * 8 + i4[i] as u8 * 16
             + i5[i] as u8 * 32 + i6[i] as u8 * 64 + i7[i] as u8 * 128;
 
@@ -111,7 +111,7 @@ fn main() {
         check(&or  , ex_or , "OR" , opcode, i);
         check(&n   , ex_n  , "N"  , opcode, i);
     }
-    println!("Tested {}", s.index.len());
+    println!("Tested {}", s.num_samples());
 }
 
 fn check(got: &Vec<bool>, ex: bool, tag: &str, opcode: u8, i: usize) {

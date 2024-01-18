@@ -201,11 +201,3 @@ pub fn emit(e: &mut impl Emitter, program: &[u8]) -> Result
     }
     prefixes.eject(program.len() as u8)
 }
-
-#[test]
-fn count_check() {
-    let full = crate::miller_rabin::full().assemble();
-    let mut ca = 0;
-    emit(&mut ca, &full).unwrap();
-    assert_eq!(ca, full.len());
-}

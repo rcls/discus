@@ -1,5 +1,9 @@
 
-use crate::emitter::{Emitter, Result};
+use crate::emitter::{Emitter, Result, emit};
+
+pub fn resistors(o: &mut impl std::io::Write, code: &[u8]) -> Result {
+    emit(&mut Resistors(o), code)
+}
 
 pub struct Resistors<'a, T>(pub &'a mut T);
 

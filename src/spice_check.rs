@@ -1,6 +1,7 @@
 use std::fmt::Display;
 
-use crate::{state::State, spice_load::SpiceRead};
+use crate::{instructions::Instructions, state::State, spice_load::SpiceRead};
+use crate::disassemble;
 
 pub struct SpiceCheck<'a> {
     success: bool,
@@ -32,7 +33,7 @@ impl SpiceCheck<'_> {
         self.state.c = c[3];
         self.state.k = Some(k[3]);
 
-        for i in 4 .. self.spice.index.len() {
+        for i in 4 .. self.spice.num_samples() {
             println!("Timestamp {}", timestamps[i]);
             self.state.step(self.program);
             self.verify(self.state.a, a[i], "A");
@@ -72,5 +73,59 @@ pub fn spice_check(program: &[u8], spice: &SpiceRead) {
     check.spice_check();
     if !check.success {
         panic!();
+    }
+}
+
+pub fn spice_check_args(gen: impl Fn(usize) -> Instructions) {
+    use clap::Parser;
+    #[derive(Parser)]
+    #[command(arg_required_else_help(true))]
+    struct Args {
+        #[arg(short='V', long="Verify")]
+        verify: Option<String>,
+        #[arg(short, long, default_value="0")]
+        num: usize,
+        #[arg(short='T', long)]
+        time: bool,
+        #[arg(short='t', long, default_value="2e-6")]
+        quantum: f64,
+        #[arg(short='R', long)]
+        resistors: bool,
+        #[arg(short='H', long)]
+        hex: bool,
+        #[arg(short='D', long)]
+        disassemble: bool,
+    }
+    let args = Args::parse();
+    let code = gen(args.num).assemble();
+    let stdout = std::io::stdout();
+    if args.disassemble {
+        disassemble::disassemble(std::io::BufWriter::new(stdout.lock()), &code)
+           .unwrap();
+    }
+    if args.hex {
+        disassemble::hex_dump(std::io::BufWriter::new(stdout.lock()), &code)
+           .unwrap();
+    }
+    if args.time {
+        let mut state = crate::state::State::default();
+        let mut count = 0;
+        while state.sp > 0 {
+            state.step(&code);
+            count += 1;
+        }
+        println!("executed {}", count);
+    }
+    if args.resistors {
+         crate::resistors::resistors(
+             &mut std::io::BufWriter::new(stdout.lock()),
+             &code).unwrap();
+    }
+    if let Some(s) = args.verify {
+        use std::fs::File;
+        use std::io::BufReader;
+        let mut r = SpiceRead::new(args.quantum, args.quantum * 0.7, true);
+        r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
+        SpiceCheck::new(&code, &r);
     }
 }

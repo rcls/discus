@@ -2,6 +2,14 @@
 use crate::instructions::{Instructions, constants::*};
 use crate::state::State;
 
+pub mod disassemble;
+pub mod emitter;
+pub mod instructions;
+pub mod spice_check;
+pub mod spice_load;
+pub mod state;
+pub mod resistors;
+
 const MR_BASES: [u64; 7] = [2, 325, 9375, 28178, 450775, 9780504, 1795265022];
 
 // Word length.
@@ -12,18 +20,29 @@ const TEMP    : u8 = LEN * 2;
 const MODULUS : u8 = LEN * 3;
 const PRODUCT : u8 = LEN * 4;
 const FACTOR  : u8 = LEN * 5;
-
 const EXPONENT: u8 = LEN * 6;
 const BASE    : u8 = LEN * 7;
 
 const ZERO: u8 = 0xbf;
-const ONE : u8 = 0xc7;
+const ONE: u8 = 0xc7;
 const BASE_START: u8 = 0xcf;
 
 const OUTER_LOOP_COUNT: u8 = 0;
 const MULT_LOOP_COUNT: u8 = 63;
 const BASE_INDEX: u8 = 62;
 const EXP_TWOS: u8 = 61;
+
+fn main() {
+    fn code(n: usize) -> Instructions {
+        match n {
+            0 => full(),
+            1 => single(),
+            2 => math(),
+            _ => panic!("Unknown variant number {}", n),
+        }
+    }
+    spice_check::spice_check_args(code);
+}
 
 pub fn full() -> Instructions {
     let mut i = Instructions::default();
@@ -449,11 +468,11 @@ fn test_single_one(n: u64) {
 fn test_single() {
     let singles = [
         5, 15,
-        9223372036854775783, // Largest prime < 2**63
-        9219669366496075201, // Carmichael, < 2**63
-        18446312605943409265, // Largest 64 bit carmichael.
-        18446744066047760377, // Largest 64 bit 2-SPP.
-        18446744073709551557, // Largest 64 bit prime.
+        9223372036854775783,           // Largest prime < 2**63
+        9219669366496075201,           // Carmichael, < 2**63
+        18446312605943409265,          // Largest 64 bit carmichael.
+        18446744066047760377,          // Largest 64 bit 2-SPP.
+        18446744073709551557,          // Largest 64 bit prime.
         0x100000001, 65537,
 
         // Fail all but one:
@@ -463,4 +482,12 @@ fn test_single() {
     for s in singles {
         test_single_one(s);
     }
+}
+
+#[test]
+fn count_check() {
+    let full = full().assemble();
+    let mut ca = 0;
+    emitter::emit(&mut ca, &full).unwrap();
+    assert_eq!(ca, full.len());
 }

@@ -8,16 +8,32 @@ name = "add"
 path = "src/add.rs"
 
 [[bin]]
-name = "opdecode"
-path = "src/opdecode.rs"
+name = "alu"
+path = "src/alu.rs"
 
 [[bin]]
 name = "miller_rabin"
 path = "src/miller_rabin.rs"
 
 [[bin]]
-name = "alu"
-path = "src/alu.rs"
+name = "opdecode"
+path = "src/opdecode.rs"
+
+[[bin]]
+name = "pcdecode"
+path = "src/pcdecode.rs"
+
+[[bin]]
+name = "ramdecode"
+path = "src/ramdecode.rs"
+
+[[bin]]
+name = "romdecode"
+path = "src/romdecode.rs"
+
+[[bin]]
+name = "sp"
+path = "src/sp.rs"
 
 [dependencies]
 clap = { version = "4.4.18", features = ["derive"] }

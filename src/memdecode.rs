@@ -1,11 +1,5 @@
-use crate::spice_load;
-
-fn a_char(n: u32) -> char {
-    char::from_u32('a' as u32 + n % 4).unwrap()
-}
-
-pub fn memdecode(tag: &str) {
-    let s = spice_load::SpiceRead::from_args(5e-6);
+pub fn memdecode(path: &String, tag: &str) {
+    let s = crate::spice_load::SpiceRead::from_path(path, 5e-6);
 
     let p = s.extract_byte("p");
 
@@ -37,4 +31,8 @@ pub fn memdecode(tag: &str) {
     }
 
     println!("{} samples", s.num_samples());
+}
+
+fn a_char(n: u32) -> char {
+    char::from_u32('a' as u32 + n % 4).unwrap()
 }

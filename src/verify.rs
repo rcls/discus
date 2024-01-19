@@ -5,20 +5,25 @@ use clap::{Parser, ValueEnum};
 use spice_check::SpiceCheck;
 use spice_load::SpiceRead;
 
-pub mod disassemble;
-pub mod emitter;
+mod alu;
+mod disassemble;
+mod emitter;
 pub mod instructions;
-pub mod miller_rabin;
+mod miller_rabin;
+mod opdecode;
+mod pcdecode;
 mod programs;
-pub mod spice_check;
-pub mod spice_load;
-pub mod state;
-pub mod resistors;
+mod memdecode;
+mod sp;
+mod spice_check;
+mod spice_load;
+mod state;
+mod resistors;
 
 #[derive(Copy, Clone, ValueEnum)]
 enum Program {
-    Add, Call, Hazard, Hazard2, Inc, Logic, MillerRabin,
-    Mem, Memi, Sub,
+    Add, Call, Hazard, Hazard2, Inc, Logic, MillerRabin, Mem, Memi, Sub,
+    Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp,
 }
 
 #[derive(Parser)]
@@ -44,11 +49,12 @@ struct Args {
     disassemble: bool,
 }
 
-fn get_program(program: Program, n: usize) -> instructions::Instructions {
+fn main() {
     use Program::*;
     use programs::*;
-    match program {
-        MillerRabin => miller_rabin::miller_rabin(n),
+    let args = Args::parse();
+    let insns = match args.program {
+        MillerRabin => miller_rabin::miller_rabin(args.num),
         Add         => add(),
         Call        => call(),
         Inc         => inc(),
@@ -58,15 +64,23 @@ fn get_program(program: Program, n: usize) -> instructions::Instructions {
         Mem         => mem(),
         Memi        => memi(),
         Sub         => sub(),
-    }
+
+        Alu => return alu::alu(&args.verify.unwrap()),
+        Opdecode  => return opdecode::opdecode  (&args.verify.unwrap()),
+        Pcdecode  => return pcdecode::pcdecode  (&args.verify.unwrap()),
+        Ramdecode => return memdecode::memdecode(&args.verify.unwrap(), "m"),
+        Romdecode => return memdecode::memdecode(&args.verify.unwrap(), "r"),
+        Sp        => return sp::sp              (&args.verify.unwrap()),
+        //_ => todo!(),
+    };
+
+    verify_insns(&args, &insns);
 }
 
-fn main() {
-    let args = Args::parse();
-    let insns = get_program(args.program, args.num);
-
+fn verify_insns(args: &Args, insns: &instructions::Instructions) {
     let code = insns.assemble();
     let stdout = std::io::stdout();
+
     if args.disassemble {
         disassemble::disassemble(stdout.lock(), &code)
            .unwrap();
@@ -98,7 +112,7 @@ fn main() {
                 state.get_k(&code).unwrap_or(0), state.c as u8, state.sp);
         }
     }
-    if let Some(s) = args.verify {
+    if let Some(s) = &args.verify {
         use std::fs::File;
         use std::io::BufReader;
         let mut r = SpiceRead::new(args.quantum, args.quantum * 0.7, false);

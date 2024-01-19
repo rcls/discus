@@ -27,19 +27,10 @@ impl SpiceRead {
         }
     }
 
-    pub fn from_args(quantum: f64) -> SpiceRead {
-        use clap::Parser;
-        #[derive(Parser)]
-        struct Args {
-            #[arg(short, long)]
-            t: Option<String>,
-            #[arg(id="Verify", short, long)]
-            verify: String,
-        }
-        let args = Args::parse();
-        let mut r = SpiceRead::new(quantum, quantum * 0.7, true);
-        r.spice_read(&mut BufReader::new(File::open(args.verify).unwrap()));
-        r
+    pub fn from_path(path: &String, quantum: f64) -> SpiceRead {
+        let mut spice = SpiceRead::new(quantum, quantum * 0.7, true);
+        spice.spice_read(&mut BufReader::new(File::open(path).unwrap()));
+        spice
     }
 
     pub fn num_samples(&self) -> usize {
@@ -148,10 +139,6 @@ impl SpiceRead {
         }
         self.index.iter().map(move |i| self.raw_values[i + column] > THRESHOLD)
             .collect()
-    }
-
-    pub fn extract_invert(&self, name: &str) -> Vec<bool> {
-        self.extract_signal(name).iter().map(|b| !b).collect()
     }
 
     pub fn extract_byte(&self, name: &str) -> Vec<u8> {

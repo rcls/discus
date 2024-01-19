@@ -1,6 +1,9 @@
 use crate::instructions::{Instructions, constants::*};
+
+#[cfg(test)]
 use crate::state::State;
 
+#[cfg(test)]
 const MR_BASES: [u64; 7] = [2, 325, 9375, 28178, 450775, 9780504, 1795265022];
 
 // Word length.
@@ -279,6 +282,7 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
         .ret ()
 }
 
+#[cfg(test)]
 fn poke64top(s: &mut State, a: u8, v: u64) {
     let a = a as usize;
     s.memory.0[a-7..=a].copy_from_slice(&v.to_be_bytes());
@@ -290,7 +294,8 @@ fn peek64top(s: &State, a: u8) -> u64 {
     u64::from_be_bytes(s.memory.0[a-7..=a].try_into().unwrap())
 }
 
-pub fn initial() -> State {
+#[cfg(test)]
+fn initial() -> State {
     let mut s = State::default();
     for (i, &base) in MR_BASES.iter().enumerate() {
         poke64top(&mut s, BASE_START + i as u8 * LEN, base);

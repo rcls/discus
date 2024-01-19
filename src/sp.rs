@@ -1,7 +1,5 @@
-pub mod spice_load;
-
-fn main() {
-    let s = spice_load::SpiceRead::from_args(10e-6);
+pub fn sp(path: &String) {
+    let s = crate::spice_load::SpiceRead::from_path(path, 10e-6);
     let mut count = 0;
 
     let mut prev = None;

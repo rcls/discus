@@ -1,10 +1,5 @@
-
-// pub mod instructions;
-// pub mod state;
-pub mod spice_load;
-
-fn main() {
-    let s = spice_load::SpiceRead::from_args(10e-6);
+pub fn alu(path: &String) {
+    let s = crate::spice_load::SpiceRead::from_path(path, 10e-6);
 
     for [a, b, ci, cs, cr, and, or, q, co] in s.extract_positive(
         &["a", "b", "ci#", "cs#", "cr", "and", "or", "q", "co#"]) {

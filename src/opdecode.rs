@@ -1,18 +1,14 @@
 use crate::spice_load::SpiceRead;
 
-pub mod instructions;
-pub mod state;
-pub mod spice_load;
-
-fn main() {
-    let s = SpiceRead::from_args(5e-6);
+pub fn opdecode(path: &String) {
+    let s = SpiceRead::from_path(path, 5e-6);
 
     for [i2, i3, i4, i5, i6, i7, co,
          cr, cs, coe, ar, as_, and, or, n,
          in_, out, mw, mr, cw] in s.extract_positive(&[
             "i2", "i3", "i4", "i5", "i6", "i7", "co",
-            "cr", "cs", "coe", "ar", "as_", "and", "or", "n",
-            "in_", "out", "mw", "mr", "cw"]) {
+            "cr", "cs#", "coe#", "ar#", "as", "and", "or", "n#",
+            "in#", "out", "mw", "mr#", "cw#"]) {
         let opcode = i2 as u8 * 4 + i3 as u8 * 8 + i4 as u8 * 16
             + i5 as u8 * 32 + i6 as u8 * 64 + i7 as u8 * 128;
 

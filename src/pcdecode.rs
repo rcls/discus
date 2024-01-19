@@ -1,10 +1,6 @@
 
-pub mod instructions;
-pub mod spice_load;
-pub mod state;
-
-fn main() {
-    let s = spice_load::SpiceRead::from_args(5e-6);
+pub fn pcdecode(path: &String) {
+    let s = crate::spice_load::SpiceRead::from_path(path, 5e-6);
     let mut count = 0;
 
     for [o2, o3, o4, o5, o6, o7, ojump, co, z, jump, ret, push, inc] in

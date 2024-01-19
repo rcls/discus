@@ -34,7 +34,7 @@ std::vector<bool> spice_load::extract_signal(const char * name)
     for (int i = 0; i != num_points; ++i) {
         int q = timestamps[i] / QUANTUM;
         double remainder = timestamps[i] - q * QUANTUM;
-        if (remainder < 0.5 || remainder > 0.9 || q < SKIP)
+        if (remainder < 0.5 || remainder > 0.9 || q < SKIP * QUANTUM)
             continue;
 
         if (sig[q] && raw[i] < 3)

@@ -3,6 +3,7 @@
 
 #include <assert.h>
 #include <map>
+#include <stdint.h>
 #include <string.h>
 #include <string>
 
@@ -141,7 +142,14 @@ struct state_t {
         regK = r;
     }
     void CMPM(const operand_t & val) { CMP(val.mem()); }
-    // FIXME - also TST and TSTM.
+
+    void TST(const operand_t & val)  {
+        account(0x6c, val);
+        unsigned v = get(val);
+        regK = reg[A] & v;
+        flag_C = true;
+    }
+    void TSTM(const operand_t & val) { TST(val.mem()); }
 
     void INC(register_name_t w, const operand_t & val) {
         account(0xc0 + w * 16, val);

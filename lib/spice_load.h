@@ -2,6 +2,7 @@
 #define SPICE_LOAD_H_
 
 #include <map>
+#include <stdint.h>
 #include <string>
 #include <vector>
 

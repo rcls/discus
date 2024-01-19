@@ -13,7 +13,7 @@ int main(int argc, char * const argv[])
 
     char net[64][20];
     for (int i = 0; i < 64; ++i) {
-        snprintf(net[i], sizeof net[i], "s_%c%c%cm",
+        snprintf(net[i], sizeof net[i], "s_%c_%c_%c_m",
                  i % 4 + 'a', i / 4 % 4 + 'a', i / 16 % 4 + 'a');
         Sel[i] = S.extract_signal(net[i]);
     }

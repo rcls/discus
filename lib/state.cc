@@ -298,9 +298,9 @@ void state_t::verify_spice(const char * path, double quantum)
     spice_load spice(f, quantum, quantum, false);
 
     auto AA = spice.extract_byte("a");
-    auto XX = spice.extract_byte("r_xb");
-    auto YY = spice.extract_byte("r_yb");
-    auto UU = spice.extract_byte("r_ub");
+    auto XX = spice.extract_byte("r_x_b");
+    auto YY = spice.extract_byte("r_y_b");
+    auto UU = spice.extract_byte("r_u_b");
     // auto KK = spice.extract_byte("r_kb");
     auto PP = spice.extract_byte("p");
     const auto FC = spice.extract_signal("co_c");

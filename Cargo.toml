@@ -4,32 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "add"
-path = "src/add.rs"
-
-[[bin]]
 name = "alu"
 path = "src/alu.rs"
-
-[[bin]]
-name = "call"
-path = "src/call.rs"
-
-[[bin]]
-name = "hazard"
-path = "src/hazard.rs"
-
-[[bin]]
-name = "hazard2"
-path = "src/hazard2.rs"
-
-[[bin]]
-name = "inc"
-path = "src/inc.rs"
-
-[[bin]]
-name = "logic"
-path = "src/logic.rs"
 
 [[bin]]
 name = "opdecode"
@@ -50,10 +26,6 @@ path = "src/romdecode.rs"
 [[bin]]
 name = "sp"
 path = "src/sp.rs"
-
-[[bin]]
-name = "sub"
-path = "src/sub.rs"
 
 [[bin]]
 name = "verify"

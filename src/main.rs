@@ -47,6 +47,8 @@ struct Args {
     hex: bool,
     #[arg(short='D', long)]
     disassemble: bool,
+    #[arg(short='X', long)]
+    verilog: bool,
 }
 
 fn main() {
@@ -87,8 +89,13 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
            .unwrap();
     }
     if args.hex {
-        disassemble::hex_dump(stdout.lock(), &code)
-           .unwrap();
+        disassemble::hex_dump(stdout.lock(), &code).unwrap();
+    }
+    if args.verilog {
+        disassemble::verilog(stdout.lock(), &code).unwrap();
+    }
+    if args.resistors {
+         crate::resistors::resistors(stdout.lock(), &code).unwrap();
     }
     if args.time {
         let mut state = crate::state::State::default();
@@ -99,9 +106,6 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
             count += 1;
         }
         println!("executed {}", count);
-    }
-    if args.resistors {
-         crate::resistors::resistors(stdout.lock(), &code).unwrap();
     }
     if args.log {
         let mut state = crate::state::State::default();

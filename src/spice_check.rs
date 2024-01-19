@@ -59,12 +59,13 @@ impl SpiceCheck<'_> {
         // unconditional return (0x60).
         assert_eq!(self.state.sp, 0);
         assert_eq!(self.program[self.state.pc as usize], 0x60);
+        assert!(self.success);
     }
 
     fn verify<T>(&mut self, sim: T, spice: T, what: &str)
                  where T: PartialEq<T> + Display {
         if sim != spice {
-            println!("Missmatch @{:#04x} sim {} v. spice {} on {}",
+            println!("Mismatch @{:#04x} sim {} v. spice {} on {}",
                      self.state.pc, sim, spice, what);
             self.success = false;
         }

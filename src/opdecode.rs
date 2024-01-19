@@ -3,12 +3,15 @@ use crate::spice_load::SpiceRead;
 pub fn opdecode(path: &String) {
     let s = SpiceRead::from_path(path, 5e-6);
 
-    for [i2, i3, i4, i5, i6, i7, co,
-         cr, cs, coe, ar, as_, and, or, n,
+    for [i2, i3, i4, i5, i6, i7, ii2, ii3, ii4, ii5, ii6, ii7, co,
+         cr, cs, coe, ar, as_, and, or, n, mpre,
          in_, out, mw, mr, cw] in s.extract_positive(&[
-            "i2", "i3", "i4", "i5", "i6", "i7", "co",
-            "cr", "cs#", "coe#", "ar#", "as", "and", "or", "n#",
+            "i2", "i3", "i4", "i5", "i6", "i7",
+            "i2#", "i3#", "i4#", "i5#", "i6#", "i7#","co",
+            "cr", "cs#", "coe#", "ar#", "as", "and", "or", "n#", "mpre#",
             "in#", "out", "mw", "mr#", "cw#"]) {
+        assert_eq!((i2, i3, i4, i5, i6, i7), (ii2, ii3, ii4, ii5, ii6, ii7));
+
         let opcode = i2 as u8 * 4 + i3 as u8 * 8 + i4 as u8 * 16
             + i5 as u8 * 32 + i6 as u8 * 64 + i7 as u8 * 128;
 
@@ -16,6 +19,7 @@ pub fn opdecode(path: &String) {
             = Default::default();
         let (mut ex_n, mut ex_in, mut ex_out, mut ex_mr, mut ex_mw, mut ex_cw)
             = Default::default();
+        let mut ex_mpre = false;
 
         // Arithmetic & xfer ops (except loadm).
         let mut check_alu = opcode >= 0x80;
@@ -59,11 +63,11 @@ pub fn opdecode(path: &String) {
 
         match opcode {
             0x40 | 0x44 => ex_out = true,                   // Out
-            0x48        => (ex_mr, ex_mw) = (mr, mw),       // STA alias.
+            0x48        => (ex_mr, ex_mw) = (mr, mw),       // Not assigned.
             0x4c        => (ex_mr, ex_mw) = (true, true),   // Sta
-            0x50 | 0x54 => ex_in = true,                    // In
-            0x58        => ex_mr = mr,                      // MEM alias.
-            0x5c        => ex_mr = true,                    // Mem
+            0x50 | 0x54 => (ex_in, ex_mpre) = (true, true), // In
+            0x58        => (ex_mr, ex_mpre) = (mr, mpre),   // Not assigned.
+            0x5c        => (ex_mr, ex_mpre) = (true, true), // Mem
             _           => (),
         }
 
@@ -71,11 +75,12 @@ pub fn opdecode(path: &String) {
         assert!(!cs || !cr, "CS and CR on {:#04x}", opcode);
         assert!(!as_ || !ar, "AS and AR on {:#04x}", opcode);
 
-        check(cw , ex_cw , "CW" , opcode);
-        check(mw , ex_mw , "MW" , opcode);
-        check(mr , ex_mr , "MR" , opcode);
-        check(in_, ex_in , "IN" , opcode);
-        check(out, ex_out, "OUT", opcode);
+        check(cw  , ex_cw  , "CW"  , opcode);
+        check(mw  , ex_mw  , "MW"  , opcode);
+        check(mr  , ex_mr  , "MR"  , opcode);
+        check(in_ , ex_in  , "IN"  , opcode);
+        check(out , ex_out , "OUT" , opcode);
+        check(mpre, ex_mpre, "MPRE", opcode);
 
         if !check_alu {
             continue;
@@ -94,5 +99,6 @@ pub fn opdecode(path: &String) {
 }
 
 fn check(got: bool, ex: bool, tag: &str, opcode: u8) {
-    assert_eq!(got, ex, "for {} on {:#04x}", tag, opcode);
+    assert_eq!(got, ex, "got {} expect {} for {} on {:#04x}",
+               got, ex, tag, opcode);
 }

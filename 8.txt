@@ -91,8 +91,10 @@ FIXME : ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 00nnnnnn - const
 00scccrr - jmp/call [const is modal so may as well do this.]
 
-0101..rr - STA
-0100..rr - OUT
+010011rr - STA
+010010.. - unasigned
+010001.. - unasigned
+010000rr - OUT
 
 011ccc.. - rets (+2 or 3 ret never)
 011001rr - CMP (C,Z) - matches SUB on 432
@@ -110,8 +112,13 @@ FIXME : ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 ...110 - XOR - force carry off.  (Or flip both.)
 ...111 - don't care, aliases AND (was cmp)
 
-101.11rr - MEM (prefix)
-101.0... - IN - prefix.
+101aaarr - test, arithmetic but no write to A.
+
+010111rr - MEM (prefix)
+010101.. - not assigned.
+010110.. - not assigned.
+010100.. - IN - prefix - looks like MPre# includes this.
+
 
 11dd00rr - INC (Z)
 11dd01rr - DEC (Z) (match sub, cmp)
@@ -119,9 +126,17 @@ FIXME : ROM uses PNP on SEL#, RAM uses P-channel .... which is better?
 11dd11rr - LOAD
 
 Memory (strobe memory, strong drives).
-101x11
+010x11
 11xx11
-010x11 is write strobe, or just use 010
+010011 is write strobe, or just use 010
+
+010.0
+
+Misc prefix
++0101....
+
+
+
 
 Writes any reg: 00 (not jump), 1, i.e., 1 or x0 not jump
 

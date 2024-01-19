@@ -200,6 +200,25 @@ pub fn memw() -> Instructions {
     memw
 }
 
+pub fn memp() -> Instructions {
+    let mut memp = Instructions::default();
+    memp
+        .load (X, 0x01)
+        .incv (Y, X)
+        .incv (U, Y)
+        .load (A, Y)
+        .sta  (X)
+        .load (A, U)
+        .sta  (Y)
+        .load (A, X)
+        .sta  (U)
+        .add  ([X])
+        .add  ([Y])
+        .add  ([U])
+        .ret  ();
+    memp
+}
+
 pub fn sub() -> Instructions {
     let mut sub = Instructions::default();
     sub .sub  (A)

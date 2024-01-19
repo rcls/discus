@@ -6,13 +6,14 @@ EXPORT=$(LEPTON)/bin/lepton-export
 PCB=$(LEPTON)/bin/pcb
 
 ADHOC_TEST = alu pcdecode opdecode ramdecode romdecode sp
-PROG_TEST = mem memi memw inc sub logic hazard hazard2 cmp call add
+PROG_TEST = memp mem memi memw call inc sub hazard2 add logic cmp hazard
 TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
 
 BOARDS=bit control dram64byte rom64byte
 
 RUST_DISCUS=target/debug/discus
 
+# Note that this needs to be sync'd with the schematic in a few places.
 QUANTUM=2000
 
 all: cargo boards

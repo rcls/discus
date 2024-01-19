@@ -16,17 +16,17 @@ module testinc();
               .snoopp(snoopp));
 
    wire[7:0] prgram[0:11] = {
-             8'h50,
-             8'he8,
-             8'h91,
-             8'hda,
-             8'h0b, 8'h10,
-             8'h43,
-             8'he8,
-             8'hc9,
-             8'hc9,
-             8'hc9,
-             8'ha8
+             8'h84,
+             8'hd4,
+             8'he9,
+             8'hf2,
+             8'h0b, 8'h30,
+             8'h83,
+             8'hd4,
+             8'hd1,
+             8'hd1,
+             8'hd1,
+             8'h60
              };
 
    initial begin : testit

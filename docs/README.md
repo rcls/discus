@@ -213,7 +213,7 @@ the letter 'M' is suffixed to the following instruction, e.g., `ADDM` instead of
 Note that with a `MEM` prefix, the operand bits of the following instruction are
 ignored.
 
-### RET : `011CCC..`
+### `RET` : `011CCC..`
 
 Pops the PC from the stack, if the condition passes.  The operand is ignored.
 

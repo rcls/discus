@@ -1,6 +1,9 @@
 
-GNETLIST=/home/geda/bin/gnetlist
-GAF=/home/geda/bin/gaf
+LEPTON=/home/lepton
+export LD_LIBRARY_PATH=$(LEPTON)/lib:
+NETLIST=$(LEPTON)/bin/lepton-netlist
+EXPORT=$(LEPTON)/bin/lepton-export
+PCB=$(LEPTON)/bin/pcb
 
 ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
 PROG_TEST = mem memi memw inc sub logic hazard hazard2 cmp call add
@@ -13,10 +16,11 @@ BOARDS=bit control dram64byte rom64byte
 all: programs boards
 
 verify: $(TESTS:%=%.verify)
+verify-adhoc: $(ADHOC_TEST:%=test/%.verify)
 programs: $(ALL_PROG)
 
 %.rcr: %.sch gates/*.sch board/*.sch sym/*.sym subckt/*.prm
-	$(GNETLIST) -Lsubckt -p spice-sdb -o $@ $<
+	$(NETLIST) -L subckt -g spice-sdb -o $@ $<
 
 %.cir: %.rcr ./substrate.py
 	./substrate.py $< > $@
@@ -54,10 +58,11 @@ ALL_SYM=$(SYMS:sym/%.sym=%)
 ALL_SCH=$(GATES:gates/%.sch=%) $(BOARD:board/%.sch=%)
 
 .PHONY: png md web
-web: png md
+web: png md html
 png: $(ALL_SYM:%=docs/%-sym.png) $(ALL_SCH:%=docs/%.png) \
 	docs/bit-top.png docs/control-top.png
 md: $(ALL_SCH:%=docs/%.md)
+html: $(ALL_SCH:%=docs/%.html) docs/README.html
 
 boards: ${BOARDS:%=board/%-board.sch}
 
@@ -68,16 +73,19 @@ vpath %.sch gates board
 vpath %.sym sym
 
 docs/%-sym.png: %.sym
-	$(GAF) export -m 1 -k 1 -d 300 -c -o "$@" "$<"
+	$(EXPORT) -m 1 -k 1 -d 300 -c -o "$@" "$<"
 
 docs/%.png: %.sch
-	$(GAF) export -m 1 -k 1 -d 600 -c -o "$@" "$<"
+	$(EXPORT) -m 1 -k 1 -d 600 -c -o "$@" "$<"
 
 docs/%.md: %.sch make-md.py
 	./make-md.py $< $@
 
+%.html: %.md
+	$(HOME)/.local/bin/grip $< --export $@
+
 docs/%-top.png: board/%-board.pcb
-	pcb -x png --photo-mode --photo-plating gold --outfile $@.tmp --xy-max 4000 $<
+	$(PCB) -x png --photo-mode --photo-plating gold --outfile $@.tmp --xy-max 4000 $<
 	convert -extract 4000x2000+0+0 -scale 1000 $@.tmp $@
 	rm $@.tmp
 
@@ -122,5 +130,6 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 .PHONY: clean
 clean:
 	rm -f *- */*- *~ */*~ *.o */*.o *.cir */*.cir *.rcr */*.rcr
+	rm -f *.raw */*.raw
 	rm -f */*.fake-cir PCB.*.backup PCB.*.save
-	rm -f rmsim $(TESTPROGS)
+	rm -f rmsim $(ALL_PROG)

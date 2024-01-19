@@ -16,13 +16,13 @@ module testcall();
               .snoopp(snoopp));
 
    wire[7:0] prgram[0:9] = {
-             8'h03, 8'h00,
-             8'ha8,
-             8'h06, 8'h00,
-             8'ha8,
-             8'h09, 8'h00,
-             8'ha8,
-             8'ha8
+             8'h03, 8'h20,
+             8'h60,
+             8'h06, 8'h20,
+             8'h60,
+             8'h09, 8'h20,
+             8'h60,
+             8'h60
              };
 
    initial begin : testit

@@ -90,7 +90,7 @@ module discus(input wire clk,
    localparam Bminus1 = 7;
 
    assign memory_address = effB | memory_Q;
-   assign memory_D       = effA;
+   assign memory_D       = commit_reg_write_A ? K : A;
    assign memory_read    = exec_mem_read;
    assign memory_write   = exec_mem_write;
 
@@ -127,7 +127,6 @@ module discus(input wire clk,
         decode_take_branch = 1;
       else
         decode_take_branch = 0;
-      // decode_take_branch = decode_is_branch && ((K == 0) ? conditionZ : conditionNZ);
 
       if (decode_instruction[6])
         decode_branch_target = return_PC;
@@ -190,7 +189,7 @@ module discus(input wire clk,
         SP <= SP - 1;              // For calls.
 
       // If we are taking a 'call' then write the stack.
-      if (decode_take_branch && !decode_instruction[7] && !decode_instruction[5])
+      if (decode_take_branch && !decode_instruction[7] && decode_instruction[5])
         stack[SP - 1] <= decode_PC;
 
       if (decode_instruction[7])
@@ -267,7 +266,7 @@ module discus(input wire clk,
         exec_constant <= 0;
 
       // For memory ops, we also force the ALU op to `and`, and set effA to
-      // zero, leaving Q=0 and K=Q|memory_Q=memory_Q
+      // zero, leaving Q=0 and K = Q|memory_Q = memory_Q
       casez (decode_instruction)
         8'b01011???: exec_mem_read <= 1; // MEM
         8'b11??11??: exec_mem_read <= 1; // LOADM

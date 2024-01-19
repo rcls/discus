@@ -18,16 +18,16 @@ module testadd();
               .snoopp(snoopp));
 
    wire[7:0] prgram[0:12] = {
-             8'h68,
-             8'h0c, 8'h34,
-             8'h03, 8'h4a,
-             8'h90,
-             8'h0c, 8'h38,
-             8'h42,
-             8'h4a,
-             8'h4a,
-             8'h42,
-             8'ha8 };
+             8'h98,
+             8'h0c, 8'h14,
+             8'h03, 8'h92,
+             8'he8,
+             8'h0c, 8'h18,
+             8'h82,
+             8'h92,
+             8'h92,
+             8'h82,
+             8'h60 };
 
    initial begin : testit
       integer i;

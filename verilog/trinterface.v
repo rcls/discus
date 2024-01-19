@@ -46,7 +46,7 @@ module trinterface(input wire BASE_UART0_rxd,
         memory_Q <= 0;
 
       if (memory_write)
-        memory[memory_address] <= memory_D;
+         memory[memory_address] <= memory_D;
 
       if (fetch_reset)
         fetch_instruction <= 0;
@@ -57,7 +57,7 @@ module trinterface(input wire BASE_UART0_rxd,
    initial BASE_UART0_txd = 1;
 
    wire io_read;
-   bit [7:0] io_Q;
+   bit  [7:0] io_Q;
    wire [7:0] io_D;
    wire [7:0] io_address;
    wire [7:0] io_PC;
@@ -148,8 +148,8 @@ module trinterface(input wire BASE_UART0_rxd,
    PLLE2_BASE #(
      .CLKFBOUT_MULT(20),                // 2GHz
      .CLKIN1_PERIOD(10),
-     .CLKOUT0_DIVIDE(8),                // 250MHz
-     .CLKOUT1_DIVIDE(24),               // 83.333MHz
+     .CLKOUT0_DIVIDE(8),                // 250Mhz
+     .CLKOUT1_DIVIDE(40),               // 50MHz
      .BANDWIDTH("LOW")
      ) pll (.CLKIN1(sys_clk_i_0), .CLKOUT0(cpu_clk), .CLKOUT1(io_clk),
             .CLKFBOUT(pllfb), .CLKFBIN(pllfb), .PWRDWN(0), .RST(0));

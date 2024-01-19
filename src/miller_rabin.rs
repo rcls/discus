@@ -1,14 +1,5 @@
-#![deny(warnings)]
 use crate::instructions::{Instructions, constants::*};
 use crate::state::State;
-
-pub mod disassemble;
-pub mod emitter;
-pub mod instructions;
-pub mod spice_check;
-pub mod spice_load;
-pub mod state;
-pub mod resistors;
 
 const MR_BASES: [u64; 7] = [2, 325, 9375, 28178, 450775, 9780504, 1795265022];
 
@@ -32,16 +23,13 @@ const MULT_LOOP_COUNT: u8 = 63;
 const BASE_INDEX: u8 = 62;
 const EXP_TWOS: u8 = 61;
 
-fn main() {
-    fn code(n: usize) -> Instructions {
-        match n {
-            0 => full(),
-            1 => single(),
-            2 => math(),
-            _ => panic!("Unknown variant number {}", n),
-        }
+pub fn miller_rabin(n: usize) -> Instructions {
+    match n {
+        0 => full(),
+        1 => single(),
+        2 => math(),
+        _ => panic!("Unknown variant number {}", n),
     }
-    spice_check::spice_check_args(code);
 }
 
 pub fn full() -> Instructions {
@@ -487,6 +475,6 @@ fn test_single() {
 fn count_check() {
     let full = full().assemble();
     let mut ca = 0;
-    emitter::emit(&mut ca, &full).unwrap();
+    crate::emitter::emit(&mut ca, &full).unwrap();
     assert_eq!(ca, full.len());
 }

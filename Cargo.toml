@@ -12,8 +12,24 @@ name = "alu"
 path = "src/alu.rs"
 
 [[bin]]
-name = "miller_rabin"
-path = "src/miller_rabin.rs"
+name = "call"
+path = "src/call.rs"
+
+[[bin]]
+name = "hazard"
+path = "src/hazard.rs"
+
+[[bin]]
+name = "hazard2"
+path = "src/hazard2.rs"
+
+[[bin]]
+name = "inc"
+path = "src/inc.rs"
+
+[[bin]]
+name = "logic"
+path = "src/logic.rs"
 
 [[bin]]
 name = "opdecode"

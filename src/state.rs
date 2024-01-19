@@ -90,6 +90,15 @@ impl State {
         self.prev_z = z;
     }
 
+    pub fn get_k(&self, program: &[u8]) -> Option<u8> {
+        if !self.prev_const {
+            self.k
+        }
+        else {
+            Some(self.k? + program[self.pc as usize].wrapping_shl(6))
+        }
+    }
+
     fn op_reg(&self, op: u8) -> u8 {
         match op & 3 {
             0 => self.a,

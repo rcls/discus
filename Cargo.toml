@@ -35,5 +35,13 @@ path = "src/romdecode.rs"
 name = "sp"
 path = "src/sp.rs"
 
+[[bin]]
+name = "sub"
+path = "src/sub.rs"
+
+[[bin]]
+name = "verify"
+path = "src/verify.rs"
+
 [dependencies]
 clap = { version = "4.4.18", features = ["derive"] }

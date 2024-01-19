@@ -21,7 +21,7 @@ impl SpiceCheck<'_> {
         let x  = self.spice.extract_byte("r_x_b");
         let y  = self.spice.extract_byte("r_y_b");
         let u  = self.spice.extract_byte("r_u_b");
-        let k  = self.spice.extract_byte("k");
+        let k  = self.spice.extract_byte("k_b");
         let pc = self.spice.extract_byte("p");
         let c  = self.spice.extract_signal("co_c");
 
@@ -34,18 +34,25 @@ impl SpiceCheck<'_> {
         self.state.u = u[3];
         self.state.c = c[3];
         self.state.k = Some(k[3]);
+        assert_eq!(pc[3], 0);
+        println!("{:?}", &pc[0..10]);
 
         for i in 4 .. self.spice.num_samples() {
-            println!("Timestamp {}", timestamps[i]);
-            self.state.step(self.program);
+            println!("Timestamp {}µs {} clocks",
+                     timestamps[i] * 1e6, timestamps[i] / self.spice.quantum);
             self.verify(self.state.a, a[i], "A");
             self.verify(self.state.x, x[i], "X");
             self.verify(self.state.y, y[i], "Y");
             self.verify(self.state.u, u[i], "U");
-            if let Some(kk) = self.state.k {
+            if let Some(kk) = self.state.get_k(self.program) {
                 self.verify(kk, k[i], "K");
             }
             self.verify(self.state.c, c[i], "C");
+
+            self.state.step(self.program);
+
+            // The electronics has the instruction unit one cycle ahead of the
+            // execute unit, so check the PC after stepping the state.
             self.verify(self.state.pc, pc[i], "PC");
             if self.state.pc != pc[i] {
                 panic!();
@@ -61,7 +68,7 @@ impl SpiceCheck<'_> {
     fn verify<T>(&mut self, sim: T, spice: T, what: &str)
                  where T: PartialEq<T> + Display {
         if sim != spice {
-            println!("Mis-match @{:#04x} sim {} v. spice {} on {}\n",
+            println!("Missmatch @{:#04x} sim {} v. spice {} on {}",
                      self.state.pc, sim, spice, what);
             self.success = false;
         }
@@ -78,13 +85,15 @@ pub fn spice_check(program: &[u8], spice: &SpiceRead) {
     }
 }
 
-pub fn spice_check_args(gen: impl Fn(usize) -> Instructions) {
+pub fn spice_check_args(gen: impl FnOnce(usize) -> Instructions) {
     use clap::Parser;
     #[derive(Parser)]
     #[command(arg_required_else_help(true))]
     struct Args {
-        #[arg(short='V', long="Verify")]
+        #[arg(short='V', long)]
         verify: Option<String>,
+        #[arg(short='L')]
+        log: bool,
         #[arg(short, long, default_value="0")]
         num: usize,
         #[arg(short='T', long)]
@@ -123,11 +132,21 @@ pub fn spice_check_args(gen: impl Fn(usize) -> Instructions) {
     if args.resistors {
          crate::resistors::resistors(stdout.lock(), &code).unwrap();
     }
+    if args.log {
+        let mut state = State::default();
+        while state.sp >= 0 {
+            state.step(&code);
+            println!(
+                "{:02x}: A={:02x} X={:02x} Y={:02x} U={:02x} K={:02x} C={} SP={}",
+                state.pc, state.a, state.x, state.y, state.u,
+                state.get_k(&code).unwrap_or(0), state.c as u8, state.sp);
+        }
+    }
     if let Some(s) = args.verify {
         use std::fs::File;
         use std::io::BufReader;
-        let mut r = SpiceRead::new(args.quantum, args.quantum * 0.7, true);
+        let mut r = SpiceRead::new(args.quantum, args.quantum * 0.7, false);
         r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
-        SpiceCheck::new(&code, &r);
+        SpiceCheck::new(&code, &r).spice_check();
     }
 }

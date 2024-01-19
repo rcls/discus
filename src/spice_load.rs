@@ -8,7 +8,7 @@ const THRESHOLD: f64 = 1.2;
 
 #[derive(Default)]
 pub struct SpiceRead {
-    quantum: f64,
+    pub quantum: f64,
     sample_point: f64,
     stability_check: bool,
 
@@ -161,8 +161,8 @@ impl SpiceRead {
         let mut res = Vec::new();
         for i in &self.index {
             res.push(columns.iter().enumerate()
-                     .map(|(c,b)| (self.raw_values[i+c] > THRESHOLD) as (u8)
-                                   << b)
+                     .map(|(b, c)| (self.raw_values[i+c] > THRESHOLD) as (u8)
+                                    << b)
                      .sum());
         }
         res

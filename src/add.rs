@@ -1,4 +1,4 @@
-use instructions::{Instructions, constants::*};
+use instructions::constants::*;
 
 pub mod disassemble;
 pub mod emitter;
@@ -8,9 +8,9 @@ pub mod spice_load;
 pub mod state;
 pub mod resistors;
 
-fn add() -> Instructions {
-    let mut i = instructions::Instructions::default();
-    i
+fn main() {
+    let mut add = instructions::Instructions::default();
+    add
         .xor  (A)
         .check(|s| !s.c && s.a == 0)
         .jp   (NZ, "crap")
@@ -26,9 +26,6 @@ fn add() -> Instructions {
         .add  (Y)
     .label("crap")
         .ret  ();
-    i
-}
 
-fn main() {
-    spice_check::spice_check_args(|_| add())
+    spice_check::spice_check_args(|_| add)
 }

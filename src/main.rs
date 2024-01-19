@@ -8,7 +8,7 @@ use spice_load::SpiceRead;
 mod alu;
 mod disassemble;
 mod emitter;
-pub mod instructions;
+mod instructions;
 mod miller_rabin;
 mod opdecode;
 mod pcdecode;
@@ -22,7 +22,7 @@ mod resistors;
 
 #[derive(Copy, Clone, ValueEnum)]
 enum Program {
-    Add, Call, Hazard, Hazard2, Inc, Logic, MillerRabin, Mem, Memi, Sub,
+    Add, Call, Cmp, Hazard, Hazard2, Inc, Logic, MillerRabin, Mem, Memi, Sub,
     Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp,
 }
 
@@ -57,6 +57,7 @@ fn main() {
         MillerRabin => miller_rabin::miller_rabin(args.num),
         Add         => add(),
         Call        => call(),
+        Cmp         => cmp(),
         Inc         => inc(),
         Hazard      => hazard(),
         Hazard2     => hazard2(),

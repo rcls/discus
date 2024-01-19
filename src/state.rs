@@ -33,12 +33,6 @@ impl State {
         self.update(program[self.pc as usize]);
     }
 
-    pub fn step_n(&mut self, program: &[u8], n: usize) {
-        for _ in 0..n {
-            self.update(program[self.pc as usize]);
-        }
-    }
-
     pub fn check(&self, insns: &Instructions) {
         if let Some(c) = insns.checks.get(&self.pc) {
             assert!(c(self))

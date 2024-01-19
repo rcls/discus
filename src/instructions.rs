@@ -27,6 +27,7 @@ pub enum Target {
     Addr(u8),
 }
 
+#[allow(unused)]
 pub enum Condition {
     // Also 8 and 12 as aliases.
     Always = 0, Never = 4, Z = 16, NZ = 20, C = 24, NC = 28
@@ -111,6 +112,7 @@ impl Instructions {
         }
     }
 
+    #[allow(unused)]
     pub fn mem(&mut self, v: impl Into<Value>) -> &mut Self {self.code(MEM, v)}
     pub fn add(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x80, v)}
     pub fn sub(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x84, v)}
@@ -120,6 +122,7 @@ impl Instructions {
     pub fn sbc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x94, v)}
     pub fn xor(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x98, v)}
     pub fn cmp(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x64, v)}
+    #[allow(unused)]
     pub fn tst(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x6c, v)}
     pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x4c, v)}
 

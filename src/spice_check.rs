@@ -32,7 +32,6 @@ impl SpiceCheck<'_> {
         self.state.c = c[3];
         self.state.k = Some(k[3]);
         assert_eq!(pc[3], 0);
-        println!("{:?}", &pc[0..10]);
 
         for i in 4 .. self.spice.num_samples() {
             println!("Timestamp {}µs {} clocks",
@@ -41,7 +40,7 @@ impl SpiceCheck<'_> {
             self.verify(self.state.x, x[i], "X");
             self.verify(self.state.y, y[i], "Y");
             self.verify(self.state.u, u[i], "U");
-            if let Some(kk) = self.state.get_k(self.program) {
+            if let Some(kk) = self.state.k {
                 self.verify(kk, k[i], "K");
             }
             self.verify(self.state.c, c[i], "C");

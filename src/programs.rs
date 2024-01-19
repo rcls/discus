@@ -40,9 +40,8 @@ pub fn call() -> Instructions {
 pub fn cmp() -> Instructions {
     let mut cmp = Instructions::default();
     cmp
-        .xor  (A)
-        .load (A, 27)
-        .load (X, 54)
+        .load (A, 33)
+        .load (X, 66)
         .check(|s| !s.c)
         .cmp  (X)
         .check(|s| !s.c && s.k.unwrap() != 0)
@@ -50,6 +49,8 @@ pub fn cmp() -> Instructions {
         .check(|s| s.c && s.k == Some(0))
         .cmp  (12)
         .check(|s| s.c && s.k.unwrap() != 0)
+        .tst  (A)
+        .tst  (X)
         .ret();
     cmp
 }

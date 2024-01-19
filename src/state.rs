@@ -30,19 +30,10 @@ pub struct State {
 
 impl State {
     pub fn step(&mut self, program: &[u8]) {
-        self.update(program[self.pc as usize]);
-    }
-
-    pub fn check(&self, insns: &Instructions) {
-        if let Some(c) = insns.checks.get(&self.pc) {
-            assert!(c(self))
-        }
-    }
-
-    pub fn update(&mut self, opcode: u8) {
+        let opcode = program[self.pc as usize];
         let prev_const = self.prev_const;
         let prefixed = self.prefixed;
-        let k = self.k.unwrap_or(0) + if prev_const { opcode << 6 } else { 0 };
+        let k = self.k.unwrap_or(0);
         let operand = if prefixed { k } else { self.op_reg(opcode) };
 
         // Default behavior...
@@ -82,14 +73,16 @@ impl State {
 
         self.prev_c = c;
         self.prev_z = z;
+
+        if self.prev_const {
+            let next = program[self.pc as usize] & 3;
+            self.k = self.k.map(|k| k | next << 6);
+        }
     }
 
-    pub fn get_k(&self, program: &[u8]) -> Option<u8> {
-        if !self.prev_const {
-            self.k
-        }
-        else {
-            Some(self.k? + program[self.pc as usize].wrapping_shl(6))
+    pub fn check(&self, insns: &Instructions) {
+        if let Some(c) = insns.checks.get(&self.pc) {
+            assert!(c(self))
         }
     }
 

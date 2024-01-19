@@ -123,6 +123,41 @@ pub fn logic() -> Instructions {
     logic
 }
 
+pub fn mem() -> Instructions {
+    let mut mem = Instructions::default();
+    mem
+        .xor  (A)
+        .sta  (0x15)
+        .dec  (A)
+        .sta  (0x08)
+        .dec  (A)
+        .sta  (0x01)
+        .load (X, [0x01])
+        .load (Y, [0x08])
+        .load (U, [0x15])
+        .ret();
+    mem
+}
+
+pub fn memi() -> Instructions {
+    let mut memi = Instructions::default();
+    memi
+        .load (X, 0x01)
+        .load (Y, 0x08)
+        .load (U, 0x15)
+        .xor  (A)
+        .sta  (U)
+        .dec  (A)
+        .sta  (Y)
+        .dec  (A)
+        .sta  (X)
+        .load (A, [X])
+        .load (A, [Y])
+        .load (A, [U])
+        .ret();
+    memi
+}
+
 pub fn sub() -> Instructions {
     let mut sub = Instructions::default();
     sub .sub(A)

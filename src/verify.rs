@@ -55,8 +55,9 @@ fn get_program(program: Program, n: usize) -> instructions::Instructions {
         Hazard      => hazard(),
         Hazard2     => hazard2(),
         Logic       => logic(),
+        Mem         => mem(),
+        Memi        => memi(),
         Sub         => sub(),
-        _ => todo!(),
     }
 }
 

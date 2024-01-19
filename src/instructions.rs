@@ -27,7 +27,6 @@ pub enum Target {
     Addr(u8),
 }
 
-#[allow(unused)]
 pub enum Condition {
     // Also 8 and 12 as aliases.
     Always = 0, Never = 4, Z = 16, NZ = 20, C = 24, NC = 28

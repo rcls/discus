@@ -22,7 +22,8 @@ mod resistors;
 
 #[derive(Copy, Clone, ValueEnum)]
 enum Program {
-    Add, Call, Cmp, Hazard, Hazard2, Inc, Logic, MillerRabin, Mem, Memi, Sub,
+    Add, Call, Cmp, Hazard, Hazard2, Inc, Logic, Mem, Memi, Memw, MillerRabin,
+    Sub,
     Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp,
 }
 
@@ -39,7 +40,7 @@ struct Args {
     num: usize,
     #[arg(short='T', long)]
     time: bool,
-    #[arg(short='t', long, default_value="2e-6")]
+    #[arg(short='t', long, default_value="2000")]
     quantum: f64,
     #[arg(short='R', long)]
     resistors: bool,
@@ -57,18 +58,19 @@ fn main() {
     let args = Args::parse();
     let insns = match args.program {
         MillerRabin => miller_rabin::miller_rabin(args.num),
-        Add         => add(),
-        Call        => call(),
-        Cmp         => cmp(),
-        Inc         => inc(),
-        Hazard      => hazard(),
-        Hazard2     => hazard2(),
-        Logic       => logic(),
-        Mem         => mem(),
-        Memi        => memi(),
-        Sub         => sub(),
+        Add     => add(),
+        Call    => call(),
+        Cmp     => cmp(),
+        Inc     => inc(),
+        Hazard  => hazard(),
+        Hazard2 => hazard2(),
+        Logic   => logic(),
+        Mem     => mem(),
+        Memi    => memi(),
+        Memw    => memw(),
+        Sub     => sub(),
 
-        Alu => return alu::alu(&args.verify.unwrap()),
+        Alu       => return alu::alu            (&args.verify.unwrap()),
         Opdecode  => return opdecode::opdecode  (&args.verify.unwrap()),
         Pcdecode  => return pcdecode::pcdecode  (&args.verify.unwrap()),
         Ramdecode => return memdecode::memdecode(&args.verify.unwrap(), "m"),
@@ -110,6 +112,7 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
     if args.log {
         let mut state = crate::state::State::default();
         while state.sp >= 0 {
+            state.check(&insns);
             state.step(&code);
             println!(
                 "{:02x}: A={:02x} X={:02x} Y={:02x} U={:02x} K={:02x} C={} SP={}",
@@ -120,7 +123,8 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
     if let Some(s) = &args.verify {
         use std::fs::File;
         use std::io::BufReader;
-        let mut r = SpiceRead::new(args.quantum, args.quantum * 0.7, false);
+        let quantum = args.quantum * 1e-9;
+        let mut r = SpiceRead::new(quantum, quantum * 0.7, false);
         r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
         SpiceCheck::new(&code, &r).spice_check();
     }

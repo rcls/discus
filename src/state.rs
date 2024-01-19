@@ -49,7 +49,8 @@ impl State {
                 self.jump(opcode, k);   // JUMP and CALL.
             }
             else {
-                self.k = Some(opcode);  // CONST.
+                let next = program[self.pc as usize] & 3;
+                self.k = Some(opcode | next << 6);  // CONST.
                 self.prev_const = true;
                 self.prefixed = true;
             }
@@ -73,11 +74,6 @@ impl State {
 
         self.prev_c = c;
         self.prev_z = z;
-
-        if self.prev_const {
-            let next = program[self.pc as usize] & 3;
-            self.k = self.k.map(|k| k | next << 6);
-        }
     }
 
     pub fn check(&self, insns: &Instructions) {

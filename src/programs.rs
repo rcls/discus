@@ -8,31 +8,35 @@ pub fn add() -> Instructions {
         .jp   (NZ, "crap")
         .adc  (0x83)
         .load (Y, A)
-        .check(|s| !s.c)
+        .check(|s| !s.c && s.y == 0x83)
         .jp   (C, "crap")
         .add  (Y)
-        .check(|s| s.c)
+        .check(|s| s.c && s.a == 0x06)
         .adc  (Y)
+        .check(|s| s.a == 0x8a)
         .adc  (Y)
-        .check(|s| s.c)
+        .check(|s| s.c && s.a == 0x0d)
         .add  (Y)
     .label("crap")
+        .check(|s| !s.c && s.a == 0x90)
         .ret  ();
     add
 }
 
 pub fn call() -> Instructions {
     let mut call = Instructions::default();
-    call.call("sub1")
-        .ret()
+    call.call ("sub1")
+    .label("loop")
+        .jp(Never, "loop")
+        .jp(Always, "sub3")
     .label("sub1")
-        .call("sub2")
-        .ret()
+        .call ("sub2")
+        .ret  ()
     .label("sub2")
-        .call("sub3")
-        .ret()
+        .call ("sub3")
+        .ret  ()
     .label("sub3")
-        .ret();
+        .ret  ();
 
     call
 }
@@ -172,28 +176,48 @@ pub fn memi() -> Instructions {
         .load (A, [X])
         .load (A, [Y])
         .load (A, [U])
-        .ret();
+        .ret  ();
     memi
+}
+
+pub fn memw() -> Instructions {
+    let mut memw = Instructions::default();
+    memw
+        .xor  (A)
+        .load (X, A)
+        .sta  (X)
+        .load (Y, [X])
+        .dec  (A)
+        .sta  (X)
+        .load (Y, [X])
+        .inc  (A)
+        .sta  (A)
+        .load (Y, [X])
+        .dec  (A)
+        .sta  (X)
+        .load (Y, [X])
+        .ret  ();
+    memw
 }
 
 pub fn sub() -> Instructions {
     let mut sub = Instructions::default();
-    sub .sub(A)
+    sub .sub  (A)
         .check(|s| s.c && s.a == 0)
-        .jp(C, "carry_on")
+        .jp   (C, "carry_on")
     .label("zero_on")
-        .sub(X)
+        .sub  (X)
         .check(|s| !s.c)
-        .sbc(X)
-        .sub(X)
-        .ret()
+        .sbc  (X)
+        .sub  (X)
+        .ret  ()
     .label("carry_on")
-        .sbc(0x7d)
-        .load(X, A)
+        .sbc  (0x7d)
+        .load (X, A)
         .check(|s| !s.c)
-        .sub(X)
+        .sub  (X)
         .check(|s| s.c && s.k == Some(0))
-        .jp(Z, "zero_on")
+        .jp   (Z, "zero_on")
         .check(|_| false);
 
     sub

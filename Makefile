@@ -5,19 +5,24 @@ NETLIST=$(LEPTON)/bin/lepton-netlist
 EXPORT=$(LEPTON)/bin/lepton-export
 PCB=$(LEPTON)/bin/pcb
 
-ADHOC_TEST = alu pcdecode opdecode sp romdecode ramdecode
+ADHOC_TEST = alu pcdecode opdecode ramdecode romdecode sp
 PROG_TEST = mem memi memw inc sub logic hazard hazard2 cmp call add
 TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
-PROG=rmsim pattern monitor blink
-ALL_PROG=$(TESTS) $(PROG:%=prog/%)
 
 BOARDS=bit control dram64byte rom64byte
 
-all: programs boards
+RUST_DISCUS=target/debug/discus
+
+QUANTUM=2000
+
+all: cargo boards
+
+.PHONY: cargo
+cargo:
+	cargo build
 
 verify: $(TESTS:%=%.verify)
 verify-adhoc: $(ADHOC_TEST:%=test/%.verify)
-programs: $(ALL_PROG)
 
 %.rcr: %.sch gates/*.sch board/*.sch sym/*.sym subckt/*.prm
 	$(NETLIST) -L subckt -g spice-sdb -o $@ $<
@@ -25,24 +30,11 @@ programs: $(ALL_PROG)
 %.cir: %.rcr ./substrate.py
 	./substrate.py $< > $@
 
-DEPS=-MMD -MP -MF.$(subst /,:,$@).d
-CXXFLAGS=-O2 -fbounds-check -Wall -Werror -ggdb -std=c++11 -Ilib $(DEPS)
+$(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py cargo
+	$(RUST_DISCUS) $(*F) -T -R | test/rommunge.py -t $(QUANTUM) -w $@ board/univlight.cir $*.cir
 
--include .*.d
-
-%: %.cc
-CC=g++
-
-$(ALL_PROG): lib/state.o lib/script.o lib/spice_load.o
-
-$(PROG_TEST:%=test/%.cir): %.cir: % board/univlight.cir test/rommunge.py
-	./$< -C
-	./$< -T -R | test/rommunge.py -t $(QUANTUM) -w $@ board/univlight.cir $*.cir
-
-QUANTUM=2000
-
-%.verify: %.raw %
-	./$* -t $(QUANTUM) -V $<
+%.verify: %.raw cargo
+	$(RUST_DISCUS) $(*F) -t $(QUANTUM) -V $<
 
 .PRECIOUS: %.rcr %.raw %.cir
 %.raw: %.cir

@@ -16,10 +16,9 @@ RUST_DISCUS=target/debug/discus
 # Note that this needs to be sync'd with the schematic in a few places.
 QUANTUM=2000
 
-all: cargo boards
+all: $(RUST_DISCUS) boards
 
-.PHONY: cargo
-cargo:
+$(RUST_DISCUS): src/*.rs
 	cargo build
 
 verify: $(TESTS:%=%.verify)
@@ -31,10 +30,10 @@ verify-adhoc: $(ADHOC_TEST:%=test/%.verify)
 %.cir: %.rcr ./substrate.py
 	./substrate.py $< > $@
 
-$(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py cargo
+$(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py $(RUST_DISCUS)
 	$(RUST_DISCUS) $(*F) -T -R | test/rommunge.py -t $(QUANTUM) -w $@ board/univlight.cir $*.cir
 
-%.verify: %.raw cargo
+%.verify: %.raw $(RUST_DISCUS)
 	$(RUST_DISCUS) $(*F) -t $(QUANTUM) -V $<
 
 .PRECIOUS: %.rcr %.raw %.cir

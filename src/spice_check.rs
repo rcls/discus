@@ -30,7 +30,7 @@ impl SpiceCheck<'_> {
         self.state.y = y[3];
         self.state.u = u[3];
         self.state.c = c[3];
-        self.state.k = Some(k[3]);
+        self.state.k = None;
         assert_eq!(pc[3], 0);
 
         for i in 4 .. self.spice.num_samples() {

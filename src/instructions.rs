@@ -111,7 +111,6 @@ impl Instructions {
         }
     }
 
-    #[allow(unused)]
     pub fn mem(&mut self, v: impl Into<Value>) -> &mut Self {self.code(MEM, v)}
     pub fn add(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x80, v)}
     pub fn sub(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x84, v)}
@@ -120,9 +119,8 @@ impl Instructions {
     pub fn adc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x90, v)}
     pub fn sbc(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x94, v)}
     pub fn xor(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x98, v)}
-    pub fn cmp(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x64, v)}
-    #[allow(unused)]
-    pub fn tst(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x6c, v)}
+    pub fn cmp(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0xa4, v)}
+    pub fn tst(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0xac, v)}
     pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x4c, v)}
 
     pub fn jp(&mut self, cc: Condition, t: impl Into<Target>) -> &mut Self {

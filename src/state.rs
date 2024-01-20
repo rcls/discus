@@ -64,11 +64,9 @@ impl State {
                 self.k = Some(self.memory.0[operand as usize]);
                 self.prefixed = true;
             }
-            0x64..=0x67 => { self.arith(opcode, operand); } // CMP, RET never.
-            0x6c..=0x6f => { self.arith(opcode, operand); } // TST, RET never.
             0x60..=0x7f => self.ret(opcode),
             0x80..=0x9f => self.a = self.arith(opcode, operand),
-            0xa0..=0xbf => self.y = self.arith(opcode, operand),
+            0xa0..=0xbf => { self.arith(opcode, operand); } // Ignore result.
             0xc0..=0xff => self.xfer(opcode, operand),
         }
 

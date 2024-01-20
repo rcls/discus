@@ -71,7 +71,7 @@ static CONDITIONS: [&str; 8] = [
 
 static ARITH: [&str; 16] = [
     "add", "sub", "or", "and", "adc", "sbc", "xor", "and2",
-    "addy", "suby", "ory", "andy", "adcy", "sbcy", "xory", "an2y",
+    "tadd", "cmp", "tor", "test", "tadc", "tsbc", "txor", "tan2",
 ];
 
 static XFER: [&str; 4] = ["inc", "dec", "load", "load"];
@@ -167,8 +167,6 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
                 }
                 self.memory = Some(op);
             }
-            0x64..=0x67 => self.emit_operand(a, op, "cmp")?,
-            0x6c..=0x6f => self.emit_operand(a, op, "tst")?,
             0x60..=0x7f => {            // Returns.
                 self.eject(a)?;
                 let cc = op as usize >> 2 & 7;

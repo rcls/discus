@@ -2,6 +2,7 @@ use crate::spice_load::SpiceRead;
 
 pub fn opdecode(path: &String) {
     let s = SpiceRead::from_path(path, 5e-6);
+    let mut count = 0;
 
     for [i2, i3, i4, i5, i6, i7, ii2, ii3, ii4, ii5, ii6, ii7, co,
          cr, cs, coe, ar, as_, and, or, n, mpre,
@@ -24,8 +25,8 @@ pub fn opdecode(path: &String) {
         // Arithmetic & xfer ops (except loadm).
         let mut check_alu = opcode >= 0x80;
 
-        // Instructions that write the C flag.  ALU ops + CMP/TST.
-        if opcode & 0xc0 == 0x80 || opcode & 0xf4 == 0x64 {
+        // Instructions that write the C flag.  ALU ops (including tests).
+        if opcode & 0xc0 == 0x80 {
             ex_cw = true;
         }
 
@@ -94,8 +95,10 @@ pub fn opdecode(path: &String) {
         check(and, ex_and, "AND", opcode);
         check(or , ex_or , "OR" , opcode);
         check(n  , ex_n  , "N"  , opcode);
+
+        count += 1;
     }
-    println!("Tested {}", s.num_samples());
+    println!("Tested {} of {}", count, s.num_samples());
 }
 
 fn check(got: bool, ex: bool, tag: &str, opcode: u8) {

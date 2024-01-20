@@ -214,7 +214,7 @@ pub fn memp() -> Instructions {
         .sta  (U)
         .add  ([X])
         .add  ([Y])
-        .add  ([U])
+        .mem  (U).add(A)  // Long form of add([U])
         .ret  ();
     memp
 }

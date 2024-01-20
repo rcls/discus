@@ -91,8 +91,8 @@ impl State {
     }
 
     fn arith(&mut self, opcode: u8, operand: u8) -> u8 {
-        let a = self.a as u16;
-        let v = operand as u16;
+        let a = self.a as u32;
+        let v = operand as u32;
         let c = if self.c { 1 } else { 0 };
         let r = match opcode & 0x1c {
             0x00 => a + v,              // ADD
@@ -102,7 +102,7 @@ impl State {
             0x10 => a + v + c,          // ADC
             0x14 => a + (v ^ 0xff) + c, // SBC
             0x18 => a ^ v,              // XOR
-            0x1c => a & v | 0x100,      // AND alias.
+            0x1c => unreachable!(),     // DNC (Actual effect is (a&b)^1)
             _ => unreachable!()
         };
         self.c = r >= 0x100;

@@ -31,9 +31,12 @@ impl SpiceCheck<'_> {
         self.state.u = u[3];
         self.state.c = c[3];
         self.state.k = None;
-        assert_eq!(pc[3], 0);
+        assert_eq!(pc[2], 0);
+        assert_eq!(pc[3], 1);
 
         for i in 4 .. self.spice.num_samples() {
+            self.state.step(self.program);
+
             println!("Timestamp {}µs {} clocks",
                      timestamps[i] * 1e6, timestamps[i] / self.spice.quantum);
             self.verify(self.state.a, a[i], "A");
@@ -45,12 +48,10 @@ impl SpiceCheck<'_> {
             }
             self.verify(self.state.c, c[i], "C");
 
-            self.state.step(self.program);
-
             // The electronics has the instruction unit one cycle ahead of the
-            // execute unit, so check the PC after stepping the state.
-            self.verify(self.state.pc, pc[i], "PC");
-            if self.state.pc != pc[i] {
+            // execute unit, so the PC we want to check is the previous one.
+            self.verify(self.state.pc, pc[i - 1], "PC");
+            if self.state.pc != pc[i - 1] {
                 panic!();
             }
         }

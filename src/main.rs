@@ -123,7 +123,9 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
         use std::fs::File;
         use std::io::BufReader;
         let quantum = args.quantum * 1e-9;
-        let mut r = SpiceRead::new(quantum, quantum * 0.7, false);
+        // The rising clock edge is at about 1/2, sample immediately before
+        // that (todo - actually sync with the clock?).
+        let mut r = SpiceRead::new(quantum, quantum, false);
         r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
         SpiceCheck::new(&code, &r).spice_check();
     }

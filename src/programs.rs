@@ -180,6 +180,25 @@ pub fn memi() -> Instructions {
     memi
 }
 
+pub fn memp() -> Instructions {
+    let mut memp = Instructions::default();
+    memp
+        .load (X, 0x01)
+        .incv (Y, X)
+        .incv (U, Y)
+        .load (A, Y)
+        .sta  (X)
+        .load (A, U)
+        .sta  (Y)
+        .load (A, X)
+        .sta  (U)
+        .add  ([X])
+        .add  ([Y])
+        .mem  (U).add(A)  // Long form of add([U])
+        .ret  ();
+    memp
+}
+
 pub fn memw() -> Instructions {
     let mut memw = Instructions::default();
     memw
@@ -198,25 +217,6 @@ pub fn memw() -> Instructions {
         .load (Y, [X])
         .ret  ();
     memw
-}
-
-pub fn memp() -> Instructions {
-    let mut memp = Instructions::default();
-    memp
-        .load (X, 0x01)
-        .incv (Y, X)
-        .incv (U, Y)
-        .load (A, Y)
-        .sta  (X)
-        .load (A, U)
-        .sta  (Y)
-        .load (A, X)
-        .sta  (U)
-        .add  ([X])
-        .add  ([Y])
-        .mem  (U).add(A)  // Long form of add([U])
-        .ret  ();
-    memp
 }
 
 pub fn sub() -> Instructions {

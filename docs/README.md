@@ -160,7 +160,7 @@ from the opcode, while the high two bits are “stolen” from bits 0 and 1 of t
 following instruction.  Because of the pipelining, those bits are available when
 CONST executes.
 
-The CONST instruction is never written explicitly in assembly
+The CONST instruction is not usually written explicitly in assembly
 code—instead, it is generated automatically when a numeric constant
 operand is used.
 
@@ -242,9 +242,6 @@ The encoding of `aaa` is:
 * **101** : `SBC` (subtract with carry)
 * **110** : `XOR` (sets `C` to 0 also)
 * **111** : unused alias of `AND`.
-
-Incidentally, the corresponding bits in `CMP` and `TST` instructions match `SUB`
-and `AND` respectively, simplifying the instruction decode.
 
 `ADD(A)` and `ADC(A)` instructions give left shift and (9-bit) rotate.  There
 are no right shift instructions.

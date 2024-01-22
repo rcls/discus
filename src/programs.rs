@@ -157,8 +157,25 @@ pub fn mem() -> Instructions {
         .load (X, [0x01])
         .load (Y, [0x08])
         .load (U, [0x15])
-        .ret();
+        .ret  ();
     mem
+}
+
+pub fn memf() -> Instructions {
+    let mut memf = Instructions::default();
+    memf
+        .load (A, 0x33)
+        .load (X, A)
+        .sta  (X)
+        .add  (A)
+        .sta  (X)
+        .load (Y, [X])
+        .load (Y, [X])
+        .add  (A)
+        .sta  (X)
+        .load (Y, [X])
+        .ret  ();
+    memf
 }
 
 pub fn memi() -> Instructions {

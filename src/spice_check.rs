@@ -13,6 +13,7 @@ impl SpiceCheck<'_> {
     pub fn new<'a>(program: &'a [u8], spice: &'a SpiceRead) -> SpiceCheck<'a> {
         SpiceCheck{success: true, program, spice, state: State::default()}
     }
+
     pub fn spice_check(&mut self) {
         let a  = self.spice.extract_byte("a");
         let x  = self.spice.extract_byte("r_x_b");

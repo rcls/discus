@@ -1,4 +1,4 @@
-v 20201216 2
+v 20220529 2
 C 3500 5900 1 270 0 vpulse-1.sym
 {
 T 4350 5200 5 10 0 0 270 0 1
@@ -8,7 +8,7 @@ footprint=none
 T 3600 5750 5 10 1 1 0 0 1
 refdes=V1
 T 3400 5550 5 10 1 1 0 7 1
-value=pulse 0 3.3 10u 1n 1n 10u 20u
+value=pulse 0 2.5 10u 1n 1n 10u 20u
 }
 C 3500 4900 1 270 0 vpulse-1.sym
 {
@@ -19,7 +19,7 @@ footprint=none
 T 3600 4750 5 10 1 1 0 0 1
 refdes=V2
 T 3400 4550 5 10 1 1 0 7 1
-value=pulse 0 3.3 20u 1n 1n 20u 40u
+value=pulse 0 2.5 20u 1n 1n 20u 40u
 }
 C 3500 3900 1 270 0 vpulse-1.sym
 {
@@ -30,7 +30,7 @@ footprint=none
 T 3600 3750 5 10 1 1 0 0 1
 refdes=V3
 T 3400 3550 5 10 1 1 0 7 1
-value=pulse 0 3.3 40u 1n 1n 40u 80u
+value=pulse 0 2.5 40u 1n 1n 40u 80u
 }
 C 3500 2900 1 270 0 vpulse-1.sym
 {
@@ -41,7 +41,7 @@ footprint=none
 T 3600 2750 5 10 1 1 0 0 1
 refdes=V4
 T 3400 2550 5 10 1 1 0 7 1
-value=pulse 0 3.3 80u 1n 1n 80u 160u
+value=pulse 0 2.5 80u 1n 1n 80u 160u
 }
 C 3500 1900 1 270 0 vpulse-1.sym
 {
@@ -52,7 +52,7 @@ footprint=none
 T 3600 1750 5 10 1 1 0 0 1
 refdes=V6
 T 3400 1550 5 10 1 1 0 7 1
-value=pulse 0 3.3 160u 1n 1n 160u 320u
+value=pulse 0 2.5 160u 1n 1n 160u 320u
 }
 C 5000 4800 1 0 0 cnot.sym
 {
@@ -142,7 +142,7 @@ footprint=none
 T 3600 6750 5 10 1 1 0 0 1
 refdes=V0
 T 3400 6550 5 10 1 1 0 7 1
-value=pulse 0 3.3 5u 1n 1n 5u 10u
+value=pulse 0 2.5 5u 1n 1n 5u 10u
 }
 C 5000 5800 1 0 0 cnot.sym
 {
@@ -260,8 +260,19 @@ refdes=M
 N 7800 2100 7800 2300 4
 N 7800 2500 7800 2700 4
 C 9400 2500 1 0 1 vdd-1.sym
-N 9200 2500 9200 2300 4
 C 9100 2600 1 0 0 gnd-1.sym
 N 7800 8300 7800 5300 4
 N 7800 6700 7600 6700 4
 C 7500 6400 1 0 0 gnd-1.sym
+C 10400 2600 1 90 1 vpulse-1.sym
+{
+T 9550 1900 5 10 0 0 270 2 1
+device=vpulse
+T 9350 1900 5 10 0 0 270 2 1
+footprint=none
+T 10100 2350 5 10 1 1 0 0 1
+refdes=Vclk
+T 10500 2250 5 10 1 1 0 1 1
+value=pulse 0 2.5 1u 1n 1n 4u 5u
+}
+C 10300 2000 1 0 0 gnd-1.sym

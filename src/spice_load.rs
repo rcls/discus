@@ -135,7 +135,7 @@ impl SpiceRead {
     pub fn extract_signal(&self, name: &str) -> Vec<bool> {
         let column = self.vars[name];
         if self.stability_check {
-            self.stability_check(column);
+            self.stability_check(name, column);
         }
         self.index.iter().map(move |i| self.raw_values[i + column] > THRESHOLD)
             .collect()
@@ -171,7 +171,7 @@ impl SpiceRead {
         r
     }
 
-    fn stability_check(&self, column: usize) {
+    fn stability_check(&self, name: &str, column: usize) {
         let tc = self.vars["time"];
         for row in self.raw_values.chunks_exact(self.num_vars) {
             let q = row[tc] / self.quantum;
@@ -180,7 +180,8 @@ impl SpiceRead {
                 continue;
             }
             let val = row[column];
-            assert!(val < 0.3 || val > 2.0);
+            assert!(val < 0.3 || val > 2.0, "Indeterminate {} @{} val {}",
+                    name, row[tc], val);
         }
     }
 }

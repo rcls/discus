@@ -1,5 +1,5 @@
 pub fn alu(path: &String) {
-    let s = crate::spice_load::SpiceRead::from_path(path, 10e-6);
+    let s = crate::spice_read::SpiceRead::from_path(path, 10e-6);
 
     for [a, b, ci, cs, cr, and, or, q, co] in s.extract_positive(
         &["a", "b", "ci#", "cs#", "cr", "and", "or", "q", "co#"]) {

@@ -3,7 +3,7 @@
 use clap::{Parser, ValueEnum};
 
 use spice_check::SpiceCheck;
-use spice_load::SpiceRead;
+use spice_read::SpiceRead;
 
 mod alu;
 mod disassemble;
@@ -16,7 +16,7 @@ mod programs;
 mod memdecode;
 mod sp;
 mod spice_check;
-mod spice_load;
+mod spice_read;
 mod state;
 mod resistors;
 

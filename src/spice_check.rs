@@ -1,6 +1,6 @@
 use std::fmt::Display;
 
-use crate::{state::State, spice_load::SpiceRead};
+use crate::{state::State, spice_read::SpiceRead};
 
 pub struct SpiceCheck<'a> {
     success: bool,

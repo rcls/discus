@@ -1,4 +1,4 @@
-use crate::spice_load::SpiceRead;
+use crate::spice_read::SpiceRead;
 
 pub fn opdecode(path: &String) {
     let s = SpiceRead::from_path(path, 5e-6);

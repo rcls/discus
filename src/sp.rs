@@ -1,5 +1,5 @@
 pub fn sp(path: &String) {
-    let s = crate::spice_load::SpiceRead::from_path(path, 10e-6);
+    let s = crate::spice_read::SpiceRead::from_path(path, 10e-6);
     let mut count = 0;
 
     let mut prev = None;

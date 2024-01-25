@@ -96,7 +96,7 @@ impl Instructions {
     }
 
     pub fn label(&mut self, l: impl Into<String>) -> &mut Self {
-        assert_eq!(std::cmp::max(self.insns.len(), 256), 256);
+        assert!(self.insns.len() < 256);
         self.labels.insert(l.into(), self.insns.len().try_into().unwrap());
         self
     }

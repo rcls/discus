@@ -9,8 +9,8 @@ Overview
 Discus is a pure 8-bit Harvard architecture, with 8-bit code and data addresses,
 and a four entry stack.  There are four general purpose registers, one of which
 is the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
-instruction execute, and writeback).  There is an integrated dynamic RAM
-controller.  The CPU totals 1275 transistors.  Without the pipelining and DRAM
+instruction execute, and writeback).  There is integrated DRAM
+refresh.  The CPU totals 1275 transistors.  Without the pipelining and DRAM
 refresh the count would be more like 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -186,7 +186,7 @@ instruction for the execute pipeline stage.
 `OUT` instruction.  This does nothing, but pulses a strobe.  External
 peripherals may use the values from the accumulator bus.
 
-Not all bits are decoded; there are aliases.
+Not all bits are decoded; 0x40 to 0x47 are aliases.
 
 ### `STA` : `010011rr`
 
@@ -200,7 +200,7 @@ Load `K` from the external result bus `Q` (the bus is open-drain).  The
 accumulator bus may be used by external circuitry, and the `IN` strobe line is
 asserted.
 
-Not all bits are decoded; there are aliases.
+Not all bits are decoded; 0x50 to 0x57 are aliases.
 
 ### `MEM` prefix : `010111rr`
 
@@ -250,7 +250,7 @@ A subtract-with-carry operation is implemented as `A + not B + C`, which
 determines the polarity of the `C` flag for subtractions.  (Subtract-with-out
 carry forces the input `C` to 1).
 
-### Arithmetic, ignore result : `101aaarr`
+### Tests: arithmetic, ignore result : `101aaarr`
 
 Identical to the previous arithmetic instruction above, but only the `Z` and
 `C` flags are updated; the result is ignored and not written to `A`.
@@ -454,6 +454,11 @@ As well as the CPU, there is memory… DRAM is implemented as
 BJT pass gate.  A 64-byte DRAM board takes 512 transistors and 512 capacitors
 for storage, plus 207 transistors for the decode, sense logic and I/O.  (There
 are also 64 diodes).
+
+Every clock cycle, the byte addressed by the address lines is (re-)written,
+irregardless of whether a memory access is in progress.  This achieves memory
+refresh.  The CPU outputs a refresh counter onto the address bus when no other
+memory access is in progress.
 
 The BJTs used are in fact heterojunction devices (HBT).  The device used are
 designed for RF operation, however the critical parameters for us are the low

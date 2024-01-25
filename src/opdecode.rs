@@ -3,6 +3,7 @@ use crate::spice_read::SpiceRead;
 pub fn opdecode(path: &String) {
     let s = SpiceRead::from_path(path, 5e-6);
     let mut count = 0;
+    let mut seen = std::collections::HashSet::new();
 
     for [i2, i3, i4, i5, i6, i7, ii2, ii3, ii4, ii5, ii6, ii7, co,
          qe, cr, cs, coe, ar, as_, and, or, n, mpre,
@@ -15,6 +16,7 @@ pub fn opdecode(path: &String) {
 
         let opcode = i2 as u8 * 4 + i3 as u8 * 8 + i4 as u8 * 16
             + i5 as u8 * 32 + i6 as u8 * 64 + i7 as u8 * 128;
+        seen.insert(opcode + co as u8);
 
         let [mut ex_cr, mut ex_cs, mut ex_ar, mut ex_as] = [false; 4];
         let [mut ex_and, mut ex_or, mut ex_n, mut ex_in] = [false; 4];
@@ -64,6 +66,8 @@ pub fn opdecode(path: &String) {
             _    => (),
         }
 
+        // 0x48 : Asserts MW without MR, the refresh cycle will STA?
+        // 0x58 : Asserts MPRE with no other strobes, sets K=-1?
         match opcode {
             0x40 | 0x44 => ex_out = true,                   // Out
             0x48        => (ex_mr, ex_mw) = (mr, mw),       // Not assigned.
@@ -102,6 +106,7 @@ pub fn opdecode(path: &String) {
         count += 1;
     }
     println!("Tested {} of {}", count, s.num_samples());
+    assert_eq!(seen.len(), 128);
 }
 
 fn check(got: bool, ex: bool, tag: &str, opcode: u8) {

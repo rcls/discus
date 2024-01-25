@@ -33,7 +33,7 @@ impl State {
         let opcode = program[self.pc as usize];
         let prev_const = self.prev_const;
         let prefixed = self.prefixed;
-        let k = self.k.unwrap_or(0);
+        let k = self.k.unwrap_or(0xff);
         let operand = if prefixed { k } else { self.op_reg(opcode) };
 
         // Default behavior...

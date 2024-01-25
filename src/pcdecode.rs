@@ -2,6 +2,7 @@
 pub fn pcdecode(path: &String) {
     let s = crate::spice_read::SpiceRead::from_path(path, 5e-6);
     let mut count = 0;
+    let mut seen = std::collections::HashSet::new();
 
     for [o2, o3, o4, o5, o6, o7, ojump, co, z, jump, ret, push, inc] in
         s.extract_positive(
@@ -10,6 +11,8 @@ pub fn pcdecode(path: &String) {
     {
         let opcode = o7 as u8 * 128 + o6 as u8 * 64 + o5 as u8 * 32
            + o4 as u8 * 16 + o3 as u8 * 8 + o2 as u8 * 4;
+
+        seen.insert((opcode, ojump, co, z));
 
         if opcode >= 0x40 && ojump {
             continue;  // Impossible combination.
@@ -41,6 +44,7 @@ pub fn pcdecode(path: &String) {
         assert_eq!(ret , ex_ret , "Ret  on {:#04x} {}", opcode, condition);
         assert_eq!(inc , ex_inc , "Inc  on {:#04x} {}", opcode, condition);
     }
+    assert_eq!(seen.len(), 512);
 
     println!("Tested {} of {}", count, s.num_samples());
 }

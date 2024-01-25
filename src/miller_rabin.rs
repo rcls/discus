@@ -61,14 +61,15 @@ pub fn math() -> Instructions {
 }
 
 fn input(i: &mut Instructions) -> &mut Instructions {
-    i.label("restart")
+    i   .xor (A)
+    .label("restart")
         .inc (A)
         .out ()
 
     // The input consists of 64bits BE...
     .label("read1")
         // We sample bit 6 on the rising edge of bit 7...
-        .inp ()
+        .inp ().load(A, A) // Prefix.
         .add (A)
         .jp  (NC, "read1")
         .add (A)
@@ -77,7 +78,7 @@ fn input(i: &mut Instructions) -> &mut Instructions {
 
         // Wait for bit 7 to fall.  If bit 6 stays up we are done.
     .label("read0")
-        .inp ()
+        .inp ().load(A, A) // Prefix.
         .add (A)
         .jp  (C, "read0")
         .add (A)

@@ -16,7 +16,7 @@ refresh the count would be more like 1000.
 The instruction set is minimalist but functional.  All instructions are a single
 byte and execution is strict single cycle throughput.  Constant values and some
 memory accesses are implemented via prefix instructions.  The prefixes are
-separate instructions, but leave their result in a “hidden” register that is
+separate instructions, but leave their result in a “hidden” register `K` that is
 implicitly accessed by the following instruction.
 
 Instructions with two operands have the accumulator as one operand and the
@@ -191,8 +191,7 @@ Not all bits are decoded; 0x40 to 0x47 are aliases.
 ### `STA` : `010011rr`
 
 Store the acumulator to memory.  The operand is the memory address to write.
-Like the `OUT` instruction, the only circuitry within the CPU for `STA` is to
-assert appropriate control strobes—the address and data buses are always driven.
+The operand is placed on the `B` bus and external memory strobes are driven.
 
 ### `IN` prefix : `01010000`
 
@@ -291,7 +290,7 @@ There are several buses:
 * **`B`** : Operand bus.  This is a differential CMOS bus outputing a
   memory address.  For instructions accessing memory, this is the instruction
   operand.  For instructions not accessing memory, the DRAM refresh address
-  is output.
+  is output.  (Internally to the CPU, `B` is always the instruction operand, with a multiplexer with the refresh address going to the outside).
 * **`Q`** : Result bus.  This is an open drain bus carrying the result of the
   current instruction.  It is driven by memory reads and IN instructions,
   in addition to all internal instruction result values.

@@ -17,17 +17,17 @@ pub fn memdecode(path: &String, tag: &str) {
         let mut sel = None;
         for j in (0..64).filter(|&j| selects[j][i]) {
             if let Some(sel) = sel {
-                panic!("At {} P={:#04x} bit {} and {} set",
-                        i, address, sel_names[sel], sel_names[j]);
+                panic!("At {i} P={address:#04x} bit {} and {} set",
+                       sel_names[sel], sel_names[j]);
             }
             sel = Some(j);
             seen[j] = true;
         }
-        assert_ne!(sel, None, "At {} P={:#04x} none set", i, address);
+        assert_ne!(sel, None, "At {i} P={address:#04x} none set");
     }
 
     if let Some(m) = seen.iter().position(|&m| !m) {
-        panic!("Did not see {}\n", sel_names[m]);
+        panic!("Did not see {}", sel_names[m]);
     }
 
     println!("{} samples", s.num_samples());

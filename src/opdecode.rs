@@ -79,8 +79,8 @@ pub fn opdecode(path: &String) {
         }
 
         // Test for undesirable combos.
-        assert!(!cs || !cr, "CS and CR on {:#04x}", opcode);
-        assert!(!as_ || !ar, "AS and AR on {:#04x}", opcode);
+        assert!(!cs || !cr, "CS and CR on {opcode:#04x}");
+        assert!(!as_ || !ar, "AS and AR on {opcode:#04x}");
 
         check(qe  , ex_qe  , "QE"  , opcode);
         check(cw  , ex_cw  , "CW"  , opcode);
@@ -105,11 +105,10 @@ pub fn opdecode(path: &String) {
 
         count += 1;
     }
-    println!("Tested {} of {}", count, s.num_samples());
+    println!("Tested {count} of {}", s.num_samples());
     assert_eq!(seen.len(), 128);
 }
 
 fn check(got: bool, ex: bool, tag: &str, opcode: u8) {
-    assert_eq!(got, ex, "got {} expect {} for {} on {:#04x}",
-               got, ex, tag, opcode);
+    assert_eq!(got, ex, "got {got} expect {ex} for {tag} on {opcode:#04x}");
 }

@@ -58,7 +58,7 @@ impl SpiceRead {
                 break;
             }
             else {
-                panic!("Unexpected line {}", line);
+                panic!("Unexpected line {line}");
             }
         }
 
@@ -77,8 +77,8 @@ impl SpiceRead {
         let mut last = 0.0;
         for t in self.iterate_column("time") {
             assert!(t - last <= 0.21 * self.quantum,
-                    "Timestep too large {} {}", last, t);
-            assert!(t > last, "Time goes backwards {} {}", last, t);
+                    "Timestep too large {last} {t}");
+            assert!(t > last, "Time goes backwards {last} {t}");
             last = t;
         }
 
@@ -104,7 +104,7 @@ impl SpiceRead {
             getline(&mut line, f);
             let mut parts = line.trim_end().split('\t');
             assert!(parts.next().is_some_and(|x| x == ""),
-                    "Corrupt var line '{}'", line);
+                    "Corrupt var line '{line}'");
 
             let index: usize = parts.next().expect("Truncated var line").parse()
                 .expect("Corrupt index");
@@ -143,7 +143,7 @@ impl SpiceRead {
 
     pub fn extract_byte(&self, name: &str) -> Vec<u8> {
         let names: [String; 8] = std::array::from_fn(
-            |i| format!("{}{}", name, i));
+            |i| format!("{name}{i}"));
         let columns: [_; 8] = std::array::from_fn(|i| self.vars[&names[i]]);
         let mut res = Vec::new();
         for i in &self.index {
@@ -180,8 +180,8 @@ impl SpiceRead {
                 continue;
             }
             let val = row[column];
-            assert!(val < 0.3 || val > 2.0, "Indeterminate {} @{} val {}",
-                    name, row[tc], val);
+            assert!(val < 0.3 || val > 2.0,
+                    "Indeterminate {name} @{} val {val}", row[tc]);
         }
     }
 }

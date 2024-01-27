@@ -41,10 +41,10 @@ pub fn alu(path: &String) {
                 ("Add", sum & 1 != 0, sum >= 2)
             };
 
-        println!("{} {} {} {} -> {} {}",
-                 op, a as u8, b as u8, ci as u8, q as u8, co as u8);
+        println!("{op} {} {} {} -> {} {}",
+                 a as u8, b as u8, ci as u8, q as u8, co as u8);
 
-        assert_eq!(ex_q, q , "Q not expected {}", ex_q);
-        assert_eq!(ex_c, co, "C not expected {}", ex_c);
+        assert_eq!(ex_q, q , "Q not expected {ex_q}");
+        assert_eq!(ex_c, co, "C not expected {ex_c}");
     }
 }

@@ -59,7 +59,7 @@ impl State {
             0x48..=0x4b => unreachable!(), // Unallocated, NOP?
             0x4c..=0x4f => self.memory.0[operand as usize] = self.a,
             0x50..=0x57 => self.inp(),
-            0x58..=0x5b => unreachable!(), // Unallocated (preserve K prefix?).
+            0x58..=0x5b => unreachable!(), // Unallocated.
             0x5c..=0x5f => {            // MEM prefix.
                 self.k = Some(self.memory.0[operand as usize]);
                 self.prefixed = true;

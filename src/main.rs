@@ -107,7 +107,7 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
             state.step(&code);
             count += 1;
         }
-        println!("executed {}", count);
+        println!("executed {count}");
     }
     if args.log {
         let mut state = crate::state::State::default();

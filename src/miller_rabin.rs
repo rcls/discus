@@ -31,7 +31,7 @@ pub fn miller_rabin(n: usize) -> Instructions {
         0 => full(),
         1 => single(),
         2 => math(),
-        _ => panic!("Unknown variant number {}", n),
+        _ => panic!("Unknown variant number {n}"),
     }
 }
 
@@ -396,8 +396,8 @@ fn test_leftrot() {
         run(&mut state, &math, "leftrot");
 
         assert_eq!(peek64top(&state, PRODUCT),
-                   value.wrapping_shl(i).wrapping_shl(1), "{}", i);
-        assert_eq!(state.c, hi, "{}", i);
+                   value.wrapping_shl(i).wrapping_shl(1), "{i}");
+        assert_eq!(state.c, hi, "{i}");
     }
 }
 
@@ -420,7 +420,7 @@ fn assemble_full() {
     let code = full.assemble();
     println!("Full has {:#x} bytes", code.len());
     for (k, v) in full.labels {
-        println!("{} {}", k, v);
+        println!("{k} {v}");
     }
 }
 
@@ -454,7 +454,7 @@ fn test_single_one(n: u64) {
     run(&mut state, &single(), "single");
     let result = state.a;
     let expect = if is_prime(n) { LEN } else { 1 };
-    assert_eq!(result, expect, "{} {} {} {}", n, is_prime(n), result, expect);
+    assert_eq!(result, expect, "{n} {} {result} {expect}", is_prime(n));
 }
 
 #[test]

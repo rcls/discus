@@ -235,7 +235,7 @@ result to the accumlator and updating the `Z` and `C` flags.
 The encoding of `aaa` is:
 * **000** : `ADD` (add without carry)
 * **001** : `SUB` (subtract without carry)
-* **010** : `OR ` (sets `C` to 0 also)
+* **010** : `OR ` (sets `C` to 0 also)
 * **011** : `AND` (sets `C` to 1 also)
 * **100** : `ADC` (add with carry)
 * **101** : `SBC` (subtract with carry)

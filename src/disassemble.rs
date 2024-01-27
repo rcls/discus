@@ -27,9 +27,9 @@ pub fn verilog(o: impl Write, program: &[u8]) -> Result {
 }
 
 fn write_code(o: &mut impl Write, a: u8, op: &[u8], align: bool) -> Result {
-    write!(o, "{:02x}:", a)?;
-    for &b in op {
-        write!(o, " {:02x}", b)?;
+    write!(o, "{a:02x}:")?;
+    for b in op {
+        write!(o, " {b:02x}")?;
     }
     if align {
         write!(o, "{}", &"           "[op.len().min(3) * 3 ..])?;
@@ -51,16 +51,16 @@ impl<T: Write> Emitter for Disassemble<T> {
     }
     fn emit_basic(&mut self, a: u8, op: &[u8], opcode: &str) -> Result {
         write_code(&mut self.0, a, op, true)?;
-        writeln!(&mut self.0, "{}", opcode)
+        writeln!(&mut self.0, "{opcode}")
     }
     fn emit_jump(&mut self, a: u8, op: &[u8],
                  opcode: &str, cc: &str, target: u8) -> Result {
         write_code(&mut self.0, a, op, true)?;
         if cc.len() == 0 {
-            writeln!(&mut self.0, "{:4} {:#04x}", opcode, target)
+            writeln!(&mut self.0, "{opcode:4} {target:#04x}")
         }
         else {
-            writeln!(&mut self.0, "{:4} {},{:#04x}", opcode, cc, target)
+            writeln!(&mut self.0, "{opcode:4} {cc},{target:#04x}")
         }
     }
     fn emit_ret(&mut self, a: u8, op: &[u8], cc: &str) -> Result {
@@ -69,22 +69,22 @@ impl<T: Write> Emitter for Disassemble<T> {
             writeln!(&mut self.0, "ret")
         }
         else {
-            writeln!(&mut self.0, "ret  {}", cc)
+            writeln!(&mut self.0, "ret  {cc}")
         }
     }
     fn emit_operand(&mut self, a: u8, op: &[u8],
                     opcode: &str, v: Value) -> Result {
         write_code(&mut self.0, a, op, true)?;
-        writeln!(&mut self.0, "{:4} {}", opcode, v)
+        writeln!(&mut self.0, "{opcode:4} {v}")
     }
     fn emit_xfer(&mut self, a: u8, op: &[u8],
                  opcode: &str, d: Register, v: Value) -> Result {
         write_code(&mut self.0, a, op, true)?;
         if v == Reg(d) {
-            writeln!(&mut self.0, "{:4} {}", opcode, d)
+            writeln!(&mut self.0, "{opcode:4} {d}")
         }
         else {
-            writeln!(&mut self.0, "{:4} {},{}", opcode, d, v)
+            writeln!(&mut self.0, "{opcode:4} {d},{v}")
         }
     }
 }
@@ -93,10 +93,10 @@ impl<T: Write> Emitter for Verilog<T> {
     fn emit_bytes(&mut self, _a: u8, bb: &[u8]) -> Result {
         let mut bb = bb.iter();
         if let Some(b) = bb.next() {
-            write!(self.0, "8'h{:02x},", b)?;
+            write!(self.0, "8'h{b:02x},")?;
         }
         for b in bb {
-            write!(self.0, " 8'h{:02x},", b)?;
+            write!(self.0, " 8'h{b:02x},")?;
         }
         writeln!(self.0)
     }

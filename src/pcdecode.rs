@@ -39,12 +39,12 @@ pub fn pcdecode(path: &String) {
         let ex_ret  = condition && opcode & 0xe0 == 0x60;
 
         count += 1;
-        assert_eq!(jump, ex_jump, "Jump on {:#04x} {}", opcode, condition);
-        assert_eq!(push, ex_push, "Push on {:#04x} {}", opcode, condition);
-        assert_eq!(ret , ex_ret , "Ret  on {:#04x} {}", opcode, condition);
-        assert_eq!(inc , ex_inc , "Inc  on {:#04x} {}", opcode, condition);
+        assert_eq!(jump, ex_jump, "Jump on {opcode:#04x} {condition}");
+        assert_eq!(push, ex_push, "Push on {opcode:#04x} {condition}");
+        assert_eq!(ret , ex_ret , "Ret  on {opcode:#04x} {condition}");
+        assert_eq!(inc , ex_inc , "Inc  on {opcode:#04x} {condition}");
     }
     assert_eq!(seen.len(), 512);
 
-    println!("Tested {} of {}", count, s.num_samples());
+    println!("Tested {count} of {}", s.num_samples());
 }

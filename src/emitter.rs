@@ -14,10 +14,10 @@ impl std::fmt::Display for Register {
 impl std::fmt::Display for Value {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match *self {
-            Reg   (r) => write!(f, "{}"       , r),
-            Num   (n) => write!(f, "{:#04x}"  , n),
-            MemReg(r) => write!(f, "[{}]"     , r),
-            MemNum(n) => write!(f, "[{:#04x}]", n),
+            Reg   (r) => write!(f, "{r}"),
+            Num   (n) => write!(f, "{n:#04x}"),
+            MemReg(r) => write!(f, "[{r}]"),
+            MemNum(n) => write!(f, "[{n:#04x}]"),
         }
     }
 }

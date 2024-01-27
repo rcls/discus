@@ -67,8 +67,8 @@ impl SpiceCheck<'_> {
     fn verify<T>(&mut self, sim: T, spice: T, what: &str)
                  where T: PartialEq<T> + Display {
         if sim != spice {
-            println!("Mismatch @{:#04x} sim {} v. spice {} on {}",
-                     self.state.pc, sim, spice, what);
+            println!("Mismatch @{:#04x} sim {sim} v. spice {spice} on {what}",
+                     self.state.pc);
             self.success = false;
         }
     }

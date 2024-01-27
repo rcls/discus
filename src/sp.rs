@@ -10,7 +10,7 @@ pub fn sp(path: &String) {
     {
         let now = s0 as u8 + s1 as u8 * 2 + s2 as u8 * 4 + s3 as u8 * 8;
         assert_eq!(now.count_ones(), 1,
-                   "None or multiple set {:#x} at {}", now, n);
+                   "None or multiple set {now:#x} at {n}");
 
         if let Some(prev) = prev {
             let mut expect = prev;
@@ -22,13 +22,12 @@ pub fn sp(path: &String) {
             }
             expect %= 15;
 
-            assert_eq!(expect, now,
-                       "Expect {:#x} got {:#x} at {}", expect, now, n);
+            assert_eq!(expect, now, "Expect {expect:#x} got {now:#x} at {n}");
             count += 1;
         }
 
         prev = Some(now);
         prev_push = Some(push);
     }
-    println!("Tested {} of {} samples", count, s.num_samples());
+    println!("Tested {count} of {} samples", s.num_samples());
 }

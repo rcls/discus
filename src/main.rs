@@ -87,8 +87,7 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
     let stdout = std::io::stdout();
 
     if args.disassemble {
-        disassemble::disassemble(stdout.lock(), &code)
-           .unwrap();
+        disassemble::disassemble(stdout.lock(), &code).unwrap();
     }
     if args.hex {
         disassemble::hex_dump(stdout.lock(), &code).unwrap();
@@ -97,7 +96,7 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
         disassemble::verilog(stdout.lock(), &code).unwrap();
     }
     if args.resistors {
-         crate::resistors::resistors(stdout.lock(), &code).unwrap();
+        crate::resistors::resistors(stdout.lock(), &code).unwrap();
     }
     if args.time {
         let mut state = crate::state::State::default();

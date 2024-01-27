@@ -18,6 +18,7 @@ impl std::fmt::Display for Value {
             Num   (n) => write!(f, "{n:#04x}"),
             MemReg(r) => write!(f, "[{r}]"),
             MemNum(n) => write!(f, "[{n:#04x}]"),
+            Input     => write!(f, "IN"),
         }
     }
 }
@@ -81,35 +82,46 @@ fn steal(con: u8, op: u8) -> u8 { con + (op << 6) }
 struct Prefixes<T> {
     constant: Option<u8>,
     memory: Option<u8>,
+    input: Option<u8>,
     e: T,
 }
 
 impl<T: Emitter> Prefixes<&'_ mut T> {
     fn eject(&mut self, a: u8) -> Result {
-        match (take(&mut self.constant), take(&mut self.memory)) {
-            (None, None) => Ok(()),
-            (Some(con), None) => self.e.emit_operand(
+        match (take(&mut self.constant), take(&mut self.memory),
+               take(&mut self.input)) {
+            (None, None, None) => Ok(()),
+            (Some(con), None, None) => self.e.emit_operand(
                 a - 1, &[con], "pre", Num(con)),
-            (None, Some(mem)) => self.e.emit_operand(
+            (None, Some(mem), None) => self.e.emit_operand(
                 a - 1, &[mem], "pre", MemReg(reg(mem))),
-            (Some(con), Some(mem)) => self.e.emit_operand(
+            (Some(con), Some(mem), None) => self.e.emit_operand(
                 a - 2, &[con, mem], "pre", MemNum(steal(con, mem))),
+            (None, None, Some(inp)) => self.e.emit_basic(a - 1, &[inp], "inp"),
+            _ => unreachable!(),
         }
     }
 
     fn get_ops<'a, 'b>(&'a mut self, a: u8, op: u8, b: &'b mut [u8; 3])
                        -> (u8, &'b [u8], Value)
     {
-        match (take(&mut self.constant), take(&mut self.memory)) {
-            (None, None) => { *b = [op, 0, 0]; (a, &b[..1], Reg(reg(op))) }
-            (Some(con), None)
+        match (take(&mut self.constant), take(&mut self.memory),
+               take(&mut self.input)) {
+            (None, None, None)
+                => { *b = [op, 0, 0]; (a, &b[..1], Reg(reg(op))) }
+            (Some(con), None, None)
                 => { *b = [con, op, 0]; (a - 1, &b[..2], Num(steal(con, op))) }
-            (None, Some(mem))
+            (None, Some(mem), None)
                 => { *b = [mem, op, 0]; (a - 1, &b[..2], MemReg(reg(mem))) }
-            (Some(con), Some(mem)) => {
+            (Some(con), Some(mem), None) => {
                 *b = [con, mem, op];
                 (a - 2, b, MemNum(steal(con, mem)))
             }
+            (None, None, Some(input)) => {
+                *b = [input, op, 0];
+                (a - 1, &b[..2], Input)
+            }
+            _ => unreachable!(),
         }
     }
 
@@ -160,7 +172,10 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
             }
             0x40        => self.e.emit_basic(a, &[op], "out")?,
             0x4c..=0x4f => self.emit_operand(a, op, "sta")?,
-            0x50        => self.e.emit_basic(a, &[op], "inp")?,
+            0x50        => {
+                self.eject(a)?;
+                self.input = Some(op);
+            }
             0x5c..=0x5f => {            // MEM prefix.
                 if self.memory.is_some() {
                     self.eject(a)?;
@@ -193,7 +208,7 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
 
 pub fn emit(e: &mut impl Emitter, program: &[u8]) -> Result
 {
-    let mut prefixes = Prefixes{constant: None, memory: None, e};
+    let mut prefixes = Prefixes{constant: None, memory: None, input: None, e};
     for (a, op) in program.iter().enumerate() {
         prefixes.emit(a as u8, *op)?;
     }

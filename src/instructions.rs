@@ -7,6 +7,7 @@ use Value::*;
 // Convenience for "use instructions.constants.*;" without undue pollution.
 pub mod constants {
     pub use super::Condition::*;
+    pub use super::Input::*;
     pub use super::Register::*;
 }
 
@@ -14,11 +15,15 @@ pub mod constants {
 pub enum Register {A, X, Y, U}
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Input {IN}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Value {
     Reg(Register),
     Num(u8),
     MemReg(Register),
     MemNum(u8),
+    Input,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -32,6 +37,7 @@ pub enum Condition {
     Always = 0, Never = 4, Z = 16, NZ = 20, C = 24, NC = 28
 }
 
+const INP  : u8 = 0x50;
 const MEM  : u8 = 0x5c;
 const LOAD : u8 = 0xc8;
 const LOADM: u8 = 0xcc;
@@ -59,6 +65,10 @@ impl From<[u8; 1]> for Value {fn from([n]: [u8; 1]) -> Value {MemNum(n)}}
 
 impl From<[Register; 1]> for Value {
     fn from([r]: [Register; 1]) -> Value {MemReg(r)}
+}
+
+impl From<Input> for Value {
+    fn from(_: Input) -> Value {Input}
 }
 
 impl From<u8> for Target { fn from(a: u8) -> Target {Target::Addr(a)} }
@@ -108,6 +118,7 @@ impl Instructions {
             Num   (n) => self.byte(n & 0x3f).byte(b + (n >> 6)),
             MemReg(r) => self.byte(MEM + r as u8).byte(b),
             MemNum(n) => self.byte(n & 0x3f).byte(MEM + (n >> 6)).byte(b),
+            Input     => self.byte(INP).byte(b),
         }
     }
 
@@ -160,11 +171,13 @@ impl Instructions {
             Num   (n) => self.code(LOAD  + d as u8 * 16, n),
             MemReg(r) => self.code(LOADM + d as u8 * 16, r),
             MemNum(n) => self.code(LOADM + d as u8 * 16, n),
+            Input     => self.code(LOAD  + d as u8 * 16, Input),
         }
     }
 
     pub fn out(&mut self) -> &mut Self {self.byte(0x40)}
-    pub fn inp(&mut self) -> &mut Self {self.byte(0x50)}
+    #[allow(unused)]
+    pub fn inp(&mut self) -> &mut Self {self.byte(INP)}
 
     /// Set carry.
     pub fn setc(&mut self) -> &mut Self {self.and(A)}

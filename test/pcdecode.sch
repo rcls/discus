@@ -9,7 +9,7 @@ device=vpulse
 T 19650 11900 5 10 0 0 270 0 1
 footprint=none
 T 18500 12250 5 10 1 1 0 6 1
-value=pulse 0 3.3 10u 1n 1n 10u 20u
+value=pulse 0 2.5 10u 1n 1n 10u 20u
 }
 C 24200 7900 1 0 0 vdc-1.sym
 {
@@ -20,7 +20,7 @@ device=VOLTAGE_SOURCE
 T 24900 8950 5 10 0 0 0 0 1
 footprint=none
 T 24900 8350 5 10 1 1 0 0 1
-value=DC 3.3V
+value=DC 2.5V
 }
 C 18600 12000 1 270 0 vpulse-1.sym
 {
@@ -31,7 +31,7 @@ device=vpulse
 T 19650 11300 5 10 0 0 270 0 1
 footprint=none
 T 18500 11650 5 10 1 1 0 6 1
-value=pulse 0 3.3 20u 1n 1n 20u 40u
+value=pulse 0 2.5 20u 1n 1n 20u 40u
 }
 C 18600 11400 1 270 0 vpulse-1.sym
 {
@@ -42,7 +42,7 @@ footprint=none
 T 18600 11150 5 10 1 1 0 0 1
 refdes=V4
 T 18500 11050 5 10 1 1 0 6 1
-value=pulse 0 3.3 40u 1n 1n 40u 80u
+value=pulse 0 2.5 40u 1n 1n 40u 80u
 }
 C 18600 10800 1 270 0 vpulse-1.sym
 {
@@ -53,7 +53,7 @@ footprint=none
 T 18600 10550 5 10 1 1 0 0 1
 refdes=V5
 T 18500 10450 5 10 1 1 0 6 1
-value=pulse 0 3.3 80u 1n 1n 80u 160u
+value=pulse 0 2.5 80u 1n 1n 80u 160u
 }
 C 18600 10200 1 270 0 vpulse-1.sym
 {
@@ -64,7 +64,7 @@ footprint=none
 T 18600 9950 5 10 1 1 0 0 1
 refdes=V6
 T 18500 9850 5 10 1 1 0 6 1
-value=pulse 0 3.3 160u 1n 1n 160u 320u
+value=pulse 0 2.5 160u 1n 1n 160u 320u
 }
 C 18600 9600 1 270 0 vpulse-1.sym
 {
@@ -75,7 +75,7 @@ footprint=none
 T 18600 9350 5 10 1 1 0 0 1
 refdes=V7
 T 18500 9250 5 10 1 1 0 6 1
-value=pulse 0 3.3 320u 1n 1n 320u 640u
+value=pulse 0 2.5 320u 1n 1n 320u 640u
 }
 C 18600 9000 1 270 0 vpulse-1.sym
 {
@@ -86,7 +86,7 @@ footprint=none
 T 18600 8750 5 10 1 1 0 0 1
 refdes=V8
 T 18500 8650 5 10 1 1 0 6 1
-value=pulse 0 3.3 640u 1n 1n 640u 1280u
+value=pulse 0 2.5 640u 1n 1n 640u 1280u
 }
 C 18600 8400 1 270 0 vpulse-1.sym
 {
@@ -97,7 +97,7 @@ footprint=none
 T 18600 8150 5 10 1 1 0 0 1
 refdes=V9
 T 18500 8050 5 10 1 1 0 6 1
-value=pulse 0 3.3 1280u 1n 1n 1280u 2560u
+value=pulse 0 2.5 1280u 1n 1n 1280u 2560u
 }
 C 18600 7800 1 270 0 vpulse-1.sym
 {
@@ -108,7 +108,7 @@ footprint=none
 T 18600 7550 5 10 1 1 0 0 1
 refdes=V10
 T 18500 7450 5 10 1 1 0 6 1
-value=pulse 0 3.3 5u 1n 1n 5u 10u
+value=pulse 0 2.5 5u 1n 1n 5u 10u
 }
 N 19800 12300 21800 12300 4
 {

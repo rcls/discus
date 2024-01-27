@@ -8,7 +8,7 @@ device=vpulse
 T 52850 39000 5 10 0 0 270 0 1
 footprint=none
 T 51700 39350 5 10 1 1 0 6 1
-value=pulse 0 3.3 0 1n 1n 40u 80u
+value=pulse 0 2.5 0 1n 1n 40u 80u
 }
 C 51800 38800 1 270 0 vpulse-1.sym
 {
@@ -19,7 +19,7 @@ device=vpulse
 T 52850 38100 5 10 0 0 270 0 1
 footprint=none
 T 51700 38450 5 10 1 1 0 6 1
-value=pulse 0 3.3 9u 1n 1n 5u 10u
+value=pulse 0 2.5 9u 1n 1n 5u 10u
 }
 C 51800 40700 1 270 0 vpulse-1.sym
 {
@@ -30,18 +30,18 @@ device=vpulse
 T 52850 40000 5 10 0 0 270 0 1
 footprint=none
 T 51700 40350 5 10 1 1 0 6 1
-value=pulse 0 3.3 80u 1n 1n 80u 160u
+value=pulse 0 2.5 80u 1n 1n 80u 160u
 }
 C 56900 38100 1 0 0 vdc-1.sym
 {
 T 57600 38750 5 10 1 1 0 0 1
-refdes=V3.3
+refdes=V2.5
 T 57600 38950 5 10 0 0 0 0 1
 device=VOLTAGE_SOURCE
 T 57600 39150 5 10 0 0 0 0 1
 footprint=none
 T 57600 38550 5 10 1 1 0 0 1
-value=DC 3.3V
+value=DC 2.5V
 }
 C 51700 38200 1 0 0 gnd-1.sym
 C 54400 37600 1 0 0 gnd-1.sym
@@ -108,7 +108,7 @@ device=vpulse
 T 52850 41000 5 10 0 0 270 0 1
 footprint=none
 T 51700 41350 5 10 1 1 0 6 1
-value=pulse 0 3.3 0.5u 1n 1n 2u 10u
+value=pulse 0 2.5 0.5u 1n 1n 2u 10u
 }
 C 53000 40400 1 0 0 xor.sym
 {

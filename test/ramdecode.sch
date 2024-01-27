@@ -201,7 +201,7 @@ footprint=none
 T 6500 8050 5 10 1 1 0 6 1
 refdes=V
 T 6500 7850 5 10 1 1 0 6 1
-value=DC 3.3V
+value=DC 2.5V
 }
 C 7000 7100 1 0 1 gnd-1.sym
 C 7100 8600 1 0 1 vdd-1.sym

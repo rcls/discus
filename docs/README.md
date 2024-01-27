@@ -193,13 +193,15 @@ Not all bits are decoded; 0x40 to 0x47 are aliases.
 Store the acumulator to memory.  The operand is the memory address to write.
 The operand is placed on the `B` bus and external memory strobes are driven.
 
-### `IN` prefix : `01010000`
+### `INP` prefix : `01010000`
 
 Load `K` from the external result bus `Q` (the bus is open-drain).  The
 accumulator bus may be used by external circuitry, and the `IN` strobe line is
 asserted.
 
-Not all bits are decoded; 0x50 to 0x57 are aliases.
+Not all bits are decoded; 0x50 to 0x57 are aliases.  In assembly, this can be
+written as an `IN` operand to the prefixed instruction, e.g., `LOAD A,IN`
+instead of `INP`, `LOAD A,…`.
 
 ### `MEM` prefix : `010111rr`
 
@@ -221,9 +223,9 @@ condition flags set in the second stage.  This means that the condition flag for
 the return is evaluated before an update by the immediately preceding
 instruction, a hazard to be aware of.
 
-(`JUMP` and `CALL` have the same quirk, but for those instructions, there is no
-impact—for `JUMP` & `CALL`, the preceding instruction must be `CONST`
-which does not change the condition flags.)
+(`JUMP` and `CALL` have the same quirk, but for those instructions, it is a
+feature not a problem—for those, we want to ignore the preceeding `CONST` prefix
+in evaluationing the condition flags.)
 
 ### Arithmetic : `100aaarr`
 

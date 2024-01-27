@@ -1,4 +1,4 @@
-v 20130925 2
+v 20220529 2
 C 8300 7000 1 0 0 noverlap.sym
 {
 T 8600 7300 5 10 1 1 0 4 1
@@ -60,7 +60,7 @@ device=vpulse
 T 7100 7050 5 10 0 0 0 0 1
 footprint=none
 T 6800 5950 5 10 1 1 0 0 1
-value=pulse 0 3.3 10u 10n 10n 10u 20u
+value=pulse 0 2.5 10u 10n 10n 10u 20u
 }
 C 10000 6000 1 0 0 vdc-1.sym
 {
@@ -71,7 +71,7 @@ device=VOLTAGE_SOURCE
 T 10700 7050 5 10 0 0 0 0 1
 footprint=none
 T 10700 6450 5 10 1 1 0 0 1
-value=DC 3.3V
+value=DC 2.5V
 }
 N 6700 7200 6700 7300 4
 {

@@ -71,8 +71,8 @@ static CONDITIONS: [&str; 8] = [
 ];
 
 static ARITH: [&str; 16] = [
-    "add", "sub", "or", "and", "adc", "sbc", "xor", "and2",
-    "tadd", "cmp", "tor", "test", "tadc", "tsbc", "txor", "tan2",
+    "add", "sub", "or", "and", "adc", "sbc", "xor", "dnc",
+    "tadd", "cmp", "tor", "test", "tadc", "tsbc", "txor", "tdnc",
 ];
 
 static XFER: [&str; 4] = ["inc", "dec", "load", "load"];
@@ -103,8 +103,7 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
     }
 
     fn get_ops<'a, 'b>(&'a mut self, a: u8, op: u8, b: &'b mut [u8; 3])
-                       -> (u8, &'b [u8], Value)
-    {
+                       -> (u8, &'b [u8], Value) {
         match (take(&mut self.constant), take(&mut self.memory),
                take(&mut self.input)) {
             (None, None, None)

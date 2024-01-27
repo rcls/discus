@@ -17,6 +17,7 @@ const FACTOR  : u8 = LEN * 5;
 const EXPONENT: u8 = LEN * 6;
 const BASE    : u8 = LEN * 7;
 
+// FIXME - intent is that this address is unpopulated and therefore all-ones.
 const ZERO: u8 = 0xbf;
 const ONE: u8 = 0xc7;
 const BASE_START: u8 = 0xcf;

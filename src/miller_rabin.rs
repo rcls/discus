@@ -17,8 +17,6 @@ const FACTOR  : u8 = LEN * 5;
 const EXPONENT: u8 = LEN * 6;
 const BASE    : u8 = LEN * 7;
 
-// FIXME - intent is that this address is unpopulated and therefore all-ones.
-const ZERO: u8 = 0xbf;
 const ONE: u8 = 0xc7;
 const BASE_START: u8 = 0xcf;
 
@@ -153,21 +151,22 @@ fn work(i: &mut Instructions) -> &mut Instructions {
         .load(X, ONE)
         .call("add64m")
 
-        // If result is multi-byte, return A = -1, C = 1.
-        // Else return result in A and C = 0.
+        // If result is multi-byte, return A = -1.
+        // Else return result in A.
     .label("classify")
         .load(X, RESULT - 1)
         .sub (A)
     .label("classify1")
-        // A=0 at this point, so SUBM(X) sets C=!Z and Z reflects M(X).
+        // A=0 at this point, so SUB([X]) sets C=Z and Z reflects [X].
         .sub ([X])
-        // Sets A=0 or -1 (C-1), preserves C, sets Z=!C (which we already had).
+        // Sets A=0 or -1 (C-1), preserves C, sets Z=C (which we already had).
         .sbc (A)
         // The Z flag works here with or without a hazard.
         .rt  (NZ)
         .dec (X)
         .jp  (NZ, "classify1")
-        .add ([RESULT])                 // A=[result] but sets flags.
+        .check(|s| !s.c)
+        .load(A, [RESULT])
         .ret ()
 }
 
@@ -178,7 +177,7 @@ fn power_body(i: &mut Instructions) -> &mut Instructions {
         .sub ([EXP_TWOS])
 
         // First left shift until we find a set bit...
-        .load(Y,A)
+        .load(Y, A)
 
     .label("power_y")
         .call("leftrot_exponent")
@@ -207,9 +206,14 @@ fn arithmetic(i: &mut Instructions) -> &mut Instructions {
     .label("mult")
         .load(X, FACTOR)
         .call("copy")
-        .load(Y, ZERO)
+        // We could save two bytes by coping a zero block if we had one...
         .load(X, RESULT)
-        .call("copy")
+        .check(|s| s.x == 8)
+        .sub (A)
+    .label("mult0")
+        .sta (X)
+        .dec (X)
+        .jp  (NZ, "mult0")
         .load(A, LEN * 8)
     .label("mult1")
         .sta (MULT_LOOP_COUNT)
@@ -475,6 +479,28 @@ fn test_single() {
     ];
     for s in singles {
         test_single_one(s);
+    }
+}
+
+#[test]
+fn test_base_factors() {
+    let pf = [2, 3, 5, 13, 19, 73, 193, 407521, 299210837];
+    for p in pf {
+        let mut state = initial();
+        poke64top(&mut state, MODULUS, p);
+        run(&mut state, &single(), "single");
+        // It so happens that this passes for 2.  Although officially the code
+        // only supports odd numbers...
+        assert_eq!(state.a, LEN, "check prime {}", p);
+        for b in MR_BASES {
+            if b == p || b % p != 0 {
+                continue;
+            }
+            let mut state = initial();
+            poke64top(&mut state, MODULUS, b / p);
+            run(&mut state, &single(), "single");
+            assert_eq!(state.a, 1, "check non prime {} / {}", b, p);
+        }
     }
 }
 

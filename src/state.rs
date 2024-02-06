@@ -7,6 +7,9 @@ impl Default for Memory {
     fn default() -> Memory { Memory([0; 256]) }
 }
 
+#[derive(Copy, Clone, Eq, PartialEq)]
+pub enum Prefix {Value, Const}
+
 #[derive(Clone, Default)]
 pub struct State {
     pub a: u8,
@@ -15,8 +18,7 @@ pub struct State {
     pub u: u8,
 
     pub k: Option<u8>,                  // We don't fully model k.
-    pub prefixed: bool,
-    pub prev_const: bool,
+    pub prefix: Option<Prefix>,
     pub c: bool,
     pub pc: u8,
     pub sp: i8,
@@ -31,28 +33,24 @@ pub struct State {
 impl State {
     pub fn step(&mut self, program: &[u8]) {
         let opcode = program[self.pc as usize];
-        let prev_const = self.prev_const;
-        let prefixed = self.prefixed;
-        let k = self.k.unwrap_or(0xff);
-        let operand = if prefixed { k } else { self.op_reg(opcode) };
+        let prefix = self.prefix.take();
+        let k = self.k();
+        let operand = if prefix != None { k } else { self.op_reg(opcode) };
 
         // Default behavior...
         self.k = None;
-        self.prefixed = false;
-        self.prev_const = false;
         self.pc += 1;
         let c = self.c;
         let z = k == 0;
 
         match opcode {
-            0x00..=0x3f => if prev_const {
+            0x00..=0x3f => if prefix == Some(Prefix::Const) {
                 self.jump(opcode, k);   // JUMP and CALL.
             }
             else {
                 let next = program[self.pc as usize] & 3;
                 self.k = Some(opcode | next << 6);  // CONST.
-                self.prev_const = true;
-                self.prefixed = true;
+                self.prefix = Some(Prefix::Const);
             }
 
             0x40..=0x47 => self.out(),
@@ -62,7 +60,7 @@ impl State {
             0x58..=0x5b => unreachable!(), // Unallocated.
             0x5c..=0x5f => {            // MEM prefix.
                 self.k = Some(self.memory.0[operand as usize]);
-                self.prefixed = true;
+                self.prefix = Some(Prefix::Value);
             }
             0x60..=0x7f => self.ret(opcode),
             0x80..=0x9f => self.a = self.arith(opcode, operand),
@@ -78,6 +76,10 @@ impl State {
         if let Some(c) = insns.checks.get(&self.pc) {
             assert!(c(self))
         }
+    }
+
+    pub fn k(&self) -> u8 {
+        self.k.unwrap_or(0xff)
     }
 
     fn op_reg(&self, op: u8) -> u8 {

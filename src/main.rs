@@ -110,13 +110,16 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
     }
     if args.log {
         let mut state = crate::state::State::default();
-        while state.sp >= 0 {
-            state.check(&insns);
-            state.step(&code);
+        loop {
             println!(
                 "{:02x}: A={:02x} X={:02x} Y={:02x} U={:02x} K={:02x} C={} SP={}",
                 state.pc, state.a, state.x, state.y, state.u,
-                state.k.unwrap_or(0), state.c as u8, state.sp);
+                state.k(), state.c as u8, state.sp);
+            if state.sp < 0 {
+                break;
+            }
+            state.check(&insns);
+            state.step(&code);
         }
     }
     if let Some(s) = &args.verify {

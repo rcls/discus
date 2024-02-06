@@ -1,7 +1,5 @@
 pub use crate::instructions::{Register, Value, Value::*};
 
-use std::mem::take;
-
 pub type Result = std::io::Result<()>;
 
 impl std::fmt::Display for Register {
@@ -31,7 +29,7 @@ fn reg(r: u8) -> Register {
 pub trait Emitter {
     // When called from emit(), ops.len() will be in 1..=3.  3 only occurs if
     // one of the below is not implemented.  (1 and 2 may occur on illegal byte
-    // sequences).
+    // sequences, even if all the below are implemented).
     fn emit_bytes(&mut self, a: u8, op: &[u8]) -> Result;
 
     fn emit_jump(&mut self, a: u8, op: &[u8],
@@ -79,65 +77,73 @@ static XFER: [&str; 4] = ["inc", "dec", "load", "load"];
 
 fn steal(con: u8, op: u8) -> u8 { con + (op << 6) }
 
-struct Prefixes<T> {
-    constant: Option<u8>,
-    memory: Option<u8>,
-    input: Option<u8>,
+enum Prefix {
+    NoPrefix,
+    Constant(u8),
+    Memory(u8),
+    MemConst(u8, u8),
+    Inp(u8),
+}
+use Prefix::*;
+
+impl Prefix {
+    fn steals(&self) -> bool {
+        matches!(self, Constant(_))
+    }
+    fn memory(&self) -> bool {
+        matches!(self, Memory(_)) || matches!(self, MemConst(_, _))
+    }
+}
+
+struct Emission<T> {
+    prefix: Prefix,
     e: T,
 }
 
-impl<T: Emitter> Prefixes<&'_ mut T> {
+impl<T: Emitter> Emission<&'_ mut T> {
     fn eject(&mut self, a: u8) -> Result {
-        match (take(&mut self.constant), take(&mut self.memory),
-               take(&mut self.input)) {
-            (None, None, None) => Ok(()),
-            (Some(con), None, None) => self.e.emit_operand(
+        match std::mem::replace(&mut self.prefix, NoPrefix) {
+            NoPrefix => Ok(()),
+            Constant(con) => self.e.emit_operand(
                 a - 1, &[con], "pre", Num(con)),
-            (None, Some(mem), None) => self.e.emit_operand(
+            Memory(mem) => self.e.emit_operand(
                 a - 1, &[mem], "pre", MemReg(reg(mem))),
-            (Some(con), Some(mem), None) => self.e.emit_operand(
+            MemConst(con, mem) => self.e.emit_operand(
                 a - 2, &[con, mem], "pre", MemNum(steal(con, mem))),
-            (None, None, Some(inp)) => self.e.emit_basic(a - 1, &[inp], "inp"),
-            _ => unreachable!(),
+            Inp(inp) => self.e.emit_operand(a - 1, &[inp], "pre", Input),
         }
     }
 
     fn get_ops<'a, 'b>(&'a mut self, a: u8, op: u8, b: &'b mut [u8; 3])
                        -> (u8, &'b [u8], Value) {
-        match (take(&mut self.constant), take(&mut self.memory),
-               take(&mut self.input)) {
-            (None, None, None)
+        match std::mem::replace(&mut self.prefix, NoPrefix) {
+            NoPrefix
                 => { *b = [op, 0, 0]; (a, &b[..1], Reg(reg(op))) }
-            (Some(con), None, None)
+            Constant(con)
                 => { *b = [con, op, 0]; (a - 1, &b[..2], Num(steal(con, op))) }
-            (None, Some(mem), None)
+            Memory(mem)
                 => { *b = [mem, op, 0]; (a - 1, &b[..2], MemReg(reg(mem))) }
-            (Some(con), Some(mem), None) => {
+            MemConst(con, mem) => {
                 *b = [con, mem, op];
                 (a - 2, b, MemNum(steal(con, mem)))
             }
-            (None, None, Some(input)) => {
+            Inp(input) => {
                 *b = [input, op, 0];
                 (a - 1, &b[..2], Input)
             }
-            _ => unreachable!(),
         }
     }
 
     fn emit_operand(&mut self, a: u8, op: u8, opcode: &str) -> Result {
-        // A memory prefix with non-zero register bits gets ejected.
-        if self.memory.is_some() && op & 3 != 0 {
-            self.eject(a)?;
-        }
         let mut buffer = [0; 3];
         let (a, ops, v) = self.get_ops(a, op, &mut buffer);
         self.e.emit_operand(a, ops, opcode, v)
     }
 
     fn emit_xfer(&mut self, a: u8, op: u8) -> Result {
-        // A memory prefix with non-zero register bits gets ejected,
-        // as does a LOAD with a memory prefix.
-        if self.memory.is_some() && (op & 3 != 0 || op & 0xc8 == 0xc8) {
+        // Eject a LOAD(M) with memory prefix, and eject LOADM with INP.
+        if (self.prefix.memory() && op & 0xc8 == 0xc8)
+            || (matches!(self.prefix, Inp(_)) && op & 0xcc == 0xcc) {
             self.eject(a)?;
         }
         let opcode = XFER[op as usize >> 2 & 3];
@@ -154,32 +160,42 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
     }
 
     fn emit(&mut self, a: u8, op: u8) -> Result {
+        // If we have a non-stealing prefix and non-zero register bits, then
+        // eject.
+        if !self.prefix.steals() && op & 3 != 0 {
+            self.eject(a)?;
+        }
         match op {
             0x00..=0x3f => {
-                if self.memory.is_some() {
-                    self.eject(a)?;
-                }
-                if let Some(con) = take(&mut self.constant) {
-                    let cc = op as usize >> 2 & 7;
-                    let opcode = if op & 0x20 == 0 {"jump"} else {"call"};
-                    self.e.emit_jump(a - 1, &[con, op],
-                                     opcode, CONDITIONS[cc], steal(con, op))?;
-                }
-                else {
-                    self.constant = Some(op);
+                match &self.prefix {
+                    Constant(con) => {
+                        let cc = op as usize >> 2 & 7;
+                        let opcode = if op & 0x20 == 0 {"jump"} else {"call"};
+                        self.e.emit_jump(a - 1, &[*con, op],
+                                         opcode, CONDITIONS[cc],
+                                         steal(*con, op))?;
+                        self.prefix = NoPrefix;
+                    }
+                    _ => {
+                        self.eject(a)?;
+                        self.prefix = Constant(op);
+                    }
                 }
             }
             0x40        => self.e.emit_basic(a, &[op], "out")?,
             0x4c..=0x4f => self.emit_operand(a, op, "sta")?,
             0x50        => {
                 self.eject(a)?;
-                self.input = Some(op);
+                self.prefix = Inp(op);
             }
             0x5c..=0x5f => {            // MEM prefix.
-                if self.memory.is_some() {
-                    self.eject(a)?;
+                match &self.prefix {
+                    Constant(con) => self.prefix = MemConst(*con, op),
+                    _ => {
+                        self.eject(a)?;
+                        self.prefix = Memory(op);
+                    }
                 }
-                self.memory = Some(op);
             }
             0x60..=0x7f => {            // Returns.
                 self.eject(a)?;
@@ -207,7 +223,7 @@ impl<T: Emitter> Prefixes<&'_ mut T> {
 
 pub fn emit(e: &mut impl Emitter, program: &[u8]) -> Result
 {
-    let mut prefixes = Prefixes{constant: None, memory: None, input: None, e};
+    let mut prefixes = Emission{prefix: NoPrefix, e};
     for (a, op) in program.iter().enumerate() {
         prefixes.emit(a as u8, *op)?;
     }

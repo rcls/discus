@@ -1,6 +1,5 @@
 * Q2SC4774 NPN BJT model
 * Date: 2006/12/06
-* Ralph reduced BR from 123.13
 .MODEL Q2SC4774 NPN
 + IS=400.00E-18
 + BF=273.94

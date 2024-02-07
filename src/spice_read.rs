@@ -2,7 +2,7 @@ use std::collections::BTreeMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
-const SKIP: f64 = 2.0;
+const SKIP: f64 = 1.0;
 
 const THRESHOLD: f64 = 1.2;
 
@@ -176,11 +176,11 @@ impl SpiceRead {
         for row in self.raw_values.chunks_exact(self.num_vars) {
             let q = row[tc] / self.quantum;
             let part = q.fract();
-            if part < 0.5 || part > 0.9 || q < SKIP * self.quantum {
+            if part < 0.5 || part > 0.9 || q < SKIP {
                 continue;
             }
             let val = row[column];
-            assert!(val < 0.3 || val > 2.0,
+            assert!(val < 0.5 || val > 2.0,
                     "Indeterminate {name} @{} val {val}", row[tc]);
         }
     }

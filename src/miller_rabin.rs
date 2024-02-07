@@ -317,11 +317,15 @@ fn run(state: &mut State, program: &Instructions, l: &str) {
     let initial_pc = state.pc;
     state.pc = program.labels[l];
 
+    let mut cycles = 0;
     while state.sp >= initial_sp {
         state.step(&code);
+        cycles += 1;
     }
     state.sp += 1;                      // Undo the final ret.
     state.pc = initial_pc;
+
+    println!("{} took {} clocks", l, cycles);
 }
 
 #[cfg(test)]

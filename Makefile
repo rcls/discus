@@ -6,7 +6,7 @@ EXPORT=$(LEPTON)/bin/lepton-export
 PCB=$(LEPTON)/bin/pcb
 
 ADHOC_TEST = alu pcdecode opdecode ramdecode romdecode sp
-PROG_TEST = memp mem memi memw call inc sub hazard2 add logic cmp memf hazard
+PROG_TEST = memp mem memi memw call hazard2 inc sub add logic cmp memf hazard
 TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
 
 BOARDS=bit control dram64byte rom64byte

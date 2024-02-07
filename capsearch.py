@@ -82,10 +82,10 @@ def replace_line(path, start, replace):
                 l = replace
             F.write(l)
 
-def beta_reverse(br):
+def npn22_beta_reverse(br):
     replace_line('subckt/PDTC124TU.prm', '+ BR = ', f'+ BR = {br}\n')
 
-def beta(b):
+def npn22_beta(b):
     replace_line('subckt/PDTC124TU.prm', '+ BF = ', f'+ BF = {b}\n')
 
 def hbt_beta(b):
@@ -128,9 +128,15 @@ def pmos_vto(VTO):
         munged.append(L)
     writepath(path, munged)
 
-def scan(LO, HI, ORIG, MUNGE, TARGET='verify', FACTOR=1, SPEED=None, NAME=None):
+def scan(LO, HI, ORIG, MUNGE, TARGET='verify', FACTOR=1, SPEED=None, NAME=None,
+         WANTED=None):
     if NAME is None:
         NAME = inspect.stack()[1].function
+    if WANTED is None:
+        WANTED = wanted(NAME)
+    if not WANTED:
+        print('Ignore', NAME)
+        return
     print('=== Value Scan Start', NAME, '===', flush=True)
     if SPEED is not None:
         change_speed(SPEED)
@@ -145,7 +151,8 @@ def scan(LO, HI, ORIG, MUNGE, TARGET='verify', FACTOR=1, SPEED=None, NAME=None):
         V = MID * FACTOR
         print(f'=== Try {V:g} ===', flush=True)
         MUNGE(V)
-        status = subprocess.call(['make', '-j8', TARGET, f'QUANTUM={currentQ}'])
+        status = subprocess.call(['make', '-j8', '-k', f'QUANTUM={currentQ}']
+                                 + TARGET.split())
         res = f'=== Value {V:g} gives status {status}'
         results.append((V, res))
         print(res, flush=True)
@@ -164,120 +171,91 @@ def dram_cap_scan(LOW, HIGH, SPEED=4000, **kwargs):
     scan(LOW, HIGH, 680, lambda v: replace_caps(['gates/drambyte.sch'], v),
          SPEED=SPEED, **kwargs)
 
-ALL = False
+def wanted(NAME):
+    return False
 
-if ALL:
-    scan(1999, 2001, 2000, speed, NAME='Basic test')
+# Currently at 1912 fail memp, 1913 pass.
+scan(1911, 1914, 2000, change_speed, NAME='Speed')
+
+# Currently 855 passes, 854 fails hazard2.
+# 852 pass, 851 fails hazard2.
+scan(850, 853, Q / 2 - 10, lambda v: change_speed(Q, Q - v - 20), NAME='Duty1')
+# Passes 944, fails 943 (memp) @ 2µ
+scan(942, 945, Q / 2 - 10, lambda v: change_speed(Q, v), NAME='Duty0' TARGET='test/memp.verify')
 
 # 2.757 passes, 2.758 fails.
-if ALL:
-    scan(2759, 2756, 2, bias_pot, FACTOR=1e-3, NAME='Bias pot hi')
+scan(2759, 2756, 2, bias_pot, FACTOR=1e-3, NAME='Bias pot hi')
+
 # 1.893 fails, 1894 passes [memp]
-if ALL:
-    scan(1892, 1895, 2, bias_pot, FACTOR=1e-3, NAME='Bias pot lo')
+scan(1892, 1895, 2, bias_pot, FACTOR=1e-3, NAME='Bias pot lo')
 
 # 275 passes, 274 fails memp.
-if ALL:
-    scan(271, 275, 820, rbias, SPEED=4000, NAME='rbias')
+scan(271, 275, 820, rbias, SPEED=4000, NAME='rbias')
 # 1522 passes, 1523 fails.  (@2.5v pot, 3299passes?)
-if ALL:
-    scan(1524, 1521, 820, rbias, SPEED=4000, NAME='rbias')
+scan(1524, 1521, 820, rbias, SPEED=4000, NAME='rbias')
 
 # @2.5v pot, ???
 # @2v pot, 103 fails, 104 passes, hazard2 is critical.
-if ALL:
-    dram_cap_scan(102, 105, SPEED=4000)
-# 989 fails hazard2, 988 passes @ 2µs.
-if ALL:
-    dram_cap_scan(991, 986, SPEED=2000)
+dram_cap_scan(102, 105, SPEED=4000, NAME='dram cap lo')
 # @3µs, 2465 passes, 2466 fails hazard2
-if ALL:
-    dram_cap_scan(2467, 2464, SPEED=3000)
-
-# Currently at 1918=fail, 1919=pass, memp is critical test, but reducing the
-# caps makes no significant difference.
-if ALL:
-    scan(1917, 1920, 2000, change_speed, NAME='Speed')
+dram_cap_scan(2467, 2464, SPEED=3000, NAME='dram cap hi')
+# 989 fails hazard2, 988 passes @ 2µs.
+dram_cap_scan(991, 986, SPEED=2000, NAME='dram cap hi full speed')
+# FIXME - dram cap lo full speed.
 
 # Pass at 1.03, 1.02 fails call.
-if ALL:
-    scan(100, 120, 20.09, beta_reverse, FACTOR=0.01, SPEED=4000, NAME='NPN BR')
+scan(100, 120, 20.09, npn22_beta_reverse, FACTOR=0.01, SPEED=4000, NAME='NPNR BR')
 # 10001 passes.
-if ALL:
-    scan(10001, 9999, 20.09, beta_reverse, SPEED=4000, NAME='NPN BR HI')
+scan(10001, 9999, 20.09, npn22_beta_reverse, SPEED=4000, NAME='NPNR BR HI')
 
 # 23 passes, 22 fails (memw)
-if ALL:
-    scan(21, 24, 291, beta, SPEED=4000, NAME='NPN BF')
+scan(21, 24, 291, npn22_beta, SPEED=4000, NAME='NPNR BF')
 
-if ALL:
-    scan(10001, 9999, 291, beta, SPEED=4000, NAME='NPN BF HI')
+scan(10001, 9999, 291, npn22_beta, SPEED=4000, NAME='NPNR BF HI')
 
 # 22 passes, 21 fails call.
-if ALL:
-    scan(20, 24, 273.94, hbt_beta, SPEED=4000, NAME='HBT BETA')
+scan(20, 24, 273.94, hbt_beta, SPEED=4000, NAME='HBT BETA')
 
 # 10000 passes.
-if ALL:
-    scan(10001, 9999, 273.94, hbt_beta, SPEED=4000, NAME='HBT BETA HI')
+scan(10001, 9999, 273.94, hbt_beta, SPEED=4000, NAME='HBT BETA HI')
 
 # 9 passes, 8 fails memw.
-if ALL:
-    scan(7, 10, 123.13, hbt_beta_reverse, SPEED=4000, NAME='HBT BR')
+scan(7, 10, 123.13, hbt_beta_reverse, SPEED=4000, NAME='HBT BR')
 
-if ALL:
-    # 10000 passes.
-    scan(10001, 9999, 123.13, hbt_beta_reverse, SPEED=4000, NAME='HBT BR HI')
+# 10000 passes.
+scan(10001, 9999, 123.13, hbt_beta_reverse, SPEED=4000, NAME='HBT BR HI')
 
 # @22k pull resistor, 108 fails hazard2, 107 passes hazard2.
 # Setting the pull resistor to 10k gets: Failing mem at 94, passes mem 93.
-if ALL:
-    scan(95, 92, 10, hbt_cap_scale, SPEED=4000, NAME='HBT CAP')
+scan(95, 92, 10, hbt_cap_scale, SPEED=4000, NAME='HBT CAP')
 
 # Reset timing on testadd: 3595n minimum (what cycle?)
 #scan(0, 3 * Q, 2 * Q, lambda v: change_speed(tr=v),
 #     TARGET='test/testadd.verify', NAME='Reset')
 
-# Currently 855 passes, 854 fails hazard2 @ 2µ.
-if ALL:
-    scan(853, 856, Q / 2 - 10, lambda v: change_speed(Q, Q - v - 20),
-         NAME='Duty1')
-# Passes 942, fails 941 (memp) @ 2µ
-if ALL:
-    scan(940, 943, Q / 2 - 10, lambda v: change_speed(Q, v), NAME='Duty0')
-
 # 78 passes @ 2µ, 77 fails hazard2
-if ALL:
-    scan(76, 79, 820, lambda v: resistors(rstrong=v), NAME='rstrong')
+scan(76, 79, 820, lambda v: resistors(rstrong=v), NAME='rstrong')
 # 3953 fail (memp) @4µs, 3952 pass.
-if ALL:
-    scan(3955, 3946, 820, lambda v: resistors(rstrong=v),
-         SPEED=4000, NAME='rstrong hi')
+scan(3955, 3946, 820, lambda v: resistors(rstrong=v), SPEED=4000,
+     NAME='rstrong hi')
 
 # Fails at 7355, 4µs (inc), 7354 passes.
-if ALL:
-    scan(7356, 7353, 2490, lambda v: resistors(rload=v), SPEED=4000)
+scan(7356, 7353, 2490, lambda v: resistors(rload=v), SPEED=4000)
 # @ 2µs fails 2690 (hazard2) passes 2689.
-if ALL:
-    scan(2691, 2688, 2490, lambda v: resistors(rload=v), NAME='rload')
+scan(2691, 2688, 2490, lambda v: resistors(rload=v), NAME='rload')
 # 577 passes, 576 fails memp.
-if ALL:
-    scan(575, 578, 2490, lambda v: resistors(rload=v), NAME='rload')
+scan(575, 578, 2490, lambda v: resistors(rload=v), NAME='rload')
 
 # 451 fails (hazard2), 452 passes.
-if ALL:
-    scan(450, 453, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO LO')
+scan(450, 453, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO LO')
 # 1.018 fails memw, 1.017 passes
-if ALL:
-    scan(1019, 1016, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
+scan(1019, 1016, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
 # With 2.5V bias pot... 1.242 passes, 1.243 fails on hazard2.
 #scan(1244, 1241, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
 # 3V bias pot, passes 1.452, fails 1.453 (hazard2).
 #scan(1454, 1451, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
 
 # Passes 1.768, fails 1.769 (memp).
-if ALL:
-    scan(1770, 1767, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='PMOS VTO HI')
+scan(1770, 1767, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='PMOS VTO HI')
 # Passes 0.15 fails 0.149 (romdecode).
-if ALL:
-    scan(148, 151, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='PMOS VTO LO')
+scan(148, 151, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='PMOS VTO LO')

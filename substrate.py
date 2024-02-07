@@ -15,7 +15,8 @@ for L in FILE:
         words[4] = 'FDV301N'
     if len(words) == 5 and words[0].startswith('M') and words[4] == 'PMOS_switch':
         words[4] = 'NX3008'
-    if len(words) == 5 and words[0].startswith('Q') and words[4] == 'PDTC124TU':
+    if len(words) == 5 and words[0].startswith('Q') \
+       and words[4] in ('PDTC124TU', 'BC847BW'):
         words[0] = 'X' + words[0]
 
     if words and words[0] == 'tran':

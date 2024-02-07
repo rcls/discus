@@ -1,0 +1,283 @@
+#!/usr/bin/python3
+
+import inspect
+import re
+import subprocess
+import types
+
+Q=2000
+currentQ = 2000
+
+def slurppath(P):
+    with open(P) as F:
+        return list(F)
+
+def writepath(P, lines):
+    with open(P, 'w') as F:
+        F.writelines(lines)
+
+def replace_cap(L, pf):
+    if L.startswith('value=') and L.strip().endswith('p'):
+        return f'value={pf}p\n'
+    else:
+        return L
+
+def replace_caps(paths, pf):
+    for P in paths:
+        writepath(P, (replace_cap(L, pf) for L in slurppath(P)))
+
+def change_speed(vt=Q, t0=None, tr=None):
+    global currentQ
+    if t0 is None:
+        t0 = vt / 2 - 10
+    if tr is None:
+        tr = 2 * vt
+    path = 'board/univlight.sch'
+    univ = slurppath(path)
+    refdes = ''
+    with open(path, 'w') as F:
+        for l in univ:
+            if l.startswith('refdes='):
+                refdes = l.removeprefix('refdes=').strip()
+            if l.startswith('value=pulse') and refdes == 'Vc0':
+                l = f'value=pulse 0 2.5v 1u 10n 10n {t0:g}n {vt}n\n'
+            if l.startswith('value=pulse') and refdes == 'Vrst':
+                l = f'value=pulse 0 2.5v {tr:g}n 10n 10n 9 10\n'
+            F.write(l)
+    currentQ = vt
+
+def bias_pot(volts):
+    with open('subckt/bias-pot.prm', 'w') as F:
+        F.write(f'''.subckt bias_pot gnd vdd set
+                Vbias 1 gnd DC {volts:g}
+                Rout 1 set 1k
+                Rload 1 vdd 1k
+                .ends''')
+
+def resistors(rload=2490, rstrong=820, rpull=22e3):
+    rload = rload * 1e-3
+    rpull = rpull * 1e-3
+    with open('subckt/resistor-load.prm', 'w') as F:
+        F.write(f'.MODEL rload R (R={rload:g}k)\n')
+        F.write(f'.MODEL rstrong R (R={rstrong:g})\n')
+        F.write(f'.MODEL rpull R (R={rpull:g}k)\n')
+
+def rbias(ohms):
+    path = 'gates/dramio.sch'
+    content = slurppath(path)
+    refdes = ''
+    with open(path, 'w') as F:
+        for l in content:
+            if l.startswith('refdes='):
+                refdes = l.removeprefix('refdes=').strip()
+            if l.startswith('value=') and refdes == 'R':
+                l = f'value={ohms}\n'
+            F.write(l)
+
+def replace_line(path, start, replace):
+    lines = slurppath(path)
+    with open(path, 'w') as F:
+        for l in lines:
+            if l.startswith(start):
+                l = replace
+            F.write(l)
+
+def beta_reverse(br):
+    replace_line('subckt/PDTC124TU.prm', '+ BR = ', f'+ BR = {br}\n')
+
+def beta(b):
+    replace_line('subckt/PDTC124TU.prm', '+ BF = ', f'+ BF = {b}\n')
+
+def hbt_beta(b):
+    replace_line('subckt/2SC4774.prm', '+ BF=', f'+ BF={b}\n')
+
+def hbt_beta_reverse(b):
+    replace_line('subckt/2SC4774.prm', '+ BR=', f'+ BR={b}\n')
+
+def hbt_cap_scale(f):
+    if f == 10:
+        CJE = '2.4548E-12'
+        CJC = '1.3066E-12'
+    else:
+        CJE = 2.4548E-12 * f / 10
+        CJC = 1.3066E-12 * f / 10
+    replace_line('subckt/2SC4774.prm', '+ CJE=', f'+ CJE={CJE}\n')
+    replace_line('subckt/2SC4774.prm', '+ CJC=', f'+ CJC={CJC}\n')
+
+
+def nmos_vto(VTO):
+    # Original line is:
+    '.MODEL DMOS NMOS(VTO=0.82 KP=4.12E-1'
+    path = 'subckt/FDV301N.prm'
+    nmos = slurppath(path)
+    munged = []
+    for L in nmos:
+        if L.startswith('.model FDV301N VDMOS'):
+            L = re.sub(r'\bvto=[^ ]* ', f'vto={VTO} ', L)
+        munged.append(L)
+    writepath(path, munged)
+
+def pmos_vto(VTO):
+    # Original line is:
+    path = 'subckt/NX3008PBK.prm'
+    pmos = slurppath(path)
+    munged = []
+    for L in pmos:
+        if L.startswith('.model NX3008 VDMOS'):
+            L = re.sub(r'\bvto=[^ ]* ', f'vto=-{VTO} ', L)
+        munged.append(L)
+    writepath(path, munged)
+
+def scan(LO, HI, ORIG, MUNGE, TARGET='verify', FACTOR=1, SPEED=None, NAME=None):
+    if NAME is None:
+        NAME = inspect.stack()[1].function
+    print('=== Value Scan Start', NAME, '===', flush=True)
+    if SPEED is not None:
+        change_speed(SPEED)
+    # Allow good < bad ordering.
+    if LO > HI:
+        LO = -LO
+        HI = -HI
+        FACTOR = -FACTOR
+    results = []
+    while LO + 1 < HI:
+        MID = LO + (HI - LO) // 2
+        V = MID * FACTOR
+        print(f'=== Try {V:g} ===', flush=True)
+        MUNGE(V)
+        status = subprocess.call(['make', '-j8', TARGET, f'QUANTUM={currentQ}'])
+        res = f'=== Value {V:g} gives status {status}'
+        results.append((V, res))
+        print(res, flush=True)
+        if status == 0:
+            HI = MID
+        else:
+            LO = MID
+    MUNGE(ORIG)
+    print('=== Scan Result', NAME, '===')
+    results.sort()
+    for _, L in results:
+        print(L)
+    change_speed(Q)
+
+def dram_cap_scan(LOW, HIGH, SPEED=4000, **kwargs):
+    scan(LOW, HIGH, 680, lambda v: replace_caps(['gates/drambyte.sch'], v),
+         SPEED=SPEED, **kwargs)
+
+ALL = False
+
+if ALL:
+    scan(1999, 2001, 2000, speed, NAME='Basic test')
+
+# 2.757 passes, 2.758 fails.
+if ALL:
+    scan(2759, 2756, 2, bias_pot, FACTOR=1e-3, NAME='Bias pot hi')
+# 1.893 fails, 1894 passes [memp]
+if ALL:
+    scan(1892, 1895, 2, bias_pot, FACTOR=1e-3, NAME='Bias pot lo')
+
+# 275 passes, 274 fails memp.
+if ALL:
+    scan(271, 275, 820, rbias, SPEED=4000, NAME='rbias')
+# 1522 passes, 1523 fails.  (@2.5v pot, 3299passes?)
+if ALL:
+    scan(1524, 1521, 820, rbias, SPEED=4000, NAME='rbias')
+
+# @2.5v pot, ???
+# @2v pot, 103 fails, 104 passes, hazard2 is critical.
+if ALL:
+    dram_cap_scan(102, 105, SPEED=4000)
+# 989 fails hazard2, 988 passes @ 2µs.
+if ALL:
+    dram_cap_scan(991, 986, SPEED=2000)
+# @3µs, 2465 passes, 2466 fails hazard2
+if ALL:
+    dram_cap_scan(2467, 2464, SPEED=3000)
+
+# Currently at 1918=fail, 1919=pass, memp is critical test, but reducing the
+# caps makes no significant difference.
+if ALL:
+    scan(1917, 1920, 2000, change_speed, NAME='Speed')
+
+# Pass at 1.03, 1.02 fails call.
+if ALL:
+    scan(100, 120, 20.09, beta_reverse, FACTOR=0.01, SPEED=4000, NAME='NPN BR')
+# 10001 passes.
+if ALL:
+    scan(10001, 9999, 20.09, beta_reverse, SPEED=4000, NAME='NPN BR HI')
+
+# 23 passes, 22 fails (memw)
+if ALL:
+    scan(21, 24, 291, beta, SPEED=4000, NAME='NPN BF')
+
+if ALL:
+    scan(10001, 9999, 291, beta, SPEED=4000, NAME='NPN BF HI')
+
+# 22 passes, 21 fails call.
+if ALL:
+    scan(20, 24, 273.94, hbt_beta, SPEED=4000, NAME='HBT BETA')
+
+# 10000 passes.
+if ALL:
+    scan(10001, 9999, 273.94, hbt_beta, SPEED=4000, NAME='HBT BETA HI')
+
+# 9 passes, 8 fails memw.
+if ALL:
+    scan(7, 10, 123.13, hbt_beta_reverse, SPEED=4000, NAME='HBT BR')
+
+if ALL:
+    # 10000 passes.
+    scan(10001, 9999, 123.13, hbt_beta_reverse, SPEED=4000, NAME='HBT BR HI')
+
+# @22k pull resistor, 108 fails hazard2, 107 passes hazard2.
+# Setting the pull resistor to 10k gets: Failing mem at 94, passes mem 93.
+if ALL:
+    scan(95, 92, 10, hbt_cap_scale, SPEED=4000, NAME='HBT CAP')
+
+# Reset timing on testadd: 3595n minimum (what cycle?)
+#scan(0, 3 * Q, 2 * Q, lambda v: change_speed(tr=v),
+#     TARGET='test/testadd.verify', NAME='Reset')
+
+# Currently 855 passes, 854 fails hazard2 @ 2µ.
+if ALL:
+    scan(853, 856, Q / 2 - 10, lambda v: change_speed(Q, Q - v - 20),
+         NAME='Duty1')
+# Passes 942, fails 941 (memp) @ 2µ
+if ALL:
+    scan(940, 943, Q / 2 - 10, lambda v: change_speed(Q, v), NAME='Duty0')
+
+# 78 passes @ 2µ, 77 fails hazard2
+if ALL:
+    scan(76, 79, 820, lambda v: resistors(rstrong=v), NAME='rstrong')
+# 3953 fail (memp) @4µs, 3952 pass.
+if ALL:
+    scan(3955, 3946, 820, lambda v: resistors(rstrong=v),
+         SPEED=4000, NAME='rstrong hi')
+
+# Fails at 7355, 4µs (inc), 7354 passes.
+if ALL:
+    scan(7356, 7353, 2490, lambda v: resistors(rload=v), SPEED=4000)
+# @ 2µs fails 2690 (hazard2) passes 2689.
+if ALL:
+    scan(2691, 2688, 2490, lambda v: resistors(rload=v), NAME='rload')
+# 577 passes, 576 fails memp.
+if ALL:
+    scan(575, 578, 2490, lambda v: resistors(rload=v), NAME='rload')
+
+# 451 fails (hazard2), 452 passes.
+if ALL:
+    scan(450, 453, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO LO')
+# 1.018 fails memw, 1.017 passes
+if ALL:
+    scan(1019, 1016, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
+# With 2.5V bias pot... 1.242 passes, 1.243 fails on hazard2.
+#scan(1244, 1241, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
+# 3V bias pot, passes 1.452, fails 1.453 (hazard2).
+#scan(1454, 1451, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
+
+# Passes 1.768, fails 1.769 (memp).
+if ALL:
+    scan(1770, 1767, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='PMOS VTO HI')
+# Passes 0.15 fails 0.149 (romdecode).
+if ALL:
+    scan(148, 151, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='PMOS VTO LO')

@@ -10,7 +10,7 @@
 [ ![dflipflops](dflipflops-sym.png) ](dflipflops.html)
 [ ![sramcell2t](sramcell2t-sym.png) ](sramcell2t.html)
 [ ![nandod](nandod-sym.png) ](nandod.html)
-[ ![noth](noth-sym.png) ](noth.html)
+[ ![notb](notb-sym.png) ](notb.html)
 [ ![nand](nand-sym.png) ](nand.html)
 [ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
 [ ![selis](selis-sym.png) ](selis.html)

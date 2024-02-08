@@ -177,11 +177,10 @@ def wanted(NAME):
 # Currently at 1912 fail memp, 1913 pass.
 scan(1911, 1914, 2000, change_speed, NAME='Speed')
 
-# Currently 855 passes, 854 fails hazard2.
-# 852 pass, 851 fails hazard2.
+# Currently 852 pass, 851 fails hazard2.
 scan(850, 853, Q / 2 - 10, lambda v: change_speed(Q, Q - v - 20), NAME='Duty1')
 # Passes 944, fails 943 (memp) @ 2µ
-scan(942, 945, Q / 2 - 10, lambda v: change_speed(Q, v), NAME='Duty0' TARGET='test/memp.verify')
+scan(942, 945, Q / 2 - 10, lambda v: change_speed(Q, v), NAME='Duty0')
 
 # 2.757 passes, 2.758 fails.
 scan(2759, 2756, 2, bias_pot, FACTOR=1e-3, NAME='Bias pot hi')

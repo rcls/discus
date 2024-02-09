@@ -311,36 +311,32 @@ slow('hbt_cap', 108, 107, 10, hbt_cap_scale, TARGET=MEMORY)
 
 ##################### RESISTORS ##########################
 
-# 113 fails mem. 114 passes.
-fast('rstrong_lo', 113, 114, 820, lambda v: resistors(rstrong=v), CRIT=MEMORY)
-# 3954 passes.
-slow('rstrong_hi', 456, 394, 820, lambda v: resistors(rstrong=v), FACTOR=10)
+fast('rstrong_lo', 113, 114, 820, lambda v: resistors(rstrong=v), CRIT='mem')
+slow('rstrong_hi', 444, 443, 820, lambda v: resistors(rstrong=v), FACTOR=10,
+     CRIT='mem')
 
-# @ 4µs, 7355 passes.
-slow('rload_hi', 741, 735, 2490, lambda v: resistors(rload=v))
-# @ 2µ passes 2690.
-fast('rload_hi_fast', 2704, 2690, 2490, lambda v: resistors(rload=v))
-# 577 fails mem.
-FAST('rload_lo', 577, 591, 2490, lambda v: resistors(rload=v), CRIT=MEMORY)
+slow('rload_hi', 731, 730, 2490, lambda v: resistors(rload=v), FACTOR=10,
+     CRIT='mem')
 
 fast('rpull_lo', 1, 22, 22, lambda v: resistors(rpull=v))
 slow('rpull_hi', 400, 22, 22, lambda v: resistors(rpull=v))
 
 ######################### MOSFETS #################################
 
-# 452 fails (call, inc).
-slow('nmos_vto_lo', 452, 458, 0.9, nmos_vto, FACTOR=1e-3)
-# 1.018 passes
-slow('nmos_vto_hi', 1032, 1018, 0.9, nmos_vto, FACTOR=1e-3)
-# With 2.5V bias pot... 1.242 passes, 1.243 fails on hazard2.
-#slow(1244, 1241, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI')
-# 3V bias pot, passes 1.452, fails 1.453 (hazard2).
-#slow(1454, 1451, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI')
+slow('nmos_vto_lo', 519, 520, 0.9, nmos_vto, FACTOR=1e-3, CRIT='call inc')
 
-# Passes 1.769 (memp). FIXME
-slow('pmos_vto_hi', 1781, 1769, 0.9, pmos_vto, FACTOR=1e-3)
-# Passes 0.149, . FIXME.
-slow('pmos_vto_lo', 149, 143, 0.9, pmos_vto, FACTOR=1e-3)
+slow('nmos_vto_hi', 1022, 1021, 0.9, nmos_vto, FACTOR=1e-3, CRIT='memp hazard2')
+
+# With 2.5V bias pot...
+#slow(1243, 1242, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI',
+#      CRIT='hazard2')
+# 3V bias pot
+#slow(1453, 1452, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI', CRIT='hazard2')
+
+slow('pmos_vto_hi', 1774, 1773, 0.9, pmos_vto, FACTOR=1e-3, CRIT='memp')
+
+slow('pmos_vto_lo', 107, 108, 0.9, pmos_vto, FACTOR=1e-3,
+     CRIT='call inc romdecode ramdecode')
 
 # FIXME - nmos cap scaling.
 

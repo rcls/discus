@@ -25,7 +25,7 @@ verify: $(TESTS:%=%.verify)
 verify-adhoc: $(ADHOC_TEST:%=test/%.verify)
 
 %.rcr: %.sch gates/*.sch board/*.sch sym/*.sym subckt/*.prm
-	$(NETLIST) -L subckt -g spice-sdb -o $@ $<
+	time $(NETLIST) -L subckt -g spice-sdb -o $@ $<
 
 %.cir: %.rcr ./substrate.py
 	./substrate.py $< > $@
@@ -38,7 +38,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py $(RUST_DI
 
 .PRECIOUS: %.rcr %.raw %.cir
 %.raw: %.cir
-	ngspice -r $@ -b $<
+	time ngspice -r $@ -b $<
 
 count: board/bit.rcr board/control.rcr board/dram64byte.rcr board/rom64byte.rcr
 	grep -Ec -e '^M.*\b[PN]MOS_switch' -e '^Q.*\b(Q2SC4774|PDTC124TU)' $+

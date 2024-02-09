@@ -2,7 +2,7 @@ v 20220529 2
 C 8600 7400 1 0 0 rom64byte.sym
 {
 T 9300 9300 5 10 1 1 90 4 1
-source=rom64byte.sch
+source=rom32byte.sch
 T 9775 9900 5 10 1 1 0 7 1
 refdes=R
 }
@@ -2479,7 +2479,7 @@ netname=MR#
 C 11700 7400 1 0 0 dram64byte.sym
 {
 T 12700 10300 5 10 1 1 90 4 1
-source=dram64byte.sch
+source=dram32byte.sch
 T 12400 11200 5 10 1 1 0 4 1
 refdes=M
 }

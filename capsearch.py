@@ -1,11 +1,48 @@
 #!/usr/bin/python3
 
+import argparse
 import re
 import subprocess
-import types
+import sys
+# import types
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-r', '--recheck', action='store_true',
+                    help='recheck settled tests')
+parser.add_argument('-c', '--critical', action='store_true',
+                    help='use critical target if known')
+parser.add_argument('-n', '--dry-run', action='store_true', help='run none')
+parser.add_argument('wanted', nargs='*', help='tests to run')
+args = parser.parse_args()
 
 Q=2000
 currentQ = 2000
+LOGIC = 'add call cmp inc logic sub'
+MEMORY = 'hazard hazard2 mem memi memf memp memw'
+
+BIAS_POT=2
+
+def target_list(t):
+    if type(t) != str:
+        return list(t)
+    targets = []
+    for s in t.split():
+        if 'verify' in s:
+            targets.append(s)
+        else:
+            targets.append(f'test/{s}.verify')
+    return targets
+
+def wanted(NAME, NORMAL):
+    if len(args.wanted) == 0 and NORMAL is not False:
+        return True
+    for P in args.wanted:
+        if NAME == P or NAME.startswith(P + '_'):
+            return True
+    if len(args.wanted) > 0:
+        return False
+    #return NORMAL is not False
+    return NORMAL
 
 def slurppath(P):
     with open(P) as F:
@@ -15,18 +52,21 @@ def writepath(P, lines):
     with open(P, 'w') as F:
         F.writelines(lines)
 
-def replace_cap(L, pf):
-    if L.startswith('value=') and L.strip().endswith('p'):
-        return f'value={pf}p\n'
-    else:
-        return L
+def dram_cap(pf):
+    P = 'gates/drambyte.sch'
+    if pf is None:
+        pf = 680
+    content = slurppath(P)
+    with open(P, 'w') as F:
+        for L in content:
+            if L.startswith('value=') and L.strip().endswith('p'):
+                L = f'value={pf}p\n'
+            F.write(L)
 
-def replace_caps(paths, pf):
-    for P in paths:
-        writepath(P, (replace_cap(L, pf) for L in slurppath(P)))
-
-def change_speed(vt=Q, t0=None, tr=None):
+def speed(vt=None, t0=None, tr=None):
     global currentQ
+    if vt == None:
+        vt = Q
     if t0 is None:
         t0 = vt / 2 - 10
     if tr is None:
@@ -46,6 +86,8 @@ def change_speed(vt=Q, t0=None, tr=None):
     currentQ = vt
 
 def bias_pot(volts):
+    if volts == None:
+        volts = BIAS_POT
     with open('subckt/bias-pot.prm', 'w') as F:
         F.write(f'''.subckt bias_pot gnd vdd set
 Vbias 1 gnd DC {volts:g}
@@ -63,6 +105,8 @@ def resistors(rload=2490, rstrong=820, rpull=22e3):
         F.write(f'.MODEL rpull R (R={rpull:g}k)\n')
 
 def rbias(ohms):
+    if ohms is None:
+        ohms = 680
     path = 'gates/dramio.sch'
     content = slurppath(path)
     refdes = ''
@@ -89,7 +133,7 @@ def npn22_beta(b):
     replace_line('subckt/PDTC124TU.prm', '+ BF = ', f'+ BF = {b}\n')
 
 def npn22_r(r):
-    replace_line('subckt/PDTC124TU.prm', 'R 20 2', f'R 20 2 {b}k\n')
+    replace_line('subckt/PDTC124TU.prm', 'R 20 2', f'R 20 2 {r}k\n')
 
 def hbt_beta(b):
     replace_line('subckt/2SC4774.prm', '+ BF=', f'+ BF={b}\n')
@@ -131,147 +175,190 @@ def pmos_vto(VTO):
         munged.append(L)
     writepath(path, munged)
 
-def scan(LO, HI, ORIG, MUNGE, NAME, TARGET='verify', FACTOR=1, SPEED=None,
-         WANTED=None, BIAS_POT=None):
-    if WANTED is None:
-        WANTED = wanted(NAME)
-    if not WANTED:
+def slow(*args, **kwargs):
+    scan(*args, **kwargs, SPEED=4000)
+
+def fast(*args, **kwargs):
+    scan(*args, **kwargs, SPEED=2000)
+
+def scan(NAME, BAD, GOOD, ORIG, MUNGE, TARGET='verify', FACTOR=1,
+         SPEED=None, NORMAL=None, BIAS_POT=None, RBIAS=None, CRIT=None):
+    assert type(NAME) == str
+    if BAD < GOOD:
+        BAD -= 1
+        GOOD += 1
+    else:
+        BAD += 1
+        GOOD -= 1
+    print('RANGE', NAME, BAD, GOOD)
+    if not wanted(NAME, NORMAL):
         print('Ignore', NAME)
         return
+    if NORMAL is not True and not args.recheck and abs(GOOD - BAD) <= 3:
+        print('=== SETTLED', NAME)
+        return
     print('=== START', NAME, '===', flush=True)
-    if SPEED is not None:
-        change_speed(SPEED)
-    if BIAS_POT is not None:
-        bias_pot(BIAS_POT)
-    # Allow good < bad ordering.
-    if LO > HI:
-        LO = -LO
-        HI = -HI
-        FACTOR = -FACTOR
+    if args.dry_run:
+        return
     results = []
-    while LO + 1 < HI:
-        MID = LO + (HI - LO) // 2
+    if args.critical and CRIT != None:
+        TARGET = CRIT
+    TARGET = target_list(TARGET)
+    while abs(GOOD - BAD) > 1:
+        MID = (BAD + GOOD) // 2
         V = MID * FACTOR
         print(f'=== Try {V:g} ===', flush=True)
+        if SPEED is not None:
+            speed(SPEED)
+        if RBIAS is not None:
+            rbias(RBIAS)
+        bias_pot(BIAS_POT)
         MUNGE(V)
         status = subprocess.call(['make', '-j8', '-k', f'QUANTUM={currentQ}']
-                                 + TARGET.split())
+                                 + TARGET)
         res = f'=== Value {V:g} gives status {status}'
         results.append((V, res))
         print(res, flush=True)
         if status == 0:
-            HI = MID
+            GOOD = MID
         else:
-            LO = MID
+            BAD = MID
     MUNGE(ORIG)
     print('=== RESULT', NAME, '===')
     results.sort()
     for _, L in results:
         print(L)
     print('===')
-    change_speed(Q)
+    speed()
     if BIAS_POT is not None:
-        bias_pot(2)
+        bias_pot(None)
+    if RBIAS is not None:
+        rbias(None)
 
-def dram_cap_scan(LOW, HIGH, SPEED=4000, **kwargs):
-    scan(LOW, HIGH, 680, lambda v: replace_caps(['gates/drambyte.sch'], v),
-         SPEED=SPEED, **kwargs)
-
-def wanted(NAME):
-    return False
-    #return True
-
+##################### SPEED ########################
 # 1912 fails memp, 1913 pass.
-scan(1911, 1914, 2000, change_speed, NAME='speed')
+scan('speed', 1912, 1913, 2000, speed, CRIT=MEMORY)
 
 # 853 passes, 852 fails hazard2.
-scan(851, 854, Q / 2 - 10, lambda v: change_speed(Q, Q - v - 20),
-     NAME='speed_duty1')
+scan('speed_duty1', 852, 853, Q / 2 - 10, lambda v: speed(Q, Q - v - 20))
 # Passes 944, fails 943 (memp) @ 2µ
-scan(942, 945, Q / 2 - 10, lambda v: change_speed(Q, v),
-     NAME='speed_duty0')
+scan('speed_duty0', 943, 944, Q / 2 - 10, lambda v: speed(Q, v))
+
+##################### DRAM BIAS AND CAP ######################
 
 # 2.741 passes, 2.742 fails memf.
-scan(2743, 2740, 2, bias_pot, FACTOR=1e-3, NAME='bias_pot_hi')
+scan('bias_pot_hi', 2742, 2741, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY)
 
 # 1.892 passes, 1.891 fails memp.
-scan(1890, 1893, 2, bias_pot, FACTOR=1e-3, NAME='bias_pot_lo')
+scan('bias_pot_lo', 1891, 1892, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY)
 
 # 275 passes, 274 fails memp
-scan(273, 276, 820, rbias, SPEED=4000, NAME='bias_r_lo')
-# 1552 passes, ???? fails.  (@2.5v pot, 3299passes?)  FIXME
-scan(1615, 1551, 820, rbias, SPEED=4000, NAME='bias_r_hi', WANTED=True)
+slow('bias_r_lo', 274, 275, 820, rbias, TARGET=MEMORY)
+# Done at fast, wide margin at slow!
+# 1220 passes, 1230 fails memp.
+fast('bias_r_hi', 123, 122, 820, rbias, FACTOR=10, TARGET=MEMORY)
 
-# @2.5v pot, ???
 # @2v pot, 104 passes, 103 fails hazard2.
-dram_cap_scan(102, 105, SPEED=4000, NAME='dram_cap_lo')
-# @3µs, ??? passes, 2465 fails memf
-dram_cap_scan(244, 247, FACTOR=10, SPEED=3000, NAME='dram_cap_hi', WANTED=True)
-# 987 fails hazard2 @ 2µs.
-dram_cap_scan(988, 980, SPEED=2000, NAME='dram cap_hi_fast', WANTED=True)
+slow('dram_cap_lo', 103, 104, None, dram_cap, TARGET=MEMORY)
+# @3µs, 1600 passes, 2360 fails memf
+# FIXME - change to 4000µs.
+# Passes 1820, fails 1830 (memf)
+scan('dram_cap_hi', 183, 182, None, dram_cap, FACTOR=10, SPEED=3000,
+     TARGET=MEMORY)
+# 861 passes, 862 fails hazard2 @ 2µs.
+fast('dram_cap_hi_fast', 862, 861, None, dram_cap, TARGET=MEMORY)
 # FIXME - dram cap lo full speed.
 
+####################### PRE-BIAS NPN ##############################
 # FIXME - npn beta.
 
-# Pass at 1.03, 1.02 fails call.  FIXME
-# 1.19 fails call & inc.
-scan(118, 150, 20.09, npn22_beta_reverse, FACTOR=0.01, SPEED=4000,
-     NAME='rnpn_br', WANTED=True)
-# 10001 passes.
-scan(10001, 9999, 20.09, npn22_beta_reverse, SPEED=4000, NAME='rnpn_br_hi')
-
-scan(1, 220, 22, npn22_r, FACTOR=0.1, SPEED=4000, NAME='rnpn_r_lo', WANTED=True)
-scan(2000, 220, 22, npn22_r, FACTOR=0.1, SPEED=4000, NAME='rnpn_r_hi', WANTED=True)
+# 2.3k passes, 2.2k fails inc.
+slow('rnpn_r_lo', 22, 23, 22, npn22_r, FACTOR=0.1, TARGET=LOGIC)
+# 86.6k fails call, 86.2k passes.
+slow('rnpn_r_hi', 87, 86, 22, npn22_r, TARGET=LOGIC)
 
 # 23 passes, 22 fails (memw)
-scan(21, 24, 291, npn22_beta, SPEED=4000, NAME='rnpn_beta_lo')
+slow('rnpn_beta_lo', 22, 23, 291, npn22_beta, TARGET=LOGIC)
 
-scan(10001, 9999, 291, npn22_beta, SPEED=4000, NAME='rnpn_beta_hi')
+slow('rnpn_beta_hi', 10000, 10000, 291, npn22_beta, TARGET=LOGIC)
 
-# 21 passes.  FIXME
-scan(1, 22, 273.94, hbt_beta, SPEED=4000, NAME='hbt_beta', WANTED=True)
+# 1.29 passes, 1.28 fails call.
+slow('rnpn_br', 128, 129, 20.09, npn22_beta_reverse, FACTOR=0.01)
+# 10000 passes.
+slow('rnpn_br_hi', 10000, 10000, 20.09, npn22_beta_reverse)
+
+########################## HBT ###########################
+
+# FIXME - can we flip this transistor!
+
+# 4 passes, 3 fails memf, hazard2, memp.
+slow('hbt_beta', 3, 4, 273.94, hbt_beta, TARGET=MEMORY)
 
 # 10000 passes.
-scan(10001, 9999, 273.94, hbt_beta, SPEED=4000, NAME='hbt_beta_hi')
+slow('hbt_beta_hi', 10000, 10000, 273.94, hbt_beta, TARGET=MEMORY)
 
 # 9 passes, 8 fails memw.
-scan(7, 10, 123.13, hbt_beta_reverse, SPEED=4000, NAME='hbt_br_lo')
+slow('hbt_br_lo', 8, 9, 123.13, hbt_beta_reverse, TARGET=MEMORY)
 
 # 10000 passes.
-scan(10001, 9999, 123.13, hbt_beta_reverse, SPEED=4000, NAME='hbt_br_hi')
+slow('hbt_br_hi', 10000, 10000, 123.13, hbt_beta_reverse, TARGET=MEMORY)
 
 # @22k pull resistor, 108 fails hazard2, 107 passes hazard2.
 # Setting the pull resistor to 10k gets: Failing mem at 94, passes mem 93.
-scan(95, 92, 10, hbt_cap_scale, SPEED=4000, NAME='hbt_cap')
+# FIXME RECHECK.
+slow('hbt_cap', 108, 107, 10, hbt_cap_scale, TARGET=MEMORY)
 
-# Reset timing on testadd: 3595n minimum (what cycle?)
-#scan(0, 3 * Q, 2 * Q, lambda v: change_speed(tr=v),
-#     TARGET='test/testadd.verify', NAME='Reset')
 
-# 78 fails FIXME
-scan(77, 85, 820, lambda v: resistors(rstrong=v), NAME='rstrong_lo')
-# 3954 passes FIXME
-scan(457, 393, 820, lambda v: resistors(rstrong=v), FACTOR=10, SPEED=4000,
-     NAME='rstrong_hi', WANTED=True)
+##################### RESISTORS ##########################
+
+# 113 fails mem. 114 passes.
+fast('rstrong_lo', 113, 114, 820, lambda v: resistors(rstrong=v), CRIT=MEMORY)
+# 3954 passes.
+slow('rstrong_hi', 456, 394, 820, lambda v: resistors(rstrong=v), FACTOR=10)
 
 # @ 4µs, 7355 passes.
-scan(742, 734, 2490, lambda v: resistors(rload=v), SPEED=4000, FACTOR=10,
-     NAME='rload_hi', WANTED=True)
-# @ 2µ passes 2690 FIXME.
-scan(2705, 2689, 2490, lambda v: resistors(rload=v), NAME='rload_hi_fast', WANTED=True)
-# 577 fails mem.  FIXME.
-scan(576, 592, 2490, lambda v: resistors(rload=v), NAME='rload_lo', WANTED=True)
+slow('rload_hi', 741, 735, 2490, lambda v: resistors(rload=v))
+# @ 2µ passes 2690.
+fast('rload_hi_fast', 2704, 2690, 2490, lambda v: resistors(rload=v))
+# 577 fails mem.
+FAST('rload_lo', 577, 591, 2490, lambda v: resistors(rload=v), CRIT=MEMORY)
+
+fast('rpull_lo', 1, 22, 22, lambda v: resistors(rpull=v))
+slow('rpull_hi', 400, 22, 22, lambda v: resistors(rpull=v))
+
+######################### MOSFETS #################################
 
 # 452 fails (call, inc).
-scan(451, 459, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='nmos_vto_LO', WANTED=True)
-# 1.018 passes FIXME
-scan(1033, 1017, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='nmos_vto_hi')
+slow('nmos_vto_lo', 452, 458, 0.9, nmos_vto, FACTOR=1e-3)
+# 1.018 passes
+slow('nmos_vto_hi', 1032, 1018, 0.9, nmos_vto, FACTOR=1e-3)
 # With 2.5V bias pot... 1.242 passes, 1.243 fails on hazard2.
-#scan(1244, 1241, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
+#slow(1244, 1241, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI')
 # 3V bias pot, passes 1.452, fails 1.453 (hazard2).
-#scan(1454, 1451, 0.9, nmos_vto, FACTOR=1e-3, SPEED=4000, NAME='NMOS VTO HI')
+#slow(1454, 1451, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI')
 
 # Passes 1.769 (memp). FIXME
-scan(1782, 1768, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='pmos_vto_hi', WANTED=True)
+slow('pmos_vto_hi', 1781, 1769, 0.9, pmos_vto, FACTOR=1e-3)
 # Passes 0.149, . FIXME.
-scan(150, 142, 0.9, pmos_vto, FACTOR=1e-3, SPEED=4000, NAME='pmos_vto_lo')
+slow('pmos_vto_lo', 149, 143, 0.9, pmos_vto, FACTOR=1e-3)
+
+# FIXME - nmos cap scaling.
+
+################################# EXTRAS #######################
+# Reset timing on testadd: 3595n minimum (what cycle?)
+#scan(0, 3 * Q, 2 * Q, lambda v: speed(tr=v),
+#     TARGET='test/testadd.verify', NAME='Reset')
+
+################# LOGIC SPEED #################
+scan('speedl_logic', 1000, 2000, 2000, speed, TARGET=LOGIC)
+
+# FIXME
+scan('speedl_duty1', 1, 854, Q / 2 - 10, lambda v: speed(Q, Q - v - 20),
+     TARGET=LOGIC, NORMAL=False)
+# FIXME
+scan('speedl_duty0', 1, 945, Q / 2 - 10, lambda v: speed(Q, v), TARGET=LOGIC,
+     NORMAL=False)
+
+################# OPTIMAL DRAM BIAS ==================
+scan('midpot_bias_r_hi', 300, 121, None, rbias, FACTOR=10, SPEED=2000,
+     TARGET=MEMORY, NORMAL=False, BIAS_POT=2.3)

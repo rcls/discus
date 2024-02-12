@@ -14,7 +14,7 @@ pub struct SpiceRead {
 
     num_vars: usize,
     num_points: usize,
-    vars: BTreeMap<String, usize>,
+    pub vars: BTreeMap<String, usize>,
     index: Vec<usize>,
     raw_values: Vec<f64>,
 }

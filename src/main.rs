@@ -1,6 +1,8 @@
 #![deny(warnings)]
 
 use clap::{Parser, ValueEnum};
+use std::fs::File;
+use std::io::BufReader;
 
 use spice_check::SpiceCheck;
 use spice_read::SpiceRead;
@@ -49,6 +51,8 @@ struct Args {
     disassemble: bool,
     #[arg(short='X', long)]
     verilog: bool,
+    #[arg(short='s', long)]
+    strobes: Option<String>
 }
 
 fn main() {
@@ -123,13 +127,47 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
         }
     }
     if let Some(s) = &args.verify {
-        use std::fs::File;
-        use std::io::BufReader;
         let quantum = args.quantum * 1e-9;
         // The rising clock edge is at about 1/2, sample immediately before
         // that (todo - actually sync with the clock?).
         let mut r = SpiceRead::new(quantum, quantum, false);
         r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
         SpiceCheck::new(&code, &r).spice_check();
+    }
+    if let Some(s) = &args.strobes {
+        let quantum = args.quantum * 1e-9;
+        let mut r = SpiceRead::new(quantum, quantum, false);
+        r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
+        print_strobes(&mut r);
+    }
+}
+
+fn print_strobes(r: &SpiceRead) {
+    // Look for all lines in the form S_._._._M.
+    let mut strobes: Vec<(&String, Vec<f64>)> = std::vec::Vec::new();
+    for s in r.vars.keys() {
+        let b = s.as_bytes();
+        if b.len() == 9 && b[0] == b's' && b[8] == b'm'
+            && b[1] == b'_' && b[3] == b'_' && b[5] == b'_' && b[7] == b'_' {
+            strobes.push((s, r.iterate_column(s).collect()));
+        }
+    }
+    let mut last: String = "".into();
+    for (i, t) in r.iterate_column("time").enumerate() {
+        let t = t / r.quantum;
+        if t < 1.0 {
+            continue;
+        }
+        let mut current = String::new();
+        for (s, v) in &strobes {
+            if v[i] > 1.5 {
+                current += " ";
+                current += s;
+            }
+        }
+        if current != last {
+            println!("{t} {current}");
+            last = current;
+        }
     }
 }

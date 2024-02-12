@@ -246,22 +246,25 @@ def scan(NAME, BAD, GOOD, ORIG, MUNGE, TARGET='verify', FACTOR=1,
 
 ##################### SPEED ########################
 
-scan('speed', 1912, 1913, 2000, speed, CRIT='memp')
+# WTF? Has regressed, 1913->1982.
+scan('speed_basic', 1981, 1982, 2000, speed, CRIT='hazard2 memi memp')
 
 scan('speed_duty1', 851, 852, Q / 2 - 10, lambda v: speed(Q, Q - v - 20),
      CRIT='memp hazard2')
 
-scan('speed_duty0', 943, 944, Q / 2 - 10, lambda v: speed(Q, v), CRIT='memp')
+# FIXME regressed.
+scan('speed_duty0', 979, 980, Q / 2 - 10, lambda v: speed(Q, v),
+     CRIT='memp hazard2')
 
 ##################### DRAM BIAS AND CAP ######################
 
 fast('bias_pot_hi', 2793, 2792, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
      CRIT='memf')
 
-fast('bias_pot_lo', 1891, 1892, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
-     CRIT='memp')
+fast('bias_pot_lo', 1965, 1966, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
+     CRIT='memp hazard2')
 
-slow('bias_r_lo', 274, 275, None, rbias, TARGET=MEMORY, CRIT='memp')
+slow('bias_r_lo', 278, 279, None, rbias, TARGET=MEMORY, CRIT='memp hazard2')
 # Done at fast, wide margin at slow!
 fast('bias_r_hi', 123, 122, None, rbias, FACTOR=10, TARGET=MEMORY, CRIT='memp')
 
@@ -289,12 +292,14 @@ slow('rnpn_r_hi', 87, 86, None, npn22_r, TARGET=LOGIC, CRIT='call')
 
 slow('rnpn_beta_lo', 22, 23, None, npn22_beta, CRIT='memw')
 
-slow('rnpn_beta_hi', 10000, 10000, None, npn22_beta, TARGET=LOGIC)
+slow('rnpn_beta_hi', 10000, 10000, None, npn22_beta, TARGET=LOGIC,
+     CRIT='call inc')
 
 slow('rnpn_br', 128, 129, None, npn22_beta_reverse, FACTOR=0.01,
      TARGET=LOGIC, CRIT='call')
 
-slow('rnpn_br_hi', 10000, 10000, None, npn22_beta_reverse, TARGET=LOGIC)
+slow('rnpn_br_hi', 10000, 10000, None, npn22_beta_reverse, TARGET=LOGIC,
+     CRIT='call inc')
 
 ########################## HBT ###########################
 
@@ -303,11 +308,13 @@ slow('rnpn_br_hi', 10000, 10000, None, npn22_beta_reverse, TARGET=LOGIC)
 slow('hbt_beta', 3, 4, 273.94, hbt_beta, TARGET=MEMORY,
      CRIT='memf hazard2 memp')
 
-slow('hbt_beta_hi', 10000, 10000, 273.94, hbt_beta, TARGET=MEMORY)
+slow('hbt_beta_hi', 10000, 10000, 273.94, hbt_beta, TARGET=MEMORY,
+     CRIT='memp hazard2')
 
 slow('hbt_br_lo', 8, 9, 123.13, hbt_beta_reverse, TARGET=MEMORY, CRIT='memw')
 
-slow('hbt_br_hi', 10000, 10000, 123.13, hbt_beta_reverse, TARGET=MEMORY)
+slow('hbt_br_hi', 10000, 10000, 123.13, hbt_beta_reverse, TARGET=MEMORY,
+     CRIT='memp hazard2')
 
 slow('hbt_cap', 107, 106, 1, hbt_cap_scale, TARGET=MEMORY, FACTOR=0.1,
      CRIT='hazard2')
@@ -326,7 +333,7 @@ fast('rload_hi_fast', 2534, 2533, 2490, lambda v: resistors(rload=v),
 
 fast('rload_lo', 651, 652, 2490, lambda v: resistors(rload=v), CRIT='mem memp')
 
-fast('rpull_lo', 52, 53, 22e3, lambda v: resistors(rpull=v), FACTOR=100,
+fast('rpull_lo', 530, 531, 22e3, lambda v: resistors(rpull=v), FACTOR=10,
      CRIT='call')
 
 # [Logic is passing at quite high]
@@ -335,9 +342,10 @@ slow('rpull_hi', 65, 64, 22e3, lambda v: resistors(rpull=v), FACTOR=1000,
 
 ######################### MOSFETS #################################
 
-slow('nmos_vto_lo', 519, 520, 0.9, nmos_vto, FACTOR=1e-3, CRIT='call inc')
+slow('nmos_vto_lo', 520, 521, 0.9, nmos_vto, FACTOR=1e-3, CRIT='call inc')
 
 slow('nmos_vto_hi', 1022, 1021, 0.9, nmos_vto, FACTOR=1e-3, CRIT='memp hazard2')
+#slow('nmosl_vto_hi', 1022, 1021, 0.9, nmos_vto, FACTOR=1e-3, TARGET=LOGIC)
 
 # With 2.5V bias pot...
 #slow(1243, 1242, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI',
@@ -372,14 +380,14 @@ scan('speedl_duty0', 665, 666, Q / 2 - 10, lambda v: speed(Q, v), TARGET=LOGIC,
 #fast('midpot_bias_r_lo', 299, 300, None, rbias, TARGET=MEMORY,
 #     CRIT='memw memf', BIAS_POT=2.4)
 
-scan('midpot_mem_speed', 1841, 1842, None, speed, TARGET=MEMORY, BIAS_POT=2.53,
+scan('midpot_mem_speed', 1820, 1821, None, speed, TARGET=MEMORY, BIAS_POT=2.6,
      CRIT='hazard2 memp', WANTED=False)
 
-scan('fast_bias_pot_hi', 2661, 2645, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
-     CRIT='memf', SPEED=1842, WANTED=False)
+scan('fast_bias_pot_hi', 2641, 2640, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
+     CRIT='memf', SPEED=1821, WANTED=False)
 
-scan('fast_bias_pot_lo', 2373, 2530, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
-     CRIT='memp hazard2', SPEED=1842, WANTED=False)
+scan('fast_bias_pot_lo', 2598, 2599, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
+     CRIT='memp hazard2', SPEED=1821, WANTED=False)
 
 # Investigate that !@#$% speed regress.
 scan('cap1913', 680, 500, None, dram_cap, SPEED=1913, WANTED=False)

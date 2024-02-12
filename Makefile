@@ -25,7 +25,7 @@ verify: $(TESTS:%=%.verify)
 verify-adhoc: $(ADHOC_TEST:%=test/%.verify)
 
 %.rcr: %.sch gates/*.sch board/*.sch sym/*.sym subckt/*.prm
-	time $(NETLIST) -L subckt -g spice-sdb -o $@ $<
+	time ./cached.py -o $@ -i $< -- $(NETLIST) -L subckt -g spice-sdb -o $@ $<
 
 %.cir: %.rcr ./substrate.py
 	./substrate.py $< > $@
@@ -38,7 +38,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py $(RUST_DI
 
 .PRECIOUS: %.rcr %.raw %.cir
 %.raw: %.cir
-	time ngspice -r $@ -b $<
+	time ./cached.py -o $@ -i $< -- ngspice -r $@ -b $<
 
 count: board/bit.rcr board/control.rcr board/dram64byte.rcr board/rom64byte.rcr
 	grep -Ec -e '^M.*\b[PN]MOS_switch' -e '^Q.*\b(Q2SC4774|PDTC124TU)' $+
@@ -123,5 +123,5 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 clean:
 	rm -f *- */*- *~ */*~ *.o */*.o *.cir */*.cir *.rcr */*.rcr
 	rm -f *.raw */*.raw
-	rm -f */*.fake-cir PCB.*.backup PCB.*.save
+	rm -f PCB.*.backup PCB.*.save
 	rm -f rmsim $(ALL_PROG)

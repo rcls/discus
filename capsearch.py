@@ -367,5 +367,19 @@ scan('speedl_duty0', 665, 666, Q / 2 - 10, lambda v: speed(Q, v), TARGET=LOGIC,
      CRIT='inc')
 
 ################# OPTIMAL DRAM BIAS ==================
-scan('midpot_bias_r_hi', 300, 121, None, rbias, FACTOR=10, SPEED=2000,
-     TARGET=MEMORY, WANTED=False, BIAS_POT=2.3)
+#fast('midpot_bias_r_hi', 246, 245, None, rbias, FACTOR=10,
+#     TARGET=MEMORY, WANTED=False, BIAS_POT=2.4, CRIT='memp hazard2')
+#fast('midpot_bias_r_lo', 299, 300, None, rbias, TARGET=MEMORY,
+#     CRIT='memw memf', BIAS_POT=2.4)
+
+scan('midpot_mem_speed', 1841, 1842, None, speed, TARGET=MEMORY, BIAS_POT=2.53,
+     CRIT='hazard2 memp', WANTED=False)
+
+scan('fast_bias_pot_hi', 2661, 2645, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
+     CRIT='memf', SPEED=1842, WANTED=False)
+
+scan('fast_bias_pot_lo', 2373, 2530, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
+     CRIT='memp hazard2', SPEED=1842, WANTED=False)
+
+# Investigate that !@#$% speed regress.
+scan('cap1913', 680, 500, None, dram_cap, SPEED=1913, WANTED=False)

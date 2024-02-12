@@ -6,7 +6,9 @@ PCB.*
 *.net
 *.new.pcb
 *.raw
+*.raw.*
 *.rcr
+*.rcr.*
 \#*#
 unused
 board/*-board.sch

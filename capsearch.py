@@ -88,7 +88,7 @@ def speed(vt=None, t0=None, tr=None):
             F.write(l)
     currentQ = vt
 
-def bias_pot(volts=2):
+def bias_pot(volts=2.6):
     with open('subckt/bias-pot.prm', 'w') as F:
         F.write(f'''.subckt bias_pot gnd vdd set
 Vbias 1 gnd DC {volts:g}
@@ -246,8 +246,7 @@ def scan(NAME, BAD, GOOD, ORIG, MUNGE, TARGET='verify', FACTOR=1,
 
 ##################### SPEED ########################
 
-# WTF? Has regressed, 1913->1982.
-scan('speed_basic', 1981, 1982, 2000, speed, CRIT='hazard2 memi memp')
+scan('speed_basic', 1820, 1821, 2000, speed, CRIT='hazard2 memi memp')
 
 scan('speed_duty1', 851, 852, Q / 2 - 10, lambda v: speed(Q, Q - v - 20),
      CRIT='memp hazard2')

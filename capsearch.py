@@ -26,6 +26,7 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call inc sub add logic cmp'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
+DEFAULT_BIAS_POT=2
 
 def target_list(t):
     if type(t) != str:
@@ -88,7 +89,7 @@ def speed(vt=None, t0=None, tr=None):
             F.write(l)
     currentQ = vt
 
-def bias_pot(volts=2):
+def bias_pot(volts=DEFAULT_BIAS_POT):
     with open('subckt/bias-pot.prm', 'w') as F:
         F.write(f'''.subckt bias_pot gnd vdd set
 Vbias 1 gnd DC {volts:g}
@@ -316,8 +317,8 @@ slow('hbt_br_lo', 8, 9, 123.13, hbt_beta_reverse, TARGET=MEMORY, CRIT='memw')
 slow('hbt_br_hi', 10000, 10000, 123.13, hbt_beta_reverse, TARGET=MEMORY,
      CRIT='memp hazard2')
 
-slow('hbt_cap', 107, 106, 1, hbt_cap_scale, TARGET=MEMORY, FACTOR=0.1,
-     CRIT='hazard2')
+slow('hbt_cap', 104, 103, 1, hbt_cap_scale, TARGET=MEMORY, FACTOR=0.1,
+     CRIT='hazard2 mem')
 
 ##################### RESISTORS ##########################
 
@@ -344,16 +345,12 @@ slow('rpull_hi', 65, 64, 22e3, lambda v: resistors(rpull=v), FACTOR=1000,
 
 slow('nmos_vto_lo', 520, 521, 0.9, nmos_vto, FACTOR=1e-3, CRIT='call inc')
 
-slow('nmos_vto_hi', 1022, 1021, 0.9, nmos_vto, FACTOR=1e-3, CRIT='memp hazard2')
-#slow('nmosl_vto_hi', 1022, 1021, 0.9, nmos_vto, FACTOR=1e-3, TARGET=LOGIC)
+# +0.2 : 1112,3
+slow('nmos_vto_hi', 1287, 1286, 0.9, nmos_vto, FACTOR=1e-3,
+     BIAS_POT=DEFAULT_BIAS_POT+0.6, CRIT='memp hazard2')
 
-# With 2.5V bias pot...
-#slow(1243, 1242, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI',
-#      CRIT='hazard2')
-# 3V bias pot
-#slow(1453, 1452, 0.9, nmos_vto, FACTOR=1e-3, NAME='NMOS VTO HI', CRIT='hazard2')
-
-slow('pmos_vto_hi', 1774, 1773, 0.9, pmos_vto, FACTOR=1e-3, CRIT='memp')
+slow('pmos_vto_hi', 1772, 1771, 0.9, pmos_vto, FACTOR=1e-3,
+     CRIT='memp hazard2')
 
 slow('pmos_vto_lo', 107, 108, 0.9, pmos_vto, FACTOR=1e-3,
      CRIT='call inc romdecode ramdecode')
@@ -363,7 +360,7 @@ slow('pmos_vto_lo', 107, 108, 0.9, pmos_vto, FACTOR=1e-3,
 ################################# EXTRAS #######################
 # Reset timing on testadd: 3595n minimum (what cycle?)
 #scan(0, 3 * Q, 2 * Q, lambda v: speed(tr=v),
-#     TARGET='test/testadd.verify', NAME='Reset')
+#     TARGET='test/add.verify', NAME='Reset')
 
 ################# LOGIC SPEED #################
 scan('speedl_logic', 1753, 1754, 2000, speed, TARGET=LOGIC, CRIT='cmp')
@@ -388,6 +385,3 @@ scan('fast_bias_pot_hi', 2641, 2640, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
 
 scan('fast_bias_pot_lo', 2598, 2599, None, bias_pot, FACTOR=1e-3, TARGET=MEMORY,
      CRIT='memp hazard2', SPEED=1821, WANTED=False)
-
-# Investigate that !@#$% speed regress.
-scan('cap1913', 680, 500, None, dram_cap, SPEED=1913, WANTED=False)

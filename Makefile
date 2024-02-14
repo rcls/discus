@@ -40,8 +40,9 @@ $(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py $(RUST_DI
 %.raw: %.cir
 	time ./cached.py -o $@ -i $< -- ngspice -r $@ -b $<
 
-count: board/bit.rcr board/control.rcr board/dram64byte.rcr board/rom64byte.rcr
-	grep -Ec -e '^M.*\b[PN]MOS_switch' -e '^Q.*\b(Q2SC4774|PDTC124TU)' $+
+count: board/bit.rcr board/control.rcr board/rom64byte.rcr \
+    board/dram64byte.rcr board/dram32byte.rcr
+	grep -Ec -e '^M.*\b[PN]MOS_switch' -e '^Q.*\b(Q2SC4774|PDTC124TU|BC847)' $+
 
 SYMS=$(wildcard sym/*.sym)
 GATES=$(wildcard gates/*.sch)

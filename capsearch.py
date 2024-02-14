@@ -345,7 +345,6 @@ slow('rpull_hi', 65, 64, 22e3, lambda v: resistors(rpull=v), FACTOR=1000,
      CRIT='memw memf')
 
 ######################### MOSFETS #################################
-
 slow('nmos_vto_lo', 520, 521, 0.9, nmos_vto, FACTOR=1e-3, CRIT='call inc')
 
 # +0.2 : 1112,3

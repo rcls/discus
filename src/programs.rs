@@ -110,7 +110,7 @@ pub fn inc() -> Instructions {
         .decv (X, A)
         .load (Y, X)
         .incv (U, Y)
-        .cl   (Z, "ret")
+        .cl   (Z, "retc")
         .check(|s| s.u == 0)
         .add  (U)
         .check(|s| !s.c && s.a == 0)
@@ -118,8 +118,9 @@ pub fn inc() -> Instructions {
         .inc  (X)
         .inc  (X)
         .inc  (X)
-    .label("ret")
-        .ret();
+        .ret()
+    .label("retc")
+        .rt   (C);
 
     inc
 }

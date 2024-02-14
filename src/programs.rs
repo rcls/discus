@@ -51,10 +51,13 @@ pub fn cmp() -> Instructions {
         .check(|s| !s.c && s.k.unwrap() != 0)
         .cmp  (A)
         .check(|s| s.c && s.k == Some(0))
+        .rt   (C)
+        .rt   (NZ)
         .cmp  (12)
         .check(|s| s.c && s.k.unwrap() != 0)
         .tst  (A)
         .tst  (X)
+        .rt   (Z)
         .ret();
     cmp
 }

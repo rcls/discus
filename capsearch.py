@@ -15,6 +15,7 @@ parser.add_argument('-b', '--bad-check', action='store_true',
                     help='recheck bad limit')
 parser.add_argument('-c', '--critical', action='store_true',
                     help='use critical target if known')
+parser.add_argument('-t', '--target', nargs='+', help='override target')
 parser.add_argument('-n', '--dry-run', action='store_true', help='run none')
 parser.add_argument('wanted', nargs='*', help='tests to run')
 args = parser.parse_args()
@@ -24,11 +25,13 @@ if args.good_check or args.bad_check:
 
 Q=2000
 currentQ = 2000
-LOGIC = 'call inc sub add logic cmp'
+LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
 DEFAULT_BIAS_POT=2
 
 def target_list(t):
+    if args.target:
+        return args.target
     if type(t) != str:
         return list(t)
     targets = []

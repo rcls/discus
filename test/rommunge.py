@@ -35,12 +35,6 @@ for X in src:
 
 dst.write('.control\n')
 
-#dst.write('save zo_c co_c phi')
-#for X in 'p', 'i', 'a', 'r_xb', 'r_yb', 'r_ub', 'r_kb':
-#    for D in '01234567':
-#        dst.write(f' {X}{D}')
-#dst.write('\n')
-
 if 'executed' in params:
     ns = args.t * (int(params['executed']) + 3) + 1000
     dst.write(f'tran 50n {ns}n uic\n')

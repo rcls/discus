@@ -1112,16 +1112,16 @@ footprint=sot323-hbt
 T 4300 3300 5 10 0 1 0 6 1
 value=BC847BW
 }
-C 4400 2800 1 0 0 resistor-pull.sym
+C 4400 2800 1 0 0 resistor-load.sym
 {
 T 4700 3200 5 10 0 0 0 0 1
 device=RESISTOR
 T 5050 2950 5 10 1 1 0 0 1
 refdes=R6
 T 4600 3600 5 10 0 1 0 0 1
-footprint=0603-pull
+footprint=0603-load
 T 4600 3800 5 10 0 1 0 0 1
-value=rpull
+value=rload
 }
 N 4700 4300 4700 5500 4
 N 4700 5500 5100 5500 4

@@ -56,35 +56,35 @@ C 1700 1300 1 180 0 resistor-load.sym
 {
 T 1400 900 5 10 0 0 180 0 1
 device=RESISTOR
-T 1050 1150 5 10 1 1 0 8 1
+T 950 1250 5 10 1 1 0 6 1
 refdes=R1
 T 1300 1200 5 10 0 1 180 0 1
 footprint=0603-load
 T 1300 1200 5 10 0 1 180 0 1
 value=rload
 }
-C 1600 1200 1 270 0 resistor-pull.sym
+C 1600 1200 1 270 0 resistor-load.sym
 {
 T 2000 900 5 10 0 0 270 0 1
 device=RESISTOR
 T 1750 550 5 10 1 1 0 2 1
 refdes=R2
 T 2400 1000 5 10 0 1 270 0 1
-footprint=0603-pull
+footprint=0603-load
 T 2600 1000 5 10 0 1 270 0 1
-value=rpull
+value=rload
 }
 N 2100 900 2100 1000 4
-C 2000 2600 1 270 0 resistor-strong.sym
+C 2000 2600 1 270 0 resistor-load.sym
 {
 T 1900 1600 5 10 0 1 270 0 1
-footprint=0603-strong
+footprint=0603-load
 T 2400 2300 5 10 0 0 270 0 1
 device=RESISTOR
 T 2150 1950 5 10 1 1 270 0 1
 refdes=R3
 T 1700 2500 5 10 0 1 270 0 1
-value=rstrong
+value=rload
 }
 N 2100 1700 2100 1400 4
 N 2500 1500 2100 1500 4

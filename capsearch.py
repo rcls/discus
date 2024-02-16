@@ -27,7 +27,7 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
-DEFAULT_BIAS_POT=2
+DEFAULT_BIAS_POT=2.2
 
 def target_list(t):
     if args.target:

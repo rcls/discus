@@ -8,7 +8,7 @@ import hashlib
 import platformdirs
 import os
 import struct
-import subprocess
+from subprocess import CalledProcessError, run
 import sys
 
 parser = argparse.ArgumentParser()
@@ -81,14 +81,13 @@ hashed_path = platformdirs.user_cache_path('discus') / (
     os.path.basename(args.o) + '.' + hash.hexdigest())
 
 try:
-    dumppath(args.o, slurppath(hashed_path))
+    run(['cp', '--reflink=auto', '--', hashed_path, args.o]).check_returncode()
     print('REUSE', hashed_path)
-    # Lazy...
-    subprocess.run(['touch', '--', hashed_path]).check_returncode()
+    run(['touch', '--', hashed_path])
     sys.exit(0)
-except FileNotFoundError:
+except CalledProcessError:
     pass
 
-subprocess.run(args.command).check_returncode()
+run(args.command).check_returncode()
 
-dumppath(hashed_path, slurppath(args.o))
+run(['cp', '--reflink=auto', '--', args.o, hashed_path])

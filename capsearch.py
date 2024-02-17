@@ -27,7 +27,7 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
-DEFAULT_BIAS_POT=2.2
+DEFAULT_BIAS_POT=1.8
 
 def target_list(t):
     if args.target:
@@ -96,8 +96,7 @@ def bias_pot(volts=DEFAULT_BIAS_POT):
     with open('subckt/bias-pot.prm', 'w') as F:
         F.write(f'''.subckt bias_pot gnd vdd set
 Vbias 1 gnd DC {volts:g}
-Rout 1 set 1k
-Rload 1 vdd 1k
+Rout 1 set 100
 .ends
 ''')
 

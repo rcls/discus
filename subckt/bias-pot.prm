@@ -1,5 +1,4 @@
 .subckt bias_pot gnd vdd set
-Vbias 1 gnd DC 2.2
-Rout 1 set 1k
-Rload 1 vdd 1k
+Vbias 1 gnd DC 1.8
+Rout 1 set 100
 .ends

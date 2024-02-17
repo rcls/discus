@@ -886,17 +886,30 @@ refdes=A5
 }
 C 5200 8200 1 180 0 phi1.sym
 C 8700 8200 1 180 0 phi1.sym
-C 3800 1300 1 0 0 nmos-switch.sym
+C 3800 1300 1 0 0 npn.sym
 {
 T 4025 1600 5 8 1 1 0 1 1
-refdes=M1
-T 3900 2100 5 10 0 1 0 0 1
-value=NMOS_switch
-T 4300 1900 5 10 0 1 0 0 1
-footprint=sot23-nmos
-T 5300 1900 5 10 0 1 0 0 1
-device=NMOS
+refdes=Q8
+T 4500 1800 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 3900 2000 5 10 0 1 0 0 1
+value=BC847BW
 }
+C 3500 1300 1 270 0 capacitor.sym
+{
+T 4200 1100 5 10 0 0 270 0 1
+device=CAPACITOR
+T 3725 975 5 10 1 1 0 2 1
+refdes=C2
+T 4400 1100 5 10 0 0 270 0 1
+symversion=0.1
+T 3700 1100 5 10 0 1 0 0 1
+footprint=0603-cap
+T 3700 650 5 10 1 1 0 5 1
+value=680p
+}
+C 3600 500 1 0 0 gnd-1.sym
+N 3700 1300 3700 1600 4
 N 3700 1600 3800 1600 4
 C 4000 1900 1 0 0 vdd-1.sym
 N 4200 1900 4200 1800 4
@@ -905,7 +918,7 @@ C 4000 1300 1 270 0 capacitor.sym
 T 4700 1100 5 10 0 0 270 0 1
 device=CAPACITOR
 T 4225 975 5 10 1 1 0 2 1
-refdes=C1
+refdes=C3
 T 4900 1100 5 10 0 0 270 0 1
 symversion=0.1
 T 4200 650 5 10 1 1 0 5 1
@@ -919,7 +932,7 @@ C 4100 500 1 0 0 gnd-1.sym
 C 6600 1300 1 0 1 notp.sym
 {
 T 6250 1600 5 10 1 1 0 4 1
-refdes=I4
+refdes=I1
 }
 N 4200 1300 4800 1300 4
 {
@@ -973,7 +986,7 @@ netname=Bias
 C 5200 1300 1 0 1 pmos-switch.sym
 {
 T 4975 1600 5 8 1 1 0 7 1
-refdes=M2
+refdes=M3
 T 5100 2100 5 10 0 1 0 6 1
 value=PMOS_switch
 T 4700 1900 5 10 0 1 0 6 1
@@ -999,7 +1012,7 @@ C 5300 1600 1 270 0 capacitor.sym
 T 6000 1400 5 10 0 0 270 0 1
 device=CAPACITOR
 T 5525 1275 5 10 1 1 0 2 1
-refdes=C2
+refdes=C4
 T 6200 1400 5 10 0 0 270 0 1
 symversion=0.1
 T 5500 950 5 10 1 1 0 5 1
@@ -1021,7 +1034,7 @@ footprint=sot23-pmos
 T 5700 5600 5 10 0 1 0 0 1
 device=PMOS
 T 4425 5300 5 8 1 1 0 1 1
-refdes=M4
+refdes=M1
 }
 C 5000 5000 1 0 0 pmos-switch.sym
 {
@@ -1032,7 +1045,7 @@ footprint=sot23-pmos
 T 6500 5600 5 10 0 1 0 0 1
 device=PMOS
 T 5225 5300 5 8 1 1 0 1 1
-refdes=M5
+refdes=M2
 }
 N 4200 5100 4200 5300 4
 {
@@ -1085,7 +1098,7 @@ device=CAPACITOR
 T 4700 3600 5 10 0 0 270 2 1
 symversion=0.1
 T 5375 3475 5 10 1 1 0 8 1
-refdes=C3
+refdes=C1
 T 5600 3500 5 10 1 1 0 0 1
 value=1p
 T 5400 3500 5 10 0 1 0 0 1
@@ -1159,20 +1172,11 @@ C 4100 3700 1 0 0 resistor-1.sym
 T 4400 4100 5 10 0 0 0 0 1
 device=RESISTOR
 T 4750 3850 5 10 1 1 0 0 1
-refdes=R4
+refdes=R2
 T 4250 3850 5 10 1 1 0 6 1
 value=1
 T 4600 3850 5 10 0 1 0 0 1
 footprint=0603
-}
-C 2600 2000 1 0 0 in-1.sym
-{
-T 2600 2500 5 10 0 0 0 0 1
-footprint=anchor
-T 2600 2300 5 10 0 0 0 0 1
-device=INPUT
-T 2600 2100 5 10 1 1 0 7 1
-refdes=V33
 }
 C 1000 6000 1 0 0 in-1.sym
 {
@@ -1194,3 +1198,4 @@ refdes=R1
 T 2400 6200 5 10 0 1 0 0 1
 value=rload
 }
+C 3000 2100 1 0 0 vdd-1.sym

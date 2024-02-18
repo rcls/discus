@@ -1,3 +1,4 @@
 .MODEL rload R (R=2.49k)
 .MODEL rstrong R (R=820)
 .MODEL rpull R (R=22k)
+.MODEL rmem R (R=22k)

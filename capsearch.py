@@ -100,13 +100,15 @@ Rout 1 set 100
 .ends
 ''')
 
-def resistors(rload=2490, rstrong=820, rpull=22e3):
+def resistors(rload=2490, rstrong=820, rpull=22e3, rmem=22e3):
     rload = rload * 1e-3
     rpull = rpull * 1e-3
+    rmem = rmem * 1e-3
     with open('subckt/resistor-load.prm', 'w') as F:
         F.write(f'.MODEL rload R (R={rload:g}k)\n')
         F.write(f'.MODEL rstrong R (R={rstrong:g})\n')
         F.write(f'.MODEL rpull R (R={rpull:g}k)\n')
+        F.write(f'.MODEL rmem R (R={rmem:g}k)\n')
 
 def rbias(ohms=820):
     path = 'gates/dramio.sch'
@@ -335,14 +337,19 @@ slow('rload_hi_slow', 79, 78, 2490, lambda v: resistors(rload=v), FACTOR=100,
 fast('rload_hi_fast', 2698, 2697, 2490, lambda v: resistors(rload=v),
      CRIT='memp hazard2')
 
-fast('rload_lo', 651, 652, 2490, lambda v: resistors(rload=v), CRIT='mem memp')
+fast('rload_lo', 65, 66, 2490, lambda v: resistors(rload=v), CRIT='mem memp',
+     FACTOR=10)
 
 fast('rpull_lo', 47, 48, 22e3, lambda v: resistors(rpull=v), FACTOR=100,
-     CRIT='call')
+     TARGET=LOGIC, CRIT='call inc')
 
-# [Logic is passing at quite high]
-slow('rpull_hi', 60, 59, 22e3, lambda v: resistors(rpull=v), FACTOR=1000,
-     CRIT='memw memf')
+slow('rpull_hi', None, 100e3, 22e3, lambda v: resistors(rpull=v), TARGET=LOGIC)
+
+fast('rmem_lo', 296, 297, 22e3, lambda v: resistors(rmem=v),
+     TARGET=MEMORY, CRIT='hazard2 mem')
+
+slow('rmem_hi', 60, 59, 22e3, lambda v: resistors(rmem=v), FACTOR=1000,
+     TARGET=MEMORY, CRIT='memw memf')
 
 ######################### MOSFETS #################################
 slow('nmos_vto_lo', 395, 396, 0.9, nmos_vto, FACTOR=1e-3,

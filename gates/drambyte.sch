@@ -415,7 +415,7 @@ C 2300 1300 1 90 0 resistor-pull.sym
 T 1500 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 1300 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 1900 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 2225 1550 5 8 1 1 270 0 1
@@ -426,7 +426,7 @@ C 3200 1300 1 90 0 resistor-pull.sym
 T 2400 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 2200 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 2800 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 3125 1550 5 8 1 1 270 0 1
@@ -437,7 +437,7 @@ C 4100 1300 1 90 0 resistor-pull.sym
 T 3300 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 3100 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 3700 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 4025 1550 5 8 1 1 270 0 1
@@ -448,7 +448,7 @@ C 5000 1300 1 90 0 resistor-pull.sym
 T 4200 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 4000 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 4600 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 4925 1550 5 8 1 1 270 0 1
@@ -459,7 +459,7 @@ C 5900 1300 1 90 0 resistor-pull.sym
 T 5100 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 4900 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 5500 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 5825 1550 5 8 1 1 270 0 1
@@ -470,7 +470,7 @@ C 6800 1300 1 90 0 resistor-pull.sym
 T 6000 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 5800 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 6400 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 6725 1550 5 8 1 1 270 0 1
@@ -481,7 +481,7 @@ C 7700 1300 1 90 0 resistor-pull.sym
 T 6900 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 6700 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 7300 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 7625 1550 5 8 1 1 270 0 1
@@ -492,7 +492,7 @@ C 8600 1300 1 90 0 resistor-pull.sym
 T 7800 1500 5 10 0 1 90 0 1
 footprint=0603-pull
 T 7600 1500 5 10 0 1 90 0 1
-value=rpull
+value=rmem
 T 8200 1600 5 10 0 0 90 0 1
 device=RESISTOR
 T 8525 1550 5 8 1 1 270 0 1

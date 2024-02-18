@@ -345,7 +345,7 @@ fast('rpull_lo', 47, 48, 22e3, lambda v: resistors(rpull=v), FACTOR=100,
 
 slow('rpull_hi', None, 100e3, 22e3, lambda v: resistors(rpull=v), TARGET=LOGIC)
 
-fast('rmem_lo', 296, 297, 22e3, lambda v: resistors(rmem=v),
+fast('rmem_lo', 298, 299, 22e3, lambda v: resistors(rmem=v),
      TARGET=MEMORY, CRIT='hazard2 mem')
 
 slow('rmem_hi', 60, 59, 22e3, lambda v: resistors(rmem=v), FACTOR=1000,

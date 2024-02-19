@@ -100,7 +100,7 @@ Rout 1 set 100
 .ends
 ''')
 
-def resistors(rload=2490, rstrong=820, rpull=22e3, rmem=22e3):
+def resistors(rload=2490, rstrong=820, rpull=22e3, rmem=10e3):
     rload = rload * 1e-3
     rpull = rpull * 1e-3
     rmem = rmem * 1e-3
@@ -278,10 +278,10 @@ fast('bias_r_hi', 189, 188, None, rbias, FACTOR=10, TARGET=MEMORY, CRIT='memp')
 slow('dram_cap_lo', 139, 140, None, dram_cap, TARGET=MEMORY, CRIT='mem hazard2')
 
 # FIXME - change to 4000µs.
-scan('dram_cap_hi_slow', 170, 169, None, dram_cap, FACTOR=10, SPEED=3000,
+scan('dram_cap_hi_slow', 346, 345, None, dram_cap, FACTOR=10, SPEED=3000,
      TARGET=MEMORY, CRIT='memf')
 
-fast('dram_cap_hi_fast', 100, 99, None, dram_cap, TARGET=MEMORY, FACTOR=10,
+fast('dram_cap_hi_fast', 165, 164, None, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='hazard2 memf')
 # FIXME - dram cap lo full speed.
 

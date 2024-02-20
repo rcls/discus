@@ -222,9 +222,9 @@ def try_one(MUNGE, V, TARGET, RESULTS, SPEED=None, RBIAS=None, BIAS_POT=None):
     print(res, flush=True)
     return status == 0
 
-def scan(NAME, BAD, GOOD, ORIG, MUNGE, TARGET='verify', FACTOR=1,
+def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
          SPEED=None, WANTED=None, BIAS_POT=None, RBIAS=None, CRIT=None):
-    assert ORIG is None
+    assert MUNGE is not None
     if not wanted(NAME, WANTED):
         return
 
@@ -258,10 +258,7 @@ def scan(NAME, BAD, GOOD, ORIG, MUNGE, TARGET='verify', FACTOR=1,
             GOOD = MID
         else:
             BAD = MID
-    if ORIG is not None:
-        MUNGE(ORIG)
-    else:
-        MUNGE()
+    MUNGE()
     print('=== RESULT', NAME, '===')
     results.sort()
     for _, L in results:
@@ -273,125 +270,123 @@ def scan(NAME, BAD, GOOD, ORIG, MUNGE, TARGET='verify', FACTOR=1,
 
 ##################### SPEED ########################
 
-scan('speed_basic', 1893, 1894, None, speed, TARGET=MEMORY,
+scan('speed_basic', 1893, 1894, speed, TARGET=MEMORY,
      CRIT='hazard2 memi memp')
 
-scan('speed_duty1', 58, 59, None,
+scan('speed_duty1', 58, 59,
      lambda v: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='memp hazard2')
 
-scan('speed_duty0', 935, 936, None,
+scan('speed_duty0', 935, 936,
      lambda v: speed() if v is None else speed(Q, v),
      TARGET=MEMORY, CRIT='memp hazard2')
 
-scan('speedl_logic', 1759, 1760, None, speed, TARGET=LOGIC, CRIT='cmp inc')
+scan('speedl_logic', 1759, 1760, speed, TARGET=LOGIC, CRIT='cmp inc')
 
-scan('speedl_duty1', 59, 60, None,
+scan('speedl_duty1', 59, 60,
      lambda v: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call cmp inc', FACTOR=10)
 
-scan('speedl_duty0', 67, 68, None,
+scan('speedl_duty0', 67, 68,
      lambda v: speed() if v is None else speed(Q, v), TARGET=LOGIC,
      CRIT='call inc', FACTOR=10)
 
 ##################### DRAM BIAS AND CAP ######################
 
-fast('bias_pot_hi', None, 350, None, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
+fast('bias_pot_hi', None, 350, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
      CRIT='memf memw')
 
-fast('bias_pot_lo', 153, 154, None, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
+fast('bias_pot_lo', 153, 154, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
      CRIT='memp hazard2')
 
-slow('bias_r_lo', 152, 153, None, rbias, TARGET=MEMORY, CRIT='memp hazard2')
+slow('bias_r_lo', 152, 153, rbias, TARGET=MEMORY, CRIT='memp hazard2')
 # Done at fast, wide margin at slow!
-fast('bias_r_hi', 197, 196, None, rbias, FACTOR=10, TARGET=MEMORY, CRIT='memp')
+fast('bias_r_hi', 197, 196, rbias, FACTOR=10, TARGET=MEMORY, CRIT='memp')
 
-slow('dram_cap_lo', 165, 166, None, dram_cap, TARGET=MEMORY, CRIT='mem hazard2')
+slow('dram_cap_lo', 165, 166, dram_cap, TARGET=MEMORY, CRIT='mem hazard2')
 
 # FIXME - change to 4000µs.
-scan('dram_cap_hi_slow', 346, 345, None, dram_cap, FACTOR=10, SPEED=3000,
+scan('dram_cap_hi_slow', 346, 345, dram_cap, FACTOR=10, SPEED=3000,
      TARGET=MEMORY, CRIT='memf')
 
-fast('dram_cap_hi_fast', 165, 164, None, dram_cap, TARGET=MEMORY, FACTOR=10,
+fast('dram_cap_hi_fast', 165, 164, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='hazard2 memf')
 # FIXME - dram cap lo full speed.
 
 ######################### NPN #################################
 
-slow('npn_beta', 3, 4, None, npn_beta, CRIT='call inc')
+slow('npn_beta', 3, 4, npn_beta, CRIT='call inc')
 
 # Capacitance scaling?
 
 ####################### PRE-BIAS NPN ##############################
 
-slow('rnpn_r_lo', 22, 23, None, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
+slow('rnpn_r_lo', 22, 23, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
 
-slow('rnpn_r_hi', 119, 118, None, npn22_r, TARGET=LOGIC, CRIT='call')
+slow('rnpn_r_hi', 119, 118, npn22_r, TARGET=LOGIC, CRIT='call')
 
-slow('rnpn_beta_lo', 22, 23, None, npn22_beta, CRIT='memw')
+slow('rnpn_beta_lo', 22, 23, npn22_beta, CRIT='memw')
 
-slow('rnpn_beta_hi', None, 10000, None, npn22_beta, TARGET=LOGIC,
-     CRIT='call inc')
+slow('rnpn_beta_hi', None, 10000, npn22_beta, TARGET=LOGIC, CRIT='call inc')
 
-slow('rnpn_br_lo', 11, 12, None, npn22_beta_reverse, FACTOR=0.1,
+slow('rnpn_br_lo', 11, 12, npn22_beta_reverse, FACTOR=0.1,
      TARGET=LOGIC, CRIT='call')
 
-slow('rnpn_br_hi', None, 10000, None, npn22_beta_reverse, TARGET=LOGIC,
+slow('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
      CRIT='call inc')
 
 ########################## HBT ###########################
 
-slow('hbt_beta_lo', 29, 30, None, hbt_beta, TARGET=MEMORY, FACTOR=0.1,
+slow('hbt_beta_lo', 29, 30, hbt_beta, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memf hazard2')
 
-slow('hbt_beta_hi', None, 10000, None, hbt_beta, TARGET=MEMORY,
-     CRIT='memp hazard2')
+slow('hbt_beta_hi', None, 10000, hbt_beta, TARGET=MEMORY, CRIT='memp hazard2')
 
-slow('hbt_br_lo', 35, 36, None, hbt_beta_reverse, TARGET=MEMORY, FACTOR=0.1,
+slow('hbt_br_lo', 35, 36, hbt_beta_reverse, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memw')
 
-slow('hbt_br_hi', None, 10000, None, hbt_beta_reverse, TARGET=MEMORY,
+slow('hbt_br_hi', None, 10000, hbt_beta_reverse, TARGET=MEMORY,
      CRIT='memp hazard2')
 
 # 1.3pF nominal.
-slow('hbt_cap_c', 32, 31, None, hbt_cap_c, TARGET=MEMORY, FACTOR=1e-12,
+slow('hbt_cap_c', 32, 31, hbt_cap_c, TARGET=MEMORY, FACTOR=1e-12,
      CRIT='mem memi')
 # 2.5pF nominal.
-slow('hbt_cap_e', 86, 85, None, hbt_cap_e, TARGET=MEMORY, FACTOR=1e-12,
+slow('hbt_cap_e', 86, 85, hbt_cap_e, TARGET=MEMORY, FACTOR=1e-12,
      CRIT='mem hazard2')
 
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 100, 101, None, rstrong, CRIT='mem')
+fast('rstrong_lo', 100, 101, rstrong, CRIT='mem')
 
-slow('rstrong_hi', 45, 44, None, rstrong, FACTOR=100, CRIT='mem')
+slow('rstrong_hi', 45, 44, rstrong, FACTOR=100, CRIT='mem')
 
-slow('rload_hi_slow', 88, 87, None, rload, FACTOR=100, CRIT='mem hazard2')
+slow('rload_hi_slow', 88, 87, rload, FACTOR=100, CRIT='mem hazard2')
 
-fast('rload_hi_fast', 2795, 2794, None, rload, CRIT='memp hazard2')
+fast('rload_hi_fast', 2795, 2794, rload, CRIT='memp hazard2')
 
-fast('rload_lo', 65, 66, None, rload, CRIT='mem memp', FACTOR=10)
+fast('rload_lo', 65, 66, rload, CRIT='mem memp', FACTOR=10)
 
-fast('rpull_lo', 47, 48, None, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
+fast('rpull_lo', 47, 48, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
 
-slow('rpull_hi', None, 100e3, None, rpull, TARGET=LOGIC)
+slow('rpull_hi', None, 100e3, rpull, TARGET=LOGIC)
 
-fast('rmem_lo', 298, 299, None, rmem, TARGET=MEMORY, CRIT='hazard2 mem')
+fast('rmem_lo', 298, 299, rmem, TARGET=MEMORY, CRIT='hazard2 mem')
 
-slow('rmem_hi', 60, 59, None, rmem, FACTOR=1000, TARGET=MEMORY,
+slow('rmem_hi', 60, 59, rmem, FACTOR=1000, TARGET=MEMORY,
      CRIT='memw memf')
 
 ######################### MOSFETS #################################
-slow('nmos_vto_lo', 395, 396, None, nmos_vto, FACTOR=1e-3,
+slow('nmos_vto_lo', 395, 396, nmos_vto, FACTOR=1e-3,
      CRIT='call inc', BIAS_POT=DEFAULT_BIAS_POT-0.2)
 
-slow('nmos_vto_hi', 158, 157, None, nmos_vto, FACTOR=10e-3,
+slow('nmos_vto_hi', 158, 157, nmos_vto, FACTOR=10e-3,
      BIAS_POT=DEFAULT_BIAS_POT+0.3, CRIT='memp hazard2')
 
-slow('pmos_vto_hi', 229, 228, None, pmos_vto, FACTOR=10e-3,
+slow('pmos_vto_hi', 229, 228, pmos_vto, FACTOR=10e-3,
      CRIT='memp hazard2 inc')
 
-slow('pmos_vto_lo', 107, 108, None, pmos_vto, FACTOR=1e-3,
+slow('pmos_vto_lo', 107, 108, pmos_vto, FACTOR=1e-3,
      CRIT='call inc romdecode ramdecode')
 
 # FIXME - nmos cap scaling.

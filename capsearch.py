@@ -274,27 +274,27 @@ scan('speed_basic', 1893, 1894, speed, TARGET=MEMORY,
      CRIT='hazard2 memi memp')
 
 scan('speed_duty1', 58, 59,
-     lambda v: speed() if v is None else speed(Q, Q - v - 20),
+     lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='memp hazard2')
 
 scan('speed_duty0', 935, 936,
-     lambda v: speed() if v is None else speed(Q, v),
+     lambda v=None: speed() if v is None else speed(Q, v),
      TARGET=MEMORY, CRIT='memp hazard2')
 
 scan('speedl_logic', 1759, 1760, speed, TARGET=LOGIC, CRIT='cmp inc')
 
 scan('speedl_duty1', 59, 60,
-     lambda v: speed() if v is None else speed(Q, Q - v - 20),
+     lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call cmp inc', FACTOR=10)
 
 scan('speedl_duty0', 67, 68,
-     lambda v: speed() if v is None else speed(Q, v), TARGET=LOGIC,
+     lambda v=None: speed() if v is None else speed(Q, v), TARGET=LOGIC,
      CRIT='call inc', FACTOR=10)
 
 ##################### DRAM BIAS AND CAP ######################
 
-fast('bias_pot_hi', None, 350, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
-     CRIT='memf memw')
+fast('bias_pot_hi', None, 300, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
+     CRIT='memp hazard hazard2')
 
 fast('bias_pot_lo', 153, 154, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
      CRIT='memp hazard2')
@@ -306,8 +306,8 @@ fast('bias_r_hi', 197, 196, rbias, FACTOR=10, TARGET=MEMORY, CRIT='memp')
 slow('dram_cap_lo', 165, 166, dram_cap, TARGET=MEMORY, CRIT='mem hazard2')
 
 # FIXME - change to 4000µs.
-scan('dram_cap_hi_slow', 346, 345, dram_cap, FACTOR=10, SPEED=3000,
-     TARGET=MEMORY, CRIT='memf')
+scan('dram_cap_hi_slow', 332, 331, dram_cap, FACTOR=10, SPEED=3000,
+     TARGET=MEMORY, CRIT='hazard2 mem')
 
 fast('dram_cap_hi_fast', 165, 164, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='hazard2 memf')
@@ -361,7 +361,7 @@ fast('rstrong_lo', 100, 101, rstrong, CRIT='mem')
 
 slow('rstrong_hi', 45, 44, rstrong, FACTOR=100, CRIT='mem')
 
-slow('rload_hi_slow', 88, 87, rload, FACTOR=100, CRIT='mem hazard2')
+slow('rload_hi_slow', 86, 85, rload, FACTOR=100, CRIT='mem hazard2 call')
 
 fast('rload_hi_fast', 2795, 2794, rload, CRIT='memp hazard2')
 
@@ -369,7 +369,7 @@ fast('rload_lo', 65, 66, rload, CRIT='mem memp', FACTOR=10)
 
 fast('rpull_lo', 47, 48, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
 
-slow('rpull_hi', None, 100e3, rpull, TARGET=LOGIC)
+slow('rpull_hi', None, 100e3, rpull, TARGET=LOGIC, CRIT='call inc')
 
 fast('rmem_lo', 298, 299, rmem, TARGET=MEMORY, CRIT='hazard2 mem')
 

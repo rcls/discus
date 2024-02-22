@@ -2479,7 +2479,7 @@ netname=MR#
 C 11700 7400 1 0 0 dram64byte.sym
 {
 T 12700 10300 5 10 1 1 90 4 1
-source=dram32byte.sch
+source=jram32byte.sch
 T 12400 11200 5 10 1 1 0 4 1
 refdes=M
 }

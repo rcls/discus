@@ -1,0 +1,500 @@
+v 20220529 2
+C 2500 1200 1 0 0 gnd-1.sym
+C 800 1800 1 0 0 in-1.sym
+{
+T 800 2300 5 10 0 0 0 0 1
+footprint=anchor
+T 800 2100 5 10 0 0 0 0 1
+device=INPUT
+T 800 1900 5 10 1 1 180 1 1
+refdes=H
+}
+C 800 1400 1 0 0 in-1.sym
+{
+T 800 1900 5 10 0 0 0 0 1
+footprint=anchor
+T 800 1700 5 10 0 0 0 0 1
+device=INPUT
+T 800 1494 5 10 1 1 0 7 1
+refdes=L#
+}
+C 2500 3200 1 270 0 in-1.sym
+{
+T 3000 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 2800 3200 5 10 0 0 270 0 1
+device=INPUT
+T 2600 3200 5 10 1 1 0 3 1
+refdes=B0
+}
+N 1800 1200 8500 1200 4
+{
+T 2800 1250 5 10 1 1 0 0 1
+netname=S
+}
+C 800 2600 1 0 0 in-1.sym
+{
+T 800 3100 5 10 0 0 0 0 1
+footprint=anchor
+T 800 2900 5 10 0 0 0 0 1
+device=INPUT
+T 800 2700 5 10 1 1 0 7 1
+refdes=Vdd
+}
+C 800 200 1 0 0 in-1.sym
+{
+T 800 700 5 10 0 0 0 0 1
+footprint=anchor
+T 800 500 5 10 0 0 0 0 1
+device=INPUT
+T 800 300 5 10 1 1 0 7 1
+refdes=GND
+}
+C 1200 2700 1 0 0 vdd-1.sym
+C 1700 0 1 0 0 gnd-1.sym
+C 2800 1500 1 90 0 capacitor.sym
+{
+T 2100 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 2625 1675 5 8 1 1 0 2 1
+refdes=C0
+T 1900 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 2625 1825 5 8 1 1 0 0 1
+value=680p
+T 2600 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 2600 2100 2600 2000 4
+{
+T 2600 2050 5 8 1 1 0 0 1
+netname=V0
+}
+C 3400 1200 1 0 0 gnd-1.sym
+C 3400 3200 1 270 0 in-1.sym
+{
+T 3900 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 3700 3200 5 10 0 0 270 0 1
+device=INPUT
+T 3500 3200 5 10 1 1 0 3 1
+refdes=B1
+}
+C 3700 1500 1 90 0 capacitor.sym
+{
+T 3000 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 2800 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 3525 1675 5 8 1 1 0 2 1
+refdes=C1
+T 3525 1825 5 8 1 1 0 0 1
+value=680p
+T 3500 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 3500 2600 3500 2500 4
+C 4300 1200 1 0 0 gnd-1.sym
+C 4300 3200 1 270 0 in-1.sym
+{
+T 4800 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 4600 3200 5 10 0 0 270 0 1
+device=INPUT
+T 4400 3200 5 10 1 1 0 3 1
+refdes=B2
+}
+C 4600 1500 1 90 0 capacitor.sym
+{
+T 3900 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 3700 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 4425 1675 5 8 1 1 0 2 1
+refdes=C2
+T 4425 1825 5 8 1 1 0 0 1
+value=680p
+T 4400 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 4400 2600 4400 2500 4
+C 5200 1200 1 0 0 gnd-1.sym
+C 5200 3200 1 270 0 in-1.sym
+{
+T 5700 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 5500 3200 5 10 0 0 270 0 1
+device=INPUT
+T 5300 3200 5 10 1 1 0 3 1
+refdes=B3
+}
+C 5500 1500 1 90 0 capacitor.sym
+{
+T 4800 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 4600 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 5325 1675 5 8 1 1 0 2 1
+refdes=C3
+T 5325 1825 5 8 1 1 0 0 1
+value=680p
+T 5300 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 5300 2600 5300 2500 4
+C 6100 1200 1 0 0 gnd-1.sym
+C 6100 3200 1 270 0 in-1.sym
+{
+T 6600 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 6400 3200 5 10 0 0 270 0 1
+device=INPUT
+T 6200 3200 5 10 1 1 0 3 1
+refdes=B4
+}
+C 6400 1500 1 90 0 capacitor.sym
+{
+T 5700 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 5500 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 6225 1675 5 8 1 1 0 2 1
+refdes=C4
+T 6225 1825 5 8 1 1 0 0 1
+value=680p
+T 6200 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 6200 2600 6200 2500 4
+C 7000 1200 1 0 0 gnd-1.sym
+C 7000 3200 1 270 0 in-1.sym
+{
+T 7500 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 7300 3200 5 10 0 0 270 0 1
+device=INPUT
+T 7100 3200 5 10 1 1 0 3 1
+refdes=B5
+}
+C 7300 1500 1 90 0 capacitor.sym
+{
+T 6600 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 6400 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 7125 1675 5 8 1 1 0 2 1
+refdes=C5
+T 7125 1825 5 8 1 1 0 0 1
+value=680p
+T 7100 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 7100 2600 7100 2500 4
+C 7900 1200 1 0 0 gnd-1.sym
+C 7900 3200 1 270 0 in-1.sym
+{
+T 8400 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 8200 3200 5 10 0 0 270 0 1
+device=INPUT
+T 8000 3200 5 10 1 1 0 3 1
+refdes=B6
+}
+C 8200 1500 1 90 0 capacitor.sym
+{
+T 7500 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 7300 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 8025 1675 5 8 1 1 0 2 1
+refdes=C6
+T 8025 1825 5 8 1 1 0 0 1
+value=680p
+T 8000 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 8000 2600 8000 2500 4
+C 8800 1200 1 0 0 gnd-1.sym
+C 8800 3200 1 270 0 in-1.sym
+{
+T 9300 3200 5 10 0 0 270 0 1
+footprint=anchor
+T 9100 3200 5 10 0 0 270 0 1
+device=INPUT
+T 8900 3200 5 10 1 1 0 3 1
+refdes=B7
+}
+C 9100 1500 1 90 0 capacitor.sym
+{
+T 8400 1700 5 10 0 0 90 0 1
+device=CAPACITOR
+T 8200 1700 5 10 0 0 90 0 1
+symversion=0.1
+T 8925 1675 5 8 1 1 0 2 1
+refdes=C7
+T 8925 1825 5 8 1 1 0 0 1
+value=680p
+T 8900 1700 5 10 0 1 0 0 1
+footprint=0603-cap
+}
+N 8900 2600 8900 2500 4
+N 1400 1900 1800 1900 4
+N 1800 1900 1800 1700 4
+C 1900 300 1 90 0 resistor-load.sym
+{
+T 1500 600 5 10 0 0 90 0 1
+device=RESISTOR
+T 1750 950 5 10 1 1 90 0 1
+refdes=R
+T 1800 700 5 10 0 1 90 0 1
+footprint=0603-load
+T 1800 700 5 10 0 1 90 0 1
+value=rload
+}
+N 1800 1200 1800 1300 4
+N 1800 300 1400 300 4
+N 3500 2100 3500 2000 4
+{
+T 3500 2050 5 8 1 1 0 0 1
+netname=V1
+}
+N 4400 2100 4400 2000 4
+{
+T 4400 2050 5 8 1 1 0 0 1
+netname=V2
+}
+N 5300 2100 5300 2000 4
+{
+T 5300 2050 5 8 1 1 0 0 1
+netname=V3
+}
+N 6200 2100 6200 2000 4
+{
+T 6200 2050 5 8 1 1 0 0 1
+netname=V4
+}
+N 7100 2100 7100 2000 4
+{
+T 7100 2050 5 8 1 1 0 0 1
+netname=V5
+}
+N 8000 2100 8000 2000 4
+{
+T 8000 2050 5 8 1 1 0 0 1
+netname=V6
+}
+N 8900 2100 8900 2000 4
+{
+T 8900 2050 5 8 1 1 0 0 1
+netname=V7
+}
+N 2600 2500 2600 2600 4
+C 800 2200 1 0 0 in-1.sym
+{
+T 800 2700 5 10 0 0 0 0 1
+footprint=anchor
+T 800 2500 5 10 0 0 0 0 1
+device=INPUT
+T 800 2300 5 10 1 1 0 7 1
+refdes=ϕ1
+}
+C 2000 2500 1 180 0 schottky.sym
+{
+T 1700 1300 5 10 0 1 180 0 1
+footprint=SOD523
+T 1703 1803 5 10 0 0 180 0 1
+device=DIODE
+T 1800 2450 5 10 1 1 0 3 1
+refdes=D
+T 1700 1450 5 10 0 1 180 0 1
+value=BAS40
+}
+N 1400 2300 1600 2300 4
+C 1400 1200 1 0 0 pmos-switch.sym
+{
+T 1625 1500 5 8 1 1 0 1 1
+refdes=M
+T 1500 2000 5 10 0 1 0 0 1
+value=PMOS_switch
+T 1900 1800 5 10 0 1 0 0 1
+footprint=sot23-pmos
+T 2900 1800 5 10 0 1 0 0 1
+device=PMOS
+}
+N 2200 1300 2200 1200 4
+N 2200 2200 2200 2300 4
+N 3100 1300 3100 1200 4
+N 3100 2200 3100 2300 4
+N 4000 1300 4000 1200 4
+N 4000 2200 4000 2300 4
+N 4900 1300 4900 1200 4
+N 4900 2200 4900 2300 4
+N 5800 1300 5800 1200 4
+N 5800 2200 5800 2300 4
+N 6700 1300 6700 1200 4
+N 6700 2200 6700 2300 4
+N 7600 1300 7600 1200 4
+N 7600 2200 7600 2300 4
+N 8500 1300 8500 1200 4
+N 8500 2200 8500 2300 4
+N 2000 2300 2000 1200 4
+C 2200 2000 1 0 0 2sc4774.sym
+{
+T 2425 2300 5 8 1 1 0 1 1
+refdes=Q0
+T 2900 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 2300 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 3100 2000 1 0 0 2sc4774.sym
+{
+T 3325 2300 5 8 1 1 0 1 1
+refdes=Q1
+T 3800 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 3200 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 4000 2000 1 0 0 2sc4774.sym
+{
+T 4225 2300 5 8 1 1 0 1 1
+refdes=Q2
+T 4700 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 4100 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 4900 2000 1 0 0 2sc4774.sym
+{
+T 5125 2300 5 8 1 1 0 1 1
+refdes=Q3
+T 5600 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 5000 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 5800 2000 1 0 0 2sc4774.sym
+{
+T 6025 2300 5 8 1 1 0 1 1
+refdes=Q4
+T 6500 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 5900 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 6700 2000 1 0 0 2sc4774.sym
+{
+T 6925 2300 5 8 1 1 0 1 1
+refdes=Q5
+T 7400 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 6800 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 7600 2000 1 0 0 2sc4774.sym
+{
+T 7825 2300 5 8 1 1 0 1 1
+refdes=Q6
+T 8300 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 7700 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 8500 2000 1 0 0 2sc4774.sym
+{
+T 8725 2300 5 8 1 1 0 1 1
+refdes=Q7
+T 9200 2500 5 10 0 1 0 0 1
+footprint=sot323-hbt
+T 8600 2700 5 10 0 1 0 0 1
+value=Q2SC4774
+}
+C 2300 1300 1 90 0 resistor-pull.sym
+{
+T 1500 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 1300 1500 5 10 0 1 90 0 1
+value=rmem
+T 1900 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 2225 1550 5 8 1 1 270 0 1
+refdes=R0
+}
+C 3200 1300 1 90 0 resistor-pull.sym
+{
+T 2400 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 2200 1500 5 10 0 1 90 0 1
+value=rmem
+T 2800 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 3125 1550 5 8 1 1 270 0 1
+refdes=R1
+}
+C 4100 1300 1 90 0 resistor-pull.sym
+{
+T 3300 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 3100 1500 5 10 0 1 90 0 1
+value=rmem
+T 3700 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 4025 1550 5 8 1 1 270 0 1
+refdes=R2
+}
+C 5000 1300 1 90 0 resistor-pull.sym
+{
+T 4200 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 4000 1500 5 10 0 1 90 0 1
+value=rmem
+T 4600 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 4925 1550 5 8 1 1 270 0 1
+refdes=R3
+}
+C 5900 1300 1 90 0 resistor-pull.sym
+{
+T 5100 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 4900 1500 5 10 0 1 90 0 1
+value=rmem
+T 5500 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 5825 1550 5 8 1 1 270 0 1
+refdes=R4
+}
+C 6800 1300 1 90 0 resistor-pull.sym
+{
+T 6000 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 5800 1500 5 10 0 1 90 0 1
+value=rmem
+T 6400 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 6725 1550 5 8 1 1 270 0 1
+refdes=R5
+}
+C 7700 1300 1 90 0 resistor-pull.sym
+{
+T 6900 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 6700 1500 5 10 0 1 90 0 1
+value=rmem
+T 7300 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 7625 1550 5 8 1 1 270 0 1
+refdes=R6
+}
+C 8600 1300 1 90 0 resistor-pull.sym
+{
+T 7800 1500 5 10 0 1 90 0 1
+footprint=0603-pull
+T 7600 1500 5 10 0 1 90 0 1
+value=rmem
+T 8200 1600 5 10 0 0 90 0 1
+device=RESISTOR
+T 8525 1550 5 8 1 1 270 0 1
+refdes=R7
+}

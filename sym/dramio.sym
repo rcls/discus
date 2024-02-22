@@ -97,7 +97,7 @@ P 0 600 200 600 1 0 0
 T 0 600 5 10 0 0 0 0 1
 pintype=unknown
 T 205 595 5 10 1 1 0 1 1
-pinlabel=Pre
+pinlabel=ϕ1
 T 105 645 5 10 0 1 0 6 1
 pinnumber=8
 T 0 600 5 10 0 0 0 0 1
@@ -108,7 +108,7 @@ P 900 1900 900 1700 1 0 0
 T 900 1900 5 10 0 0 0 6 1
 pintype=unknown
 T 905 1700 5 10 1 1 0 5 1
-pinlabel=Bias
+pinlabel=ϕ#
 T 950 1795 5 10 0 1 90 2 1
 pinnumber=10
 T 900 1900 5 10 0 0 0 6 1

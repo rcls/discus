@@ -76,8 +76,6 @@ device=INPUT
 T 1000 2200 5 10 1 1 0 7 1
 refdes=A2
 }
-C 4000 6400 1 0 0 gnd-1.sym
-C 7500 6400 1 0 0 gnd-1.sym
 C 10600 3100 1 0 0 gnd-1.sym
 C 12800 3100 1 0 0 gnd-1.sym
 C 15000 3100 1 0 0 gnd-1.sym
@@ -700,15 +698,6 @@ T 2000 4000 5 10 1 1 0 4 1
 refdes=U2
 }
 C 1800 3200 1 0 0 gnd-1.sym
-C 1000 5800 1 0 0 in-1.sym
-{
-T 1000 6300 5 10 0 0 0 0 1
-footprint=anchor
-T 1000 6100 5 10 0 0 0 0 1
-device=INPUT
-T 1000 5900 5 10 1 1 0 7 1
-refdes=A6#
-}
 C 1000 5600 1 0 0 in-1.sym
 {
 T 1000 6100 5 10 0 0 0 0 1
@@ -716,12 +705,7 @@ footprint=anchor
 T 1000 5900 5 10 0 0 0 0 1
 device=INPUT
 T 1000 5700 5 10 1 1 0 7 1
-refdes=A7#
-}
-N 2400 5800 2600 5800 4
-{
-T 2650 5800 5 10 1 1 0 1 1
-netname=WE#
+refdes=A6#
 }
 C 1000 5400 1 0 0 in-1.sym
 {
@@ -730,6 +714,20 @@ footprint=anchor
 T 1000 5700 5 10 0 0 0 0 1
 device=INPUT
 T 1000 5500 5 10 1 1 0 7 1
+refdes=A7#
+}
+N 2400 5800 2600 5800 4
+{
+T 2650 5800 5 10 1 1 0 1 1
+netname=WE#
+}
+C 1000 6000 1 0 0 in-1.sym
+{
+T 1000 6500 5 10 0 0 0 0 1
+footprint=anchor
+T 1000 6300 5 10 0 0 0 0 1
+device=INPUT
+T 1000 6100 5 10 1 1 0 7 1
 refdes=MW
 }
 C 2200 6700 1 0 0 vdd-1.sym
@@ -884,147 +882,48 @@ device=INPUT
 T 1000 4300 5 10 1 1 0 7 1
 refdes=A5
 }
-C 5200 8200 1 180 0 phi1.sym
-C 8700 8200 1 180 0 phi1.sym
-C 3800 1300 1 0 0 npn.sym
-{
-T 4025 1600 5 8 1 1 0 1 1
-refdes=Q8
-T 4500 1800 5 10 0 1 0 0 1
-footprint=sot323-hbt
-T 3900 2000 5 10 0 1 0 0 1
-value=BC847BW
-}
-C 3500 1300 1 270 0 capacitor.sym
-{
-T 4200 1100 5 10 0 0 270 0 1
-device=CAPACITOR
-T 3725 975 5 10 1 1 0 2 1
-refdes=C2
-T 4400 1100 5 10 0 0 270 0 1
-symversion=0.1
-T 3700 1100 5 10 0 1 0 0 1
-footprint=0603-cap
-T 3700 650 5 10 1 1 0 5 1
-value=680p
-}
-C 3600 500 1 0 0 gnd-1.sym
-N 3700 1300 3700 1600 4
-N 3700 1600 3800 1600 4
-C 4000 1900 1 0 0 vdd-1.sym
-N 4200 1900 4200 1800 4
-C 4000 1300 1 270 0 capacitor.sym
-{
-T 4700 1100 5 10 0 0 270 0 1
-device=CAPACITOR
-T 4225 975 5 10 1 1 0 2 1
-refdes=C3
-T 4900 1100 5 10 0 0 270 0 1
-symversion=0.1
-T 4200 650 5 10 1 1 0 5 1
-value=680p
-T 4200 1100 5 10 0 1 0 0 1
-footprint=0603-cap
-}
-N 4200 1300 4200 1400 4
-C 3100 900 1 0 0 gnd-1.sym
-C 4100 500 1 0 0 gnd-1.sym
-C 6600 1300 1 0 1 notp.sym
-{
-T 6250 1600 5 10 1 1 0 4 1
-refdes=I1
-}
-N 4200 1300 4800 1300 4
-{
-T 4500 1325 5 10 1 1 0 3 1
-netname=Bias
-}
-C 4600 1900 1 0 0 vdd-1.sym
-C 6000 1900 1 0 0 vdd-1.sym
-C 6100 1000 1 0 0 gnd-1.sym
-C 6900 1700 1 180 0 phi1.sym
 N 8700 5300 8700 5500 4
 {
 T 8700 5550 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
 N 10900 5300 10900 5500 4
 {
 T 10900 5550 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
 N 13100 5300 13100 5500 4
 {
 T 13100 5550 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
 N 15300 5300 15300 5500 4
 {
 T 15300 5550 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
 N 8700 2100 8700 2300 4
 {
 T 8700 2350 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
 N 10900 2100 10900 2300 4
 {
 T 10900 2350 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
 N 13100 2100 13100 2300 4
 {
 T 13100 2350 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
 N 15300 2100 15300 2300 4
 {
 T 15300 2350 5 10 1 1 0 3 1
-netname=Bias
+netname=ϕ#
 }
-C 5200 1300 1 0 1 pmos-switch.sym
-{
-T 4975 1600 5 8 1 1 0 7 1
-refdes=M3
-T 5100 2100 5 10 0 1 0 6 1
-value=PMOS_switch
-T 4700 1900 5 10 0 1 0 6 1
-footprint=sot23-pmos
-T 3700 1900 5 10 0 1 0 6 1
-device=PMOS
-}
-N 4800 1900 4800 1800 4
-C 4700 1300 1 270 0 resistor-1.sym
-{
-T 5100 1000 5 10 0 0 270 0 1
-device=RESISTOR
-T 5000 1100 5 10 1 1 270 0 1
-refdes=R3
-T 5000 800 5 10 1 1 270 0 1
-value=560
-T 4800 800 5 10 0 1 0 0 1
-footprint=0603
-}
-C 4700 100 1 0 0 gnd-1.sym
-C 5300 1600 1 270 0 capacitor.sym
-{
-T 6000 1400 5 10 0 0 270 0 1
-device=CAPACITOR
-T 5525 1275 5 10 1 1 0 2 1
-refdes=C4
-T 6200 1400 5 10 0 0 270 0 1
-symversion=0.1
-T 5500 950 5 10 1 1 0 5 1
-value=220p
-T 5500 1400 5 10 0 1 0 0 1
-footprint=0603-cap
-}
-N 5200 1600 5800 1600 4
-C 5400 800 1 0 0 gnd-1.sym
 C 1400 8600 1 0 0 vdd-1.sym
 C 1500 7100 1 0 0 gnd-1.sym
-N 4800 1300 4800 1400 4
 C 4200 5000 1 0 0 pmos-switch.sym
 {
 T 4300 5800 5 10 0 1 0 0 1
@@ -1080,114 +979,16 @@ N 8600 8300 8400 8300 4
 T 8650 8300 5 10 1 1 0 1 1
 netname=H1
 }
-C 4800 3100 1 0 1 schottky.sym
+C 1000 5800 1 0 0 in-1.sym
 {
-T 4500 4300 5 10 0 1 0 6 1
-footprint=SOD523
-T 4503 3797 5 10 0 0 0 6 1
-device=DIODE
-T 4450 3350 5 10 1 1 0 6 1
-refdes=D
-T 4500 4150 5 10 0 1 0 6 1
-value=BAS40
-}
-C 5600 3800 1 90 1 capacitor.sym
-{
-T 4900 3600 5 10 0 0 270 2 1
-device=CAPACITOR
-T 4700 3600 5 10 0 0 270 2 1
-symversion=0.1
-T 5375 3475 5 10 1 1 0 8 1
-refdes=C1
-T 5600 3500 5 10 1 1 0 0 1
-value=1p
-T 5400 3500 5 10 0 1 0 0 1
-footprint=0603-cap
-}
-C 5300 3000 1 0 0 gnd-1.sym
-N 4800 3300 5000 3300 4
-N 5000 3300 5000 3800 4
-N 5000 3800 5700 3800 4
-{
-T 5750 3800 5 10 1 1 0 0 1
-netname=Pre
-}
-N 4400 3300 4100 3300 4
-N 4100 3300 4100 3800 4
-N 7600 4000 7800 4000 4
-{
-T 7550 4000 5 10 1 1 0 7 1
-netname=Pre
-}
-N 9800 4000 10000 4000 4
-{
-T 9750 4000 5 10 1 1 0 7 1
-netname=Pre
-}
-N 12000 4000 12200 4000 4
-{
-T 11950 4000 5 10 1 1 0 7 1
-netname=Pre
-}
-N 14200 4000 14400 4000 4
-{
-T 14150 4000 5 10 1 1 0 7 1
-netname=Pre
-}
-N 7600 800 7800 800 4
-{
-T 7550 800 5 10 1 1 0 7 1
-netname=Pre
-}
-N 9800 800 10000 800 4
-{
-T 9750 800 5 10 1 1 0 7 1
-netname=Pre
-}
-N 12000 800 12200 800 4
-{
-T 11950 800 5 10 1 1 0 7 1
-netname=Pre
-}
-N 14200 800 14400 800 4
-{
-T 14150 800 5 10 1 1 0 7 1
-netname=Pre
-}
-C 3100 2100 1 270 0 resistor-variable-1.sym
-{
-T 4000 1300 5 10 0 0 270 0 1
-device=IC
-T 3450 1650 5 10 1 1 0 0 1
-refdes=XR1
-T 3200 2300 5 10 1 1 0 3 1
-file=subckt/bias-pot.prm
-T 3100 1900 5 10 1 1 0 7 1
-model-name=bias_pot
-T 3200 1700 5 10 0 1 0 0 1
-value=bias_pot
-}
-C 4100 3700 1 0 0 resistor-1.sym
-{
-T 4400 4100 5 10 0 0 0 0 1
-device=RESISTOR
-T 4750 3850 5 10 1 1 0 0 1
-refdes=R2
-T 4250 3850 5 10 1 1 0 6 1
-value=1
-T 4600 3850 5 10 0 1 0 0 1
-footprint=0603
-}
-C 1000 6000 1 0 0 in-1.sym
-{
-T 1000 6500 5 10 0 0 0 0 1
-footprint=anchor
 T 1000 6300 5 10 0 0 0 0 1
+footprint=anchor
+T 1000 6100 5 10 0 0 0 0 1
 device=INPUT
-T 1000 6100 5 10 1 1 0 7 1
+T 1000 5900 5 10 1 1 0 7 1
 refdes=A5#
 }
-C 2500 5800 1 90 0 resistor-load.sym
+C 2500 5800 1 90 0 resistor-strong.sym
 {
 T 2400 6200 5 10 0 1 90 0 1
 footprint=0603-load
@@ -1196,6 +997,35 @@ device=RESISTOR
 T 2375 6500 5 10 1 1 0 6 1
 refdes=R1
 T 2400 6200 5 10 0 1 0 0 1
-value=rload
+value=rstrong
 }
-C 3000 2100 1 0 0 vdd-1.sym
+C 7500 3900 1 0 0 phi1.sym
+C 9700 3900 1 0 0 phi1.sym
+C 11900 3900 1 0 0 phi1.sym
+C 14100 3900 1 0 0 phi1.sym
+C 7500 700 1 0 0 phi1.sym
+C 9700 700 1 0 0 phi1.sym
+C 11900 700 1 0 0 phi1.sym
+C 14100 700 1 0 0 phi1.sym
+C 4100 3500 1 0 0 cnot.sym
+{
+T 4425 3800 5 10 1 1 0 4 1
+refdes=I1
+}
+N 4900 3800 5300 3800 4
+{
+T 5000 3850 5 10 1 1 0 0 1
+netname=ϕ#
+}
+C 4300 4100 1 0 0 vdd-1.sym
+C 4400 3200 1 0 0 gnd-1.sym
+C 3500 6600 1 0 0 in-1.sym
+{
+T 3500 7100 5 10 0 0 0 0 1
+footprint=anchor
+T 3500 6900 5 10 0 0 0 0 1
+device=INPUT
+T 3500 6700 5 10 1 1 0 7 1
+refdes=Vss
+}
+N 4100 6700 7600 6700 4

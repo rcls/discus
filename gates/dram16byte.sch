@@ -384,28 +384,28 @@ netname=A2
 C 800 1900 1 0 0 dram4byte.sym
 {
 T 1600 2675 5 8 1 1 0 4 1
-source=jram4byte.sch
+source=dram4byte.sch
 T 1600 3600 5 10 1 1 0 3 1
 refdes=A
 }
 C 3600 1900 1 0 0 dram4byte.sym
 {
 T 4400 2675 5 8 1 1 0 4 1
-source=jram4byte.sch
+source=dram4byte.sch
 T 4400 3600 5 10 1 1 0 3 1
 refdes=B
 }
 C 6400 1900 1 0 0 dram4byte.sym
 {
 T 7200 2675 5 8 1 1 0 4 1
-source=jram4byte.sch
+source=dram4byte.sch
 T 7200 3600 5 10 1 1 0 3 1
 refdes=C
 }
 C 9200 1900 1 0 0 dram4byte.sym
 {
 T 10000 2675 5 8 1 1 0 4 1
-source=jram4byte.sch
+source=dram4byte.sch
 T 10000 3600 5 10 1 1 0 3 1
 refdes=D
 }
@@ -503,20 +503,6 @@ N 4500 5600 4500 5400 4
 T 4500 5350 5 10 1 1 0 5 1
 netname=A2
 }
-C 1000 5100 1 0 0 in-1.sym
-{
-T 1000 5600 5 10 0 0 0 0 1
-footprint=anchor
-T 1000 5400 5 10 0 0 0 0 1
-device=INPUT
-T 1000 5200 5 10 1 1 0 7 1
-refdes=ϕ1
-}
-C 1900 5100 1 0 1 phi1.sym
-C 2700 2800 1 0 1 phi1.sym
-C 5500 2800 1 0 1 phi1.sym
-C 8300 2800 1 0 1 phi1.sym
-C 11100 2800 1 0 1 phi1.sym
 C 5200 6100 1 0 0 pmos-switch.sym
 {
 T 5425 6400 5 8 1 1 0 1 1

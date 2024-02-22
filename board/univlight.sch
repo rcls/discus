@@ -2479,7 +2479,7 @@ netname=MR#
 C 11700 7400 1 0 0 dram64byte.sym
 {
 T 12700 10300 5 10 1 1 90 4 1
-source=jram32byte.sch
+source=dram32byte.sch
 T 12400 11200 5 10 1 1 0 4 1
 refdes=M
 }
@@ -2562,4 +2562,21 @@ N 15800 14700 16000 14700 4
 {
 T 16050 14700 5 10 1 1 0 1 1
 netname=Bling
+}
+C 12800 5700 1 0 0 vdc-1.sym
+{
+T 13500 6350 5 10 1 1 0 0 1
+refdes=Vss
+T 13500 6550 5 10 0 0 0 0 1
+device=VOLTAGE_SOURCE
+T 13500 6750 5 10 0 0 0 0 1
+footprint=none
+T 13500 6150 5 10 1 1 0 0 1
+value=DC -5V
+}
+C 13000 5400 1 0 0 gnd-1.sym
+N 13100 6900 13100 7800 4
+{
+T 13050 7000 5 10 1 1 90 0 1
+netname=Vss
 }

@@ -27,7 +27,6 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
-DEFAULT_BIAS_POT=1.8
 
 def target_list(t):
     if args.target:
@@ -129,28 +128,11 @@ def npn22_beta(b=291):
 def npn22_r(r=22):
     replace_line('subckt/PDTC124TU.prm', 'R 20 2', f'R 20 2 {r}k\n')
 
-def hbt_beta(b=273.94):
-    replace_line('subckt/2SC4774.prm', '+ BF=', f'+ BF={b}\n')
+def jfet_vto(VTO=1.04):
+    replace_line('subckt/2SK3557-7.prm', '+ VTO=', f'+ VTO=-{VTO}\n')
 
-def hbt_beta_reverse(b=123.13):
-    replace_line('subckt/2SC4774.prm', '+ BR=', f'+ BR={b}\n')
-
-def hbt_cap_c(c='1.3066E-12'):
-    replace_line('subckt/2SC4774.prm', '+ CJC=', f'+ CJC={c}\n')
-
-def hbt_cap_e(c='2.4548E-12'):
-    replace_line('subckt/2SC4774.prm', '+ CJE=', f'+ CJE={c}\n')
-
-def hbt_cap_scale(f=1):
-    if f == 1:
-        CJE = '2.4548E-12'
-        CJC = '1.3066E-12'
-    else:
-        CJE = 2.4548E-12 * f
-        CJC = 1.3066E-12 * f
-    replace_line('subckt/2SC4774.prm', '+ CJE=', f'+ CJE={CJE}\n')
-    replace_line('subckt/2SC4774.prm', '+ CJC=', f'+ CJC={CJC}\n')
-
+def jfet_beta(BETA=0.026):
+    replace_line('subckt/2SK3557-7.prm', '+ BETA=', f'+ BETA={BETA}\n')
 
 def nmos_vto(VTO=0.9):
     # FIXME - this is confused between 0.82 and 0.9.
@@ -181,14 +163,10 @@ def slow(*args, **kwargs):
 def fast(*args, **kwargs):
     scan(*args, **kwargs, SPEED=2000)
 
-def try_one(MUNGE, V, TARGET, RESULTS, SPEED=None, RBIAS=None, BIAS_POT=None):
+def try_one(MUNGE, V, TARGET, RESULTS, SPEED=None):
     print(f'=== Try {V:g} ===', flush=True)
     if SPEED is not None:
         speed(SPEED)
-    if RBIAS is not None:
-        rbias(RBIAS)
-    if BIAS_POT is not None:
-        bias_pot(BIAS_POT)
     MUNGE(V)
     status = subprocess.call(['make', '-j4', '-k', f'QUANTUM={currentQ}']
                              + TARGET)
@@ -198,26 +176,20 @@ def try_one(MUNGE, V, TARGET, RESULTS, SPEED=None, RBIAS=None, BIAS_POT=None):
     return status == 0
 
 def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
-         SPEED=None, WANTED=None, BIAS_POT=None, RBIAS=None, CRIT=None):
+         SPEED=None, WANTED=None, CRIT=None):
     assert MUNGE is not None
     if not wanted(NAME, WANTED):
         return
 
-    if args.good_check:
-        BAD = GOOD
-    if args.bad_check:
-        GOOD = BAD
+    if args.good_check and GOOD is not None:
+        BAD, GOOD = GOOD - 1, GOOD + 1
+    elif args.bad_check and BAD is not None:
+        BAD, GOOD = BAD - 1, BAD + 1
     if BAD is None or GOOD is None:
         return
     if WANTED is not True and not args.recheck and abs(GOOD - BAD) <= 1:
         print('=== SETTLED', NAME)
         return
-    if BAD < GOOD:
-        BAD -= 1
-        GOOD += 1
-    else:
-        BAD += 1
-        GOOD -= 1
 
     print('=== START', NAME, '===', flush=True)
     if args.dry_run:
@@ -229,7 +201,7 @@ def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
     while abs(GOOD - BAD) > 1:
         MID = (BAD + GOOD) // 2
         V = MID * FACTOR
-        if try_one(MUNGE, V, TARGET, results, SPEED, RBIAS, BIAS_POT):
+        if try_one(MUNGE, V, TARGET, results, SPEED):
             GOOD = MID
         else:
             BAD = MID
@@ -240,27 +212,24 @@ def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
         print(L)
     print('===')
     speed()
-    bias_pot()
-    rbias()
 
 ##################### SPEED ########################
 
-scan('speed_basic', 1893, 1894, speed, TARGET=MEMORY,
-     CRIT='hazard2 memi memp')
+scan('speed_basic', 1750, 1751, speed, TARGET=MEMORY, CRIT='hazard2 memi memp')
 
-scan('speed_duty1', 58, 59,
+scan('speed_duty1', 68, 69,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
+     TARGET=MEMORY, FACTOR=10, CRIT='hazard hazard2')
+
+scan('speed_duty0', 79, 80,
+     lambda v=None: speed() if v is None else speed(Q, v),
      TARGET=MEMORY, FACTOR=10, CRIT='memp hazard2')
 
-scan('speed_duty0', 935, 936,
-     lambda v=None: speed() if v is None else speed(Q, v),
-     TARGET=MEMORY, CRIT='memp hazard2')
+scan('speedl_logic', 1757, 1758, speed, TARGET=LOGIC, CRIT='cmp inc')
 
-scan('speedl_logic', 1759, 1760, speed, TARGET=LOGIC, CRIT='cmp inc')
-
-scan('speedl_duty1', 59, 60,
+scan('speedl_duty1', 58, 59,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
-     TARGET=LOGIC, CRIT='call cmp inc', FACTOR=10)
+     TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
 scan('speedl_duty0', 67, 68,
      lambda v=None: speed() if v is None else speed(Q, v), TARGET=LOGIC,
@@ -268,39 +237,29 @@ scan('speedl_duty0', 67, 68,
 
 ##################### DRAM CAP ######################
 
-fast('bias_pot_hi', None, 300, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
-     CRIT='memp hazard hazard2')
+fast('dram_cap_lo', 90, 91, dram_cap, TARGET=MEMORY, CRIT='memp mem')
 
 # FIXME - change to 4000µs.
-scan('dram_cap_hi_slow', 181, 180, dram_cap, FACTOR=10, SPEED=3000,
+scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100, SPEED=3000,
      TARGET=MEMORY, CRIT='mem memi')
 
-fast('dram_cap_hi_fast', 118, 117, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='mem memf')
+fast('dram_cap_hi_fast', 178, 177, dram_cap, TARGET=MEMORY, FACTOR=10,
+     CRIT='mem memf memp')
 
 ####################### JFET ##########################
 
 # We can take this with a grain of salt, changing VTO without modifying β
 # means we are dropping the Idss by a significant factor.
-fast('jfet_vto_lo', 33, 34, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
+fast('jfet_vto_lo', 23, 24, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
      CRIT='memf memw')
 
-fast('jfet_vto_hi', 22, 21, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
+fast('jfet_vto_hi', 65, 64, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memp hazard2')
 
-slow('bias_r_lo', 152, 153, rbias, TARGET=MEMORY, CRIT='memp hazard2')
-# Done at fast, wide margin at slow!
-fast('bias_r_hi', 197, 196, rbias, FACTOR=10, TARGET=MEMORY, CRIT='memp')
+fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-3,
+     CRIT='hazard2')
 
-slow('dram_cap_lo', 165, 166, dram_cap, TARGET=MEMORY, CRIT='mem hazard2')
-
-# FIXME - change to 4000µs.
-scan('dram_cap_hi_slow', 332, 331, dram_cap, FACTOR=10, SPEED=3000,
-     TARGET=MEMORY, CRIT='hazard2 mem')
-
-fast('dram_cap_hi_fast', 165, 164, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='hazard2 memf')
-# FIXME - dram cap lo full speed.
+# TODO - bias R and JFET properties.
 
 ######################### NPN #################################
 
@@ -324,58 +283,33 @@ slow('rnpn_br_lo', 11, 12, npn22_beta_reverse, FACTOR=0.1,
 slow('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
      CRIT='call inc')
 
-########################## HBT ###########################
-
-slow('hbt_beta_lo', 29, 30, hbt_beta, TARGET=MEMORY, FACTOR=0.1,
-     CRIT='memf hazard2')
-
-slow('hbt_beta_hi', None, 10000, hbt_beta, TARGET=MEMORY, CRIT='memp hazard2')
-
-slow('hbt_br_lo', 35, 36, hbt_beta_reverse, TARGET=MEMORY, FACTOR=0.1,
-     CRIT='memw')
-
-slow('hbt_br_hi', None, 10000, hbt_beta_reverse, TARGET=MEMORY,
-     CRIT='memp hazard2')
-
-# 1.3pF nominal.
-slow('hbt_cap_c', 32, 31, hbt_cap_c, TARGET=MEMORY, FACTOR=1e-12,
-     CRIT='mem memi')
-# 2.5pF nominal.
-slow('hbt_cap_e', 86, 85, hbt_cap_e, TARGET=MEMORY, FACTOR=1e-12,
-     CRIT='mem hazard2')
-
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 100, 101, rstrong, CRIT='mem')
+fast('rstrong_lo', 106, 107, rstrong, CRIT='memp memi')
 
-slow('rstrong_hi', 45, 44, rstrong, FACTOR=100, CRIT='mem')
+# FIXME - TRAN:  Timestep too small - but looks like check fails.
+slow('rstrong_hi', 33, 32, rstrong, FACTOR=100, CRIT='mem memp')
 
-slow('rload_hi_slow', 86, 85, rload, FACTOR=100, CRIT='mem hazard2 call')
+slow('rload_hi_slow', 83, 82, rload, FACTOR=100, CRIT='call ramdecode')
 
-fast('rload_hi_fast', 2795, 2794, rload, CRIT='memp hazard2')
+fast('rload_hi_fast', 326, 325, rload, FACTOR=10, CRIT='inc memi')
 
-fast('rload_lo', 65, 66, rload, CRIT='mem memp', FACTOR=10)
+# Gets a timestep too small (in sub, I think?)
+fast('rload_lo', 58, 59, rload, CRIT='mem memp', FACTOR=10)
 
 #fast('rpull_lo', 47, 48, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
 #fast('rpull_hi', None, 100e6, rpull, TARGET=LOGIC, CRIT='call inc')
 
-fast('rmem_lo', 298, 299, rmem, TARGET=MEMORY, CRIT='hazard2 mem')
-
-slow('rmem_hi', 60, 59, rmem, FACTOR=1000, TARGET=MEMORY,
-     CRIT='memw memf')
-
 ######################### MOSFETS #################################
-slow('nmos_vto_lo', 395, 396, nmos_vto, FACTOR=1e-3,
-     CRIT='call inc', BIAS_POT=DEFAULT_BIAS_POT-0.2)
+# The PMOS -> NMOS transition is killing this test!
+slow('nmos_vto_lo', 444, 445, nmos_vto, FACTOR=1e-3, CRIT='memi memw')
 
-slow('nmos_vto_hi', 158, 157, nmos_vto, FACTOR=10e-3,
-     BIAS_POT=DEFAULT_BIAS_POT+0.3, CRIT='memp hazard2')
+slow('nmos_vto_hi', 175, 174, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 
-slow('pmos_vto_hi', 229, 228, pmos_vto, FACTOR=10e-3,
-     CRIT='memp hazard2 inc')
+slow('pmos_vto_hi', 217, 216, pmos_vto, FACTOR=10e-3, CRIT='mem memw hazard')
 
-slow('pmos_vto_lo', 107, 108, pmos_vto, FACTOR=1e-3,
-     CRIT='call inc romdecode ramdecode')
+slow('pmos_vto_lo', 163, 164, pmos_vto, FACTOR=1e-3,
+     CRIT='hazard hazard2 romdecode ramdecode')
 
 # FIXME - nmos cap scaling.
 

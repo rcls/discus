@@ -38,6 +38,11 @@ drives some of the design decisions.  For example, using the hidden register `K`
 for prefixes rather than a general purpose register, is because of the register
 pressure in that code.
 
+The CPU core is implemented in static logic with no minimum clock speed.  The
+transistor count could be dramatically reduced by using dynamic logic—using
+JFET pass-gates and appropriately level shifted clocks.  10T4R edge triggered
+flip-flops could be replaced by 4T4R circuits, reducing the transistor count
+of the core by around ⅓.
 
 Circuitry Overview
 ------------------
@@ -388,20 +393,17 @@ stack or stack-pointer other than via `CALL`/`RET` instructions.
 The stack storage is implemented as a four byte register file, using
 [single ported 4T2R SRAM cells](sramcell.md).
 
-Precharging the bit-lines is necessary, which is achieved by only accessing the
-stack on the second half of each clock cycle.  The output path from the stack
-into the PC is short, so this is not critical for the clock cycle time.
-
-Note that the stack address strobes need to be stable during the second half of
-the clock cycle (while the stack register file is accessed), so the opcode fetch
-and decode of branch instructions must be complete in the first half of the
-clock cycle.
+To give strobe lines time to settle, we only access the stack during the second
+half of each clock cycle.  The output path from the stack into the PC is short,
+so this is not critical for the clock cycle time.  Because of this, the opcode
+fetch, and decode of branch instructions, must be complete in the first half of
+the clock cycle.
 
 At first sight, it appears to be an exhorbitent expenditure of transistors in
-the CPU core to integrate the stack.  However, the
-[SRAM cells](sramcell.md) for this only total 16 transistors on each
-bit-slice, competitive with the transistor count of muxing stack operations onto
-the data memory bus and the consequent coordination overheads.
+the CPU core to integrate the stack.  However, the [SRAM cells](sramcell.md)
+for this only total 16 transistors on each bit-slice, competitive with the
+transistor count of muxing stack operations onto the data memory bus and the
+consequent coordination overheads.
 
 
 Reset
@@ -451,23 +453,20 @@ Main Memory
 [ <img align="right" src="dram64byte-sym.png"> ](dram64byte.md)
 
 As well as the CPU, there is memory… DRAM is implemented as
-[arrays of 1T1R1C](drambyte.md) cells, consisting of a discrete capacitor and a
-BJT pass gate.  A 64-byte DRAM board takes 512 transistors and 512 capacitors
-for storage, plus 207 transistors for the decode, sense logic and I/O.  (There
-are also 64 diodes).
+[arrays of 1T1C](drambyte.md) cells, consisting of a discrete capacitor and a
+JFET pass gate.  A 64-byte DRAM board takes 512 transistors and 512 capacitors
+for storage, plus 206 transistors for the decode, sense logic and I/O.
 
 Every clock cycle, the byte addressed by the address lines is (re-)written,
 irregardless of whether a memory access is in progress.  This achieves memory
 refresh.  The CPU outputs a refresh counter onto the address bus when no other
 memory access is in progress.
 
-The BJTs used are in fact heterojunction devices (HBT).  The device used are
-designed for RF operation, however the critical parameters for us are the low
-parasitic capacitance and the high reverse gain, rather than operation
-frequency.
+We use JFETs as the pass gates.  This requires a nominal -5V supply for the gate
+drive.
 
 Typical DRAM uses differential bit-lines and sense circuitry.  Because of the
-compromises of using BJT pass gates, we have to make do with single-ended
+compromises of using discrete components, we make do with single-ended
 circuitry.
 
 Careful timing of the various strobes is necessary.  All are kept idle during

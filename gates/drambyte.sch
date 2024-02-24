@@ -47,7 +47,7 @@ footprint=anchor
 T 300 1650 5 10 0 0 0 0 1
 device=INPUT
 T 300 1450 5 10 1 1 0 7 1
-refdes=GND
+refdes=Vss
 }
 C 700 3400 1 0 0 vdd-1.sym
 C 2800 2300 1 90 0 capacitor.sym

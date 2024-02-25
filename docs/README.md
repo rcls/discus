@@ -470,13 +470,12 @@ Typical DRAM uses differential bit-lines and sense circuitry.  Because of the
 compromises of using BJT pass gates, we have to make do with single-ended
 circuitry.
 
-Precharging the bit-lines is necessary.  The precharge is implemented by
-lowering the Vdd of the sense circuitry during the first half of the clock
-cycle, and pulling up the bit-lines to that.  The lowered Vdd is approx 200mV
-above the threshold of the sense transistors, a compromise to keep the sense
-circuitry in a stable state.  The actual access happens in the second half of
-the clock cycle.  Because memory reads always go directly into a register, the
-reduced time available from the half clock cycle is not a concern.
+Careful timing of the various strobes is necessary.  All are kept idle during
+the first half of the clock cycle, giving the address and control lines time to
+stabilize.  The appropriate bit line is enabled at the start of the second half
+of the clock cycle, then the sense amp output and positive feedback are enabled
+around 100ns later.  Because memory reads always go directly into a register,
+the reduced time available from the half clock cycle is not a concern.
 
 [Program storage](rom64byte.md) is intended to be implemented as ROM, so there
 is no DRAM refresh or precharge timing allowance on the program memory bus.

@@ -168,7 +168,7 @@ pub fn mem() -> Instructions {
 pub fn memf() -> Instructions {
     let mut memf = Instructions::default();
     memf
-        .load (A, 0x1f)
+        .load (A, 0x17)
         .load (X, A)
         .sta  (X)
         .add  (A)

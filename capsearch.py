@@ -92,23 +92,13 @@ def speed(vt=None, t0=None, tr=None):
             F.write(l)
     currentQ = vt
 
-def bias_pot(volts=DEFAULT_BIAS_POT):
-    with open('subckt/bias-pot.prm', 'w') as F:
-        F.write(f'''.subckt bias_pot gnd vdd set
-Vbias 1 gnd DC {volts:g}
-Rout 1 set 100
-.ends
-''')
-
-def resistors(rload=2490, rstrong=820, rpull=22e3, rmem=10e3):
+def resistors(rload=2490, rstrong=820, rpull=10e3):
     rload = rload * 1e-3
     rpull = rpull * 1e-3
-    rmem = rmem * 1e-3
     with open('subckt/resistor-load.prm', 'w') as F:
         F.write(f'.MODEL rload R (R={rload:g}k)\n')
         F.write(f'.MODEL rstrong R (R={rstrong:g})\n')
         F.write(f'.MODEL rpull R (R={rpull:g}k)\n')
-        F.write(f'.MODEL rmem R (R={rmem:g}k)\n')
 
 def rload(v=2490):
     resistors(rload=v)
@@ -116,23 +106,8 @@ def rload(v=2490):
 def rstrong(v=820):
     resistors(rstrong=v)
 
-def rpull(v=22e3):
+def rpull(v=10e3):
     resistors(rpull=v)
-
-def rmem(v=10e3):
-    resistors(rmem=v)
-
-def rbias(ohms=820):
-    path = 'gates/dramio.sch'
-    content = slurppath(path)
-    refdes = ''
-    with open(path, 'w') as F:
-        for l in content:
-            if l.startswith('refdes='):
-                refdes = l.removeprefix('refdes=').strip()
-            if l.startswith('value=') and refdes == 'R':
-                l = f'value={ohms}\n'
-            F.write(l)
 
 def replace_line(path, start, replace):
     lines = slurppath(path)
@@ -291,12 +266,26 @@ scan('speedl_duty0', 67, 68,
      lambda v=None: speed() if v is None else speed(Q, v), TARGET=LOGIC,
      CRIT='call inc', FACTOR=10)
 
-##################### DRAM BIAS AND CAP ######################
+##################### DRAM CAP ######################
 
 fast('bias_pot_hi', None, 300, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
      CRIT='memp hazard hazard2')
 
-fast('bias_pot_lo', 153, 154, bias_pot, FACTOR=10e-3, TARGET=MEMORY,
+# FIXME - change to 4000µs.
+scan('dram_cap_hi_slow', 181, 180, dram_cap, FACTOR=10, SPEED=3000,
+     TARGET=MEMORY, CRIT='mem memi')
+
+fast('dram_cap_hi_fast', 118, 117, dram_cap, TARGET=MEMORY, FACTOR=10,
+     CRIT='mem memf')
+
+####################### JFET ##########################
+
+# We can take this with a grain of salt, changing VTO without modifying β
+# means we are dropping the Idss by a significant factor.
+fast('jfet_vto_lo', 33, 34, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
+     CRIT='memf memw')
+
+fast('jfet_vto_hi', 22, 21, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memp hazard2')
 
 slow('bias_r_lo', 152, 153, rbias, TARGET=MEMORY, CRIT='memp hazard2')
@@ -367,9 +356,8 @@ fast('rload_hi_fast', 2795, 2794, rload, CRIT='memp hazard2')
 
 fast('rload_lo', 65, 66, rload, CRIT='mem memp', FACTOR=10)
 
-fast('rpull_lo', 47, 48, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
-
-slow('rpull_hi', None, 100e3, rpull, TARGET=LOGIC, CRIT='call inc')
+#fast('rpull_lo', 47, 48, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
+#fast('rpull_hi', None, 100e6, rpull, TARGET=LOGIC, CRIT='call inc')
 
 fast('rmem_lo', 298, 299, rmem, TARGET=MEMORY, CRIT='hazard2 mem')
 

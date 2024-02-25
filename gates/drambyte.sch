@@ -387,6 +387,6 @@ T 1950 2400 5 10 1 1 0 0 1
 refdes=R2
 T 2300 2150 5 10 0 1 0 0 1
 footprint=0603-strong
-T 1400 1950 5 10 0 1 0 0 1
-value=rstrong
+T 1750 2500 5 10 1 1 0 3 1
+value=100
 }

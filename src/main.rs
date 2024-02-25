@@ -154,8 +154,7 @@ fn print_strobes(r: &SpiceRead) {
     }
     let mut last: String = "".into();
     for (i, t) in r.iterate_column("time").enumerate() {
-        let t = t / r.quantum;
-        if t < 1.0 {
+        if t < r.quantum {
             continue;
         }
         let mut current = String::new();
@@ -166,7 +165,7 @@ fn print_strobes(r: &SpiceRead) {
             }
         }
         if current != last {
-            println!("{t} {current}");
+            println!("{}µs {current}", t * 1e6);
             last = current;
         }
     }

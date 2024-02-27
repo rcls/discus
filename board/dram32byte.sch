@@ -996,8 +996,8 @@ T 3650 2550 5 10 1 1 180 0 1
 refdes=R2
 T 3300 2800 5 10 0 1 180 0 1
 footprint=0603-strong
-T 4200 3000 5 10 0 1 180 0 1
-value=rstrong
+T 3800 2750 5 10 1 1 0 3 1
+value=820
 }
 C 2700 5300 1 0 0 nots.sym
 {

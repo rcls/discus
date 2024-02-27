@@ -215,19 +215,19 @@ def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
 
 ##################### SPEED ########################
 
-scan('speed_basic', 1750, 1751, speed, TARGET=MEMORY, CRIT='hazard2 memi memp')
+scan('speed_basic', 1748, 1749, speed, TARGET=MEMORY, CRIT='hazard2 memi memp')
 
-scan('speed_duty1', 68, 69,
+scan('speed_duty1', 67, 68,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='hazard hazard2')
 
-scan('speed_duty0', 79, 80,
+scan('speed_duty0', 82, 83,
      lambda v=None: speed() if v is None else speed(Q, v),
      TARGET=MEMORY, FACTOR=10, CRIT='memp hazard2')
 
-scan('speedl_logic', 1757, 1758, speed, TARGET=LOGIC, CRIT='cmp inc')
+scan('speedl_logic', 1778, 1779, speed, TARGET=LOGIC, CRIT='cmp inc')
 
-scan('speedl_duty1', 58, 59,
+scan('speedl_duty1', 61, 62,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
@@ -237,26 +237,26 @@ scan('speedl_duty0', 67, 68,
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 90, 91, dram_cap, TARGET=MEMORY, CRIT='memp mem')
+fast('dram_cap_lo', 120, 121, dram_cap, TARGET=MEMORY, CRIT='memp  mem')
 
 # FIXME - change to 4000µs.
-scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100, SPEED=3000,
+scan('dram_cap_hi_slow', 27, 26, dram_cap, FACTOR=100, SPEED=3000,
      TARGET=MEMORY, CRIT='mem memi')
 
-fast('dram_cap_hi_fast', 178, 177, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='mem memf memp')
+fast('dram_cap_hi_fast', 151, 150, dram_cap, TARGET=MEMORY, FACTOR=10,
+     CRIT='mem  memp')
 
 ####################### JFET ##########################
 
 # We can take this with a grain of salt, changing VTO without modifying β
 # means we are dropping the Idss by a significant factor.
-fast('jfet_vto_lo', 23, 24, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
-     CRIT='memf memw')
+fast('jfet_vto_lo', 17, 18, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
+     CRIT='memw  memf')
 
-fast('jfet_vto_hi', 65, 64, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
+fast('jfet_vto_hi', 63, 62, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memp hazard2')
 
-fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-3,
+fast('jfet_beta_lo', 2, 3, jfet_beta, TARGET=MEMORY, FACTOR=1e-3,
      CRIT='hazard2')
 
 # TODO - bias R and JFET properties.
@@ -271,13 +271,13 @@ slow('npn_beta', 3, 4, npn_beta, CRIT='call inc')
 
 slow('rnpn_r_lo', 22, 23, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
 
-slow('rnpn_r_hi', 119, 118, npn22_r, TARGET=LOGIC, CRIT='call')
+slow('rnpn_r_hi', 16, 15, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
 slow('rnpn_beta_lo', 22, 23, npn22_beta, CRIT='memw')
 
 slow('rnpn_beta_hi', None, 10000, npn22_beta, TARGET=LOGIC, CRIT='call inc')
 
-slow('rnpn_br_lo', 11, 12, npn22_beta_reverse, FACTOR=0.1,
+slow('rnpn_br_lo', None, 1, npn22_beta_reverse, FACTOR=0.1,
      TARGET=LOGIC, CRIT='call')
 
 slow('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
@@ -285,31 +285,30 @@ slow('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
 
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 106, 107, rstrong, CRIT='memp memi')
+fast('rstrong_lo', 132, 133, rstrong, CRIT='mem')
 
-# FIXME - TRAN:  Timestep too small - but looks like check fails.
-slow('rstrong_hi', 33, 32, rstrong, FACTOR=100, CRIT='mem memp')
+slow('rstrong_hi', 27, 26, rstrong, FACTOR=100, CRIT='mem memp')
 
-slow('rload_hi_slow', 83, 82, rload, FACTOR=100, CRIT='call ramdecode')
+#fast('rbias_lo', 125, 126, rbias, TARGET=MEMORY, CRIT='mem memp hazard2')
+#slow('rbias_hi', 44, 43, rbias, TARGET=MEMORY, FACTOR=100, CRIT='mem')
 
-fast('rload_hi_fast', 326, 325, rload, FACTOR=10, CRIT='inc memi')
+slow('rload_hi_slow', 84, 83, rload, FACTOR=100, CRIT='call ramdecode')
 
-# Gets a timestep too small (in sub, I think?)
-fast('rload_lo', 58, 59, rload, CRIT='mem memp', FACTOR=10)
+fast('rload_hi_fast', 307, 306, rload, FACTOR=10, CRIT='inc  memi')
+
+fast('rload_lo', 65, 66, rload, CRIT='mem memp', FACTOR=10)
 
 #fast('rpull_lo', 47, 48, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
 #fast('rpull_hi', None, 100e6, rpull, TARGET=LOGIC, CRIT='call inc')
 
 ######################### MOSFETS #################################
-# The PMOS -> NMOS transition is killing this test!
-slow('nmos_vto_lo', 444, 445, nmos_vto, FACTOR=1e-3, CRIT='memi memw')
+slow('nmos_vto_lo', 398, 399, nmos_vto, FACTOR=1e-3, CRIT='inc call')
 
-slow('nmos_vto_hi', 175, 174, nmos_vto, FACTOR=10e-3, CRIT='call inc')
+slow('nmos_vto_hi', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 
-slow('pmos_vto_hi', 217, 216, pmos_vto, FACTOR=10e-3, CRIT='mem memw hazard')
+slow('pmos_vto_hi', 177, 176, pmos_vto, FACTOR=10e-3, CRIT='mem hazard')
 
-slow('pmos_vto_lo', 163, 164, pmos_vto, FACTOR=1e-3,
-     CRIT='hazard hazard2 romdecode ramdecode')
+fast('pmos_vto_lo', 291, 292, pmos_vto, FACTOR=1e-3, CRIT='hazard2  hazard')
 
 # FIXME - nmos cap scaling.
 

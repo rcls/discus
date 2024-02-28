@@ -217,9 +217,9 @@ def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
 
 scan('speed_basic', 1748, 1749, speed, TARGET=MEMORY, CRIT='hazard2 memi memp')
 
-scan('speed_duty1', 67, 68,
+scan('speed_duty1', 68, 69,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
-     TARGET=MEMORY, FACTOR=10, CRIT='hazard hazard2')
+     TARGET=MEMORY, FACTOR=10, CRIT='memp')
 
 scan('speed_duty0', 82, 83,
      lambda v=None: speed() if v is None else speed(Q, v),
@@ -243,15 +243,15 @@ fast('dram_cap_lo', 120, 121, dram_cap, TARGET=MEMORY, CRIT='memp  mem')
 scan('dram_cap_hi_slow', 27, 26, dram_cap, FACTOR=100, SPEED=3000,
      TARGET=MEMORY, CRIT='mem memi')
 
-fast('dram_cap_hi_fast', 151, 150, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='mem  memp')
+fast('dram_cap_hi_fast', 148, 147, dram_cap, TARGET=MEMORY, FACTOR=10,
+     CRIT='hazard hazard2')
 
 ####################### JFET ##########################
 
 # We can take this with a grain of salt, changing VTO without modifying β
 # means we are dropping the Idss by a significant factor.
-fast('jfet_vto_lo', 17, 18, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
-     CRIT='memw  memf')
+fast('jfet_vto_lo', 35, 36, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
+     CRIT='hazard2 hazard')
 
 fast('jfet_vto_hi', 63, 62, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memp hazard2')
@@ -308,7 +308,8 @@ slow('nmos_vto_hi', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 
 slow('pmos_vto_hi', 177, 176, pmos_vto, FACTOR=10e-3, CRIT='mem hazard')
 
-fast('pmos_vto_lo', 291, 292, pmos_vto, FACTOR=1e-3, CRIT='hazard2  hazard')
+# TODO - can this be better?
+fast('pmos_vto_lo', 523, 524, pmos_vto, FACTOR=1e-3, CRIT='inc')
 
 # FIXME - nmos cap scaling.
 

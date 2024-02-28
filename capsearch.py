@@ -215,7 +215,7 @@ def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
 
 ##################### SPEED ########################
 
-scan('speed_basic', 1748, 1749, speed, TARGET=MEMORY, CRIT='hazard2 memi memp')
+scan('speed_basic', 1748, 1749, speed, TARGET=MEMORY, CRIT='memi hazard2')
 
 scan('speed_duty1', 68, 69,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
@@ -244,14 +244,14 @@ scan('dram_cap_hi_slow', 27, 26, dram_cap, FACTOR=100, SPEED=3000,
      TARGET=MEMORY, CRIT='mem memi')
 
 fast('dram_cap_hi_fast', 148, 147, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='hazard hazard2')
+     CRIT='hazard2  hazard')
 
 ####################### JFET ##########################
 
 # We can take this with a grain of salt, changing VTO without modifying β
 # means we are dropping the Idss by a significant factor.
 fast('jfet_vto_lo', 35, 36, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
-     CRIT='hazard2 hazard')
+     CRIT='hazard  hazard2')
 
 fast('jfet_vto_hi', 63, 62, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memp hazard2')
@@ -296,7 +296,7 @@ slow('rload_hi_slow', 84, 83, rload, FACTOR=100, CRIT='call ramdecode')
 
 fast('rload_hi_fast', 307, 306, rload, FACTOR=10, CRIT='inc  memi')
 
-fast('rload_lo', 65, 66, rload, CRIT='mem memp', FACTOR=10)
+fast('rload_lo', 65, 66, rload, CRIT='memp  mem', FACTOR=10)
 
 #fast('rpull_lo', 47, 48, rpull, FACTOR=100, TARGET=LOGIC, CRIT='call inc')
 #fast('rpull_hi', None, 100e6, rpull, TARGET=LOGIC, CRIT='call inc')
@@ -304,9 +304,9 @@ fast('rload_lo', 65, 66, rload, CRIT='mem memp', FACTOR=10)
 ######################### MOSFETS #################################
 slow('nmos_vto_lo', 398, 399, nmos_vto, FACTOR=1e-3, CRIT='inc call')
 
-slow('nmos_vto_hi', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
+slow('nmos_vto_hi', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call  inc')
 
-slow('pmos_vto_hi', 177, 176, pmos_vto, FACTOR=10e-3, CRIT='mem hazard')
+slow('pmos_vto_hi', 177, 176, pmos_vto, FACTOR=10e-3, CRIT='mem  hazard')
 
 # TODO - can this be better?
 fast('pmos_vto_lo', 523, 524, pmos_vto, FACTOR=1e-3, CRIT='inc')

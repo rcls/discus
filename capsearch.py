@@ -15,13 +15,12 @@ parser.add_argument('-b', '--bad-check', action='store_true',
                     help='recheck bad limit')
 parser.add_argument('-a', '--all', action='store_true',
                     help='use all targets not just critical')
+parser.add_argument('-j', '--jobs', default='4',
+                    help='number of jobs to run at once')
 parser.add_argument('-t', '--target', nargs='+', help='override target')
 parser.add_argument('-n', '--dry-run', action='store_true', help='run none')
 parser.add_argument('wanted', nargs='*', help='tests to run')
 args = parser.parse_args()
-
-if args.good_check or args.bad_check:
-    args.recheck = True
 
 Q=2000
 currentQ = 2000
@@ -163,105 +162,131 @@ def slow(*args, **kwargs):
 def fast(*args, **kwargs):
     scan(*args, **kwargs, SPEED=2000)
 
-def try_one(MUNGE, V, TARGET, RESULTS, SPEED=None, EXTRA=[]):
-    print(f'=== Try {V:g} ===', flush=True)
-    if SPEED is not None:
-        speed(SPEED)
-    for f, v in EXTRA:
-        f(v)
-    MUNGE(V)
-    status = subprocess.call(['make', '-j4', '-k', f'QUANTUM={currentQ}']
-                             + TARGET)
-    res = f'=== Value {V:g} gives status {status}'
-    RESULTS.append((V, res))
-    print(res, flush=True)
-    return status == 0
+def scan(NAME, BAD, GOOD, MUNGE, *args, FACTOR=1, **kwargs):
+    BadGood(NAME, BAD, GOOD, MUNGE, FACTOR).scan(*args, **kwargs)
 
-def scan(NAME, BAD, GOOD, MUNGE, TARGET='verify', FACTOR=1,
-         SPEED=None, WANTED=None, CRIT=None, EXTRA=[]):
-    assert MUNGE is not None
-    if not wanted(NAME, WANTED):
-        return
+class BadGood:
+    def __init__(self, NAME, BAD, GOOD, MUNGE, FACTOR=1):
+        self.NAME = NAME
+        self.BAD = BAD
+        self.GOOD = GOOD
+        self.MUNGE = MUNGE
+        self.FACTOR = FACTOR
+        self.results = []
 
-    if args.good_check and GOOD is not None:
-        BAD, GOOD = GOOD - 1, GOOD + 1
-    elif args.bad_check and BAD is not None:
-        BAD, GOOD = BAD - 1, BAD + 1
-    if BAD is None or GOOD is None:
-        return
-    if WANTED is not True and not args.recheck and abs(GOOD - BAD) <= 1:
-        print('=== SETTLED', NAME)
-        return
-
-    print('=== START', NAME, '===', flush=True)
-    if args.dry_run:
-        return
-    results = []
-    if not args.all and CRIT != None:
-        TARGET = CRIT
-    TARGET = target_list(TARGET)
-    while abs(GOOD - BAD) > 1:
-        MID = (BAD + GOOD) // 2
-        V = MID * FACTOR
-        if try_one(MUNGE, V, TARGET, results, SPEED, EXTRA):
-            GOOD = MID
+    def try_one(self, NUM, TARGET, SPEED=None, EXTRA=[]):
+        V = NUM * self.FACTOR
+        print(f'=== Try {V:g} ===', flush=True)
+        if SPEED is not None:
+            speed(SPEED)
+        for f, v in EXTRA:
+            f(v)
+        self.MUNGE(V)
+        status = subprocess.call(
+            ['make', '-j' + args.jobs, '-k', f'QUANTUM={currentQ}'] + TARGET)
+        res = f'=== Value {V:g} gives status {status}'
+        self.results.append((V, res))
+        print(res, flush=True)
+        if status == 0:
+            self.GOOD = NUM
         else:
-            BAD = MID
-    MUNGE()
-    print('=== RESULT', NAME, '===')
-    results.sort()
-    for _, L in results:
-        print(L)
-    print('===')
-    for f, _ in EXTRA:
-        f()
-    speed()
+            self.BAD = NUM
+        return status == 0
+
+    def gap(self):
+        if self.BAD is None or self.GOOD is None:
+            return 0
+        return abs(self.BAD - self.GOOD)
+
+    def scan(self, TARGET='verify', SPEED=None, WANTED=None, CRIT=None, EXTRA=[]):
+        if not wanted(self.NAME, WANTED):
+            return
+
+        if WANTED is not True and not args.recheck and not args.good_check and not args.bad_check and self.gap() <= 1:
+            print('=== SETTLED', self.NAME)
+            return
+
+        print('=== START', self.NAME, '===', flush=True)
+        if args.dry_run:
+            return
+
+        if not args.all and CRIT != None:
+            TARGET = CRIT
+        TARGET = target_list(TARGET)
+
+        if args.good_check and self.GOOD is not None:
+            self.try_one(self.GOOD, TARGET, SPEED, EXTRA)
+        if args.bad_check and self.BAD is not None:
+            self.try_one(self.BAD, TARGET, SPEED, EXTRA)
+
+        if self.BAD is None:
+            self.BAD = self.GOOD
+        if self.GOOD is None:
+            self.GOOD = self.BAD
+
+        if args.recheck:
+            self.try_one(self.BAD, TARGET, results, SPEED, EXTRA)
+            if self.gap() != 0:
+                self.try_one(self.GOOD, TARGET, results, SPEED, EXTRA)
+
+        while self.gap() > 1:
+            MID = (self.BAD + self.GOOD) // 2
+            self.try_one(MID, TARGET, results, SPEED, EXTRA)
+
+        self.MUNGE()
+        print('=== RESULT', self.NAME, '===')
+        self.results.sort()
+        for _, L in self.results:
+            print(L)
+        print('===')
+        for f, _ in EXTRA:
+            f()
+        speed()
 
 ##################### SPEED ########################
 
-scan('speed_basic', 1750, 1751, speed, TARGET=MEMORY, CRIT='memi hazard2')
+scan('speed_basic', 1749, 1750, speed, TARGET=MEMORY, CRIT='memi hazard2')
 
-scan('speed_duty1', 67, 68,
+scan('speed_duty1', 57, 58,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
-     TARGET=MEMORY, FACTOR=10, CRIT='memp')
+     TARGET=MEMORY, FACTOR=10, CRIT='hazard hazard2')
 
-scan('speed_duty0', 80, 81,
+scan('speed_duty0', 79, 80,
      lambda v=None: speed() if v is None else speed(Q, v),
      TARGET=MEMORY, FACTOR=10, CRIT='memp hazard2')
 
-scan('speedl_logic', 1779, 1780, speed, TARGET=LOGIC, CRIT='cmp inc')
+scan('speedl_logic', 1780, 1781, speed, TARGET=LOGIC, CRIT='cmp inc')
 
-scan('speedl_duty1', 60, 61,
+scan('speedl_duty1', 61, 62,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
-scan('speedl_duty0', 54, 55,
+scan('speedl_duty0', 53, 54,
      lambda v=None: speed() if v is None else speed(Q, v), TARGET=LOGIC,
      CRIT='call inc', FACTOR=10)
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 13, 14, dram_cap, FACTOR=10, TARGET=MEMORY,
+fast('dram_cap_lo', 10, 11, dram_cap, FACTOR=10, TARGET=MEMORY,
      CRIT='memp  mem')
 
-# FIXME - change to 4000µs.
-scan('dram_cap_hi_slow', 28, 27, dram_cap, FACTOR=100, SPEED=3000,
+scan('dram_cap_hi_slow', 33, 32, dram_cap, FACTOR=100, SPEED=3000,
      TARGET=MEMORY, CRIT='mem memi')
 
-fast('dram_cap_hi_fast', 154, 153, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='hazard2  hazard')
+fast('dram_cap_hi_fast', 183, 182, dram_cap, TARGET=MEMORY, FACTOR=10,
+     CRIT='mem memp')
 
 ####################### JFET ##########################
 
 # We can take this with a grain of salt, changing VTO without modifying β
 # means we are dropping the Idss by a significant factor.
-fast('jfet_vto_lo', 35, 36, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
-     CRIT='hazard  hazard2')
+fast('jfet_vto_lo', 24, 25, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
+     CRIT='memw memf')
 
-fast('jfet_vto_hi', 63, 62, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
+fast('jfet_vto_hi', 65, 64, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memp hazard2')
 
-fast('jfet_beta_lo', 2, 3, jfet_beta, TARGET=MEMORY, FACTOR=1e-3,
+fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-3,
      CRIT='hazard2')
 
 # TODO - bias R and JFET properties.
@@ -293,11 +318,11 @@ fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
 
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 134, 135, rstrong, CRIT='mem')
+fast('rstrong_lo', 130, 131, rstrong, CRIT='add mem')
 
-slow('rstrong_hi_slow', 30, 29, rstrong, FACTOR=100, CRIT='mem memp')
+slow('rstrong_hi_slow', 33, 32, rstrong, FACTOR=100, CRIT='mem memp')
 
-fast('rstrong_hi_fast', 127, 126, rstrong, FACTOR=10, CRIT='memi hazard2')
+fast('rstrong_hi_fast', 132, 131, rstrong, FACTOR=10, CRIT='memi hazard2')
 
 #fast('rbias_lo', 125, 126, rbias, TARGET=MEMORY, CRIT='mem memp hazard2')
 #slow('rbias_hi', 44, 43, rbias, TARGET=MEMORY, FACTOR=100, CRIT='mem')
@@ -306,26 +331,26 @@ slow('rload_hi_slow', 77, 76, rload, FACTOR=100, CRIT='call inc')
 
 fast('rload_hi_fast', 306, 305, rload, FACTOR=10, CRIT='inc  memi')
 
-fast('rload_lo', 65, 66, rload, CRIT='memp  mem', FACTOR=10)
+fast('rload_lo', 58, 59, rload, CRIT='memp  mem', FACTOR=10)
 
 fast('rpull_lo', None, 100, rpull, TARGET=MEMORY, CRIT='hazard2 memf')
 fast('rpull_hi', None, 200e3, rpull, TARGET=MEMORY, CRIT='hazard2 memf')
 
-fast('rpullcap_lo', 5, 6, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem memp',
+fast('rpullcap_lo', None, 1, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem memp',
      EXTRA=[(dram_cap, 140)])
-fast('rpullcap_hi', 102, 101, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem',
+fast('rpullcap_hi', 122, 121, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem',
      EXTRA=[(dram_cap, 140)])
 
 ######################### MOSFETS #################################
-fast('nmos_vto_lo', 452, 453, nmos_vto, FACTOR=1e-3, CRIT='inc logic')
+fast('nmos_vto_lo', 453, 454, nmos_vto, FACTOR=1e-3, CRIT='cmp logic')
 
 slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call  inc')
-fast('nmos_vto_hi_fast', 109, 108, nmos_vto, FACTOR=10e-3, CRIT='call  inc')
+fast('nmos_vto_hi_fast', 110, 109, nmos_vto, FACTOR=10e-3, CRIT='call  inc')
 
-slow('pmos_vto_hi_slow', 183, 182, pmos_vto, FACTOR=10e-3, CRIT='mem  hazard')
-fast('pmos_vto_hi_fast', 135, 134, pmos_vto, FACTOR=10e-3, CRIT='hazard memp')
+#slow('pmos_vto_hi_slow', None, 2, pmos_vto, CRIT='mem  hazard')
+fast('pmos_vto_hi_fast', 155, 154, pmos_vto, FACTOR=10e-3, CRIT='cmp hazard2')
 
-fast('pmos_vto_lo', 315, 316, pmos_vto, FACTOR=1e-3, CRIT='inc memp')
+fast('pmos_vto_lo', 316, 317, pmos_vto, FACTOR=1e-3, CRIT='inc memp')
 
 # FIXME - nmos cap scaling.
 

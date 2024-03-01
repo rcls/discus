@@ -86,7 +86,7 @@ def speed(vt=None, t0=None, tr=None):
             if l.startswith('value=pulse') and refdes == 'Vc0':
                 l = f'value=pulse 0 2.5v 1u 10n 10n {t0:g}n {vt}n\n'
             if l.startswith('value=pulse') and refdes == 'Vrst':
-                l = f'value=pulse 0 2.5v {tr:g}n 10n 10n 9 10\n'
+                l = f'value=pulse 0 2.5v {tr}n 10n 10n 9 10\n'
             F.write(l)
     currentQ = vt
 
@@ -176,7 +176,7 @@ class BadGood:
 
     def try_one(self, NUM, TARGET, SPEED=None, EXTRA=[]):
         V = NUM * self.FACTOR
-        print(f'=== Try {V:g} ===', flush=True)
+        print(f'=== Try {V:g} [{NUM}] ===', flush=True)
         if SPEED is not None:
             speed(SPEED)
         for f, v in EXTRA:
@@ -184,7 +184,7 @@ class BadGood:
         self.MUNGE(V)
         status = subprocess.call(
             ['make', '-j' + args.jobs, '-k', f'QUANTUM={currentQ}'] + TARGET)
-        res = f'=== Value {V:g} gives status {status}'
+        res = f'=== Value {V:g} [{NUM}] gives status {status}'
         self.results.append((V, res))
         print(res, flush=True)
         if status == 0:
@@ -214,24 +214,19 @@ class BadGood:
             TARGET = CRIT
         TARGET = target_list(TARGET)
 
-        if args.good_check and self.GOOD is not None:
-            self.try_one(self.GOOD, TARGET, SPEED, EXTRA)
-        if args.bad_check and self.BAD is not None:
+        if (args.bad_check or args.recheck) and self.BAD is not None:
             self.try_one(self.BAD, TARGET, SPEED, EXTRA)
+        if (args.good_check or args.recheck) and self.GOOD is not None:
+            self.try_one(self.GOOD, TARGET, SPEED, EXTRA)
 
         if self.BAD is None:
             self.BAD = self.GOOD
         if self.GOOD is None:
             self.GOOD = self.BAD
 
-        if args.recheck:
-            self.try_one(self.BAD, TARGET, results, SPEED, EXTRA)
-            if self.gap() != 0:
-                self.try_one(self.GOOD, TARGET, results, SPEED, EXTRA)
-
         while self.gap() > 1:
             MID = (self.BAD + self.GOOD) // 2
-            self.try_one(MID, TARGET, results, SPEED, EXTRA)
+            self.try_one(MID, TARGET, SPEED, EXTRA)
 
         self.MUNGE()
         print('=== RESULT', self.NAME, '===')
@@ -289,15 +284,11 @@ fast('jfet_vto_hi', 65, 64, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
 fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-3,
      CRIT='hazard2')
 
-# TODO - bias R and JFET properties.
-
 ######################### NPN #################################
 
 fast('npn_beta_lo', 7, 8, npn_beta, CRIT='call inc')
 
 fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
-
-# Capacitance scaling?
 
 ####################### PRE-BIAS NPN ##############################
 
@@ -324,9 +315,6 @@ slow('rstrong_hi_slow', 33, 32, rstrong, FACTOR=100, CRIT='mem memp')
 
 fast('rstrong_hi_fast', 132, 131, rstrong, FACTOR=10, CRIT='memi hazard2')
 
-#fast('rbias_lo', 125, 126, rbias, TARGET=MEMORY, CRIT='mem memp hazard2')
-#slow('rbias_hi', 44, 43, rbias, TARGET=MEMORY, FACTOR=100, CRIT='mem')
-
 slow('rload_hi_slow', 77, 76, rload, FACTOR=100, CRIT='call inc')
 
 fast('rload_hi_fast', 306, 305, rload, FACTOR=10, CRIT='inc  memi')
@@ -347,14 +335,13 @@ fast('nmos_vto_lo', 453, 454, nmos_vto, FACTOR=1e-3, CRIT='cmp logic')
 slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call  inc')
 fast('nmos_vto_hi_fast', 110, 109, nmos_vto, FACTOR=10e-3, CRIT='call  inc')
 
-#slow('pmos_vto_hi_slow', None, 2, pmos_vto, CRIT='mem  hazard')
 fast('pmos_vto_hi_fast', 155, 154, pmos_vto, FACTOR=10e-3, CRIT='cmp hazard2')
 
 fast('pmos_vto_lo', 316, 317, pmos_vto, FACTOR=1e-3, CRIT='inc memp')
 
-# FIXME - nmos cap scaling.
-
 ################################# EXTRAS #######################
-# Reset timing on testadd: 3595n minimum (what cycle?)
-#scan(0, 3 * Q, 2 * Q, lambda v: speed(tr=v),
-#     TARGET='test/add.verify', NAME='Reset')
+scan('reset_delay', 5057395, 5057394, lambda v=None: speed(tr=v),
+     FACTOR=1e-3, TARGET='cmp', WANTED=False)
+
+scan('reset_advance', 3060610, 3060611, lambda v=None: speed(tr=v),
+     FACTOR=1e-3, TARGET='cmp', WANTED=False)

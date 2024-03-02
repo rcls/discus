@@ -29,6 +29,8 @@ pub struct State {
     pub r: u8,                         // Refresh counter.
     pub b: u8,                         // Address bus.
 
+    pub last_out: u8,
+
     pub stack: [u8; 4],
     pub memory: Memory,
 }
@@ -58,7 +60,7 @@ impl State {
                 self.prefix = Some(Prefix::Const);
             }
 
-            0x40..=0x47 => self.out(),
+            0x40..=0x47 => self.last_out = self.a,
             0x48..=0x4b => unreachable!(), // Unallocated, NOP?
             0x4c..=0x4f => {
                 is_mem = true;
@@ -84,7 +86,7 @@ impl State {
         }
         else {
             self.b = self.r;
-            self.r += 1;
+            self.r = self.r.wrapping_add(1);
         }
     }
 
@@ -146,7 +148,6 @@ impl State {
         }
     }
 
-    fn out(&self) { todo!() }
     fn inp(&self) { todo!() }
 
     fn xfer(&mut self, opcode: u8, operand: u8, is_mem: &mut bool) {

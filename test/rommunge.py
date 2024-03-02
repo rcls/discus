@@ -7,7 +7,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('src', help='Input file')
 parser.add_argument('dst', help='Output .cir file')
 parser.add_argument('-w', help='Output spice trace')
-parser.add_argument('-t', help='Spice simulation time', default=3000, type=int)
+parser.add_argument('-t', default=2000, type=float,
+                    help='Spice simulation time')
 args = parser.parse_args()
 
 params = { }
@@ -37,6 +38,8 @@ dst.write('.control\n')
 
 if 'executed' in params:
     ns = args.t * (int(params['executed']) + 3) + 1000
+    if ns == int(ns):
+        ns = int(ns)
     dst.write(f'tran 50n {ns}n uic\n')
 
 if args.w is not None:

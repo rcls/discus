@@ -11,11 +11,12 @@ mod alu;
 mod disassemble;
 mod emitter;
 mod instructions;
+mod memcheck;
+mod memdecode;
 mod miller_rabin;
 mod opdecode;
 mod pcdecode;
 mod programs;
-mod memdecode;
 mod sp;
 mod spice_check;
 mod spice_read;
@@ -25,7 +26,8 @@ mod resistors;
 #[derive(Copy, Clone, ValueEnum)]
 enum Program {
     Add, Call, Cmp, Hazard, Hazard2, Inc, Logic, Mem, Memf, Memi, Memp, Memw,
-    Sub, Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp, MillerRabin,
+    Sub, Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp,
+    MemCheck, MillerRabin,
 }
 
 #[derive(Parser)]
@@ -61,6 +63,7 @@ fn main() {
     let args = Args::parse();
     let insns = match args.program {
         MillerRabin => miller_rabin::miller_rabin(args.num),
+        MemCheck => memcheck::memcheck(),
         Add     => add(),
         Call    => call(),
         Cmp     => cmp(),

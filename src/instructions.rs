@@ -89,7 +89,7 @@ impl Instructions {
             let (b, a) = match insn {
                 Address(Target::Addr(a)) => (a & 0x3f, a >> 6),
                 Address(Target::Label(l)) => {
-                    let a = self.labels[l];
+                    let a = self.labels.get(l).expect(l);
                     (a & 0x3f, a >> 6)
                 }
                 Byte(b) => (b + address, 0),

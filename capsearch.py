@@ -19,6 +19,9 @@ parser.add_argument('-a', '--all', action='store_true',
                     help='use all targets not just critical')
 parser.add_argument('-j', '--jobs', default='4',
                     help='number of jobs to run at once')
+parser.add_argument('-R', '--reverse', action='store_true',
+                    help='reverse sequence')
+parser.add_argument('-z', '--zoom', default=1, help='inspect in more detail')
 parser.add_argument('-t', '--target', nargs='+', help='override target')
 parser.add_argument('-v', '--value', type=float, help='test one value')
 parser.add_argument('-n', '--dry-run', action='store_true', help='run none')
@@ -35,6 +38,7 @@ LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
 
 CHANGED=0
+SCANS=[]
 
 def target_list(t):
     if args.target:
@@ -172,20 +176,22 @@ def fast(*args, EXTRA=[], **kwargs):
     scan(*args, **kwargs, EXTRA = EXTRA + [(speed, 2000)])
 
 def scan(NAME, BAD, GOOD, MUNGE, **kwargs):
-    BadGood(NAME, BAD, GOOD, MUNGE, **kwargs).scan()
+    bg = BadGood(NAME, BAD, GOOD, MUNGE, **kwargs)
+    if wanted(NAME, bg.WANTED):
+        SCANS.append(bg)
 
 class BadGood:
     def __init__(self, NAME, BAD, GOOD, MUNGE, FACTOR=1, TARGET='verify',
                  CRIT=None, EXTRA=[], WANTED=None):
         self.NAME = NAME
-        self.BAD = BAD
-        self.GOOD = GOOD
-        self.I_BAD = BAD
+        self.BAD = BAD if BAD is None else BAD * args.zoom
+        self.GOOD = GOOD if GOOD is None else GOOD * args.zoom
+        self.I_BAD = self.BAD
         self.MUNGE = MUNGE
         self.EXTRA = EXTRA
         self.known = {}
-        self.I_GOOD = GOOD
-        self.FACTOR = FACTOR
+        self.I_GOOD = self.GOOD
+        self.FACTOR = FACTOR if args.zoom == 1 else FACTOR / args.zoom
         self.WANTED = WANTED
         self.results = []
 
@@ -201,7 +207,7 @@ class BadGood:
         if NUM in self.known:
             return self.known[NUM]
         V = NUM * self.FACTOR
-        print(f'=== Try {V:g} [{NUM}]', flush=True)
+        print(f'=== Try  {V:g} [{NUM}]', flush=True)
         for f, v in self.EXTRA:
             f(v)
         self.MUNGE(V)
@@ -226,9 +232,6 @@ class BadGood:
         return abs(self.BAD - self.GOOD)
 
     def scan(self):
-        if not wanted(self.NAME, self.WANTED):
-            return
-
         if not args.good_check and not args.bad_check and self.gap() <= 1:
             print('=== SETTLED', self.NAME)
             return
@@ -246,13 +249,16 @@ class BadGood:
             and self.I_BAD != self.I_GOOD:
             iters = 0
             if self.try_one((self.BAD + self.GOOD) // 2):
-                while self.try_one(self.BAD) and iters < 5:
+                while self.try_one(self.BAD) and iters < 10:
                     self.BAD += self.BAD - self.I_GOOD
                     iters += 1
             else:
-                while not self.try_one(self.GOOD) and iters < 5:
+                while not self.try_one(self.GOOD) and iters < 10:
                     self.GOOD += self.GOOD - self.I_BAD
                     iters += 1
+            if iters >= 10:
+                print('=== Failed to extend', flush=True)
+                return
 
         #if args.recheck and self.BAD is not None and self.GOOD is not None:
         #    self.try_one((self.BAD + self.GOOD) // 2)
@@ -260,12 +266,14 @@ class BadGood:
         while self.gap() > 1:
             self.try_one((self.BAD + self.GOOD) // 2)
 
+    def finish(self):
         self.MUNGE()
         for f, _ in self.EXTRA:
             f()
 
         if self.BAD != self.I_BAD or self.GOOD != self.I_GOOD:
-            print(f'=== CHANGES! f{self.NAME} [{self.BAD} {self.GOOD}] ===')
+            print(f'=== CHANGES! {self.NAME} [{self.BAD} {self.GOOD}] ===')
+            global CHANGED
             CHANGED += 1
         else:
             print('=== RESULT', self.NAME, '===')
@@ -377,8 +385,15 @@ fast('pmos_vto_lo', 316, 317, pmos_vto, FACTOR=1e-3, CRIT='inc memp')
 scan('reset_delay', 5057392, 5057391, lambda v=None: speed(tr=v),
      FACTOR=1e-3, TARGET='hazard', WANTED=False)
 
-scan('reset_advance', 3060625, 3060626, lambda v=None: speed(tr=v),
+scan('reset_advance', 3060626, 3060627, lambda v=None: speed(tr=v),
      FACTOR=1e-3, TARGET='hazard', WANTED=False)
+
+if args.reverse:
+    SCANS.reverse()
+
+for bg in SCANS:
+    bg.scan()
+    bg.finish()
 
 if CHANGED != 0:
     print(f'=== Change count {CHANGED}', flush=True)

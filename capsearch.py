@@ -156,34 +156,39 @@ def pmos_vto(VTO=0.9):
         munged.append(L)
     writepath(path, munged)
 
-def slow(*args, **kwargs):
-    scan(*args, **kwargs, SPEED=4000)
+def slow(*args, EXTRA=[], **kwargs):
+    scan(*args, **kwargs, EXTRA = EXTRA + [(speed, 4000)])
 
-def fast(*args, **kwargs):
-    scan(*args, **kwargs, SPEED=2000)
+def fast(*args, EXTRA=[], **kwargs):
+    scan(*args, **kwargs, EXTRA = EXTRA + [(speed, 2000)])
 
-def scan(NAME, BAD, GOOD, MUNGE, *args, FACTOR=1, **kwargs):
-    BadGood(NAME, BAD, GOOD, MUNGE, FACTOR).scan(*args, **kwargs)
+def scan(NAME, BAD, GOOD, MUNGE, **kwargs):
+    BadGood(NAME, BAD, GOOD, MUNGE, **kwargs).scan()
 
 class BadGood:
-    def __init__(self, NAME, BAD, GOOD, MUNGE, FACTOR=1):
+    def __init__(self, NAME, BAD, GOOD, MUNGE, FACTOR=1, TARGET='verify',
+                 CRIT=None, EXTRA=[], WANTED=None):
         self.NAME = NAME
         self.BAD = BAD
         self.GOOD = GOOD
         self.MUNGE = MUNGE
         self.FACTOR = FACTOR
+        self.EXTRA = EXTRA
+        self.WANTED = WANTED
         self.results = []
 
-    def try_one(self, NUM, TARGET, SPEED=None, EXTRA=[]):
+        if not args.all and CRIT != None:
+            TARGET = CRIT
+        self.TARGET = target_list(TARGET)
+
+    def try_one(self, NUM):
         V = NUM * self.FACTOR
         print(f'=== Try {V:g} [{NUM}] ===', flush=True)
-        if SPEED is not None:
-            speed(SPEED)
-        for f, v in EXTRA:
+        for f, v in self.EXTRA:
             f(v)
         self.MUNGE(V)
-        status = subprocess.call(
-            ['make', '-j' + args.jobs, '-k', f'QUANTUM={currentQ}'] + TARGET)
+        status = subprocess.call(['make', '-j' + args.jobs, '-k',
+                                  f'QUANTUM={currentQ}'] + self.TARGET)
         res = f'=== Value {V:g} [{NUM}] gives status {status}'
         self.results.append((V, res))
         print(res, flush=True)
@@ -198,11 +203,11 @@ class BadGood:
             return 0
         return abs(self.BAD - self.GOOD)
 
-    def scan(self, TARGET='verify', SPEED=None, WANTED=None, CRIT=None, EXTRA=[]):
-        if not wanted(self.NAME, WANTED):
+    def scan(self):
+        if not wanted(self.NAME, self.WANTED):
             return
 
-        if WANTED is not True and not args.recheck and not args.good_check and not args.bad_check and self.gap() <= 1:
+        if not args.recheck and not args.good_check and not args.bad_check and self.gap() <= 1:
             print('=== SETTLED', self.NAME)
             return
 
@@ -210,14 +215,10 @@ class BadGood:
         if args.dry_run:
             return
 
-        if not args.all and CRIT != None:
-            TARGET = CRIT
-        TARGET = target_list(TARGET)
-
         if (args.bad_check or args.recheck) and self.BAD is not None:
-            self.try_one(self.BAD, TARGET, SPEED, EXTRA)
+            self.try_one(self.BAD)
         if (args.good_check or args.recheck) and self.GOOD is not None:
-            self.try_one(self.GOOD, TARGET, SPEED, EXTRA)
+            self.try_one(self.GOOD)
 
         if self.BAD is None:
             self.BAD = self.GOOD
@@ -226,7 +227,7 @@ class BadGood:
 
         while self.gap() > 1:
             MID = (self.BAD + self.GOOD) // 2
-            self.try_one(MID, TARGET, SPEED, EXTRA)
+            self.try_one(MID)
 
         self.MUNGE()
         print('=== RESULT', self.NAME, '===')
@@ -234,9 +235,8 @@ class BadGood:
         for _, L in self.results:
             print(L)
         print('===')
-        for f, _ in EXTRA:
+        for f, _ in self.EXTRA:
             f()
-        speed()
 
 ##################### SPEED ########################
 
@@ -246,8 +246,7 @@ scan('speed_duty1', 57, 58,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='hazard hazard2')
 
-scan('speed_duty0', 79, 80,
-     lambda v=None: speed() if v is None else speed(Q, v),
+scan('speed_duty0', 79, 80, lambda v=None: speed(t0=v),
      TARGET=MEMORY, FACTOR=10, CRIT='memp hazard2')
 
 scan('speedl_logic', 1780, 1781, speed, TARGET=LOGIC, CRIT='cmp inc')
@@ -256,8 +255,7 @@ scan('speedl_duty1', 61, 62,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
-scan('speedl_duty0', 53, 54,
-     lambda v=None: speed() if v is None else speed(Q, v), TARGET=LOGIC,
+scan('speedl_duty0', 53, 54, lambda v=None: speed(t0 = v), TARGET=LOGIC,
      CRIT='call inc', FACTOR=10)
 
 ##################### DRAM CAP ######################
@@ -265,8 +263,8 @@ scan('speedl_duty0', 53, 54,
 fast('dram_cap_lo', 10, 11, dram_cap, FACTOR=10, TARGET=MEMORY,
      CRIT='memp  mem')
 
-scan('dram_cap_hi_slow', 33, 32, dram_cap, FACTOR=100, SPEED=3000,
-     TARGET=MEMORY, CRIT='mem memi')
+scan('dram_cap_hi_slow', 33, 32, dram_cap, FACTOR=100,
+     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
 fast('dram_cap_hi_fast', 183, 182, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='mem memp')

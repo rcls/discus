@@ -91,7 +91,7 @@ N 4300 7000 4300 8100 4
 C 4300 6400 1 0 0 nor.sym
 {
 T 4700 6900 5 10 1 1 0 4 1
-refdes=S4
+refdes=S5
 }
 C 5900 6800 1 0 0 out-1.sym
 {
@@ -114,7 +114,7 @@ refdes=VPush
 C 5100 7200 1 0 0 nor.sym
 {
 T 5500 7700 5 10 1 1 0 4 1
-refdes=S5
+refdes=S6
 }
 N 5100 8700 5100 7800 4
 N 5100 5900 5100 7600 4
@@ -417,7 +417,7 @@ footprint=anchor
 C 10600 7700 1 0 0 cnot.sym
 {
 T 10925 8000 5 10 1 1 0 4 1
-refdes=N1
+refdes=N4
 }
 C 10900 7400 1 0 0 gnd-1.sym
 C 10800 8300 1 0 0 vdd-1.sym
@@ -453,7 +453,7 @@ netname=I2
 C 10600 4800 1 0 0 cnot.sym
 {
 T 10925 5100 5 10 1 1 0 4 1
-refdes=N2
+refdes=N7
 }
 C 3900 4500 1 180 1 out-1.sym
 {
@@ -479,21 +479,21 @@ C 9900 7200 1 0 0 gnd-1.sym
 C 7600 8200 1 0 0 not.sym
 {
 T 7950 8500 5 10 1 1 0 4 1
-refdes=N3
+refdes=N1
 }
 C 7800 8800 1 0 0 vdd-1.sym
 C 8100 7900 1 0 1 gnd-1.sym
 C 7600 7300 1 0 0 not.sym
 {
 T 7950 7600 5 10 1 1 0 4 1
-refdes=N5
+refdes=N2
 }
 C 7800 7900 1 0 0 vdd-1.sym
 C 8100 7000 1 0 1 gnd-1.sym
 C 7600 6400 1 0 0 not.sym
 {
 T 7950 6700 5 10 1 1 0 4 1
-refdes=N6
+refdes=N3
 }
 C 7800 7000 1 0 0 vdd-1.sym
 C 8100 6100 1 0 1 gnd-1.sym
@@ -547,7 +547,7 @@ refdes=A1
 C 13400 7500 1 0 0 nor.sym
 {
 T 13800 8000 5 10 1 1 0 4 1
-refdes=A2
+refdes=A3
 }
 C 7800 1000 1 0 0 nmos-switch.sym
 {
@@ -706,7 +706,7 @@ B 7100 100 4700 3400 5 0 1 0 -1 -1 0 -1 -1 -1 -1 -1
 C 2700 7600 1 0 0 xnor.sym
 {
 T 2900 8225 5 10 1 1 0 0 1
-refdes=S2
+refdes=S3
 }
 C 900 1700 1 0 0 in-1.sym
 {
@@ -850,7 +850,7 @@ C 6800 6500 1 90 1 phi1.sym
 C 6300 5600 1 0 0 notp.sym
 {
 T 6650 5900 5 10 1 1 0 4 1
-refdes=N8
+refdes=S8
 }
 N 6300 5900 5900 5900 4
 C 6200 5900 1 90 0 out-1.sym
@@ -866,7 +866,7 @@ B 400 100 15200 8900 5 0 1 0 -1 -1 0 -1 -1 -1 -1 -1
 C 3100 3900 1 0 0 nor.sym
 {
 T 3500 4400 5 10 1 1 0 4 1
-refdes=L7
+refdes=L1
 }
 C 3300 3600 1 0 0 gnd-1.sym
 C 3500 5200 1 90 1 phi1.sym
@@ -890,7 +890,7 @@ C 13800 5600 1 0 1 gnd-1.sym
 C 5100 5600 1 0 0 nots.sym
 {
 T 5450 5900 5 10 1 1 0 4 1
-refdes=S6
+refdes=S7
 }
 N 10600 8000 10500 8000 4
 {
@@ -901,7 +901,7 @@ N 1800 6300 1800 6400 4
 C 13200 1800 1 0 0 nandod.sym
 {
 T 13600 2300 5 10 1 1 0 4 1
-refdes=A3
+refdes=A5
 }
 C 14900 2500 1 0 1 resistor-strong.sym
 {
@@ -910,7 +910,7 @@ footprint=0603-strong
 T 14600 2900 5 10 0 0 0 6 1
 device=RESISTOR
 T 14250 2650 5 10 1 1 0 6 1
-refdes=R2
+refdes=R4
 T 14800 2200 5 10 0 1 0 6 1
 value=rstrong
 }
@@ -918,7 +918,7 @@ N 14000 2600 14000 2300 4
 C 4300 7900 1 0 0 nor4od.sym
 {
 T 4700 8400 5 10 1 1 0 4 1
-refdes=S3
+refdes=S4
 }
 C 6000 8600 1 0 1 resistor-strong.sym
 {
@@ -927,7 +927,7 @@ footprint=0603-strong
 T 5700 9000 5 10 0 0 0 6 1
 device=RESISTOR
 T 5350 8750 5 10 1 1 0 6 1
-refdes=R4
+refdes=R1
 T 5900 8300 5 10 0 1 0 6 1
 value=rstrong
 }
@@ -935,7 +935,7 @@ N 6000 8800 6000 8700 4
 C 9800 4000 1 0 0 nor.sym
 {
 T 10200 4500 5 10 1 1 0 4 1
-refdes=A5
+refdes=A2
 }
 C 9900 5000 1 0 0 vdd-1.sym
 N 10400 400 10400 500 4
@@ -948,7 +948,7 @@ footprint=0603-strong
 T 6000 5300 5 10 0 0 0 0 1
 device=RESISTOR
 T 6350 5050 5 10 1 1 0 0 1
-refdes=R5
+refdes=R2
 T 5800 4600 5 10 0 1 0 0 1
 value=rstrong
 }
@@ -956,7 +956,7 @@ N 6600 4400 6600 5000 4
 C 5800 2900 1 0 0 norod.sym
 {
 T 6200 3400 5 10 1 1 0 4 1
-refdes=L1
+refdes=L6
 }
 N 5600 2900 6100 2900 4
 {
@@ -1007,7 +1007,7 @@ N 3400 1300 3400 800 4
 C 2600 300 1 0 0 nandod.sym
 {
 T 3000 800 5 10 1 1 0 4 1
-refdes=L3
+refdes=L5
 }
 N 2800 1600 3000 1600 4
 {
@@ -1053,7 +1053,7 @@ netname=I3
 C 3100 2400 1 0 0 nor.sym
 {
 T 3500 2900 5 10 1 1 0 4 1
-refdes=L6
+refdes=L2
 }
 C 3300 2100 1 0 0 gnd-1.sym
 N 2900 2800 3100 2800 4
@@ -1076,12 +1076,12 @@ netname=_msc
 C 4900 900 1 0 0 not.sym
 {
 T 5250 1200 5 10 1 1 0 4 1
-refdes=L4
+refdes=L8
 }
 C 4900 1800 1 0 0 not.sym
 {
 T 5250 2100 5 10 1 1 0 4 1
-refdes=L8
+refdes=L7
 }
 C 5100 2400 1 0 0 vdd-1.sym
 N 5300 1800 5700 1800 4
@@ -1108,12 +1108,12 @@ netname=Co
 C 1500 7900 1 0 0 nots.sym
 {
 T 1850 8200 5 10 1 1 0 4 1
-refdes=N4
+refdes=S1
 }
 C 1500 7000 1 0 0 norod.sym
 {
 T 1900 7500 5 10 1 1 0 4 1
-refdes=S1
+refdes=S2
 }
 C 1400 6300 1 0 0 nmos-switch.sym
 {
@@ -1160,7 +1160,7 @@ device=OUTPUT
 C 5800 3900 1 0 0 nandod.sym
 {
 T 6200 4400 5 10 1 1 0 4 1
-refdes=L2
+refdes=L4
 }
 C 13300 700 1 0 0 not.sym
 {
@@ -1186,24 +1186,24 @@ netname=I2oi3
 C 13500 4600 1 0 0 not.sym
 {
 T 13850 4900 5 10 1 1 0 4 1
-refdes=N9
+refdes=N8
 }
 C 13700 5200 1 0 0 vdd-1.sym
 C 13300 3300 1 0 0 not.sym
 {
 T 13650 3600 5 10 1 1 0 4 1
-refdes=A4
+refdes=N9
 }
 N 14200 3600 14100 3600 4
 C 3000 1300 1 0 0 nots.sym
 {
 T 3350 1600 5 10 1 1 0 4 1
-refdes=L5
+refdes=L3
 }
 C 13400 5900 1 0 0 nor.sym
 {
 T 13800 6400 5 10 1 1 0 4 1
-refdes=A7
+refdes=A4
 }
 C 13500 6900 1 0 0 vdd-1.sym
 N 13700 700 13700 600 4
@@ -1216,7 +1216,7 @@ N 13900 4500 13900 4600 4
 C 9800 6100 1 0 0 not.sym
 {
 T 10150 6400 5 10 1 1 0 4 1
-refdes=N7
+refdes=N5
 }
 C 10000 6700 1 0 0 vdd-1.sym
 N 10200 6000 9600 6000 4
@@ -1241,7 +1241,7 @@ refdes=QE
 C 10600 6100 1 0 0 not.sym
 {
 T 10950 6400 5 10 1 1 0 4 1
-refdes=N10
+refdes=N6
 }
 C 10800 6700 1 0 0 vdd-1.sym
 C 10900 5800 1 0 0 gnd-1.sym

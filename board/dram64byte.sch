@@ -702,7 +702,7 @@ refdes=S7
 C 1600 3500 1 0 0 nor3.sym
 {
 T 2000 4000 5 10 1 1 0 4 1
-refdes=U2
+refdes=O
 }
 C 1800 3200 1 0 0 gnd-1.sym
 C 1000 5700 1 0 0 in-1.sym
@@ -750,7 +750,7 @@ C 1800 5000 1 0 0 gnd-1.sym
 C 1600 5300 1 0 0 nand3od.sym
 {
 T 2000 5800 5 10 1 1 0 4 1
-refdes=U1
+refdes=W
 }
 C 1000 7700 1 0 0 in-1.sym
 {
@@ -977,10 +977,6 @@ device=INPUT
 T 3800 5200 5 10 1 1 0 7 1
 refdes=A5
 }
-C 5200 8200 1 180 0 phi1.sym
-C 8700 8200 1 180 0 phi1.sym
-C 12200 8200 1 180 0 phi1.sym
-C 15700 8200 1 180 0 phi1.sym
 N 8700 5300 8700 5500 4
 {
 T 8700 5550 5 10 1 1 0 3 1
@@ -1268,69 +1264,6 @@ N 14200 800 14400 800 4
 T 14150 800 5 10 1 1 0 7 1
 netname=WE
 }
-C 3100 2000 1 0 0 phi1.sym
-C 5600 1800 1 0 0 cnot.sym
-{
-T 5925 2100 5 10 1 1 0 4 1
-refdes=J
-}
-N 6400 2100 6400 2700 4
-{
-T 6450 2450 5 10 1 1 0 0 1
-netname=phi1##
-}
-C 5800 2400 1 0 0 vdd-1.sym
-C 5900 1500 1 0 0 gnd-1.sym
-C 4500 1800 1 0 0 cnot.sym
-{
-T 4825 2100 5 10 1 1 0 4 1
-refdes=I
-}
-N 5300 2100 5600 2100 4
-{
-T 5500 2150 5 10 1 1 0 3 1
-netname=phi1#
-}
-C 4700 2400 1 0 0 vdd-1.sym
-C 4800 1500 1 0 0 gnd-1.sym
-C 4900 2600 1 0 0 resistor-load.sym
-{
-T 5200 3000 5 10 0 0 0 0 1
-device=RESISTOR
-T 5900 2500 5 10 0 1 0 0 1
-footprint=0603-load
-T 5100 2300 5 10 0 1 0 0 1
-value=rload
-T 5550 2750 5 10 1 1 0 0 1
-refdes=R3
-}
-C 4500 1600 1 90 0 capacitor.sym
-{
-T 3800 1800 5 10 0 0 90 0 1
-device=CAPACITOR
-T 3600 1800 5 10 0 0 90 0 1
-symversion=0.1
-T 4250 1800 5 10 1 1 0 8 1
-refdes=C1
-T 4350 1800 5 10 1 1 0 2 1
-value=68p
-}
-C 4200 1300 1 0 0 gnd-1.sym
-N 4300 2100 4300 2700 4
-N 4300 2700 4900 2700 4
-N 5800 2700 6400 2700 4
-C 4300 2200 1 180 0 resistor-strong.sym
-{
-T 4000 1800 5 10 0 0 180 0 1
-device=RESISTOR
-T 3300 2300 5 10 0 1 180 0 1
-footprint=0603-strong
-T 4200 2500 5 10 0 1 180 0 1
-value=rstrong
-T 3650 2050 5 10 1 1 180 0 1
-refdes=R2
-}
-N 4300 2100 4500 2100 4
 C 2700 5500 1 0 0 nots.sym
 {
 T 3050 5800 5 10 1 1 0 4 1
@@ -1343,3 +1276,53 @@ netname=WE
 }
 C 2900 6100 1 0 0 vdd-1.sym
 C 3000 5200 1 0 0 gnd-1.sym
+C 3200 1900 1 0 0 phi1.sym
+C 5500 1700 1 0 0 cnot.sym
+{
+T 5825 2000 5 10 1 1 0 4 1
+refdes=J
+}
+N 6300 2000 6300 2600 4
+{
+T 6350 2350 5 10 1 1 0 0 1
+netname=phi1##
+}
+C 5700 2300 1 0 0 vdd-1.sym
+C 5800 1400 1 0 0 gnd-1.sym
+C 4400 1700 1 0 0 cnot.sym
+{
+T 4725 2000 5 10 1 1 0 4 1
+refdes=I
+}
+N 5200 2000 5500 2000 4
+{
+T 5400 2050 5 10 1 1 0 3 1
+netname=phi1#
+}
+C 4600 2300 1 0 0 vdd-1.sym
+C 4700 1400 1 0 0 gnd-1.sym
+N 4400 2000 4400 2600 4
+N 4400 2600 5100 2600 4
+N 5600 2600 6300 2600 4
+C 4400 2100 1 180 0 resistor-strong.sym
+{
+T 4100 1700 5 10 0 0 180 0 1
+device=RESISTOR
+T 3400 2200 5 10 0 1 180 0 1
+footprint=0603-strong
+T 3750 1950 5 10 1 1 180 0 1
+refdes=R2
+T 3900 2150 5 10 1 1 0 3 1
+value=820
+}
+C 5600 2800 1 180 0 capacitor.sym
+{
+T 5400 2100 5 10 0 0 180 0 1
+device=CAPACITOR
+T 5400 1900 5 10 0 0 180 0 1
+symversion=0.1
+T 5250 2700 5 10 1 1 0 6 1
+refdes=C
+T 5450 2700 5 10 1 1 0 0 1
+value=150p
+}

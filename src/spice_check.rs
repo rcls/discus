@@ -16,6 +16,7 @@ impl SpiceCheck<'_> {
 
     pub fn spice_check(&mut self) {
         let a  = self.spice.extract_byte("a");
+        let b  = self.spice.extract_byte("b");
         let x  = self.spice.extract_byte("r_x_b");
         let y  = self.spice.extract_byte("r_y_b");
         let u  = self.spice.extract_byte("r_u_b");
@@ -32,6 +33,7 @@ impl SpiceCheck<'_> {
         self.state.u = u[3];
         self.state.c = c[3];
         self.state.k = None;
+        self.state.r = b[3];
         assert_eq!(pc[2], 0, "PC@2 = {}", pc[2]);
         assert_eq!(pc[3], 1, "PC@3 = {}", pc[3]);
 
@@ -48,6 +50,8 @@ impl SpiceCheck<'_> {
                 self.verify(kk, k[i], "K");
             }
             self.verify(self.state.c, c[i], "C");
+
+            self.verify(self.state.b, b[i-1], "B");
 
             // The electronics has the instruction unit one cycle ahead of the
             // execute unit, so the PC we want to check is the previous one.

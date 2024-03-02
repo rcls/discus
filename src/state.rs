@@ -26,6 +26,9 @@ pub struct State {
     pub prev_z: bool,
     pub prev_c: bool,
 
+    pub r: u8,                         // Refresh counter.
+    pub b: u8,                         // Address bus.
+
     pub stack: [u8; 4],
     pub memory: Memory,
 }
@@ -43,6 +46,8 @@ impl State {
         let c = self.c;
         let z = k == 0;
 
+        let mut is_mem = false;
+
         match opcode {
             0x00..=0x3f => if prefix == Some(Prefix::Const) {
                 self.jump(opcode, k);   // JUMP and CALL.
@@ -55,21 +60,32 @@ impl State {
 
             0x40..=0x47 => self.out(),
             0x48..=0x4b => unreachable!(), // Unallocated, NOP?
-            0x4c..=0x4f => self.memory.0[operand as usize] = self.a,
+            0x4c..=0x4f => {
+                is_mem = true;
+                self.memory.0[operand as usize] = self.a;
+            }
             0x50..=0x57 => self.inp(),
             0x58..=0x5b => unreachable!(), // Unallocated.
             0x5c..=0x5f => {            // MEM prefix.
+                is_mem = true;
                 self.k = Some(self.memory.0[operand as usize]);
                 self.prefix = Some(Prefix::Value);
             }
             0x60..=0x7f => self.ret(opcode),
             0x80..=0x9f => self.a = self.arith(opcode, operand),
             0xa0..=0xbf => { self.arith(opcode, operand); } // Ignore result.
-            0xc0..=0xff => self.xfer(opcode, operand),
+            0xc0..=0xff => self.xfer(opcode, operand, &mut is_mem),
         }
 
         self.prev_c = c;
         self.prev_z = z;
+        if is_mem {
+            self.b = operand;
+        }
+        else {
+            self.b = self.r;
+            self.r += 1;
+        }
     }
 
     pub fn check(&self, insns: &Instructions) {
@@ -133,12 +149,12 @@ impl State {
     fn out(&self) { todo!() }
     fn inp(&self) { todo!() }
 
-    fn xfer(&mut self, opcode: u8, operand: u8) {
+    fn xfer(&mut self, opcode: u8, operand: u8, is_mem: &mut bool) {
         let r = match opcode >> 2 & 3 {
             0 => operand.wrapping_add(1),
             1 => operand.wrapping_sub(1),
             2 => operand,
-            3 => self.memory.0[operand as usize],
+            3 => {*is_mem = true; self.memory.0[operand as usize]}
             _ => unreachable!()
         };
         self.k = Some(r);

@@ -21,9 +21,10 @@ parser.add_argument('-j', '--jobs', default='4',
                     help='number of jobs to run at once')
 parser.add_argument('-R', '--reverse', action='store_true',
                     help='reverse sequence')
-parser.add_argument('-z', '--zoom', default=1, help='inspect in more detail')
+parser.add_argument('-z', '--zoom', default=1, type=int,
+                    help='inspect in more detail')
 parser.add_argument('-t', '--target', nargs='+', help='override target')
-parser.add_argument('-v', '--value', type=float, help='test one value')
+parser.add_argument('-v', '--value', type=int, help='test one value')
 parser.add_argument('-n', '--dry-run', action='store_true', help='run none')
 parser.add_argument('wanted', nargs='*', help='tests to run')
 args = parser.parse_args()
@@ -120,12 +121,16 @@ def rstrong(v=820):
 def rpull(v=10e3):
     resistors(rpull=v)
 
-def replace_line(path, start, replace):
+def replace_line(path, start, replace, after=None):
     lines = slurppath(path)
+    armed = False
     with open(path, 'w') as F:
         for l in lines:
-            if l.startswith(start):
+            if after is None or l.startswith(after):
+                armed = True
+            if armed and l.startswith(start):
                 l = replace
+                armed = False
             F.write(l)
 
 def npn_beta(b=272):
@@ -145,6 +150,10 @@ def jfet_vto(VTO=1.04):
 
 def jfet_beta(BETA=0.026):
     replace_line('subckt/2SK3557-7.prm', '+ BETA=', f'+ BETA={BETA}\n')
+
+def delay_res(res=820):
+    replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',
+                 after='refdes=R2')
 
 def nmos_vto(VTO=0.9):
     # FIXME - this is confused between 0.82 and 0.9.
@@ -388,6 +397,12 @@ scan('reset_delay', 5057392, 5057391, lambda v=None: speed(tr=v),
 scan('reset_advance', 3060626, 3060627, lambda v=None: speed(tr=v),
      FACTOR=1e-3, TARGET='hazard', WANTED=False)
 
+fast('delayres_caplo_lo', 770, 771, delay_res, TARGET=MEMORY,
+     CRIT='memf hazard', EXTRA=[(dram_cap, 110)], WANTED=False)
+fast('delayres_caphi_hi', 1028, 1027, delay_res, TARGET=MEMORY,
+     CRIT='memf hazard', EXTRA=[(dram_cap, 1830)], WANTED=False)
+
+########################### RUN THE CHECKS ###########################
 if args.reverse:
     SCANS.reverse()
 

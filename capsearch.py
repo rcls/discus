@@ -118,7 +118,7 @@ def rload(v=2490):
 def rstrong(v=820):
     resistors(rstrong=v)
 
-def rpull(v=10e3):
+def rpull(v=2490):
     resistors(rpull=v)
 
 def replace_line(path, start, replace, after=None):

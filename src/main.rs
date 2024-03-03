@@ -162,7 +162,7 @@ fn print_strobes(r: &SpiceRead) {
         }
         let mut current = String::new();
         for (s, v) in &strobes {
-            if v[i] > 1.5 {
+            if v[i] > -2.0 {
                 current += " ";
                 current += s;
             }

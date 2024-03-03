@@ -7,8 +7,6 @@ import sys
 # import types
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-r', '--recheck', action='store_true',
-                    help='recheck settled tests')
 parser.add_argument('-g', '--good-check', action='store_true',
                     help='recheck good limit')
 parser.add_argument('-b', '--bad-check', action='store_true',
@@ -19,7 +17,7 @@ parser.add_argument('-a', '--all', action='store_true',
                     help='use all targets not just critical')
 parser.add_argument('-j', '--jobs', default='4',
                     help='number of jobs to run at once')
-parser.add_argument('-R', '--reverse', action='store_true',
+parser.add_argument('-r', '--reverse', action='store_true',
                     help='reverse sequence')
 parser.add_argument('-z', '--zoom', default=1, type=int,
                     help='inspect in more detail')
@@ -29,7 +27,7 @@ parser.add_argument('-n', '--dry-run', action='store_true', help='run none')
 parser.add_argument('wanted', nargs='*', help='tests to run')
 args = parser.parse_args()
 
-if args.recheck or args.extend or args.value is not None:
+if args.value is not None:
     args.good_check = True
     args.bad_check = True
 
@@ -37,6 +35,7 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
+HI_DELAY_RES = 820
 
 CHANGED=0
 SCANS=[]
@@ -104,7 +103,7 @@ def speed(vt=None, t0=None, tr=None):
             F.write(l)
     currentQ = vt
 
-def resistors(rload=2490, rstrong=820, rpull=10e3):
+def resistors(rload=2490, rstrong=820, rpull=2490):
     rload = rload * 1e-3
     rpull = rpull * 1e-3
     with open('subckt/resistor-load.prm', 'w') as F:
@@ -241,7 +240,8 @@ class BadGood:
         return abs(self.BAD - self.GOOD)
 
     def scan(self):
-        if not args.good_check and not args.bad_check and self.gap() <= 1:
+        if not args.good_check and not args.bad_check and not args.extend \
+            and self.gap() <= 1:
             print('=== SETTLED', self.NAME)
             return
 
@@ -249,28 +249,27 @@ class BadGood:
         if args.dry_run:
             return
 
-        if args.good_check and self.GOOD is not None:
+        if args.bad_check and not args.good_check and self.BAD is not None:
+            self.try_one(self.BAD)
+        if (args.good_check or args.extend) and self.GOOD is not None:
             self.try_one(self.GOOD)
-        if args.bad_check and self.BAD is not None:
+        if (args.bad_check or args.extend) and self.BAD is not None:
             self.try_one(self.BAD)
 
         if args.extend and self.I_BAD is not None and self.I_GOOD is not None \
             and self.I_BAD != self.I_GOOD:
             iters = 0
             if self.try_one((self.BAD + self.GOOD) // 2):
-                while self.try_one(self.BAD) and iters < 10:
+                while iters < 10 and self.try_one(self.BAD):
                     self.BAD += self.BAD - self.I_GOOD
                     iters += 1
             else:
-                while not self.try_one(self.GOOD) and iters < 10:
+                while iters < 10 and not self.try_one(self.GOOD):
                     self.GOOD += self.GOOD - self.I_BAD
                     iters += 1
             if iters >= 10:
                 print('=== Failed to extend', flush=True)
                 return
-
-        #if args.recheck and self.BAD is not None and self.GOOD is not None:
-        #    self.try_one((self.BAD + self.GOOD) // 2)
 
         while self.gap() > 1:
             self.try_one((self.BAD + self.GOOD) // 2)
@@ -293,41 +292,42 @@ class BadGood:
 
 ##################### SPEED ########################
 
-scan('speed_basic', 1746, 1747, speed, TARGET=MEMORY, CRIT='memi hazard2')
+scan('speed_basic', 1748, 1749, speed, TARGET=MEMORY, CRIT='memi hazard2')
 
-scan('speed_duty1', 58, 59,
+scan('speed_duty1', 51, 52,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='hazard hazard2')
 
-scan('speed_duty0', 79, 80, lambda v=None: speed(t0=v),
+scan('speed_duty0', 85, 86, lambda v=None: speed(t0=v),
      TARGET=MEMORY, FACTOR=10, CRIT='memp hazard2')
 
-scan('speedl_logic', 1779, 1780, speed, TARGET=LOGIC, CRIT='cmp inc')
+scan('speedl_logic', 1778, 1779, speed, TARGET=LOGIC, CRIT='cmp inc')
 
 scan('speedl_duty1', 60, 61,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
-scan('speedl_duty0', 53, 54, lambda v=None: speed(t0 = v), TARGET=LOGIC,
+scan('speedl_duty0', 54, 55, lambda v=None: speed(t0 = v), TARGET=LOGIC,
      CRIT='call inc', FACTOR=10)
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 10, 11, dram_cap, FACTOR=10, TARGET=MEMORY,
-     CRIT='memp  mem')
+fast('dram_cap_lo', 37, 38, dram_cap, TARGET=MEMORY, CRIT='memp  mem')
 
-scan('dram_cap_hi_slow', 33, 32, dram_cap, FACTOR=100,
+scan('dram_cap_hi_slow', 34, 33, dram_cap, FACTOR=100,
      TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
-fast('dram_cap_hi_fast', 184, 183, dram_cap, TARGET=MEMORY, FACTOR=10,
+fast('dram_cap_hi_fast', 189, 188, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='mem memp')
 
 ####################### JFET ##########################
 
 # We can take this with a grain of salt, changing VTO without modifying β
 # means we are dropping the Idss by a significant factor.
+#
+# Also, it's very sensitive to the clock delay, so move that out of the way.
 fast('jfet_vto_lo', 24, 25, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
-     CRIT='memw memf')
+     EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memw memf')
 
 fast('jfet_vto_hi', 65, 64, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='memp hazard2')
@@ -343,12 +343,12 @@ fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 ####################### PRE-BIAS NPN ##############################
 
-fast('rnpn_r_lo', 50, 51, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
+fast('rnpn_r_lo', 49, 50, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
 
 fast('rnpn_r_hi_fast', 42, 41, npn22_r, TARGET=LOGIC, CRIT='cmp inc')
 slow('rnpn_r_hi_slow', 16, 15, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
-fast('rnpn_beta_lo', 24, 25, npn22_beta, CRIT='memw memp')
+fast('rnpn_beta_lo', 25, 26, npn22_beta, CRIT='memw memp')
 
 fast('rnpn_beta_hi', None, 10000, npn22_beta, TARGET=LOGIC, CRIT='call inc')
 
@@ -364,11 +364,11 @@ fast('rstrong_lo', 128, 129, rstrong, CRIT='add mem')
 
 slow('rstrong_hi_slow', 33, 32, rstrong, FACTOR=100, CRIT='mem memp')
 
-fast('rstrong_hi_fast', 132, 131, rstrong, FACTOR=10, CRIT='memi hazard2')
+fast('rstrong_hi_fast', 134, 133, rstrong, FACTOR=10, CRIT='memi hazard2')
 
 slow('rload_hi_slow', 77, 76, rload, FACTOR=100, CRIT='call inc')
 
-fast('rload_hi_fast', 304, 303, rload, FACTOR=10, CRIT='inc  memi')
+fast('rload_hi_fast', 306, 305, rload, FACTOR=10, CRIT='inc  memi')
 
 fast('rload_lo', 67, 68, rload, CRIT='call add', FACTOR=10)
 
@@ -377,8 +377,9 @@ fast('rpull_hi', None, 200e3, rpull, TARGET=MEMORY, CRIT='hazard2 memf')
 
 fast('rpullcap_lo', None, 1, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem memp',
      EXTRA=[(dram_cap, 140)])
+
 fast('rpullcap_hi', 121, 120, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem',
-     EXTRA=[(dram_cap, 140)])
+     EXTRA=[(dram_cap, 140), (delay_res, HI_DELAY_RES)])
 
 ######################### MOSFETS #################################
 fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='cmp logic')
@@ -388,7 +389,10 @@ fast('nmos_vto_hi_fast', 110, 109, nmos_vto, FACTOR=10e-3, CRIT='call  inc')
 
 fast('pmos_vto_hi_fast', 150, 149, pmos_vto, FACTOR=10e-3, CRIT='memp hazard')
 
-fast('pmos_vto_lo', 316, 317, pmos_vto, FACTOR=1e-3, CRIT='inc memp')
+# The clock delay in the DRAM is sensitive to the VTO.  We'll make that
+# adjustable anyway, so raise it for this test.
+fast('pmos_vto_lo', 313, 314, pmos_vto, FACTOR=1e-3, EXTRA=[(delay_res, 820)],
+     CRIT='inc memp')
 
 ################################# EXTRAS #######################
 scan('reset_delay', 5057392, 5057391, lambda v=None: speed(tr=v),
@@ -397,8 +401,8 @@ scan('reset_delay', 5057392, 5057391, lambda v=None: speed(tr=v),
 scan('reset_advance', 3060626, 3060627, lambda v=None: speed(tr=v),
      FACTOR=1e-3, TARGET='hazard', WANTED=False)
 
-fast('delayres_caplo_lo', 770, 771, delay_res, TARGET=MEMORY,
-     CRIT='memf hazard', EXTRA=[(dram_cap, 110)], WANTED=False)
+fast('delayres_caplo_lo', 195, 196, delay_res, TARGET=MEMORY,
+     CRIT='memp mem', EXTRA=[(dram_cap, 68)], WANTED=False)
 fast('delayres_caphi_hi', 1028, 1027, delay_res, TARGET=MEMORY,
      CRIT='memf hazard', EXTRA=[(dram_cap, 1830)], WANTED=False)
 

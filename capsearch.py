@@ -151,7 +151,7 @@ def jfet_vto(VTO=1.04):
 def jfet_beta(BETA=0.026):
     replace_line('subckt/2SK3557-7.prm', '+ BETA=', f'+ BETA={BETA}\n')
 
-def delay_res(res=820):
+def delay_res(res=330):
     replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',
                  after='refdes=R2')
 

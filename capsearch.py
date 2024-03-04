@@ -103,7 +103,7 @@ def speed(vt=None, t0=None, tr=None):
             F.write(l)
     currentQ = vt
 
-def resistors(rload=2490, rstrong=820, rpull=2490):
+def resistors(rload=2490, rstrong=820, rpull=22000):
     rload = rload * 1e-3
     rpull = rpull * 1e-3
     with open('subckt/resistor-load.prm', 'w') as F:
@@ -117,7 +117,7 @@ def rload(v=2490):
 def rstrong(v=820):
     resistors(rstrong=v)
 
-def rpull(v=2490):
+def rpull(v=22000):
     resistors(rpull=v)
 
 def replace_line(path, start, replace, after=None):
@@ -152,6 +152,10 @@ def jfet_beta(BETA=0.026):
 
 def delay_res(res=330):
     replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',
+                 after='refdes=R2')
+
+def bias_res(res=2490):
+    replace_line('board/dramio.sch', 'value=', f'value={res}\n',
                  after='refdes=R2')
 
 def nmos_vto(VTO=0.9):
@@ -372,13 +376,13 @@ fast('rload_hi_fast', 306, 305, rload, FACTOR=10, CRIT='inc  memi')
 
 fast('rload_lo', 67, 68, rload, CRIT='call add', FACTOR=10)
 
-fast('rpull_lo', None, 100, rpull, TARGET=MEMORY, CRIT='hazard2 memf')
-fast('rpull_hi', None, 200e3, rpull, TARGET=MEMORY, CRIT='hazard2 memf')
+fast('rbias_lo', None, 100, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
+fast('rbias_hi', None, 200e3, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
 
-fast('rpullcap_lo', None, 1, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem memp',
-     EXTRA=[(dram_cap, 140)])
+fast('rbiascap_lo', None, 1, bias_res, FACTOR=100, TARGET=MEMORY,
+     CRIT='mem memp', EXTRA=[(dram_cap, 140)])
 
-fast('rpullcap_hi', 121, 120, rpull, FACTOR=100, TARGET=MEMORY, CRIT='mem',
+fast('rbiascap_hi', 121, 120, bias_res, FACTOR=100, TARGET=MEMORY, CRIT='mem',
      EXTRA=[(dram_cap, 140), (delay_res, HI_DELAY_RES)])
 
 ######################### MOSFETS #################################

@@ -103,22 +103,23 @@ def speed(vt=None, t0=None, tr=None):
             F.write(l)
     currentQ = vt
 
-def resistors(rload=2490, rstrong=820, rpull=22000):
-    rload = rload * 1e-3
-    rpull = rpull * 1e-3
-    with open('subckt/resistor-load.prm', 'w') as F:
-        F.write(f'.MODEL rload R (R={rload:g}k)\n')
-        F.write(f'.MODEL rstrong R (R={rstrong:g})\n')
-        F.write(f'.MODEL rpull R (R={rpull:g}k)\n')
-
 def rload(v=2490):
-    resistors(rload=v)
+    # Keep rpull ratiometric.
+    rl = v * 1e-3
+    rp = v * 10 / 2490
+    replace_line('subckt/resistor-load.prm', '.MODEL rload R',
+                 f'.MODEL rload R (R={rl:g}k)\n')
+    replace_line('subckt/resistor-load.prm', '.MODEL rpull R',
+                 f'.MODEL rpull R (R={rp:g}k)\n')
 
 def rstrong(v=820):
-    resistors(rstrong=v)
+    replace_line('subckt/resistor-load.prm', '.MODEL rstrong R',
+                 f'.MODEL rstrongR (R={rl:g})\n')
 
-def rpull(v=22000):
-    resistors(rpull=v)
+def rpull(v=10000):
+    rp = v * 10e-3
+    replace_line('subckt/resistor-load.prm', '.MODEL rpull R',
+                 f'.MODEL rpull R (R={rp:g}k)\n')
 
 def replace_line(path, start, replace, after=None):
     lines = slurppath(path)

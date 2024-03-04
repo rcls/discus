@@ -202,24 +202,24 @@ C 44300 47200 1 0 0 vdd-1.sym
 N 45500 46400 45400 46400 4
 N 41300 46000 41900 46000 4
 N 41300 47400 42300 47400 4
-C 42100 47400 1 0 0 bat54.sym
+C 42100 47400 1 0 0 baw56.sym
 {
 T 42550 48050 5 10 1 1 0 0 1
 refdes=X
 T 42750 48200 5 10 0 1 0 0 1
-model-name=bat54
+model-name=baw56
 T 42750 48600 5 10 0 1 0 0 1
-footprint=sot323-bat54
+footprint=sot323-baw56
 }
-C 41300 48100 1 0 0 resistor-pull.sym
+C 41300 48100 1 0 0 resistor-load.sym
 {
 T 41600 48500 5 10 0 0 0 0 1
 device=RESISTOR
 T 41950 48250 5 10 1 1 0 0 1
 refdes=R3
 T 41500 48900 5 10 0 1 0 0 1
-footprint=0603-pull
+footprint=0603-load
 T 41500 49100 5 10 0 1 0 0 1
-value=rpull
+value=rload
 }
 N 42200 48200 42500 48200 4

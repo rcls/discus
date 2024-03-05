@@ -140,7 +140,7 @@ value=rload
 C 46500 48900 1 180 0 baw56.sym
 {
 T 46150 48300 5 10 1 1 0 2 1
-refdes=X
+refdes=D
 T 45850 48100 5 10 0 1 180 0 1
 model-name=baw56
 T 45850 47700 5 10 0 1 180 0 1

@@ -18,6 +18,9 @@ for L in FILE:
     if len(words) == 5 and words[0].startswith('Q') \
        and words[4] in ('PDTC124TU', 'BC847BW'):
         words[0] = 'X' + words[0]
+    if len(words) >= 4 and words[0].startswith('D') \
+       and words[-1] in ('baw56', 'baw56d'):
+        words[0] = 'X' + words[0]
 
     if words and words[0] == 'tran':
         TRANS = L

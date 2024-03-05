@@ -34,8 +34,8 @@ L 300 325 300 75 3 0 1 0 -1 -1
 L 300 325 250 350 3 0 1 0 -1 -1
 L 300 75 350 50 3 0 1 0 -1 -1
 T 300 900 8 10 0 1 0 0 1
-file=subckt/BAS40.prm
+file=subckt/SDM20U30.prm
 T 300 1050 8 10 0 1 0 0 1
-value=BAS40
+value=SDM20U30
 T 300 1200 8 10 0 1 0 0 1
 footprint=SOD523

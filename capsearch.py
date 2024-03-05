@@ -159,8 +159,8 @@ def bias_res(res=2490):
     replace_line('gates/dramio.sch', 'value=', f'value={res}\n',
                  after='refdes=R2')
 
-def bas40_is(v=6.12):
-    replace_line('subckt/BAS40.prm', '+ IS=', f'+ IS={v}u')
+def schottky_is(v=59.4):
+    replace_line('subckt/SDM20U30.prm', '+ IS=', f'+ IS={v}n\n')
 
 def nmos_vto(VTO=0.9):
     # FIXME - this is confused between 0.82 and 0.9.
@@ -350,9 +350,6 @@ fast('npn_beta_lo', 7, 8, npn_beta, CRIT='call inc')
 
 fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
-fast('bas40_is_lo', 1, 100, bas40_is, FACTOR=10e-3, CRIT='inc', WANTED=False)
-fast('bas40_is_hi', 100, 1, bas40_is, FACTOR=10, CRIT='inc', WANTED=False)
-
 ####################### PRE-BIAS NPN ##############################
 
 fast('rnpn_r_lo', 49, 50, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
@@ -420,6 +417,10 @@ fast('delayres_caplo_lo', 195, 196, delay_res, TARGET=MEMORY,
      CRIT='memp mem', EXTRA=[(dram_cap, 68)], WANTED=False)
 fast('delayres_caphi_hi', 1028, 1027, delay_res, TARGET=MEMORY,
      CRIT='memf hazard', EXTRA=[(dram_cap, 1830)], WANTED=False)
+
+# Doesn't look like these buy us anything...
+fast('schottky_is_lo', None, 1, schottky_is, CRIT='call inc', WANTED=False)
+fast('schottky_is_hi', None, 1e4, schottky_is, CRIT='call inc', WANTED=False)
 
 ########################### RUN THE CHECKS ###########################
 if args.reverse:

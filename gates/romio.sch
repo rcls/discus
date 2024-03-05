@@ -104,7 +104,7 @@ device=DIODE
 T 1750 1750 5 10 1 1 0 6 1
 refdes=D
 T 2000 2550 5 10 0 1 0 0 1
-value=BAS40
+value=SDM20U30
 T 2000 2700 5 10 0 1 0 0 1
 footprint=SOD523
 }

@@ -372,11 +372,11 @@ fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
 
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 71, 72, rstrong, CRIT='add mem')
+fast('rstrong_lo', 104, 105, rstrong, CRIT='call inc')
 
 slow('rstrong_hi_slow', 34, 33, rstrong, FACTOR=100, CRIT='mem memp')
 
-fast('rstrong_hi_fast', 141, 140, rstrong, FACTOR=10, CRIT='memi hazard2')
+fast('rstrong_hi_fast', 139, 138, rstrong, FACTOR=10, CRIT='memi mem')
 
 slow('rload_hi_slow', 77, 76, rload, FACTOR=100, CRIT='call inc')
 

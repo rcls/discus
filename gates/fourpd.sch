@@ -245,7 +245,7 @@ device=DIODE
 T 44275 65150 5 10 1 1 0 6 1
 refdes=D0
 T 44300 65950 5 10 0 1 0 6 1
-value=SDM20U30
+value=BAT42
 }
 C 45200 64900 1 0 0 schottky.sym
 {
@@ -256,7 +256,7 @@ device=DIODE
 T 45525 65150 5 10 1 1 0 0 1
 refdes=D1
 T 45500 65950 5 10 0 1 0 0 1
-value=SDM20U30
+value=BAT42
 }
 C 46800 64900 1 0 1 schottky.sym
 {
@@ -267,7 +267,7 @@ device=DIODE
 T 46475 65150 5 10 1 1 0 6 1
 refdes=D2
 T 46500 65950 5 10 0 1 0 6 1
-value=SDM20U30
+value=BAT42
 }
 C 47400 64900 1 0 0 schottky.sym
 {
@@ -278,7 +278,7 @@ device=DIODE
 T 47725 65150 5 10 1 1 0 0 1
 refdes=D3
 T 47700 65950 5 10 0 1 0 0 1
-value=SDM20U30
+value=BAT42
 }
 N 45600 65100 46400 65100 4
 {

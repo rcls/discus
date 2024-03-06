@@ -208,12 +208,12 @@ C 2800 3300 1 0 0 vdd-1.sym
 C 2900 2400 1 0 0 gnd-1.sym
 C 5900 3300 1 0 0 vdd-1.sym
 C 6000 2400 1 0 0 gnd-1.sym
-C 2600 2700 1 0 0 not.sym
+C 2600 2700 1 0 0 nots.sym
 {
 T 2950 3000 5 10 1 1 0 4 1
 refdes=N0
 }
-C 5700 2700 1 0 0 not.sym
+C 5700 2700 1 0 0 nots.sym
 {
 T 6050 3000 5 10 1 1 0 4 1
 refdes=N1

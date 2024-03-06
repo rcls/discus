@@ -133,13 +133,14 @@ fn verify_insns(args: &Args, insns: &instructions::Instructions) {
         let quantum = args.quantum * 1e-9;
         // The rising clock edge is at about 1/2, sample immediately before
         // that (todo - actually sync with the clock?).
-        let mut r = SpiceRead::new(quantum, quantum + 0.5e-6, false);
+        let mut r = SpiceRead::new(
+            quantum, quantum + 0.5e-6, quantum - 0.25e-6, false);
         r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
         SpiceCheck::new(&code, &r).spice_check();
     }
     if let Some(s) = &args.strobes {
         let quantum = args.quantum * 1e-9;
-        let mut r = SpiceRead::new(quantum, quantum + 0.5e-6, false);
+        let mut r = SpiceRead::new(quantum, quantum + 0.5e-6, 0.0, false);
         r.spice_read(&mut BufReader::new(File::open(s).unwrap()));
         print_strobes(&mut r);
     }

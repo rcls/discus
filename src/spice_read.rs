@@ -10,25 +10,28 @@ const THRESHOLD: f64 = 1.2;
 pub struct SpiceRead {
     pub quantum: f64,
     sample_point: f64,
+    sample_early: f64,
     stability_check: bool,
 
     num_vars: usize,
     num_points: usize,
     pub vars: BTreeMap<String, usize>,
     index: Vec<usize>,
+    early: Vec<usize>,
     raw_values: Vec<f64>,
 }
 
 impl SpiceRead {
-    pub fn new(quantum: f64, sample_point: f64, stability_check: bool)
-               -> SpiceRead {
+    pub fn new(quantum: f64, sample_point: f64, sample_early: f64,
+               stability_check: bool) -> SpiceRead {
         SpiceRead {
-            quantum, sample_point, stability_check, .. SpiceRead::default()
+            quantum, sample_point, sample_early, stability_check,
+            .. SpiceRead::default()
         }
     }
 
     pub fn from_path(path: &String, quantum: f64) -> SpiceRead {
-        let mut spice = SpiceRead::new(quantum, quantum * 0.7, true);
+        let mut spice = SpiceRead::new(quantum, quantum * 0.7, 0.0, true);
         spice.spice_read(&mut BufReader::new(File::open(path).unwrap()));
         spice
     }
@@ -82,11 +85,16 @@ impl SpiceRead {
             last = t;
         }
 
+        self.index = self.clock_index(self.sample_point);
+        self.early = self.clock_index(self.sample_early);
+    }
+
+    fn clock_index(&self, sample_point: f64) -> Vec<usize> {
         // Select the indices to use for sampling.
         let mut last_i = -1;
         let mut index = Vec::new();
         for (row, t) in self.iterate_column("time").enumerate() {
-            let i = ((t - self.sample_point) / self.quantum).floor() as isize;
+            let i = ((t - sample_point) / self.quantum).floor() as isize;
             if i <= last_i {
                 continue;
             }
@@ -95,7 +103,7 @@ impl SpiceRead {
             last_i = i;
             index.push(row * self.num_vars);
         }
-        self.index = index;
+        index
     }
 
     fn read_var_list(&mut self, f: &mut impl BufRead) {
@@ -142,11 +150,18 @@ impl SpiceRead {
     }
 
     pub fn extract_byte(&self, name: &str) -> Vec<u8> {
+        self.indexed_byte(name, &self.index)
+    }
+    pub fn extract_byte_early(&self, name: &str) -> Vec<u8> {
+        self.indexed_byte(name, &self.early)
+    }
+
+    pub fn indexed_byte(&self, name: &str, index: &[usize]) -> Vec<u8> {
         let names: [String; 8] = std::array::from_fn(
             |i| format!("{name}{i}"));
         let columns: [_; 8] = std::array::from_fn(|i| self.vars[&names[i]]);
         let mut res = Vec::new();
-        for i in &self.index {
+        for i in index {
             res.push(columns.iter().enumerate()
                      .map(|(b, c)| (self.raw_values[i+c] > THRESHOLD) as (u8)
                                     << b)

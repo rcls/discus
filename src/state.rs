@@ -30,6 +30,7 @@ pub struct State {
     pub b: u8,                         // Address bus.
 
     pub last_out: u8,
+    pub took_call: bool,
 
     pub stack: [u8; 4],
     pub memory: Memory,
@@ -45,6 +46,7 @@ impl State {
         // Default behavior...
         self.k = None;
         self.pc += 1;
+        self.took_call = false;
         let c = self.c;
         let z = k == 0;
 
@@ -134,6 +136,7 @@ impl State {
     fn jump(&mut self, opcode: u8, addr: u8) {
         if self.condition(opcode) {
             if opcode & 32 != 0 {
+                self.took_call = true;
                 self.stack[self.sp as usize & 3] = self.pc;
                 self.sp += 1;
             }

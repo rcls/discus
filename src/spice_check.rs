@@ -23,6 +23,11 @@ impl SpiceCheck<'_> {
         let k  = self.spice.extract_byte("k_b");
         let pc = self.spice.extract_byte("p");
         let c  = self.spice.extract_signal("co_c");
+        let stack = [
+            self.spice.extract_byte_early("l_l0_b"),
+            self.spice.extract_byte_early("l_l1_b"),
+            self.spice.extract_byte_early("l_l2_b"),
+            self.spice.extract_byte_early("l_l3_b")];
 
         let timestamps: Vec<_> = self.spice.extract_sample("time");
 
@@ -38,9 +43,11 @@ impl SpiceCheck<'_> {
         assert_eq!(pc[3], 1, "PC@3 = {}", pc[3]);
 
         for i in 4 .. self.spice.num_samples() {
+            let this_pc = self.state.pc;
+
             self.state.step(self.program);
 
-            println!("Timestamp {}µs {} clocks",
+            println!("Timestamp {}µs {} clocks, PC {this_pc:#04x}",
                      timestamps[i] * 1e6, timestamps[i] / self.spice.quantum);
             self.verify(self.state.a, a[i], "A");
             self.verify(self.state.x, x[i], "X");
@@ -58,6 +65,15 @@ impl SpiceCheck<'_> {
             self.verify(self.state.pc, pc[i - 1], "PC");
             if self.state.pc != pc[i - 1] {
                 panic!();
+            }
+
+            // Check for stack changes...
+            let s_change = stack.iter().filter(|s| s[i-2] != s[i-1]).count();
+            if self.state.took_call {
+                assert!(s_change <= 1, "Took call, changes {s_change}!");
+            }
+            else {
+                assert_eq!(s_change, 0, "No call, but changes {s_change}!");
             }
         }
         // Sanity check that we've run the correct number of instructions.  The

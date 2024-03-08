@@ -1,0 +1,10 @@
+* J309-M model from InterFET.
+.MODEL J309 NJF(
++ LEVEL=2
++ VTO=-2.65
++ BETA=2.72m
++ LAMBDA=9.48m
++ CGD=7.00p
++ CGS=7.00p
++ PB=3.37
++ IS=80.1f)

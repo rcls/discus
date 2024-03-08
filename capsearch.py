@@ -146,10 +146,10 @@ def npn22_r(r=22):
     replace_line('subckt/PDTC124TU.prm', 'R 20 2', f'R 20 2 {r}k\n')
 
 def jfet_vto(VTO=1.04):
-    replace_line('subckt/2SK3557-7.prm', '+ VTO=', f'+ VTO=-{VTO}\n')
+    replace_line('subckt/J309.prm', '+ VTO=', f'+ VTO=-{VTO}\n')
 
 def jfet_beta(BETA=0.026):
-    replace_line('subckt/2SK3557-7.prm', '+ BETA=', f'+ BETA={BETA}\n')
+    replace_line('subckt/J309.prm', '+ BETA=', f'+ BETA={BETA}\n')
 
 def delay_res(res=330):
     replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',

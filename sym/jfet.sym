@@ -43,6 +43,6 @@ refdes=J?
 T 400 1350 5 10 0 0 0 0 1
 footprint=SOT23
 T 400 1150 5 10 0 0 0 0 1
-file=subckt/2SK3557-7.prm
+file=subckt/J309.prm
 T 400 750 5 10 0 0 0 0 1
-value=2SK3557-7
+value=J309

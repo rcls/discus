@@ -314,9 +314,9 @@ scan('speed_duty1', 51, 52,
 scan('speed_duty0', 50, 51, lambda v=None: speed(t0=v),
      TARGET=MEMORY, FACTOR=10, CRIT='memp memi')
 
-scan('speedl_logic', 164, 165, speed, FACTOR=10, TARGET=LOGIC, CRIT='cmp inc')
+scan('speedl_logic', 163, 164, speed, FACTOR=10, TARGET=LOGIC, CRIT='cmp inc')
 
-scan('speedl_duty1', 60, 61,
+scan('speedl_duty1', 59, 60,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
@@ -325,7 +325,7 @@ scan('speedl_duty0', 62, 63, lambda v=None: speed(t0 = v), TARGET=LOGIC,
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 32, 33, dram_cap, TARGET=MEMORY, CRIT='memp mem')
+fast('dram_cap_lo', 31, 32, dram_cap, TARGET=MEMORY, CRIT='memp mem')
 
 scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
      TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
@@ -356,12 +356,12 @@ fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 ####################### PRE-BIAS NPN ##############################
 
-fast('rnpn_r_lo', 49, 50, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
+fast('rnpn_r_lo', 47, 48, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
 
-fast('rnpn_r_hi_fast', 54, 53, npn22_r, TARGET=LOGIC, CRIT='cmp inc')
+fast('rnpn_r_hi_fast', 53, 52, npn22_r, TARGET=LOGIC, CRIT='cmp inc')
 slow('rnpn_r_hi_slow', 16, 15, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
-fast('rnpn_beta_lo', 23, 24, npn22_beta, CRIT='call mem')
+fast('rnpn_beta_lo', 20, 21, npn22_beta, CRIT='call mem')
 
 fast('rnpn_beta_hi', None, 10000, npn22_beta, TARGET=LOGIC, CRIT='call inc')
 
@@ -386,7 +386,7 @@ slow('rload_hi_slow', 77, 76, rload, FACTOR=100, CRIT='call inc')
 fast('rload_lo', 1, 2, rload, CRIT='call add', FACTOR=100)
 
 fast('rpull_lo', 13, 14, rpull, FACTOR=100, CRIT='cmp hazard')
-fast('rpull_hi', 16, 15, rpull, FACTOR=10e3, CRIT='hazard2 memp')
+fast('rpull_hi', None, 2e5, rpull, CRIT='hazard2 memp')
 
 fast('rbias_lo', None, 100, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
 fast('rbias_hi', 5, 4, bias_res, FACTOR=10e3, TARGET=MEMORY,
@@ -408,7 +408,7 @@ fast('pmos_vto_hi_fast', 144, 143, pmos_vto, FACTOR=10e-3, CRIT='memp hazard')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
-fast('pmos_vto_lo', 30, 31, pmos_vto, FACTOR=10e-3, EXTRA=[(delay_res, 820)],
+fast('pmos_vto_lo', 29, 30, pmos_vto, FACTOR=10e-3, EXTRA=[(delay_res, 820)],
      CRIT='call memp')
 
 ################################# EXTRAS #######################

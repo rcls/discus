@@ -997,7 +997,7 @@ refdes=R2
 T 3300 2800 5 10 0 1 180 0 1
 footprint=0603-strong
 T 3800 2750 5 10 1 1 0 3 1
-value=330
+value=420
 }
 C 2700 5300 1 0 0 nots.sym
 {
@@ -1060,5 +1060,5 @@ refdes=C
 T 5300 2500 5 10 0 0 180 0 1
 symversion=0.1
 T 5350 3300 5 10 1 1 0 0 1
-value=150p
+value=100p
 }

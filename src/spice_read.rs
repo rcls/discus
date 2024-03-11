@@ -174,7 +174,7 @@ impl SpiceRead {
         if self.stability_check {
             self.stability_check(name, column);
         }
-        self.index.iter().map(move |i| self.raw_values[i + column] > THRESHOLD)
+        self.index.iter().map(|i| self.raw_values[i + column] > THRESHOLD)
             .collect()
     }
 

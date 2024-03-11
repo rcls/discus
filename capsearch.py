@@ -35,7 +35,7 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
-HI_DELAY_RES = 820
+HI_DELAY_RES = 1000
 
 CHANGED=0
 SCANS=[]
@@ -151,7 +151,7 @@ def jfet_vto(VTO=2.65):
 def jfet_beta(BETA=0.00272):
     replace_line('subckt/J309.prm', '+ BETA=', f'+ BETA={BETA*1e3}m\n')
 
-def delay_res(res=330):
+def delay_res(res=400):
     replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',
                  after='refdes=R2')
 

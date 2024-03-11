@@ -442,9 +442,9 @@ phase clocks, ϕ and ϕ1.  The flip-flop produces output duty cycles of slightly
 less than 50%, with non-overlapping clock pulses: the falling edge of one clock
 is before the rising edge the other.
 
-The secondary clock ϕ1 is used for strobing writes to the stack and DRAM.  For
-DRAM in particular, the non-overlapping clock phases are critical to correct
-operation.
+The secondary clock ϕ1 is used for strobing writes to the stack and DRAM.  The
+non-overlapping clock phases give some extra timing margin on stack and register
+operations.
 
 
 Main Memory
@@ -454,8 +454,9 @@ Main Memory
 
 As well as the CPU, there is memory… DRAM is implemented as
 [arrays of 1T1C](drambyte.md) cells, consisting of a discrete capacitor and a
-JFET pass gate.  A 64-byte DRAM board takes 512 transistors and 512 capacitors
-for storage, plus 206 transistors for the decode, sense logic and I/O.
+JFET transistor pass gate.  A 32-byte DRAM board takes 256 JFETs and 256
+capacitors for storage, plus 147 transistors for the decode, sense logic and
+I/O.
 
 Every clock cycle, the byte addressed by the address lines is (re-)written,
 irregardless of whether a memory access is in progress.  This achieves memory

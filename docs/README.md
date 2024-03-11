@@ -258,10 +258,10 @@ carry forces the input `C` to 1).
 
 ### Tests: arithmetic, ignore result : `101aaarr`
 
-Identical to the previous arithmetic instruction above, but only the `Z` and
-`C` flags are updated; the result is ignored and not written to `A`.
+Identical to the previous arithmetic instruction above, but only the `Z` and `C`
+flags are updated; the result is not written to `A`.
 
-The useful cases are `CMP` (`101001rr`), analogous to `SUB` and `TST`
+The useful cases are `CMP` (`101001rr`), analogous to `SUB`, and `TST`
 (`101011rr`), analogous to `AND`.
 
 ### `INC` : `11dd00rr`

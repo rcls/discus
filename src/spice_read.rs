@@ -10,29 +10,28 @@ const THRESHOLD: f64 = 1.2;
 pub struct SpiceRead {
     pub quantum: f64,
     sample_point: f64,
-    sample_early: f64,
     stability_check: bool,
 
     num_vars: usize,
     num_points: usize,
     pub vars: BTreeMap<String, usize>,
     index: Vec<usize>,
-    early: Vec<usize>,
+    other: Vec<usize>,
     raw_values: Vec<f64>,
 }
 
 impl SpiceRead {
-    pub fn new(quantum: f64, sample_point: f64, sample_early: f64,
+    pub fn new(quantum: f64, sample_point: f64,
                stability_check: bool) -> SpiceRead {
         SpiceRead {
-            quantum, sample_point, sample_early, stability_check,
+            quantum, sample_point, stability_check,
             .. SpiceRead::default()
         }
     }
 
     pub fn from_path(path: &String, quantum: f64) -> SpiceRead {
-        let mut spice = SpiceRead::new(quantum, quantum * 0.7, 0.0, true);
-        spice.spice_read(&mut BufReader::new(File::open(path).unwrap()));
+        let mut spice = SpiceRead::new(quantum, quantum * 0.7, true);
+        spice.spice_read(&mut BufReader::new(File::open(path).unwrap()), false);
         spice
     }
 
@@ -40,7 +39,7 @@ impl SpiceRead {
         self.index.len()
     }
 
-    pub fn spice_read(&mut self, f: &mut impl BufRead) {
+    pub fn spice_read(&mut self, f: &mut impl BufRead, clock_recover: bool) {
         let mut line = String::new();
         loop {
             getline(&mut line, f);
@@ -85,16 +84,21 @@ impl SpiceRead {
             last = t;
         }
 
-        self.index = self.clock_index(self.sample_point);
-        self.early = self.clock_index(self.sample_early);
+        if clock_recover {
+            self.index = self.clock_recover("phi1");
+            self.other = self.clock_recover("phi1##_m");
+        }
+        else {
+            self.clock_index();
+        }
     }
 
-    fn clock_index(&self, sample_point: f64) -> Vec<usize> {
+    fn clock_index(&mut self) {
         // Select the indices to use for sampling.
         let mut last_i = -1;
         let mut index = Vec::new();
         for (row, t) in self.iterate_column("time").enumerate() {
-            let i = ((t - sample_point) / self.quantum).floor() as isize;
+            let i = ((t - self.sample_point) / self.quantum).floor() as isize;
             if i <= last_i {
                 continue;
             }
@@ -102,6 +106,31 @@ impl SpiceRead {
             assert_eq!(i as usize, index.len());
             last_i = i;
             index.push(row * self.num_vars);
+        }
+        self.index = index;
+    }
+
+    fn clock_recover(&mut self, name: &str) -> Vec<usize> {
+        let mut prev_clock = true;
+        let mut prev_time = 0.0;
+        let mut index = Vec::new();
+
+        for (row, (value, time)) in self.iterate_column(name)
+            .zip(self.iterate_column("time"))
+            .enumerate() {
+            if time < self.sample_point {
+                continue;
+            }
+            let clock = value > THRESHOLD;
+            if !prev_clock && clock {
+                if index.len() > 0 {
+                    assert!((time - prev_time - self.quantum).abs() < 1e-7,
+                            "Time {} delta {}", time, time - prev_time);
+                }
+                index.push(row * self.num_vars);
+                prev_time = time;
+            }
+            prev_clock = clock;
         }
         index
     }
@@ -152,8 +181,9 @@ impl SpiceRead {
     pub fn extract_byte(&self, name: &str) -> Vec<u8> {
         self.indexed_byte(name, &self.index)
     }
-    pub fn extract_byte_early(&self, name: &str) -> Vec<u8> {
-        self.indexed_byte(name, &self.early)
+
+    pub fn extract_byte_other(&self, name: &str) -> Vec<u8> {
+        self.indexed_byte(name, &self.other)
     }
 
     pub fn indexed_byte(&self, name: &str, index: &[usize]) -> Vec<u8> {

@@ -16,7 +16,7 @@ impl SpiceCheck<'_> {
 
     pub fn spice_check(&mut self) {
         let a  = self.spice.extract_byte("a");
-        let b  = self.spice.extract_byte("b");
+        let b  = self.spice.extract_byte_other("b");
         let x  = self.spice.extract_byte("r_x_b");
         let y  = self.spice.extract_byte("r_y_b");
         let u  = self.spice.extract_byte("r_u_b");
@@ -24,10 +24,10 @@ impl SpiceCheck<'_> {
         let pc = self.spice.extract_byte("p");
         let c  = self.spice.extract_signal("co_c");
         let stack = [
-            self.spice.extract_byte_early("l_l0_b"),
-            self.spice.extract_byte_early("l_l1_b"),
-            self.spice.extract_byte_early("l_l2_b"),
-            self.spice.extract_byte_early("l_l3_b")];
+            self.spice.extract_byte("l_l0_b"),
+            self.spice.extract_byte("l_l1_b"),
+            self.spice.extract_byte("l_l2_b"),
+            self.spice.extract_byte("l_l3_b")];
 
         let timestamps: Vec<_> = self.spice.extract_sample("time");
 

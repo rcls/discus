@@ -305,14 +305,15 @@ class BadGood:
 
 ##################### SPEED ########################
 
-scan('speed_basic', 167, 168, speed, FACTOR=10, TARGET=MEMORY, CRIT='mem memw')
+scan('speed_basic', 147, 148, speed, FACTOR=10, TARGET=MEMORY,
+     CRIT='memp memi')
 
 scan('speed_duty1', 51, 52,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='memp memf')
 
-scan('speed_duty0', 50, 51, lambda v=None: speed(t0=v),
-     TARGET=MEMORY, FACTOR=10, CRIT='memp memi')
+scan('speed_duty0', 74, 75, lambda v=None: speed(t0=v), TARGET=MEMORY,
+     FACTOR=10, CRIT='memp memw')
 
 scan('speedl_logic', 163, 164, speed, FACTOR=10, TARGET=LOGIC, CRIT='cmp inc')
 
@@ -358,15 +359,15 @@ fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 fast('rnpn_r_lo', 47, 48, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
 
-fast('rnpn_r_hi_fast', 53, 52, npn22_r, TARGET=LOGIC, CRIT='cmp inc')
+fast('rnpn_r_hi_fast', 54, 53, npn22_r, TARGET=LOGIC, CRIT='cmp inc')
 slow('rnpn_r_hi_slow', 16, 15, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
-fast('rnpn_beta_lo', 20, 21, npn22_beta, CRIT='call mem')
+fast('rnpn_beta_lo', 22, 23, npn22_beta, CRIT='call mem')
 
 fast('rnpn_beta_hi', None, 10000, npn22_beta, TARGET=LOGIC, CRIT='call inc')
 
-fast('rnpn_br_lo', None, 1, npn22_beta_reverse, FACTOR=0.1,
-     TARGET=LOGIC, CRIT='call')
+fast('rnpn_br_lo', None, 1, npn22_beta_reverse, FACTOR=0.1, TARGET=LOGIC,
+     CRIT='call')
 
 fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
      CRIT='call inc')
@@ -375,9 +376,9 @@ fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
 
 fast('rstrong_lo', 100, 101, rstrong, CRIT='call inc')
 
-slow('rstrong_hi_slow', 34, 33, rstrong, FACTOR=100, CRIT='mem memp')
+slow('rstrong_hi_slow', 31, 30, rstrong, FACTOR=100, CRIT='mem memp')
 
-fast('rstrong_hi_fast', 140, 139, rstrong, FACTOR=10, CRIT='memi mem')
+fast('rstrong_hi_fast', 136, 135, rstrong, FACTOR=10, CRIT='memi mem')
 
 slow('rload_hi_slow', 77, 76, rload, FACTOR=100, CRIT='call inc')
 
@@ -412,11 +413,11 @@ fast('pmos_vto_lo', 29, 30, pmos_vto, FACTOR=10e-3, EXTRA=[(delay_res, 820)],
      CRIT='call memp')
 
 ################################# EXTRAS #######################
-scan('reset_delay', 5058, 5057, lambda v=None: speed(tr=v),
-     TARGET='hazard', WANTED=False)
+scan('reset_delay', 5058, 5057, lambda v=None: speed(tr=v), TARGET='hazard',
+     WANTED=False)
 
-scan('reset_advance', 3060, 3061, lambda v=None: speed(tr=v),
-     TARGET='hazard', WANTED=False)
+scan('reset_advance', 3060, 3061, lambda v=None: speed(tr=v), TARGET='hazard',
+     WANTED=False)
 
 fast('delayres_caplo_lo', 195, 196, delay_res, TARGET=MEMORY,
      CRIT='memp mem', EXTRA=[(dram_cap, 68)], WANTED=False)

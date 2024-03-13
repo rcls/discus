@@ -81,9 +81,11 @@ fn main() {
         Alu       => return alu::alu            (&args.verify.unwrap()),
         Opdecode  => return opdecode::opdecode  (&args.verify.unwrap()),
         Pcdecode  => return pcdecode::pcdecode  (&args.verify.unwrap()),
-        Ramdecode => return memdecode::memdecode(&args.verify.unwrap(), "m"),
-        Romdecode => return memdecode::memdecode(&args.verify.unwrap(), "r"),
         Sp        => return sp::sp              (&args.verify.unwrap()),
+        Ramdecode => return memdecode::memdecode(&args.verify.unwrap(),
+                                                 "m", 32),
+        Romdecode => return memdecode::memdecode(&args.verify.unwrap(),
+                                                 "r", 64),
     };
 
     verify_insns(&args, &insns);

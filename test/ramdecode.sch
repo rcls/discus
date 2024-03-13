@@ -253,7 +253,7 @@ value=.param INFINITY=1e6
 C 7800 1300 1 0 0 dram64byte.sym
 {
 T 8800 4300 5 10 1 1 90 4 1
-source=dram64byte.sch
+source=dram32byte.sch
 T 8500 5100 5 10 1 1 0 4 1
 refdes=M
 }

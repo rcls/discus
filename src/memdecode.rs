@@ -1,9 +1,9 @@
-pub fn memdecode(path: &String, tag: &str) {
+pub fn memdecode(path: &String, tag: &str, size: usize) {
     let s = crate::spice_read::SpiceRead::from_path(path, 5e-6);
 
     let p = s.extract_byte("p");
 
-    let sel_names: Vec<String> = (0..64)
+    let sel_names: Vec<String> = (0..size as u32)
         .map(|i| format!("s_{}_{}_{}_{}",
                          a_char(i), a_char(i / 4), a_char(i / 16), tag))
         .collect();
@@ -15,7 +15,7 @@ pub fn memdecode(path: &String, tag: &str) {
 
     for (i, address) in p.iter().enumerate() {
         let mut sel = None;
-        for j in (0..64).filter(|&j| selects[j][i]) {
+        for j in (0..size).filter(|&j| selects[j][i]) {
             if let Some(sel) = sel {
                 panic!("At {i} P={address:#04x} bit {} and {} set",
                        sel_names[sel], sel_names[j]);

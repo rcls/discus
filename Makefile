@@ -124,6 +124,6 @@ accumulate-gerbers: unplated-drill.cnc_ext=UnplatedDrill.cnc
 .PHONY: clean
 clean:
 	rm -f *- */*- *~ */*~ *.o */*.o *.cir */*.cir *.rcr */*.rcr
-	rm -f *.raw */*.raw
+	rm -f */*.raw
 	rm -f PCB.*.backup PCB.*.save
-	rm -f rmsim $(ALL_PROG)
+	rm -rf target

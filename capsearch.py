@@ -153,11 +153,11 @@ def jfet_beta(BETA=0.00272):
 
 def delay_res(res=400):
     replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',
-                 after='refdes=R2')
+                 after='refdes=Rd')
 
-def bias_res(res=2490):
+def bias_res(res=4700):
     replace_line('gates/dramio.sch', 'value=', f'value={res}\n',
-                 after='refdes=R2')
+                 after='refdes=Rb')
 
 def schottky_is(v=None):
     if v is None:

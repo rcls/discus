@@ -113,7 +113,7 @@ C -400 -1200 1 90 0 resistor-strong.sym
 T -800 -900 5 10 0 0 90 0 1
 device=RESISTOR
 T -350 -700 5 10 1 1 0 0 1
-refdes=R3
+refdes=R2
 T -300 -200 5 10 0 1 90 0 1
 footprint=0603-strong
 }
@@ -221,11 +221,11 @@ C -1100 900 1 270 0 resistor-load.sym
 T -700 600 5 10 0 0 90 8 1
 device=RESISTOR
 T -1150 550 5 10 1 1 0 7 1
-refdes=R2
+refdes=Rb
 T -300 700 5 10 0 1 90 8 1
 footprint=0603-load
 T -1150 300 5 10 1 1 0 7 1
-value=2490
+value=4700
 }
 N -1000 0 -1000 -1200 4
 N -1000 -1200 -500 -1200 4

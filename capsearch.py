@@ -73,13 +73,8 @@ def writepath(P, lines):
         F.writelines(lines)
 
 def dram_cap(pf=680):
-    P = 'gates/drambyte.sch'
-    content = slurppath(P)
-    with open(P, 'w') as F:
-        for L in content:
-            if L.startswith('value=') and L.strip().endswith('p'):
-                L = f'value={pf}p\n'
-            F.write(L)
+    replace_line('gates/drambyte.sch', 'value=', f'value={pf}p\n',
+                 after='refdes=C')
 
 def speed(vt=None, t0=None, tr=None):
     global currentQ
@@ -155,7 +150,7 @@ def delay_res(res=400):
     replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',
                  after='refdes=Rd')
 
-def bias_res(res=4700):
+def bias_res(res=3300):
     replace_line('gates/dramio.sch', 'value=', f'value={res}\n',
                  after='refdes=Rb')
 
@@ -317,7 +312,7 @@ scan('speed_duty0', 74, 75, lambda v=None: speed(t0=v), TARGET=MEMORY,
 
 scan('speedl_logic', 163, 164, speed, FACTOR=10, TARGET=LOGIC, CRIT='cmp inc')
 
-scan('speedl_duty1', 59, 60,
+scan('speedl_duty1', 60, 61,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
@@ -328,8 +323,8 @@ scan('speedl_duty0', 62, 63, lambda v=None: speed(t0 = v), TARGET=LOGIC,
 
 fast('dram_cap_lo', 31, 32, dram_cap, TARGET=MEMORY, CRIT='memp mem')
 
-scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
-     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
+#scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
+#     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
 fast('dram_cap_hi_fast', 178, 177, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='memp memw')

@@ -1,13 +1,29 @@
+* Nexperia model.  It has parallel resistors "to improve reverse operation".
 .SUBCKT baw56 1 2 3
 D1 3 1 BAW56
+R1 6 1 2.3E+9
 D2 3 2 BAW56
+R2 6 2 2.3E+9
 .ENDS
 .SUBCKT baw56d 1 2 3 4 5 6
 D1 6 1 BAW56
+R1 6 1 2.3E+9
 D2 6 2 BAW56
+R2 6 2 2.3E+9
 D4 3 4 BAW56
+R4 3 4 2.3E+9
 D5 3 5 BAW56
+R5 3 5 2.3E+9
 .ENDS
 
-.MODEL BAW56 D (IS=68.6n RS=0.377 BV=75.0 IBV=1.00u
-+ CJO=1.72p  M=0.333 N=2.34 TT=5.76n)
+.MODEL BAW56 D
++ IS = 1.705E-9
++ N = 1.71
++ BV = 87
++ IBV = 0.0003
++ RS = 1.022
++ CJO = 1.798E-12
++ VJ = 1.032
++ M = 0.2987
++ FC = 0.5
++ TT = 3.606E-9

@@ -316,17 +316,17 @@ scan('speedl_duty1', 60, 61,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
 
-scan('speedl_duty0', 62, 63, lambda v=None: speed(t0 = v), TARGET=LOGIC,
+scan('speedl_duty0', 63, 64, lambda v=None: speed(t0 = v), TARGET=LOGIC,
      CRIT='call inc', FACTOR=10)
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 15, 16, dram_cap, TARGET=MEMORY, CRIT='memp mem')
+fast('dram_cap_lo', 14, 15, dram_cap, TARGET=MEMORY, CRIT='memp mem')
 
 #scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
 #     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
-fast('dram_cap_hi_fast', 196, 195, dram_cap, TARGET=MEMORY, FACTOR=10,
+fast('dram_cap_hi_fast', 197, 196, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='memp hazard2')
 
 ####################### JFET ##########################
@@ -346,13 +346,13 @@ fast('jfet_beta_lo', 4, 5, jfet_beta, TARGET=MEMORY, FACTOR=1e-4,
 
 ######################### NPN #################################
 
-fast('npn_beta_lo', 3, 4, npn_beta, CRIT='call inc')
+fast('npn_beta_lo', 4, 5, npn_beta, CRIT='call inc')
 
 fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 ####################### PRE-BIAS NPN ##############################
 
-fast('rnpn_r_lo', 47, 48, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
+fast('rnpn_r_lo', 46, 47, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
 
 fast('rnpn_r_hi_fast', 54, 53, npn22_r, TARGET=LOGIC, CRIT='cmp inc')
 slow('rnpn_r_hi_slow', 16, 15, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
@@ -391,7 +391,7 @@ fast('rbias_hi', 6, 5, bias_res, FACTOR=10e3, TARGET=MEMORY,
 ######################### MOSFETS #################################
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
-fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='cmp logic',
+fast('nmos_vto_lo', 452, 453, nmos_vto, FACTOR=1e-3, CRIT='cmp logic',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
 slow('nmos_vto_hi_slow', 163, 162, nmos_vto, FACTOR=10e-3, CRIT='call inc')

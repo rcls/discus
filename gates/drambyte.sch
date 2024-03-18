@@ -300,7 +300,7 @@ C 2000 2800 1 0 0 jfet.sym
 {
 T 2400 3750 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 2650 3200 5 10 1 1 0 0 1
+T 2650 3200 5 10 1 1 0 1 1
 refdes=J0
 T 2400 4150 5 10 0 0 0 0 1
 footprint=SOT23
@@ -309,7 +309,7 @@ C 2000 500 1 0 0 jfet.sym
 {
 T 2400 1450 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 2650 900 5 10 1 1 0 0 1
+T 2650 900 5 10 1 1 0 1 1
 refdes=J1
 T 2400 1850 5 10 0 0 0 0 1
 footprint=SOT23
@@ -318,7 +318,7 @@ C 3100 2800 1 0 0 jfet.sym
 {
 T 3500 3750 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 3750 3200 5 10 1 1 0 0 1
+T 3750 3200 5 10 1 1 0 1 1
 refdes=J2
 T 3500 4150 5 10 0 0 0 0 1
 footprint=SOT23
@@ -327,7 +327,7 @@ C 3100 500 1 0 0 jfet.sym
 {
 T 3500 1450 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 3750 900 5 10 1 1 0 0 1
+T 3750 900 5 10 1 1 0 1 1
 refdes=J3
 T 3500 1850 5 10 0 0 0 0 1
 footprint=SOT23
@@ -336,7 +336,7 @@ C 4200 2800 1 0 0 jfet.sym
 {
 T 4600 3750 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 4850 3200 5 10 1 1 0 0 1
+T 4850 3200 5 10 1 1 0 1 1
 refdes=J4
 T 4600 4150 5 10 0 0 0 0 1
 footprint=SOT23
@@ -345,7 +345,7 @@ C 4200 500 1 0 0 jfet.sym
 {
 T 4600 1450 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 4850 900 5 10 1 1 0 0 1
+T 4850 900 5 10 1 1 0 1 1
 refdes=J5
 T 4600 1850 5 10 0 0 0 0 1
 footprint=SOT23
@@ -354,7 +354,7 @@ C 5300 2800 1 0 0 jfet.sym
 {
 T 5700 3750 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 5950 3200 5 10 1 1 0 0 1
+T 5950 3200 5 10 1 1 0 1 1
 refdes=J6
 T 5700 4150 5 10 0 0 0 0 1
 footprint=SOT23
@@ -363,7 +363,7 @@ C 5300 500 1 0 0 jfet.sym
 {
 T 5700 1450 5 10 0 0 0 0 1
 device=NFET_Transistor
-T 5950 900 5 10 1 1 0 0 1
+T 5950 900 5 10 1 1 0 1 1
 refdes=J7
 T 5700 1850 5 10 0 0 0 0 1
 footprint=SOT23

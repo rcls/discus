@@ -9,7 +9,7 @@ ADHOC_TEST = alu pcdecode opdecode ramdecode romdecode sp
 PROG_TEST = memp mem memi memw call cmp hazard2 inc sub add logic memf hazard
 TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
 
-BOARDS=bit control dram64byte rom64byte
+BOARDS=bit control dram32byte rom64byte
 
 RUST_DISCUS=target/debug/discus
 

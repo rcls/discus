@@ -18,7 +18,7 @@ P 0 1600 200 1600 1 0 0
 T 0 1600 5 10 0 0 0 0 1
 pintype=unknown
 T 205 1595 5 10 1 1 0 1 1
-pinlabel=W
+pinlabel=W#
 T 105 1645 5 10 0 1 0 6 1
 pinnumber=1
 T 0 1600 5 10 0 0 0 0 1

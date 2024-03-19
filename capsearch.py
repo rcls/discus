@@ -35,7 +35,7 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc sub add logic'
 MEMORY = 'memp mem memi memw hazard2 hazard memf'
-HI_DELAY_RES = 1000
+HI_DELAY_RES = 1680
 
 CHANGED=0
 SCANS=[]
@@ -146,7 +146,7 @@ def jfet_vto(VTO=2.65):
 def jfet_beta(BETA=0.00272):
     replace_line('subckt/J309.prm', '+ BETA=', f'+ BETA={BETA*1e3}m\n')
 
-def delay_res(res=420):
+def delay_res(res=840):
     replace_line('board/dram32byte.sch', 'value=', f'value={res}\n',
                  after='refdes=Rd')
 
@@ -288,7 +288,8 @@ class BadGood:
             f()
 
         if self.BAD != self.I_BAD or self.GOOD != self.I_GOOD:
-            print(f'=== CHANGES! {self.NAME} [{self.BAD} {self.GOOD}] was [{self.I_BAD} {self.I_GOOD}] ===')
+            print(f'=== CHANGES! {self.NAME} [{self.BAD} {self.GOOD}]',
+                  f'was [{self.I_BAD} {self.I_GOOD}] ===')
             global CHANGED
             CHANGED += 1
         else:

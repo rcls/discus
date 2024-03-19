@@ -187,7 +187,7 @@ footprint=anchor
 T 7900 5900 5 10 0 0 270 0 1
 device=INPUT
 T 7700 5925 5 10 1 1 0 3 1
-refdes=W0
+refdes=W0#
 }
 C 9800 5900 1 270 0 in-1.sym
 {
@@ -196,7 +196,7 @@ footprint=anchor
 T 10100 5900 5 10 0 0 270 0 1
 device=INPUT
 T 9900 5925 5 10 1 1 0 3 1
-refdes=W1
+refdes=W1#
 }
 C 12000 5900 1 270 0 in-1.sym
 {
@@ -205,7 +205,7 @@ footprint=anchor
 T 12300 5900 5 10 0 0 270 0 1
 device=INPUT
 T 12100 5925 5 10 1 1 0 3 1
-refdes=W2
+refdes=W2#
 }
 C 14200 5900 1 270 0 in-1.sym
 {
@@ -214,7 +214,7 @@ footprint=anchor
 T 14500 5900 5 10 0 0 270 0 1
 device=INPUT
 T 14300 5925 5 10 1 1 0 3 1
-refdes=W3
+refdes=W3#
 }
 C 7600 2700 1 270 0 in-1.sym
 {
@@ -223,7 +223,7 @@ footprint=anchor
 T 7900 2700 5 10 0 0 270 0 1
 device=INPUT
 T 7700 2725 5 10 1 1 0 3 1
-refdes=W4
+refdes=W4#
 }
 C 9800 2700 1 270 0 in-1.sym
 {
@@ -232,7 +232,7 @@ footprint=anchor
 T 10100 2700 5 10 0 0 270 0 1
 device=INPUT
 T 9900 2725 5 10 1 1 0 3 1
-refdes=W5
+refdes=W5#
 }
 C 12000 2700 1 270 0 in-1.sym
 {
@@ -241,7 +241,7 @@ footprint=anchor
 T 12300 2700 5 10 0 0 270 0 1
 device=INPUT
 T 12100 2725 5 10 1 1 0 3 1
-refdes=W6
+refdes=W6#
 }
 C 14200 2700 1 270 0 in-1.sym
 {
@@ -250,7 +250,7 @@ footprint=anchor
 T 14500 2700 5 10 0 0 270 0 1
 device=INPUT
 T 14300 2725 5 10 1 1 0 3 1
-refdes=W7
+refdes=W7#
 }
 C 1700 4500 1 0 0 vdd-1.sym
 C 1000 7300 1 0 0 in-1.sym
@@ -1313,7 +1313,7 @@ footprint=0603-strong
 T 3750 1950 5 10 1 1 180 0 1
 refdes=R2
 T 3900 2150 5 10 1 1 0 3 1
-value=820
+value=840
 }
 C 5600 2800 1 180 0 capacitor.sym
 {
@@ -1324,5 +1324,5 @@ symversion=0.1
 T 5250 2700 5 10 1 1 0 6 1
 refdes=C
 T 5450 2700 5 10 1 1 0 0 1
-value=150p
+value=100p
 }

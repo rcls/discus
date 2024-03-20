@@ -55,7 +55,7 @@ refdes=C0
 T 1900 2600 5 10 0 0 90 0 1
 symversion=0.1
 T 2625 2725 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 2600 2600 5 10 0 1 0 0 1
 footprint=0603-cap
 }
@@ -82,7 +82,7 @@ symversion=0.1
 T 2625 275 5 8 1 1 0 2 1
 refdes=C1
 T 2625 425 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 2600 300 5 10 0 1 0 0 1
 footprint=0603-cap
 }
@@ -105,7 +105,7 @@ symversion=0.1
 T 3725 2575 5 8 1 1 0 2 1
 refdes=C2
 T 3725 2725 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 3700 2600 5 10 0 1 0 0 1
 footprint=0603-cap
 }
@@ -128,7 +128,7 @@ symversion=0.1
 T 3725 275 5 8 1 1 0 2 1
 refdes=C3
 T 3725 425 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 3700 300 5 10 0 1 0 0 1
 footprint=0603-cap
 }
@@ -151,7 +151,7 @@ symversion=0.1
 T 4825 2575 5 8 1 1 0 2 1
 refdes=C4
 T 4825 2725 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 4800 2600 5 10 0 1 0 0 1
 footprint=0603-cap
 }
@@ -174,7 +174,7 @@ symversion=0.1
 T 4825 275 5 8 1 1 0 2 1
 refdes=C5
 T 4825 425 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 4800 300 5 10 0 1 0 0 1
 footprint=0603-cap
 }
@@ -197,7 +197,7 @@ symversion=0.1
 T 5925 2575 5 8 1 1 0 2 1
 refdes=C6
 T 5925 2725 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 5900 2600 5 10 0 1 0 0 1
 footprint=0603-cap
 }
@@ -220,7 +220,7 @@ symversion=0.1
 T 5925 275 5 8 1 1 0 2 1
 refdes=C7
 T 5925 425 5 8 1 1 0 0 1
-value=680p
+value=470p
 T 5900 300 5 10 0 1 0 0 1
 footprint=0603-cap
 }

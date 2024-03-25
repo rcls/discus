@@ -53,5 +53,5 @@ model-name=baw56
 T 650 1000 8 10 0 1 0 0 1
 file=subckt/baw56.prm
 T 650 1200 8 10 0 1 0 0 1
-footprint=sot323-baw56
+footprint=sot23-baw56
 L 400 600 400 550 4 0 0 0 -1 -1

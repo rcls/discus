@@ -144,6 +144,6 @@ refdes=D
 T 45850 48100 5 10 0 1 180 0 1
 model-name=baw56
 T 45850 47700 5 10 0 1 180 0 1
-footprint=sot323-baw56
+footprint=sot23-baw56
 }
 N 45700 48900 45900 48900 4

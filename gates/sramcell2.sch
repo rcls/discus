@@ -124,7 +124,7 @@ refdes=D
 T 45750 48100 5 10 0 1 180 0 1
 model-name=baw56
 T 45750 47700 5 10 0 1 180 0 1
-footprint=sot323-baw56
+footprint=sot23-baw56
 }
 C 45100 48000 1 0 0 resistor-load.sym
 {

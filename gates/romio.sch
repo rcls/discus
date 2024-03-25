@@ -63,16 +63,16 @@ footprint=0603-load
 T 1300 1200 5 10 0 1 180 0 1
 value=rload
 }
-C 1600 1200 1 270 0 resistor-load.sym
+C 1600 1200 1 270 0 resistor-pull.sym
 {
 T 2000 900 5 10 0 0 270 0 1
 device=RESISTOR
 T 1750 550 5 10 1 1 0 2 1
 refdes=R2
 T 2400 1000 5 10 0 1 270 0 1
-footprint=0603-load
+footprint=0603-pull
 T 2600 1000 5 10 0 1 270 0 1
-value=rload
+value=rpull
 }
 N 2100 900 2100 1000 4
 C 2000 2600 1 270 0 resistor-load.sym

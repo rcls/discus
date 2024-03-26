@@ -19,12 +19,14 @@ pub fn pcdecode(path: &String) {
         }
 
         let condition = match opcode & 0x1c {
-            0 |  8 => true,
-            4 | 12 => false,
-            16 => z,
-            20 => !z,
-            24 => co,
-            28 => !co,
+            0 => true,
+            4 => false,
+            8 => z,
+            12 => !z,
+            16 => co,
+            20 => !co,
+            24 => z & co,
+            28 => !z | !co,
             _ => unreachable!(),
         };
 

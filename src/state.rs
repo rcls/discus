@@ -175,12 +175,12 @@ impl State {
         match (opcode >> 2) & 7 {
             0 => true,
             1 => false,
-            2 => true,
-            3 => false,
-            4 => self.prev_z,
-            5 => !self.prev_z,
-            6 => self.prev_c,
-            7 => !self.prev_c,
+            2 => self.prev_z,
+            3 => !self.prev_z,
+            4 => self.prev_c,
+            5 => !self.prev_c,
+            6 => self.prev_z & self.prev_c,
+            7 => !self.prev_z | !self.prev_c,
             _ => unreachable!()
         }
     }

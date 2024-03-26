@@ -33,8 +33,8 @@ pub enum Target {
 }
 
 pub enum Condition {
-    // Also 8 and 12 as aliases.
-    Always = 0, Never = 4, Z = 16, NZ = 20, C = 24, NC = 28
+    Always = 0, Never = 4, Z = 8, NZ = 12, C = 16, NC = 20,
+    _CZ = 24, _NCZ = 28,
 }
 
 const INP  : u8 = 0x50;

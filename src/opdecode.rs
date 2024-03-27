@@ -5,18 +5,23 @@ pub fn opdecode(path: &String) {
     let mut count = 0;
     let mut seen = std::collections::HashSet::new();
 
-    for [i2, i3, i4, i5, i6, i7, ii2, ii3, ii4, ii5, ii6, ii7, co,
+    for [i2, i3, i4, i5, i6, i7, ij, ii2, ii3, ii4, ii5, ii6, ii7, iij, co,
          qe, cr, cs, coe, ar, as_, and, or, n, mpre,
          in_, out, mw, mr, cw] in s.extract_positive(&[
-            "i2", "i3", "i4", "i5", "i6", "i7",
-            "i2#", "i3#", "i4#", "i5#", "i6#", "i7#","co",
+            "i2", "i3", "i4", "i5", "i6", "i7", "ij",
+            "i2#", "i3#", "i4#", "i5#", "i6#", "i7#", "ij#", "co",
             "qe", "cr", "cs#", "coe#", "ar#", "as", "and", "or", "n#", "mpre#",
             "in#", "out", "mw", "mr#", "cw#"]) {
         assert_eq!((i2, i3, i4, i5, i6, i7), (ii2, ii3, ii4, ii5, ii6, ii7));
+        assert_eq!(ij, iij);
 
         let opcode = i2 as u8 * 4 + i3 as u8 * 8 + i4 as u8 * 16
             + i5 as u8 * 32 + i6 as u8 * 64 + i7 as u8 * 128;
         seen.insert(opcode + co as u8);
+
+        // Test for undesirable combos.
+        assert!(!cs || !cr, "CS and CR on {opcode:#04x}");
+        assert!(!as_ || !ar, "AS and AR on {opcode:#04x}");
 
         let [mut ex_cr, mut ex_cs, mut ex_ar, mut ex_as] = [false; 4];
         let [mut ex_and, mut ex_or, mut ex_n, mut ex_in] = [false; 4];
@@ -32,7 +37,7 @@ pub fn opdecode(path: &String) {
         }
 
         // All arithemic and xfer instructions, except loadm.
-        let ex_qe = opcode >= 0x80 && opcode & 0xcc != 0xcc;
+        let mut ex_qe = opcode >= 0x80 && opcode & 0xcc != 0xcc;
 
         let mut ex_coe = false;
         if opcode < 0xc0 {
@@ -54,7 +59,6 @@ pub fn opdecode(path: &String) {
             } 
         }
 
-        // Flip inc and dec?
         match opcode & 0xcc { // Inc/Dec/Load/Loadm
             0xc0 => (ex_coe, ex_ar) = (true, true),         // Inc
             0xc4 => (ex_coe, ex_as) = (false, true),        // Dec
@@ -78,37 +82,58 @@ pub fn opdecode(path: &String) {
             _           => (),
         }
 
-        // Test for undesirable combos.
-        assert!(!cs || !cr, "CS and CR on {opcode:#04x}");
-        assert!(!as_ || !ar, "AS and AR on {opcode:#04x}");
+        // IJ overrides everything...
+        if ij {
+            if opcode >= 0x40 {
+                continue;              // Impossible combo.
+            }
+            check_alu = true;
+            ex_qe = true;
+            ex_cw = false;
+            ex_mw = false;
+            ex_mr = false;
+            ex_in = false;
+            ex_out = false;
+            ex_mpre = false;
+            ex_as = false;
+            ex_ar = true;
+            ex_cs = false;
+            ex_cr = false;
+            ex_coe = true;
+            ex_and = false;
+            ex_or = false;
+            ex_n = false;
+        }
+        seen.insert(opcode + co as u8 + ij as u8 * 2);
 
-        check(qe  , ex_qe  , "QE"  , opcode);
-        check(cw  , ex_cw  , "CW"  , opcode);
-        check(mw  , ex_mw  , "MW"  , opcode);
-        check(mr  , ex_mr  , "MR"  , opcode);
-        check(in_ , ex_in  , "IN"  , opcode);
-        check(out , ex_out , "OUT" , opcode);
-        check(mpre, ex_mpre, "MPRE", opcode);
+        check(qe  , ex_qe  , "QE"  , opcode, ij);
+        check(cw  , ex_cw  , "CW"  , opcode, ij);
+        check(mw  , ex_mw  , "MW"  , opcode, ij);
+        check(mr  , ex_mr  , "MR"  , opcode, ij);
+        check(in_ , ex_in  , "IN"  , opcode, ij);
+        check(out , ex_out , "OUT" , opcode, ij);
+        check(mpre, ex_mpre, "MPRE", opcode, ij);
 
         if !check_alu {
             continue;
         }
 
-        check(as_, ex_as , "CW" , opcode);
-        check(ar , ex_ar , "CR" , opcode);
-        check(cs , ex_cs , "CS" , opcode);
-        check(cr , ex_cr , "CR" , opcode);
-        check(coe, ex_coe, "CoE", opcode);
-        check(and, ex_and, "AND", opcode);
-        check(or , ex_or , "OR" , opcode);
-        check(n  , ex_n  , "N"  , opcode);
+        check(as_, ex_as , "CW" , opcode, ij);
+        check(ar , ex_ar , "CR" , opcode, ij);
+        check(cs , ex_cs , "CS" , opcode, ij);
+        check(cr , ex_cr , "CR" , opcode, ij);
+        check(coe, ex_coe, "CoE", opcode, ij);
+        check(and, ex_and, "AND", opcode, ij);
+        check(or , ex_or , "OR" , opcode, ij);
+        check(n  , ex_n  , "N"  , opcode, ij);
 
         count += 1;
     }
     println!("Tested {count} of {}", s.num_samples());
-    assert_eq!(seen.len(), 128);
+    assert_eq!(seen.len(), 128 + 32);
 }
 
-fn check(got: bool, ex: bool, tag: &str, opcode: u8) {
-    assert_eq!(got, ex, "got {got} expect {ex} for {tag} on {opcode:#04x}");
+fn check(got: bool, ex: bool, tag: &str, opcode: u8, ij: bool) {
+    assert_eq!(got, ex,
+               "got {got} expect {ex} for {tag} on {opcode:#04x} {ij}");
 }

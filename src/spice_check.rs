@@ -20,6 +20,7 @@ impl SpiceCheck<'_> {
         let x  = self.spice.extract_byte("r_x_b");
         let y  = self.spice.extract_byte("r_y_b");
         let u  = self.spice.extract_byte("r_u_b");
+        let r  = self.spice.extract_byte("r_r_b");
         let k  = self.spice.extract_byte("k_b");
         let pc = self.spice.extract_byte("p");
         let c  = self.spice.extract_signal("co_c");
@@ -38,7 +39,7 @@ impl SpiceCheck<'_> {
         self.state.u = u[3];
         self.state.c = c[3];
         self.state.k = None;
-        self.state.r = b[3];
+        self.state.r = r[3];
         assert_eq!(pc[2], 0, "PC@2 = {}", pc[2]);
         assert_eq!(pc[3], 1, "PC@3 = {}", pc[3]);
 
@@ -53,6 +54,7 @@ impl SpiceCheck<'_> {
             self.verify(self.state.x, x[i], "X");
             self.verify(self.state.y, y[i], "Y");
             self.verify(self.state.u, u[i], "U");
+            self.verify(self.state.r, r[i], "R");
             if let Some(kk) = self.state.k {
                 self.verify(kk, k[i], "K");
             }

@@ -41,7 +41,7 @@ impl State {
         let opcode = program[self.pc as usize];
         let prefix = self.prefix.take();
         let k = self.k();
-        let operand = if prefix != None { k } else { self.op_reg(opcode) };
+        let mut operand = if prefix != None { k } else { self.op_reg(opcode) };
 
         // Default behavior...
         self.k = None;
@@ -50,11 +50,12 @@ impl State {
         let c = self.c;
         let z = k == 0;
 
-        let mut is_mem = false;
-
         match opcode {
             0x00..=0x3f => if prefix == Some(Prefix::Const) {
                 self.jump(opcode, k);   // JUMP and CALL.
+                operand = self.r;       // We do a refresh...
+                self.r = operand.wrapping_add(1);
+                self.k = Some(self.r);
             }
             else {
                 let next = program[self.pc as usize] & 3;
@@ -65,31 +66,23 @@ impl State {
             0x40..=0x47 => self.last_out = self.a,
             0x48..=0x4b => unreachable!(), // Unallocated, NOP?
             0x4c..=0x4f => {
-                is_mem = true;
                 self.memory.0[operand as usize] = self.a;
             }
             0x50..=0x57 => self.inp(),
             0x58..=0x5b => unreachable!(), // Unallocated.
             0x5c..=0x5f => {            // MEM prefix.
-                is_mem = true;
                 self.k = Some(self.memory.0[operand as usize]);
                 self.prefix = Some(Prefix::Value);
             }
             0x60..=0x7f => self.ret(opcode),
             0x80..=0x9f => self.a = self.arith(opcode, operand),
             0xa0..=0xbf => { self.arith(opcode, operand); } // Ignore result.
-            0xc0..=0xff => self.xfer(opcode, operand, &mut is_mem),
+            0xc0..=0xff => self.xfer(opcode, operand),
         }
 
         self.prev_c = c;
         self.prev_z = z;
-        if is_mem {
-            self.b = operand;
-        }
-        else {
-            self.b = self.r;
-            self.r = self.r.wrapping_add(1);
-        }
+        self.b = operand;
     }
 
     pub fn check(&self, insns: &Instructions) {
@@ -153,12 +146,12 @@ impl State {
 
     fn inp(&self) { todo!() }
 
-    fn xfer(&mut self, opcode: u8, operand: u8, is_mem: &mut bool) {
+    fn xfer(&mut self, opcode: u8, operand: u8) {
         let r = match opcode >> 2 & 3 {
             0 => operand.wrapping_add(1),
             1 => operand.wrapping_sub(1),
             2 => operand,
-            3 => {*is_mem = true; self.memory.0[operand as usize]}
+            3 => self.memory.0[operand as usize],
             _ => unreachable!()
         };
         self.k = Some(r);

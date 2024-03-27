@@ -27,8 +27,8 @@ pub fn call() -> Instructions {
     let mut call = Instructions::default();
     call.call ("sub1")
     .label("loop")
-        .jp(Never, "loop")
-        .jp(Always, "sub3")
+        .jp   (Never, "loop")
+        .jp   (Always, "sub3")
     .label("sub1")
         .call ("sub2")
         .ret  ()

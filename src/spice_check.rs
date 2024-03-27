@@ -38,7 +38,7 @@ impl SpiceCheck<'_> {
         self.state.u = u[3];
         self.state.c = c[3];
         self.state.k = None;
-        self.state.r = !b[3];
+        self.state.r = b[3];
         assert_eq!(pc[2], 0, "PC@2 = {}", pc[2]);
         assert_eq!(pc[3], 1, "PC@3 = {}", pc[3]);
 

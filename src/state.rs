@@ -87,7 +87,7 @@ impl State {
             self.b = operand;
         }
         else {
-            self.b = !self.r;
+            self.b = self.r;
             self.r = self.r.wrapping_add(1);
         }
     }

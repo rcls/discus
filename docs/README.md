@@ -67,10 +67,9 @@ safe for spurious pull-downs on the input.
 
 Arbitrary AOI gates are used as needed, where sensible these are drawn in the
 circuit diagram by connecting the outputs of open-drain gates together, although
-there are a couple of discrete monsters in
-[instruction decode](decode.md).  Significant use is made of stacked
-gates, where the output of one gate is used as the ground connection of other
-gates, essentially forming a wired-or.
+there is a couple of discrete monster in [instruction decode](decode.md).
+Significant use is made of stacked gates, where the output of one gate is used
+as the ground connection of other gates, essentially forming a wired-or.
 
 Lines needing high fanout or high drive strength—mostly the bus and clock
 lines—are driven by CMOS outputs.  PMOS logic is also used, mostly for 1-of-N
@@ -151,12 +150,12 @@ Branch instructions put the condition in bits 2, 3, 4.  The encoding is:
 
 * **000** : Always
 * **001** : Never
-* **010** : Always
-* **011** : Never
-* **100** : If Z
-* **101** : If not Z
-* **110** : If C
-* **111** : If not C
+* **010** : If Z
+* **011** : If not Z
+* **100** : If C
+* **101** : If not C
+* **110** : If C and Z
+* **111** : If not C or not Z
 
 ### `CONST` prefix : `00nnnnnn`
 

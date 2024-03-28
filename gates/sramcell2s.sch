@@ -43,16 +43,16 @@ footprint=sot23-pmos
 T 44200 47200 5 10 0 1 0 0 1
 device=PMOS
 }
-C 43400 46100 1 0 0 resistor-load.sym
+C 43400 46100 1 0 0 resistor-strong.sym
 {
 T 43700 46500 5 8 0 0 0 0 1
 device=RESISTOR
 T 44050 46250 5 8 1 1 0 0 1
 refdes=R2
 T 43800 46200 5 8 0 1 0 0 1
-footprint=0603-load
+footprint=0603-strong
 T 43800 46200 5 8 0 1 0 0 1
-value=rload
+value=rstrong
 }
 C 45500 46000 1 90 0 pdtc124.sym
 {
@@ -80,16 +80,16 @@ T 44925 46700 5 8 1 1 0 0 1
 netname=gl
 }
 N 42700 46900 42700 45900 4
-C 43300 46500 1 0 0 resistor-load.sym
+C 43300 46500 1 0 0 resistor-strong.sym
 {
 T 43600 46900 5 8 0 0 0 0 1
 device=RESISTOR
 T 43950 46650 5 8 1 1 0 0 1
 refdes=R1
 T 43700 46600 5 8 0 1 0 0 1
-footprint=0603-load
+footprint=0603-strong
 T 43700 46600 5 8 0 1 0 0 1
-value=rload
+value=rstrong
 }
 N 42700 46200 43400 46200 4
 N 44300 46200 44500 46200 4

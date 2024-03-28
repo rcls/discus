@@ -80,9 +80,9 @@ impl SpiceCheck<'_> {
         }
         // Sanity check that we've run the correct number of instructions.  The
         // stack should be empty and the current instruction should be an
-        // unconditional return (0x60).
+        // unconditional return (0x40).
         assert_eq!(self.state.sp, 0);
-        assert_eq!(self.program[self.state.pc as usize], 0x60);
+        assert_eq!(self.program[self.state.pc as usize], 0x40);
         assert!(self.success);
     }
 

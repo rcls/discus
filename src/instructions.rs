@@ -37,8 +37,8 @@ pub enum Condition {
     _CZ = 24, _NCZ = 28,
 }
 
-const INP  : u8 = 0x50;
-const MEM  : u8 = 0x5c;
+const INP  : u8 = 0x70;
+const MEM  : u8 = 0x7c;
 const LOAD : u8 = 0xc8;
 const LOADM: u8 = 0xcc;
 
@@ -132,7 +132,7 @@ impl Instructions {
     pub fn xor(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x98, v)}
     pub fn cmp(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0xa4, v)}
     pub fn tst(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0xac, v)}
-    pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x4c, v)}
+    pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x6c, v)}
 
     pub fn jp(&mut self, cc: Condition, t: impl Into<Target>) -> &mut Self {
         self.insn(Address(t.into())).byte(cc as u8)
@@ -151,7 +151,7 @@ impl Instructions {
     }
 
     pub fn rt(&mut self, cc: Condition) -> &mut Self {
-        self.byte(0x60 + cc as u8)
+        self.byte(0x40 + cc as u8)
     }
     pub fn ret(&mut self) -> &mut Self { self.rt(Always) }
 
@@ -175,7 +175,7 @@ impl Instructions {
         }
     }
 
-    pub fn out(&mut self) -> &mut Self {self.byte(0x40)}
+    pub fn out(&mut self) -> &mut Self {self.byte(0x60)}
     #[allow(unused)]
     pub fn inp(&mut self) -> &mut Self {self.byte(INP)}
 
@@ -203,9 +203,9 @@ fn test_basic() {
     assert_eq!(c[1], 0x80);
     assert_eq!(c[2], 0x86);
     assert_eq!(c[3], 0x1b);
-    assert_eq!(c[4], 0x5e);
+    assert_eq!(c[4], 0x7e);
     assert_eq!(c[5], 0x90);
-    assert_eq!(c[6], 0x5f);
+    assert_eq!(c[6], 0x7f);
     assert_eq!(c[7], 0x94);
 }
 
@@ -224,5 +224,5 @@ fn test_parse_jump() {
     assert_eq!(c.len(), 3);
     assert_eq!(c[0], 2);
     assert_eq!(c[1], 0x20);
-    assert_eq!(c[2], 0x60);
+    assert_eq!(c[2], 0x40);
 }

@@ -30,7 +30,7 @@ pub fn pcdecode(path: &String) {
             _ => unreachable!(),
         };
 
-        let is_ret = opcode & 0xe0 == 0x60;
+        let is_ret = opcode & 0xe0 == 0x40;
         // Only jump instructions and returns are possible branchs.
         let condition = condition && (is_ret || ojump);
 
@@ -38,7 +38,7 @@ pub fn pcdecode(path: &String) {
 
         let ex_jump = condition && opcode & 0xc0 == 0x00;
         let ex_push = condition && opcode & 0xe0 == 0x20;
-        let ex_ret  = condition && opcode & 0xe0 == 0x60;
+        let ex_ret  = condition && is_ret;
 
         count += 1;
         assert_eq!(jump, ex_jump, "Jump on {opcode:#04x} {condition}");

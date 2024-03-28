@@ -63,18 +63,20 @@ impl State {
                 self.prefix = Some(Prefix::Const);
             }
 
-            0x40..=0x47 => self.last_out = self.a,
-            0x48..=0x4b => unreachable!(), // Unallocated, NOP?
-            0x4c..=0x4f => {
+            0x40..=0x5f => self.ret(opcode),
+
+            0x60..=0x67 => self.last_out = self.a,
+            0x68..=0x6b => unreachable!(), // Unallocated, NOP?
+            0x6c..=0x6f => {
                 self.memory.0[operand as usize] = self.a;
             }
-            0x50..=0x57 => self.inp(),
-            0x58..=0x5b => unreachable!(), // Unallocated.
-            0x5c..=0x5f => {            // MEM prefix.
+            0x70..=0x77 => self.inp(),
+            0x78..=0x7b => unreachable!(), // Unallocated.
+            0x7c..=0x7f => {            // MEM prefix.
                 self.k = Some(self.memory.0[operand as usize]);
                 self.prefix = Some(Prefix::Value);
             }
-            0x60..=0x7f => self.ret(opcode),
+
             0x80..=0x9f => self.a = self.arith(opcode, operand),
             0xa0..=0xbf => { self.arith(opcode, operand); } // Ignore result.
             0xc0..=0xff => self.xfer(opcode, operand),

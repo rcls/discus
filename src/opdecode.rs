@@ -70,15 +70,15 @@ pub fn opdecode(path: &String) {
             _    => (),
         }
 
-        // 0x48 : Asserts MW without MR, the refresh cycle will STA?
-        // 0x58 : Asserts MPRE with no other strobes, sets K=-1?
+        // 0x68 : Asserts MW without MR, the refresh cycle will STA?
+        // 0x78 : Asserts MPRE with no other strobes, sets K=-1?
         match opcode {
-            0x40 | 0x44 => ex_out = true,                   // Out
-            0x48        => (ex_mr, ex_mw) = (mr, mw),       // Not assigned.
-            0x4c        => (ex_mr, ex_mw) = (true, true),   // Sta
-            0x50 | 0x54 => (ex_in, ex_mpre) = (true, true), // In
-            0x58        => (ex_mr, ex_mpre) = (mr, mpre),   // Not assigned.
-            0x5c        => (ex_mr, ex_mpre) = (true, true), // Mem
+            0x60 | 0x64 => ex_out = true,                   // Out
+            0x68        => (ex_mr, ex_mw) = (mr, mw),       // Not assigned.
+            0x6c        => (ex_mr, ex_mw) = (true, true),   // Sta
+            0x70 | 0x74 => (ex_in, ex_mpre) = (true, true), // In
+            0x78        => (ex_mr, ex_mpre) = (mr, mpre),   // Not assigned.
+            0x7c        => (ex_mr, ex_mpre) = (true, true), // Mem
             _           => (),
         }
 

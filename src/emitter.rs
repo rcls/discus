@@ -182,22 +182,8 @@ impl<T: Emitter> Emission<&'_ mut T> {
                     }
                 }
             }
-            0x40        => self.e.emit_basic(a, &[op], "out")?,
-            0x4c..=0x4f => self.emit_operand(a, op, "sta")?,
-            0x50        => {
-                self.eject(a)?;
-                self.prefix = Inp(op);
-            }
-            0x5c..=0x5f => {            // MEM prefix.
-                match &self.prefix {
-                    Constant(con) => self.prefix = MemConst(*con, op),
-                    _ => {
-                        self.eject(a)?;
-                        self.prefix = Memory(op);
-                    }
-                }
-            }
-            0x60..=0x7f => {            // Returns.
+
+            0x40..=0x5f => {            // Returns.
                 self.eject(a)?;
                 let cc = op as usize >> 2 & 7;
                 if op & 3 == 0 {
@@ -205,6 +191,22 @@ impl<T: Emitter> Emission<&'_ mut T> {
                 }
                 else {
                     self.e.emit_bytes(a, &[op])?;
+                }
+            }
+
+            0x60        => self.e.emit_basic(a, &[op], "out")?,
+            0x6c..=0x6f => self.emit_operand(a, op, "sta")?,
+            0x70        => {
+                self.eject(a)?;
+                self.prefix = Inp(op);
+            }
+            0x7c..=0x7f => {            // MEM prefix.
+                match &self.prefix {
+                    Constant(con) => self.prefix = MemConst(*con, op),
+                    _ => {
+                        self.eject(a)?;
+                        self.prefix = Memory(op);
+                    }
                 }
             }
 

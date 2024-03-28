@@ -10,8 +10,8 @@ Discus is a pure 8-bit Harvard architecture, with 8-bit code and data addresses,
 and a four entry stack.  There are four general purpose registers, one of which
 is the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is integrated DRAM
-refresh.  The CPU totals 1275 transistors.  Without the pipelining and DRAM
-refresh the count would be more like 1000.
+refresh.  The CPU totals 1134 transistors.  Without the pipelining and DRAM
+refresh the count would be under 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
 byte and execution is strict single cycle throughput.  Constant values and some
@@ -76,8 +76,8 @@ lines—are driven by CMOS outputs.  PMOS logic is also used, mostly for 1-of-N
 decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
-[eight identical boards](bit.md) (134 transistors each), and a
-[separate control board](control.md) (203 transistors).
+[eight identical boards](bit.md) (115 transistors each), and a
+[separate control board](control.md) (214 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
 logic on the left, and the instruction execute pipe line stage on the right.
@@ -86,7 +86,7 @@ handling, with the [stack pointer](sp.md) and
 [instruction decode](decode.md) in sub-circuits.
 
 Bit slicing does cost some transistors, as some parts of the bit slice are not
-needed in each bit position.  For example the DRAM refresh controller is 8-bits
+needed in each bit position.  For example the DRAM refresh register is 8-bits
 wide but only needs to be 6-bits wide, while the lowest bit of the program
 counter could be simplified.
 
@@ -185,40 +185,7 @@ though—the branch instruction happens in the wrong pipeline stage.  Instead,
 when the branch is handled, the prefix can be found in the register holding the
 instruction for the execute pipeline stage.
 
-### `OUT` : `01000000`
-
-`OUT` instruction.  This does nothing, but pulses a strobe.  External
-peripherals may use the values from the accumulator bus.
-
-Not all bits are decoded; 0x40 to 0x47 are aliases.
-
-### `STA` : `010011rr`
-
-Store the acumulator to memory.  The operand is the memory address to write.
-The operand is placed on the `B` bus and external memory strobes are driven.
-
-### `INP` prefix : `01010000`
-
-Load `K` from the external result bus `Q` (the bus is open-drain).  The
-accumulator bus may be used by external circuitry, and the `IN` strobe line is
-asserted.
-
-Not all bits are decoded; 0x50 to 0x57 are aliases.  In assembly, this can be
-written as an `IN` operand to the prefixed instruction, e.g., `LOAD A,IN`
-instead of `INP`, `LOAD A,…`.
-
-### `MEM` prefix : `010111rr`
-
-Load the `K` register from memory.  The operand is the memory address.
-
-The `MEM` prefix is typically not written explicitly in assembly code.  Instead,
-square brackets are placed around the operand.  E.g., `ADD [U]` instead of
-`MEM U`,`ADD …`.
-
-Note that with a `MEM` prefix, the operand bits of the following instruction are
-ignored.
-
-### `RET` : `011CCC..`
+### `RET` : `010CCC..`
 
 Pops the PC from the stack, if the condition passes.  The operand is ignored.
 
@@ -230,6 +197,39 @@ instruction, a hazard to be aware of.
 (`JUMP` and `CALL` have the same quirk, but for those instructions, it is a
 feature not a problem—for those, we want to ignore the preceeding `CONST` prefix
 in evaluationing the condition flags.)
+
+### `OUT` : `01100000`
+
+`OUT` instruction.  This does nothing, but pulses a strobe.  External
+peripherals may use the values from the accumulator bus.
+
+Not all bits are decoded; 0x40 to 0x47 are aliases.
+
+### `STA` : `011011rr`
+
+Store the acumulator to memory.  The operand is the memory address to write.
+The operand is placed on the `B` bus and external memory strobes are driven.
+
+### `INP` prefix : `01110000`
+
+Load `K` from the external result bus `Q` (the bus is open-drain).  The
+accumulator bus may be used by external circuitry, and the `IN` strobe line is
+asserted.
+
+Not all bits are decoded; 0x50 to 0x57 are aliases.  In assembly, this can be
+written as an `IN` operand to the prefixed instruction, e.g., `LOAD A,IN`
+instead of `INP`, `LOAD A,…`.
+
+### `MEM` prefix : `011111rr`
+
+Load the `K` register from memory.  The operand is the memory address.
+
+The `MEM` prefix is typically not written explicitly in assembly code.  Instead,
+square brackets are placed around the operand.  E.g., `ADD [U]` instead of
+`MEM U`,`ADD …`.
+
+Note that with a `MEM` prefix, the operand bits of the following instruction are
+ignored.
 
 ### Arithmetic : `100aaarr`
 
@@ -336,7 +336,7 @@ be all-zeros or all-ones, and forcing the carry chain input oppositely.
 
 The per-bit transistor count is 20 transistors per bit, including the
 output-enable driving the `Q` bus.  Decoding the instruction to produce the
-control stobes for the ALU takes 38 transistors.
+control stobes for the ALU takes 45 transistors.
 
 The ripple carry uses two gate levels per bit.  To reduce the propagation delay
 through the carry chain, 820Ω pull-ups are used, rather than the 2.49kΩ used
@@ -454,13 +454,15 @@ Main Memory
 As well as the CPU, there is memory… DRAM is implemented as
 [arrays of 1T1C](drambyte.md) cells, consisting of a discrete capacitor and a
 JFET transistor pass gate.  A 32-byte DRAM board takes 256 JFETs and 256
-capacitors for storage, plus 147 transistors for the decode, sense logic and
+capacitors for storage, plus 148 transistors for the decode, sense logic and
 I/O.
 
 Every clock cycle, the byte addressed by the address lines is (re-)written,
 irregardless of whether a memory access is in progress.  This achieves memory
-refresh.  The CPU outputs a refresh counter onto the address bus when no other
-memory access is in progress.
+refresh.  There is an extra register containing a refresh counter.  During a
+jump (or call) instruction, the otherwise unused ALU increments the refresh
+counter.  As a side-effect, the refresh register appears on the address bus,
+performing refresh.
 
 We use JFETs as the pass gates.  This requires a nominal -5V supply for the gate
 drive.
@@ -471,10 +473,13 @@ circuitry.
 
 Careful timing of the various strobes is necessary.  All are kept idle during
 the first half of the clock cycle, giving the address and control lines time to
-stabilize.  The appropriate bit line is enabled at the start of the second half
-of the clock cycle, then the sense amp output and positive feedback are enabled
-around 100ns later.  Because memory reads always go directly into a register,
-the reduced time available from the half clock cycle is not a concern.
+stabilize.  During this time, the sense amp provides negative feedback,
+pre-charging the sense circuit.
+
+The appropriate bit line is enabled at the start of the second half of the clock
+cycle.  Then the sense amp output and positive feedback are enabled around 100ns
+later.  Because memory reads always go directly into a register, the reduced
+time available from the half clock cycle is not a concern.
 
 [Program storage](rom64byte.md) is intended to be implemented as ROM, so there
 is no DRAM refresh or precharge timing allowance on the program memory bus.

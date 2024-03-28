@@ -180,7 +180,7 @@ C 11000 3400 1 0 0 vdd-1.sym
 C 13200 3400 1 0 0 vdd-1.sym
 C 6700 3900 1 0 0 gnd-1.sym
 C 13300 1200 1 0 0 gnd-1.sym
-C 4400 4400 1 0 0 vdd-1.sym
+C 4900 4800 1 0 0 vdd-1.sym
 C 5000 6600 1 0 0 in-1.sym
 {
 T 5000 7100 5 10 0 0 0 0 1
@@ -637,7 +637,7 @@ device=INPUT
 T 3700 4700 5 10 1 1 0 7 1
 refdes=P5#
 }
-C 4300 3400 1 0 0 nor4.sym
+C 4300 3400 1 0 0 nor4od.sym
 {
 T 4700 3900 5 10 1 1 0 4 1
 refdes=H
@@ -650,4 +650,15 @@ T 3700 4400 5 10 0 0 0 0 1
 device=INPUT
 T 3700 4200 5 10 1 1 0 7 1
 refdes=P5
+}
+C 5200 3900 1 90 0 resistor-strong.sym
+{
+T 4800 4200 5 10 0 0 90 6 1
+device=RESISTOR
+T 5050 4550 5 10 1 1 0 6 1
+refdes=R1
+T 5300 4900 5 10 0 1 90 6 1
+footprint=0603-strong
+T 5500 4000 5 10 0 1 90 6 1
+value=rstrong
 }

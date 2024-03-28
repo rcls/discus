@@ -44,47 +44,47 @@ device=INPUT
 T 43500 63800 5 10 1 1 0 7 1
 refdes=GND
 }
-C 44200 63800 1 90 0 resistor-load.sym
+C 44200 63800 1 90 0 resistor-strong.sym
 {
 T 43800 64100 5 10 0 0 90 0 1
 device=RESISTOR
 T 44075 64475 5 10 1 1 0 6 1
 refdes=R0
 T 44100 64200 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=0603-strong
 T 44100 64200 5 10 0 1 90 0 1
-value=rload
+value=rstrong
 }
-C 45600 63800 1 270 1 resistor-load.sym
+C 45600 63800 1 270 1 resistor-strong.sym
 {
 T 46000 64100 5 10 0 0 90 2 1
 device=RESISTOR
 T 45700 64200 5 10 0 1 90 2 1
-footprint=0603-load
+footprint=0603-strong
 T 45700 64200 5 10 0 1 90 2 1
-value=rload
+value=rstrong
 T 45725 64475 5 10 1 1 0 0 1
 refdes=R1
 }
-C 46400 63800 1 90 0 resistor-load.sym
+C 46400 63800 1 90 0 resistor-strong.sym
 {
 T 46000 64100 5 10 0 0 90 6 1
 device=RESISTOR
 T 46300 64200 5 10 0 1 90 6 1
-footprint=0603-load
+footprint=0603-strong
 T 46300 64200 5 10 0 1 90 6 1
-value=rload
+value=rstrong
 T 46275 64475 5 10 1 1 0 6 1
 refdes=R2
 }
-C 47800 63800 1 270 1 resistor-load.sym
+C 47800 63800 1 270 1 resistor-strong.sym
 {
 T 48200 64100 5 10 0 0 90 2 1
 device=RESISTOR
 T 47900 64200 5 10 0 1 90 2 1
-footprint=0603-load
+footprint=0603-strong
 T 47900 64200 5 10 0 1 90 2 1
-value=rload
+value=rstrong
 T 47925 64475 5 10 1 1 0 0 1
 refdes=R3
 }

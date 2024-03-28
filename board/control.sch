@@ -469,38 +469,38 @@ footprint=0603-load
 T 8900 9300 5 10 0 1 0 0 1
 value=rload
 }
-C 8500 9000 1 0 0 resistor-load.sym
+C 8500 9000 1 0 0 resistor-strong.sym
 {
 T 8800 9400 5 10 0 0 0 0 1
 device=RESISTOR
 T 9450 9100 5 10 1 1 0 1 1
 refdes=R2
 T 8900 9100 5 10 0 1 0 0 1
-footprint=0603-load
+footprint=0603-strong
 T 8900 9100 5 10 0 1 0 0 1
-value=rload
+value=rstrong
 }
-C 8500 8800 1 0 0 resistor-load.sym
+C 8500 8800 1 0 0 resistor-strong.sym
 {
 T 8800 9200 5 10 0 0 0 0 1
 device=RESISTOR
 T 9450 8900 5 10 1 1 0 1 1
 refdes=R3
 T 8900 8900 5 10 0 1 0 0 1
-footprint=0603-load
+footprint=0603-strong
 T 8900 8900 5 10 0 1 0 0 1
-value=rload
+value=rstrong
 }
-C 8500 8600 1 0 0 resistor-load.sym
+C 8500 8600 1 0 0 resistor-strong.sym
 {
 T 8800 9000 5 10 0 0 0 0 1
 device=RESISTOR
 T 9450 8700 5 10 1 1 0 1 1
 refdes=R4
 T 8900 8700 5 10 0 1 0 0 1
-footprint=0603-load
+footprint=0603-strong
 T 8900 8700 5 10 0 1 0 0 1
-value=rload
+value=rstrong
 }
 C 8500 8400 1 0 0 resistor-load.sym
 {

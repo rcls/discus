@@ -33,8 +33,8 @@ if args.value is not None:
 
 Q=2000
 currentQ = 2000
-LOGIC = 'call cmp inc sub add logic'
-MEMORY = 'memp mem memi memw hazard2 hazard memf'
+LOGIC = 'call cmp inc add sub logic ret'
+MEMORY = 'memp mem memi memw hazard2 memf hazard'
 HI_DELAY_RES = 1680
 
 CHANGED=0
@@ -76,6 +76,8 @@ def dram_cap(pf=470):
     replace_line('gates/drambyte.sch', 'value=', f'value={pf}p\n',
                  after='refdes=C')
 
+volts=2.5
+
 def speed(vt=None, t0=None, tr=None):
     global currentQ
     if vt == None:
@@ -92,16 +94,21 @@ def speed(vt=None, t0=None, tr=None):
             if l.startswith('refdes='):
                 refdes = l.removeprefix('refdes=').strip()
             if l.startswith('value=pulse') and refdes == 'Vc0':
-                l = f'value=pulse 0 2.5v 1u 10n 10n {t0:g}n {vt}n\n'
+                l = f'value=pulse 0 {volts}v 1u 10n 10n {t0:g}n {vt}n\n'
             if l.startswith('value=pulse') and refdes == 'Vrst':
-                l = f'value=pulse 0 2.5v {tr}n 10n 10n 9 10\n'
+                l = f'value=pulse 0 {volts}v {tr}n 10n 10n 9 10\n'
+            if l.startswith('value=') and refdes == 'Vsupply':
+                l = f'value=DC {volts}V\n'
             F.write(l)
     currentQ = vt
 
 def rload(v=2490):
     # Keep rpull ratiometric.
     rl = v * 1e-3
-    rp = v * 10 / 2490
+    if v <= 2490:
+        rp = 10
+    else:
+        rp = v * 10 / 2490
     replace_line('subckt/resistor-load.prm', '.MODEL rload R',
                  f'.MODEL rload R (R={rl:g}k)\n')
     replace_line('subckt/resistor-load.prm', '.MODEL rpull R',
@@ -301,24 +308,25 @@ class BadGood:
 
 ##################### SPEED ########################
 
-scan('speed_basic', 147, 148, speed, FACTOR=10, TARGET=MEMORY,
-     CRIT='memp memi')
+scan('speed_basic', 142, 143, speed, FACTOR=10, TARGET=MEMORY,
+     CRIT='mem memp')
 
-scan('speed_duty1', 51, 52,
+scan('speed_duty1', 50, 51,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
-     TARGET=MEMORY, FACTOR=10, CRIT='memp memf')
+     TARGET=MEMORY, FACTOR=10, CRIT='mem hazard')
 
-scan('speed_duty0', 68, 69, lambda v=None: speed(t0=v), TARGET=MEMORY,
-     FACTOR=10, CRIT='memp memw')
+scan('speed_duty0', 65, 66, lambda v=None: speed(t0=v), TARGET=MEMORY,
+     FACTOR=10, CRIT='hazard2 mem')
 
-scan('speedl_logic', 165, 166, speed, FACTOR=10, TARGET=LOGIC, CRIT='cmp inc')
+scan('speedl_logic', 160, 161, speed, FACTOR=10, TARGET=LOGIC,
+     CRIT='call inc')
 
-scan('speedl_duty1', 60, 61,
+scan('speedl_duty1', 58, 59,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
-     TARGET=LOGIC, CRIT='cmp inc', FACTOR=10)
+     TARGET=LOGIC, CRIT='call inc', FACTOR=10)
 
-scan('speedl_duty0', 63, 64, lambda v=None: speed(t0 = v), TARGET=LOGIC,
-     CRIT='call inc', FACTOR=10)
+scan('speedl_duty0', 68, 69, lambda v=None: speed(t0 = v), TARGET=LOGIC,
+     CRIT='inc ret', FACTOR=10)
 
 ##################### DRAM CAP ######################
 
@@ -328,7 +336,7 @@ fast('dram_cap_lo', 10, 11, dram_cap, TARGET=MEMORY, CRIT='hazard2 mem')
 #     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
 fast('dram_cap_hi_fast', 196, 195, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='memi hazard2')
+     CRIT='mem hazard2')
 
 ####################### JFET ##########################
 
@@ -336,10 +344,10 @@ fast('dram_cap_hi_fast', 196, 195, dram_cap, TARGET=MEMORY, FACTOR=10,
 # means we are dropping the Idss by a significant factor.
 #
 # Also, it's very sensitive to the clock delay, so move that out of the way.
-fast('jfet_vto_lo', 54, 55, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
+fast('jfet_vto_lo', 55, 56, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
      EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memw memf')
 
-fast('jfet_vto_hi', 67, 66, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
+fast('jfet_vto_hi', 66, 65, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='hazard2 mem')
 
 fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-4,
@@ -347,56 +355,55 @@ fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-4,
 
 ######################### NPN #################################
 
-fast('npn_beta_lo', 2, 3, npn_beta, CRIT='call inc')
+fast('npn_beta_lo', 10, 11, npn_beta, CRIT='call mem')
 
 fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 ####################### PRE-BIAS NPN ##############################
 
-fast('rnpn_r_lo', 47, 48, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='inc')
+fast('rnpn_r_lo', 41, 42, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='call ret')
 
-fast('rnpn_r_hi_fast', 54, 53, npn22_r, TARGET=LOGIC, CRIT='cmp inc')
+fast('rnpn_r_hi_fast', 58, 57, npn22_r, TARGET=LOGIC, CRIT='call ret')
 slow('rnpn_r_hi_slow', 16, 15, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
-fast('rnpn_beta_lo', 20, 21, npn22_beta, CRIT='call memw')
+fast('rnpn_beta_lo', 33, 34, npn22_beta, CRIT='call memw')
 
 fast('rnpn_beta_hi', None, 10000, npn22_beta, TARGET=LOGIC, CRIT='call inc')
 
-fast('rnpn_br_lo', None, 1, npn22_beta_reverse, FACTOR=0.1, TARGET=LOGIC,
-     CRIT='call inc')
+fast('rnpn_br_lo', None, 1, npn22_beta_reverse, TARGET=LOGIC, CRIT='call inc')
 
 fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
      CRIT='call inc')
 
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 103, 104, rstrong, CRIT='call inc')
+fast('rstrong_lo', 9, 10, rstrong, FACTOR=10, CRIT='call mem')
 
-slow('rstrong_hi_slow', 33, 32, rstrong, FACTOR=100, CRIT='mem memp')
+slow('rstrong_hi_slow', 40, 39, rstrong, FACTOR=100, CRIT='memi hazard2')
 
-fast('rstrong_hi_fast', 143, 142, rstrong, FACTOR=10, CRIT='memi hazard')
+fast('rstrong_hi_fast', 157, 156, rstrong, FACTOR=10, CRIT='inc')
 
-slow('rload_hi_slow', 77, 76, rload, FACTOR=100, CRIT='call inc')
+slow('rload_hi_slow', 90, 89, rload, FACTOR=100, CRIT='sub logic')
 
 #fast('rload_hi_fast', 34, 35, rload, FACTOR=100, CRIT='call inc')
 
-fast('rload_lo', 1, 2, rload, CRIT='call add', FACTOR=100)
+fast('rload_lo', 4, 5, rload, CRIT='ret memw', FACTOR=100)
 
-fast('rpull_lo', 13, 14, rpull, FACTOR=100, CRIT='cmp hazard')
-fast('rpull_hi', None, 1e5, rpull, CRIT='hazard memp')
+fast('rpull_lo', 13, 14, rpull, FACTOR=100, CRIT='hazard inc')
+fast('rpull_hi', 6, 5, rpull, FACTOR=1e4, CRIT='hazard memp')
 
 fast('rbias_lo', None, 100, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
-fast('rbias_hi', 6, 5, bias_res, FACTOR=1e4, TARGET=MEMORY,
-     CRIT='hazard2 memf')
+fast('rbias_hi', 5, 4, bias_res, FACTOR=1e4, TARGET=MEMORY,
+     CRIT='hazard2 memp')
 
 ######################### MOSFETS #################################
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
-fast('nmos_vto_lo', 452, 453, nmos_vto, FACTOR=1e-3, CRIT='cmp logic',
+fast('nmos_vto_lo', 452, 453, nmos_vto, FACTOR=1e-3, CRIT='memf inc',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
-slow('nmos_vto_hi_slow', 163, 162, nmos_vto, FACTOR=10e-3, CRIT='call inc')
-fast('nmos_vto_hi_fast', 115, 114, nmos_vto, FACTOR=10e-3, CRIT='call inc')
+slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
+fast('nmos_vto_hi_fast', 114, 113, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 
 fast('pmos_vto_hi_fast', 177, 176, pmos_vto, FACTOR=10e-3, CRIT='mem hazard2')
 

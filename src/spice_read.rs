@@ -187,8 +187,7 @@ impl SpiceRead {
     }
 
     pub fn indexed_byte(&self, name: &str, index: &[usize]) -> Vec<u8> {
-        let names: [String; 8] = std::array::from_fn(
-            |i| format!("{name}{i}"));
+        let names: [String; 8] = std::array::from_fn(|i| format!("{name}{i}"));
         let columns: [_; 8] = std::array::from_fn(|i| self.vars[&names[i]]);
         let mut res = Vec::new();
         for i in index {

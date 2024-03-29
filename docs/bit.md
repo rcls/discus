@@ -12,8 +12,6 @@
 [ ![nandod](nandod-sym.png) ](nandod.html)
 [ ![notb](notb-sym.png) ](notb.html)
 [ ![nand](nand-sym.png) ](nand.html)
-[ ![dflipflop](dflipflop-sym.png) ](dflipflop.html)
-[ ![selis](selis-sym.png) ](selis.html)
 [ ![cnot](cnot-sym.png) ](cnot.html)
 [ ![xnor](xnor-sym.png) ](xnor.html)
 [ ![halfadd](halfadd-sym.png) ](halfadd.html)

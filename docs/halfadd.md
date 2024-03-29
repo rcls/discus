@@ -1,5 +1,5 @@
 # halfadd.sch schematic
 ![halfadd.sch](halfadd.png)
 # Gates in halfadd.sch
-[ ![not](not-sym.png) ](not.html)
+[ ![nots](nots-sym.png) ](nots.html)
 [ ![nor](nor-sym.png) ](nor.html)

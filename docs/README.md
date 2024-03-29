@@ -349,8 +349,8 @@ Register File
 =============
 
 The main register file consists of the four architectural registers `A`, `X`,
-`Y`, `U` and the hidden register `K`.  The register file is dual ported, with
-separate read and write ports.
+`Y`, `U`, the hidden register `K`, and the refresh counter `R`.  The register
+file is dual ported, with separate read and write ports.
 
 [ <img align="right" src="sramcell2-sym.png"> ](sramcell2.md)
 

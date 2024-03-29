@@ -17,7 +17,7 @@ pub struct State {
     pub y: u8,
     pub u: u8,
 
-    pub k: Option<u8>,                  // We don't fully model k.
+    pub k: u8,
     pub prefix: Option<Prefix>,
     pub c: bool,
     pub pc: u8,
@@ -44,7 +44,6 @@ impl State {
         let mut operand = if prefix != None { k } else { self.op_reg(opcode) };
 
         // Default behavior...
-        self.k = None;
         self.pc += 1;
         self.took_call = false;
         let c = self.c;
@@ -55,25 +54,32 @@ impl State {
                 self.jump(opcode, k);   // JUMP and CALL.
                 operand = self.r;       // We do a refresh...
                 self.r = operand.wrapping_add(1);
-                self.k = Some(self.r);
+                self.k = self.r;
             }
             else {
                 let next = program[self.pc as usize] & 3;
-                self.k = Some(opcode | next << 6);  // CONST.
+                self.k = opcode | next << 6;  // CONST.
                 self.prefix = Some(Prefix::Const);
             }
 
             0x40..=0x5f => self.ret(opcode),
 
             0x60..=0x67 => self.last_out = self.a,
-            0x68..=0x6b => unreachable!(), // Unallocated, NOP?
-            0x6c..=0x6f => {
+            0x68..=0x6b => {
                 self.memory.0[operand as usize] = self.a;
+                self.k = 255;
+            }
+            0x6c..=0x6f => {
+                // Bit 2 clear is the official encoding.  Bit 2 set also loads
+                // K with A, but that is a critical timing path, so we don't do
+                // it.
+                self.memory.0[operand as usize] = self.a;
+                self.k = self.a;
             }
             0x70..=0x77 => self.inp(),
             0x78..=0x7b => unreachable!(), // Unallocated.
             0x7c..=0x7f => {            // MEM prefix.
-                self.k = Some(self.memory.0[operand as usize]);
+                self.k = self.memory.0[operand as usize];
                 self.prefix = Some(Prefix::Value);
             }
 
@@ -94,7 +100,7 @@ impl State {
     }
 
     pub fn k(&self) -> u8 {
-        self.k.unwrap_or(0xff)
+        self.k
     }
 
     fn op_reg(&self, op: u8) -> u8 {
@@ -124,7 +130,7 @@ impl State {
         };
         self.c = r >= 0x100;
         let r = (r & 0xff) as u8;
-        self.k = Some(r);
+        self.k = r;
         r
     }
 
@@ -144,6 +150,7 @@ impl State {
             self.sp -= 1;
             self.pc = self.stack[self.sp as usize & 3];
         }
+        self.k = 255;
     }
 
     fn inp(&self) { todo!() }
@@ -156,7 +163,7 @@ impl State {
             3 => self.memory.0[operand as usize],
             _ => unreachable!()
         };
-        self.k = Some(r);
+        self.k = r;
         match opcode >> 4 & 3 {
             0 => self.a = r,
             1 => self.x = r,

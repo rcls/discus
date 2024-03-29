@@ -37,6 +37,7 @@ pub enum Condition {
     _CZ = 24, _NCZ = 28,
 }
 
+const STA  : u8 = 0x68;
 const INP  : u8 = 0x70;
 const MEM  : u8 = 0x7c;
 const LOAD : u8 = 0xc8;
@@ -132,7 +133,7 @@ impl Instructions {
     pub fn xor(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x98, v)}
     pub fn cmp(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0xa4, v)}
     pub fn tst(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0xac, v)}
-    pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(0x6c, v)}
+    pub fn sta(&mut self, v: impl Into<Value>) -> &mut Self {self.code(STA, v)}
 
     pub fn jp(&mut self, cc: Condition, t: impl Into<Target>) -> &mut Self {
         self.insn(Address(t.into())).byte(cc as u8)

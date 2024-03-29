@@ -195,7 +195,7 @@ impl<T: Emitter> Emission<&'_ mut T> {
             }
 
             0x60        => self.e.emit_basic(a, &[op], "out")?,
-            0x6c..=0x6f => self.emit_operand(a, op, "sta")?,
+            0x68..=0x6b => self.emit_operand(a, op, "sta")?,
             0x70        => {
                 self.eject(a)?;
                 self.prefix = Inp(op);

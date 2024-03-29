@@ -38,7 +38,7 @@ impl SpiceCheck<'_> {
         self.state.y = y[3];
         self.state.u = u[3];
         self.state.c = c[3];
-        self.state.k = None;
+        self.state.k = k[3];
         self.state.r = r[3];
         assert_eq!(pc[2], 0, "PC@2 = {}", pc[2]);
         assert_eq!(pc[3], 1, "PC@3 = {}", pc[3]);
@@ -55,9 +55,9 @@ impl SpiceCheck<'_> {
             self.verify(self.state.y, y[i], "Y");
             self.verify(self.state.u, u[i], "U");
             self.verify(self.state.r, r[i], "R");
-            if let Some(kk) = self.state.k {
-                self.verify(kk, k[i], "K");
-            }
+
+            self.verify(self.state.k, k[i], "K");
+
             self.verify(self.state.c, c[i], "C");
 
             self.verify(self.state.b, b[i-1], "B");

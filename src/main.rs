@@ -26,7 +26,7 @@ mod resistors;
 #[derive(Copy, Clone, ValueEnum)]
 enum Program {
     Add, Call, Cmp, Hazard, Hazard2, Inc, Logic, Mem, Memf, Memi, Memp, Memw,
-    Sub, Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp,
+    Sub, Ret, Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp,
     MemCheck, MillerRabin,
 }
 
@@ -77,6 +77,7 @@ fn main() {
         Memp    => memp(),
         Memw    => memw(),
         Sub     => sub(),
+        Ret     => ret(),
 
         Alu       => return alu::alu            (&args.verify.unwrap()),
         Opdecode  => return opdecode::opdecode  (&args.verify.unwrap()),

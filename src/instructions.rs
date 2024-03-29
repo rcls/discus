@@ -111,7 +111,7 @@ impl Instructions {
         self
     }
 
-    fn byte(&mut self, b: u8) -> &mut Self { self.insn(Byte(b)) }
+    pub fn byte(&mut self, b: u8) -> &mut Self { self.insn(Byte(b)) }
     fn code(&mut self, b: u8, v: impl Into<Value>) -> &mut Self {
         match v.into() {
             Reg   (r) => self.byte(b + r as u8),

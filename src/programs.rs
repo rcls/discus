@@ -240,6 +240,34 @@ pub fn memw() -> Instructions {
     memw
 }
 
+pub fn ret() -> Instructions {
+    // This is laid out to produce glitches on the rom bit lines.
+    let mut ret = Instructions::default();
+    ret .call ("retz")
+        .call ("retnz")
+        .ret  ()
+        .byte(0x18).byte(0x18).byte(0x18).byte(0x18)
+        .byte(0x18).byte(0x18).byte(0x18).byte(0x18)
+        .byte(0x18)
+    .label("retz")
+        .xor  (A)
+        .check(|s| s.k == Some(0))
+        .check(|s| !s.c)
+        .rt   (C)
+        .rt   (Z)
+        .byte(0x18).byte(0x18).byte(0x18).byte(0x18)
+    .label("retnz")
+        .sub  (A)
+        .inc  (A)
+        .check(|s| s.k == Some(1))
+        .check(|s| s.c)
+        .rt   (NC)
+        .rt   (NZ)
+        .byte(0x18).byte(0x18).byte(0x18).byte(0x18)
+        .byte(0x18).byte(0x18).byte(0x18);
+    ret
+}
+
 pub fn sub() -> Instructions {
     let mut sub = Instructions::default();
     sub .sub  (A)

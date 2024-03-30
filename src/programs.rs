@@ -70,7 +70,8 @@ pub fn hazard() -> Instructions {
         .sta  (A)
         .load (X, A)
         .incv (Y, X)
-        .dec  (A)
+        .sbc  (A)
+        .check(|s| s.a == 255)
         .sta  (Y)
         .load (A, [X])
         .load (A, [Y])
@@ -107,6 +108,7 @@ pub fn inc() -> Instructions {
     inc
         .sub  (A)
         .check(|s| s.c && s.a == 0)
+        .sta  (A)  // Sets up bad case for dec having to flip strobes!
         .decv (X, A)
         .load (Y, X)
         .incv (U, Y)
@@ -153,8 +155,10 @@ pub fn mem() -> Instructions {
     let mut mem = Instructions::default();
     mem
         .xor  (A)
+        .check(|s| !s.c)
         .sta  (0x15)
-        .dec  (A)
+        .sbc  (A)
+        .check(|s| s.a == 255)
         .sta  (0x08)
         .dec  (A)
         .sta  (0x01)
@@ -189,8 +193,10 @@ pub fn memi() -> Instructions {
         .load (Y, 0x08)
         .load (U, 0x15)
         .xor  (A)
+        .check(|s| !s.c && s.a == 0)
         .sta  (U)
-        .dec  (A)
+        .sbc  (A)
+        .check(|s| s.a == 255)
         .sta  (Y)
         .dec  (A)
         .sta  (X)

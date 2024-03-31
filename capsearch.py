@@ -315,7 +315,7 @@ scan('speed_duty1', 50, 51,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='mem hazard')
 
-scan('speed_duty0', 65, 66, lambda v=None: speed(t0=v), TARGET=MEMORY,
+scan('speed_duty0', 49, 50, lambda v=None: speed(t0=v), TARGET=MEMORY,
      FACTOR=10, CRIT='hazard2 mem')
 
 scan('speedl_logic', 160, 161, speed, FACTOR=10, TARGET=LOGIC,
@@ -325,8 +325,8 @@ scan('speedl_duty1', 58, 59,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call inc', FACTOR=10)
 
-scan('speedl_duty0', 68, 69, lambda v=None: speed(t0 = v), TARGET=LOGIC,
-     CRIT='inc ret', FACTOR=10)
+scan('speedl_duty0', 49, 50, lambda v=None: speed(t0 = v), TARGET=LOGIC,
+     CRIT='cmp ret', FACTOR=10)
 
 ##################### DRAM CAP ######################
 
@@ -429,9 +429,6 @@ fast('rbiascap_hi', 34, 33, bias_res, FACTOR=100, TARGET=MEMORY,
 # Doesn't look like these buy us anything...
 fast('schottky_is_lo', None, 1, schottky_is, CRIT='call inc', WANTED=False)
 fast('schottky_is_hi', None, 1e4, schottky_is, CRIT='call inc', WANTED=False)
-
-# cap=6.4, bias=1700, delay=840 passes. [9.5 passes bias 230 2390]
-# cap=14.8, bias=3100,3200, delay=420 passes.
 
 ########################### RUN THE CHECKS ###########################
 if args.reverse:

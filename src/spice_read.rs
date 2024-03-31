@@ -198,7 +198,6 @@ impl SpiceRead {
                         index: &[usize]) -> Vec<u8> {
         let ps: [String; 8] = std::array::from_fn(|i| format!("{pos}{i}"));
         let ns: [String; 8] = std::array::from_fn(|i| format!("{neg}{i}{negs}"));
-        // println!("{ps:?} {ns:?}");
         let columns: [_; 8] = std::array::from_fn(
             |i| (self.vars[&ps[i]], self.vars[&ns[i]]));
         let bit = |i, p, n| self.raw_values[i+p] > self.raw_values[i+n];

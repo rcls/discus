@@ -111,7 +111,7 @@ fn work(i: &mut Instructions) -> &mut Instructions {
         .load(Y, [BASE_INDEX])
         .call("mult")
         .call("classify")
-        .load(A,A)
+        .load(A, A)
         .jp  (Z, "main_loop_next");
 
     // Now do the exponentiation....

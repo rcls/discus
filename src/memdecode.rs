@@ -1,7 +1,7 @@
 pub fn memdecode(path: &String, tag: &str, size: usize) {
     let s = crate::spice_read::SpiceRead::from_path(path, 5e-6);
 
-    let p = s.extract_byte("p");
+    let p = s.extract_byte_single("p");
 
     let sel_names: Vec<String> = (0..size as u32)
         .map(|i| format!("s_{}_{}_{}_{}",

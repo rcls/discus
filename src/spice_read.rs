@@ -178,15 +178,40 @@ impl SpiceRead {
             .collect()
     }
 
-    pub fn extract_byte(&self, name: &str) -> Vec<u8> {
-        self.indexed_byte(name, &self.index)
+    pub fn extract_byte(&self, pos: &str, neg: &str) -> Vec<u8> {
+        self.indexed_byte(pos, neg, "", &self.index)
     }
 
-    pub fn extract_byte_other(&self, name: &str) -> Vec<u8> {
-        self.indexed_byte(name, &self.other)
+    pub fn extract_byte_diff(&self, pos: &str) -> Vec<u8> {
+        self.indexed_byte(pos, pos, "#", &self.index)
     }
 
-    pub fn indexed_byte(&self, name: &str, index: &[usize]) -> Vec<u8> {
+    pub fn extract_byte_other(&self, pos: &str, neg: &str) -> Vec<u8> {
+        self.indexed_byte(pos, neg, "", &self.other)
+    }
+
+    pub fn extract_byte_single(&self, name: &str) -> Vec<u8> {
+        self.indexed_byte_single(name, &self.index)
+    }
+
+    pub fn indexed_byte(&self, pos: &str, neg: &str, negs: &str,
+                        index: &[usize]) -> Vec<u8> {
+        let ps: [String; 8] = std::array::from_fn(|i| format!("{pos}{i}"));
+        let ns: [String; 8] = std::array::from_fn(|i| format!("{neg}{i}{negs}"));
+        // println!("{ps:?} {ns:?}");
+        let columns: [_; 8] = std::array::from_fn(
+            |i| (self.vars[&ps[i]], self.vars[&ns[i]]));
+        let bit = |i, p, n| self.raw_values[i+p] > self.raw_values[i+n];
+        let mut res = Vec::new();
+        for i in index {
+            res.push(columns.iter().enumerate()
+                     .map(|(b, (p, n))| bit(i, p, n) as (u8) << b)
+                     .sum());
+        }
+        res
+    }
+
+    pub fn indexed_byte_single(&self, name: &str, index: &[usize]) -> Vec<u8> {
         let names: [String; 8] = std::array::from_fn(|i| format!("{name}{i}"));
         let columns: [_; 8] = std::array::from_fn(|i| self.vars[&names[i]]);
         let mut res = Vec::new();

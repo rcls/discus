@@ -15,20 +15,20 @@ impl SpiceCheck<'_> {
     }
 
     pub fn spice_check(&mut self) {
-        let a  = self.spice.extract_byte("a");
-        let b  = self.spice.extract_byte("b");
-        let x  = self.spice.extract_byte("r_x_b");
-        let y  = self.spice.extract_byte("r_y_b");
-        let u  = self.spice.extract_byte("r_u_b");
-        let r  = self.spice.extract_byte("r_r_b");
-        let k  = self.spice.extract_byte("k_b");
-        let pc = self.spice.extract_byte("p");
+        let a  = self.spice.extract_byte_diff("a");
+        let b  = self.spice.extract_byte_diff("b");
+        let x  = self.spice.extract_byte("r_x_b", "l_x_b");
+        let y  = self.spice.extract_byte("r_y_b", "l_y_b");
+        let u  = self.spice.extract_byte("r_u_b", "l_u_b");
+        let r  = self.spice.extract_byte("r_r_b", "l_r_b");
+        let k  = self.spice.extract_byte("k_b", "l_k_b");
+        let pc = self.spice.extract_byte_diff("p");
         let c  = self.spice.extract_signal("co_c");
         let stack = [
-            self.spice.extract_byte_other("l_l0_b"),
-            self.spice.extract_byte_other("l_l1_b"),
-            self.spice.extract_byte_other("l_l2_b"),
-            self.spice.extract_byte_other("l_l3_b")];
+            self.spice.extract_byte_other("l_l0_b", "r_l0_b"),
+            self.spice.extract_byte_other("l_l1_b", "r_l1_b"),
+            self.spice.extract_byte_other("l_l2_b", "r_l2_b"),
+            self.spice.extract_byte_other("l_l3_b", "r_l3_b")];
 
         let timestamps: Vec<_> = self.spice.extract_sample("time");
 

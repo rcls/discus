@@ -85,8 +85,8 @@ impl SpiceRead {
         }
 
         if clock_recover {
-            self.index = self.clock_recover("phi1");
-            self.other = self.clock_recover("phi1##_m");
+            self.index = self.clock_recover("phi1##_m");
+            self.other = self.clock_recover("phi1");
         }
         else {
             self.clock_index();

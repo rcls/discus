@@ -792,14 +792,14 @@ T 10400 2500 5 10 0 0 0 0 1
 device=OUTPUT
 }
 N 10000 2300 10000 2700 4
-C 10500 2300 1 90 0 resistor-load.sym
+C 10500 2300 1 90 0 resistor-strong.sym
 {
 T 10100 2600 5 10 0 0 90 0 1
 device=RESISTOR
 T 10400 2700 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=0603-strong
 T 10400 2700 5 10 0 1 90 0 1
-value=rload
+value=rstrong
 T 10350 2950 5 10 1 1 90 0 1
 refdes=R3
 }

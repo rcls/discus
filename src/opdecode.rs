@@ -21,7 +21,8 @@ pub fn opdecode(path: &String) {
 
         // Test for undesirable combos.
         assert!(!cs || !cr, "CS and CR on {opcode:#04x}");
-        assert!(!as_ || !ar, "AS and AR on {opcode:#04x}");
+        // AR overrides AS.
+        let as_ = as_ & !ar;
 
         let [mut ex_cr, mut ex_cs, mut ex_ar, mut ex_as] = [false; 4];
         let [mut ex_and, mut ex_or, mut ex_n, mut ex_in] = [false; 4];

@@ -75,16 +75,16 @@ T 2600 1000 5 10 0 1 270 0 1
 value=rload
 }
 N 2100 900 2100 1000 4
-C 2000 2600 1 270 0 resistor-strong.sym
+C 2000 2600 1 270 0 resistor-load.sym
 {
 T 1900 1600 5 10 0 1 270 0 1
-footprint=0603-strong
+footprint=0603-load
 T 2400 2300 5 10 0 0 270 0 1
 device=RESISTOR
 T 2150 1950 5 10 1 1 270 0 1
 refdes=R3
 T 1700 2500 5 10 0 1 270 0 1
-value=rstrong
+value=rload
 }
 N 2100 1700 2100 1400 4
 {

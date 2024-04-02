@@ -13,6 +13,6 @@
 [ ![notb](notb-sym.png) ](notb.html)
 [ ![nand](nand-sym.png) ](nand.html)
 [ ![cnot](cnot-sym.png) ](cnot.html)
-[ ![xnor](xnor-sym.png) ](xnor.html)
+[ ![seli](seli-sym.png) ](seli.html)
 [ ![halfadd](halfadd-sym.png) ](halfadd.html)
 [ ![diplatch](diplatch-sym.png) ](diplatch.html)

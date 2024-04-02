@@ -170,26 +170,17 @@ def schottky_is(v=None):
 
 def nmos_vto(VTO=0.9):
     # FIXME - this is confused between 0.82 and 0.9.
-    # Original line is:
-    '.MODEL DMOS NMOS(VTO=0.82 KP=4.12E-1'
-    path = 'subckt/FDV301N.prm'
-    nmos = slurppath(path)
-    munged = []
-    for L in nmos:
-        if L.startswith('.model FDV301N VDMOS'):
-            L = re.sub(r'\bvto=[^ ]* ', f'vto={VTO} ', L)
-        munged.append(L)
-    writepath(path, munged)
+    # Original line is: '.MODEL DMOS NMOS(VTO=0.82 KP=4.12E-1'
+    replace_line('subckt/FDV301N.prm', '+ vto=', f'+ vto={VTO}\n')
 
 def pmos_vto(VTO=0.9):
-    path = 'subckt/NX3008PBK.prm'
-    pmos = slurppath(path)
-    munged = []
-    for L in pmos:
-        if L.startswith('.model NX3008 VDMOS'):
-            L = re.sub(r'\bvto=[^ ]* ', f'vto=-{VTO} ', L)
-        munged.append(L)
-    writepath(path, munged)
+    replace_line('subckt/NX3008PBK.prm', '+ vto=', f'+ vto=-{VTO}\n')
+
+def nmos_kp(kp=0.29):
+    replace_line('subckt/FDV301N.prm', '+ kp=', f'+ kp={kp}\n')
+
+def pmos_kp(kp='4.673825e-001'):
+    replace_line('subckt/NX3008PBK.prm', '+ Kp=', f'+ Kp={kp}\n')
 
 def slow(*args, EXTRA=[], **kwargs):
     scan(*args, **kwargs, EXTRA = EXTRA + [(speed, 4000)])
@@ -405,12 +396,16 @@ fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='call cmp',
 slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 fast('nmos_vto_hi_fast', 133, 132, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 
+fast('nmos_kp_lo', 1, 29, nmos_kp, FACTOR=0.01)
+
 fast('pmos_vto_hi_fast', 176, 175, pmos_vto, FACTOR=10e-3, CRIT='mem hazard2')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
 fast('pmos_vto_lo', 10, 11, pmos_vto, FACTOR=10e-3,
      EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memp romdecode')
+
+fast('pmos_kp_lo', 1, 33, pmos_kp, FACTOR=0.01)
 
 ################################# EXTRAS #######################
 

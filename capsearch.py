@@ -72,7 +72,7 @@ def writepath(P, lines):
     with open(P, 'w') as F:
         F.writelines(lines)
 
-def dram_cap(pf=470):
+def dram_cap(pf=620):
     replace_line('gates/drambyte.sch', 'value=', f'value={pf}p\n',
                  after='refdes=C')
 

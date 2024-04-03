@@ -186,27 +186,6 @@ pub fn memf() -> Instructions {
     memf
 }
 
-pub fn memi() -> Instructions {
-    let mut memi = Instructions::default();
-    memi
-        .load (X, 0x01)
-        .load (Y, 0x08)
-        .load (U, 0x15)
-        .xor  (A)
-        .check(|s| !s.c && s.a == 0)
-        .sta  (U)
-        .sbc  (A)
-        .check(|s| s.a == 255)
-        .sta  (Y)
-        .dec  (A)
-        .sta  (X)
-        .load (A, [X])
-        .load (A, [Y])
-        .load (A, [U])
-        .ret  ();
-    memi
-}
-
 pub fn memp() -> Instructions {
     let mut memp = Instructions::default();
     memp

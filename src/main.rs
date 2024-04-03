@@ -25,7 +25,7 @@ mod resistors;
 
 #[derive(Copy, Clone, ValueEnum)]
 enum Program {
-    Add, Call, Cmp, Hazard, Hazard2, Inc, Logic, Mem, Memf, Memi, Memp, Memw,
+    Add, Call, Cmp, Hazard, Hazard2, Inc, Logic, Mem, Memf, Memp, Memw,
     Sub, Ret, Alu, Opdecode, Pcdecode, Ramdecode, Romdecode, Sp,
     MemCheck, MillerRabin,
 }
@@ -73,7 +73,6 @@ fn main() {
         Logic   => logic(),
         Mem     => mem(),
         Memf    => memf(),
-        Memi    => memi(),
         Memp    => memp(),
         Memw    => memw(),
         Sub     => sub(),

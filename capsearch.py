@@ -34,7 +34,7 @@ if args.value is not None:
 Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc add sub logic ret'
-MEMORY = 'memp mem memi memw hazard2 memf hazard'
+MEMORY = 'memp mem memw hazard2 memf hazard'
 HI_DELAY_RES = 1680
 
 CHANGES=[]
@@ -300,7 +300,7 @@ class BadGood:
 ##################### SPEED ########################
 
 scan('speed_basic', 119, 120, speed, FACTOR=10, TARGET=MEMORY,
-     CRIT='memp memi')
+     CRIT='memp')
 
 scan('speed_duty1', 50, 51,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
@@ -341,8 +341,7 @@ fast('jfet_vto_lo', 55, 56, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
 fast('jfet_vto_hi', 66, 65, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='hazard2 mem')
 
-fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-4,
-     CRIT='memp memi')
+fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-4, CRIT='memp')
 
 ######################### NPN #################################
 

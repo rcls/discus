@@ -108,7 +108,8 @@ pub fn inc() -> Instructions {
     inc
         .sub  (A)
         .check(|s| s.c && s.a == 0)
-        .sta  (A)  // Sets up bad case for dec having to flip strobes!
+        // Sets up bad case for dec having to flip strobes! Also glitches call.
+        .sta  (0x10)
         .decv (X, A)
         .load (Y, X)
         .incv (U, Y)

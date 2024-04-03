@@ -309,24 +309,24 @@ scan('speed_duty1', 50, 51,
 scan('speed_duty0', 55, 56, lambda v=None: speed(t0=v), TARGET=MEMORY,
      FACTOR=10, CRIT='hazard2 memp')
 
-scan('speedl_logic', 154, 155, speed, FACTOR=10, TARGET=LOGIC,
+scan('speedl_logic', 155, 156, speed, FACTOR=10, TARGET=LOGIC,
      CRIT='call inc')
 
 scan('speedl_duty1', 62, 63,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call ret', FACTOR=10)
 
-scan('speedl_duty0', 47, 48, lambda v=None: speed(t0 = v), TARGET=LOGIC,
+scan('speedl_duty0', 46, 47, lambda v=None: speed(t0 = v), TARGET=LOGIC,
      CRIT='cmp call', FACTOR=10)
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 10, 11, dram_cap, TARGET=MEMORY, CRIT='hazard2 memp')
+fast('dram_cap_lo', 9, 10, dram_cap, TARGET=MEMORY, CRIT='hazard2 memp')
 
 #scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
 #     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
-fast('dram_cap_hi_fast', 196, 195, dram_cap, TARGET=MEMORY, FACTOR=10,
+fast('dram_cap_hi_fast', 197, 196, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='hazard2')
 
 ####################### JFET ##########################
@@ -335,7 +335,7 @@ fast('dram_cap_hi_fast', 196, 195, dram_cap, TARGET=MEMORY, FACTOR=10,
 # means we are dropping the Idss by a significant factor.
 #
 # Also, it's very sensitive to the clock delay, so move that out of the way.
-fast('jfet_vto_lo', 55, 56, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
+fast('jfet_vto_lo', 61, 62, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
      EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memw memf')
 
 fast('jfet_vto_hi', 67, 66, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
@@ -354,7 +354,7 @@ fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 fast('rnpn_r_lo', 39, 40, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='call ret')
 
-fast('rnpn_r_hi_fast', 53, 52, npn22_r, TARGET=LOGIC, CRIT='call ret')
+fast('rnpn_r_hi_fast', 54, 53, npn22_r, TARGET=LOGIC, CRIT='call ret')
 slow('rnpn_r_hi_slow', 15, 14, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
 fast('rnpn_beta_lo', 33, 34, npn22_beta, CRIT='call memw')
@@ -370,9 +370,10 @@ fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
 
 fast('rstrong_lo', 8, 9, rstrong, FACTOR=10, CRIT='call')
 
-slow('rstrong_hi_slow', 40, 39, rstrong, FACTOR=100, CRIT='memi hazard2')
-
-fast('rstrong_hi_fast', 176, 175, rstrong, FACTOR=10, CRIT='memp call')
+# We have a factor of 2 margin, take it for granted that we could do better at
+# lower speeds.
+fast('rstrong_hi_fast', 174, 173, rstrong, FACTOR=10, CRIT='call hazard2')
+#slow('rstrong_hi_slow', 39, 38, rstrong, FACTOR=100, CRIT='memi hazard2')
 
 slow('rload_hi_slow', 92, 91, rload, FACTOR=100, CRIT='sub logic')
 
@@ -384,7 +385,7 @@ fast('rpull_lo', 13, 14, rpull, FACTOR=100, CRIT='cmp ret')
 fast('rpull_hi', 7, 6, rpull, FACTOR=1e4, CRIT='hazard inc')
 
 fast('rbias_lo', None, 100, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
-fast('rbias_hi', 5, 4, bias_res, FACTOR=1e4, TARGET=MEMORY,
+fast('rbias_hi', None, 100000, bias_res, TARGET=MEMORY,
      CRIT='hazard2 memp')
 
 ######################### MOSFETS #################################
@@ -393,12 +394,13 @@ fast('rbias_hi', 5, 4, bias_res, FACTOR=1e4, TARGET=MEMORY,
 fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='add hazard2',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
-slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
+# slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 fast('nmos_vto_hi_fast', 133, 132, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 
-fast('nmos_kp_lo', 1, 29, nmos_kp, FACTOR=0.01)
+fast('nmos_kp_lo', 5, 6, nmos_kp, FACTOR=0.01, CRIT='inc hazard',
+     EXTRA=[(delay_res, HI_DELAY_RES)])
 
-fast('pmos_vto_hi_fast', 167, 166, pmos_vto, FACTOR=10e-3, CRIT='hazard2')
+fast('pmos_vto_hi_fast', 168, 167, pmos_vto, FACTOR=10e-3, CRIT='hazard2')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.

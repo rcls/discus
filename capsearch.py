@@ -34,7 +34,7 @@ if args.value is not None:
 Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc add sub logic ret'
-MEMORY = 'memp mem memw hazard2 memf hazard'
+MEMORY = 'memp memw hazard2 memf hazard'
 HI_DELAY_RES = 1680
 
 CHANGES=[]
@@ -300,11 +300,11 @@ class BadGood:
 ##################### SPEED ########################
 
 scan('speed_basic', 119, 120, speed, FACTOR=10, TARGET=MEMORY,
-     CRIT='memp')
+     CRIT='memp memf')
 
 scan('speed_duty1', 50, 51,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
-     TARGET=MEMORY, FACTOR=10, CRIT='mem hazard')
+     TARGET=MEMORY, FACTOR=10, CRIT='hazard')
 
 scan('speed_duty0', 55, 56, lambda v=None: speed(t0=v), TARGET=MEMORY,
      FACTOR=10, CRIT='hazard2 memp')
@@ -321,13 +321,13 @@ scan('speedl_duty0', 47, 48, lambda v=None: speed(t0 = v), TARGET=LOGIC,
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 10, 11, dram_cap, TARGET=MEMORY, CRIT='hazard2 mem')
+fast('dram_cap_lo', 10, 11, dram_cap, TARGET=MEMORY, CRIT='hazard2 memp')
 
 #scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
 #     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
 fast('dram_cap_hi_fast', 196, 195, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='mem hazard2')
+     CRIT='hazard2')
 
 ####################### JFET ##########################
 
@@ -338,14 +338,15 @@ fast('dram_cap_hi_fast', 196, 195, dram_cap, TARGET=MEMORY, FACTOR=10,
 fast('jfet_vto_lo', 55, 56, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
      EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memw memf')
 
-fast('jfet_vto_hi', 66, 65, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
-     CRIT='hazard2 mem')
+fast('jfet_vto_hi', 67, 66, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
+     CRIT='hazard2')
 
-fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-4, CRIT='memp')
+fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-4,
+     CRIT='memp hazard2')
 
 ######################### NPN #################################
 
-fast('npn_beta_lo', 4, 5, npn_beta, CRIT='call mem')
+fast('npn_beta_lo', 4, 5, npn_beta, CRIT='call ret')
 
 fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
@@ -367,7 +368,7 @@ fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
 
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 8, 9, rstrong, FACTOR=10, CRIT='call mem')
+fast('rstrong_lo', 8, 9, rstrong, FACTOR=10, CRIT='call')
 
 slow('rstrong_hi_slow', 40, 39, rstrong, FACTOR=100, CRIT='memi hazard2')
 
@@ -389,7 +390,7 @@ fast('rbias_hi', 5, 4, bias_res, FACTOR=1e4, TARGET=MEMORY,
 ######################### MOSFETS #################################
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
-fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='call cmp',
+fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='add hazard2',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
 slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
@@ -397,14 +398,15 @@ fast('nmos_vto_hi_fast', 133, 132, nmos_vto, FACTOR=10e-3, CRIT='call inc')
 
 fast('nmos_kp_lo', 1, 29, nmos_kp, FACTOR=0.01)
 
-fast('pmos_vto_hi_fast', 176, 175, pmos_vto, FACTOR=10e-3, CRIT='mem hazard2')
+fast('pmos_vto_hi_fast', 167, 166, pmos_vto, FACTOR=10e-3, CRIT='hazard2')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
 fast('pmos_vto_lo', 10, 11, pmos_vto, FACTOR=10e-3,
      EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memp romdecode')
 
-fast('pmos_kp_lo', 1, 33, pmos_kp, FACTOR=0.01)
+fast('pmos_kp_lo', 3, 4, pmos_kp, FACTOR=0.01, CRIT='memp inc',
+     EXTRA=[(delay_res, HI_DELAY_RES)])
 
 ################################# EXTRAS #######################
 
@@ -428,9 +430,10 @@ fast('schottky_is_hi', None, 1e4, schottky_is, CRIT='call inc', WANTED=False)
 if args.reverse:
     SCANS.reverse()
 
-for bg in SCANS:
-    bg.scan()
-    bg.finish()
-
-for change in CHANGES:
-    print(change)
+try:
+    for bg in SCANS:
+        bg.scan()
+        bg.finish()
+finally:
+    for change in CHANGES:
+        print(change)

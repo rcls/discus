@@ -152,24 +152,6 @@ pub fn logic() -> Instructions {
     logic
 }
 
-pub fn mem() -> Instructions {
-    let mut mem = Instructions::default();
-    mem
-        .xor  (A)
-        .check(|s| !s.c)
-        .sta  (0x15)
-        .sbc  (A)
-        .check(|s| s.a == 255)
-        .sta  (0x08)
-        .dec  (A)
-        .sta  (0x01)
-        .load (X, [0x01])
-        .load (Y, [0x08])
-        .load (U, [0x15])
-        .ret  ();
-    mem
-}
-
 pub fn memf() -> Instructions {
     let mut memf = Instructions::default();
     memf

@@ -11,7 +11,7 @@ TESTS=$(PROG_TEST:%=test/%) $(ADHOC_TEST:%=test/%)
 
 BOARDS=bit control dram32byte rom64byte
 
-RUST_DISCUS=target/debug/discus
+RUST_DISCUS=target/release/discus
 
 # Note that this needs to be sync'd with the schematic in a few places.
 QUANTUM=2000
@@ -19,7 +19,7 @@ QUANTUM=2000
 all: $(RUST_DISCUS) boards
 
 $(RUST_DISCUS): src/*.rs
-	cargo build
+	cargo build --release
 
 verify: $(TESTS:%=%.verify)
 verify-adhoc: $(ADHOC_TEST:%=test/%.verify)

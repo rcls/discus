@@ -412,10 +412,10 @@ fast('pmos_kp_lo', 3, 4, pmos_kp, FACTOR=0.01, CRIT='memp inc',
 
 ################################# EXTRAS #######################
 
-scan('reset_delay', 5058, 5057, lambda v=None: speed(tr=v), TARGET='hazard',
+scan('reset_delay', 5054, 5053, lambda v=None: speed(tr=v), TARGET='hazard',
      WANTED=False)
 
-scan('reset_advance', 3060, 3061, lambda v=None: speed(tr=v), TARGET='hazard',
+scan('reset_advance', 3057, 3058, lambda v=None: speed(tr=v), TARGET='hazard',
      WANTED=False)
 
 fast('rbiascap_lo', 12, 13, bias_res, FACTOR=100, TARGET=MEMORY,
@@ -425,7 +425,7 @@ fast('rbiascap_hi', 34, 33, bias_res, FACTOR=100, TARGET=MEMORY,
      CRIT='mem memp', EXTRA=[(dram_cap, 16)], WANTED=False)
 
 # Doesn't look like these buy us anything...
-fast('schottky_is_lo', None, 1, schottky_is, CRIT='call inc', WANTED=False)
+fast('schottky_is_lo', None, 0.1, schottky_is, CRIT='call inc', WANTED=False)
 fast('schottky_is_hi', None, 1e4, schottky_is, CRIT='call inc', WANTED=False)
 
 ########################### RUN THE CHECKS ###########################

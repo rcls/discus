@@ -43,7 +43,7 @@ $(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py $(RUST_DI
 count: board/bit.rcr board/control.rcr board/rom64byte.rcr \
     board/dram64byte.rcr board/dram32byte.rcr
 	grep -Ec -e '^M.*\b[PN]MOS_switch' -e '^Q.*\b(PDTC124TU|BC847)' \
-	    -e '^J.*(2SK3557|J309)' $+
+	    -e '^J.*\bJ309' $+
 
 SYMS=$(wildcard sym/*.sym)
 GATES=$(wildcard gates/*.sch)

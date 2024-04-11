@@ -10,7 +10,7 @@ Discus is a pure 8-bit Harvard architecture, with 8-bit code and data addresses,
 and a four entry stack.  There are four general purpose registers, one of which
 is the accumulator.  It uses a 2.5 stage RISC pipeline (opcode fetch/branch,
 instruction execute, and writeback).  There is integrated DRAM
-refresh.  The CPU totals 1125 transistors.  Without the pipelining and DRAM
+refresh.  The CPU totals 1126 transistors.  Without the pipelining and DRAM
 refresh the count would be under 1000.
 
 The instruction set is minimalist but functional.  All instructions are a single
@@ -71,7 +71,7 @@ decoder trees.
 
 The overall layout is bit-sliced, with the per-bit circuitry laid out on
 [eight identical boards](bit.md) (114 transistors each), and a
-[separate control board](control.md) (213 transistors).
+[separate control board](control.md) (214 transistors).
 
 The [bit slice board](bit.md) has the program counter, stack and branch
 logic on the left, and the instruction execute pipe line stage on the right.

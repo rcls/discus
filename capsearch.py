@@ -299,20 +299,20 @@ class BadGood:
 
 ##################### SPEED ########################
 
-scan('speed_basic', 119, 120, speed, FACTOR=10, TARGET=MEMORY,
+scan('speed_basic', 115, 116, speed, FACTOR=10, TARGET=MEMORY,
      CRIT='memp memf')
 
 scan('speed_duty1', 50, 51,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='hazard')
 
-scan('speed_duty0', 55, 56, lambda v=None: speed(t0=v), TARGET=MEMORY,
-     FACTOR=10, CRIT='hazard2 memp')
+scan('speed_duty0', 49, 50, lambda v=None: speed(t0=v), TARGET=MEMORY,
+     FACTOR=10, CRIT='hazard memp')
 
-scan('speedl_logic', 155, 156, speed, FACTOR=10, TARGET=LOGIC,
+scan('speedl_logic', 153, 154, speed, FACTOR=10, TARGET=LOGIC,
      CRIT='call inc')
 
-scan('speedl_duty1', 62, 63,
+scan('speedl_duty1', 63, 64,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call ret', FACTOR=10)
 
@@ -321,13 +321,13 @@ scan('speedl_duty0', 46, 47, lambda v=None: speed(t0 = v), TARGET=LOGIC,
 
 ##################### DRAM CAP ######################
 
-fast('dram_cap_lo', 9, 10, dram_cap, TARGET=MEMORY, CRIT='hazard2 memp')
+fast('dram_cap_lo', 9, 10, dram_cap, TARGET=MEMORY, CRIT='hazard hazard2')
 
 #scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
 #     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
 fast('dram_cap_hi_fast', 197, 196, dram_cap, TARGET=MEMORY, FACTOR=10,
-     CRIT='hazard2')
+     CRIT='memf hazard2')
 
 ####################### JFET ##########################
 
@@ -338,11 +338,11 @@ fast('dram_cap_hi_fast', 197, 196, dram_cap, TARGET=MEMORY, FACTOR=10,
 fast('jfet_vto_lo', 61, 62, jfet_vto, TARGET=MEMORY, FACTOR=0.01,
      EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memw memf')
 
-fast('jfet_vto_hi', 67, 66, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
+fast('jfet_vto_hi', 66, 65, jfet_vto, TARGET=MEMORY, FACTOR=0.1,
      CRIT='hazard2')
 
 fast('jfet_beta_lo', 1, 2, jfet_beta, TARGET=MEMORY, FACTOR=1e-4,
-     CRIT='memp hazard2')
+     CRIT='memf memw')
 
 ######################### NPN #################################
 
@@ -372,7 +372,7 @@ fast('rstrong_lo', 8, 9, rstrong, FACTOR=10, CRIT='call')
 
 # We have a factor of 2 margin, take it for granted that we could do better at
 # lower speeds.
-fast('rstrong_hi_fast', 174, 173, rstrong, FACTOR=10, CRIT='call hazard2')
+fast('rstrong_hi_fast', 176, 175, rstrong, FACTOR=10, CRIT='memp call')
 #slow('rstrong_hi_slow', 39, 38, rstrong, FACTOR=100, CRIT='memi hazard2')
 
 slow('rload_hi_slow', 92, 91, rload, FACTOR=100, CRIT='sub logic')
@@ -391,16 +391,16 @@ fast('rbias_hi', None, 100000, bias_res, TARGET=MEMORY,
 ######################### MOSFETS #################################
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
-fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='add hazard2',
+fast('nmos_vto_lo', 450, 451, nmos_vto, FACTOR=1e-3, CRIT='add memf',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
 # slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
-fast('nmos_vto_hi_fast', 133, 132, nmos_vto, FACTOR=10e-3, CRIT='call inc')
+fast('nmos_vto_hi_fast', 138, 137, nmos_vto, FACTOR=10e-3, CRIT='inc ret')
 
-fast('nmos_kp_lo', 5, 6, nmos_kp, FACTOR=0.01, CRIT='inc hazard',
+fast('nmos_kp_lo', 4, 5, nmos_kp, FACTOR=0.01, CRIT='inc hazard',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
-fast('pmos_vto_hi_fast', 168, 167, pmos_vto, FACTOR=10e-3, CRIT='hazard2')
+fast('pmos_vto_hi_fast', 168, 167, pmos_vto, FACTOR=10e-3, CRIT='hazard2 memp')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.

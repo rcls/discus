@@ -108,10 +108,12 @@ C 5100 800 1 90 0 resistor-strong.sym
 {
 T 4700 1100 5 10 0 0 90 0 1
 device=RESISTOR
-T 5100 1300 5 10 1 1 0 0 1
+T 5100 1400 5 10 1 1 0 1 1
 refdes=R2
 T 5200 1800 5 10 0 1 90 0 1
 footprint=0603-strong
+T 5100 1200 5 10 1 1 0 1 1
+value=820
 }
 C 4800 3900 1 0 0 vdd-1.sym
 C 2600 2900 1 270 0 resistor-load.sym

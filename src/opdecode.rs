@@ -11,7 +11,7 @@ pub fn opdecode(path: &String) {
             "i2", "i3", "i4", "i5", "i6", "i7", "ij",
             "i2#", "i3#", "i4#", "i5#", "i6#", "i7#", "ij#", "co",
             "qe", "cr", "cs#", "coe#", "ar#", "as", "and", "or", "n#", "mpre#",
-            "in#", "out", "mw", "mr#", "cw#"]) {
+            "in#", "out#", "mw", "mr#", "cw#"]) {
         assert_eq!((i2, i3, i4, i5, i6, i7), (ii2, ii3, ii4, ii5, ii6, ii7));
         assert_eq!(ij, iij);
 

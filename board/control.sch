@@ -1060,7 +1060,7 @@ device=OUTPUT
 T 17200 2000 5 10 0 0 0 0 1
 footprint=anchor
 T 17800 1600 5 10 1 1 0 1 1
-refdes=OUT
+refdes=OUT#
 }
 C 17200 1300 1 0 0 out-1.sym
 {

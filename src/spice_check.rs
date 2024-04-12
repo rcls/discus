@@ -23,6 +23,7 @@ impl SpiceCheck<'_> {
         let r  = self.spice.extract_byte("r_r_b", "l_r_b");
         let k  = self.spice.extract_byte("k_b", "l_k_b");
         let pc = self.spice.extract_byte_diff("p");
+        let ins = self.spice.extract_byte_diff("i");
         let c  = self.spice.extract_signal("co_c");
         let stack = [
             self.spice.extract_byte_other("l_l0_b", "r_l0_b"),
@@ -61,6 +62,8 @@ impl SpiceCheck<'_> {
             self.verify(self.state.c, c[i], "C");
 
             self.verify(self.state.b, b[i-1], "B");
+
+            self.verify(self.program[self.state.pc as usize], ins[i], "I");
 
             // The electronics has the instruction unit one cycle ahead of the
             // execute unit, so the PC we want to check is the previous one.

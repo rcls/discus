@@ -2351,7 +2351,7 @@ N 29700 10700 29900 10700 4
 T 29950 10700 5 10 1 1 0 1 1
 netname=RC3
 }
-C 11700 7400 1 0 0 dram64byte.sym
+C 11700 7400 1 0 0 dram32byte.sym
 {
 T 12700 10300 5 10 1 1 90 4 1
 source=dram32byte.sch

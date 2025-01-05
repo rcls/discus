@@ -424,9 +424,45 @@ fast('rbiascap_lo', 12, 13, bias_res, FACTOR=100, TARGET=MEMORY,
 fast('rbiascap_hi', 34, 33, bias_res, FACTOR=100, TARGET=MEMORY,
      CRIT='mem memp', EXTRA=[(dram_cap, 16)], WANTED=False)
 
+fast('delay_caplo_lo', 70, 73, delay_res, FACTOR=10, TARGET=MEMORY,
+     WANTED=False, CRIT='hazard2 hazard memp', EXTRA=[(dram_cap, 10)])
+fast('delay_caplo_hi', 164, 148, delay_res, FACTOR=10, TARGET=MEMORY,
+     WANTED=False, CRIT='hazard2 hazard memp', EXTRA=[(dram_cap, 10)])
+
+fast('delay_caphi_lo', 56, 57, delay_res, FACTOR=10, TARGET=MEMORY,
+     WANTED=False, CRIT='hazard2 memf', EXTRA=[(dram_cap, 1960)])
+fast('delay_caphi_hi', 83, 82, delay_res, FACTOR=10, TARGET=MEMORY,
+     WANTED=False, CRIT='hazard2 memf', EXTRA=[(dram_cap, 1960)])
+
+fast('dramcap_ndelay_hi', 228, 196, dram_cap, FACTOR=10, TARGET=MEMORY,
+     WANTED=False, CRIT='hazard2 memf', EXTRA=[(delay_res, 695)])
+
 # Doesn't look like these buy us anything...
 fast('schottky_is_lo', None, 0.1, schottky_is, CRIT='call inc', WANTED=False)
 fast('schottky_is_hi', None, 1e4, schottky_is, CRIT='call inc', WANTED=False)
+
+def r2(v=47):
+    replace_line('board/bit.sch', 'value=', f'value={v}k\n',
+                 after='refdes=R2')
+scan('r2_hi', 100, 47, r2, TARGET=LOGIC, CRIT='call inc ret', WANTED=False,
+     EXTRA=[(speed, 1570)])
+
+def vres(l, h):
+    replace_line('board/univlight.sch', 'value=',
+                 f'value=pulse {l} {h}v 4000n 10n 10n 9 10\n',
+                 after='refdes=Vrst')
+def vres_lo(l=0):
+    vres(l, 2.5)
+def vres_hi(h=2.5):
+    vres(0, h)
+def vres_span(s = None):
+    if s == None:
+        vres(0, 2.5)
+    else:
+        vres(0.95-s, 0.95+s)
+
+scan('vres_hi', 950, 951, vres_hi, FACTOR=0.001, TARGET='hazard', WANTED=False)
+scan('vres_lo', 941, 940, vres_lo, FACTOR=0.001, TARGET='hazard', WANTED=False)
 
 ########################### RUN THE CHECKS ###########################
 if args.reverse:

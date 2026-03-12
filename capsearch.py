@@ -391,7 +391,7 @@ fast('rbias_hi', None, 100000, bias_res, TARGET=MEMORY,
 ######################### MOSFETS #################################
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
-fast('nmos_vto_lo', 451, 452, nmos_vto, FACTOR=1e-3, CRIT='call memf',
+fast('nmos_vto_lo', 456, 457, nmos_vto, FACTOR=1e-3, CRIT='call memf',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
 # slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
@@ -401,6 +401,7 @@ fast('nmos_kp_lo', 4, 5, nmos_kp, FACTOR=0.01, CRIT='inc hazard',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
 fast('pmos_vto_hi_fast', 168, 167, pmos_vto, FACTOR=10e-3, CRIT='hazard2 memp')
+#slow('pmos_vto_hi', 214, 213, pmos_vto, FACTOR=10e-3, CRIT='logic add')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.

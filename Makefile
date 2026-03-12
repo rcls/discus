@@ -30,6 +30,12 @@ verify-adhoc: $(ADHOC_TEST:%=test/%.verify)
 %.cir: %.rcr ./substrate.py
 	./substrate.py $< > $@
 
+%.nets: %.sch gates/*.sch board/*.sch sym/*.sym
+	$(NETLIST) -g PCB -o $@ $<
+
+%.objs: %.sch gates/*.sch board/*.sch sym/*.sym
+	$(NETLIST) -g bom -O attribs=value,footprint -o $@ $<
+
 $(PROG_TEST:%=test/%.cir): %.cir: board/univlight.cir test/rommunge.py $(RUST_DISCUS)
 	$(RUST_DISCUS) $(*F) -T -R | test/rommunge.py -t $(QUANTUM) -w $@ board/univlight.cir $*.cir
 

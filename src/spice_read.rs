@@ -45,7 +45,9 @@ impl SpiceRead {
             getline(&mut line, f);
 
             if line.starts_with("Title: ") || line.starts_with("Date: ")
-                || line.starts_with("Plotname:") || line.starts_with("Flags:") {
+                || line.starts_with("Plotname: ")
+                || line.starts_with("Command: ")
+                || line.starts_with("Flags: ") {
             }
             else if let Some(num) = line.strip_prefix("No. Variables: ") {
                 self.num_vars = num.trim().parse().expect("Bogus num vars");
@@ -74,7 +76,7 @@ impl SpiceRead {
             };
             f.read_exact(&mut slice).unwrap();
         }
-    
+
         // Validate the timestamps.
         let mut last = 0.0;
         for t in self.iterate_column("time") {

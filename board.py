@@ -109,7 +109,7 @@ def replace_in_out(pinmap, I):
         'footprint': [footT, args.conn],
         'slot'     : [devT , slot],
         'net'      : [refT, f'{net}:{pinname}'],
-        'refdes'   : [invisible(refT), 'CMAIN']}]
+        'refdes'   : [invisible(refT), 'JMAIN']}]
 #        'comment'  : [refT , net]}]
 
 

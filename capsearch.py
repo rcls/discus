@@ -21,6 +21,8 @@ parser.add_argument('-r', '--reverse', action='store_true',
                     help='reverse sequence')
 parser.add_argument('-z', '--zoom', default=1, type=int,
                     help='inspect in more detail')
+parser.add_argument('-s', '--scramble', action='store_true',
+                    help='randomize test order')
 parser.add_argument('-t', '--target', nargs='+', help='override target')
 parser.add_argument('-v', '--value', type=int, help='test one value')
 parser.add_argument('-n', '--dry-run', action='store_true', help='run none')
@@ -468,6 +470,17 @@ scan('vres_lo', 941, 940, vres_lo, FACTOR=0.001, TARGET='hazard', WANTED=False)
 ########################### RUN THE CHECKS ###########################
 if args.reverse:
     SCANS.reverse()
+
+if args.scramble:
+    import random
+    def scramble_list(l):
+        last = len(l) - 1
+        for i in range(0, last):
+            j = random.randint(i, last)
+            l[i], l[j] = l[j], l[i]
+    for s in SCANS:
+        scramble_list(s.TARGET)
+    scramble_list(SCANS)
 
 try:
     for bg in SCANS:

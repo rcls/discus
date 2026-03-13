@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 
 import argparse
+import random
 import re
 import subprocess
 import sys
 # import types
+
+random.seed()
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-g', '--good-check', action='store_true',
@@ -37,6 +40,8 @@ Q=2000
 currentQ = 2000
 LOGIC = 'call cmp inc add sub logic ret'
 MEMORY = 'memp memw hazard2 memf hazard'
+ALL = f'alu pcdecode opdecode ramdecode romdecode sp {LOGIC} {MEMORY}'
+
 HI_DELAY_RES = 1680
 
 CHANGES=[]
@@ -196,7 +201,7 @@ def scan(NAME, BAD, GOOD, MUNGE, **kwargs):
         SCANS.append(bg)
 
 class BadGood:
-    def __init__(self, NAME, BAD, GOOD, MUNGE, FACTOR=1, TARGET='verify',
+    def __init__(self, NAME, BAD, GOOD, MUNGE, FACTOR=1, TARGET=ALL,
                  CRIT=None, EXTRA=[], WANTED=None):
         self.NAME = NAME
         self.BAD = BAD if BAD is None else BAD * args.zoom
@@ -204,6 +209,7 @@ class BadGood:
         self.I_BAD = self.BAD
         self.MUNGE = MUNGE
         self.EXTRA = EXTRA
+        self.CRIT  = CRIT or []
         self.known = {}
         self.I_GOOD = self.GOOD
         self.FACTOR = FACTOR if args.zoom == 1 else FACTOR / args.zoom
@@ -222,17 +228,17 @@ class BadGood:
         if NUM in self.known:
             return self.known[NUM]
         V = NUM * self.FACTOR
-        print(f'=== Try  {V:g} [{NUM}]', flush=True)
+        print(f'=== Try  {self.NAME} {V:g} [{NUM}]', flush=True)
         for f, v in self.EXTRA:
             f(v)
         self.MUNGE(V)
         status = subprocess.call(['make', '-j' + args.jobs, '-k',
                                   f'QUANTUM={currentQ}'] + self.TARGET)
         if status == 0:
-            self.log(V, f'=== PASS {V:g} [{NUM}]')
+            self.log(V, f'=== PASS {self.NAME} {V:g} [{NUM}]')
             self.GOOD = NUM
         else:
-            self.log(V, f'=== FAIL {V:g} [{NUM}] status {status}')
+            self.log(V, f'=== FAIL {self.NAME} {V:g} [{NUM}] status {status}')
             self.BAD = NUM
         self.known[NUM] = (status == 0)
         return status == 0
@@ -301,20 +307,20 @@ class BadGood:
 
 ##################### SPEED ########################
 
-scan('speed_basic', 115, 116, speed, FACTOR=10, TARGET=MEMORY,
+scan('speed_basic', 116, 117, speed, FACTOR=10, TARGET=MEMORY,
      CRIT='memp memf')
 
-scan('speed_duty1', 50, 51,
+scan('speed_duty1', 48, 49,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='hazard')
 
 scan('speed_duty0', 49, 50, lambda v=None: speed(t0=v), TARGET=MEMORY,
      FACTOR=10, CRIT='hazard memp')
 
-scan('speedl_logic', 153, 154, speed, FACTOR=10, TARGET=LOGIC,
+scan('speedl_logic', 151, 152, speed, FACTOR=10, TARGET=LOGIC,
      CRIT='call inc')
 
-scan('speedl_duty1', 63, 64,
+scan('speedl_duty1', 62, 63,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call ret', FACTOR=10)
 
@@ -328,7 +334,7 @@ fast('dram_cap_lo', 9, 10, dram_cap, TARGET=MEMORY, CRIT='hazard hazard2')
 #scan('dram_cap_hi_slow', 32, 31, dram_cap, FACTOR=100,
 #     TARGET=MEMORY, CRIT='mem memi', EXTRA=[(speed, 3000)])
 
-fast('dram_cap_hi_fast', 197, 196, dram_cap, TARGET=MEMORY, FACTOR=10,
+fast('dram_cap_hi_fast', 198, 197, dram_cap, TARGET=MEMORY, FACTOR=10,
      CRIT='memf hazard2')
 
 ####################### JFET ##########################
@@ -356,10 +362,10 @@ fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 fast('rnpn_r_lo', 39, 40, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='call ret')
 
-fast('rnpn_r_hi_fast', 54, 53, npn22_r, TARGET=LOGIC, CRIT='call ret')
+fast('rnpn_r_hi_fast', 55, 54, npn22_r, TARGET=LOGIC, CRIT='call ret')
 slow('rnpn_r_hi_slow', 15, 14, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
-fast('rnpn_beta_lo', 33, 34, npn22_beta, CRIT='call memw')
+fast('rnpn_beta_lo', 34, 35, npn22_beta, CRIT='call memw')
 
 fast('rnpn_beta_hi', None, 10000, npn22_beta, TARGET=LOGIC, CRIT='call inc')
 
@@ -370,11 +376,11 @@ fast('rnpn_br_hi', None, 10000, npn22_beta_reverse, TARGET=LOGIC,
 
 ##################### RESISTORS ##########################
 
-fast('rstrong_lo', 8, 9, rstrong, FACTOR=10, CRIT='call')
+fast('rstrong_lo', 9, 10, rstrong, FACTOR=10, CRIT='call')
 
 # We have a factor of 2 margin, take it for granted that we could do better at
 # lower speeds.
-fast('rstrong_hi_fast', 176, 175, rstrong, FACTOR=10, CRIT='memp call')
+fast('rstrong_hi_fast', 179, 178, rstrong, FACTOR=10, CRIT='memp call')
 #slow('rstrong_hi_slow', 39, 38, rstrong, FACTOR=100, CRIT='memi hazard2')
 
 slow('rload_hi_slow', 92, 91, rload, FACTOR=100, CRIT='sub logic')
@@ -384,7 +390,7 @@ slow('rload_hi_slow', 92, 91, rload, FACTOR=100, CRIT='sub logic')
 fast('rload_lo', 1, 2, rload, CRIT='ret memw', FACTOR=100)
 
 fast('rpull_lo', 13, 14, rpull, FACTOR=100, CRIT='cmp ret')
-fast('rpull_hi', 7, 6, rpull, FACTOR=1e4, CRIT='hazard inc')
+fast('rpull_hi', 8, 7, rpull, FACTOR=1e4, CRIT='hazard inc')
 
 fast('rbias_lo', None, 100, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
 fast('rbias_hi', None, 100000, bias_res, TARGET=MEMORY,
@@ -397,9 +403,9 @@ fast('nmos_vto_lo', 456, 457, nmos_vto, FACTOR=1e-3, CRIT='call memf',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
 # slow('nmos_vto_hi_slow', 167, 166, nmos_vto, FACTOR=10e-3, CRIT='call inc')
-fast('nmos_vto_hi_fast', 138, 137, nmos_vto, FACTOR=10e-3, CRIT='inc ret')
+fast('nmos_vto_hi_fast', 141, 140, nmos_vto, FACTOR=10e-3, CRIT='inc ret')
 
-fast('nmos_kp_lo', 4, 5, nmos_kp, FACTOR=0.01, CRIT='inc hazard',
+fast('nmos_kp_lo', 3, 4, nmos_kp, FACTOR=0.01, CRIT='inc hazard',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
 fast('pmos_vto_hi_fast', 168, 167, pmos_vto, FACTOR=10e-3, CRIT='hazard2 memp')
@@ -407,7 +413,7 @@ fast('pmos_vto_hi_fast', 168, 167, pmos_vto, FACTOR=10e-3, CRIT='hazard2 memp')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
 # adjustable anyway, so raise it for this test.
-fast('pmos_vto_lo', 10, 11, pmos_vto, FACTOR=10e-3,
+fast('pmos_vto_lo', 11, 12, pmos_vto, FACTOR=10e-3,
      EXTRA=[(delay_res, HI_DELAY_RES)], CRIT='memp romdecode')
 
 fast('pmos_kp_lo', 3, 4, pmos_kp, FACTOR=0.01, CRIT='memp inc',
@@ -472,15 +478,11 @@ if args.reverse:
     SCANS.reverse()
 
 if args.scramble:
-    import random
-    def scramble_list(l):
-        last = len(l) - 1
-        for i in range(0, last):
-            j = random.randint(i, last)
-            l[i], l[j] = l[j], l[i]
     for s in SCANS:
-        scramble_list(s.TARGET)
-    scramble_list(SCANS)
+        random.shuffle(s.TARGET)
+        # FIXME - this is bogus.
+        # s.TARGET.sort(key = lambda t: not t in s.CRIT)
+    random.shuffle(SCANS)
 
 try:
     for bg in SCANS:

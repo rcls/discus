@@ -54,7 +54,7 @@ def read_objs(f: file) -> list[(str, str, str)]:
 
 def pin_function(refdes: str, pin: str) -> str:
     if refdes[0] == 'M':
-        return 'SGD'[int(pin) - 1]
+        return 'GSD'[int(pin) - 1]
     return pin
 
 def net_node(refdes: str, pin: str) -> list:

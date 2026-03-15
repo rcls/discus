@@ -4061,15 +4061,15 @@ Element["hidename,onsolder" "0603-load" "R2L2" "rload" 22.5000mm 9.2500mm -1.500
 
 	)
 
-Element["hidename,onsolder" "0603-load" "R1L0" "rload" 4.0000mm 5.0000mm 0.8000mm -0.8000mm 2 100 "onsolder"]
+Element["hidename,selected,onsolder" "0603-load" "R1L0" "rload" 4.0000mm 5.0000mm 0.8000mm -0.8000mm 2 100 "selected,onsolder"]
 (
 	Attribute("device" "RESISTOR")
 	Attribute("manufacturer" "unknown")
 	Attribute("manufacturer_part_number" "unknown")
 	Attribute("vendor" "unknown")
 	Attribute("vendor_part_number" "unknown")
-	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "onsolder,square"]
-	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "onsolder,square"]
+	Pad[0.6500mm -0.1250mm 0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "1" "1" "selected,onsolder,square"]
+	Pad[-0.6500mm -0.1250mm -0.6500mm 0.1250mm 0.7500mm 0.3000mm 0.9000mm "2" "2" "selected,onsolder,square"]
 	ElementLine [-1.2500mm -0.7500mm -1.2500mm 0.7500mm 0.1500mm]
 	ElementLine [-1.2500mm -0.7500mm 1.2500mm -0.7500mm 0.1500mm]
 	ElementLine [1.2500mm -0.7500mm 1.2500mm 0.7500mm 0.1500mm]

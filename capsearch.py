@@ -307,10 +307,10 @@ class BadGood:
 
 ##################### SPEED ########################
 
-scan('speed_basic', 116, 117, speed, FACTOR=10, TARGET=MEMORY,
+scan('speed_basic', 119, 120, speed, FACTOR=10, TARGET=MEMORY,
      CRIT='memp memf')
 
-scan('speed_duty1', 48, 49,
+scan('speed_duty1', 49, 50,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='hazard')
 
@@ -320,7 +320,7 @@ scan('speed_duty0', 49, 50, lambda v=None: speed(t0=v), TARGET=MEMORY,
 scan('speedl_logic', 151, 152, speed, FACTOR=10, TARGET=LOGIC,
      CRIT='call inc')
 
-scan('speedl_duty1', 62, 63,
+scan('speedl_duty1', 61, 62,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call ret', FACTOR=10)
 
@@ -380,17 +380,17 @@ fast('rstrong_lo', 9, 10, rstrong, FACTOR=10, CRIT='call')
 
 # We have a factor of 2 margin, take it for granted that we could do better at
 # lower speeds.
-fast('rstrong_hi_fast', 179, 178, rstrong, FACTOR=10, CRIT='memp call')
+fast('rstrong_hi_fast', 180, 179, rstrong, FACTOR=10, CRIT='memp call')
 #slow('rstrong_hi_slow', 39, 38, rstrong, FACTOR=100, CRIT='memi hazard2')
 
-slow('rload_hi_slow', 92, 91, rload, FACTOR=100, CRIT='sub logic')
+slow('rload_hi_slow', 92, 91, rload, FACTOR=100, CRIT='cmp sub')
 
 #fast('rload_hi_fast', 34, 35, rload, FACTOR=100, CRIT='call inc')
 
 fast('rload_lo', 1, 2, rload, CRIT='ret memw', FACTOR=100)
 
 fast('rpull_lo', 13, 14, rpull, FACTOR=100, CRIT='cmp ret')
-fast('rpull_hi', 8, 7, rpull, FACTOR=1e4, CRIT='hazard inc')
+fast('rpull_hi', 6, 5, rpull, FACTOR=1e4, CRIT='memp hazard')
 
 fast('rbias_lo', None, 100, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
 fast('rbias_hi', None, 100000, bias_res, TARGET=MEMORY,

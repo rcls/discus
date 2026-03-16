@@ -613,7 +613,7 @@
 	(footprint "Parts:0805-diode"
 		(layer "F.Cu")
 		(uuid "035d5597-ff20-4e45-99cc-4eabac7a0787")
-		(at 122.5 81.5 180)
+		(at 122.5 81.5)
 		(descr "LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "LED")
 		(property "Reference" "D3"
@@ -667,14 +667,14 @@
 		(sheetname "/")
 		(attr smd)
 		(fp_line
-			(start 1 -0.96)
-			(end -1.685 -0.96)
+			(start -1.685 -0.96)
+			(end -1.685 0.96)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "35127de1-6036-4d77-a1b1-499fd9631ee7")
+			(uuid "a6fc5262-72af-4353-961e-92b963a32429")
 		)
 		(fp_line
 			(start -1.685 0.96)
@@ -687,14 +687,14 @@
 			(uuid "6e1240ba-68bc-4ff3-9d86-a2a7f63a5c80")
 		)
 		(fp_line
-			(start -1.685 -0.96)
-			(end -1.685 0.96)
+			(start 1 -0.96)
+			(end -1.685 -0.96)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "a6fc5262-72af-4353-961e-92b963a32429")
+			(uuid "35127de1-6036-4d77-a1b1-499fd9631ee7")
 		)
 		(fp_rect
 			(start -1.68 -0.95)
@@ -708,34 +708,14 @@
 			(uuid "e533c49b-547c-4768-b660-edb96841dd80")
 		)
 		(fp_line
-			(start 1 0.6)
-			(end 1 -0.6)
+			(start -1 -0.3)
+			(end -1 0.6)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "925fe057-70e3-415b-87f9-a272e07c2f5f")
-		)
-		(fp_line
-			(start 1 -0.6)
-			(end -0.7 -0.6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "31cb0e70-6d2a-49f2-986a-9025942a056d")
-		)
-		(fp_line
-			(start -0.7 -0.6)
-			(end -1 -0.3)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "b8106085-8fef-4e16-a648-471868c7e8e7")
+			(uuid "6f05d99d-64dd-4a80-8619-0113b6f9de55")
 		)
 		(fp_line
 			(start -1 0.6)
@@ -748,14 +728,34 @@
 			(uuid "6eb18dae-333d-4159-aa3d-9b380a3fb654")
 		)
 		(fp_line
-			(start -1 -0.3)
-			(end -1 0.6)
+			(start -0.7 -0.6)
+			(end -1 -0.3)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "6f05d99d-64dd-4a80-8619-0113b6f9de55")
+			(uuid "b8106085-8fef-4e16-a648-471868c7e8e7")
+		)
+		(fp_line
+			(start 1 -0.6)
+			(end -0.7 -0.6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "31cb0e70-6d2a-49f2-986a-9025942a056d")
+		)
+		(fp_line
+			(start 1 0.6)
+			(end 1 -0.6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "925fe057-70e3-415b-87f9-a272e07c2f5f")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 0)
@@ -769,21 +769,21 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.9375 0 180)
+			(at -0.9375 0)
 			(size 0.975 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 118 "_d3")
+			(net 56 "P#")
 			(pinfunction "1")
 			(pintype "passive")
 			(uuid "cef32b37-121c-49d0-a7bb-b7362b7c62e5")
 		)
 		(pad "2" smd roundrect
-			(at 0.9375 0 180)
+			(at 0.9375 0)
 			(size 0.975 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 56 "P#")
+			(net 118 "_d3")
 			(pinfunction "2")
 			(pintype "passive")
 			(uuid "069c78b3-e134-4b96-8b29-9c160c1ad1a1")
@@ -17018,7 +17018,7 @@
 	(footprint "Parts:0805-diode"
 		(layer "F.Cu")
 		(uuid "6b4455d5-17f8-4b8c-8933-babec3f11d39")
-		(at 143 47.45 -90)
+		(at 143 47.45 90)
 		(descr "LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "LED")
 		(property "Reference" "D2"
@@ -17072,14 +17072,14 @@
 		(sheetname "/")
 		(attr smd)
 		(fp_line
-			(start -1.685 0.96)
-			(end 1 0.96)
+			(start 1 -0.96)
+			(end -1.685 -0.96)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "74e23ff6-6959-4baf-a678-1060df27c852")
+			(uuid "21b82566-0fcc-4626-b059-25bb85fbca14")
 		)
 		(fp_line
 			(start -1.685 -0.96)
@@ -17092,14 +17092,14 @@
 			(uuid "580803d3-3b77-4b04-8d1c-4b10b95dc26b")
 		)
 		(fp_line
-			(start 1 -0.96)
-			(end -1.685 -0.96)
+			(start -1.685 0.96)
+			(end 1 0.96)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "21b82566-0fcc-4626-b059-25bb85fbca14")
+			(uuid "74e23ff6-6959-4baf-a678-1060df27c852")
 		)
 		(fp_rect
 			(start -1.68 -0.95)
@@ -17113,34 +17113,14 @@
 			(uuid "91b6d1ce-9151-4bd9-a93b-8300853b895e")
 		)
 		(fp_line
-			(start -1 0.6)
-			(end 1 0.6)
+			(start 1 -0.6)
+			(end -0.7 -0.6)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "bfeacd93-57de-4723-b871-6e9004e6595a")
-		)
-		(fp_line
-			(start 1 0.6)
-			(end 1 -0.6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "cc0e739a-385a-4afe-9097-2fd6429c5a0b")
-		)
-		(fp_line
-			(start -1 -0.3)
-			(end -1 0.6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "d3fdb917-b62b-4f30-bb62-68ad1f74893a")
+			(uuid "09fa26d2-07ab-43b0-8890-e20eecb34482")
 		)
 		(fp_line
 			(start -0.7 -0.6)
@@ -17153,14 +17133,34 @@
 			(uuid "3cf790a0-4250-452f-8bc7-1e12624489c3")
 		)
 		(fp_line
-			(start 1 -0.6)
-			(end -0.7 -0.6)
+			(start -1 -0.3)
+			(end -1 0.6)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "09fa26d2-07ab-43b0-8890-e20eecb34482")
+			(uuid "d3fdb917-b62b-4f30-bb62-68ad1f74893a")
+		)
+		(fp_line
+			(start 1 0.6)
+			(end 1 -0.6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "cc0e739a-385a-4afe-9097-2fd6429c5a0b")
+		)
+		(fp_line
+			(start -1 0.6)
+			(end 1 0.6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "bfeacd93-57de-4723-b871-6e9004e6595a")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 90)
@@ -17174,21 +17174,21 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.9375 0 270)
+			(at -0.9375 0 90)
 			(size 0.975 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 120 "_d2")
+			(net 53 "Ao#")
 			(pinfunction "1")
 			(pintype "passive")
 			(uuid "04f3f011-3cca-4eb8-b205-2f8f112f94b3")
 		)
 		(pad "2" smd roundrect
-			(at 0.9375 0 270)
+			(at 0.9375 0 90)
 			(size 0.975 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 53 "Ao#")
+			(net 120 "_d2")
 			(pinfunction "2")
 			(pintype "passive")
 			(uuid "7f995ca0-b926-433c-a43e-716ccea91fed")

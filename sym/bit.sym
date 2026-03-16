@@ -31,7 +31,7 @@ pintype=unknown
 T 780 6625 5 7 1 1 0 6 1
 pinlabel=Vdd
 T 850 6695 5 10 0 1 90 2 1
-pinnumber=A1
+pinnumber=A2
 T 800 6800 5 10 0 0 0 6 1
 pinseq=3
 }
@@ -306,7 +306,7 @@ P 1600 6200 1400 6200 1 0 0
 T 1600 6200 5 10 0 0 0 6 1
 pintype=unknown
 T 1495 6245 5 10 0 1 0 0 1
-pinnumber=A2
+pinnumber=A3
 T 1600 6200 5 10 0 0 0 6 1
 pinseq=11
 T 1395 6195 5 10 1 1 0 7 1
@@ -394,7 +394,7 @@ P 1600 3800 1400 3800 1 0 0
 T 1600 3800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 3845 5 10 0 1 0 0 1
-pinnumber=A60
+pinnumber=A62
 T 1600 3800 5 10 0 0 0 0 1
 pinseq=28
 T 1395 3795 5 10 1 1 0 7 1
@@ -405,7 +405,7 @@ P 1600 3600 1400 3600 1 0 0
 T 1600 3600 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 3645 5 10 0 1 0 0 1
-pinnumber=A61
+pinnumber=B62
 T 1600 3600 5 10 0 0 0 0 1
 pinseq=29
 T 1395 3595 5 10 1 1 0 7 1
@@ -416,7 +416,7 @@ P 1600 3400 1400 3400 1 0 0
 T 1600 3400 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 3445 5 10 0 1 0 0 1
-pinnumber=A62
+pinnumber=A61
 T 1600 3400 5 10 0 0 0 0 1
 pinseq=32
 T 1395 3395 5 10 1 1 0 7 1
@@ -427,7 +427,7 @@ P 1600 4200 1400 4200 1 0 0
 T 1600 4200 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 4245 5 10 0 1 0 0 1
-pinnumber=A54
+pinnumber=A1
 T 1600 4200 5 10 0 0 0 0 1
 pinseq=24
 T 1395 4195 5 10 1 1 0 7 1
@@ -438,7 +438,7 @@ P 1600 4800 1400 4800 1 0 0
 T 1600 4800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 4845 5 10 0 1 0 0 1
-pinnumber=A3
+pinnumber=A4
 T 1600 4800 5 10 0 0 0 0 1
 pinseq=20
 T 1395 4795 5 10 1 1 0 7 1
@@ -449,7 +449,7 @@ P 1600 4600 1400 4600 1 0 0
 T 1600 4600 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 4645 5 10 0 1 0 0 1
-pinnumber=A4
+pinnumber=A5
 T 1600 4600 5 10 0 0 0 0 1
 pinseq=21
 T 1395 4595 5 10 1 1 0 7 1

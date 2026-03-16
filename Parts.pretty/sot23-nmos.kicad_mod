@@ -1,4 +1,4 @@
-(footprint "SOT-23"
+(footprint "sot23-nmos"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -6,7 +6,7 @@
 	(descr "SOT, 3 Pin (JEDEC TO-236 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=TO-236), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 	(tags "SOT TO_SOT_SMD")
 	(property "Reference" "REF**"
-		(at 0 -2.4 0)
+		(at 0 0 90)
 		(layer "F.SilkS")
 		(uuid "f9790c03-3b2e-4bf1-bc70-71a9c0b1e9ea")
 		(effects

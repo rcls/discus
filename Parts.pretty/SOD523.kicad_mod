@@ -1,4 +1,4 @@
-(footprint "D_SOD-523"
+(footprint "SOD523"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -6,7 +6,7 @@
 	(descr "http://www.diodes.com/datasheets/ap02001.pdf p.144")
 	(tags "Diode SOD523")
 	(property "Reference" "REF**"
-		(at 0 -1.3 0)
+		(at 0 0 0)
 		(layer "F.SilkS")
 		(uuid "85e6cb94-8f48-4474-bea9-9e915a7384f0")
 		(effects

@@ -4,7 +4,7 @@ import argparse
 from more_itertools import peekable
 
 parser = argparse.ArgumentParser()
-parser.add_argument('src', help='Input schmatic')
+parser.add_argument('src', help='Input schematic')
 parser.add_argument('dst', help='Output schematic')
 parser.add_argument('-s', '--sym', help='Symbol file')
 parser.add_argument('-c', '--conn', help='Connector', default='pci-edge-3v')

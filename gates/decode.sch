@@ -524,7 +524,7 @@ refdes=M4
 T 7900 1800 5 10 0 1 0 0 1
 value=NMOS_switch
 T 8300 1600 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 9300 1600 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -535,7 +535,7 @@ refdes=M7
 T 9100 1200 5 10 0 1 0 6 1
 value=NMOS_switch
 T 8700 1000 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 7700 1000 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -560,7 +560,7 @@ C 10800 1600 1 0 1 nmos-switch.sym
 T 10700 2400 5 10 0 1 0 6 1
 value=NMOS_switch
 T 10300 2200 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 9300 2200 5 10 0 1 0 6 1
 device=NMOS
 T 10575 1900 5 8 1 1 0 7 1
@@ -571,7 +571,7 @@ C 9200 1000 1 0 1 nmos-switch.sym
 T 9100 1800 5 10 0 1 0 6 1
 value=NMOS_switch
 T 8700 1600 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 7700 1600 5 10 0 1 0 6 1
 device=NMOS
 T 8975 1300 5 8 1 1 0 7 1
@@ -582,7 +582,7 @@ C 10800 400 1 0 1 nmos-switch.sym
 T 10700 1200 5 10 0 1 0 6 1
 value=NMOS_switch
 T 10300 1000 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 9300 1000 5 10 0 1 0 6 1
 device=NMOS
 T 10575 700 5 8 1 1 0 7 1
@@ -593,7 +593,7 @@ C 10800 1000 1 0 1 nmos-switch.sym
 T 10700 1800 5 10 0 1 0 6 1
 value=NMOS_switch
 T 10300 1600 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 9300 1600 5 10 0 1 0 6 1
 device=NMOS
 T 10575 1300 5 8 1 1 0 7 1
@@ -630,7 +630,7 @@ C 7800 400 1 0 0 nmos-switch.sym
 T 7900 1200 5 10 0 1 0 0 1
 value=NMOS_switch
 T 8300 1000 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 9300 1000 5 10 0 1 0 0 1
 device=NMOS
 T 8025 700 5 8 1 1 0 1 1
@@ -747,7 +747,7 @@ refdes=M3
 T 7900 2400 5 10 0 1 0 0 1
 value=NMOS_switch
 T 8300 2200 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 9300 2200 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -756,7 +756,7 @@ C 7800 2200 1 0 0 nmos-switch.sym
 T 7900 3000 5 10 0 1 0 0 1
 value=NMOS_switch
 T 8300 2800 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 9300 2800 5 10 0 1 0 0 1
 device=NMOS
 T 8025 2500 5 8 1 1 0 1 1
@@ -795,7 +795,7 @@ C 10500 2300 1 90 0 resistor-strong.sym
 T 10100 2600 5 10 0 0 90 0 1
 device=RESISTOR
 T 10400 2700 5 10 0 1 90 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 10400 2700 5 10 0 1 90 0 1
 value=rstrong
 T 10350 2950 5 10 1 1 90 0 1
@@ -869,7 +869,7 @@ refdes=A5
 C 14900 2500 1 0 1 resistor-strong.sym
 {
 T 13900 2400 5 10 0 1 0 6 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 14600 2900 5 10 0 0 0 6 1
 device=RESISTOR
 T 14250 2650 5 10 1 1 0 6 1
@@ -886,7 +886,7 @@ refdes=S4
 C 6000 8600 1 0 1 resistor-strong.sym
 {
 T 5000 8500 5 10 0 1 0 6 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 5700 9000 5 10 0 0 0 6 1
 device=RESISTOR
 T 5350 8750 5 10 1 1 0 6 1
@@ -1205,7 +1205,7 @@ C 9300 2000 1 0 0 nmos-switch.sym
 T 9400 2800 5 10 0 1 0 0 1
 value=NMOS_switch
 T 9800 2600 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 10800 2600 5 10 0 1 0 0 1
 device=NMOS
 T 9525 2300 5 8 1 1 0 1 1
@@ -1263,7 +1263,7 @@ C 13300 3300 1 0 0 nmos-switch.sym
 T 13400 4100 5 10 0 1 0 0 1
 value=NMOS_switch
 T 13800 3900 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 14800 3900 5 10 0 1 0 0 1
 device=NMOS
 T 13525 3600 5 8 1 1 0 1 1

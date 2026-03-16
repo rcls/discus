@@ -6,7 +6,7 @@ refdes=M1
 T 1100 2400 5 10 0 1 0 0 1
 value=NMOS_switch
 T 1500 2200 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 2500 2200 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -17,14 +17,14 @@ refdes=M2
 T 1100 1700 5 10 0 1 0 0 1
 value=NMOS_switch
 T 1500 1500 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 2500 1500 5 10 0 1 0 0 1
 device=NMOS
 }
 C 1500 2200 1 90 0 resistor-load.sym
 {
 T 1400 2600 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 1100 2500 5 10 0 0 90 0 1
 device=RESISTOR
 T 1350 2850 5 10 1 1 90 0 1

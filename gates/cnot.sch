@@ -6,7 +6,7 @@ refdes=M1
 T 900 1400 5 10 0 1 0 1 1
 value=NMOS_switch
 T 1300 1200 5 10 0 1 0 1 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 2300 1200 5 10 0 1 0 1 1
 device=NMOS
 }
@@ -53,7 +53,7 @@ refdes=M2
 T 900 2000 5 10 0 1 0 0 1
 value=PMOS_switch
 T 1300 1800 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 2300 1800 5 10 0 1 0 0 1
 device=PMOS
 }

@@ -51,7 +51,7 @@ device=RESISTOR
 T 44075 64475 5 10 1 1 0 6 1
 refdes=R0
 T 44100 64200 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 44100 64200 5 10 0 1 90 0 1
 value=rload
 }
@@ -60,7 +60,7 @@ C 45600 63800 1 270 1 resistor-load.sym
 T 46000 64100 5 10 0 0 90 2 1
 device=RESISTOR
 T 45700 64200 5 10 0 1 90 2 1
-footprint=0603-load
+footprint=R_0402_load
 T 45700 64200 5 10 0 1 90 2 1
 value=rload
 T 45725 64475 5 10 1 1 0 0 1
@@ -71,7 +71,7 @@ C 46400 63800 1 90 0 resistor-load.sym
 T 46000 64100 5 10 0 0 90 6 1
 device=RESISTOR
 T 46300 64200 5 10 0 1 90 6 1
-footprint=0603-load
+footprint=R_0402_load
 T 46300 64200 5 10 0 1 90 6 1
 value=rload
 T 46275 64475 5 10 1 1 0 6 1
@@ -82,7 +82,7 @@ C 47800 63800 1 270 1 resistor-load.sym
 T 48200 64100 5 10 0 0 90 2 1
 device=RESISTOR
 T 47900 64200 5 10 0 1 90 2 1
-footprint=0603-load
+footprint=R_0402_load
 T 47900 64200 5 10 0 1 90 2 1
 value=rload
 T 47925 64475 5 10 1 1 0 0 1
@@ -140,7 +140,7 @@ refdes=M4
 T 44600 67100 5 10 0 1 0 0 1
 value=PMOS_switch
 T 45000 66900 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 46000 66900 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -151,7 +151,7 @@ refdes=M5
 T 47400 67100 5 10 0 1 0 6 1
 value=PMOS_switch
 T 47000 66900 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 46000 66900 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -162,7 +162,7 @@ refdes=M0
 T 44300 66300 5 10 0 1 0 0 1
 value=PMOS_switch
 T 44700 66100 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 45700 66100 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -173,7 +173,7 @@ refdes=M1
 T 45500 66300 5 10 0 1 0 6 1
 value=PMOS_switch
 T 45100 66100 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 44100 66100 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -184,7 +184,7 @@ refdes=M2
 T 46500 66300 5 10 0 1 0 0 1
 value=PMOS_switch
 T 46900 66100 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 47900 66100 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -195,7 +195,7 @@ refdes=M3
 T 47700 66300 5 10 0 1 0 6 1
 value=PMOS_switch
 T 47300 66100 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 46300 66100 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -329,7 +329,7 @@ refdes=M6
 T 44600 67800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 45000 67600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 46000 67600 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -350,7 +350,7 @@ C 50000 67000 1 0 1 pmos-switch.sym
 T 49900 67800 5 10 0 1 0 6 1
 value=PMOS_switch
 T 49500 67600 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 48500 67600 5 10 0 1 0 6 1
 device=PMOS
 T 49775 67300 5 10 1 1 0 7 1
@@ -371,7 +371,7 @@ C 50000 65500 1 0 1 pmos-switch.sym
 T 49900 66300 5 10 0 1 0 6 1
 value=PMOS_switch
 T 49500 66100 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 48500 66100 5 10 0 1 0 6 1
 device=PMOS
 T 49775 65800 5 10 1 1 0 7 1
@@ -382,7 +382,7 @@ C 50000 63800 1 270 1 resistor-load.sym
 T 50400 64100 5 10 0 0 90 2 1
 device=RESISTOR
 T 50100 64200 5 10 0 1 90 2 1
-footprint=0603-load
+footprint=R_0402_load
 T 50100 64200 5 10 0 1 90 2 1
 value=rload
 T 50125 64475 5 10 1 1 0 0 1

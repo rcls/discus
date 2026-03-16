@@ -510,7 +510,7 @@ refdes=M4
 T 5300 6900 5 10 0 1 0 0 1
 value=PMOS_switch
 T 5700 6700 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 6700 6700 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -521,7 +521,7 @@ refdes=M5
 T 6400 6900 5 10 0 1 0 6 1
 value=PMOS_switch
 T 6000 6700 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5000 6700 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -532,7 +532,7 @@ refdes=M0
 T 4600 6100 5 10 0 1 0 0 1
 value=PMOS_switch
 T 5000 5900 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 6000 5900 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -543,7 +543,7 @@ refdes=M1
 T 5300 6100 5 10 0 1 0 0 1
 value=PMOS_switch
 T 5700 5900 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 6700 5900 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -554,7 +554,7 @@ refdes=M2
 T 6400 6100 5 10 0 1 0 6 1
 value=PMOS_switch
 T 6000 5900 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5000 5900 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -565,7 +565,7 @@ refdes=M3
 T 7100 6100 5 10 0 1 0 6 1
 value=PMOS_switch
 T 6700 5900 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5700 5900 5 10 0 1 0 6 1
 device=PMOS
 }

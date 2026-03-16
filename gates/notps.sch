@@ -2,7 +2,7 @@ v 20220529 2
 C 60200 46200 1 90 0 resistor-strong.sym
 {
 T 60100 46600 5 10 0 1 90 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 60100 46600 5 10 0 1 90 0 1
 value=rstrong
 T 59800 46500 5 10 0 0 90 0 1
@@ -53,7 +53,7 @@ refdes=M
 T 59800 47900 5 10 0 1 0 0 1
 value=PMOS_switch
 T 60200 47700 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 61200 47700 5 10 0 1 0 0 1
 device=PMOS
 }

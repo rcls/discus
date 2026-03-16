@@ -234,7 +234,7 @@ device=RESISTOR
 T 1250 1250 5 10 1 1 90 0 1
 refdes=R1
 T 1300 1000 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 1300 1000 5 10 0 1 90 0 1
 value=rload
 }
@@ -286,7 +286,7 @@ refdes=M
 T 1000 2300 5 10 0 1 0 0 1
 value=PMOS_switch
 T 1400 2100 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 2400 2100 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -388,7 +388,7 @@ device=RESISTOR
 T 1950 1550 5 10 1 1 0 0 1
 refdes=R2
 T 2300 1300 5 10 0 1 0 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 1750 1650 5 10 1 1 0 3 1
 value=100
 }

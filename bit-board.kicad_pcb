@@ -262,7 +262,7 @@
 	(net 118 "_d3")
 	(net 119 "Bling")
 	(net 120 "_d2")
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "0086edc4-8499-43bd-a64e-6fe1dd728da8")
 		(at 122.5 52.5)
@@ -468,7 +468,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "01bd0a44-bc9f-4d74-a39e-8e78b8f3d2bf")
 		(at 145.25 58.85 90)
@@ -801,7 +801,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "03dad461-a1fd-4429-996d-62834914123f")
 		(at 142.5 72.5 180)
@@ -1007,7 +1007,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "0424b8f0-fbaf-4ded-8bb1-18ef9c90f63f")
 		(at 162.5 72.5)
@@ -1213,7 +1213,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "048aeaad-e153-470d-91d3-1661e7b53b23")
 		(at 154.35 48.55)
@@ -1355,7 +1355,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "04a4ad2a-b7cf-48bb-850e-c17eaa892156")
 		(at 145.55 51.05)
@@ -1497,7 +1497,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "06f04cfe-eb2a-4ee8-bea7-e752df13acd7")
 		(at 177.5 67.5 180)
@@ -1703,7 +1703,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "0852cd91-f506-4743-9b59-181916513eea")
 		(at 102.5 57.5)
@@ -1909,7 +1909,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "08bb7c1a-d72b-44c5-b5fc-bd0e9fbf0943")
 		(at 125 51.9 90)
@@ -2051,7 +2051,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "0b6cf4d1-869c-4952-8215-a1a32029f501")
 		(at 152.5 82.5)
@@ -2327,7 +2327,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "0b845417-57da-44fb-afdc-b5dcee47fcc6")
 		(at 117.5 47.5 180)
@@ -2897,7 +2897,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "12c486ae-1424-4a1c-bbd9-327d869d7564")
 		(at 107.5 52.5 180)
@@ -3173,7 +3173,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "13ac7924-a089-44c9-90d5-293c7b9fdcc1")
 		(at 182.5 67.5)
@@ -3379,7 +3379,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "14f3385f-9542-4bde-8606-1b7984727974")
 		(at 142.5 82.5 180)
@@ -3585,7 +3585,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "18edbd12-2a4c-4d60-b4f3-7f4440716a03")
 		(at 112.5 62.5 180)
@@ -3791,7 +3791,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "1ab6268b-2df0-4dbf-8738-f0a2f5c8bffc")
 		(at 137.5 82.5)
@@ -3997,7 +3997,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "1bcdc544-ca70-4e9b-b03e-36957c8a6ec5")
 		(at 105 48.05 -90)
@@ -4139,7 +4139,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "1d7d302f-80b4-4803-a496-2392d577e566")
 		(at 174.9 83 -90)
@@ -4301,7 +4301,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "1d7df337-c978-4449-a834-bb39219cbd2a")
 		(at 157.5 47.5)
@@ -4517,7 +4517,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "210d5837-1eb2-4ebe-a817-77f9d674b07f")
 		(at 137.5 57.5 180)
@@ -4733,7 +4733,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-pull"
+	(footprint "Parts:R_0402_pull"
 		(layer "F.Cu")
 		(uuid "217f96c2-2843-49d2-83ac-cc1e6c1d9035")
 		(at 132.6 55.75 180)
@@ -4885,7 +4885,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "22c0255e-d49f-425f-a9bd-56d84f0ddbec")
 		(at 122.5 77.5)
@@ -5091,7 +5091,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "24998429-705b-4299-8c42-8962b7d95d2d")
 		(at 125 48.05 -90)
@@ -5233,7 +5233,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "249ed209-3ea4-41ab-becc-236f3506f8a1")
 		(at 132.5 67.5 90)
@@ -5375,7 +5375,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "26a5ca3e-39dc-47af-ac8a-09da20fb5b3c")
 		(at 142.5 67.5 180)
@@ -5581,7 +5581,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "271d9252-2300-49f6-9aaf-fdf65cb639b5")
 		(at 174.85 79.05 -90)
@@ -5723,7 +5723,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "28329c21-d007-479c-86e3-12a4545bdb8c")
 		(at 139.35 83.85)
@@ -5865,7 +5865,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "289f83bc-5c9e-4ed2-9961-13d484a4cd10")
 		(at 167.5 62.5)
@@ -6071,7 +6071,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "2b838ac7-f095-475a-8a2e-681a9129eb7f")
 		(at 167.5 57.5 180)
@@ -6277,7 +6277,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "2c5812b6-ac4c-403b-ba40-56c3d6454a6f")
 		(at 173.9 54 -90)
@@ -6419,7 +6419,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "2d38fa02-77e6-452b-b21a-41e9d5e72a35")
 		(at 174.8 69.75 90)
@@ -6561,7 +6561,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "2df834c1-41db-4a54-a389-12de643e8b1e")
 		(at 102.5 82.5)
@@ -6767,7 +6767,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "2e1a2169-3cc9-4eca-b105-131c0841f6cf")
 		(at 105 81.95 90)
@@ -6909,7 +6909,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "2e45a6b7-e103-426a-a8c6-17a523338913")
 		(at 177.5 77.5)
@@ -7115,7 +7115,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "2f0adaf1-1725-416e-b69a-dcd5819e708e")
 		(at 177.5 72.5)
@@ -7615,7 +7615,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "33469a21-e724-492e-b311-4cb78bb1ce41")
 		(at 152.5 77.5)
@@ -7891,7 +7891,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "34266a17-e2b2-4751-8fe7-5e617cfb22b9")
 		(at 113.5 60 180)
@@ -8033,7 +8033,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "359966a0-bba5-4773-932c-ef8d14683aa5")
 		(at 141.1 69 -90)
@@ -8175,7 +8175,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "35a8a34a-a86f-490d-80e5-cadb610aae21")
 		(at 162.5 67.5)
@@ -8381,7 +8381,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "37e62c15-cb1b-40cb-a154-d127ea699ad1")
 		(at 182.5 52.5)
@@ -8587,7 +8587,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "38b554e1-c29d-4fc4-adf0-d582d875f58b")
 		(at 174.8 67.9 -90)
@@ -8729,7 +8729,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "390f297d-b374-4ce6-b8e5-519ed3fadc11")
 		(at 139.5 69.05)
@@ -8871,7 +8871,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "3a40247c-4189-45f3-b70e-a39ec5a57d07")
 		(at 107.5 62.5)
@@ -9077,7 +9077,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "3a86fe1c-6ba0-4a37-857b-fc698c9d3fd1")
 		(at 177.5 57.5)
@@ -9353,7 +9353,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "3bf3892f-85b9-48c8-ac86-f0df3c55fd1c")
 		(at 115 48.05 -90)
@@ -9495,7 +9495,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "3ed4a48d-9c97-48d7-bd56-d6e235e78e0a")
 		(at 141.1 79 -90)
@@ -9637,7 +9637,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "3f204499-ee0f-40d6-974a-dd31f9fed443")
 		(at 172.5 57.5)
@@ -9853,7 +9853,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "3fc064a1-29ef-4def-8c3e-21693c690eef")
 		(at 102.5 77.5)
@@ -10059,7 +10059,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "411223fa-fd50-4826-8538-e74c0b24bbab")
 		(at 156.15 55)
@@ -10201,7 +10201,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "4282ce72-9f75-4904-9643-a8abe35611f8")
 		(at 137.5 67.5)
@@ -10407,7 +10407,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "43962256-02ef-4630-8d08-3d7876732660")
 		(at 137.5 72.5)
@@ -10613,7 +10613,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "450e0a14-27f2-4e81-945f-a105ba3b8ac2")
 		(at 177.5 47.5)
@@ -10819,7 +10819,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "45e152dd-32b3-408a-ac35-618c37514987")
 		(at 135 51.9 90)
@@ -10961,7 +10961,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "469368aa-562c-4235-b38d-6ece9f6bb8f5")
 		(at 141.1 64 -90)
@@ -11103,7 +11103,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "4c597ef4-89ab-425a-9fb4-03833e8eade4")
 		(at 138.9 81 90)
@@ -11245,7 +11245,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "4e9afd52-b37d-4580-b878-7acb1677faf4")
 		(at 105.25 83.95 -90)
@@ -11407,7 +11407,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "50a3e786-3b56-4d04-b821-96214ddd9f46")
 		(at 112.5 57.5 180)
@@ -11907,7 +11907,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "52206246-915c-47dd-ad66-bf6751dc7508")
 		(at 117.5 72.5 180)
@@ -12113,7 +12113,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "53235628-729a-4819-bf67-e994b2d22fe5")
 		(at 132.5 57.5 90)
@@ -12255,7 +12255,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "53606b26-9f91-4e39-aa8f-33da72878403")
 		(at 147.5 62.5)
@@ -12531,7 +12531,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "53a741fb-3e01-4f0d-9067-bf677165e6e4")
 		(at 117.5 77.5)
@@ -12737,7 +12737,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "543ad4a7-7d6b-4f99-8ebd-79c67aea36a3")
 		(at 112.5 77.5)
@@ -12943,7 +12943,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "5485d855-d632-4780-85b3-8c971572510e")
 		(at 174.75 76.95 90)
@@ -13085,7 +13085,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "55cd4bc1-eba5-4835-aa16-a4920c48eb4e")
 		(at 142.5 57.5 180)
@@ -13291,7 +13291,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-hbt"
+	(footprint "Parts:SOT23_bjt"
 		(layer "F.Cu")
 		(uuid "57a249f8-de1c-4546-a681-ae0e1490ea0b")
 		(at 117.5 62.5)
@@ -13517,7 +13517,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "58bc609e-330b-408d-95c8-89c13f4a53dd")
 		(at 179.75 56.95 90)
@@ -13821,7 +13821,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "5b0aa929-8d0e-4913-b1a0-17895defe58c")
 		(at 147.5 67.5)
@@ -14097,7 +14097,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "5dd50bce-589a-4d62-ac2c-30f05af738b3")
 		(at 167.5 82.5 180)
@@ -14303,7 +14303,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "5de08106-c659-4afa-9dbb-57f978d376cb")
 		(at 182.5 72.5)
@@ -14509,7 +14509,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "5e25a40a-9421-45a3-852d-6fe7e43dfabc")
 		(at 136 50.5 90)
@@ -14651,7 +14651,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "5ec37a31-afc9-40d8-b92f-9ff2f3256230")
 		(at 137.5 77.5)
@@ -14857,7 +14857,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "5f90b93a-89c0-41b7-8758-b48f146ac7b3")
 		(at 116.05 50.5 90)
@@ -14999,7 +14999,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "5fe8ee80-bd1e-4468-bb45-73b96092f1a6")
 		(at 162.5 57.5 180)
@@ -15205,7 +15205,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "63755822-47c4-40fa-b123-3d54203d1e70")
 		(at 102.5 62.5)
@@ -15411,7 +15411,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "64c873b5-5850-4bb0-999a-03042c435352")
 		(at 177.5 62.5)
@@ -15687,7 +15687,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "659d71ac-f3c6-4a04-a08b-6ef8a58ac112")
 		(at 107.5 67.5)
@@ -15903,7 +15903,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "676cc7b2-2f12-4098-950e-909905de3383")
 		(at 152.5 57.5 180)
@@ -16179,7 +16179,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "67882c7d-7f5b-47f7-b69e-ca574782ef6d")
 		(at 107.5 47.5 180)
@@ -16455,7 +16455,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "6a2199da-6e39-42d6-857d-dac8378cc52f")
 		(at 140 61.05 90)
@@ -16597,7 +16597,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "6b07b214-6d5a-4f3c-83bc-5993b1758ad3")
 		(at 152.5 67.5)
@@ -16873,7 +16873,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "6b18131a-8cc7-47c4-a398-adeb4dcf81d8")
 		(at 132.5 72.5 90)
@@ -17206,7 +17206,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "6ec345c0-9917-41d0-8330-bfa47446cc0a")
 		(at 167.5 52.5)
@@ -17412,7 +17412,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "7210761d-ade9-4ff8-b9db-c8456690a723")
 		(at 132.5 47.5 180)
@@ -17618,7 +17618,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "721dbc61-0fb2-4917-ae8c-0287785819f9")
 		(at 157.5 82.5)
@@ -17824,7 +17824,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "72a4c931-d41c-49c3-8099-f7ccc474ac24")
 		(at 142.5 77.5 180)
@@ -18030,7 +18030,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "735b6a3e-eda7-41f0-8e78-4f9af93641f7")
 		(at 167.5 77.5)
@@ -18236,7 +18236,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "75ae11aa-fc4a-4515-b5d7-56b91880fae0")
 		(at 175.65 66 180)
@@ -18378,7 +18378,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "7962d61d-f41a-432e-9052-87de8ee22dfc")
 		(at 104.4 60.2 -90)
@@ -18520,7 +18520,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "7c89da7c-bac3-4678-b239-e19413e71dfe")
 		(at 182.5 62.5)
@@ -18726,7 +18726,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "7cecaac7-eb72-4ba2-853f-641dfe538bc9")
 		(at 172.5 47.5)
@@ -18932,7 +18932,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "7e47adb3-4662-4d64-8882-13332cc443d4")
 		(at 112.5 67.5 180)
@@ -19138,7 +19138,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "7e68a119-0f76-4620-b721-69ba1f57bbf2")
 		(at 140 76 90)
@@ -19280,7 +19280,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "7ea39d0e-947f-40ae-879a-873368e2012d")
 		(at 172.5 72.5)
@@ -19780,7 +19780,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "818d671d-b51a-4a4a-8bcb-d3fb3bc70d6b")
 		(at 172.5 62.5)
@@ -20290,7 +20290,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "838a9dab-50b0-4951-89ba-d5fb084c7764")
 		(at 157.5 52.5)
@@ -20506,7 +20506,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "84a6410c-4381-4263-b9c2-49b7b8232510")
 		(at 141.1 74 -90)
@@ -20648,7 +20648,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "8571d94f-48bd-45d5-a095-27ad683ed621")
 		(at 144.75 53.05 -90)
@@ -20810,7 +20810,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "85e00dfd-1053-4de4-8539-196a1ec4ede9")
 		(at 132.5 52.5)
@@ -21016,7 +21016,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "86567f5a-aec1-45d8-b553-ae138a1448c4")
 		(at 147.5 57.5)
@@ -21232,7 +21232,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-pull"
+	(footprint "Parts:R_0402_pull"
 		(layer "F.Cu")
 		(uuid "86a89d3e-5e2b-4847-95b7-5a2a413784d1")
 		(at 106.1 49 -90)
@@ -21384,7 +21384,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "88e4c739-f21e-4d58-8631-4893301df879")
 		(at 137.5 47.5 180)
@@ -22248,7 +22248,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "8c8ce179-316e-4d28-af8d-9d1f7f5444a1")
 		(at 174.35 61.45 180)
@@ -22390,7 +22390,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "8cb6cc19-867c-4983-bb39-e0f97e9b376a")
 		(at 147.5 82.5)
@@ -22666,7 +22666,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "8cd38f94-6b05-482e-bdce-cae551f616b8")
 		(at 172.35 60)
@@ -22808,7 +22808,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "8d19ab53-974f-4910-9615-aee343f8d491")
 		(at 152.5 72.5)
@@ -23084,7 +23084,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "8d9cef0e-9a47-43ce-93b9-78c81c3d9a52")
 		(at 101.9 70.3)
@@ -23246,7 +23246,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "8e2b484b-ba2c-4160-ac0b-758eddf62f01")
 		(at 117.5 57.5)
@@ -23452,7 +23452,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "90f90286-8bd9-44bf-a7c7-81ab66693e4e")
 		(at 147.5 77.5)
@@ -23728,7 +23728,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "9498cd54-21bd-4d39-9e67-d4f4456a2b3e")
 		(at 122.5 72.5 180)
@@ -23934,7 +23934,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "952b173a-5d88-47fc-b820-2c93f835323c")
 		(at 157.5 62.5)
@@ -24140,7 +24140,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "964878cb-09b1-4dd7-8047-5501f5801ad4")
 		(at 140 71 90)
@@ -24576,7 +24576,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "96ecd19c-48a1-4fbe-ad26-32cb45852e37")
 		(at 117.5 52.5 180)
@@ -25146,7 +25146,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "973c6811-f7a9-445c-83b2-6260699119bd")
 		(at 139.5 64.05)
@@ -25430,7 +25430,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "99366d63-50ef-4e3d-8bdd-a2c95faba241")
 		(at 113.9 81 90)
@@ -25592,7 +25592,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "997b2c3a-297c-46a0-a31b-9372331925de")
 		(at 177.5 82.5)
@@ -25798,7 +25798,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "9a8c9c88-52cd-424d-969b-d4dd81fdac1c")
 		(at 147.5 72.5)
@@ -26074,7 +26074,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "9bfe1802-7ac5-45a7-96ca-3aa7f3a75e0c")
 		(at 145.25 57 90)
@@ -26236,7 +26236,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-hbt"
+	(footprint "Parts:SOT23_bjt"
 		(layer "F.Cu")
 		(uuid "9d910e2a-1bcf-4020-ad44-d194459a4934")
 		(at 147.5 47.5 90)
@@ -26462,7 +26462,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "9e8f034b-bba2-4611-a695-05aa4c4ed653")
 		(at 105.25 78.95 90)
@@ -26604,7 +26604,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "9f09f739-1fd4-464e-be9c-9aa6d8d9afc0")
 		(at 105 51.95 90)
@@ -26746,7 +26746,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "9fecc5ae-a5e4-427d-8af1-b43373283161")
 		(at 127.5 47.5 180)
@@ -27022,7 +27022,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "a1afdf87-a898-4322-b4ef-184889d59be9")
 		(at 104.75 77 90)
@@ -27184,7 +27184,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "a1daf9c8-9318-4454-a4a1-cec84d8fa047")
 		(at 169.75 83.9 -90)
@@ -27326,7 +27326,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "a2058e47-9a01-4412-a90b-f51693c57962")
 		(at 112.5 47.5 180)
@@ -27532,7 +27532,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "a24be025-69bf-45b6-a223-9dafc9d597aa")
 		(at 152.5 47.5)
@@ -28010,7 +28010,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "a4b8f2ad-5963-4944-86d2-3ea6a264a8e1")
 		(at 127.5 52.5 180)
@@ -28286,7 +28286,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "a71bf283-e517-475d-9915-479136906d03")
 		(at 172.5 52.5)
@@ -28492,7 +28492,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "a9dd1ab8-d519-4e7b-9a77-ed150e7a5121")
 		(at 132.5 62.5 90)
@@ -28634,7 +28634,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "aa89519d-fe47-4207-b2c5-ed3f0919d1fe")
 		(at 165 56.3 90)
@@ -28776,7 +28776,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "ac712511-d3fb-4b81-98c1-ef5d761c820f")
 		(at 179.75 63.05 90)
@@ -29232,7 +29232,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "b2532d7d-5bfd-4a09-9093-5026fce6dddc")
 		(at 155.65 49.5 180)
@@ -29374,7 +29374,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "b4598f9a-dfc6-44c5-ab1f-847d60a83aae")
 		(at 102.5 67.5)
@@ -29580,7 +29580,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "b4f4ee86-4961-4c66-94d8-e7ea3e409231")
 		(at 162.5 52.5)
@@ -30058,7 +30058,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "b61bbee4-6632-433e-a138-be4c6720cab2")
 		(at 172.5 82.5)
@@ -30264,7 +30264,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "b7277e7a-cd05-4405-bf66-ac675ecf6a94")
 		(at 142.5 52.5)
@@ -30470,7 +30470,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "b7827230-f484-4a0c-ac93-3a76400b233f")
 		(at 157.5 67.5 180)
@@ -30676,7 +30676,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "ba4f1b03-71a8-4063-a05c-db6919947639")
 		(at 182.5 57.5)
@@ -30882,7 +30882,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "baa44050-c36c-46d5-8ceb-f838f7858c6c")
 		(at 140.75 56 -90)
@@ -31024,7 +31024,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "baabb604-6cd8-4e4b-b135-70bc6a8018d2")
 		(at 135 48.05 -90)
@@ -31166,7 +31166,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "bb65bc1b-286a-4326-ad14-39158a7b69fc")
 		(at 139.5 78.8)
@@ -31580,7 +31580,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "bcdf61c5-4b14-4cc8-a296-374a3c08a357")
 		(at 182.5 47.5)
@@ -31786,7 +31786,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-strong"
+	(footprint "Parts:R_0402_strong"
 		(layer "F.Cu")
 		(uuid "bce2b795-8d2b-478e-9a06-cdebe45160f0")
 		(at 173.9 81 90)
@@ -34252,7 +34252,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "bef9699e-2b09-466a-8425-fd871a436fa6")
 		(at 102.5 52.5)
@@ -34458,7 +34458,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "c0e18d88-6517-44b1-8486-592391d564e3")
 		(at 174.8 58.55 180)
@@ -34600,7 +34600,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "c17a0ad5-69f3-4c07-ab7a-4d21736f2a19")
 		(at 105.25 68.95 90)
@@ -34742,7 +34742,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "c1b5b2af-04f3-4ca0-b724-8dc34f83c585")
 		(at 105.35 71 90)
@@ -34884,7 +34884,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "c1d52bc5-a32a-4348-88a2-de8b8a989b0f")
 		(at 167.5 67.5)
@@ -35090,7 +35090,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "c49696a0-0754-4ea0-8929-b30cfd66f9ca")
 		(at 141.1 84 -90)
@@ -35232,7 +35232,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "ca228b1b-b6bf-4ffb-98db-243ec03ce53f")
 		(at 170.25 66.2 90)
@@ -35374,7 +35374,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "cb12016b-47c0-4ae7-9ad8-26e5054bbc7f")
 		(at 104.5 49.95)
@@ -35516,7 +35516,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "cbcfc358-d44e-4256-8840-6e239a0ceda1")
 		(at 167.5 47.5)
@@ -35722,7 +35722,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "cc23e8fa-54ca-452a-8ef6-e6b391477219")
 		(at 132.5 77.5 90)
@@ -35864,7 +35864,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "ce5f3d5e-880a-4034-8833-93af2f794cee")
 		(at 182.5 82.5 180)
@@ -36070,7 +36070,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "ce91d857-4fc0-496e-b8c7-42f7dd0de8ce")
 		(at 172.5 77.5)
@@ -36276,7 +36276,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "d143855c-0a26-4ae5-b5a6-893b5c9e8a82")
 		(at 162.5 77.5)
@@ -36482,7 +36482,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "d4913c68-fbbb-441d-b44c-403d78485935")
 		(at 115 51.9 90)
@@ -36624,7 +36624,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "d59287ac-d1a3-4e9b-a111-56789eb1d15a")
 		(at 140 66 90)
@@ -36766,7 +36766,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "d719b4d1-320e-40cf-859d-140ccd2e1910")
 		(at 147.5 52.5 180)
@@ -37042,7 +37042,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "d8401009-0e41-4bdb-9283-2e207394b732")
 		(at 172.5 67.5)
@@ -37248,7 +37248,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-pmos"
+	(footprint "Parts:SOT23_pmos"
 		(layer "F.Cu")
 		(uuid "d9fd196e-c09f-4d52-9ea7-6aaac87a8949")
 		(at 107.5 77.5)
@@ -37464,7 +37464,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "da2ce4ab-08b7-4c9a-a7d9-9669be7a546f")
 		(at 109.75 63.1 -90)
@@ -38194,7 +38194,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "dd763247-8842-4d8d-b740-388a08d49441")
 		(at 152.5 62.5)
@@ -38470,7 +38470,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "ddfb244d-e4e4-4117-b02b-fd056d70100d")
 		(at 137.5 52.5 180)
@@ -38746,7 +38746,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "e25fa01f-92de-49aa-bd86-fda00e42b5e3")
 		(at 168.95 59.7)
@@ -38888,7 +38888,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "e291d648-bc2e-490f-8a7b-ccc2f771e698")
 		(at 117.5 82.5)
@@ -39094,7 +39094,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "e50da1b6-0111-4425-970b-a6558d1b131e")
 		(at 157.95 72.35 -90)
@@ -39236,7 +39236,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "e76806f5-318a-40d4-ae56-ffac7437dbc8")
 		(at 112.5 82.5)
@@ -39442,7 +39442,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "e7a3e9a9-88ff-45d1-a4dc-705cc7105d35")
 		(at 126.05 50.5 90)
@@ -39584,7 +39584,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "eaed2ef7-dd99-4cc1-b8d1-132b6688c220")
 		(at 112.5 72.5)
@@ -39790,7 +39790,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "eb3255dd-5f46-4f8c-8aca-6f7bd53cd39e")
 		(at 112.5 52.5)
@@ -39996,7 +39996,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "ed9a8f0f-a299-4a27-af15-ba8ef0103ed5")
 		(at 167.5 72.5)
@@ -40202,7 +40202,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "efb264b1-1740-4651-a4f8-7bd1f806825e")
 		(at 102.5 72.5 180)
@@ -40478,7 +40478,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f0b48ba5-56cf-4427-86ea-8dc6a218d151")
 		(at 107.5 57.5 180)
@@ -40684,7 +40684,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f1774083-8a48-4528-8a56-a44fbecb61aa")
 		(at 177.5 52.5)
@@ -40890,7 +40890,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "f347e3fe-9436-4348-9813-5f38ce807d27")
 		(at 109.75 71 90)
@@ -41032,7 +41032,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f3ff2ed6-77ed-40a2-8fd7-80c3eac572e6")
 		(at 107.5 82.5)
@@ -41238,7 +41238,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f43091e9-36ed-4547-93f1-e2ab7174a1e7")
 		(at 122.5 57.5)
@@ -41444,7 +41444,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot323-bjt"
+	(footprint "Parts:SOT23_bias"
 		(layer "F.Cu")
 		(uuid "f6677a8e-f08a-486c-99a4-e83920b8d366")
 		(at 107.5 72.5 180)
@@ -41720,7 +41720,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f707e8d6-4f52-4036-9494-81bd83476380")
 		(at 142.5 62.5 180)
@@ -41926,7 +41926,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f70b3d4f-2f1c-4e80-9353-13cac8eed572")
 		(at 157.5 57.5)
@@ -42132,7 +42132,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f880f607-e8a8-4ee0-8949-f4b38001b3b6")
 		(at 162.5 62.5)
@@ -42338,7 +42338,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0402w"
+	(footprint "Parts:C_0402"
 		(layer "F.Cu")
 		(uuid "f893064c-9741-4d88-a2d1-601c555111da")
 		(at 139.5 74)
@@ -42480,7 +42480,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f973287a-5414-40b6-b706-2e11ee9d8e2a")
 		(at 137.5 62.5)
@@ -42686,7 +42686,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "f9de0ca1-d7ad-4810-8c8c-4bfd397880a3")
 		(at 122.5 47.5 180)
@@ -42892,7 +42892,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "fb96d958-fcdf-49d5-ad20-e8c0ba9b305d")
 		(at 162.5 82.5)
@@ -43098,7 +43098,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "fd1e6360-f7c1-4011-a7ba-21ba62f1269a")
 		(at 174.8 63.55 180)
@@ -43240,7 +43240,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "fdeb9701-a63e-4af6-887b-96adc292b964")
 		(at 172.5 69.7)
@@ -43382,7 +43382,7 @@
 			)
 		)
 	)
-	(footprint "Parts:0603-load"
+	(footprint "Parts:R_0402_load"
 		(layer "F.Cu")
 		(uuid "ff2d672f-7a13-4c4e-8f35-4092247583bf")
 		(at 132.5 82.5 90)
@@ -43524,7 +43524,7 @@
 			)
 		)
 	)
-	(footprint "Parts:sot23-nmos"
+	(footprint "Parts:SOT23_nmos"
 		(layer "F.Cu")
 		(uuid "ff6ec680-cbdc-47ab-8ae2-6e2057068101")
 		(at 102.5 47.5 180)
@@ -44637,6 +44637,14 @@
 		(uuid "0a377f7b-dcfb-48b1-a5ef-d9fb292ac3ba")
 	)
 	(segment
+		(start 174.12 91.27)
+		(end 174.12 88.5)
+		(width 0.5)
+		(layer "F.Cu")
+		(net 1)
+		(uuid "0bc678f7-a853-483a-a915-90dd73318299")
+	)
+	(segment
 		(start 133.575 46.55)
 		(end 134.4 46.55)
 		(width 0.2)
@@ -44741,6 +44749,14 @@
 		(uuid "213ea85f-0a34-48b9-aad3-755c2a54272a")
 	)
 	(segment
+		(start 172.85 91.27)
+		(end 172.85 88.5)
+		(width 0.5)
+		(layer "F.Cu")
+		(net 1)
+		(uuid "229f7807-5d8d-4fbf-80d6-64a1154ebf52")
+	)
+	(segment
 		(start 136.425 73.45)
 		(end 135.6 73.45)
 		(width 0.2)
@@ -44837,6 +44853,14 @@
 		(uuid "2ca826dd-b0c7-48ad-9b40-73aee0412445")
 	)
 	(segment
+		(start 175.39 91.27)
+		(end 175.39 88.5)
+		(width 0.5)
+		(layer "F.Cu")
+		(net 1)
+		(uuid "2cce602f-d9c5-4430-b4e4-9eac4e577af5")
+	)
+	(segment
 		(start 136 50.98)
 		(end 136 51.65)
 		(width 0.2)
@@ -44877,12 +44901,12 @@
 		(uuid "33a97fc1-67ef-4e91-a683-9cee141c9ec4")
 	)
 	(segment
-		(start 174.07 91.27)
-		(end 174.07 88.5)
+		(start 171.6 91.25)
+		(end 171.6 88.5)
 		(width 0.5)
 		(layer "F.Cu")
 		(net 1)
-		(uuid "38a8301b-d83b-48d5-bd1b-09d1ef697dcc")
+		(uuid "35857b2a-0db2-45fc-b821-19b300f88ef7")
 	)
 	(segment
 		(start 162.69 91.22)
@@ -44949,12 +44973,12 @@
 		(uuid "3f196772-1270-4d71-a85e-0bbb97df6077")
 	)
 	(segment
-		(start 171.55 91.25)
-		(end 171.55 88.5)
+		(start 120.78 91.22)
+		(end 120.78 88.87)
 		(width 0.5)
 		(layer "F.Cu")
 		(net 1)
-		(uuid "3f55d7fd-1800-434e-bb3a-313f114b7602")
+		(uuid "3f2961ad-48d9-45e3-bbb3-513578c1bf85")
 	)
 	(segment
 		(start 133.45 91.2)
@@ -45013,6 +45037,14 @@
 		(uuid "48aeb3a9-7455-4a1f-a9d6-4048bc170b9a")
 	)
 	(segment
+		(start 177.93 91.25)
+		(end 177.93 88.5)
+		(width 0.5)
+		(layer "F.Cu")
+		(net 1)
+		(uuid "4ab94eba-61d9-4950-9363-3e2c732b435a")
+	)
+	(segment
 		(start 167.77 91.22)
 		(end 167.77 88.63)
 		(width 0.5)
@@ -45027,14 +45059,6 @@
 		(layer "F.Cu")
 		(net 1)
 		(uuid "4c669522-5760-489a-a6f9-530758b8b4c0")
-	)
-	(segment
-		(start 120.78 91.22)
-		(end 120.78 89.02)
-		(width 0.5)
-		(layer "F.Cu")
-		(net 1)
-		(uuid "4ce139c8-634d-40f3-b4dc-f0fa2a0b78a9")
 	)
 	(segment
 		(start 167.77 88.63)
@@ -45075,22 +45099,6 @@
 		(layer "F.Cu")
 		(net 1)
 		(uuid "502368a0-1d4f-4dd8-9f79-a3b1ec8a44e9")
-	)
-	(segment
-		(start 120.78 89.02)
-		(end 121.35 88.45)
-		(width 0.5)
-		(layer "F.Cu")
-		(net 1)
-		(uuid "5124b07c-fff0-4316-8711-e66947cee6d9")
-	)
-	(segment
-		(start 176.61 91.27)
-		(end 176.61 88.5)
-		(width 0.5)
-		(layer "F.Cu")
-		(net 1)
-		(uuid "51e3665f-a07e-4178-805c-78848e764eb1")
 	)
 	(segment
 		(start 136.425 83.45)
@@ -45269,6 +45277,14 @@
 		(uuid "6c311ff0-da64-448c-a7c9-9cd1122dd59c")
 	)
 	(segment
+		(start 120.78 88.87)
+		(end 121.2 88.45)
+		(width 0.5)
+		(layer "F.Cu")
+		(net 1)
+		(uuid "6c643c7c-a3f4-4e9d-9169-da1571ed6cd3")
+	)
+	(segment
 		(start 123.575 46.55)
 		(end 124.4 46.55)
 		(width 0.2)
@@ -45421,14 +45437,6 @@
 		(uuid "8a34d8a0-5a8d-43dd-a817-d4b4460b920f")
 	)
 	(segment
-		(start 172.8 91.27)
-		(end 172.8 88.5)
-		(width 0.5)
-		(layer "F.Cu")
-		(net 1)
-		(uuid "8ae1dc50-b883-4ad3-a9d4-9c1280ffea54")
-	)
-	(segment
 		(start 101.425 53.45)
 		(end 100.6 53.45)
 		(width 0.2)
@@ -45445,12 +45453,12 @@
 		(uuid "8cb3ad7c-e22a-4137-b908-c8c0c4f5b8d9")
 	)
 	(segment
-		(start 177.85 91.25)
-		(end 177.85 88.5)
+		(start 176.66 91.27)
+		(end 176.66 88.5)
 		(width 0.5)
 		(layer "F.Cu")
 		(net 1)
-		(uuid "8f56f7e9-936b-4f79-a598-ee182d0fd234")
+		(uuid "90f68232-2c76-4207-9f1c-776ac0eac4ad")
 	)
 	(segment
 		(start 171.87 60)
@@ -45547,14 +45555,6 @@
 		(layer "F.Cu")
 		(net 1)
 		(uuid "a3387291-ec99-4ab8-acb0-d7bcd6d06954")
-	)
-	(segment
-		(start 175.34 91.27)
-		(end 175.34 88.5)
-		(width 0.5)
-		(layer "F.Cu")
-		(net 1)
-		(uuid "ae25a9ab-4cc6-4715-8df6-69f5925a2baf")
 	)
 	(segment
 		(start 144.275 88.45)
@@ -45701,7 +45701,7 @@
 		(uuid "d65a9f2f-b38a-479c-bf55-d2a9f27483ab")
 	)
 	(segment
-		(start 121.35 88.45)
+		(start 121.2 88.45)
 		(end 125.225 88.45)
 		(width 0.5)
 		(layer "F.Cu")
@@ -46447,7 +46447,7 @@
 		(uuid "ca4859a4-8b28-43ec-a310-2a33fcd6c94e")
 	)
 	(via
-		(at 121.35 88.45)
+		(at 121.2 88.45)
 		(size 0.5)
 		(drill 0.3)
 		(layers "F.Cu" "B.Cu")

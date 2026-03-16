@@ -2,7 +2,7 @@ v 20220529 2
 C 2700 1100 1 90 0 resistor-load.sym
 {
 T 2600 1500 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 2600 1500 5 10 0 1 90 0 1
 value=rload
 T 2300 1400 5 10 0 0 90 0 1
@@ -20,13 +20,13 @@ refdes=M2
 T 2300 1200 5 10 0 1 0 0 1
 value=NMOS_switch
 T 2700 1000 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 }
 N 2200 700 1800 1100 4
 C 1500 1100 1 90 0 resistor-load.sym
 {
 T 1400 1500 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 1400 1500 5 10 0 1 90 0 1
 value=rload
 T 1100 1400 5 10 0 0 90 0 1
@@ -43,7 +43,7 @@ refdes=M1
 T 1700 1200 5 10 0 1 0 6 1
 value=NMOS_switch
 T 1300 1000 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 }
 N 1400 1100 1400 900 4
 N 1800 700 2200 1100 4
@@ -63,7 +63,7 @@ C 3300 1500 1 90 1 pdtc124.sym
 T 3000 1250 5 10 1 1 0 5 1
 refdes=Q2
 T 2800 800 5 10 0 1 90 6 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 2600 1400 5 10 0 1 90 6 1
 value=PDTC124TU
 }
@@ -72,7 +72,7 @@ C 700 1500 1 270 0 pdtc124.sym
 T 1000 1250 5 10 1 1 0 5 1
 refdes=Q1
 T 1200 800 5 10 0 1 270 0 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 1400 1400 5 10 0 1 270 0 1
 value=PDTC124TU
 }

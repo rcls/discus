@@ -6,7 +6,7 @@ refdes=M2
 T 42800 46400 5 8 0 1 0 0 1
 value=NMOS_switch
 T 43200 46200 5 8 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 44200 46200 5 8 0 1 0 0 1
 device=NMOS
 }
@@ -17,7 +17,7 @@ refdes=M4
 T 44800 46400 5 8 0 1 0 6 1
 value=NMOS_switch
 T 44400 46200 5 8 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 43400 46200 5 8 0 1 0 6 1
 device=NMOS
 }
@@ -28,7 +28,7 @@ refdes=M3
 T 44800 47400 5 10 0 1 0 6 1
 value=PMOS_switch
 T 44400 47200 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 43400 47200 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -39,7 +39,7 @@ refdes=M1
 T 42800 47400 5 10 0 1 0 0 1
 value=PMOS_switch
 T 43200 47200 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 44200 47200 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -50,7 +50,7 @@ device=RESISTOR
 T 44050 46250 5 8 1 1 0 0 1
 refdes=R2
 T 43800 46200 5 8 0 1 0 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 43800 46200 5 8 0 1 0 0 1
 value=rstrong
 }
@@ -59,7 +59,7 @@ C 45500 46000 1 90 0 pdtc124.sym
 T 45200 46250 5 8 1 1 0 3 1
 refdes=Q3
 T 45000 46700 5 8 0 1 90 0 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 44800 46100 5 8 0 1 90 0 1
 value=PDTC124TU
 }
@@ -68,7 +68,7 @@ C 41600 46000 1 270 1 pdtc124.sym
 T 41900 46250 5 8 1 1 0 3 1
 refdes=Q2
 T 42100 46700 5 8 0 1 270 6 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 42300 46100 5 8 0 1 270 6 1
 value=PDTC124TU
 }
@@ -87,7 +87,7 @@ device=RESISTOR
 T 43950 46650 5 8 1 1 0 0 1
 refdes=R1
 T 43700 46600 5 8 0 1 0 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 43700 46600 5 8 0 1 0 0 1
 value=rstrong
 }
@@ -209,7 +209,7 @@ device=RESISTOR
 T 41950 48250 5 10 1 1 0 0 1
 refdes=R3
 T 41500 48900 5 10 0 1 0 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 41500 49100 5 10 0 1 0 0 1
 value=rload
 }

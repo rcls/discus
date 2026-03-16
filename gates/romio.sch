@@ -59,7 +59,7 @@ device=RESISTOR
 T 950 1250 5 10 1 1 0 6 1
 refdes=R1
 T 1300 1200 5 10 0 1 180 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 1300 1200 5 10 0 1 180 0 1
 value=rload
 }
@@ -70,7 +70,7 @@ device=RESISTOR
 T 1750 550 5 10 1 1 0 2 1
 refdes=R2
 T 2400 1000 5 10 0 1 270 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 2600 1000 5 10 0 1 270 0 1
 value=rload
 }
@@ -78,7 +78,7 @@ N 2100 900 2100 1000 4
 C 2000 2600 1 270 0 resistor-load.sym
 {
 T 1900 1600 5 10 0 1 270 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 2400 2300 5 10 0 0 270 0 1
 device=RESISTOR
 T 2150 1950 5 10 1 1 270 0 1
@@ -97,7 +97,7 @@ C 1700 900 1 0 0 npn.sym
 T 1925 1200 5 8 1 1 0 1 1
 refdes=Q
 T 2400 1400 5 10 0 1 0 0 1
-footprint=sot323-hbt
+footprint=SOT23_bjt
 T 1800 1600 5 10 0 1 0 0 1
 value=BC847BW
 }

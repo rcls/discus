@@ -1026,7 +1026,7 @@ refdes=M3
 T 4500 5700 5 10 0 1 0 0 1
 value=PMOS_switch
 T 4900 5500 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5900 5500 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -1037,7 +1037,7 @@ refdes=M6
 T 5700 5700 5 10 0 1 0 6 1
 value=PMOS_switch
 T 5300 5500 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 4300 5500 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -1046,7 +1046,7 @@ C 3600 4000 1 0 0 pmos-switch.sym
 T 3700 4800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 4100 4600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5100 4600 5 10 0 1 0 0 1
 device=PMOS
 T 3825 4300 5 8 1 1 0 1 1
@@ -1057,7 +1057,7 @@ C 4400 4000 1 0 0 pmos-switch.sym
 T 4500 4800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 4900 4600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5900 4600 5 10 0 1 0 0 1
 device=PMOS
 T 4625 4300 5 8 1 1 0 1 1
@@ -1068,7 +1068,7 @@ C 5800 4000 1 0 1 pmos-switch.sym
 T 5700 4800 5 10 0 1 0 6 1
 value=PMOS_switch
 T 5300 4600 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 4300 4600 5 10 0 1 0 6 1
 device=PMOS
 T 5575 4300 5 8 1 1 0 7 1
@@ -1079,7 +1079,7 @@ C 6600 4000 1 0 1 pmos-switch.sym
 T 6500 4800 5 10 0 1 0 6 1
 value=PMOS_switch
 T 6100 4600 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5100 4600 5 10 0 1 0 6 1
 device=PMOS
 T 6375 4300 5 8 1 1 0 7 1
@@ -1216,7 +1216,7 @@ C 2200 6700 1 0 0 vdd-1.sym
 C 2500 5800 1 90 0 resistor-strong.sym
 {
 T 2400 6200 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 2100 6100 5 10 0 0 90 0 1
 device=RESISTOR
 T 2400 6200 5 10 0 1 0 0 1

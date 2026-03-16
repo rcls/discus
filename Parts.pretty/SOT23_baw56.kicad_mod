@@ -1,4 +1,4 @@
-(footprint "sot23-pmos"
+(footprint "SOT23_baw56"
 	(version 20241229)
 	(generator "pcbnew")
 	(generator_version "9.0")
@@ -93,14 +93,14 @@
 		(uuid "bb68922a-cea0-4c3a-96e4-cad620d179c1")
 	)
 	(fp_line
-		(start 0 -1.56)
-		(end 0 1.56)
+		(start 0.76 -1.56)
+		(end -0.76 0)
 		(stroke
 			(width 0.12)
 			(type default)
 		)
 		(layer "F.SilkS")
-		(uuid "58d2c6f9-a587-4a84-af92-6c1cb58f9bc7")
+		(uuid "f4ebc4ca-6fde-49da-8527-c718d3c07368")
 	)
 	(fp_line
 		(start 0.76 -1.56)
@@ -121,6 +121,16 @@
 		)
 		(layer "F.SilkS")
 		(uuid "dcf40344-7a99-4111-b3fc-3771f3310cfd")
+	)
+	(fp_line
+		(start 0.76 1.56)
+		(end -0.76 0)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "15f943ee-b8a8-45f1-a779-49e348576e35")
 	)
 	(fp_line
 		(start 0.76 1.56)

@@ -2,7 +2,7 @@ v 20220529 2
 C 1300 1500 1 90 0 resistor-load.sym
 {
 T 1200 1900 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 1200 1900 5 10 0 1 90 0 1
 value=rload
 T 900 1800 5 10 0 0 90 0 1
@@ -51,7 +51,7 @@ C 800 800 1 0 0 npn.sym
 T 1000 1100 5 10 1 1 0 1 1
 refdes=Q
 T 1500 1300 5 10 0 1 0 0 1
-footprint=sot323-hbt
+footprint=SOT23_bjt
 T 900 1500 5 10 0 1 0 0 1
 value=BC847BW
 }

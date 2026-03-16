@@ -425,7 +425,7 @@ refdes=M0
 T 6200 6500 5 10 0 1 0 0 1
 value=PMOS_switch
 T 6600 6300 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 7600 6300 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -436,7 +436,7 @@ refdes=M1
 T 7600 6500 5 10 0 1 0 6 1
 value=PMOS_switch
 T 7200 6300 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 6200 6300 5 10 0 1 0 6 1
 device=PMOS
 }

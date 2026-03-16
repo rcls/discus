@@ -6,7 +6,7 @@ refdes=M
 T 1100 1600 5 10 0 1 0 1 1
 value=NMOS_switch
 T 1500 1400 5 10 0 1 0 1 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 2500 1400 5 10 0 1 0 1 1
 device=NMOS
 }
@@ -55,7 +55,7 @@ netname=Q
 C 1500 1400 1 90 0 resistor-strong.sym
 {
 T 1600 2400 5 10 0 1 90 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 1100 1700 5 10 0 0 90 0 1
 device=RESISTOR
 T 1350 2050 5 10 1 1 90 0 1

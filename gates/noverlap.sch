@@ -4,7 +4,7 @@ C 57200 39400 1 0 0 gnd-1.sym
 C 56300 39300 1 0 0 resistor-strong.sym
 {
 T 57300 39200 5 10 0 1 0 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 56600 39700 5 10 0 0 0 0 1
 device=RESISTOR
 T 56400 39000 5 10 0 1 0 0 1
@@ -18,7 +18,7 @@ C 57200 37700 1 0 0 gnd-1.sym
 C 56300 38800 1 0 0 resistor-strong.sym
 {
 T 57300 38700 5 10 0 1 0 0 1
-footprint=0603-strong
+footprint=R_0402_strong
 T 56600 39200 5 10 0 0 0 0 1
 device=RESISTOR
 T 56400 38500 5 10 0 1 0 0 1
@@ -111,7 +111,7 @@ refdes=M1
 T 56000 40500 5 10 0 1 0 0 1
 value=PMOS_switch
 T 56400 40300 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 57400 40300 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -122,7 +122,7 @@ refdes=M2
 T 55800 38800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 56200 38600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 57200 38600 5 10 0 1 0 0 1
 device=PMOS
 }

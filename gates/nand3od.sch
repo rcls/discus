@@ -6,7 +6,7 @@ refdes=M1
 T 59300 47000 5 10 0 1 0 0 1
 value=NMOS_switch
 T 59700 46800 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 60700 46800 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -17,7 +17,7 @@ refdes=M3
 T 59300 45600 5 10 0 1 0 0 1
 value=NMOS_switch
 T 59700 45400 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 60700 45400 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -55,7 +55,7 @@ refdes=M2
 T 59300 46300 5 10 0 1 0 0 1
 value=NMOS_switch
 T 59700 46100 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 60700 46100 5 10 0 1 0 0 1
 device=NMOS
 }

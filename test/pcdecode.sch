@@ -230,7 +230,7 @@ refdes=M1
 T 20100 8600 5 10 0 1 0 0 1
 value=NMOS_switch
 T 20500 8400 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 21500 8400 5 10 0 1 0 0 1
 device=NMOS
 }

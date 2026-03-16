@@ -6,7 +6,7 @@ refdes=M1
 T 59300 47000 5 10 0 1 0 0 1
 value=NMOS_switch
 T 59700 46800 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 60700 46800 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -17,14 +17,14 @@ refdes=M3
 T 59300 45600 5 10 0 1 0 0 1
 value=NMOS_switch
 T 59700 45400 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 60700 45400 5 10 0 1 0 0 1
 device=NMOS
 }
 C 59700 46800 1 90 0 resistor-load.sym
 {
 T 59600 47200 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 59300 47100 5 10 0 0 90 0 1
 device=RESISTOR
 T 59900 47200 5 10 1 1 90 0 1
@@ -75,7 +75,7 @@ refdes=M2
 T 59300 46300 5 10 0 1 0 0 1
 value=NMOS_switch
 T 59700 46100 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 60700 46100 5 10 0 1 0 0 1
 device=NMOS
 }

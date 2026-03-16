@@ -15,7 +15,7 @@ refdes=M8
 T 1900 3200 5 10 0 1 0 0 1
 value=PMOS_switch
 T 2300 3000 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 3300 3000 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -26,7 +26,7 @@ refdes=M9
 T 4500 3200 5 10 0 1 0 6 1
 value=PMOS_switch
 T 4100 3000 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 3100 3000 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -40,7 +40,7 @@ C 600 1700 1 0 0 pmos-switch.sym
 T 700 2500 5 10 0 1 0 0 1
 value=PMOS_switch
 T 1100 2300 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 2100 2300 5 10 0 1 0 0 1
 device=PMOS
 T 800 2000 5 8 1 1 0 1 1
@@ -52,7 +52,7 @@ C 2600 1700 1 0 1 pmos-switch.sym
 T 2500 2500 5 10 0 1 0 6 1
 value=PMOS_switch
 T 2100 2300 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 1100 2300 5 10 0 1 0 6 1
 device=PMOS
 T 2400 2000 5 8 1 1 0 7 1
@@ -70,7 +70,7 @@ C 3800 1700 1 0 0 pmos-switch.sym
 T 3900 2500 5 10 0 1 0 0 1
 value=PMOS_switch
 T 4300 2300 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 5300 2300 5 10 0 1 0 0 1
 device=PMOS
 T 4000 2000 5 8 1 1 0 1 1
@@ -82,7 +82,7 @@ C 5800 1700 1 0 1 pmos-switch.sym
 T 5700 2500 5 10 0 1 0 6 1
 value=PMOS_switch
 T 5300 2300 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 4300 2300 5 10 0 1 0 6 1
 device=PMOS
 T 5600 2000 5 8 1 1 0 7 1
@@ -100,7 +100,7 @@ C 200 1000 1 0 0 pmos-switch.sym
 T 300 1800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 700 1600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 1700 1600 5 10 0 1 0 0 1
 device=PMOS
 T 400 1300 5 8 1 1 0 1 1
@@ -116,7 +116,7 @@ C 1400 1000 1 0 1 pmos-switch.sym
 T 1300 1800 5 10 0 1 0 6 1
 value=PMOS_switch
 T 900 1600 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T -100 1600 5 10 0 1 0 6 1
 device=PMOS
 T 1200 1300 5 8 1 1 0 7 1
@@ -138,7 +138,7 @@ C 1800 1000 1 0 0 pmos-switch.sym
 T 1900 1800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 2300 1600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 3300 1600 5 10 0 1 0 0 1
 device=PMOS
 T 2000 1300 5 8 1 1 0 1 1
@@ -154,7 +154,7 @@ C 3000 1000 1 0 1 pmos-switch.sym
 T 2900 1800 5 10 0 1 0 6 1
 value=PMOS_switch
 T 2500 1600 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 1500 1600 5 10 0 1 0 6 1
 device=PMOS
 T 2800 1300 5 8 1 1 0 7 1
@@ -176,7 +176,7 @@ C 3400 1000 1 0 0 pmos-switch.sym
 T 3500 1800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 3900 1600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 4900 1600 5 10 0 1 0 0 1
 device=PMOS
 T 3600 1300 5 8 1 1 0 1 1
@@ -192,7 +192,7 @@ C 4600 1000 1 0 1 pmos-switch.sym
 T 4500 1800 5 10 0 1 0 6 1
 value=PMOS_switch
 T 4100 1600 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 3100 1600 5 10 0 1 0 6 1
 device=PMOS
 T 4400 1300 5 8 1 1 0 7 1
@@ -214,7 +214,7 @@ C 5000 1000 1 0 0 pmos-switch.sym
 T 5100 1800 5 10 0 1 0 0 1
 value=PMOS_switch
 T 5500 1600 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 6500 1600 5 10 0 1 0 0 1
 device=PMOS
 T 5200 1300 5 8 1 1 0 1 1
@@ -230,7 +230,7 @@ C 6200 1000 1 0 1 pmos-switch.sym
 T 6100 1800 5 10 0 1 0 6 1
 value=PMOS_switch
 T 5700 1600 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 4700 1600 5 10 0 1 0 6 1
 device=PMOS
 T 6000 1300 5 8 1 1 0 7 1

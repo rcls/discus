@@ -370,7 +370,7 @@ device=RESISTOR
 T 14950 12950 5 10 1 1 0 0 1
 refdes=R2
 T 15300 12700 5 10 0 1 0 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 14500 12500 5 10 0 1 0 0 1
 value=rload
 }
@@ -385,7 +385,7 @@ C 14300 13600 1 0 0 resistor-load.sym
 T 14600 14000 5 10 0 0 0 0 1
 device=RESISTOR
 T 15300 13500 5 10 0 1 0 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 14500 13300 5 10 0 1 0 0 1
 value=rload
 T 14950 13750 5 10 1 1 0 0 1

@@ -6,7 +6,7 @@ refdes=M1
 T 43000 48500 5 10 0 1 0 6 1
 value=2N7002P
 T 42600 48300 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 41600 48300 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -17,7 +17,7 @@ refdes=M2
 T 43600 48500 5 10 0 1 0 0 1
 value=2N7002P
 T 44000 48300 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 45000 48300 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -26,7 +26,7 @@ C 42000 48800 1 270 0 pdtc124.sym
 T 42100 48900 5 10 1 1 270 0 1
 refdes=Q1
 T 42500 48100 5 10 0 1 270 0 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 42700 48700 5 10 0 1 270 0 1
 value=PDTC124TU
 }
@@ -35,7 +35,7 @@ C 44600 48800 1 90 1 pdtc124.sym
 T 44600 48900 5 10 1 1 270 2 1
 refdes=Q2
 T 44100 48100 5 10 0 1 270 2 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 43900 48700 5 10 0 1 270 2 1
 value=PDTC124TU
 }
@@ -81,7 +81,7 @@ C 43100 44600 1 0 1 2n7002.sym
 T 43000 45400 5 10 0 1 0 6 1
 value=2N7002P
 T 42600 45200 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 41600 45200 5 10 0 1 0 6 1
 device=NMOS
 T 42800 44800 5 10 1 1 0 6 1
@@ -92,7 +92,7 @@ C 43500 44600 1 0 0 2n7002.sym
 T 43600 45400 5 10 0 1 0 0 1
 value=2N7002P
 T 44000 45200 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 45000 45200 5 10 0 1 0 0 1
 device=NMOS
 T 43800 44800 5 10 1 1 0 0 1
@@ -101,7 +101,7 @@ refdes=M4
 C 42000 45700 1 270 0 pdtc124.sym
 {
 T 42500 45000 5 10 0 1 270 0 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 42700 45600 5 10 0 1 270 0 1
 value=PDTC124TU
 T 42100 45800 5 10 1 1 270 0 1
@@ -110,7 +110,7 @@ refdes=Q3
 C 44600 45700 1 90 1 pdtc124.sym
 {
 T 44100 45000 5 10 0 1 270 2 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 43900 45600 5 10 0 1 270 2 1
 value=PDTC124TU
 T 44600 45800 5 10 1 1 270 2 1
@@ -336,7 +336,7 @@ C 42000 45700 1 0 1 pdtc124.sym
 T 41900 46300 5 10 1 1 0 6 1
 refdes=Q5
 T 41300 46200 5 10 0 1 0 6 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 41900 46400 5 10 0 1 0 6 1
 value=PDTC124TU
 }
@@ -345,7 +345,7 @@ C 44600 45800 1 0 0 pdtc124.sym
 T 44700 46400 5 10 1 1 0 0 1
 refdes=Q6
 T 45300 46300 5 10 0 1 0 0 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 44700 46500 5 10 0 1 0 0 1
 value=PDTC124TU
 }

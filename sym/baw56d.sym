@@ -99,4 +99,4 @@ model-name=baw56d
 T 900 800 8 10 0 1 0 0 1
 file=subckt/baw56.prm
 T 900 1000 8 10 0 1 0 0 1
-footprint=sot23-baw56d
+footprint=SOT23_baw56d

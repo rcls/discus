@@ -105,7 +105,7 @@ refdes=M2
 T 44600 66900 5 10 0 1 0 0 1
 value=BSS84
 T 45000 66700 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 46000 66700 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -116,7 +116,7 @@ refdes=M6
 T 47400 66900 5 10 0 1 0 6 1
 value=BSS84
 T 47000 66700 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 46000 66700 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -127,7 +127,7 @@ refdes=M1
 T 44300 66300 5 10 0 1 0 0 1
 value=BSS84
 T 44700 66100 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 45700 66100 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -138,7 +138,7 @@ refdes=M3
 T 45500 66300 5 10 0 1 0 6 1
 value=BSS84
 T 45100 66100 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 44100 66100 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -149,7 +149,7 @@ refdes=M5
 T 46500 66300 5 10 0 1 0 0 1
 value=BSS84
 T 46900 66100 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 47900 66100 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -160,7 +160,7 @@ refdes=M7
 T 47700 66300 5 10 0 1 0 6 1
 value=BSS84
 T 47300 66100 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 46300 66100 5 10 0 1 0 6 1
 device=PMOS
 }
@@ -314,7 +314,7 @@ refdes=M4
 T 45700 67500 5 10 0 1 0 0 1
 value=BSS84
 T 46100 67300 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 47100 67300 5 10 0 1 0 0 1
 device=PMOS
 }

@@ -6,7 +6,7 @@ refdes=M1
 T 38500 61100 5 10 0 1 0 0 1
 value=NMOS_switch
 T 38900 60900 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 39900 60900 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -17,7 +17,7 @@ refdes=M3
 T 38500 60400 5 10 0 1 0 0 1
 value=NMOS_switch
 T 38900 60200 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 39900 60200 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -28,7 +28,7 @@ refdes=M2
 T 39500 61100 5 10 0 1 0 6 1
 value=NMOS_switch
 T 39100 60900 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 38100 60900 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -39,7 +39,7 @@ refdes=M4
 T 39500 60400 5 10 0 1 0 6 1
 value=NMOS_switch
 T 39100 60200 5 10 0 1 0 6 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 38100 60200 5 10 0 1 0 6 1
 device=NMOS
 }
@@ -109,7 +109,7 @@ refdes=Q
 C 39100 61100 1 90 0 resistor-load.sym
 {
 T 39000 61500 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 38700 61400 5 10 0 0 90 0 1
 device=RESISTOR
 T 38850 61400 5 10 1 1 90 0 1

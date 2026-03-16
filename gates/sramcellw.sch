@@ -4,7 +4,7 @@ C 5300 2200 1 90 1 pdtc124.sym
 T 5000 1950 5 8 1 1 180 3 1
 refdes=Q2
 T 4800 1500 5 8 0 1 270 2 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 4600 2100 5 8 0 1 270 2 1
 value=PDTC124TU
 }
@@ -13,7 +13,7 @@ C 1400 2200 1 270 0 pdtc124.sym
 T 1700 1950 5 8 1 1 180 3 1
 refdes=Q1
 T 1900 1500 5 8 0 1 90 8 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 2100 2100 5 8 0 1 90 8 1
 value=PDTC124TU
 }

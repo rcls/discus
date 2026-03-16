@@ -16,7 +16,7 @@ C 49400 49600 1 90 1 pdtc124.sym
 T 49100 49375 5 8 1 1 0 5 1
 refdes=Q2
 T 48900 48900 5 10 0 1 90 6 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 48700 49500 5 10 0 1 90 6 1
 value=PDTC124TU
 }
@@ -25,7 +25,7 @@ C 45800 49600 1 270 0 pdtc124.sym
 T 46100 49375 5 8 1 1 0 5 1
 refdes=Q1
 T 46300 48900 5 10 0 1 270 0 1
-footprint=sot323-bjt
+footprint=SOT23_bias
 T 46500 49500 5 10 0 1 270 0 1
 value=PDTC124TU
 }
@@ -132,7 +132,7 @@ device=RESISTOR
 T 45450 48000 5 10 1 1 0 8 1
 refdes=R1
 T 45400 48700 5 10 0 1 0 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 45400 48900 5 10 0 1 0 0 1
 value=rload
 }

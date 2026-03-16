@@ -590,7 +590,7 @@ refdes=M2
 T 2700 2900 5 10 0 1 0 0 1
 value=PMOS_switch
 T 3100 2700 5 10 0 1 0 0 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 4100 2700 5 10 0 1 0 0 1
 device=PMOS
 }
@@ -601,7 +601,7 @@ refdes=M3
 T 3900 2900 5 10 0 1 0 6 1
 value=PMOS_switch
 T 3500 2700 5 10 0 1 0 6 1
-footprint=sot23-pmos
+footprint=SOT23_pmos
 T 2500 2700 5 10 0 1 0 6 1
 device=PMOS
 }

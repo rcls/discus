@@ -6,7 +6,7 @@ device=RESISTOR
 T 2625 2225 5 10 1 1 0 1 1
 refdes=R
 T 2500 2200 5 10 0 1 90 0 1
-footprint=0603-load
+footprint=R_0402_load
 T 2500 2200 5 10 0 1 90 0 1
 value=rload
 }
@@ -17,7 +17,7 @@ refdes=M1
 T 2200 2000 5 10 0 1 0 0 1
 value=NMOS_switch
 T 2600 1800 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 3600 1800 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -28,7 +28,7 @@ refdes=M2
 T 900 1200 5 10 0 1 0 0 1
 value=NMOS_switch
 T 1300 1000 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 2300 1000 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -39,7 +39,7 @@ refdes=M3
 T 2200 1200 5 10 0 1 0 0 1
 value=NMOS_switch
 T 2600 1000 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 3600 1000 5 10 0 1 0 0 1
 device=NMOS
 }
@@ -50,7 +50,7 @@ refdes=M4
 T 3500 1200 5 10 0 1 0 0 1
 value=NMOS_switch
 T 3900 1000 5 10 0 1 0 0 1
-footprint=sot23-nmos
+footprint=SOT23_nmos
 T 4900 1000 5 10 0 1 0 0 1
 device=NMOS
 }

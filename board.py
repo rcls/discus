@@ -7,7 +7,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument('src', help='Input schematic')
 parser.add_argument('dst', help='Output schematic')
 parser.add_argument('-s', '--sym', help='Symbol file')
-parser.add_argument('-c', '--conn', help='Connector', default='pci-edge-3v')
 args = parser.parse_args()
 
 def parseCP(IN, L):
@@ -50,12 +49,15 @@ def flatten(S):
             yield K + '=' + V + '\n'
         yield '}\n'
 
-def build_pinmap(PATH):
+def build_pinmap(PATH: str) -> (str, dict[str, (str, str)])
     pins = {}
     pinnumbers = set()
     pinseqs = set()
+    footprint = None
     for I in parse(open(PATH)):
         if type(I) == str:
+            if I.startswith('footprint='):
+                footprint = I.removeprefix('footprint=')
             continue
         L, attrs = I
         if not L.startswith('P '):
@@ -77,7 +79,8 @@ def build_pinmap(PATH):
         pins[pinlabel] = slot, pinnumber
         pinnumbers.add(pinnumber)
         pinseqs.add(pinseq)
-    return pins
+    assert footprint is not None
+    return footprint, pins
 
 # e.g., invisible: T 14600 300 5 10 0 1 0 1 1
 #       visible:   T 14600 300 5 10 1 1 0 1 1
@@ -88,7 +91,7 @@ def invisible(L):
 
 name_map = { 'ϕ': 'phi' }
 
-def replace_in_out(pinmap, I):
+def replace_in_out(conn_footprint, pinmap, I):
     if type(I) == str:
         return I
     L, attrs = I
@@ -106,14 +109,14 @@ def replace_in_out(pinmap, I):
     slot , pinname   = pinmap[refdes]
     net = name_map.get(refdes, refdes)
     return [L, {
-        'footprint': [footT, args.conn],
+        'footprint': [footT, conn_footprint],
         'slot'     : [devT , slot],
         'net'      : [refT, f'{net}:{pinname}'],
         'refdes'   : [invisible(refT), 'JMAIN']}]
 #        'comment'  : [refT , net]}]
 
 
-pinmap = build_pinmap(args.sym)
+footprint, pinmap = build_pinmap(args.sym)
 #print(pinmap)
 
 IN = open(args.src)
@@ -121,7 +124,7 @@ OUT = open(args.dst, 'w')
 
 parsed = parse(IN)
 
-OUT.writelines(flatten(replace_in_out(pinmap, I) for I in parsed))
+OUT.writelines(flatten(replace_in_out(footprint, pinmap, I) for I in parsed))
 
 try:
     EXTRA = open(args.src.removesuffix('.sch') + '-extra.sch')

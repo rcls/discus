@@ -229,44 +229,6 @@
 			(justify left bottom)
 		)
 	)
-	(dimension
-		(type orthogonal)
-		(layer "User.4")
-		(uuid "874d1c47-9ce3-4a9a-95bf-79be11a325b3")
-		(pts
-			(xy -40 -2.35) (xy -40 0.82)
-		)
-		(height -3.9)
-		(orientation 1)
-		(format
-			(prefix "")
-			(suffix "")
-			(units 3)
-			(units_format 0)
-			(precision 4)
-			(suppress_zeroes yes)
-		)
-		(style
-			(thickness 0.1)
-			(arrow_length 1.27)
-			(text_position_mode 0)
-			(arrow_direction outward)
-			(extension_height 0.58642)
-			(extension_offset 0.5)
-			(keep_text_aligned yes)
-		)
-		(gr_text "3.17"
-			(at -45.05 -0.765 90)
-			(layer "User.4")
-			(uuid "874d1c47-9ce3-4a9a-95bf-79be11a325b3")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-	)
 	(pad "A1" connect roundrect
 		(at -38.73 -1.33)
 		(size 1.016 4.57)

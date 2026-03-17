@@ -543,3 +543,5 @@ pinnumber=A28
 T 1000 6800 5 10 0 0 0 0 1
 pinseq=51
 }
+T -8 -8 8 10 0 1 0 0 1
+footprint=pci-edge-3v

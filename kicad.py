@@ -86,9 +86,11 @@ def emit_nets(n: dict[str, list[(str, str)]]) -> list:
            for code, (name, nodes) in enumerate(n.items(), 1)]
 
 def emit_comp(refdes: str, value: str, footprint: str) -> list:
+    if not ':' in footprint:
+        footprint = 'Parts:' + footprint
     return [
         'comp',
-        ['ref', refdes], ['value', value], ['footprint', 'Parts:' + footprint],
+        ['ref', refdes], ['value', value], ['footprint', footprint],
         ['fields'], # ?
         # Properties?
         ['sheetpath', ['names', '/'], ['tstamps', '/']],

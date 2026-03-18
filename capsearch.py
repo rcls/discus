@@ -209,7 +209,7 @@ class BadGood:
         self.I_BAD = self.BAD
         self.MUNGE = MUNGE
         self.EXTRA = EXTRA
-        self.CRIT  = CRIT or []
+        self.CRIT  = target_list(CRIT) if CRIT else []
         self.known = {}
         self.I_GOOD = self.GOOD
         self.FACTOR = FACTOR if args.zoom == 1 else FACTOR / args.zoom
@@ -307,20 +307,20 @@ class BadGood:
 
 ##################### SPEED ########################
 
-scan('speed_basic', 119, 120, speed, FACTOR=10, TARGET=MEMORY,
+scan('speed_basic', 118, 119, speed, FACTOR=10, TARGET=MEMORY,
      CRIT='memp memf')
 
 scan('speed_duty1', 49, 50,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=MEMORY, FACTOR=10, CRIT='hazard')
 
-scan('speed_duty0', 49, 50, lambda v=None: speed(t0=v), TARGET=MEMORY,
+scan('speed_duty0', 50, 51, lambda v=None: speed(t0=v), TARGET=MEMORY,
      FACTOR=10, CRIT='hazard memp')
 
 scan('speedl_logic', 151, 152, speed, FACTOR=10, TARGET=LOGIC,
      CRIT='call inc')
 
-scan('speedl_duty1', 61, 62,
+scan('speedl_duty1', 62, 63,
      lambda v=None: speed() if v is None else speed(Q, Q - v - 20),
      TARGET=LOGIC, CRIT='call ret', FACTOR=10)
 
@@ -362,7 +362,7 @@ fast('npn_beta_hi', None, 10000, npn_beta, CRIT='call inc')
 
 fast('rnpn_r_lo', 39, 40, npn22_r, FACTOR=0.1, TARGET=LOGIC, CRIT='call ret')
 
-fast('rnpn_r_hi_fast', 55, 54, npn22_r, TARGET=LOGIC, CRIT='call ret')
+fast('rnpn_r_hi_fast', 54, 53, npn22_r, TARGET=LOGIC, CRIT='call ret')
 slow('rnpn_r_hi_slow', 15, 14, npn22_r, FACTOR=10, TARGET=LOGIC, CRIT='call')
 
 fast('rnpn_beta_lo', 34, 35, npn22_beta, CRIT='call memw')
@@ -390,7 +390,7 @@ slow('rload_hi_slow', 92, 91, rload, FACTOR=100, CRIT='cmp sub')
 fast('rload_lo', 1, 2, rload, CRIT='ret memw', FACTOR=100)
 
 fast('rpull_lo', 13, 14, rpull, FACTOR=100, CRIT='cmp ret')
-fast('rpull_hi', 6, 5, rpull, FACTOR=1e4, CRIT='memp hazard')
+fast('rpull_hi', 7, 6, rpull, FACTOR=1e4, CRIT='memp hazard')
 
 fast('rbias_lo', None, 100, bias_res, TARGET=MEMORY, CRIT='hazard2 memf')
 fast('rbias_hi', None, 100000, bias_res, TARGET=MEMORY,
@@ -408,7 +408,7 @@ fast('nmos_vto_hi_fast', 141, 140, nmos_vto, FACTOR=10e-3, CRIT='inc ret')
 fast('nmos_kp_lo', 3, 4, nmos_kp, FACTOR=0.01, CRIT='inc hazard',
      EXTRA=[(delay_res, HI_DELAY_RES)])
 
-fast('pmos_vto_hi_fast', 168, 167, pmos_vto, FACTOR=10e-3, CRIT='hazard2 memp')
+fast('pmos_vto_hi_fast', 169, 168, pmos_vto, FACTOR=10e-3, CRIT='hazard2 memp')
 #slow('pmos_vto_hi', 214, 213, pmos_vto, FACTOR=10e-3, CRIT='logic add')
 
 # The clock delay in the DRAM is sensitive to the VTO.  We'll make that
@@ -480,8 +480,7 @@ if args.reverse:
 if args.scramble:
     for s in SCANS:
         random.shuffle(s.TARGET)
-        # FIXME - this is bogus.
-        # s.TARGET.sort(key = lambda t: not t in s.CRIT)
+        s.TARGET.sort(key = lambda t: not t in s.CRIT)
     random.shuffle(SCANS)
 
 try:

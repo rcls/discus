@@ -9,7 +9,7 @@ pintype=unknown
 T 205 2395 5 10 1 1 0 1 1
 pinlabel=I3
 T 105 2445 5 10 0 1 0 6 1
-pinnumber=23
+pinnumber=B23
 T 0 2400 5 10 0 0 0 0 1
 pinseq=23
 }
@@ -20,7 +20,7 @@ pintype=unknown
 T 205 2195 5 10 1 1 0 1 1
 pinlabel=I3#
 T 105 2245 5 10 0 1 0 6 1
-pinnumber=24
+pinnumber=B24
 T 0 2200 5 10 0 0 0 0 1
 pinseq=24
 }
@@ -29,7 +29,7 @@ P 0 2000 200 2000 1 0 0
 T 0 2000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 2045 5 10 0 1 0 6 1
-pinnumber=25
+pinnumber=B25
 T 0 2000 5 10 0 0 0 0 1
 pinseq=25
 T 205 1995 5 10 1 1 0 1 1
@@ -40,7 +40,7 @@ P 0 1800 200 1800 1 0 0
 T 0 1800 5 10 0 0 0 0 1
 pintype=unknown
 T 105 1845 5 10 0 1 0 6 1
-pinnumber=26
+pinnumber=B26
 T 0 1800 5 10 0 0 0 0 1
 pinseq=26
 T 205 1795 5 10 1 1 0 1 1
@@ -51,7 +51,7 @@ P 0 1600 200 1600 1 0 0
 T 0 1600 5 10 0 0 0 0 1
 pintype=unknown
 T 105 1645 5 10 0 1 0 6 1
-pinnumber=27
+pinnumber=B27
 T 0 1600 5 10 0 0 0 0 1
 pinseq=27
 T 205 1595 5 10 1 1 0 1 1
@@ -62,7 +62,7 @@ P 0 1400 200 1400 1 0 0
 T 0 1400 5 10 0 0 0 0 1
 pintype=unknown
 T 105 1445 5 10 0 1 0 6 1
-pinnumber=28
+pinnumber=B28
 T 0 1400 5 10 0 0 0 0 1
 pinseq=28
 T 205 1395 5 10 1 1 0 1 1
@@ -73,7 +73,7 @@ P 0 1200 200 1200 1 0 0
 T 0 1200 5 10 0 0 0 0 1
 pintype=unknown
 T 105 1245 5 10 0 1 0 6 1
-pinnumber=29
+pinnumber=B29
 T 0 1200 5 10 0 0 0 0 1
 pinseq=29
 T 205 1195 5 10 1 1 0 1 1
@@ -84,7 +84,7 @@ P 0 1000 200 1000 1 0 0
 T 0 1000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 1045 5 10 0 1 0 6 1
-pinnumber=30
+pinnumber=B30
 T 0 1000 5 10 0 0 0 0 1
 pinseq=30
 T 205 995 5 10 1 1 0 1 1
@@ -95,7 +95,7 @@ P 0 800 200 800 1 0 0
 T 0 800 5 10 0 0 0 0 1
 pintype=unknown
 T 105 845 5 10 0 1 0 6 1
-pinnumber=31
+pinnumber=B31
 T 0 800 5 10 0 0 0 0 1
 pinseq=31
 T 205 795 5 10 1 1 0 1 1
@@ -106,7 +106,7 @@ P 0 600 200 600 1 0 0
 T 0 600 5 10 0 0 0 0 1
 pintype=unknown
 T 105 645 5 10 0 1 0 6 1
-pinnumber=32
+pinnumber=B32
 T 0 600 5 10 0 0 0 0 1
 pinseq=32
 T 205 595 5 10 1 1 0 1 1
@@ -119,7 +119,7 @@ pintype=unknown
 T 1395 2995 5 10 1 1 0 7 1
 pinlabel=CR
 T 1495 3045 5 10 0 1 0 0 1
-pinnumber=55
+pinnumber=B55
 T 1600 3000 5 10 0 0 0 0 1
 pinseq=55
 }
@@ -130,7 +130,7 @@ pintype=unknown
 T 1395 2795 5 10 1 1 0 7 1
 pinlabel=CS#
 T 1495 2845 5 10 0 1 0 0 1
-pinnumber=56
+pinnumber=B56
 T 1600 2800 5 10 0 0 0 0 1
 pinseq=56
 }
@@ -139,7 +139,7 @@ P 1600 2600 1400 2600 1 0 0
 T 1600 2600 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 2645 5 10 0 1 0 0 1
-pinnumber=57
+pinnumber=B57
 T 1600 2600 5 10 0 0 0 0 1
 pinseq=57
 T 1395 2595 5 10 1 1 0 7 1
@@ -150,7 +150,7 @@ P 1600 2400 1400 2400 1 0 0
 T 1600 2400 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 2445 5 10 0 1 0 0 1
-pinnumber=58
+pinnumber=B58
 T 1600 2400 5 10 0 0 0 0 1
 pinseq=58
 T 1395 2395 5 10 1 1 0 7 1
@@ -161,7 +161,7 @@ P 1600 2200 1400 2200 1 0 0
 T 1600 2200 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 2245 5 10 0 1 0 0 1
-pinnumber=59
+pinnumber=B59
 T 1600 2200 5 10 0 0 0 0 1
 pinseq=59
 T 1395 2195 5 10 1 1 0 7 1
@@ -172,7 +172,7 @@ P 1600 2000 1400 2000 1 0 0
 T 1600 2000 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 2045 5 10 0 1 0 0 1
-pinnumber=60
+pinnumber=B60
 T 1600 2000 5 10 0 0 0 0 1
 pinseq=60
 T 1395 1995 5 10 1 1 0 7 1
@@ -183,7 +183,7 @@ P 1600 1800 1400 1800 1 0 0
 T 1600 1800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 1845 5 10 0 1 0 0 1
-pinnumber=61
+pinnumber=B61
 T 1600 1800 5 10 0 0 0 0 1
 pinseq=61
 T 1395 1795 5 10 1 1 0 7 1
@@ -194,7 +194,7 @@ P 1600 1600 1400 1600 1 0 0
 T 1600 1600 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 1645 5 10 0 1 0 0 1
-pinnumber=62
+pinnumber=B62
 T 1600 1600 5 10 0 0 0 0 1
 pinseq=62
 T 1395 1595 5 10 1 1 0 7 1
@@ -207,7 +207,7 @@ pintype=unknown
 T 830 175 5 7 1 1 0 2 1
 pinlabel=GND
 T 750 105 5 10 0 1 90 6 1
-pinnumber=34
+pinnumber=B34
 T 800 0 5 10 0 0 0 0 1
 pinseq=34
 }
@@ -218,7 +218,7 @@ pintype=unknown
 T 780 8225 5 7 1 1 0 6 1
 pinlabel=Vdd
 T 850 8295 5 10 0 1 90 2 1
-pinnumber=33
+pinnumber=B33
 T 800 8400 5 10 0 0 0 6 1
 pinseq=33
 }
@@ -227,7 +227,7 @@ P 0 2800 200 2800 1 0 0
 T 0 2800 5 10 0 0 0 0 1
 pintype=unknown
 T 105 2845 5 10 0 1 0 6 1
-pinnumber=21
+pinnumber=B21
 T 0 2800 5 10 0 0 0 0 1
 pinseq=21
 T 205 2795 5 10 1 1 0 1 1
@@ -238,7 +238,7 @@ P 0 2600 200 2600 1 0 0
 T 0 2600 5 10 0 0 0 0 1
 pintype=unknown
 T 105 2645 5 10 0 1 0 6 1
-pinnumber=22
+pinnumber=B22
 T 0 2600 5 10 0 0 0 0 1
 pinseq=22
 T 205 2595 5 10 1 1 0 1 1
@@ -249,7 +249,7 @@ P 1600 1200 1400 1200 1 0 0
 T 1600 1200 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 1245 5 10 0 1 0 0 1
-pinnumber=63
+pinnumber=B63
 T 1600 1200 5 10 0 0 0 0 1
 pinseq=63
 T 1395 1195 5 10 1 1 0 7 1
@@ -260,7 +260,7 @@ P 1600 1000 1400 1000 1 0 0
 T 1600 1000 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 1045 5 10 0 1 0 0 1
-pinnumber=64
+pinnumber=B64
 T 1600 1000 5 10 0 0 0 0 1
 pinseq=64
 T 1395 995 5 10 1 1 0 7 1
@@ -271,7 +271,7 @@ P 1600 800 1400 800 1 0 0
 T 1600 800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 845 5 10 0 1 0 0 1
-pinnumber=65
+pinnumber=B65
 T 1600 800 5 10 0 0 0 0 1
 pinseq=65
 T 1395 795 5 10 1 1 0 7 1
@@ -284,7 +284,7 @@ P 1600 600 1400 600 1 0 0
 T 1600 600 5 10 0 0 0 6 1
 pintype=unknown
 T 1495 645 5 10 0 1 0 0 1
-pinnumber=66
+pinnumber=B66
 T 1600 600 5 10 0 0 0 6 1
 pinseq=66
 T 1395 595 5 10 1 1 0 7 1
@@ -297,7 +297,7 @@ pintype=unknown
 T 1395 3395 5 10 1 1 0 7 1
 pinlabel=CON
 T 1495 3445 5 10 0 1 0 0 1
-pinnumber=53
+pinnumber=B53
 T 1600 3400 5 10 0 0 0 0 1
 pinseq=53
 }
@@ -306,7 +306,7 @@ P 1600 5900 1400 5900 1 0 0
 T 1600 5900 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 5945 5 10 0 1 0 0 1
-pinnumber=44
+pinnumber=B44
 T 1600 5900 5 10 0 0 0 0 1
 pinseq=44
 T 1395 5895 5 10 1 1 0 7 1
@@ -317,7 +317,7 @@ P 1600 5700 1400 5700 1 0 0
 T 1600 5700 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 5745 5 10 0 1 0 0 1
-pinnumber=45
+pinnumber=B45
 T 1600 5700 5 10 0 0 0 0 1
 pinseq=45
 T 1395 5695 5 10 1 1 0 7 1
@@ -328,7 +328,7 @@ P 1600 5500 1400 5500 1 0 0
 T 1600 5500 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 5545 5 10 0 1 0 0 1
-pinnumber=46
+pinnumber=B46
 T 1600 5500 5 10 0 0 0 0 1
 pinseq=46
 T 1395 5495 5 10 1 1 0 7 1
@@ -339,7 +339,7 @@ P 1600 4800 1400 4800 1 0 0
 T 1600 4800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 4845 5 10 0 1 0 0 1
-pinnumber=48
+pinnumber=B48
 T 1600 4800 5 10 0 0 0 0 1
 pinseq=48
 T 1395 4795 5 10 1 1 0 7 1
@@ -350,7 +350,7 @@ P 1600 4400 1400 4400 1 0 0
 T 1600 4400 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 4445 5 10 0 1 0 0 1
-pinnumber=50
+pinnumber=B50
 T 1600 4400 5 10 0 0 0 0 1
 pinseq=50
 T 1395 4395 5 10 1 1 0 7 1
@@ -361,7 +361,7 @@ P 1600 7000 1400 7000 1 0 0
 T 1600 7000 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 7045 5 10 0 1 0 0 1
-pinnumber=39
+pinnumber=B39
 T 1600 7000 5 10 0 0 0 0 1
 pinseq=39
 T 1395 6995 5 10 1 1 0 7 1
@@ -372,7 +372,7 @@ P 1600 6800 1400 6800 1 0 0
 T 1600 6800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 6845 5 10 0 1 0 0 1
-pinnumber=40
+pinnumber=B40
 T 1600 6800 5 10 0 0 0 0 1
 pinseq=40
 T 1395 6795 5 10 1 1 0 7 1
@@ -383,7 +383,7 @@ P 1600 6600 1400 6600 1 0 0
 T 1600 6600 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 6645 5 10 0 1 0 0 1
-pinnumber=41
+pinnumber=B41
 T 1600 6600 5 10 0 0 0 0 1
 pinseq=41
 T 1395 6595 5 10 1 1 0 7 1
@@ -394,7 +394,7 @@ P 1600 6400 1400 6400 1 0 0
 T 1600 6400 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 6445 5 10 0 1 0 0 1
-pinnumber=42
+pinnumber=B42
 T 1600 6400 5 10 0 0 0 0 1
 pinseq=42
 T 1395 6395 5 10 1 1 0 7 1
@@ -405,7 +405,7 @@ P 1600 6200 1400 6200 1 0 0
 T 1600 6200 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 6245 5 10 0 1 0 0 1
-pinnumber=43
+pinnumber=B43
 T 1600 6200 5 10 0 0 0 0 1
 pinseq=43
 T 1395 6195 5 10 1 1 0 7 1
@@ -416,7 +416,7 @@ P 0 4600 200 4600 1 0 0
 T 0 4600 5 10 0 0 0 0 1
 pintype=unknown
 T 105 4645 5 10 0 1 0 6 1
-pinnumber=13
+pinnumber=B13
 T 0 4600 5 10 0 0 0 0 1
 pinseq=13
 T 205 4595 5 10 1 1 0 1 1
@@ -427,7 +427,7 @@ P 0 4400 200 4400 1 0 0
 T 0 4400 5 10 0 0 0 0 1
 pintype=unknown
 T 105 4445 5 10 0 1 0 6 1
-pinnumber=14
+pinnumber=B14
 T 0 4400 5 10 0 0 0 0 1
 pinseq=14
 T 205 4395 5 10 1 1 0 1 1
@@ -438,7 +438,7 @@ P 0 4200 200 4200 1 0 0
 T 0 4200 5 10 0 0 0 0 1
 pintype=unknown
 T 105 4245 5 10 0 1 0 6 1
-pinnumber=15
+pinnumber=B15
 T 0 4200 5 10 0 0 0 0 1
 pinseq=15
 T 205 4195 5 10 1 1 0 1 1
@@ -449,7 +449,7 @@ P 0 4000 200 4000 1 0 0
 T 0 4000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 4045 5 10 0 1 0 6 1
-pinnumber=16
+pinnumber=B16
 T 0 4000 5 10 0 0 0 0 1
 pinseq=16
 T 205 3995 5 10 1 1 0 1 1
@@ -460,7 +460,7 @@ P 0 5000 200 5000 1 0 0
 T 0 5000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 5045 5 10 0 1 0 6 1
-pinnumber=11
+pinnumber=B11
 T 0 5000 5 10 0 0 0 0 1
 pinseq=11
 T 205 4995 5 10 1 1 0 1 1
@@ -471,7 +471,7 @@ P 0 4800 200 4800 1 0 0
 T 0 4800 5 10 0 0 0 0 1
 pintype=unknown
 T 105 4845 5 10 0 1 0 6 1
-pinnumber=12
+pinnumber=B12
 T 0 4800 5 10 0 0 0 0 1
 pinseq=12
 T 205 4795 5 10 1 1 0 1 1
@@ -482,7 +482,7 @@ P 0 6200 200 6200 1 0 0
 T 0 6200 5 10 0 0 0 0 1
 pintype=unknown
 T 105 6245 5 10 0 1 0 6 1
-pinnumber=6
+pinnumber=B6
 T 0 6200 5 10 0 0 0 0 1
 pinseq=6
 T 205 6195 5 10 1 1 0 1 1
@@ -493,7 +493,7 @@ P 0 6000 200 6000 1 0 0
 T 0 6000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 6045 5 10 0 1 0 6 1
-pinnumber=7
+pinnumber=B7
 T 0 6000 5 10 0 0 0 0 1
 pinseq=7
 T 205 5995 5 10 1 1 0 1 1
@@ -504,7 +504,7 @@ P 0 5800 200 5800 1 0 0
 T 0 5800 5 10 0 0 0 0 1
 pintype=unknown
 T 105 5845 5 10 0 1 0 6 1
-pinnumber=8
+pinnumber=B8
 T 0 5800 5 10 0 0 0 0 1
 pinseq=8
 T 205 5795 5 10 1 1 0 1 1
@@ -515,7 +515,7 @@ P 0 5400 200 5400 1 0 0
 T 0 5400 5 10 0 0 0 0 1
 pintype=unknown
 T 105 5445 5 10 0 1 0 6 1
-pinnumber=9
+pinnumber=B9
 T 0 5400 5 10 0 0 0 0 1
 pinseq=9
 T 205 5395 5 10 1 1 0 1 1
@@ -526,7 +526,7 @@ P 0 5200 200 5200 1 0 0
 T 0 5200 5 10 0 0 0 0 1
 pintype=unknown
 T 105 5245 5 10 0 1 0 6 1
-pinnumber=10
+pinnumber=B10
 T 0 5200 5 10 0 0 0 0 1
 pinseq=10
 T 205 5195 5 10 1 1 0 1 1
@@ -537,7 +537,7 @@ P 0 3200 200 3200 1 0 0
 T 0 3200 5 10 0 0 0 0 1
 pintype=unknown
 T 105 3245 5 10 0 1 0 6 1
-pinnumber=19
+pinnumber=B19
 T 0 3200 5 10 0 0 0 0 1
 pinseq=19
 T 205 3195 5 10 1 1 0 1 1
@@ -548,7 +548,7 @@ P 0 3000 200 3000 1 0 0
 T 0 3000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 3045 5 10 0 1 0 6 1
-pinnumber=20
+pinnumber=B20
 T 0 3000 5 10 0 0 0 0 1
 pinseq=20
 T 205 2995 5 10 1 1 0 1 1
@@ -559,7 +559,7 @@ P 0 3600 200 3600 1 0 0
 T 0 3600 5 10 0 0 0 0 1
 pintype=unknown
 T 105 3645 5 10 0 1 0 6 1
-pinnumber=17
+pinnumber=B17
 T 0 3600 5 10 0 0 0 0 1
 pinseq=17
 T 205 3595 5 10 1 1 0 1 1
@@ -570,7 +570,7 @@ P 0 3400 200 3400 1 0 0
 T 0 3400 5 10 0 0 0 0 1
 pintype=unknown
 T 105 3445 5 10 0 1 0 6 1
-pinnumber=18
+pinnumber=B18
 T 0 3400 5 10 0 0 0 0 1
 pinseq=18
 T 205 3395 5 10 1 1 0 1 1
@@ -581,7 +581,7 @@ P 1600 8000 1400 8000 1 0 0
 T 1600 8000 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 8045 5 10 0 1 0 0 1
-pinnumber=35
+pinnumber=B35
 T 1600 8000 5 10 0 0 0 0 1
 pinseq=35
 T 1395 7995 5 10 1 1 0 7 1
@@ -592,7 +592,7 @@ P 1600 7800 1400 7800 1 0 0
 T 1600 7800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 7845 5 10 0 1 0 0 1
-pinnumber=36
+pinnumber=B36
 T 1600 7800 5 10 0 0 0 0 1
 pinseq=36
 T 1395 7795 5 10 1 1 0 7 1
@@ -603,7 +603,7 @@ P 1600 7600 1400 7600 1 0 0
 T 1600 7600 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 7645 5 10 0 1 0 0 1
-pinnumber=37
+pinnumber=B37
 T 1600 7600 5 10 0 0 0 0 1
 pinseq=37
 T 1395 7595 5 10 1 1 0 7 1
@@ -614,7 +614,7 @@ P 1600 7400 1400 7400 1 0 0
 T 1600 7400 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 7445 5 10 0 1 0 0 1
-pinnumber=38
+pinnumber=B38
 T 1600 7400 5 10 0 0 0 0 1
 pinseq=38
 T 1395 7395 5 10 1 1 0 7 1
@@ -625,7 +625,7 @@ P 0 7200 200 7200 1 0 0
 T 0 7200 5 10 0 0 0 0 1
 pintype=unknown
 T 105 7245 5 10 0 1 0 6 1
-pinnumber=3
+pinnumber=B3
 T 0 7200 5 10 0 0 0 0 1
 pinseq=3
 T 205 7195 5 10 1 1 0 1 1
@@ -636,7 +636,7 @@ P 0 7800 200 7800 1 0 0
 T 0 7800 5 10 0 0 0 0 1
 pintype=unknown
 T 105 7845 5 10 0 1 0 6 1
-pinnumber=1
+pinnumber=B1
 T 0 7800 5 10 0 0 0 0 1
 pinseq=1
 T 205 7795 5 10 1 1 0 1 1
@@ -647,7 +647,7 @@ P 0 7600 200 7600 1 0 0
 T 0 7600 5 10 0 0 0 0 1
 pintype=unknown
 T 105 7645 5 10 0 1 0 6 1
-pinnumber=2
+pinnumber=B2
 T 0 7600 5 10 0 0 0 0 1
 pinseq=2
 T 205 7595 5 10 1 1 0 1 1
@@ -658,7 +658,7 @@ P 0 6600 200 6600 1 0 0
 T 0 6600 5 10 0 0 0 6 1
 pintype=unknown
 T 105 6645 5 10 0 1 0 6 1
-pinnumber=5
+pinnumber=B5
 T 0 6600 5 10 0 0 0 6 1
 pinseq=5
 T 205 6595 5 10 1 1 0 1 1
@@ -669,7 +669,7 @@ P 1600 5300 1400 5300 1 0 0
 T 1600 5300 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 5345 5 10 0 1 0 0 1
-pinnumber=47
+pinnumber=B47
 T 1600 5300 5 10 0 0 0 0 1
 pinseq=47
 T 1395 5295 5 10 1 1 0 7 1
@@ -680,7 +680,7 @@ P 1600 4000 1400 4000 1 0 0
 T 1600 4000 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 4045 5 10 0 1 0 0 1
-pinnumber=51
+pinnumber=B51
 T 1600 4000 5 10 0 0 0 0 1
 pinseq=51
 T 1395 3995 5 10 1 1 0 7 1
@@ -691,7 +691,7 @@ P 1600 3800 1400 3800 1 0 0
 T 1600 3800 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 3845 5 10 0 1 0 0 1
-pinnumber=52
+pinnumber=B52
 T 1600 3800 5 10 0 0 0 0 1
 pinseq=52
 T 1395 3795 5 10 1 1 0 7 1
@@ -704,7 +704,7 @@ pintype=unknown
 T 1395 3195 5 10 1 1 0 7 1
 pinlabel=QE
 T 1495 3245 5 10 0 1 0 0 1
-pinnumber=54
+pinnumber=B54
 T 1600 3200 5 10 0 0 0 0 1
 pinseq=54
 }
@@ -713,7 +713,7 @@ P 0 7000 200 7000 1 0 0
 T 0 7000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 7045 5 10 0 1 0 6 1
-pinnumber=4
+pinnumber=B4
 T 0 7000 5 10 0 0 0 0 1
 pinseq=4
 T 205 6995 5 10 1 1 0 1 1
@@ -726,7 +726,7 @@ pintype=unknown
 T 1020 8225 5 7 1 1 0 0 1
 pinlabel=Bling
 T 950 8295 5 10 0 1 90 0 1
-pinnumber=67
+pinnumber=B67
 T 1000 8400 5 10 0 0 0 0 1
 pinseq=67
 }
@@ -735,7 +735,7 @@ P 0 8000 200 8000 1 0 0
 T 0 8000 5 10 0 0 0 0 1
 pintype=unknown
 T 105 8045 5 10 0 1 0 6 1
-pinnumber=68
+pinnumber=B68
 T 0 8000 5 10 0 0 0 0 1
 pinseq=68
 T 205 7995 5 10 1 1 0 1 1
@@ -746,9 +746,11 @@ P 1600 5100 1400 5100 1 0 0
 T 1600 5100 5 10 0 0 0 0 1
 pintype=unknown
 T 1495 5145 5 10 0 1 0 0 1
-pinnumber=69
+pinnumber=B69
 T 1600 5100 5 10 0 0 0 0 1
 pinseq=69
 T 1395 5095 5 10 1 1 0 7 1
 pinlabel=WR
 }
+T -8 -8 8 10 0 1 0 0 1
+footprint=Connector_PCBEdge:BUS_PCIexpress_x16

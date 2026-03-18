@@ -56,7 +56,7 @@ count: board/bit.rcr board/control.rcr board/rom64byte.rcr \
 
 SYMS=$(wildcard sym/*.sym)
 GATES=$(wildcard gates/*.sch)
-BOARD=$(wildcard board/*.sch)
+BOARD=bit control
 ALL_SYM=$(SYMS:sym/%.sym=%)
 ALL_SCH=$(GATES:gates/%.sch=%) $(BOARD:board/%.sch=%)
 

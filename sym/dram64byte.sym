@@ -433,3 +433,5 @@ pinseq=47
 T 1195 395 5 10 1 1 0 7 1
 pinlabel=Vss
 }
+T 900 5600 8 10 0 1 90 0 1
+footprint=pci-edge-3v

@@ -49,7 +49,7 @@ def flatten(S):
             yield K + '=' + V + '\n'
         yield '}\n'
 
-def build_pinmap(PATH: str) -> (str, dict[str, (str, str)])
+def build_pinmap(PATH: str) -> (str, dict[str, (str, str)]):
     pins = {}
     pinnumbers = set()
     pinseqs = set()
